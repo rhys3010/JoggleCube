@@ -1,0 +1,98 @@
+\documentclass{project}
+\usepackage[pdfauthor={N. W. Hardy},pdftitle={Software Engineering Group Project, LaTeX Document Example},pdftex]{hyperref}
+\begin{document}
+\title{Software Engineering Group Project}
+\subtitle{LaTeX Document Example}
+\author{N.W.Hardy}     
+\shorttitle{LaTeX}
+\version{1.2}
+\status{Release}
+\date{2015-10-12}
+\configref{SE-N66-TEST}
+\maketitle
+\tableofcontents
+\newpage
+\section{INTRODUCTION}
+This document, produced using \LaTeXe document describes the use of
+{\tt project.cls} which implements the document standard specified in
+\cite{se.qa.03}.
+\subsection{Availability}
+The class file may be downloaded from the module web site on Blackboard.
+
+\section{ADDITIONAL COMMANDS}
+A number of additional commands to provide the standard information
+required in the documents are provided. A typical header for a source
+file is shown in Figure ~\ref{fig:header}. This will provide the front
+material and running headers. To produce the \emph{Page n of m}
+footer, the label {\tt thelastpage} must be inserted at the end of the
+document. Figure ~\ref{fig:footer} shows the typical end of a
+document. The un-numbered bibliography and document history sections
+must be explicitly added to the table of contents.
+\begin{figure}[p]
+\caption{The typical start of a source file}
+\begin{verbatim}
+\documentclass{project}
+\begin{document}
+\title{Software Engineering Group Project}
+\subtitle{LaTeX Document Example}
+\author{N.W.Hardy}     
+\shorttitle{LaTeX}
+\version{0.1}
+\status{Draft}
+\date{2010-10-12}
+\configref{SE-N66-TEST}
+\maketitle
+\tableofcontents
+\newpage
+\end{verbatim}
+\label{fig:header}
+\end{figure}
+\begin{figure}[p]
+\caption{The typical end of a source file}
+\begin{verbatim}
+\clearpage
+\addcontentsline{toc}{section}{REFERENCES}
+\begin{thebibliography}{5}
+\bibitem{se.qa.03} \emph{Software Engineering Group Projects}
+General Documentation Standards.
+C. J. Price, N. W. Hardy, B.P. Tiddeman SE.QA.03. 1.8 Release.
+\end{thebibliography}
+\clearpage
+\addcontentsline{toc}{section}{DOCUMENT HISTORY}
+\section*{DOCUMENT HISTORY}
+\begin{tabular}{|l | l | l | l | l |}
+\hline
+Version & CCF No. & Date & Changes made to Document & Changed by \\
+\hline
+0.1 & N/A & 2010-10-12 & Initial creation & NWH \\
+\hline
+\end{tabular}
+\label{thelastpage}
+\end{document}
+\end{verbatim}
+\label{fig:footer}
+\end{figure}
+\clearpage
+\addcontentsline{toc}{section}{REFERENCES}
+\begin{thebibliography}{5}
+\bibitem{se.qa.03} \emph{Software Engineering Group Projects}
+General Documentation Standards.
+C. J. Price, N. W. Hardy, B.P. Tiddeman, SE.QA.03. 1.8 Release.
+\end{thebibliography}
+\addcontentsline{toc}{section}{DOCUMENT HISTORY}
+\section*{DOCUMENT HISTORY}
+\begin{tabular}{|l | l | l | l | l |}
+\hline
+Version & CCF No. & Date & Changes made to Document & Changed by \\
+\hline
+0.1 & N/A & 2010-10-12 & Initial creation & NWH \\
+\hline
+1.0 & N/A & 2010-10-13 & Release after testing & NWH \\
+\hline
+1.1 & N/A & 2010-10-13 & Mistake with References in TOC corrected  & NWH \\
+\hline
+1.2 & N/A & 2015-10-16 & Page size corrected. Updat reference. & NWH \\
+\hline
+\end{tabular}
+\label{thelastpage}
+\end{document}
