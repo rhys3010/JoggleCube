@@ -5,7 +5,7 @@
 \subtitle{User Interface Specification, Use Case Document}
 \author{Nathan Williams - naw21, Alex Thaumwood - alt38}     
 \shorttitle{Use Case Document}
-\version{0.1.1}
+\version{0.1.2}
 \status{Draft}
 \date{2018-02-01}
 \configref{SE-N66-TEST}
@@ -41,9 +41,36 @@ This Document aims to:
 
 \section{Use Cases}
 	\subsection{Second Year Computer Science Students}
-	Play against a new Grid
-	Compete against a saved grid
-	View highscores
+		\subsubsection{Play against a new Grid}
+			The user wil click the Start Game button and a new grid will be generated for 	the user to compete against, the user will now be able to play the game (please see use case: \ref{Playing the game}).
+		\subsubsection{Compete against a saved grid}
+			The user will click the load Grid button and a screen will be displayed where the user can select a saved grid from a list of recently saved grids or load a grid from a file using a standard fileChooser. Once that has happened the user can click the start grid button to load the grid, the user will now be able to play the game (please see use case: \ref{Playing the game}).
+		\subsubsection{Playing the game} \label{Playing the game}
+			The user will be faced with a 3d cube with the 27 letters in a 3x3x3 grid. Space for the words that the user has found, an input bar for building words from the letters, a button for confirming the found word and pause and end game buttons. 
+			
+			The user can then repeat these actions until the timer runs out.
+			
+			\paragraph{Cube rotation}
+			The user will be able to rotate the cube by holding the right mouse button and moving the mouse.
+			\paragraph{Finding a Word}
+			The user can select letters by clicking on the relevent boxes on the 3d cube with the mouse, to build up a word, or they can enter the letters manually into the input box. They can then press the confirm word button to check that is it a valid word. If it is valid, the button will go green and the word will be added to the found words list and the input box will be cleared ready for the next word. If it is not a valid word the button will go red, the user may then change the letters to try alternative words.
+		
+			
+		\subsubsection{Pausing} \label{Pausing}
+		The user can pause the game by pressing the pause button with the mouse or pressing the escape key.
+		\subsubsection{Ending the game} \label{Ending the game}
+		The user can finish the game early before the timer runs out by clicking the exit game button or the timer will run out.
+		\subsubsection{Save Score} \label{Save score}
+		\subsubsection{Save Grid}	\label{Save grid}
+		\subsubsection{View Overall highscore} \label{View Overall highscore}
+		From the home screen the user can press the HighScores button to view the current overall highscores.
+		\subsubsection{View Grid Highscore} \label{View Grid HigScore}
+		Click the load grid button on the home screen then a screen will be displayed where the user can select a saved grid from a list of recently saved grids or load a grid from a file using a standard fileChooser. Once that has happened the user can click the View Grid scores button to display the high score for this grid.
+		
+		Or when a user finishes the game the user will be displayed the high score for that grid and have the option to save their score to the highscore table(see \ref{Save score}  on saving a score).
+		\subsubsection{Finding help} \label{Finding help}
+		From the home screen or pause screen the user can press the help button to bring up a helpful guide on how to play.
+		
 \section{Error Conditions}
 
 
@@ -64,6 +91,8 @@ Version & CCF No. & Date & Changes made to Document & Changed by \\
 0.1 & N/A & 2018-02-01 & Initial creation & NAW21 \\
 \hline
 0.1.1 & N/A & 2018-02-02 & Begun writing the introduction and Typical Users Section & NAW21 \\
+\hline
+0.1.2 & N/A & 2018-02-06 & Started writing use cases & NAW21 \\
 \hline
 \end{tabular}
 \label{thelastpage}
