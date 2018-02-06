@@ -45,21 +45,19 @@ public class GameGUIController {
 
 
     /**
-     * When the End Game button is clicked it will load the startGUI scene.
-     *
-     * todo display score and save options instead of startGUI
-     * todo change to new 'end scene'
+     * When the End Game button is clicked it will load the EndGui scene.
      *
      * @author Nathan Williams (naw21)
+     * @author Rhys Evans (rhe24@aber.ac.uk)
      * @version 0.1 DRAFT
      * @see StartGUIController
-     * @throws IOException if the StartGUI.fxml is not found.
+     * @throws IOException if the EndGUI.fxml is not found.
      */
     @FXML
     void btnEndGameClicked() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../StartGUI/StartGUI.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../EndGUI/EndGUI.fxml"));
         Stage stage = (Stage) parent.getScene().getWindow();
-        stage.setScene(new Scene(root,600,600));
+        stage.setScene(new Scene(root,600,450));
         //todo call a method to stop the game running.
     }
 

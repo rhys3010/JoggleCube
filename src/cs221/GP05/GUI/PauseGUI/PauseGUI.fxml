@@ -43,7 +43,7 @@
         </HBox>
         <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
             <children>
-                <Button fx:id="exitBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="26.0" prefWidth="168.0" text="Exit" textAlignment="CENTER" />
+                <Button fx:id="exitBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#btnExitClicked" prefHeight="26.0" prefWidth="168.0" text="Exit" textAlignment="CENTER" />
             </children>
             <VBox.margin>
                 <Insets top="-40.0" />
