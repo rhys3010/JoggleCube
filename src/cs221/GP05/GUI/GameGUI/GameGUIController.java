@@ -38,22 +38,10 @@ public class GameGUIController {
     StackPane parent;
 
     /**
-     * The pause overlay
-     */
-    @FXML
-    VBox pauseOverlay;
-
-    /**
      * The main game screen content (cube I/O etc)
      */
     @FXML
     VBox gameScreen;
-
-    /**
-     * All the pause menu buttons
-     */
-    @FXML
-    Button resumeBtn, exitBtn, helpBtn;
 
 
     /**
@@ -79,49 +67,17 @@ public class GameGUIController {
     /**
      * When the pause button is clicked it will display an overlay and pause the game
      * @author Rhys Evans (rhe24@aber.ac.uk)
+     * todo consider efficiency of injecting the overlay's fxml when button is pressed (maybe do this at the start?)
      * @version 0.1 DRAFT
+     * @throws IOException if PauseGUI.fxml doesn't exist
      */
     @FXML
-    void btnPauseGameClicked(){
+    void btnPauseGameClicked() throws IOException{
 
-        // Disable game screen and show overlay
-        pauseOverlay.setVisible(true);
-        gameScreen.setDisable(true);
+        // Load Pause FXML
+        VBox pauseOverlay = FXMLLoader.load(getClass().getResource("../PauseGUI/PauseGUI.fxml"));
+
+        // Add overlay to the stackpane as child
+        parent.getChildren().add(pauseOverlay);
     }
-
-    /**
-     * When the resume button is pressed, remove overlay and enable game screen
-     * @author Rhys Evans (rhe24@aber.ac.uk)
-     * @version 0.1 DRAFT
-     */
-    @FXML
-    void btnResumeClicked(){
-
-        // Enable game screen and hide overlay
-        pauseOverlay.setVisible(false);
-        gameScreen.setDisable(false);
-    }
-
-    /**
-     * When the resume button is pressed, remove overlay and enable game screen
-     * todo fix dodgy model overlaying
-     * todo add prompt for exiting
-     *
-     * @author Rhys Evans (rhe24@aber.ac.uk)
-     * @version 0.1 DRAFT
-     * @throws IOException if the StartGUI.fxml is not found.
-     */
-    @FXML
-    void btnExitClicked() throws IOException{
-
-        // Copied code right over from other method, will refine and change when I add a END Scene
-
-
-        Parent root = FXMLLoader.load(getClass().getResource("../StartGUI/StartGUI.fxml"));
-        Stage stage = (Stage) parent.getScene().getWindow();
-        stage.setScene(new Scene(root,600,600));
-    }
-
-
-
 }

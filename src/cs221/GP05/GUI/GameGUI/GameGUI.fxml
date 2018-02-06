@@ -20,7 +20,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Box?>
-<?import javafx.scene.text.Font?>
 
 <!--
     * GameGUI - GameGUI user interface definition.
@@ -46,12 +45,11 @@
          </HBox>
          <HBox alignment="CENTER">
              <AnchorPane prefHeight="300.0" prefWidth="300.0">
-                  <Box fx:id="boggleCube" depth="100" height="100" layoutX="143.0" layoutY="142.0" rotate="108.4" width="100">
+                 <Box fx:id="boggleCube" depth="100" height="100" layoutX="143.0" layoutY="142.0" rotate="108.4" width="100">
                      <rotationAxis>
-                        <Point3D y="1.0" z="1.0" />
+                         <Point3D y="1.0" z="1.0" />
                      </rotationAxis>
-                  </Box>
-               <VBox layoutX="29.0" layoutY="152.0" prefHeight="200.0" prefWidth="100.0" />
+                 </Box>
              </AnchorPane>
              <VBox alignment="CENTER">
                  <Label text="Words Found" />
@@ -75,46 +73,6 @@
             </padding>
          </HBox>
           </VBox>
-      <VBox fx:id="pauseOverlay" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="362.0" prefWidth="248.0" style="-fx-background-color: rgba(64, 64, 64, 0.75);" visible="false">
-         <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label alignment="CENTER" text="GAME PAUSED" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
-               <children>
-                  <Button fx:id="resumeBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#btnResumeClicked" prefHeight="26.0" prefWidth="168.0" text="Resume" textAlignment="CENTER">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin></Button>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="exitBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#btnExitClicked" prefHeight="26.0" prefWidth="168.0" text="Exit" textAlignment="CENTER" />
-               </children>
-               <VBox.margin>
-                  <Insets top="-40.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="170.0" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="helpBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="26.0" prefWidth="168.0" text="Help" textAlignment="CENTER">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Button>
-               </children>
-               <VBox.margin>
-                  <Insets top="-40.0" />
-               </VBox.margin>
-            </HBox>
-         </children>
-      </VBox>
+
    </children>
 </StackPane>
