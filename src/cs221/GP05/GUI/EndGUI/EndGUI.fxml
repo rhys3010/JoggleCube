@@ -15,6 +15,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -25,7 +26,7 @@
     * @version 0.1  DRAFT
 -->
 
-<AnchorPane fx:id="parent" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs221.GP05.GUI.EndGUI.EndGUIController">
+<StackPane fx:id="parent" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs221.GP05.GUI.EndGUI.EndGUIController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -41,22 +42,35 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TableView fx:id="highScoreTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="542.0">
-              <columns>
-                <TableColumn fx:id="dateCol" prefWidth="270.0" resizable="false" text="DATE" />
-                <TableColumn fx:id="scoreCol" minWidth="0.0" prefWidth="271.0" text="SCORE" />
-              </columns>
+            <Label text="High Scores">
                <VBox.margin>
                   <Insets top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <TableView fx:id="highScoreTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="528.0">
+              <columns>
+                  <TableColumn fx:id="idCol" prefWidth="45.0" resizable="false" sortable="false" text="#" />
+                  <TableColumn fx:id="nameCol" editable="false" prefWidth="118.0" resizable="false" sortable="false" text="Name" />
+                <TableColumn fx:id="scoreCol" editable="false" prefWidth="150.0" resizable="false" text="SCORE" />
+                <TableColumn fx:id="dateCol" editable="false" minWidth="0.0" prefWidth="214.0" resizable="false" sortable="false" text="DATE / TIME" />
+              </columns>
+               <VBox.margin>
+                  <Insets top="10.0" />
                </VBox.margin>
             </TableView>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <Button fx:id="menuBtn" mnemonicParsing="false" onAction="#btnReturnClicked" text="Back to Menu" />
-                  <Button fx:id="saveBtn" mnemonicParsing="false" text="Save Cube" />
+                  <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#btnSaveClicked" text="Save Cube" />
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="20.0" />
+               </VBox.margin>
             </HBox>
          </children>
       </VBox>
    </children>
-</AnchorPane>
+</StackPane>

@@ -57,7 +57,7 @@ public class GameGUIController {
     void btnEndGameClicked() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../EndGUI/EndGUI.fxml"));
         Stage stage = (Stage) parent.getScene().getWindow();
-        stage.setScene(new Scene(root,600,450));
+        stage.setScene(new Scene(root,600,600));
         //todo call a method to stop the game running.
     }
 

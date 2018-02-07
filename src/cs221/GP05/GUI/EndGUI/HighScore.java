@@ -17,7 +17,7 @@ public class HighScore {
     /**
      * Achieved score
      */
-    private final String score;
+    private final Integer score;
 
     /**
      * The Date of the achieved time
@@ -25,17 +25,25 @@ public class HighScore {
     private final String date;
 
     /**
+     * The name of the Highscore Holder
+     */
+    private final String name;
+
+    /**
      * Constructor for a high score
      * Convert score and date value to string
      * @param score as an int
      */
-    public HighScore(int score){
+    public HighScore(Integer score, String name){
         // Convert Score to String
-        this.score = Integer.toString(score);
+        this.score = score;
+
+        // Assign name
+        this.name = name;
 
         // Get Current Date
         Date currDate = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("[yyyy/MM/dd] - HH:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 
         // Display date as string
         this.date = dateFormat.format(currDate);
@@ -51,8 +59,16 @@ public class HighScore {
     /**
      * @return The score
      */
-    public String getScore(){
+    public Integer getScore(){
         return score;
+    }
+
+    /**
+     *
+     * @return The highscore holder's name
+     */
+    public String getName(){
+        return name;
     }
 
 }

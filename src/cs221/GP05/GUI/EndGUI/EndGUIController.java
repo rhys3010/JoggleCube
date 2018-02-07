@@ -1,8 +1,9 @@
 package cs221.GP05.GUI.EndGUI;
 
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,12 +13,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
@@ -37,7 +40,7 @@ public class EndGUIController implements Initializable{
      * Parent Anchor
      */
     @FXML
-    AnchorPane parent;
+    StackPane parent;
 
     /**
      * High Score Table
@@ -49,24 +52,40 @@ public class EndGUIController implements Initializable{
      * Table Columns
      */
     @FXML
-    TableColumn dateCol, scoreCol;
+    TableColumn idCol, dateCol, scoreCol, nameCol;
+
 
     /**
      * List of Example High Score entries
      */
     final ObservableList<HighScore> highScores = FXCollections.observableArrayList(
-            new HighScore(1214),
-            new HighScore(5161),
-            new HighScore(1671),
-            new HighScore(6251),
-            new HighScore(1561),
-            new HighScore(9868),
-            new HighScore(1567)
+            new HighScore(5161, "John"),
+            new HighScore(1415, "Adam"),
+            new HighScore(2515, "Wendy"),
+            new HighScore(5151, "Steve"),
+            new HighScore(6711, "Pete"),
+            new HighScore(1314, "Dave"),
+            new HighScore(4215, "Joe"),
+            new HighScore(1455, "Joan"),
+            new HighScore(6161, "Sara"),
+            new HighScore(3671, "Andrew"),
+            new HighScore(1551, "James"),
+            new HighScore(2565, "Levi")
+    );
+
+    /**
+     * Filtered list of HighScore entries to ensure only the top 10 scores are displayed
+     * usind filtered list
+     */
+    final FilteredList<HighScore> filteredHighScores = new FilteredList<HighScore>(
+            highScores,
+            HighScore -> highScores.indexOf(HighScore) < 10
     );
 
 
     /**
-     * Populate HighScore table with ficticious data at end screen load
+     * Populate HighScore table with highscore data at end screen load
+     * todo Add Rank Number to table
      * @param location
      * @param resources
      */
@@ -78,12 +97,29 @@ public class EndGUIController implements Initializable{
         );
 
         scoreCol.setCellValueFactory(
-                new PropertyValueFactory<HighScore, String>("Score")
+                new PropertyValueFactory<HighScore, Integer>("Score")
         );
 
-        // Populate the Table with high scores
-        highScoreTable.setItems(highScores);
+        nameCol.setCellValueFactory(
+                new PropertyValueFactory<HighScore, String>("Name")
+        );
+
+
+        // Set Score sort type
+        scoreCol.setSortType(TableColumn.SortType.DESCENDING);
+
+        // Populate the Table with filtered high scores
+        highScoreTable.setItems(filteredHighScores);
+
+        // Prevent user from reordering table
+        columnReorder(highScoreTable, idCol, nameCol, scoreCol, dateCol);
+
+        // Sort by score
+        highScoreTable.getSortOrder().add(scoreCol);
+        highScoreTable.sort();
+        scoreCol.setSortable(false);
     }
+
 
     /**
      * When the return button is clicked it will return to the start screen of the game
@@ -98,4 +134,44 @@ public class EndGUIController implements Initializable{
         stage.setScene(new Scene(root, 600, 600));
 
     }
+
+    /**
+     * When the 'save' button is clicked prompt user to chose a save location
+     * @author Rhys Evans (rhe24@aber.ac.uk)
+     * @version 0.1
+     */
+    @FXML
+    void btnSaveClicked(){
+        Stage newStage = new Stage();
+        FileChooser fileChooser = new FileChooser();
+
+        fileChooser.setTitle("Save Cube");
+        File file = fileChooser.showSaveDialog(newStage);
+        if (file != null) {
+        } else {
+            //todo add try again pop-up
+        }
+    }
+
+    /**
+     * Stop users from being able to reorder table columns (temporary fix)
+     * Solution used here: https://bittlife.com/javafx-disable-column-reorder-tableview/
+     * @author Rhys Evans (rhe24)
+     */
+    public static <S, T> void columnReorder(TableView table, TableColumn<S, T> ...columns){
+        table.getColumns().addListener(new ListChangeListener() {
+            public boolean suspended;
+
+            @Override
+            public void onChanged(Change change) {
+                change.next();
+                if(change.wasReplaced() && !suspended){
+                    this.suspended = true;
+                    table.getColumns().setAll(columns);
+                    this.suspended = false;
+                }
+            }
+        });
+    }
+
 }
