@@ -1,6 +1,4 @@
-package cs221.GP05.GUI.EndGUI;
-
-import javafx.beans.property.SimpleStringProperty;
+package cs221.GP01.views.EndGUI;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

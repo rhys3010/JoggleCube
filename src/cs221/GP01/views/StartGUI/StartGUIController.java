@@ -6,10 +6,10 @@
    *
    */
 
-package cs221.GP05.GUI.StartGUI;
+package cs221.GP01.views.StartGUI;
 
-import cs221.GP05.GUI.GameGUI.GameGUIController;
-import cs221.GP05.GUI.LoadGridGUI.LoadGridGUIController;
+import cs221.GP01.views.GameGUI.GameGUIController;
+import cs221.GP01.views.LoadGridGUI.LoadGridGUIController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

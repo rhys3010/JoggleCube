@@ -6,7 +6,7 @@
    *
    */
 
-package cs221.GP05;
+package cs221.GP01;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +19,7 @@ import java.io.IOException;
 /**
  * JoggleCube - A class that starts the JoggleCube application.
  * <p>
- * Uses JavaFX to display the GUI
+ * Uses JavaFX to display the views
  * todo improve description
  *
  * <forRemovalLater>
@@ -28,7 +28,7 @@ import java.io.IOException;
  *      To-do List:
  *          todo make a backend model
  *          todo make more GUIs: HighScore, pause, Loading etc read the spec.
- *          todo link game logic to GUI
+ *          todo link game logic to views
  *          todo write documentation
  *          todo fix proportions in GameGUI, bigger cube? (can come back to this after model is sorted)
  *
@@ -59,7 +59,7 @@ import java.io.IOException;
 public class JoggleCube extends Application {
 
     /**
-     * Starts The GUI
+     * Starts The views
      *
      * @author Nathan Williams (naw21)
      * @version 0.1 DRAFT
@@ -68,7 +68,7 @@ public class JoggleCube extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("GUI/StartGUI/StartGUI.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("views/StartGUI/StartGUI.fxml"));
         primaryStage.setTitle("JoggleCube");
         primaryStage.setScene(new Scene(root, 600, 600));
         //todo add methods to launch model, loading dictionary, Highscore data etc.

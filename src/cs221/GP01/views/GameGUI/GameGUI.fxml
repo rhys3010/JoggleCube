@@ -31,9 +31,9 @@
     * @version 0.1  DRAFT
 -->
 
-<StackPane fx:id="parent" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs221.GP05.GUI.GameGUI.GameGUIController">
+<StackPane fx:id="parent" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs221.GP01.views.GameGUI.GameGUIController">
    <children>
-      <VBox fx:id="gameScreen" alignment="CENTER" stylesheets="/cs221/GP05/GUI/CSS/JoggleCube.css">
+      <VBox fx:id="gameScreen" alignment="CENTER" stylesheets="/cs221/GP01/views/CSS/JoggleCube.css">
          <HBox alignment="CENTER" prefHeight="41.0" prefWidth="200.0">
                <Label text="JoggleCube">
                   <padding>

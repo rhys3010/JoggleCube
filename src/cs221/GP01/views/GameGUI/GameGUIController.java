@@ -6,15 +6,13 @@
    *
    */
 
-package cs221.GP05.GUI.GameGUI;
+package cs221.GP01.views.GameGUI;
 
-import cs221.GP05.GUI.StartGUI.StartGUIController;
+import cs221.GP01.views.StartGUI.StartGUIController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;

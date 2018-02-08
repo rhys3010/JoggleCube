@@ -19,10 +19,10 @@
     * @version 0.1  DRAFT
 -->
 <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10.0"
-      stylesheets="/cs221/GP05/GUI/CSS/JoggleCube.css"
+      stylesheets="/cs221/GP01/views/CSS/JoggleCube.css"
       xmlns="http://javafx.com/javafx/9.0.2"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="cs221.GP05.GUI.LoadGridGUI.LoadGridGUIController"
+      fx:controller="cs221.GP01.views.LoadGridGUI.LoadGridGUIController"
       fx:id="parent"
 >
     <Button mnemonicParsing="false" onAction="#btnPickFileClicked" text="Pick File" />

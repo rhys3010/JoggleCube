@@ -1,4 +1,4 @@
-package cs221.GP05.GUI.EndGUI;
+package cs221.GP01.views.EndGUI;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -12,10 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.File;

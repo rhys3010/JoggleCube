@@ -20,9 +20,9 @@
     * @version 0.1  DRAFT
 -->
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0"
-      stylesheets="/cs221/GP05/GUI/CSS/JoggleCube.css"
+      stylesheets="/cs221/GP01/views/CSS/JoggleCube.css"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="cs221.GP05.GUI.StartGUI.StartGUIController"
+      fx:controller="cs221.GP01.views.StartGUI.StartGUIController"
       fx:id="parent"
 >
       <Label text="JoggleCube" />
