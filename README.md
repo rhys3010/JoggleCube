@@ -9,7 +9,7 @@
 
 ## Usage
 
-###Setup
+### Setup
 
 * Use: https://gitlab.dcs.aber.ac.uk/rhe24/GP01.git
 * Or setup ssh on your gitlab account and use: gitlab@gitlab.dcs.aber.ac.uk:rhe24/GP01.git
@@ -40,6 +40,6 @@
 
 
 ## Test Commits
-###Can everyone put a message here to show that you have been able to make changes to the repo.
+### Can everyone put a message here to show that you have been able to make changes to the repo.
 
 * Nathan was here.
