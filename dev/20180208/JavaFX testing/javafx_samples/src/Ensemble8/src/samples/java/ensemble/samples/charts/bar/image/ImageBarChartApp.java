@@ -44,7 +44,7 @@ import javafx.stage.Stage;
 
 
 /**
- * A bar chart that uses CSS to display stacks of car images to indicate data values
+ * A bar chart that uses css to display stacks of car images to indicate data values
  * for categories.
  *
  * @sampleName Image Bar Chart

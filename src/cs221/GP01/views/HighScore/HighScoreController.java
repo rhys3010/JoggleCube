@@ -1,5 +1,7 @@
-package cs221.GP01.views.EndGUI;
+package cs221.GP01.views.HighScore;
 
+import cs221.GP01.model.JoggleCube;
+import cs221.GP01.views.Start.StartController;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -22,17 +24,35 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * EndGUIController - A class that controls the EndGUI scene that is defined in EndGUI.fxml
+ * HighScoreController - A class that controls the HighScore scene that is defined in HighScore.fxml
  * Load and display highscores from another class
  * todo delete temp highscore class and establish a new one
  * todo add save option
  * <p>
- * Used with EndGUI.fxml
+ * Used with HighScore.fxml
  * todo improve this description
  * @author Rhys Evans (rhe24@aber.ac.uk)
- * @version 0.1  DRAFT
+ * @version 0.2  DRAFT
  */
-public class EndGUIController implements Initializable{
+public class HighScoreController implements Initializable{
+
+    /**
+     * a link to the backend
+     */
+    private JoggleCube joggleCube;
+
+    /**
+     * method to set a link to the backend
+     *
+     * @author Nathan Williams (naw21)
+     * @version 0.1 DRAFT
+     * @see JoggleCube
+     * @param joggleCube the backend
+     */
+    public void setJoggleCube(JoggleCube joggleCube){
+        this.joggleCube = joggleCube;
+    }
+
 
     /**
      * Parent Anchor
@@ -122,34 +142,21 @@ public class EndGUIController implements Initializable{
     /**
      * When the return button is clicked it will return to the start screen of the game
      * @author Rhys Evans (rhe24@aber.ac.uk)
-     * @version 0.1 DRAFT
-     * @throws IOException if StartGUI.fxml doesn't exist
+     * @author Nathan Williams (naw21)
+     * @version 0.2 DRAFT
+     * @throws IOException if Start.fxml doesn't exist
      */
     @FXML
     void btnReturnClicked() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../StartGUI/StartGUI.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Start/Start.fxml"));
+        Parent root = fxmlLoader.load();
+        StartController startController = fxmlLoader.getController();
+        startController.setJoggleCube(joggleCube);
         Stage stage = (Stage) parent.getScene().getWindow();
         stage.setScene(new Scene(root, 600, 600));
-
     }
 
-    /**
-     * When the 'save' button is clicked prompt user to chose a save location
-     * @author Rhys Evans (rhe24@aber.ac.uk)
-     * @version 0.1
-     */
-    @FXML
-    void btnSaveClicked(){
-        Stage newStage = new Stage();
-        FileChooser fileChooser = new FileChooser();
 
-        fileChooser.setTitle("Save Cube");
-        File file = fileChooser.showSaveDialog(newStage);
-        if (file != null) {
-        } else {
-            //todo add try again pop-up
-        }
-    }
 
     /**
      * Stop users from being able to reorder table columns (temporary fix)

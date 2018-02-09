@@ -2,3 +2,8 @@ out
 img
 .idea
 *.iml
+.project
+.classpath
+GP01.eml
+GP01.userlibraries
+.vscode/launch.json

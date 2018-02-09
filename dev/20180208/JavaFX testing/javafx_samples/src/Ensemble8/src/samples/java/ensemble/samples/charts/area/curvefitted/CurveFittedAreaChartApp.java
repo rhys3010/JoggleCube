@@ -40,7 +40,7 @@ import javafx.scene.chart.XYChart.Data;
 import javafx.stage.Stage;
 
 /**
- * An area chart that demonstrates curve fitting. Styling is done through CSS.
+ * An area chart that demonstrates curve fitting. Styling is done through css.
  *
  * @sampleName Curve-Fitted Area Chart
  * @preview preview.png

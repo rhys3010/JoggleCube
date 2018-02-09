@@ -39,7 +39,7 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 /**
- * A sample that demonstrates styling a hidden split pane with CSS.
+ * A sample that demonstrates styling a hidden split pane with css.
  *
  * @sampleName Hidden SplitPane
  * @preview preview.png

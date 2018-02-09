@@ -43,7 +43,7 @@ import javafx.stage.Stage;
 
 /**
  * A sample that shows three ToolBars, two of which are styled specifically with
- * a separate CSS style sheet.
+ * a separate css style sheet.
  *
  * @sampleName Styled Tool Bar
  * @preview preview.png

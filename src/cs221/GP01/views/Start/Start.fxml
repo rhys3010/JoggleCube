@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-        * @(#) LoadGridGUI.fxml 1.1 2018/02/04
+        * @(#) LoadGrid.fxml 1.1 2018/02/04
         *
         * Copyright (c) 2002 University of Wales, Aberystwyth.
         * All rights reserved.
@@ -12,17 +12,17 @@
 <?import javafx.scene.layout.VBox?>
 
 <!--
-    * StartGUI - StartGUI user interface definition.
+    * Start - Start user interface definition.
     * <p>
-    * Used with the StartGUIController to display a scene to allow user to start a new random grid or load one from file.
+    * Used with the StartController to display a scene to allow user to start a new random grid or load one from file.
     *
     * @author Nathan Williams (naw21)
     * @version 0.1  DRAFT
 -->
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0"
-      stylesheets="/cs221/GP01/views/CSS/JoggleCube.css"
+      stylesheets="/cs221/GP01/views/css/JoggleCube.css"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="cs221.GP01.views.StartGUI.StartGUIController"
+      fx:controller="cs221.GP01.views.Start.StartController"
       fx:id="parent"
 >
       <Label text="JoggleCube" />

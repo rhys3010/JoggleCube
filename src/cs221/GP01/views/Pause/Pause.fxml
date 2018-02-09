@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-        * @(#) LoadGridGUI.fxml 1.1 2018/02/04
+        * @(#) LoadGrid.fxml 1.1 2018/02/04
         *
         * Copyright (c) 2002 University of Wales, Aberystwyth.
         * All rights reserved.
@@ -16,13 +16,13 @@
 <?import javafx.scene.text.Font?>
 
 <!--
-    * Used with the PauseGUIController to display a pause overlay on the main game screen.
+    * Used with the EndController to display a pause overlay on the main game screen.
     *
     * @author Rhys Evans (rhe24@aber.ac.uk)
     * @version 0.1  DRAFT
 -->
 
-<VBox fx:id="pauseOverlay" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="362.0" prefWidth="248.0" style="-fx-background-color: rgba(64, 64, 64, 0.75);" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs221.GP01.views.PauseGUI.PauseGUIController">
+<VBox fx:id="pauseOverlay" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="362.0" prefWidth="248.0" style="-fx-background-color: rgba(64, 64, 64, 0.75);" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs221.GP01.views.Pause.PauseController">
     <children>
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
             <children>

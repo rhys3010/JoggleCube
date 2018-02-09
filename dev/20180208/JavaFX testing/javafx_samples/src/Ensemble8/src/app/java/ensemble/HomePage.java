@@ -78,7 +78,7 @@ public class HomePage extends ListView<HomePage.HomePageRow> implements Callback
     public HomePage(PageBrowser pageBrowser) {
         this.pageBrowser = pageBrowser;
         setId("HomePage");
-        // don't use any of the standard ListView CSS
+        // don't use any of the standard ListView css
         getStyleClass().clear();
         // listen for when the list views width changes and recalculate number of columns
         widthProperty().addListener(this);

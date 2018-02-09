@@ -44,7 +44,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 /**
- * This sample demonstrates styling toggle buttons with CSS.
+ * This sample demonstrates styling toggle buttons with css.
  *
  * @sampleName Pill Button
  * @preview preview.png

@@ -28,13 +28,13 @@
 <html lang="en-US">
   <head>
     <meta name="description" content="This document describes the JavaFX
-              Cascading Style Sheets (CSS) for JavaFX 8 and explains the
+              Cascading Style Sheets (css) for JavaFX 8 and explains the
               styles, values, properties and associated grammar.">
-    <meta name="keywords" content="JavaFX, JavaFX CSS, JavaFX CSS reference,
-              JavaFX CSS guide, JavaFX styling, CSS styles, CSS, cascading style sheets,
+    <meta name="keywords" content="JavaFX, JavaFX css, JavaFX css reference,
+              JavaFX css guide, JavaFX styling, css styles, css, cascading style sheets,
               JavaFX views development, JavaFX application development">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>JavaFX CSS Reference Guide</title>
+    <title>JavaFX css Reference Guide</title>
     <style type="text/css">
             body {
                 font-family: Helvetica, Arial, sans-serif;
@@ -207,15 +207,15 @@
       <div class="version"><br>
         Release: JavaFX 8</div>
     </div>
-    <h1>JavaFX CSS Reference Guide</h1>
+    <h1>JavaFX css Reference Guide</h1>
     <h2>Contents</h2>
     <ul class="contents">
       <li><a href="#intro">Introduction</a>
         <ul>
-          <li><a href="#introscenegraph">CSS and the JavaFX Scene Graph</a></li>
+          <li><a href="#introscenegraph">css and the JavaFX Scene Graph</a></li>
           <li><a href="#introstylesheets">Scene, Parent and SubScene Stylesheets</a></li>
           <li><a href="#intronaming">Naming Conventions</a></li>
-          <li><a href="#intropublicapi">CSS Public API</a></li>
+          <li><a href="#intropublicapi">css Public API</a></li>
           <li><a href="#introinheritance">Inheritance</a></li>
           <li><a href="#introatrules">&#64; Rules</a></li>
           <li><a href="#introexamples">Examples</a></li>
@@ -411,73 +411,73 @@
     </ul>
     <h2><a name="intro" id="intro">Introduction</a></h2>
     <p>
-        Never has styling a Java UI been easier than with JavaFX and Cascading Style Sheets (CSS). Going from one
-        theme to another, or customizing the look of just one control, can all be done through CSS. To the novice,
-        this may be unfamiliar territory; but the learning curve is not that great. Give CSS styling a try and the
+        Never has styling a Java UI been easier than with JavaFX and Cascading Style Sheets (css). Going from one
+        theme to another, or customizing the look of just one control, can all be done through css. To the novice,
+        this may be unfamiliar territory; but the learning curve is not that great. Give css styling a try and the
         benefits will soon be apparent. You can also split the design and development workflow, or defer design
         until later in the project. Up to the last minute changes, and even post-deployment changes, in the UI's
-        look can be achieved through JavaFX CSS.
+        look can be achieved through JavaFX css.
     </p>
     <p>
       The structure of this document is as follows. First, there is a
-      description of all value types for JavaFX CSS properties.Where
+      description of all value types for JavaFX css properties.Where
       appropriate, this includes a grammar for the syntax of values of that
-      type. Then, for each scene&#8209;graph node that supports CSS styles, a table is
+      type. Then, for each scene&#8209;graph node that supports css styles, a table is
       given that lists the properties that are supported, along with type and
       semantic information. The pseudo&#8209;classes for each class are also given.
-      The description of CSS properties continues for the controls. For each
+      The description of css properties continues for the controls. For each
       control, the substructure of that control's skin is given, along with the
       style&#8209;class names for the Region objects that implement that substructure.
     </p>
-    <h3><a name="introscenegraph" id="introscenegraph">CSS and the JavaFX Scene Graph</a></h3>
+    <h3><a name="introscenegraph" id="introscenegraph">css and the JavaFX Scene Graph</a></h3>
     <p>
-        JavaFX Cascading Style Sheets (CSS) is based on the W3C CSS version 2.1 <a href="#references">[1]</a>
+        JavaFX Cascading Style Sheets (css) is based on the W3C css version 2.1 <a href="#references">[1]</a>
         with some additions from current work on version 3 <a href="#references">[2]</a>.
-        JavaFX CSS also has some extensions to CSS in support of specific JavaFX
-        features. The goal for JavaFX CSS is to allow web developers already
-        familiar with CSS for HTML to use CSS to customize and develop themes for
+        JavaFX css also has some extensions to css in support of specific JavaFX
+        features. The goal for JavaFX css is to allow web developers already
+        familiar with css for HTML to use css to customize and develop themes for
         JavaFX controls and scene&#8209;graph objects in a natural way.
     </p>
     <p>
-        JavaFX has a rich set of extensions to CSS in support of features such as
+        JavaFX has a rich set of extensions to css in support of features such as
         color derivation, property lookup, and multiple background colors and
         borders for a single node. These features add significant new power for
         developers and designers and are described in detail in this document.
     </p>
 
     <p>
-        To the extent possible, JavaFX CSS follows the W3C standards; however, with few exceptions, JavaFX
+        To the extent possible, JavaFX css follows the W3C standards; however, with few exceptions, JavaFX
         property names have been prefixed with a vendor extension of "-fx-". Even if these properties seem to be
-        compatible with standard HTML CSS, JavaFX CSS processing assumes that the property values
-        make use of JavaFX CSS extensions.
+        compatible with standard HTML css, JavaFX css processing assumes that the property values
+        make use of JavaFX css extensions.
     </p>
 
-    <p>CSS styles are applied to nodes in the JavaFX scene&#8209;graph in a way
-        similar to the way CSS styles are applied to elements in the HTML DOM.
+    <p>css styles are applied to nodes in the JavaFX scene&#8209;graph in a way
+        similar to the way css styles are applied to elements in the HTML DOM.
         Styles are first applied to the parent, then to its children. The code is
         written such that only those branches of the scene&#8209;graph that might need
-        CSS reapplied are visited. A node is styled after it is added to the scene
+        css reapplied are visited. A node is styled after it is added to the scene
         graph. Styles are reapplied when there is a change to the node's
         pseudo&#8209;class state, style&#8209;class, id, inline style, or parent, or stylesheets
         are added to or removed from the scene. Note that the Node must be in the
-        scene&#8209;graph for CSS to be applied. The Node does not have
+        scene&#8209;graph for css to be applied. The Node does not have
         to be shown, but must have a non&#8209;null value for its sceneProperty. See
         <a href="../../../javafx/scene/Node.html#applyCss--">applyCss</a> for more details.</p>
 
     <p>
-        During a normal scene&#8209;graph pulse, CSS styles are applied before the scene&#8209;graph is
+        During a normal scene&#8209;graph pulse, css styles are applied before the scene&#8209;graph is
         laid out and painted. Styles for events that trigger a pseudo&#8209;class state change,
         such as MouseEvent.MOUSE_ENTERED which triggers the &quot;hover&quot; state, are
         applied on the next pulse following the event.
     </p>
     <p>
-        <a href="http://www.w3.org/TR/css3-selectors/">CSS selectors</a> are used to match styles to scene&#8209;graph
+        <a href="http://www.w3.org/TR/css3-selectors/">css selectors</a> are used to match styles to scene&#8209;graph
         nodes.
-        The relationship of a Node to a CSS selector is as follows:
+        The relationship of a Node to a css selector is as follows:
     <ul>
         <li>
             Node's <a href="../../../javafx/scene/Node.html#getTypeSelector--">getTypeSelector</a> method returns a
-            String which is analogous to a CSS <a href="http://www.w3.org/TR/css3-selectors/#type-selectors">Type
+            String which is analogous to a css <a href="http://www.w3.org/TR/css3-selectors/#type-selectors">Type
             Selector</a>.
             By default, this method returns the simple name of the class. Note that the simple name of an inner class
             or of an anonymous class may not be usable as a type selector. In such a case, this method should be
@@ -498,7 +498,7 @@
         </li>
     </ul>
     <p>
-        JavaFX CSS also supports pseudo&#8209;classes, but does not implement the full range of pseudo&#8209;classes as
+        JavaFX css also supports pseudo&#8209;classes, but does not implement the full range of pseudo&#8209;classes as
         specified in <a href="http://www.w3.org/TR/css3-selectors/#pseudo-classes">Pseudo&#8209;classes</a>. The pseudo&#8209;classes
         supported by each Node type are given in the tables within this reference. Note that JavaFX does not currently
         support structural pseudo&#8209;classes.
@@ -509,14 +509,14 @@
         node class are shown in detail in tables later in this document. The
         property value that is actually applied depends on the precedence of the
         origin of the rule, as described above, as well as the specificity of the
-        rule's selector as described in CSS 2 <a href="cssref.html#references">[1]</a>
+        rule's selector as described in css 2 <a href="cssref.html#references">[1]</a>
         . Ultimately, a property value string is converted into a JavaFX value of
         the appropriate type and is then assigned to an instance variable of the
         JavaFX object.
     </p>
     <h3><a name="introstylesheets" id="introstylesheets">Scene, Parent and SubScene Stylesheets</a></h3>
     <p>
-        CSS styles can come from style sheets or inline styles. Style sheets are
+        css styles can come from style sheets or inline styles. Style sheets are
         loaded from the URLs specified in the
         <a href="../../../javafx/scene/Scene.html#getStylesheets--">getStylesheets</a>
         property of the Scene object. If the scene&#8209;graph contains a Control, a
@@ -562,33 +562,33 @@
     sheets to override property values set from code. For example, a call to <code>rectangle.setFill(Color.YELLOW)</code>
     can be overridden by an inline&#8209;style or a style from an author stylesheet. This has implications for
     the cascade; particularly, when does a style from a style sheet override a
-    value set from code? The JavaFX CSS implementation applies the following
+    value set from code? The JavaFX css implementation applies the following
     order of precedence: <cite>a style from a user agent style sheet has lower
     priority than a value set from code, which has lower priority than a Scene
     or Parent style sheet. Inline styles have highest precedence. Style sheets
     from a Parent instance are considered to be more specific than those styles
     from Scene style sheets.</cite>
     <h3><a name="intronaming" id="introsnaming">Naming Conventions</a></h3>
-    <p>Naming conventions have been established for deriving CSS style&#8209;class
-        names from JavaFX class names, and for deriving CSS property names from
+    <p>Naming conventions have been established for deriving css style&#8209;class
+        names from JavaFX class names, and for deriving css property names from
         JavaFX variable names. Note that this is only a naming convention; there
         is no automatic name conversion. Most JavaFX names use "camel case," that
         is, mixed case names formed from compound words, where the initial letter
-        of each sub-word is capitalized. Most CSS names in the HTML world are all
+        of each sub-word is capitalized. Most css names in the HTML world are all
         lower case, with compound words separated by hyphens. The convention is
-        therefore to take JavaFX class names and form their corresponding CSS
+        therefore to take JavaFX class names and form their corresponding css
         style&#8209;class name by separating the compound words with hyphens and
         convering the letters to all lower case. For example, the JavaFX
         ToggleButton class would have a style&#8209;class of "toggle-button". The
-        convention for mapping JavaFX variable names to CSS property names is
+        convention for mapping JavaFX variable names to css property names is
         similar, with the addition of the "-fx-" prefix. For example, the
-        blendMode variable would have a corresponding CSS property name of
+        blendMode variable would have a corresponding css property name of
         "-fx-blend-mode". </p>
-    <h3><a name="intropublicapi" id="intropublicapi">CSS Public API</a></h3>
+    <h3><a name="intropublicapi" id="intropublicapi">css Public API</a></h3>
     Beginning with JavaFX 8.0, public API is available for developers to create styleable properties and manage
     pseudo-class state. Refer to <a href="../../../javafx/css/package-summary.html">javafx.css</a> for details.
     <h3><a name="introinheritance" id="introinheritance">Inheritance</a></h3>
-    <p>CSS also provides for certain properties to be inherited by default, or
+    <p>css also provides for certain properties to be inherited by default, or
         to be inherited if the property value is 'inherit'. If a value is
         inherited, it is inherited from the computed value of the element's parent
         in the document tree. In JavaFX, inheritance is similar, except that
@@ -603,7 +603,7 @@
         <tr>
             <th>Class</th>
             <th>Property</th>
-            <th>CSS Property</th>
+            <th>css Property</th>
             <th>Initial Value</th>
         </tr>
         <tr>
@@ -627,8 +627,8 @@
         </tbody>
     </table>
     <p>Within the hierarchy of JavaFX classes (for example, Rectangle is a
-        subclass of Shape, which in turn is a subclass of Node), the CSS
-        properties of an ancestor are also CSS properties of the descendant. This
+        subclass of Shape, which in turn is a subclass of Node), the css
+        properties of an ancestor are also css properties of the descendant. This
         means that a subclass will respond to the same set of properties as its
         ancestor classes, and to additional properties it defines itself. So, a
         Shape supports all the properties of Node plus several more, and Rectangle
@@ -636,7 +636,7 @@
         using a JavaFX class name as a type selector is an exact match, providing
         style declarations for a Shape will not cause a Rectangle to use those
         values (unless the .css value for the Rectangle's property is "inherit").</p>
-    <p>For font inheritance, the CSS engine looks <span style="font-style:italic;">only</span> for the styles in the table above. When
+    <p>For font inheritance, the css engine looks <span style="font-style:italic;">only</span> for the styles in the table above. When
         looking for a font to inherit, the search
         terminates at any node that has a Font property that was set by the user. The user-set font is
         inherited provided there is not an author or an inline-style that applies specifically to that node.
@@ -644,10 +644,10 @@
         author or in-line style.
     <h3><a name="introatrules" id="introatrules">&#64; Rules</a></h3>
     <p>
-        Beginning with JavaFX 8u20, the CSS
+        Beginning with JavaFX 8u20, the css
         <a href="http://www.w3.org/TR/CSS21/cascade.html#at-import">@import</a> is also partially supported.
         Only unconditional import is supported. In other words, the media&#8209;type qualifier is not supported.
-        Also, the JavaFX CSS parser is non-compliant with regard to where an @import may appear within a stylesheet
+        Also, the JavaFX css parser is non-compliant with regard to where an @import may appear within a stylesheet
         (see <a href="http://www.w3.org/TR/CSS21/syndata.html#at-rules">At&#8209;rules</a>).
         Users are cautioned that this will be fixed in a future release. Adherence to the W3C standard is strongly advised.
     </p>
@@ -719,7 +719,7 @@
     <p><img src="cssexample2.png" alt="A rectangle with yellow fill and a green, dashed border"></p>
     <h3><a name="introparserwarnings" id="introparserwarnings">Understanding
         Parser Warnings</a></h3>
-    <p>When the JavaFX CSS parser encounters a syntax error, a warning message
+    <p>When the JavaFX css parser encounters a syntax error, a warning message
         is emitted which conveys as much information as is available to help
         resolve the error. For example </p>
     <p class="example"> WARNING: com.sun.javafx.css.parser.CSSParser declaration
@@ -740,8 +740,8 @@
     </p>
     <h3><a name="introlimitations" id="introlimitations">Limitations</a></h3>
     <ol>
-    <li> While the JavaFX CSS parser will parse valid CSS syntax, it is not a
-        fully compliant CSS parser. One should not expect the parser to handle
+    <li> While the JavaFX css parser will parse valid css syntax, it is not a
+        fully compliant css parser. One should not expect the parser to handle
         syntax not specified in this document.</li>
     <li>With the exception of @font&#8209;face and @import, @-keyword statements are ignored.</li>
     <li>The &lt;media-query-list&gt; of the @import statement is not parsed.</li>
@@ -752,13 +752,13 @@
     <li>The ":link" and ":visited" pseudo&#8209;classes are not supported in general.
         However, <a href="#hyperlink">Hyperlink</a> objects can be styled, and
         they support the ":visited" pseudo&#8209;class. </li>
-    <li>JavaFX CSS does not support comma-separated series of font family names
+    <li>JavaFX css does not support comma-separated series of font family names
         in the -fx-font-family property. The optional line height parameter when
         specifying fonts is not supported. There is no equivalent for the
         font-variant property.</li>
-    <li>JavaFX CSS uses the HSB color model instead of the HSL color model. </li>
+    <li>JavaFX css uses the HSB color model instead of the HSL color model. </li>
     <li>If a property of a node is initialized by calling the set method of the
-        property, the CSS implementation will see this as a user set value and the
+        property, the css implementation will see this as a user set value and the
         value will not be overwritten by a style from a user agent style
         sheet.</li>
     <li>When parsing a <a href="http://www.w3.org/TR/CSS2/syndata.html#uri">URI</a>,
@@ -777,7 +777,7 @@
       assigned its initial value.</p>
     <h3><a name="typeboolean" id="typeboolean">&lt;boolean&gt;</a></h3>
     <p>Boolean values can either have the string value of "true" or "false", the
-      values are case insensitive as all CSS is case insensitive.</p>
+      values are case insensitive as all css is case insensitive.</p>
     <h3><a name="typestring" id="typestring">&lt;string&gt;</a></h3>
     <p>Strings can either be written with double quotes or with single quotes.
       Double quotes cannot occur inside double quotes, unless escaped (e.g., as
@@ -789,7 +789,7 @@
     <p>A string cannot directly contain a newline. To include a newline in a
       string, use an escape representing the line feed character in ISO-10646
       (U+000A), such as "\A" or "\00000a". This character represents the generic
-      notion of "newline" in CSS. See the 'content' property for an example.</p>
+      notion of "newline" in css. See the 'content' property for an example.</p>
     <h3><a name="typenumber" id="typenumber">&lt;number&gt; &amp;
         &lt;integer&gt;</a></h3>
     <p>Some value types may have integer values (denoted by &lt;integer&gt;) or
@@ -825,7 +825,7 @@
         centimeters.</li>
       <li><strong>cm</strong>: centimeters</li>
       <li><strong>mm</strong>: millimeters</li>
-      <li><strong>pt</strong>: points &mdash; the points used by CSS 2.1 are
+      <li><strong>pt</strong>: points &mdash; the points used by css 2.1 are
         equal to 1/72nd of an inch.</li>
       <li><strong>pc</strong>: picas &mdash; 1 pica is equal to 12 points.</li>
     </ul>
@@ -954,7 +954,7 @@
     </textarea>
     <p>The same style would work equally as well from a stylesheet.</p>
     <h3><a name="typeeffect" id="typeeffect">&lt;effect&gt;</a></h3>
-    <p>JavaFX CSS currently supports the DropShadow and InnerShadow effects from
+    <p>JavaFX css currently supports the DropShadow and InnerShadow effects from
       the JavaFX platform. See the class documentation in javafx.scene.effect
       for further details about the semantics of the various effect parameters.</p>
     <h4>Drop Shadow</h4>
@@ -1018,7 +1018,7 @@
       <span class="grammar"><a href="#typenumber" class="typelink">&lt;number&gt;</a></span>
       The shadow offset in the y direction, in pixels. </p>
     <h3><a name="typefont" id="typefont">&lt;font&gt;</a></h3>
-    <p>JavaFX CSS supports the ability to specify fonts using separate family,
+    <p>JavaFX css supports the ability to specify fonts using separate family,
       size, style, and weight properties, as well as the ability to specify a
       font using a single shorthand property. There are four value types related
       to fonts plus a shorthand property that encompasses all four properties.
@@ -1054,7 +1054,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th>Default</th>
           <th>Comments</th>
@@ -1138,8 +1138,8 @@
     <p class="example">linear-gradient(from 0px 0px to 0px 50px, gray, darkgray
       50%, dimgray 99%, white)</p>
     <p><span style="color: #af0000; ">The following syntax for linear gradient does not
-        conform to the CSS grammar and is deprecated in JavaFX 2.0. The JavaFX
-        2.0 CSS parser supports the syntax but this support may be removed in
+        conform to the css grammar and is deprecated in JavaFX 2.0. The JavaFX
+        2.0 css parser supports the syntax but this support may be removed in
         later releases.</span></p>
     <p class="grammar"><span style="color: #af0000; ">linear (&lt;size&gt;, &lt;size&gt;)
         to (&lt;size&gt;, &lt;size&gt;) stops [ (&lt;number&gt;,&lt;color&gt;)
@@ -1170,8 +1170,8 @@
     <p class="example">radial-gradient(focus-angle 45deg, focus-distance 20%,
       center 25% 25%, radius 50%, reflect, gray, darkgray 75%, dimgray)</p>
     <p><span style="color: #af0000; ">The following syntax for radial gradient does not
-        conform to the CSS grammar and is deprecated in JavaFX 2.0. The JavaFX
-        2.0 CSS parser supports the syntax but this support may be removed in
+        conform to the css grammar and is deprecated in JavaFX 2.0. The JavaFX
+        2.0 css parser supports the syntax but this support may be removed in
         later releases.</span></p>
     <p class="grammar"><span style="color: #af0000; ">radial [focus-angle &lt;number&gt;
         | &lt;number&gt; ] ]? [ focus-distance &lt;size&gt; ]? [ center
@@ -1223,12 +1223,12 @@
     <p class="grammar">&lt;named-color&gt; | &lt;looked-up-color&gt; |
       &lt;rgb-color&gt; | &lt;hsb-color&gt; | &lt;color-function&gt;</p>
     <h4>Named Colors <span class="grammar" style="font-size: smaller;">&lt;named-color&gt;</span></h4>
-    <p>CSS supports a bunch of named constant colors. Named colors can be
+    <p>css supports a bunch of named constant colors. Named colors can be
       specified with just their unquoted name for example: </p>
     <p class="example">.button {<br>
       &nbsp;&nbsp;&nbsp; -fx-background-color: red;<br>
       }</p>
-    <p>The named colors that are available in CSS are:</p>
+    <p>The named colors that are available in css are:</p>
     <table summary="property table" class="html4colortable">
       <tbody>
         <tr>
@@ -1894,8 +1894,8 @@
       the brightness would be less than 50%, giving an -fx-text-fill value of
       white.</p>
     <p><span style="color: #af0000; ">The following syntax for ladder does not
-        conform to the CSS grammar and is deprecated in JavaFX 2.0. The JavaFX
-        2.0 CSS parser supports the syntax but this support may be removed in
+        conform to the css grammar and is deprecated in JavaFX 2.0. The JavaFX
+        2.0 css parser supports the syntax but this support may be removed in
         later releases.</span></p>
     <p class="grammar"><span style="color: #af0000; ">ladder(<a href="#typecolor" class="typelink">&lt;color&gt;</a>)
         stops [ ( <a href="#typenumber" class="typelink">&lt;number&gt;</a> , <a
@@ -1912,10 +1912,10 @@
     </table>
     <h4><a name="popupwindow" id="popupwindow">Group</a></h4>
     <p class="styleclass">Style class: .root.popup</p>
-    <p>PopupWindow does not have any properties that can be styled by CSS, but a PopupWindow does have its own Scene.
+    <p>PopupWindow does not have any properties that can be styled by css, but a PopupWindow does have its own Scene.
         Scene's root gets the .root style-class by default. If the Scene is the root scene of a PopupWindow, then the
         .popup style-class is also added. This allows the root scene of a PopupWindow to have distinct styles via
-        the CSS rule <code>.root.popup { /* declarations */ }</code>
+        the css rule <code>.root.popup { /* declarations */ }</code>
     <h2><a name="nodes" id="nodes">Nodes</a></h2>
     <table summary="property table" class="package" width="100%">
       <tbody>
@@ -1929,7 +1929,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th class="default">Default</th>
           <th>Comments</th>
@@ -1938,7 +1938,7 @@
       <tbody>
         <tr>
           <td colspan="4">Group extends Parent. Group does not add any addtional
-            CSS properties.</td>
+            css properties.</td>
         </tr>
         <tr>
           <td colspan="4" class="parents">Also has all properties of <a href="#parent">Parent</a></td>
@@ -1952,7 +1952,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th class="default">Default</th>
           <th class="range">Range</th>
@@ -2071,7 +2071,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Pseudo-class</th>
+          <th class="propertyname">css Pseudo-class</th>
           <th>Comments</th>
         </tr>
       </thead>
@@ -2105,7 +2105,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th class="default">Default</th>
           <th>Comments</th>
@@ -2114,7 +2114,7 @@
       <tbody>
         <tr>
           <td colspan="4">Parent extends Node. Parent does not add any addtional
-            CSS properties.</td>
+            css properties.</td>
         </tr>
         <tr>
           <td colspan="4" class="parents">Also has all properties of <a href="#node">Node</a></td>
@@ -2125,7 +2125,7 @@
     <h4><a name="scene" id="scene">Scene</a></h4>
     <p class="styleclass">Style class: not applicable<br>
     </p>
-    <p>The Scene object has no settable CSS properties, nor does it have any
+    <p>The Scene object has no settable css properties, nor does it have any
       pseudo&#8209;classes. However, the root node of the scene is assigned the style
       class "root" (in addition to style classes already assigned to the node).
       This is useful because the root node of Scene is the root container for
@@ -2143,7 +2143,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th class="default">Default</th>
           <th>Comments</th>
@@ -2174,7 +2174,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th class="default">Default</th>
           <th>Comments</th>
@@ -2183,7 +2183,7 @@
       <tbody>
         <tr>
           <td colspan="4">AnchorPane extends Pane and does not add any
-            additional CSS properties.</td>
+            additional css properties.</td>
         </tr>
         <tr>
           <td colspan="4" class="parents">Also has all properties of <a href="#pane">Pane</a></td>
@@ -2195,7 +2195,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th class="default">Default</th>
           <th>Comments</th>
@@ -2204,7 +2204,7 @@
       <tbody>
         <tr>
           <td colspan="4">BorderPane extends Pane and does not add any
-            additional CSS properties.</td>
+            additional css properties.</td>
         </tr>
         <tr>
           <td colspan="4" class="parents">Also has all properties of <a href="#pane">Pane</a></td>
@@ -2218,7 +2218,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
         <thead>
         <tr>
-            <th class="propertyname">CSS Property</th>
+            <th class="propertyname">css Property</th>
             <th class="value">Values</th>
             <th>Default</th>
             <th>Comments</th>
@@ -2250,7 +2250,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th class="default">Default</th>
           <th>Comments</th>
@@ -2305,7 +2305,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th class="default">Default</th>
           <th>Comments</th>
@@ -2357,7 +2357,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th>Default</th>
           <th>Comments</th>
@@ -2394,7 +2394,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th class="default">Default</th>
           <th>Comments</th>
@@ -2403,7 +2403,7 @@
       <tbody>
         <tr>
           <td colspan="4">Pane extends Region to expose Region's children. Pane
-            does not add any addtional CSS properties.</td>
+            does not add any addtional css properties.</td>
         </tr>
         <tr>
           <td colspan="4" class="parents">Also has all properties of <a href="#region">Region</a></td>
@@ -2414,10 +2414,10 @@
     <h4><a name="region" id="region">Region</a></h4>
 <p class="styleclass">Style class: empty by default</p>
     <p>A Region is a Node (extending from Parent) with backgrounds and borders
-      that are styleable via CSS. A Region is typically a rounded rectangle,
-      though this can be modified through CSS to be an arbitrary shape. Regions
+      that are styleable via css. A Region is typically a rounded rectangle,
+      though this can be modified through css to be an arbitrary shape. Regions
       can contain other Region objects (sub-regions) or they can contain
-      sub-controls. All Regions have the same set of CSS properties as described
+      sub-controls. All Regions have the same set of css properties as described
       below. </p>
     <p>Each Region consists of several layers, painted from bottom to top, in
       this order:</p>
@@ -2428,7 +2428,7 @@
       <li>border images</li>
       <li>contents</li>
     </ol>
-    <p>The background and border mechanisms are patterned after the CSS 3 draft
+    <p>The background and border mechanisms are patterned after the css 3 draft
       backgrounds and borders module. See <a href="#references">[4]</a> for a
       detailed description.</p>
     <p>Background fills are specified with the properties <span class="propertyname">-fx-background-color</span>,
@@ -2490,11 +2490,11 @@
       -fx-border-image-slice, -fx-border-image-width, and
       -fx-border-image-insets properties.</p>
     <p>The region's contents are a sequence of nodes, like any other container.
-      The contents are set programmatically and cannot be set via CSS.</p>
+      The contents are set programmatically and cannot be set via css.</p>
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th class="default">Default</th>
           <th>Comments</th>
@@ -2504,14 +2504,14 @@
         <tr>
           <td colspan="4" class="propertyname"><em>BACKGROUND FILLS</em> (see <a
               href="http://www.w3.org/TR/css3-background/#backgrounds"
-              target="_blank">CSS
+              target="_blank">css
               Backgrounds and Borders Module Level 3: Backgrounds</a>)</td>
         </tr>
         <tr>
             <td class="propertyname">-fx-region-background</td>
             <td class="value">javafx.scene.layout.Background</td>
             <td class="default">null</td>
-            <td>This cannot be set directly from CSS but is created from the property values of
+            <td>This cannot be set directly from css but is created from the property values of
                 -fx-background-color, -fx-background-image, -fx-background-insets, -fx-background-position,
                 -fx-background-radius, -fx-background-repeat, -fx-background-size</td>
         </tr>
@@ -2550,7 +2550,7 @@
                 [ , [<a href="#typesize" class="typelink">&lt;size&gt;</a>]{1,4} [ / [<a href="#typesize" class="typelink">&lt;size&gt;</a>]{1,4} ]? ]*
             <td class="default">0 0 0 0</td>
             <td>
-                <p>The same syntax and semenatics as CSS Backgrounds and Borders Module Level 3: <a href="http://www.w3.org/TR/css3-background/#the-border-radius">Curve Radii</a>
+                <p>The same syntax and semenatics as css Backgrounds and Borders Module Level 3: <a href="http://www.w3.org/TR/css3-background/#the-border-radius">Curve Radii</a>
                 applies to -fx-background-radius. Note that JavaFX supports only the short-hand syntax.</p>
                 <p>Each comma-separated value or set of values in the series applies to the corresponding background color.</p>
           </td>
@@ -2558,7 +2558,7 @@
         <tr>
           <td colspan="4" class="propertyname"><em>BACKGROUND IMAGES</em> (see <a
               href="http://www.w3.org/TR/css3-background/#the-background-image"
-              target="_blank">CSS
+              target="_blank">css
               Backgrounds and Borders Module Level 3: Background Image</a>)</td>
         </tr>
         <tr>
@@ -2616,9 +2616,9 @@
         <tr>
           <td colspan="4" class="propertyname"><em>STROKED BORDERS</em> (see <a
               href="http://www.w3.org/TR/css3-background/#borders"
-              target="_blank">CSS Backgrounds and Borders Module Level 3: Borders</a>)
+              target="_blank">css Backgrounds and Borders Module Level 3: Borders</a>)
             <div><em>BORDER IMAGES</em> (see <a href="http://www.w3.org/TR/css3-background/#border-images"
-                                                                                target="_blank">CSS
+                                                                                target="_blank">css
                 Backgrounds and Borders Module Level 3: Border Images</a>)</div>
           </td>
         </tr>
@@ -2627,7 +2627,7 @@
             <td class="propertyname">-fx-region-border</td>
             <td class="value">javafx.scene.layout.Border</td>
             <td class="default">null</td>
-            <td>This cannot be set directly from CSS but is created from the property values of
+            <td>This cannot be set directly from css but is created from the property values of
                 -fx-border-color, -fx-border-insets, -fx-border-radius,  -fx-border-style, -fx-border-width,
                 -fx-border-image-insets, -fx-border-image-repeat, -fx-border-image-slice, -fx-border-image-source,
                 -fx-border-image-width</td>
@@ -2684,7 +2684,7 @@
             [ , [<a href="#typesize" class="typelink">&lt;size&gt;</a>]{1,4} [ / [<a href="#typesize" class="typelink">&lt;size&gt;</a>]{1,4} ]? ]*
           <td class="default">null</td>
           <td>
-            <p>Refer to CSS Backgrounds and Borders Module Level 3: <a href="http://www.w3.org/TR/css3-background/#the-border-radius">Curve Radii</a>.
+            <p>Refer to css Backgrounds and Borders Module Level 3: <a href="http://www.w3.org/TR/css3-background/#the-border-radius">Curve Radii</a>.
             JavaFX supports only the short-hand syntax.</p>
             <p>Each comma-separated value or set of values in the series applies to the corresponding border color.</p>
           </td>
@@ -2947,7 +2947,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th>Default</th>
           <th>Comments</th>
@@ -2972,7 +2972,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th class="default">Default</th>
           <th>Comments</th>
@@ -3047,7 +3047,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th>Default</th>
           <th>Comments</th>
@@ -3102,7 +3102,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th>Default</th>
           <th>Comments</th>
@@ -3196,7 +3196,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
         <thead>
         <tr>
-            <th class="propertyname">CSS Property</th>
+            <th class="propertyname">css Property</th>
             <th class="value">Values</th>
             <th>Default</th>
             <th>Comments</th>
@@ -3225,7 +3225,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
         <thead>
         <tr>
-            <th class="propertyname">CSS Property</th>
+            <th class="propertyname">css Property</th>
             <th class="value">Values</th>
             <th>Default</th>
             <th>Comments</th>
@@ -3262,7 +3262,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th>Default</th>
           <th>Comments</th>
@@ -3302,7 +3302,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th>Default</th>
           <th>Comments</th>
@@ -3363,7 +3363,7 @@
     <table summary="property table" class="csspropertytable" cellpadding="2" cellspacing="1">
       <thead>
         <tr>
-          <th class="propertyname">CSS Property</th>
+          <th class="propertyname">css Property</th>
           <th class="value">Values</th>
           <th>Default</th>
           <th>Comments</th>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-        * @(#) GameGUI.fxml 1.1 2018/02/04
+        * @(#) Game.fxml 1.1 2018/02/04
         *
         * Copyright (c) 2002 University of Wales, Aberystwyth.
         * All rights reserved.
@@ -20,13 +20,13 @@
 <?import javafx.scene.text.Font?>
 
 <!--
-    * Used with the EndGUIController to display a scene to show Score, Highscores and restart button
+    * Used with the HighScoreController to display a scene to show Score, Highscores and restart button
     *
     * @author Rhys Evans (rhe24@aber.ac.uk)
     * @version 0.1  DRAFT
 -->
 
-<StackPane fx:id="parent" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs221.GP01.views.EndGUI.EndGUIController">
+<StackPane fx:id="parent" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs221.GP01.views.HighScore.HighScoreController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -64,7 +64,6 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <Button fx:id="menuBtn" mnemonicParsing="false" onAction="#btnReturnClicked" text="Back to Menu" />
-                  <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#btnSaveClicked" text="Save Cube" />
                </children>
                <VBox.margin>
                   <Insets bottom="10.0" top="20.0" />

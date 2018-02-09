@@ -38,7 +38,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
- * A sample that shows styling of text through CSS.
+ * A sample that shows styling of text through css.
  *
  * @sampleName Inset Text
  * @preview preview.png

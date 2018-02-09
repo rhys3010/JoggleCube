@@ -14,6 +14,9 @@
 * Use: https://gitlab.dcs.aber.ac.uk/rhe24/GP01.git
 * Or setup ssh on your gitlab account and use: gitlab@gitlab.dcs.aber.ac.uk:rhe24/GP01.git
 * add source using the command: git remote add origin <url>
+* navigate to the folder you want to hold the project: cd <folderpath>
+* run: git init
+* run: git pull origin master
 
 ### Modifying files
 

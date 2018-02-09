@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-        * @(#) LoadGridGUI.fxml 1.1 2018/02/04
+        * @(#) LoadGrid.fxml 1.1 2018/02/04
         *
         * Copyright (c) 2002 University of Wales, Aberystwyth.
         * All rights reserved.
@@ -11,18 +11,18 @@
 <?import javafx.scene.layout.VBox?>
 
 <!--
-    * LoadGridGUI - LoadGridGUI user interface definition.
+    * LoadGrid - LoadGrid user interface definition.
     * <p>
-    * Used with the LoadGridGUIController to display a scene to allow user to load a Grid from file.
+    * Used with the LoadGridController to display a scene to allow user to load a Grid from file.
     *
     * @author Nathan Williams (naw21)
     * @version 0.1  DRAFT
 -->
 <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10.0"
-      stylesheets="/cs221/GP01/views/CSS/JoggleCube.css"
+      stylesheets="/cs221/GP01/views/css/JoggleCube.css"
       xmlns="http://javafx.com/javafx/9.0.2"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="cs221.GP01.views.LoadGridGUI.LoadGridGUIController"
+      fx:controller="cs221.GP01.views.LoadGrid.LoadGridController"
       fx:id="parent"
 >
     <Button mnemonicParsing="false" onAction="#btnPickFileClicked" text="Pick File" />

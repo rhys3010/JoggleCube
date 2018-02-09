@@ -256,7 +256,7 @@ public class Modena extends Application {
             (accentColor == null || accentColor == Color.TRANSPARENT) &&
             (fontName == null)) {
             // no customizations
-            System.out.println("USING NO CUSTIMIZATIONS TO CSS, stylesheet = "+(modena?"modena":"caspian"));
+            System.out.println("USING NO CUSTIMIZATIONS TO css, stylesheet = "+(modena?"modena":"caspian"));
 
             // load theme
             setUserAgentStylesheet("internal:stylesheet"+Math.random()+".css");

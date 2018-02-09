@@ -75,7 +75,7 @@ public class DisplayShelf extends Region {
     public DisplayShelf(Image[] images) {
         // set clip
         setClip(clip);
-        // set ids for styling via CSS
+        // set ids for styling via css
         setId("displayshelf");
         scrollBar.setId("display-scrollbar");
         // create items

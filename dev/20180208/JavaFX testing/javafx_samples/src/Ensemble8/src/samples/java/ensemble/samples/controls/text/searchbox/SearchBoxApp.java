@@ -39,7 +39,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * A sample that demonstrates use of CSS to create a search box.
+ * A sample that demonstrates use of css to create a search box.
  *
  * @sampleName Search Box
  * @preview preview.png

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-        * @(#) GameGUI.fxml 1.1 2018/02/04
+        * @(#) Game.fxml 1.1 2018/02/04
         *
         * Copyright (c) 2002 University of Wales, Aberystwyth.
         * All rights reserved.
@@ -22,18 +22,18 @@
 <?import javafx.scene.shape.Box?>
 
 <!--
-    * GameGUI - GameGUI user interface definition.
+    * Game - Game user interface definition.
     * <p>
-    * Used with the GameGUIController to display a scene to allow user to play the game.
+    * Used with the GameController to display a scene to allow user to play the game.
     *
     * @author Nathan Williams (naw21)
     * @author Rhys Evans (rhe24@aber.ac.uk)
     * @version 0.1  DRAFT
 -->
 
-<StackPane fx:id="parent" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs221.GP01.views.GameGUI.GameGUIController">
+<StackPane fx:id="parent" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs221.GP01.views.Game.GameController">
    <children>
-      <VBox fx:id="gameScreen" alignment="CENTER" stylesheets="/cs221/GP01/views/CSS/JoggleCube.css">
+      <VBox fx:id="gameScreen" alignment="CENTER" stylesheets="/cs221/GP01/views/css/JoggleCube.css">
          <HBox alignment="CENTER" prefHeight="41.0" prefWidth="200.0">
                <Label text="JoggleCube">
                   <padding>

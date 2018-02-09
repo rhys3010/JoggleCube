@@ -1,4 +1,4 @@
-package cs221.GP01.views.EndGUI;
+package cs221.GP01.views.HighScore;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
