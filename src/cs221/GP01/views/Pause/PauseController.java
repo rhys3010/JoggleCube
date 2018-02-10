@@ -1,6 +1,7 @@
 package cs221.GP01.views.Pause;
 
 import cs221.GP01.model.JoggleCube;
+import cs221.GP01.views.Game.GameController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,6 +14,8 @@ import java.io.IOException;
  * <p>
  * todo fix dodgy model overlaying
  * todo add prompt for exiting
+ *
+ * todo add save button
  * Used with End.fxml
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @version 0.2  DRAFT
@@ -64,5 +67,11 @@ public class PauseController {
     void btnExitClicked(){
 
 
+    }
+
+    private GameController gameController;
+
+    public void setGameController(GameController gameController) {
+        this.gameController = gameController;
     }
 }

@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
  * HighScoreController - A class that controls the HighScore scene that is defined in HighScore.fxml
  * Load and display highscores from another class
  * todo delete temp highscore class and establish a new one
- * todo add save option
+ *
  * <p>
  * Used with HighScore.fxml
  * todo improve this description

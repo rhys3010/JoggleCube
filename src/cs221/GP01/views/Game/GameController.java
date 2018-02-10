@@ -97,6 +97,7 @@ public class GameController {
         VBox overlay = fxmlLoader.load();
         PauseController pauseController = fxmlLoader.getController();
         pauseController.setJoggleCube(joggleCube);
+        pauseController.setGameController(this);
         joggleCube.pause();
         // Add overlay to the stackpane as child
         parent.getChildren().add(overlay);

@@ -28,4 +28,5 @@
       <Label text="JoggleCube" />
       <Button fx:id="btnStartNewGrid" mnemonicParsing="false" onAction="#btnStartNewGridClicked" text="Start New Grid" />
       <Button fx:id="btnLoadGrid" mnemonicParsing="false" onAction="#btnLoadGridClicked" text="Load Grid" />
+      <Button fx:id="btnHighScore" mnemonicParsing="false" onAction="#btnHighScoreClicked" text="High Score" />
 </VBox>

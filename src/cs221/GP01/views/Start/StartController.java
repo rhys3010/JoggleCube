@@ -10,7 +10,9 @@ package cs221.GP01.views.Start;
 
 import cs221.GP01.model.JoggleCube;
 import cs221.GP01.views.Game.GameController;
+import cs221.GP01.views.HighScore.HighScoreController;
 import cs221.GP01.views.LoadGrid.LoadGridController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -98,6 +100,29 @@ public class StartController {
         LoadGridController loadGridController = fxmlLoader.getController();
         //Tell the backend where to find the controller and vise versa
         loadGridController.setJoggleCube(joggleCube);
+        //display the GUI
+        Stage stage = (Stage) parent.getScene().getWindow();
+        stage.setScene(new Scene(root, 600, 600));
+    }
+
+    /**
+     * When the HighScore button is clicked it will load the Highscore scene.
+     *
+     * @author Nathan Williams (naw21)
+     * @version 0.1 DRAFT
+     * @see HighScoreController
+     * @throws IOException
+     */
+    public void btnHighScoreClicked() throws IOException{
+        //load a game screen
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../HighScore/HighScore.fxml"));
+        Parent root = fxmlLoader.load();
+        //get the controller
+        HighScoreController highScoreController = fxmlLoader.getController();
+        //Tell the backend where to find the controller and vise versa
+        highScoreController.setJoggleCube(joggleCube);
+        //tells joggleCube to load
+        joggleCube.getHighScores("overall",highScoreController);
         //display the GUI
         Stage stage = (Stage) parent.getScene().getWindow();
         stage.setScene(new Scene(root, 600, 600));
