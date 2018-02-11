@@ -51,7 +51,7 @@
         </HBox>
         <HBox alignment="CENTER" layoutX="10.0" layoutY="170.0" prefHeight="100.0" prefWidth="200.0">
             <children>
-                <Button fx:id="helpBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="26.0" prefWidth="168.0" text="Help" textAlignment="CENTER">
+                <Button fx:id="settingsBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="26.0" prefWidth="168.0" text="Settings" textAlignment="CENTER">
                     <HBox.margin>
                         <Insets />
                     </HBox.margin>

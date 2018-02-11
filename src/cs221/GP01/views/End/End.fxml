@@ -22,18 +22,7 @@
     * @version 0.1  DRAFT
 -->
 
-<VBox fx:id="endOverlay"
-      alignment="TOP_CENTER"
-      maxHeight="-Infinity"
-      maxWidth="-Infinity"
-      minHeight="-Infinity"
-      minWidth="-Infinity"
-      prefHeight="362.0"
-      prefWidth="248.0"
-      style="-fx-background-color: rgba(64, 64, 64, 0.75);"
-      xmlns="http://javafx.com/javafx/8.0.121"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="cs221.GP01.views.End.EndController">
+<VBox fx:id="endOverlay" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="362.0" prefWidth="248.0" style="-fx-background-color: rgba(64, 64, 64, 0.75);" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs221.GP01.views.End.EndController">
     <children>
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
             <children>
@@ -54,7 +43,7 @@
         </HBox>
         <HBox alignment="CENTER" layoutX="10.0" layoutY="170.0" prefHeight="100.0" prefWidth="200.0">
             <children>
-                <Button fx:id="SaveBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="26.0" prefWidth="168.0" text="Save Score and Grid" textAlignment="CENTER" onAction="#btnSaveClicked">
+                <Button fx:id="SaveBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#btnSaveClicked" prefHeight="26.0" prefWidth="168.0" text="Save Grid" textAlignment="CENTER">
                     <HBox.margin>
                         <Insets />
                     </HBox.margin>
@@ -64,5 +53,13 @@
                 <Insets top="-40.0" />
             </VBox.margin>
         </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="menuBtn" mnemonicParsing="false" onAction="#btnMenuClicked" prefWidth="168.0" text="Back to Menu" />
+         </children>
+         <VBox.margin>
+            <Insets top="-40.0" />
+         </VBox.margin>
+      </HBox>
     </children>
 </VBox>

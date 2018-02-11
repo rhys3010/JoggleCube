@@ -2,6 +2,7 @@ package cs221.GP01.views.End;
 
 import cs221.GP01.model.JoggleCube;
 import cs221.GP01.views.HighScore.HighScoreController;
+import cs221.GP01.views.Start.StartController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -73,22 +74,43 @@ public class EndController {
         stage.setScene(new Scene(root, 600, 600));
     }
 
-        /**
-         * When the 'save' button is clicked prompt user to chose a save location
-         * @author Rhys Evans (rhe24@aber.ac.uk)
-         * @version 0.1
-         */
-        @FXML
-        void btnSaveClicked(){
-            Stage newStage = new Stage();
-            FileChooser fileChooser = new FileChooser();
+    /**
+     * When the 'save' button is clicked prompt user to chose a save location
+     * @author Rhys Evans (rhe24@aber.ac.uk)
+     * @version 0.1
+     */
+    @FXML
+    void btnSaveClicked(){
+        Stage newStage = new Stage();
+        FileChooser fileChooser = new FileChooser();
 
-            fileChooser.setTitle("Save Cube");
-            File file = fileChooser.showSaveDialog(newStage);
-            if (file != null) {
-            } else {
-                //todo add try again pop-up
-            }
+        fileChooser.setTitle("Save Cube");
+        File file = fileChooser.showSaveDialog(newStage);
+        if (file != null) {
+
+        } else {
+            //todo add try again pop-up
         }
+    }
 
+
+    /**
+     * When the 'return to menu' button is clicked change scene to menu scene
+     * @author Rhys Evans (rhe24@aber.ac.uk)
+     * @version 0.1
+     */
+    @FXML
+    void btnMenuClicked() throws IOException{
+
+        // load fxml and controller
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Start/Start.fxml"));
+        Parent root = loader.load();
+
+        StartController startController = loader.getController();
+        startController.setJoggleCube(joggleCube);
+
+        Stage stage = (Stage) endOverlay.getScene().getWindow();
+        stage.setScene(new Scene(root, 600, 600));
+
+    }
 }
