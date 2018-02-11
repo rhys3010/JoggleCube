@@ -73,12 +73,19 @@ public class GameController {
     @FXML
     private void btnEndGameClicked() throws IOException {
 
+        // Load End-Game overlay
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../End/End.fxml"));
         VBox overlay = fxmlLoader.load();
+
+        // Pass controller and JoggleCube instance
         EndController endController = fxmlLoader.getController();
         joggleCube.endGame(endController);
         endController.setJoggleCube(joggleCube);
 
+        // Disable the game
+        gameScreen.setDisable(true);
+
+        // Add to the stackpane
         parent.getChildren().add(overlay);
     }
 
@@ -93,13 +100,29 @@ public class GameController {
      */
     @FXML
     private void btnPauseGameClicked() throws IOException{
+        // Load pause overlay
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Pause/Pause.fxml"));
         VBox overlay = fxmlLoader.load();
+
+        // Get Game controller
         PauseController pauseController = fxmlLoader.getController();
         pauseController.setJoggleCube(joggleCube);
         pauseController.setGameController(this);
+
+        // Disable background
+        gameScreen.setDisable(true);
+
         joggleCube.pause();
         // Add overlay to the stackpane as child
         parent.getChildren().add(overlay);
+    }
+
+
+    /**
+     * Re-enables the game screen after game is resumed
+     */
+    public void setScreenDisabled(Boolean status){
+        gameScreen.setDisable(status);
+
     }
 }

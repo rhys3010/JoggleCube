@@ -33,14 +33,14 @@
                 </Label>
             </children>
         </HBox>
-        <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
-            <children>
-                <Button fx:id="HighScoreBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#btnHighScoreClicked" prefHeight="26.0" prefWidth="168.0" text="HighScores" textAlignment="CENTER" />
-            </children>
-            <VBox.margin>
-                <Insets top="-40.0" />
-            </VBox.margin>
-        </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="menuBtn" mnemonicParsing="false" onAction="#btnMenuClicked" prefWidth="168.0" text="Back to Menu" />
+         </children>
+         <VBox.margin>
+            <Insets top="-40.0" />
+         </VBox.margin>
+      </HBox>
         <HBox alignment="CENTER" layoutX="10.0" layoutY="170.0" prefHeight="100.0" prefWidth="200.0">
             <children>
                 <Button fx:id="SaveBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#btnSaveClicked" prefHeight="26.0" prefWidth="168.0" text="Save Grid" textAlignment="CENTER">
@@ -53,13 +53,13 @@
                 <Insets top="-40.0" />
             </VBox.margin>
         </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Button fx:id="menuBtn" mnemonicParsing="false" onAction="#btnMenuClicked" prefWidth="168.0" text="Back to Menu" />
-         </children>
-         <VBox.margin>
-            <Insets top="-40.0" />
-         </VBox.margin>
-      </HBox>
+        <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Button fx:id="HighScoreBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#btnHighScoreClicked" prefHeight="26.0" prefWidth="168.0" text="HighScores" textAlignment="CENTER" />
+            </children>
+            <VBox.margin>
+                <Insets top="-40.0" />
+            </VBox.margin>
+        </HBox>
     </children>
 </VBox>

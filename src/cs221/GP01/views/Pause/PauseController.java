@@ -34,6 +34,11 @@ public class PauseController {
     private JoggleCube joggleCube;
 
     /**
+     * The game controller
+     */
+    private GameController gameController;
+
+    /**
      * method to set a link to the backend
      *
      * @author Nathan Williams (naw21)
@@ -53,7 +58,12 @@ public class PauseController {
      */
     @FXML
     void btnResumeClicked() throws IOException{
+        // Remove pause overlay
         pauseOverlay.setVisible(false);
+
+        // Enable background scene
+        gameController.setScreenDisabled(false);
+
         joggleCube.resume();
     }
 
@@ -69,8 +79,10 @@ public class PauseController {
 
     }
 
-    private GameController gameController;
-
+    /**
+     * Retrieve and store the game controller to get access to its elements
+     * @param gameController
+     */
     public void setGameController(GameController gameController) {
         this.gameController = gameController;
     }

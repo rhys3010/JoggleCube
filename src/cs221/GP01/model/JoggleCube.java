@@ -3,8 +3,11 @@ package cs221.GP01.model;
 import cs221.GP01.views.End.EndController;
 import cs221.GP01.views.Game.GameController;
 import cs221.GP01.views.HighScore.HighScoreController;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 
 import java.io.File;
+import java.io.IOException;
 
 public class JoggleCube {
 
