@@ -111,6 +111,5 @@ public class EndController {
 
         Stage stage = (Stage) endOverlay.getScene().getWindow();
         stage.setScene(new Scene(root, 600, 600));
-
     }
 }

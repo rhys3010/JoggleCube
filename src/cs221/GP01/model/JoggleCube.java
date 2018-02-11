@@ -3,8 +3,11 @@ package cs221.GP01.model;
 import cs221.GP01.views.End.EndController;
 import cs221.GP01.views.Game.GameController;
 import cs221.GP01.views.HighScore.HighScoreController;
+import cs221.GP01.views.Start.StartController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,4 +55,5 @@ public class JoggleCube {
     public void loadGrid(GameController gameController, File gridFile) {
         System.out.println("grid loaded from file");
     }
+
 }
