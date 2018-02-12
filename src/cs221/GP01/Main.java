@@ -1,7 +1,7 @@
 /*
-   * @(#) JoggleCube.java 1.1 2018/02/04
+   * @(#) Main.java 1.1 2018/02/04
    *
-   * Copyright (c) 2002 University of Wales, Aberystwyth.
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
    * All rights reserved.
    *
    */
@@ -62,8 +62,6 @@ public class Main extends Application {
     /**
      * Starts The GUI and backend
      *
-     * @author Nathan Williams (naw21)
-     * @version 0.2 DRAFT
      * @param primaryStage The main Stage(window) of the application upon creation)
      * @throws IOException  if the Start.fxml is not found.
      */
@@ -93,8 +91,6 @@ public class Main extends Application {
     /**
      * The main method
      *
-     * @author Nathan Williams (naw21)
-     * @version 0.1 DRAFT
      * @param args no launch arguments needed.
      */
     public static void main(String[] args) {

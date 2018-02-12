@@ -1,7 +1,7 @@
 /*
-   * @(#) LoadGridGUIController.java 1.1 2018/02/04
+   * @(#) GameController.java 1.1 2018/02/04
    *
-   * Copyright (c) 2002 University of Wales, Aberystwyth.
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
    * All rights reserved.
    *
    */
@@ -52,8 +52,6 @@ public class GameController {
     /**
      * method to set a link to the backend
      *
-     * @author Nathan Williams (naw21)
-     * @version 0.1 DRAFT
      * @see JoggleCube
      * @param joggleCube the backend
      */
@@ -65,8 +63,6 @@ public class GameController {
      * When the End Game button is clicked it will load the EndGui scene.
      *
      * @author Nathan Williams (naw21)
-     * @author Rhys Evans (rhe24@aber.ac.uk)
-     * @version 0.2 DRAFT
      * @see StartController
      * @throws IOException if the HighScore.fxml is not found.
      */
@@ -92,10 +88,7 @@ public class GameController {
 
     /**
      * When the pause button is clicked it will display an overlay and pause the game
-     * @author Rhys Evans (rhe24@aber.ac.uk)
-     * @author Nathan Williams (naw21)
-     * todo consider efficiency of injecting the overlay's fxml when button is pressed (maybe do this at the start?)
-     * @version 0.2 DRAFT
+     * todo consider efficiency of injecting the overlay's fxml when button is pressed (maybe do this at the start?)AFT
      * @throws IOException if End.fxml doesn't exist
      */
     @FXML

@@ -1,3 +1,11 @@
+/*
+   * @(#) EndController.java 1.1 2018/02/12
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
+
 package cs221.GP01.views.End;
 
 import cs221.GP01.model.JoggleCube;
@@ -41,10 +49,8 @@ public class EndController {
     /**
      * method to set a link to the backend
      *
-     * @author Nathan Williams (naw21)
-     * @version 0.1 DRAFT
      * @see JoggleCube
-     * @param joggleCube the backend
+     * @param joggleCube the mediator file
      */
     public void setJoggleCube(JoggleCube joggleCube){
         this.joggleCube = joggleCube;
@@ -53,9 +59,8 @@ public class EndController {
     /**
      * When the exit button is pressed, close the program
      * todo add prompt?
-     * @author Rhys Evans (rhe24@aber.ac.uk)
-     * @author Nathan Williams (naw21)
-     * @version 0.2 DRAFT
+     * @see HighScoreController
+     * @throws IOException - if FXML file could not be found/opened
      */
     @FXML
     void btnHighScoreClicked() throws IOException {
@@ -76,8 +81,6 @@ public class EndController {
 
     /**
      * When the 'save' button is clicked prompt user to chose a save location
-     * @author Rhys Evans (rhe24@aber.ac.uk)
-     * @version 0.1
      */
     @FXML
     void btnSaveClicked(){
@@ -96,8 +99,7 @@ public class EndController {
 
     /**
      * When the 'return to menu' button is clicked change scene to menu scene
-     * @author Rhys Evans (rhe24@aber.ac.uk)
-     * @version 0.1
+     * @see StartController
      */
     @FXML
     void btnMenuClicked() throws IOException{

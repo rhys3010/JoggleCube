@@ -1,7 +1,7 @@
 /*
-   * @(#) StartGUIController.java 1.1 2018/02/04
+   * @(#) StartController.java 1.1 2018/02/12
    *
-   * Copyright (c) 2002 University of Wales, Aberystwyth.
+   * Copyright (c) 2012 University of Wales, Aberystwyth.
    * All rights reserved.
    *
    */
@@ -46,8 +46,6 @@ public class StartController {
     /**
      * method to set a link to the backend
      *
-     * @author Nathan Williams (naw21)
-     * @version 0.1 DRAFT
      * @see JoggleCube
      * @param joggleCube the backend
      */
@@ -59,8 +57,6 @@ public class StartController {
     /**
      * When the Start New Grid button is clicked it will load the Game scene with a new grid.
      *
-     * @author Nathan Williams (naw21)
-     * @version 0.2 DRAFT
      * @see GameController
      * @throws IOException if the Game.fxml is not found.
      */
@@ -86,8 +82,6 @@ public class StartController {
     /**
      * When the Load Grid button is clicked it will load the LoadGrid scene.
      *
-     * @author Nathan Williams (naw21)
-     * @version 0.2 DRAFT
      * @see LoadGridController
      * @throws IOException if the LoadGrid.fxml is not found.
      */
@@ -109,8 +103,6 @@ public class StartController {
     /**
      * When the HighScore button is clicked it will load the Highscore scene.
      *
-     * @author Nathan Williams (naw21)
-     * @version 0.1 DRAFT
      * @see HighScoreController
      * @throws IOException
      */

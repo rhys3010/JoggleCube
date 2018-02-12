@@ -1,3 +1,11 @@
+/*
+   * @(#) HighScoreController.java 1.0 2018/02/12
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
+
 package cs221.GP01.views.HighScore;
 
 import cs221.GP01.model.JoggleCube;
@@ -44,8 +52,6 @@ public class HighScoreController implements Initializable{
     /**
      * method to set a link to the backend
      *
-     * @author Nathan Williams (naw21)
-     * @version 0.1 DRAFT
      * @see JoggleCube
      * @param joggleCube the backend
      */
@@ -141,9 +147,7 @@ public class HighScoreController implements Initializable{
 
     /**
      * When the return button is clicked it will return to the start screen of the game
-     * @author Rhys Evans (rhe24@aber.ac.uk)
-     * @author Nathan Williams (naw21)
-     * @version 0.2 DRAFT
+     * @see StartController
      * @throws IOException if Start.fxml doesn't exist
      */
     @FXML
@@ -161,7 +165,6 @@ public class HighScoreController implements Initializable{
     /**
      * Stop users from being able to reorder table columns (temporary fix)
      * Solution used here: https://bittlife.com/javafx-disable-column-reorder-tableview/
-     * @author Rhys Evans (rhe24)
      */
     public static <S, T> void columnReorder(TableView table, TableColumn<S, T> ...columns){
         table.getColumns().addListener(new ListChangeListener() {

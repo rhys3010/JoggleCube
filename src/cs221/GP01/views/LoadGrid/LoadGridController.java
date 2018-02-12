@@ -1,7 +1,7 @@
 /*
-   * @(#) LoadGridGUIController.java 1.1 2018/02/04
+   * @(#) LoadGridGUIController.java 1.0 2018/02/04
    *
-   * Copyright (c) 2002 University of Wales, Aberystwyth.
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
    * All rights reserved.
    *
    */
@@ -57,7 +57,6 @@ public class LoadGridController {
     }
 
 
-
     private File gridFile = null;
 
     /**
@@ -68,8 +67,6 @@ public class LoadGridController {
     /**
      * method to set a link to the backend
      *
-     * @author Nathan Williams (naw21)
-     * @version 0.1 DRAFT
      * @see JoggleCube
      * @param joggleCube the backend
      */
@@ -86,8 +83,6 @@ public class LoadGridController {
     /**
      * When the Start Grid button is clicked it will load the Game scene.
      *
-     * @author Nathan Williams (naw21)
-     * @version 0.2 DRAFT
      * @see GameController
      * @throws IOException if the Game.fxml is not found.
      */
@@ -113,8 +108,6 @@ public class LoadGridController {
     /**
      * When the back button is clicked it will load the Start scene.
      *
-     * @author Nathan Williams (naw21)
-     * @version 0.2 DRAFT
      * @see StartController
      * @throws IOException if the Start.fxml is not found.
      */
@@ -135,8 +128,6 @@ public class LoadGridController {
     /**
      * When the Pick File button is clicked it opens a fileChooser.
      *
-     * @author Nathan Williams (naw21)
-     * @version 0.1 DRAFT
      */
     @FXML
     void btnPickFileClicked() {
@@ -151,6 +142,9 @@ public class LoadGridController {
         }
     }
 
+    /**
+     * Handle when a user clicks an option from the selection
+     */
     @FXML
     public void handleMouseClick() {
         gridFile = new File(listViewRecents.getSelectionModel().getSelectedItem());

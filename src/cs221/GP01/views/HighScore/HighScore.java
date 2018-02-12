@@ -1,3 +1,11 @@
+/*
+   * @(#) HighScore.java 1.0 2018/02/12
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
+
 package cs221.GP01.views.HighScore;
 
 import java.text.DateFormat;
@@ -5,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- *  TEMPORARY CLASS
+ *  HighScore - Encapsulate and represent a given High Score entry
  *  Represent a Given High Score Entry -> Date/time of Score, Score
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @version 0.1  DRAFT
@@ -48,6 +56,7 @@ public class HighScore {
     }
 
     /**
+     * Get the date of a given high score entry
      * @return Date of the score
      */
     public String getDate(){
@@ -55,6 +64,7 @@ public class HighScore {
     }
 
     /**
+     * Get the score value of a given high score entry
      * @return The score
      */
     public Integer getScore(){
@@ -62,7 +72,7 @@ public class HighScore {
     }
 
     /**
-     *
+     * Get the name of a given high score holder
      * @return The highscore holder's name
      */
     public String getName(){
