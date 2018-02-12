@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--
         * @(#) LoadGrid.fxml 1.1 2018/02/04
         *
@@ -6,7 +7,10 @@
         * All rights reserved.
         *
 -->
+
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
@@ -18,14 +22,24 @@
     * @author Nathan Williams (naw21)
     * @version 0.1  DRAFT
 -->
-<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10.0"
-      stylesheets="/cs221/GP01/views/css/JoggleCube.css"
-      xmlns="http://javafx.com/javafx/9.0.2"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="cs221.GP01.views.LoadGrid.LoadGridController"
-      fx:id="parent"
->
-    <Button mnemonicParsing="false" onAction="#btnPickFileClicked" text="Pick File" />
+
+<VBox fx:id="parent" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10.0" stylesheets="/cs221/GP01/views/css/JoggleCube.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs221.GP01.views.LoadGrid.LoadGridController">
+   <HBox alignment="CENTER" prefHeight="207.0" prefWidth="600.0" spacing="20.0">
+      <children>
+         <VBox alignment="CENTER" prefHeight="207.0" prefWidth="213.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#btnPickFileClicked" text="Pick a File" />
+               <Label text="or select from recents" />
+            </children>
+         </VBox>
+         <VBox alignment="CENTER" prefHeight="207.0" prefWidth="236.0">
+            <children>
+               <Label alignment="CENTER" contentDisplay="CENTER" text="Recent Grids" />
+               <ListView fx:id="listViewRecents" onMouseClicked="#handleMouseClick" prefHeight="146.0" prefWidth="170.0" />
+            </children>
+         </VBox>
+      </children>
+   </HBox>
     <HBox alignment="CENTER" spacing="10.0">
         <Button mnemonicParsing="false" onAction="#btnStartGridClicked" text="Start Grid" />
         <Button mnemonicParsing="false" onAction="#btnBackClicked" text="Back" />

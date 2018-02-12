@@ -100,6 +100,7 @@ public class StartController {
         LoadGridController loadGridController = fxmlLoader.getController();
         //Tell the backend where to find the controller and vise versa
         loadGridController.setJoggleCube(joggleCube);
+        loadGridController.setListViewRecents(joggleCube.getRecentGrids());
         //display the GUI
         Stage stage = (Stage) parent.getScene().getWindow();
         stage.setScene(new Scene(root, 600, 600));

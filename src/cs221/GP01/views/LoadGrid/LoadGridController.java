@@ -11,16 +11,27 @@ package cs221.GP01.views.LoadGrid;
 import cs221.GP01.model.JoggleCube;
 import cs221.GP01.views.Game.GameController;
 import cs221.GP01.views.Start.StartController;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * LoadGridController - A class that controls the LoadGrid scene that is defined in LoadGrid.fxml
@@ -34,9 +45,19 @@ import java.io.IOException;
  * @version 0.2  DRAFT
  */
 public class LoadGridController {
+
+    @FXML
+    private ListView<String> listViewRecents;
     /**
      * the file a grid can be loaded from
      */
+
+    public void setListViewRecents(ObservableList<String> items) {
+        listViewRecents.setItems(items);
+    }
+
+
+
     private File gridFile = null;
 
     /**
@@ -130,4 +151,13 @@ public class LoadGridController {
         }
     }
 
+    @FXML
+    public void handleMouseClick() {
+        gridFile = new File(listViewRecents.getSelectionModel().getSelectedItem());
+        if (gridFile != null) {
+            //todo do more checks, check a valid gridFile etc
+        } else {
+            //todo add try again pop-up
+        }
+    }
 }

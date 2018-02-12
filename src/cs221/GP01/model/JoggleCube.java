@@ -4,6 +4,8 @@ import cs221.GP01.views.End.EndController;
 import cs221.GP01.views.Game.GameController;
 import cs221.GP01.views.HighScore.HighScoreController;
 import cs221.GP01.views.Start.StartController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -56,4 +58,14 @@ public class JoggleCube {
         System.out.println("grid loaded from file");
     }
 
+
+    /**
+     *
+     * @return a list of the recently opened grids
+     */
+    public ObservableList<String> getRecentGrids() {
+        ObservableList<String> recentGrids = FXCollections.observableArrayList (
+                "something/something/grid01.grid", "grid02.grid", "grid03.grid", "grid04.grid");
+        return recentGrids;
+    }
 }
