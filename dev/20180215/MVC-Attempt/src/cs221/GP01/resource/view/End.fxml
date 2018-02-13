@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+        * @(#) End.fxml 1.1 2018/02/04
+        *
+        * Copyright (c) 20018 University of Wales, Aberystwyth.
+        * All rights reserved.
+        *
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!--
+    * Used with the EndController to display a pause overlay on the main game screen.
+    *
+    * @author Rhys Evans (rhe24@aber.ac.uk)
+    * @version 0.1  DRAFT
+-->
+
+<VBox fx:id="endOverlay" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="362.0" prefWidth="248.0" style="-fx-background-color: rgba(64, 64, 64, 0.75);" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Label alignment="CENTER" text="GAME OVER" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="menuBtn" mnemonicParsing="false" onAction="#btnMenuClicked" prefWidth="168.0" text="Back to Menu" />
+         </children>
+         <VBox.margin>
+            <Insets top="-40.0" />
+         </VBox.margin>
+      </HBox>
+        <HBox alignment="CENTER" layoutX="10.0" layoutY="170.0" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Button fx:id="SaveBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#btnSaveClicked" prefHeight="26.0" prefWidth="168.0" text="Save Grid" textAlignment="CENTER">
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                </Button>
+            </children>
+            <VBox.margin>
+                <Insets top="-40.0" />
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Button fx:id="HighScoreBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#btnHighScoreClicked" prefHeight="26.0" prefWidth="168.0" text="HighScores" textAlignment="CENTER" />
+            </children>
+            <VBox.margin>
+                <Insets top="-40.0" />
+            </VBox.margin>
+        </HBox>
+    </children>
+</VBox>

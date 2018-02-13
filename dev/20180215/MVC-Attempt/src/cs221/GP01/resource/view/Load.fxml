@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+        * @(#) Load.fxml 1.1 2018/02/04
+        *
+        * Copyright (c) 2018 University of Wales, Aberystwyth.
+        * All rights reserved.
+        *
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+    * LoadGrid - LoadGrid user interface definition.
+    * <p>
+    * Used with the LoadGridController to display a scene to allow user to load a Grid from file.
+    *
+    * @author Nathan Williams (naw21)
+    * @version 0.1  DRAFT
+-->
+
+<VBox fx:id="parent" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10.0" stylesheets="/cs221/GP01/resource/view/css/JoggleCube.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <HBox alignment="CENTER" prefHeight="207.0" prefWidth="600.0" spacing="20.0">
+      <children>
+         <VBox alignment="CENTER" prefHeight="207.0" prefWidth="213.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#btnPickFileClicked" text="Pick a File" />
+               <Label text="or select from recents" />
+            </children>
+         </VBox>
+         <VBox alignment="CENTER" prefHeight="207.0" prefWidth="236.0">
+            <children>
+               <Label alignment="CENTER" contentDisplay="CENTER" text="Recent Grids" />
+               <ListView fx:id="listViewRecents" prefHeight="146.0" prefWidth="170.0" />
+            </children>
+         </VBox>
+      </children>
+   </HBox>
+    <HBox alignment="CENTER" spacing="10.0">
+        <Button mnemonicParsing="false" onAction="#btnStartGridClicked" text="Start Grid" />
+        <Button mnemonicParsing="false" onAction="#btnBackClicked" text="Back" />
+    </HBox>
+</VBox>
