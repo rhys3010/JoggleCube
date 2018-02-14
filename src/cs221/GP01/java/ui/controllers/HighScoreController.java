@@ -6,27 +6,23 @@
    *
    */
 
-package cs221.GP01.views.HighScore;
+package cs221.GP01.java.ui.controllers;
 
-import cs221.GP01.model.JoggleCube;
-import cs221.GP01.views.Start.StartController;
+import cs221.GP01.java.model.HighScore;
+import cs221.GP01.java.ui.Mediator;
+import cs221.GP01.java.ui.ScreenType;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -44,27 +40,13 @@ import java.util.ResourceBundle;
  */
 public class HighScoreController implements Initializable{
 
-    /**
-     * a link to the backend
-     */
-    private JoggleCube joggleCube;
-
-    /**
-     * method to set a link to the backend
-     *
-     * @see JoggleCube
-     * @param joggleCube the backend
-     */
-    public void setJoggleCube(JoggleCube joggleCube){
-        this.joggleCube = joggleCube;
-    }
 
 
     /**
      * Parent Anchor
      */
     @FXML
-    StackPane parent;
+    Node root;
 
     /**
      * High Score Table
@@ -105,6 +87,19 @@ public class HighScoreController implements Initializable{
             highScores,
             HighScore -> highScores.indexOf(HighScore) < 10
     );
+
+    /**
+     * An instance of the mediator object to interface with backend
+     */
+    private Mediator mediator;
+
+    /**
+     * Constructor to ensure mediator object is passed
+     * @param mediator
+     */
+    public HighScoreController(Mediator mediator){
+        this.mediator = mediator;
+    }
 
 
     /**
@@ -152,14 +147,11 @@ public class HighScoreController implements Initializable{
      */
     @FXML
     void btnReturnClicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Start/Start.fxml"));
-        Parent root = fxmlLoader.load();
-        StartController startController = fxmlLoader.getController();
-        startController.setJoggleCube(joggleCube);
-        Stage stage = (Stage) parent.getScene().getWindow();
-        stage.setScene(new Scene(root, 600, 600));
-    }
+        mediator.getScreenController().show(ScreenType.START);
 
+        // Backend Example
+        mediator.getHandleInput().loadMenu();
+    }
 
 
     /**
@@ -182,4 +174,11 @@ public class HighScoreController implements Initializable{
         });
     }
 
+    /**
+     * Get the root node of the FXML
+     * @return root - the root node
+     */
+    public Node getRoot(){
+        return root;
+    }
 }

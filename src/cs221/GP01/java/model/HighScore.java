@@ -6,7 +6,7 @@
    *
    */
 
-package cs221.GP01.views.HighScore;
+package cs221.GP01.java.model;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
