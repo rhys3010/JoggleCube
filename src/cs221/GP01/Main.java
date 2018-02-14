@@ -11,6 +11,7 @@ package cs221.GP01;
 import cs221.GP01.java.ui.Mediator;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -36,6 +37,14 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
+        // Array to store all program icons
+        Image icons[] = {
+                new Image("cs221/GP01/resource/img/icon/icon16.png"),
+                new Image("cs221/GP01/resource/img/icon/icon16.png"),
+                new Image("cs221/GP01/resource/img/icon/icon16.png"),
+                new Image("cs221/GP01/resource/img/icon/icon16.png")
+        };
+
         // Create main scene and initialize with a dummy root node
         Pane dummyRoot = new Pane();
         Scene mainScene = new Scene(dummyRoot, 600, 600);
@@ -44,6 +53,13 @@ public class Main extends Application {
         primaryStage.setScene(mainScene);
         primaryStage.setTitle("Joggle Cube");
         primaryStage.setResizable(false);
+
+        // Add all icon sizes to stage
+        // todo: is there a better way to do this? Probably. Maybe .ico support or some equivalent? ヽ༼ຈل͜ຈ༽ﾉ
+        for(int i = 0; i < icons.length; i++){
+            primaryStage.getIcons().add(icons[i]);
+        }
+
         primaryStage.show();
 
         // Create a Joggle Cube object
