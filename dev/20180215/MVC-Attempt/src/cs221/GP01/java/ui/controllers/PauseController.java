@@ -12,6 +12,7 @@ import cs221.GP01.java.ui.Mediator;
 import cs221.GP01.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -66,6 +67,7 @@ public class PauseController implements Initializable{
      */
     @FXML
     void btnResumeClicked() throws IOException{
+        mediator.getScreenController().hide(ScreenType.PAUSE);
     }
 
     /**
@@ -74,5 +76,13 @@ public class PauseController implements Initializable{
     @FXML
     void btnExitClicked(){
         mediator.getScreenController().show(ScreenType.START);
+    }
+
+    /**
+     * Get the root node of the scene
+     * @return VBox - the root node
+     */
+    public VBox getRootNode(){
+        return pauseOverlay;
     }
 }

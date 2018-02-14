@@ -13,6 +13,7 @@ import cs221.GP01.java.ui.ScreenType;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -62,7 +63,7 @@ public class LoadGridController implements Initializable{
      * the parent VBox in this scene.
      */
     @FXML
-    VBox parent;
+    Node root;
 
     /**
      * An instance of the mediator object to interface with backend
@@ -128,5 +129,13 @@ public class LoadGridController implements Initializable{
         } else {
             //todo add try again pop-up
         }
+    }
+
+    /**
+     * Get the root node of the FXML
+     * @return root - the root node
+     */
+    public Node getRoot(){
+        return root;
     }
 }

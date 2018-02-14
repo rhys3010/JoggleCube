@@ -12,6 +12,7 @@ import cs221.GP01.java.ui.Mediator;
 import cs221.GP01.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Screen;
@@ -36,10 +37,16 @@ import java.util.ResourceBundle;
 public class EndController implements Initializable{
 
     /**
-     * The end overlay
+     * The root node
      */
     @FXML
-    VBox parent;
+    Node root;
+
+    /**
+     * The End Overlay
+     */
+    @FXML
+    Node endOverlay;
 
     /**
      * An instance of the mediator object to interface with backend

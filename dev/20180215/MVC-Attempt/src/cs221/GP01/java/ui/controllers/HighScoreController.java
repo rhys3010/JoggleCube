@@ -17,6 +17,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -45,7 +46,7 @@ public class HighScoreController implements Initializable{
      * Parent Anchor
      */
     @FXML
-    StackPane parent;
+    Node root;
 
     /**
      * High Score Table
@@ -170,4 +171,11 @@ public class HighScoreController implements Initializable{
         });
     }
 
+    /**
+     * Get the root node of the FXML
+     * @return root - the root node
+     */
+    public Node getRoot(){
+        return root;
+    }
 }

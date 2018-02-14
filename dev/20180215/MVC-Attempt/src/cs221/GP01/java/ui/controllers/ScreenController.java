@@ -10,6 +10,7 @@ package cs221.GP01.java.ui.controllers;
 import cs221.GP01.java.ui.ScreenType;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 
 import java.util.HashMap;
 
@@ -65,7 +66,40 @@ public class ScreenController {
      * @param name
      */
     public void show(ScreenType name){
-        // Get the FXML loader of a given name and get it's root pane
-        main.setRoot(screens.get(name).getRoot());
+        // Special Cases for Overlay screens
+        if(name == ScreenType.PAUSE || name == ScreenType.END){
+
+            // Get game screen controller
+            GameController controller = screens.get(ScreenType.GAME).getController();
+
+            // Get root node of game screen and inject FXML
+            controller.getRootNode().getChildren().add(screens.get(name).getRoot());
+
+            // Disable Background
+            controller.getGameScreen().setDisable(true);
+        }else{
+            // Get the FXML loader of a given name and get it's root pane
+            main.setRoot(screens.get(name).getRoot());
+        }
+    }
+
+    /**
+     * Hide a screen type (only applicable for overlays)
+     * @param name - the screen to hide
+     */
+    public void hide(ScreenType name){
+
+        // Hide overlay and enable background scene
+        if(name == ScreenType.PAUSE){
+
+            // Hide Overlay
+            PauseController pauseController = screens.get(ScreenType.PAUSE).getController();
+            pauseController.getRootNode().setVisible(false);
+
+            // Enable background
+            GameController gameController = screens.get(ScreenType.GAME).getController();
+            gameController.getGameScreen().setDisable(false);
+
+        }
     }
 }

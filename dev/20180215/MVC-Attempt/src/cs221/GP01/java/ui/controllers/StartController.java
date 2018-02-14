@@ -12,6 +12,7 @@ import cs221.GP01.java.ui.Mediator;
 import cs221.GP01.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -29,10 +30,10 @@ import java.util.ResourceBundle;
 
 public class StartController implements Initializable{
     /**
-     * The parent VBox in this scene.
+     * The root Node in this scene.
      */
     @FXML
-    private VBox parent;
+    private Node root;
 
     /**
      * An instance of the mediator object to interface with backend
@@ -80,7 +81,14 @@ public class StartController implements Initializable{
 
     public void btnHighScoreClicked() throws IOException{
         mediator.getScreenController().show(ScreenType.HIGH_SCORES);
+    }
 
+    /**
+     * Get the root node of the FXML
+     * @return root - the root node
+     */
+    public Node getRoot(){
+        return root;
     }
 
 }

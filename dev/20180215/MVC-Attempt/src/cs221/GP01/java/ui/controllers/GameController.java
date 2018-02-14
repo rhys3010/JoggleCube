@@ -9,9 +9,11 @@
 package cs221.GP01.java.ui.controllers;
 
 import cs221.GP01.java.ui.Mediator;
+import cs221.GP01.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
@@ -33,7 +35,7 @@ public class GameController implements Initializable{
      * the parent StackPane in this scene.
      */
     @FXML
-    private StackPane parent;
+    private StackPane root;
 
     /**
      * The main game screen content (cube I/O etc)
@@ -61,13 +63,12 @@ public class GameController implements Initializable{
     public void initialize(URL location, ResourceBundle resources){
     }
 
-
-
     /**
      * When the End Game button is clicked it will load the EndGui scene.
      */
     @FXML
     private void btnEndGameClicked() throws IOException {
+        mediator.getScreenController().show(ScreenType.END);
     }
 
 
@@ -76,6 +77,7 @@ public class GameController implements Initializable{
      */
     @FXML
     private void btnPauseGameClicked() throws IOException{
+        mediator.getScreenController().show(ScreenType.PAUSE);
     }
 
 
@@ -84,5 +86,22 @@ public class GameController implements Initializable{
      */
     public void setScreenDisabled(Boolean status){
         gameScreen.setDisable(status);
+    }
+
+
+    /**
+     * Get the root node of the FXML
+     * @return root - the root node
+     */
+    public StackPane getRootNode(){
+        return root;
+    }
+
+    /**
+     * Get the game screen
+     * @return gameScreen - the FXML node of the game screen
+     */
+    public VBox getGameScreen(){
+        return gameScreen;
     }
 }
