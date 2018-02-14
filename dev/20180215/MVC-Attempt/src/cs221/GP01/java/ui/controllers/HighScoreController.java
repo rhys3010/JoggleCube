@@ -148,6 +148,9 @@ public class HighScoreController implements Initializable{
     @FXML
     void btnReturnClicked() throws IOException {
         mediator.getScreenController().show(ScreenType.START);
+
+        // Backend Example
+        mediator.getHandleInput().loadMenu();
     }
 
 

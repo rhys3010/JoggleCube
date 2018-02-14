@@ -53,6 +53,7 @@ public class StartController implements Initializable{
      */
     @Override
     public void initialize(URL location, ResourceBundle resources){
+
     }
 
 
@@ -64,6 +65,9 @@ public class StartController implements Initializable{
     private void btnStartNewGridClicked() throws IOException {
         mediator.getScreenController().show(ScreenType.GAME);
 
+        // Backend Example
+        mediator.getHandleInput().startGame();
+
     }
 
     /**
@@ -73,6 +77,9 @@ public class StartController implements Initializable{
     @FXML
     private void btnLoadGridClicked() throws IOException {
         mediator.getScreenController().show(ScreenType.LOAD);
+
+        // Backend Example
+        mediator.getHandleInput().loadMenu();
     }
 
     /**
@@ -81,6 +88,9 @@ public class StartController implements Initializable{
 
     public void btnHighScoreClicked() throws IOException{
         mediator.getScreenController().show(ScreenType.HIGH_SCORES);
+
+        // Backend Example
+        mediator.getHandleInput().showHighScores();
     }
 
     /**

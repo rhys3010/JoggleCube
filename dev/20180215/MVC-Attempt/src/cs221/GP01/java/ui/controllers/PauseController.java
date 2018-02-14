@@ -68,6 +68,9 @@ public class PauseController implements Initializable{
     @FXML
     void btnResumeClicked() throws IOException{
         mediator.getScreenController().hide(ScreenType.PAUSE);
+
+        // Backend Example
+        mediator.getHandleInput().resumeGame();
     }
 
     /**
@@ -76,6 +79,8 @@ public class PauseController implements Initializable{
     @FXML
     void btnExitClicked(){
         mediator.getScreenController().show(ScreenType.START);
+        // Backend Example
+        mediator.getHandleInput().loadMenu();
     }
 
     /**

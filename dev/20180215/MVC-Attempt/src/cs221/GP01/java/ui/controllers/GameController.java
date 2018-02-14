@@ -57,7 +57,7 @@ public class GameController implements Initializable{
     }
 
     /**
-     * todo Do initialization stuff here
+     * Initialize game screen
      */
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -69,6 +69,9 @@ public class GameController implements Initializable{
     @FXML
     private void btnEndGameClicked() throws IOException {
         mediator.getScreenController().show(ScreenType.END);
+
+        // Backend Example
+        mediator.getHandleInput().endGame();
     }
 
 
@@ -78,14 +81,9 @@ public class GameController implements Initializable{
     @FXML
     private void btnPauseGameClicked() throws IOException{
         mediator.getScreenController().show(ScreenType.PAUSE);
-    }
 
-
-    /**
-     * Re-enables the game screen after game is resumed
-     */
-    public void setScreenDisabled(Boolean status){
-        gameScreen.setDisable(status);
+        // Backend Example
+        mediator.getHandleInput().pauseGame();
     }
 
 

@@ -8,6 +8,7 @@
 
 package cs221.GP01.java.ui;
 
+import cs221.GP01.java.model.HandleInput;
 import cs221.GP01.java.ui.ScreenType;
 import cs221.GP01.java.ui.controllers.*;
 import javafx.collections.FXCollections;
@@ -39,6 +40,11 @@ public class Mediator {
      * All screen names (used to create and add to screenController)
      */
     private static final ScreenType SCREENS[] = {ScreenType.START, ScreenType.LOAD, ScreenType.GAME, ScreenType.PAUSE, ScreenType.END, ScreenType.HIGH_SCORES};
+
+    /**
+     * The Handle Input object to handle backend logic
+     */
+    private HandleInput handleInput = new HandleInput();
 
 
     /**
@@ -131,5 +137,14 @@ public class Mediator {
         ObservableList<String> recentGrids = FXCollections.observableArrayList (
                 "something/something/grid01.grid", "grid02.grid", "grid03.grid", "grid04.grid");
         return recentGrids;
+    }
+
+
+    /**
+     * Get the handle input object
+     * @return handleInput
+     */
+    public HandleInput getHandleInput() {
+        return handleInput;
     }
 }

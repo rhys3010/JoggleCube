@@ -77,6 +77,12 @@ public class EndController implements Initializable{
     @FXML
     void btnHighScoreClicked() throws IOException {
         mediator.getScreenController().show(ScreenType.HIGH_SCORES);
+
+        // Unload End Overlay
+        mediator.getScreenController().hide(ScreenType.END);
+
+        // Backend Example
+        mediator.getHandleInput().endGame();
     }
 
     /**
@@ -104,5 +110,11 @@ public class EndController implements Initializable{
     @FXML
     void btnMenuClicked() throws IOException{
         mediator.getScreenController().show(ScreenType.START);
+
+        // Unload End Overlay
+        mediator.getScreenController().hide(ScreenType.END);
+
+        // Backend Example
+        mediator.getHandleInput().loadMenu();
     }
 }

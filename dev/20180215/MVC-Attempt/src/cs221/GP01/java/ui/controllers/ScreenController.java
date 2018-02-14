@@ -89,17 +89,25 @@ public class ScreenController {
      */
     public void hide(ScreenType name){
 
-        // Hide overlay and enable background scene
+        GameController gameController = screens.get(ScreenType.GAME).getController();
+
+        // Remove pause overlay and enable background
         if(name == ScreenType.PAUSE){
 
-            // Hide Overlay
-            PauseController pauseController = screens.get(ScreenType.PAUSE).getController();
-            pauseController.getRootNode().setVisible(false);
+            // Remove Overlay
+            gameController.getRootNode().getChildren().remove(screens.get(name).getRoot());
 
             // Enable background
-            GameController gameController = screens.get(ScreenType.GAME).getController();
             gameController.getGameScreen().setDisable(false);
 
+            // Remove End overlay and Re-enable game screen
+        }else if(name == ScreenType.END){
+
+            if(gameController.getRootNode().getChildren().contains(screens.get(name).getRoot())){
+                gameController.getRootNode().getChildren().remove(screens.get(name).getRoot());
+            }
+
+            gameController.getGameScreen().setDisable(false);
         }
     }
 }

@@ -88,6 +88,9 @@ public class LoadGridController implements Initializable{
     @FXML
     void btnStartGridClicked() throws IOException {
         mediator.getScreenController().show(ScreenType.GAME);
+
+        // Backend Example
+        mediator.getHandleInput().startGame();
     }
 
     /**
@@ -99,6 +102,9 @@ public class LoadGridController implements Initializable{
     @FXML
     void btnBackClicked() throws IOException {
         mediator.getScreenController().show(ScreenType.START);
+
+        // Backend Example
+        mediator.getHandleInput().loadMenu();
     }
 
     /**

@@ -15,12 +15,20 @@ package cs221.GP01.java.model;
  */
 public class HandleInput {
 
+    public void loadMenu(){
+        System.out.println("Menu Loaded");
+    }
+
     public void startGame(){
         System.out.println("Game Started");
     }
 
     public void pauseGame(){
         System.out.println("Game Paused");
+    }
+
+    public void resumeGame(){
+        System.out.println("Game Resumed");
     }
 
     public void endGame(){
