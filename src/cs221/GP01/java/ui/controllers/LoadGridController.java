@@ -55,7 +55,7 @@ public class LoadGridController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources){
         // Load in from mediator
-        listViewRecents.setItems(mediator.getRecentGrids());
+        listViewRecents.setItems(mediator.getHandleOutput().getRecentGrids());
     }
 
 
@@ -90,7 +90,7 @@ public class LoadGridController implements Initializable{
         mediator.getScreenController().show(ScreenType.GAME);
 
         // Backend Example
-        mediator.getHandleInput().startGame();
+        mediator.getHandleInput().startGame(gridFile);
     }
 
     /**
@@ -102,9 +102,6 @@ public class LoadGridController implements Initializable{
     @FXML
     void btnBackClicked() throws IOException {
         mediator.getScreenController().show(ScreenType.START);
-
-        // Backend Example
-        mediator.getHandleInput().loadMenu();
     }
 
     /**

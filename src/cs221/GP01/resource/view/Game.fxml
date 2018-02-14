@@ -24,7 +24,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Box?>
-<?import javafx.scene.shape.Line?>
 
 <!--
     * Game - Game user interface definition.
@@ -36,7 +35,7 @@
     * @version 0.1  DRAFT
 -->
 
-<StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox fx:id="gameScreen" alignment="CENTER" prefHeight="385.0" prefWidth="756.0" stylesheets="/cs221/GP01/resource/css/JoggleCube.css">
          <HBox alignment="CENTER" prefHeight="41.0" prefWidth="200.0">
@@ -53,15 +52,7 @@
               <tabs>
                 <Tab text="3D View">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                                <Box fx:id="boggleCube" depth="100" height="100" layoutX="93.0" layoutY="104.0" rotate="82.9" width="100">
-                                 <rotationAxis>
-                                    <Point3D y="1.0" z="1.0" />
-                                 </rotationAxis>
-                                </Box>
-                           </children>
-                        </AnchorPane>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                   </content>
                 </Tab>
                   <Tab text="2.5D View">
@@ -78,6 +69,7 @@
                                     <Point3D y="1.0" z="0.1" />
                                  </rotationAxis>
                               </Box>
+                              <Box depth="20.0" height="20.0" layoutX="45.0" layoutY="145.0" width="20.0" />
                            </children>
                         </AnchorPane>
                     </content>
@@ -98,15 +90,15 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Label text="L" />
-                                    <Label text="L" GridPane.columnIndex="1" />
-                                    <Label text="L" GridPane.columnIndex="2" />
-                                    <Label text="L" GridPane.rowIndex="1" />
-                                    <Label text="L" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <Label text="L" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                    <Label text="L" GridPane.rowIndex="2" />
-                                    <Label text="L" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <Label text="Qu" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                    <Label fx:id="top1" text="L" />
+                                    <Label fx:id="top2" text="L" GridPane.columnIndex="1" />
+                                    <Label fx:id="top3" text="L" GridPane.columnIndex="2" />
+                                    <Label fx:id="top4" text="L" GridPane.rowIndex="1" />
+                                    <Label fx:id="top5" text="L" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label fx:id="top6" text="L" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <Label fx:id="top7" text="L" GridPane.rowIndex="2" />
+                                    <Label fx:id="top8" text="L" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Label fx:id="top9" text="Qu" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
                               <GridPane layoutX="120.0" layoutY="56.0" prefHeight="77.0" prefWidth="87.0" stylesheets="@../css/JoggleCube.css">
@@ -121,15 +113,15 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Label text="Label" />
-                                    <Label text="Label" GridPane.columnIndex="1" />
-                                    <Label text="Label" GridPane.columnIndex="2" />
-                                    <Label text="Label" GridPane.rowIndex="1" />
-                                    <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                    <Label stylesheets="@../css/JoggleCube.css" text="Label" GridPane.rowIndex="2" />
-                                    <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                    <Label fx:id="middle1" text="L" />
+                                    <Label fx:id="middle2" text="L" GridPane.columnIndex="1" />
+                                    <Label fx:id="middle3" text="L" GridPane.columnIndex="2" />
+                                    <Label fx:id="middle4" text="L" GridPane.rowIndex="1" />
+                                    <Label fx:id="middle5" text="L" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label fx:id="middle6" text="L" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <Label fx:id="middle7" stylesheets="@../css/JoggleCube.css" text="L" GridPane.rowIndex="2" />
+                                    <Label fx:id="middle8" text="L" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Label fx:id="middle9" text="L" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
                               <GridPane layoutX="229.0" layoutY="104.0" prefHeight="79.0" prefWidth="93.0" stylesheets="@../css/JoggleCube.css">
@@ -155,7 +147,6 @@
                                     <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
-                              <Line endX="100.0" layoutX="120.0" layoutY="161.0" startX="-100.0" />
                            </children>
                         </AnchorPane>
                   </content>

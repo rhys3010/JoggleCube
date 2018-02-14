@@ -13,9 +13,10 @@
 
 .label {
     -fx-font-size: 20;
+	-fx-background-fill: black, white ;
+	-fx-background-insets: 0, 1 ;
 }
 
 .GridPane {
-    -fx-border-color: black;
-    -fx-border-width: 2;
+	
 }

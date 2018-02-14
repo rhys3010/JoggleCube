@@ -64,10 +64,8 @@ public class StartController implements Initializable{
     @FXML
     private void btnStartNewGridClicked() throws IOException {
         mediator.getScreenController().show(ScreenType.GAME);
-
-        // Backend Example
-        mediator.getHandleInput().startGame();
-
+        mediator.getHandleInput().startRandomGame();
+        mediator.initalizeController(ScreenType.GAME);
     }
 
     /**
@@ -77,9 +75,7 @@ public class StartController implements Initializable{
     @FXML
     private void btnLoadGridClicked() throws IOException {
         mediator.getScreenController().show(ScreenType.LOAD);
-
-        // Backend Example
-        mediator.getHandleInput().loadMenu();
+        mediator.initalizeController(ScreenType.LOAD);
     }
 
     /**
@@ -88,9 +84,7 @@ public class StartController implements Initializable{
 
     public void btnHighScoreClicked() throws IOException{
         mediator.getScreenController().show(ScreenType.HIGH_SCORES);
-
-        // Backend Example
-        mediator.getHandleInput().showHighScores();
+        mediator.initalizeController(ScreenType.HIGH_SCORES);
     }
 
     /**

@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -61,6 +62,9 @@ public class GameController implements Initializable{
      */
     @Override
     public void initialize(URL location, ResourceBundle resources){
+        ArrayList<String> letters = mediator.getHandleOutput().getCubeData();
+
+        //todo load this data into grids for display
     }
 
     /**

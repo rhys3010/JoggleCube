@@ -9,17 +9,20 @@
 package cs221.GP01.java.ui;
 
 import cs221.GP01.java.model.HandleInput;
+import cs221.GP01.java.model.HandleOutput;
 import cs221.GP01.java.ui.ScreenType;
 import cs221.GP01.java.ui.controllers.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
- * Mediator - A class to behave as a mediator between UI and Backendl
+ * Mediator - A class to behave as a mediator between UI and Backend.
  * <p>
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @version 0.1
@@ -36,6 +39,8 @@ public class Mediator {
      */
     private ScreenController screenController;
 
+    private HashMap<ScreenType, Initializable> controllers = new HashMap<>();
+
     /**
      * All screen names (used to create and add to screenController)
      */
@@ -45,6 +50,7 @@ public class Mediator {
      * The Handle Input object to handle backend logic
      */
     private HandleInput handleInput = new HandleInput();
+    private HandleOutput handleOutput = new HandleOutput();
 
 
     /**
@@ -72,9 +78,17 @@ public class Mediator {
      * @return ScreenController
      */
     public ScreenController getScreenController(){
-
         return screenController;
     }
+
+    /**
+     * allows the backend or GUI to re-initialise a controller so it gets updated data from the backend.
+     *
+     * @param screenType the type of screen that needs its controller updating
+     */
+    public void initalizeController(ScreenType screenType){
+        controllers.get(screenType).initialize(null,null);
+    };
 
     /**
      * Utility function to create a scene and store in a loader
@@ -92,32 +106,38 @@ public class Mediator {
 
             case START:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Start.fxml"));
-                loader.setController(new StartController(this));
+                controllers.put(ScreenType.START,new StartController(this));
+                loader.setController(controllers.get(ScreenType.START));
                 break;
 
             case LOAD:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Load.fxml"));
-                loader.setController(new LoadGridController(this));
+                controllers.put(ScreenType.LOAD,new LoadGridController(this));
+                loader.setController(controllers.get(ScreenType.LOAD));
                 break;
 
             case GAME:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Game.fxml"));
-                loader.setController(new GameController(this));
+                controllers.put(ScreenType.GAME,new GameController(this));
+                loader.setController(controllers.get(ScreenType.GAME));
                 break;
 
             case PAUSE:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Pause.fxml"));
-                loader.setController(new PauseController(this));
+                controllers.put(ScreenType.PAUSE,new PauseController(this));
+                loader.setController(controllers.get(ScreenType.PAUSE));
                 break;
 
             case END:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "End.fxml"));
-                loader.setController(new EndController(this));
+                controllers.put(ScreenType.END,new EndController(this));
+                loader.setController(controllers.get(ScreenType.END));
                 break;
 
             case HIGH_SCORES:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "HighScore.fxml"));
-                loader.setController(new HighScoreController(this));
+                controllers.put(ScreenType.HIGH_SCORES,new HighScoreController(this));
+                loader.setController(controllers.get(ScreenType.HIGH_SCORES));
                 break;
 
             default:
@@ -129,16 +149,6 @@ public class Mediator {
         return loader;
     }
 
-    /**
-     * Get recently played/loaded grids
-     * @return a list of the recently opened grids
-     */
-    public ObservableList<String> getRecentGrids() {
-        ObservableList<String> recentGrids = FXCollections.observableArrayList (
-                "something/something/grid01.grid", "grid02.grid", "grid03.grid", "grid04.grid");
-        return recentGrids;
-    }
-
 
     /**
      * Get the handle input object
@@ -146,5 +156,14 @@ public class Mediator {
      */
     public HandleInput getHandleInput() {
         return handleInput;
+    }
+
+
+    /**
+     * Get the handle input object
+     * @return OutputInput
+     */
+    public HandleOutput getHandleOutput() {
+        return handleOutput;
     }
 }

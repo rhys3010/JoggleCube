@@ -11,7 +11,6 @@ package cs221.GP01.java.ui.controllers;
 import cs221.GP01.java.model.HighScore;
 import cs221.GP01.java.ui.Mediator;
 import cs221.GP01.java.ui.ScreenType;
-import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -21,7 +20,6 @@ import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,47 +44,20 @@ public class HighScoreController implements Initializable{
      * Parent Anchor
      */
     @FXML
-    Node root;
+    private Node root;
 
     /**
      * High Score Table
      */
     @FXML
-    TableView<HighScore> highScoreTable;
+    private TableView<HighScore> highScoreTable;
 
     /**
      * Table Columns
      */
     @FXML
-    TableColumn idCol, dateCol, scoreCol, nameCol;
+    private TableColumn idCol, dateCol, scoreCol, nameCol;
 
-
-    /**
-     * List of Example High Score entries
-     */
-    final ObservableList<HighScore> highScores = FXCollections.observableArrayList(
-            new HighScore(5161, "John"),
-            new HighScore(1415, "Adam"),
-            new HighScore(2515, "Wendy"),
-            new HighScore(5151, "Steve"),
-            new HighScore(6711, "Pete"),
-            new HighScore(1314, "Dave"),
-            new HighScore(4215, "Joe"),
-            new HighScore(1455, "Joan"),
-            new HighScore(6161, "Sara"),
-            new HighScore(3671, "Andrew"),
-            new HighScore(1551, "James"),
-            new HighScore(2565, "Levi")
-    );
-
-    /**
-     * Filtered list of HighScore entries to ensure only the top 10 scores are displayed
-     * usind filtered list
-     */
-    final FilteredList<HighScore> filteredHighScores = new FilteredList<HighScore>(
-            highScores,
-            HighScore -> highScores.indexOf(HighScore) < 10
-    );
 
     /**
      * An instance of the mediator object to interface with backend
@@ -95,21 +66,22 @@ public class HighScoreController implements Initializable{
 
     /**
      * Constructor to ensure mediator object is passed
-     * @param mediator
+     * @param mediator the mediator between UI and Backend.
      */
-    public HighScoreController(Mediator mediator){
-        this.mediator = mediator;
-    }
+    public HighScoreController(Mediator mediator){ this.mediator = mediator; }
 
 
     /**
      * Populate HighScore table with highscore data at end screen load
      * todo Add Rank Number to table
+     *
+     * todo add a loaded grid High score tab that is only displayed if mediator.getHandleInput().getLoadedGridHighScores() does not return a null and load in the data.
      * @param location
      * @param resources
      */
     @Override
     public void initialize(URL location, ResourceBundle resources){
+
         // Set Default Values for Cells
         dateCol.setCellValueFactory(
                 new PropertyValueFactory<HighScore, String>("Date")
@@ -126,6 +98,15 @@ public class HighScoreController implements Initializable{
 
         // Set Score sort type
         scoreCol.setSortType(TableColumn.SortType.DESCENDING);
+
+        //gets highScores from the mediator
+        ObservableList<HighScore> highScores = mediator.getHandleOutput().getOverallHighScores();
+
+        //filters it to the top 10
+        FilteredList<HighScore> filteredHighScores = new FilteredList<HighScore>(
+                highScores,
+                HighScore -> highScores.indexOf(HighScore) < 10
+        );
 
         // Populate the Table with filtered high scores
         highScoreTable.setItems(filteredHighScores);
@@ -148,9 +129,6 @@ public class HighScoreController implements Initializable{
     @FXML
     void btnReturnClicked() throws IOException {
         mediator.getScreenController().show(ScreenType.START);
-
-        // Backend Example
-        mediator.getHandleInput().loadMenu();
     }
 
 

@@ -8,6 +8,8 @@
 
 package cs221.GP01.java.model;
 
+import java.io.File;
+
 /**
  * HandleInput - Temporary Class to test UI -> Backend interfacing
  * @author Rhys Evans (rhe24)
@@ -15,31 +17,33 @@ package cs221.GP01.java.model;
  */
 public class HandleInput {
 
-    public void loadMenu(){
-        System.out.println("Menu Loaded");
+    public void startRandomGame(){
+        //todo load a random grid and start the timer
+        System.out.println("Random Game Started");
     }
 
-    public void startGame(){
-        System.out.println("Game Started");
+    public void startGame(File file){
+        //todo load grid from file and start the timer
+        System.out.println("Game Started from file");
     }
 
     public void pauseGame(){
+        //todo pause the timer
         System.out.println("Game Paused");
     }
 
     public void resumeGame(){
+        //todo resume the timer
         System.out.println("Game Resumed");
     }
 
     public void endGame(){
+        //todo end the game early stop timer etc.
         System.out.println("Game Ended");
     }
 
-    public void loadCube(){
-        System.out.println("Loading Cube");
-    }
-
-    public void showHighScores(){
-        System.out.println("Showing High Scores");
+    public boolean testWordvalidity(String word) {
+        //todo test if word is valid in the dictionary or not.
+        return true;
     }
 }
