@@ -8,7 +8,7 @@
 
 package cs221.GP01.java.ui.controllers;
 
-import cs221.GP01.java.ui.Mediator;
+import cs221.GP01.java.ui.UIController;
 import cs221.GP01.java.ui.ScreenType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -59,16 +59,16 @@ public class GameController implements Initializable{
     private TextField textField;
 
     /**
-     * An instance of the mediator object to interface with backend
+     * An instance of the UIController object to interface with backend
      */
-    private Mediator mediator;
+    private UIController UIController;
 
     /**
-     * Constructor to ensure mediator object is passed
-     * @param mediator
+     * Constructor to ensure UIController object is passed
+     * @param UIController
      */
-    public GameController(Mediator mediator){
-        this.mediator = mediator;
+    public GameController(UIController UIController){
+        this.UIController = UIController;
     }
 
     /**
@@ -80,7 +80,7 @@ public class GameController implements Initializable{
         foundWordsList.setItems(foundWords);
 
 
-        String[][][] letters = mediator.getJoggleCube().getCubeData();
+        String[][][] letters = UIController.getJoggleCube().getCubeData();
         GridPane[] twoDGrid =  {top,middle,bottom};
         for(int k = 0; k<3; k++){
             for(int i = 0; i<3;i++){
@@ -103,16 +103,16 @@ public class GameController implements Initializable{
      */
     @FXML
     private void btnEndGameClicked() {
-        mediator.getScreenController().show(ScreenType.END);
+        UIController.getScreenController().show(ScreenType.END);
 
         // Backend Example
-        mediator.getJoggleCube().endGame();
+        UIController.getJoggleCube().endGame();
     }
 
     @FXML
     private void btnSubmitClicked() {
         if(textField.getText().equals("")) {
-            if (mediator.getJoggleCube().testWordValidity(textField.getText())) {
+            if (UIController.getJoggleCube().testWordValidity(textField.getText())) {
                 foundWords.add(textField.getText());
                 textField.setText("");
                 //todo change the colour of the button to green
@@ -132,10 +132,10 @@ public class GameController implements Initializable{
      */
     @FXML
     private void btnPauseGameClicked(){
-        mediator.getScreenController().show(ScreenType.PAUSE);
+        UIController.getScreenController().show(ScreenType.PAUSE);
 
         // Backend Example
-        mediator.getJoggleCube().pauseGame();
+        UIController.getJoggleCube().pauseGame();
     }
 
 

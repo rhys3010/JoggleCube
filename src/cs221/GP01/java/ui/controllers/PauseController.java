@@ -8,7 +8,7 @@
 
 package cs221.GP01.java.ui.controllers;
 
-import cs221.GP01.java.ui.Mediator;
+import cs221.GP01.java.ui.UIController;
 import cs221.GP01.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -39,16 +39,16 @@ public class PauseController implements Initializable{
 
 
     /**
-     * An instance of the mediator object to interface with backend
+     * An instance of the UIController object to interface with backend
      */
-    private Mediator mediator;
+    private UIController UIController;
 
     /**
-     * Constructor to ensure mediator object is passed
-     * @param mediator
+     * Constructor to ensure UIController object is passed
+     * @param UIController
      */
-    public PauseController(Mediator mediator){
-        this.mediator = mediator;
+    public PauseController(UIController UIController){
+        this.UIController = UIController;
     }
 
     /**
@@ -66,8 +66,8 @@ public class PauseController implements Initializable{
      */
     @FXML
     void btnResumeClicked() throws IOException{
-        mediator.getScreenController().hide(ScreenType.PAUSE);
-        mediator.getJoggleCube().resumeGame();
+        UIController.getScreenController().hide(ScreenType.PAUSE);
+        UIController.getJoggleCube().resumeGame();
     }
 
     /**
@@ -76,17 +76,17 @@ public class PauseController implements Initializable{
     @FXML
     void btnExitClicked(){
         //todo are you sure about this pop-up?
-        mediator.getScreenController().show(ScreenType.START);
-        mediator.getJoggleCube().endGame();
-        mediator.getScreenController().hide(ScreenType.PAUSE);
+        UIController.getScreenController().show(ScreenType.START);
+        UIController.getJoggleCube().endGame();
+        UIController.getScreenController().hide(ScreenType.PAUSE);
     }
 
     @FXML
     void btnSettingsClicked(){
         //todo are you sure about this pop-up?
-        mediator.getScreenController().show(ScreenType.SETTINGS);
-        mediator.getJoggleCube().endGame();
-        mediator.getScreenController().hide(ScreenType.PAUSE);
+        UIController.getScreenController().show(ScreenType.SETTINGS);
+        UIController.getJoggleCube().endGame();
+        UIController.getScreenController().hide(ScreenType.PAUSE);
     }
 
     /**

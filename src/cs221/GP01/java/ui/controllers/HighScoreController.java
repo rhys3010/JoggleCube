@@ -9,7 +9,7 @@
 package cs221.GP01.java.ui.controllers;
 
 import cs221.GP01.java.model.HighScore;
-import cs221.GP01.java.ui.Mediator;
+import cs221.GP01.java.ui.UIController;
 import cs221.GP01.java.ui.ScreenType;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -60,22 +60,22 @@ public class HighScoreController implements Initializable{
 
 
     /**
-     * An instance of the mediator object to interface with backend
+     * An instance of the UIController object to interface with backend
      */
-    private Mediator mediator;
+    private UIController UIController;
 
     /**
-     * Constructor to ensure mediator object is passed
-     * @param mediator the mediator between UI and Backend.
+     * Constructor to ensure UIController object is passed
+     * @param UIController the UIController between UI and Backend.
      */
-    public HighScoreController(Mediator mediator){ this.mediator = mediator; }
+    public HighScoreController(UIController UIController){ this.UIController = UIController; }
 
 
     /**
      * Populate HighScore table with highscore data at end screen load
      * todo Add Rank Number to table
      *
-     * todo add a loaded grid High score tab that is only displayed if mediator.getHandleInput().getLoadedGridHighScores() does not return a null and load in the data.
+     * todo add a loaded grid High score tab that is only displayed if UIController.getHandleInput().getLoadedGridHighScores() does not return a null and load in the data.
      * @param location
      * @param resources
      */
@@ -99,8 +99,8 @@ public class HighScoreController implements Initializable{
         // Set Score sort type
         scoreCol.setSortType(TableColumn.SortType.DESCENDING);
 
-        //gets highScores from the mediator
-        ObservableList<HighScore> highScores = mediator.getJoggleCube().getOverallHighScores();
+        //gets highScores from the UIController
+        ObservableList<HighScore> highScores = UIController.getJoggleCube().getOverallHighScores();
 
         //filters it to the top 10
         FilteredList<HighScore> filteredHighScores = new FilteredList<HighScore>(
@@ -128,7 +128,7 @@ public class HighScoreController implements Initializable{
      */
     @FXML
     void btnReturnClicked() throws IOException {
-        mediator.getScreenController().show(ScreenType.START);
+        UIController.getScreenController().show(ScreenType.START);
     }
 
 

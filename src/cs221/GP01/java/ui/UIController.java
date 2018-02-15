@@ -19,12 +19,12 @@ import java.io.IOException;
 import java.util.HashMap;
 
 /**
- * Mediator - A class to behave as a mediator between UI and Backend.
+ * UIController - A class to behave as a mediator between UI and Backend.
  * <p>
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @version 0.1
  */
-public class Mediator {
+public class UIController {
 
     /**
      * The Path to the views package

@@ -8,7 +8,7 @@
 
 package cs221.GP01;
 
-import cs221.GP01.java.ui.Mediator;
+import cs221.GP01.java.ui.UIController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -63,10 +63,10 @@ public class Main extends Application {
         primaryStage.show();
 
         // Create a Joggle Cube object
-        Mediator mediator = new Mediator();
+        UIController UIController = new UIController();
 
-        // Initialize Mediator game
-        mediator.initialize(mainScene);
+        // Initialize UIController game
+        UIController.initialize(mainScene);
 
     }
 

@@ -8,14 +8,12 @@
 
 package cs221.GP01.java.ui.controllers;
 
-import cs221.GP01.java.ui.Mediator;
+import cs221.GP01.java.ui.UIController;
 import cs221.GP01.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -49,16 +47,16 @@ public class EndController implements Initializable{
     Node endOverlay;
 
     /**
-     * An instance of the mediator object to interface with backend
+     * An instance of the UIController object to interface with backend
      */
-    private Mediator mediator;
+    private UIController UIController;
 
     /**
-     * Constructor to ensure mediator object is passed
-     * @param mediator
+     * Constructor to ensure UIController object is passed
+     * @param UIController
      */
-    public EndController(Mediator mediator){
-        this.mediator = mediator;
+    public EndController(UIController UIController){
+        this.UIController = UIController;
     }
 
     /**
@@ -76,10 +74,10 @@ public class EndController implements Initializable{
      */
     @FXML
     void btnHighScoreClicked() throws IOException {
-        mediator.getScreenController().show(ScreenType.HIGH_SCORES);
-        mediator.initalizeController(ScreenType.HIGH_SCORES);
+        UIController.getScreenController().show(ScreenType.HIGH_SCORES);
+        UIController.initalizeController(ScreenType.HIGH_SCORES);
         // Unload End Overlay
-        mediator.getScreenController().hide(ScreenType.END);
+        UIController.getScreenController().hide(ScreenType.END);
 
 
     }
@@ -108,9 +106,9 @@ public class EndController implements Initializable{
      */
     @FXML
     void btnMenuClicked() throws IOException{
-        mediator.getScreenController().show(ScreenType.START);
+        UIController.getScreenController().show(ScreenType.START);
 
         // Unload End Overlay
-        mediator.getScreenController().hide(ScreenType.END);
+        UIController.getScreenController().hide(ScreenType.END);
     }
 }

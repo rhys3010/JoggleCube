@@ -1,6 +1,6 @@
 package cs221.GP01.java.ui.controllers;
 
-import cs221.GP01.java.ui.Mediator;
+import cs221.GP01.java.ui.UIController;
 import cs221.GP01.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,16 +18,16 @@ public class SettingsController implements Initializable {
     private Node root;
 
     /**
-     * An instance of the mediator object to interface with backend
+     * An instance of the UIController object to interface with backend
      */
-    private Mediator mediator;
+    private UIController UIController;
 
     /**
-     * Constructor to ensure mediator object is passed
-     * @param mediator
+     * Constructor to ensure UIController object is passed
+     * @param UIController
      */
-    public SettingsController(Mediator mediator){
-        this.mediator = mediator;
+    public SettingsController(UIController UIController){
+        this.UIController = UIController;
     }
 
     /**
@@ -48,7 +48,7 @@ public class SettingsController implements Initializable {
 
     @FXML
     private void btnBackClicked() throws IOException {
-        mediator.getScreenController().show(ScreenType.START);
+        UIController.getScreenController().show(ScreenType.START);
 
     }
 

@@ -8,7 +8,7 @@
 
 package cs221.GP01.java.ui.controllers;
 
-import cs221.GP01.java.ui.Mediator;
+import cs221.GP01.java.ui.UIController;
 import cs221.GP01.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -52,8 +52,8 @@ public class LoadGridController implements Initializable{
      */
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        // Load in from mediator
-        listViewRecents.setItems(mediator.getJoggleCube().getRecentGrids());
+        // Load in from UIController
+        listViewRecents.setItems(UIController.getJoggleCube().getRecentGrids());
     }
 
 
@@ -64,16 +64,16 @@ public class LoadGridController implements Initializable{
     Node root;
 
     /**
-     * An instance of the mediator object to interface with backend
+     * An instance of the UIController object to interface with backend
      */
-    private Mediator mediator;
+    private UIController UIController;
 
     /**
-     * Constructor to ensure mediator object is passed
-     * @param mediator
+     * Constructor to ensure UIController object is passed
+     * @param UIController
      */
-    public LoadGridController(Mediator mediator){
-        this.mediator = mediator;
+    public LoadGridController(UIController UIController){
+        this.UIController = UIController;
     }
 
 
@@ -85,10 +85,10 @@ public class LoadGridController implements Initializable{
      */
     @FXML
     void btnStartGridClicked() throws IOException {
-        mediator.getScreenController().show(ScreenType.GAME);
+        UIController.getScreenController().show(ScreenType.GAME);
 
         // Backend Example
-        mediator.getJoggleCube().startGame(gridFile);
+        UIController.getJoggleCube().startGame(gridFile);
     }
 
     /**
@@ -99,7 +99,7 @@ public class LoadGridController implements Initializable{
      */
     @FXML
     void btnBackClicked() throws IOException {
-        mediator.getScreenController().show(ScreenType.START);
+        UIController.getScreenController().show(ScreenType.START);
     }
 
     /**
