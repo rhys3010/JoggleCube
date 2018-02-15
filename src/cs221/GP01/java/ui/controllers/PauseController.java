@@ -82,6 +82,14 @@ public class PauseController implements Initializable{
         mediator.getScreenController().hide(ScreenType.PAUSE);
     }
 
+    @FXML
+    void btnSettingsClicked(){
+        //todo are you sure about this pop-up?
+        mediator.getScreenController().show(ScreenType.SETTINGS);
+        mediator.getHandleInput().endGame();
+        mediator.getScreenController().hide(ScreenType.PAUSE);
+    }
+
     /**
      * Get the root node of the scene
      * @return VBox - the root node

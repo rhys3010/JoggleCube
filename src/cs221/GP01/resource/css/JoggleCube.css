@@ -7,16 +7,88 @@
    */
 
 /*todo make the program look pretty*/
+
+/*applies to everything*/
+* {
+    -fx-alignment: CENTER;
+    -fx-text-alignment: CENTER;
+}
+
+/* the root box of each scene*/
 .root {
     -fx-background-color: lightblue;
+    -fx-padding: 30;
+    -fx-spacing: 10;
+    -fx-pref-height:400;
+    -fx-max-height:400;
+    -fx-min-height:400;
+    -fx-pref-width:600;
+    -fx-max-width: 600;
+    -fx-min-width:600;
 }
 
-.label {
+/* Overlay css */
+
+VBox.Overlay {
+    -fx-background-color: rgba(64, 64, 64, 0.75);
+    -fx-padding: 30;
+    -fx-spacing: 20;
+    -fx-pref-height:362;
+    -fx-max-height:362;
+    -fx-min-height:362;
+    -fx-pref-width:248;
+    -fx-max-width: 248;
+    -fx-min-width:248;
+}
+
+Label.Overlay {
+    -fx-font-size: 24;
+    -fx-text-fill: WHITE;
+}
+
+/*2d grid CSS */
+
+GridPane {
+    -fx-alignment: CENTER;
+    -fx-spacing:10;
+}
+
+GridPane Label {
+    -fx-background-color: black, white ;
+    -fx-background-insets: 0, 1 ;
+    -fx-pref-height:30;
+    -fx-pref-width:30;
+
+}
+
+/* 2.5D Grid CSS */
+
+Box {
+    -fx-rotate:-40;
+    -fx-pref-height:20px;
+    -fx-pref-width:20px;
+    -fx-pref-depth:20px;
+}
+
+/* 3d Grid CSS */
+
+
+/* other */
+
+HBox {
+    -fx-padding: 10;
+    -fx-spacing: 10;
+}
+
+Label.title {
+    -fx-font-size: 30;
+}
+
+Label.subTitle {
     -fx-font-size: 20;
-	-fx-background-fill: black, white ;
-	-fx-background-insets: 0, 1 ;
 }
 
-.GridPane {
-	
+Button {
+    -fx-pref-height:30px;
+    -fx-pref-width:150px;
 }

@@ -4,43 +4,26 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class HandleOutput {
 
-    public ArrayList<String> getCubeData(){
+    public String[][][] getCubeData(){
         //todo create an actual list of data
         System.out.println("Loading Cube");
 
-        ArrayList<String> letters = new ArrayList<>(27);
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
+        String[] alphabet = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Qu","R","S","T","U","V","W","X","Y","Z"};
+        int N = alphabet.length;
 
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
-        letters.add("Qu");
+        Random r = new Random();
+        String[][][] letters = new String[3][3][3];
+        for (int i = 0; i<3; i++){
+            for (int j = 0; j<3; j++){
+                for (int k = 0; k<3; k++){
+                    letters[i][j][k] = alphabet[r.nextInt(N)];
+                }
+            }
+        }
 
 
         return letters;

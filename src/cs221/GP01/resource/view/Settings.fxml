@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+            fx:id="root"
+            xmlns:fx="http://javafx.com/fxml"
+            stylesheets="/cs221/GP01/resource/css/JoggleCube.css"
+>
+    <Label text="Settings"/>
+    <!--todo add options here such as clear high scores -->
+    <Button fx:id="btnBack" mnemonicParsing="false" onAction="#btnBackClicked" text="Back" />
+
+</VBox>

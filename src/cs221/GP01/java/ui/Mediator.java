@@ -44,7 +44,7 @@ public class Mediator {
     /**
      * All screen names (used to create and add to screenController)
      */
-    private static final ScreenType SCREENS[] = {ScreenType.START, ScreenType.LOAD, ScreenType.GAME, ScreenType.PAUSE, ScreenType.END, ScreenType.HIGH_SCORES};
+    private static final ScreenType SCREENS[] = {ScreenType.START, ScreenType.SETTINGS, ScreenType.LOAD, ScreenType.GAME, ScreenType.PAUSE, ScreenType.END, ScreenType.HIGH_SCORES};
 
     /**
      * The Handle Input object to handle backend logic
@@ -110,6 +110,11 @@ public class Mediator {
                 loader.setController(controllers.get(ScreenType.START));
                 break;
 
+            case SETTINGS:
+                loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Settings.fxml"));
+                controllers.put(ScreenType.SETTINGS,new SettingsController(this));
+                loader.setController(controllers.get(ScreenType.SETTINGS));
+                break;
             case LOAD:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Load.fxml"));
                 controllers.put(ScreenType.LOAD,new LoadGridController(this));
