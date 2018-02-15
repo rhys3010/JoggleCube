@@ -1,12 +1,57 @@
+/*
+   * @(#) HandleInput.java 1.1 2018/02/12
+   *
+   * Copyright (c) 2012 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
+
 package cs221.GP01.java.model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
+import java.io.File;
 import java.util.Random;
 
-public class HandleOutput {
+/**
+ * PretendBackEnd - Temporary Class to test UI -> Backend interfacing
+ * @author Rhys Evans (rhe24)
+ * @author Nathan Williams
+ * @version 0.2
+ */
+public class PretendBackEnd implements JoggleCube{
+
+    public void startRandomGame(){
+        //todo load a random grid and start the timer
+        System.out.println("Random Game Started");
+    }
+
+    public void startGame(File file){
+        //todo load grid from file and start the timer
+        System.out.println("Game Started from file");
+    }
+
+    public void pauseGame(){
+        //todo pause the timer
+        System.out.println("Game Paused");
+    }
+
+    public void resumeGame(){
+        //todo resume the timer
+        System.out.println("Game Resumed");
+    }
+
+    public void endGame(){
+        //todo end the game early stop timer etc.
+        System.out.println("Game Ended");
+    }
+
+    public boolean testWordValidity(String word) {
+        //todo test if word is valid in the dictionary or not.
+        System.out.println("Checking Validity");
+        return true;
+    }
 
     public String[][][] getCubeData(){
         //todo create an actual list of data

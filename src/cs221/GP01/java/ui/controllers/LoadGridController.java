@@ -10,12 +10,10 @@ package cs221.GP01.java.ui.controllers;
 
 import cs221.GP01.java.ui.Mediator;
 import cs221.GP01.java.ui.ScreenType;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -55,7 +53,7 @@ public class LoadGridController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources){
         // Load in from mediator
-        listViewRecents.setItems(mediator.getHandleOutput().getRecentGrids());
+        listViewRecents.setItems(mediator.getJoggleCube().getRecentGrids());
     }
 
 
@@ -90,7 +88,7 @@ public class LoadGridController implements Initializable{
         mediator.getScreenController().show(ScreenType.GAME);
 
         // Backend Example
-        mediator.getHandleInput().startGame(gridFile);
+        mediator.getJoggleCube().startGame(gridFile);
     }
 
     /**

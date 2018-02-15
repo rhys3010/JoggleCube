@@ -100,7 +100,7 @@ public class HighScoreController implements Initializable{
         scoreCol.setSortType(TableColumn.SortType.DESCENDING);
 
         //gets highScores from the mediator
-        ObservableList<HighScore> highScores = mediator.getHandleOutput().getOverallHighScores();
+        ObservableList<HighScore> highScores = mediator.getJoggleCube().getOverallHighScores();
 
         //filters it to the top 10
         FilteredList<HighScore> filteredHighScores = new FilteredList<HighScore>(

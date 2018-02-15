@@ -12,7 +12,6 @@ import cs221.GP01.java.ui.Mediator;
 import cs221.GP01.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -68,7 +67,7 @@ public class PauseController implements Initializable{
     @FXML
     void btnResumeClicked() throws IOException{
         mediator.getScreenController().hide(ScreenType.PAUSE);
-        mediator.getHandleInput().resumeGame();
+        mediator.getJoggleCube().resumeGame();
     }
 
     /**
@@ -78,7 +77,7 @@ public class PauseController implements Initializable{
     void btnExitClicked(){
         //todo are you sure about this pop-up?
         mediator.getScreenController().show(ScreenType.START);
-        mediator.getHandleInput().endGame();
+        mediator.getJoggleCube().endGame();
         mediator.getScreenController().hide(ScreenType.PAUSE);
     }
 
@@ -86,7 +85,7 @@ public class PauseController implements Initializable{
     void btnSettingsClicked(){
         //todo are you sure about this pop-up?
         mediator.getScreenController().show(ScreenType.SETTINGS);
-        mediator.getHandleInput().endGame();
+        mediator.getJoggleCube().endGame();
         mediator.getScreenController().hide(ScreenType.PAUSE);
     }
 

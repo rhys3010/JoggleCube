@@ -1,32 +1,23 @@
 package cs221.GP01.java.model;
 
-/**
- * @author Samuel Jones - srj12
- * @version 0.1
- */
-public interface JoggleCubeController {
+import javafx.collections.ObservableList;
 
-    /**
-     * This handles the loading of the dictionary
-     * @param DictionaryFileName The file-name of the dictionary that is saved with the program
-     */
-    void loadDictionary(String DictionaryFileName);
+import java.io.File;
 
-    /**
-     * This handles the loading of the high scores
-     * @param highScoreFileName The file-name of the high scores that is saved with the program
-     */
-    void loadHighScores(String highScoreFileName);
+public class JoggleCubeController implements JoggleCube{
+    public JoggleCubeController(){
+        //loadDictionary();
+        //etc
+    }
 
-    /**
-     * This handles the saving of the High scores to a text file
-     * @param highScoreFileName The file-name of the high scores that is loaded with the program
-     */
-    void saveHighScores(String highScoreFileName);
-
-    /**
-     * This is the main application and handles all of the running of the program for the the main.java file including
-     * loading and saving of all data and the interaction of the backend with the UI controllers
-     */
-    void runJoggleCube();
+    public void startRandomGame() { }
+    public void startGame(File file) { }
+    public void pauseGame() { }
+    public void resumeGame() { }
+    public void endGame() { }
+    public boolean testWordValidity(String word) { return false; }
+    public String[][][] getCubeData() { return new String[0][][]; }
+    public ObservableList<HighScore> getLoadedGridHighScores() { return null; }
+    public ObservableList<HighScore> getOverallHighScores() { return null; }
+    public ObservableList<String> getRecentGrids() { return null; }
 }

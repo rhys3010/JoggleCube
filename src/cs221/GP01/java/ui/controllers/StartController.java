@@ -13,7 +13,6 @@ import cs221.GP01.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -64,7 +63,7 @@ public class StartController implements Initializable{
     @FXML
     private void btnStartNewGridClicked() {
         mediator.getScreenController().show(ScreenType.GAME);
-        mediator.getHandleInput().startRandomGame();
+        mediator.getJoggleCube().startRandomGame();
         mediator.initalizeController(ScreenType.GAME);
     }
 

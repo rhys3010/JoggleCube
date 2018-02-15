@@ -126,7 +126,7 @@
             </TabPane>
              <VBox>
                  <Label styleClass="subTitle" text="Words Found" />
-                 <ListView prefHeight="200.0" prefWidth="200.0" />
+                 <ListView fx:id="foundWordsList" prefHeight="200.0" prefWidth="200.0" />
              </VBox>
          </HBox>
          <TextField fx:id="textField" prefHeight="26.0" prefWidth="294.0">

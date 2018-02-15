@@ -8,12 +8,9 @@
 
 package cs221.GP01.java.ui;
 
-import cs221.GP01.java.model.HandleInput;
-import cs221.GP01.java.model.HandleOutput;
-import cs221.GP01.java.ui.ScreenType;
+import cs221.GP01.java.model.JoggleCube;
+import cs221.GP01.java.model.PretendBackEnd;
 import cs221.GP01.java.ui.controllers.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -47,10 +44,9 @@ public class Mediator {
     private static final ScreenType SCREENS[] = {ScreenType.START, ScreenType.SETTINGS, ScreenType.LOAD, ScreenType.GAME, ScreenType.PAUSE, ScreenType.END, ScreenType.HIGH_SCORES};
 
     /**
-     * The Handle Input object to handle backend logic
+     * The JoggleCube object to handle backend logic
      */
-    private HandleInput handleInput = new HandleInput();
-    private HandleOutput handleOutput = new HandleOutput();
+    private JoggleCube joggleCube = new PretendBackEnd();
 
 
     /**
@@ -157,18 +153,9 @@ public class Mediator {
 
     /**
      * Get the handle input object
-     * @return handleInput
+     * @return joggleCube
      */
-    public HandleInput getHandleInput() {
-        return handleInput;
-    }
-
-
-    /**
-     * Get the handle input object
-     * @return OutputInput
-     */
-    public HandleOutput getHandleOutput() {
-        return handleOutput;
+    public JoggleCube getJoggleCube() {
+        return joggleCube;
     }
 }

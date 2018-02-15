@@ -10,19 +10,18 @@ package cs221.GP01.java.ui.controllers;
 
 import cs221.GP01.java.ui.Mediator;
 import cs221.GP01.java.ui.ScreenType;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -40,6 +39,11 @@ public class GameController implements Initializable{
      */
     @FXML
     private StackPane root;
+
+    @FXML
+    private ListView<String> foundWordsList;
+
+    private ObservableList<String> foundWords = FXCollections.observableArrayList();
 
     @FXML
     private GridPane top,middle,bottom;
@@ -72,13 +76,18 @@ public class GameController implements Initializable{
      */
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        String[][][] letters = mediator.getHandleOutput().getCubeData();
+        //
+        foundWordsList.setItems(foundWords);
+
+
+        String[][][] letters = mediator.getJoggleCube().getCubeData();
         GridPane[] twoDGrid =  {top,middle,bottom};
         for(int k = 0; k<3; k++){
             for(int i = 0; i<3;i++){
                 for(int j = 0; j < 3; j++){
                     Label label = new Label(letters[k][i][j]);
                     label.setOnMouseClicked( e ->{
+                        //todo write checks etc.
                         textField.appendText(label.getText());
                     });
                     twoDGrid[k].add(label,i,j);
@@ -86,7 +95,7 @@ public class GameController implements Initializable{
             }
         }
 
-        //todo load this data into grids for display
+        //todo load this data into the other grids for display
     }
 
     /**
@@ -97,14 +106,25 @@ public class GameController implements Initializable{
         mediator.getScreenController().show(ScreenType.END);
 
         // Backend Example
-        mediator.getHandleInput().endGame();
+        mediator.getJoggleCube().endGame();
     }
 
     @FXML
     private void btnSubmitClicked() {
-        //todo add word to list if valid
-        mediator.getHandleInput().testWordvalidity(textField.getText());
+        if(textField.getText().equals("")) {
+            if (mediator.getJoggleCube().testWordValidity(textField.getText())) {
+                foundWords.add(textField.getText());
+                textField.setText("");
+                //todo change the colour of the button to green
+            } else {
+                //todo change the colour of the button to red
+            }
+        } else {
+            //todo change the colour of the button to red
+        }
     }
+
+    //todo add method to change the submit buttons colour back when the the mouse is next clicked maybe?
 
 
     /**
@@ -115,7 +135,7 @@ public class GameController implements Initializable{
         mediator.getScreenController().show(ScreenType.PAUSE);
 
         // Backend Example
-        mediator.getHandleInput().pauseGame();
+        mediator.getJoggleCube().pauseGame();
     }
 
 
