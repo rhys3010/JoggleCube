@@ -1,0 +1,65 @@
+Project: Group Project 01
+Meeting: Weekly Project Meeting
+
+Persons present: 
+	Nathan Williams, 
+	Alex Thumwood, 
+	Rhys Evans, 
+	Samuel Jones, 
+	Agata Lafek, 
+	Aleksandra Medej
+	Wayne Auberry
+Persons not Present:
+	Lampros Petridis,
+	Cameron Humphreys
+
+Place and date of meeting: CIS, Thu 8th February 2018, 10:10am
+
+Circulation list: All project members, plus project manager
+Author: Nathan Williams
+Date of minutes: 8th Feb 2018
+Version: 1.1
+
+Matters arising:
+===========
+
+1.	Apologies from Cameron: 
+“I was up until the early hours of the morning with a cough - I've overslept”
+
+2.	Apologies from Lampros:
+“I am sick”
+
+New business:
+===========
+
+1.	If Cameron and Lapros don’t write in their blog by next week and not attend the tutorial they’ll be getting a yellow card. 
+	ACTION: cah27, srj12
+	a.	Wayne has emailed Lampros and Cameron asking for update.
+
+2.	Progress has been made on building a GUI and User Interface Specification documentations by Nathan, Rhys and Alex.
+
+3.	Samuel working with Cameron on Overall System architecture and UML diagram. Good progress made, more ideas are to be added after the discussion with group.
+
+4.	All should record the number of hours they have worked on their blogs. 
+	ACTION: Everyone
+
+5.	CARRIED?. Quality assurance: Lampros to look into the documents SE.QA.01, 02 and 03, and to explain to the group next week how QA works on the project. 
+	Action: lap12
+
+6.	CARRIED. Test specification document – due 22th Feb (tutorial 4). Agata and Alexandra to read SE.QA.06 and to start making systems tests for the test specification. They should make example tests for requirements FR1 to FR5. 
+	Action: agl6, alm82
+
+7.	CARRIED? All group members need to read the project requirements and Group Intro documents by next week and know about what the project will do. 
+	ACTION: lap12, cah27
+
+8.	Continue on from last week 
+	ACTION: Everyone
+
+9.	Everyone happy to use LaTeX
+
+AOB
+===
+None. 
+
+
+
