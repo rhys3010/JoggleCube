@@ -79,6 +79,14 @@ public class StartController implements Initializable{
     }
 
     /**
+     *
+     */
+    public void btnSettingsClicked() throws IOException{
+        mediator.getScreenController().show(ScreenType.HIGH_SCORES);
+        mediator.initalizeController(ScreenType.HIGH_SCORES);
+    }
+
+    /**
      * When the HighScore button is clicked it will load the Highscore scene.
      */
 
