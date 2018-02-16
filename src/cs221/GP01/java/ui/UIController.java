@@ -46,7 +46,11 @@ public class UIController {
     /**
      * The JoggleCube object to handle backend logic
      */
-    private JoggleCube joggleCube = new PretendBackEnd();
+    private JoggleCube joggleCube ;
+
+    public UIController(JoggleCube joggleCube) {
+        this.joggleCube = joggleCube;
+    }
 
 
     /**

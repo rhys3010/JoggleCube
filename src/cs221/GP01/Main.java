@@ -8,6 +8,8 @@
 
 package cs221.GP01;
 
+import cs221.GP01.java.model.JoggleCube;
+import cs221.GP01.java.model.PretendBackEnd;
 import cs221.GP01.java.ui.UIController;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -37,12 +39,15 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
+        //todo launch the real back end
+        JoggleCube joggleCube = new PretendBackEnd();
+
         // Array to store all program icons
         Image icons[] = {
                 new Image("cs221/GP01/resource/img/icon/icon16.png"),
-                new Image("cs221/GP01/resource/img/icon/icon16.png"),
-                new Image("cs221/GP01/resource/img/icon/icon16.png"),
-                new Image("cs221/GP01/resource/img/icon/icon16.png")
+                new Image("cs221/GP01/resource/img/icon/icon32.png"),
+                new Image("cs221/GP01/resource/img/icon/icon64.png"),
+                new Image("cs221/GP01/resource/img/icon/icon128.png")
         };
 
         // Create main scene and initialize with a dummy root node
@@ -63,7 +68,7 @@ public class Main extends Application {
         primaryStage.show();
 
         // Create a Joggle Cube object
-        UIController UIController = new UIController();
+        UIController UIController = new UIController(joggleCube);
 
         // Initialize UIController game
         UIController.initialize(mainScene);
