@@ -20,7 +20,7 @@
     * @version 0.1  DRAFT
 -->
 
-<VBox fx:id="endOverlay" styleClass="Overlay" stylesheets="@../css/End.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="endOverlay" styleClass="Overlay" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <Label styleClass="Overlay" text="GAME OVER" />
     <Button fx:id="menuBtn" mnemonicParsing="false" onAction="#btnMenuClicked" text="Back to Menu" />
     <Button fx:id="SaveBtn" mnemonicParsing="false" onAction="#btnSaveClicked" text="Save Grid" />

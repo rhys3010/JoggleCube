@@ -68,6 +68,8 @@ public class Main extends Application {
         // Initialize UIController game
         UIController.initialize(mainScene);
 
+        System.out.println(javafx.scene.text.Font.getFamilies());
+
     }
 
     /**
