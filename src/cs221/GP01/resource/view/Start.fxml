@@ -8,6 +8,7 @@
         *
 -->
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
@@ -21,13 +22,15 @@
     * @version 0.1  DRAFT
 -->
 
-<VBox fx:id="root"
-      stylesheets="/cs221/GP01/resource/css/JoggleCube.css"
-      xmlns="http://javafx.com/javafx/8.0.121"
-      xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="root" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
       <Label styleClass="title" text="JoggleCube" />
       <Button fx:id="btnStartNewGrid" mnemonicParsing="false" onAction="#btnStartNewGridClicked" text="Start New Grid" />
       <Button fx:id="btnLoadGrid" mnemonicParsing="false" onAction="#btnLoadGridClicked" text="Load Grid" />
       <Button fx:id="btnHighScore" mnemonicParsing="false" onAction="#btnHighScoreClicked" text="High Score" />
       <Button fx:id="btnSettings" mnemonicParsing="false" onAction="#btnSettingsClicked" text="Settings" />
+
+      <stylesheets>
+            <URL value="@../css/Start.css" />
+            <URL value="@../css/BaseStyle.css" />
+      </stylesheets>
 </VBox>

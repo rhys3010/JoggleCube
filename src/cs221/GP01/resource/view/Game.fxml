@@ -8,6 +8,7 @@
         *
 -->
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
@@ -35,52 +36,53 @@
     * @version 0.1  DRAFT
 -->
 <!-- @formatter:off -->
-<StackPane fx:id="root" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" stylesheets="/cs221/GP01/resource/css/JoggleCube.css">
+
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
       <VBox fx:id="gameScreen">
          <HBox>
-               <Label styleClass="title" text="JoggleCube"/>
+               <Label styleClass="title" text="JoggleCube" />
                <Label styleClass="subTitle" text="Timer: " />
                <Label styleClass="subTitle" text="10:51" />
          </HBox>
          <HBox>
             <TabPane prefHeight="237.0" prefWidth="367.0" tabClosingPolicy="UNAVAILABLE">
                 <Tab text="3D View">
-                    <AnchorPane prefHeight="180.0" prefWidth="200.0" >
-                        <Box width="120" height="120" depth="120" layoutX="150" layoutY="100"><rotationAxis><Point3D y="1.0" x="-0.5" z="0.5"/></rotationAxis></Box>
+                    <AnchorPane prefHeight="180.0" prefWidth="200.0">
+                        <Box depth="120" height="120" layoutX="150" layoutY="100" width="120"><rotationAxis><Point3D x="-0.5" y="1.0" z="0.5" /></rotationAxis></Box>
                     </AnchorPane>
                 </Tab>
                   <Tab text="2.5D View">
                       <AnchorPane prefHeight="180.0" prefWidth="200.0">
-                               <Box width="20" height="20" depth="20" layoutX="55" layoutY="28"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="55" layoutY="54"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="55" layoutY="80"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="35" layoutY="28"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="35" layoutY="54"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="35" layoutY="80"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="15" layoutY="28"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="15" layoutY="54"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="15" layoutY="80"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="55" layoutY="28" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="55" layoutY="54" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="55" layoutY="80" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="35" layoutY="28" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="35" layoutY="54" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="35" layoutY="80" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="15" layoutY="28" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="15" layoutY="54" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="15" layoutY="80" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
 
 
-                               <Box width="20" height="20" depth="20" layoutX="150" layoutY="40"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="150" layoutY="70"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="150" layoutY="100"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="130" layoutY="40"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="130" layoutY="70"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="130" layoutY="100"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="110" layoutY="40"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="110" layoutY="70"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="110" layoutY="100"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="150" layoutY="40" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="150" layoutY="70" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="150" layoutY="100" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="130" layoutY="40" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="130" layoutY="70" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="130" layoutY="100" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="110" layoutY="40" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="110" layoutY="70" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="110" layoutY="100" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
 
-                               <Box width="20" height="20" depth="20" layoutX="250" layoutY="60"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="250" layoutY="90"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="250" layoutY="120"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="230" layoutY="60"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="230" layoutY="90"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="230" layoutY="120"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="210" layoutY="60"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="210" layoutY="90"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
-                               <Box width="20" height="20" depth="20" layoutX="210" layoutY="120"><rotationAxis><Point3D y="1.0" x="-0.3" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="250" layoutY="60" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="250" layoutY="90" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="250" layoutY="120" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="230" layoutY="60" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="230" layoutY="90" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="230" layoutY="120" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="210" layoutY="60" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="210" layoutY="90" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
+                               <Box depth="20" height="20" layoutX="210" layoutY="120" width="20"><rotationAxis><Point3D x="-0.3" y="1.0" /></rotationAxis></Box>
                         </AnchorPane>
                   </Tab>
                 <Tab text="2D View">
@@ -140,4 +142,8 @@
                <Button mnemonicParsing="false" onAction="#btnEndGameClicked" text="End Game" />
          </HBox>
       </VBox>
+   <stylesheets>
+      <URL value="@../css/Game.css" />
+      <URL value="@../css/BaseStyle.css" />
+   </stylesheets>
 </StackPane>

@@ -60,7 +60,7 @@ public class EndController implements Initializable{
     }
 
     /**
-     * todo Do initialization stuff here
+     * todo initialize stuff
      */
     @Override
     public void initialize(URL location, ResourceBundle resources){

@@ -8,10 +8,10 @@
         *
 -->
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <!--
     * Used with the EndController to display a pause overlay on the main game screen.
@@ -20,13 +20,13 @@
     * @version 0.1  DRAFT
 -->
 
-<VBox styleClass="Overlay" fx:id="pauseOverlay"
-      stylesheets="/cs221/GP01/resource/css/JoggleCube.css"
-      xmlns="http://javafx.com/javafx/8.0.121"
-      xmlns:fx="http://javafx.com/fxml/1"
->
+<VBox fx:id="pauseOverlay" styleClass="Overlay" stylesheets="@../css/Overlay.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <Label styleClass="Overlay" text="GAME PAUSED" />
     <Button fx:id="resumeBtn" mnemonicParsing="false" onAction="#btnResumeClicked" text="Resume" />
-    <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#btnExitClicked"  text="Exit" />
-    <Button fx:id="settingsBtn" mnemonicParsing="false" onAction="#btnSettingsClicked"  text="Settings" />
+    <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#btnExitClicked" text="Exit" />
+    <Button fx:id="settingsBtn" mnemonicParsing="false" onAction="#btnSettingsClicked" text="Settings" />
+    <stylesheets>
+        <URL value="@../css/Overlay.css" />
+        <URL value="@../css/BaseStyle.css" />
+    </stylesheets>
 </VBox>

@@ -1,0 +1,33 @@
+/*
+   * @(#) Game.css 1.1 2018/02/16
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
+
+/* Game Screen CSS */
+
+/*2d grid CSS */
+
+GridPane {
+    -fx-alignment: CENTER;
+    -fx-spacing:10;
+}
+
+GridPane Label {
+    -fx-background-color: black, white ;
+    -fx-background-insets: 0, 1 ;
+    -fx-pref-height:30;
+    -fx-pref-width:30;
+
+}
+
+/* 2.5D Grid CSS */
+
+Box {
+    -fx-rotate:-40;
+    -fx-pref-height:20px;
+    -fx-pref-width:20px;
+    -fx-pref-depth:20px;
+}

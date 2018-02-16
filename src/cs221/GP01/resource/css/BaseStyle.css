@@ -1,0 +1,32 @@
+/*
+   * @(#) JoggleCube.css 1.1 2018/02/16
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
+
+
+/* COLOR CONSTANTS */
+*{
+    -fx-primary-color: #3498db;
+    -fx-secondary-color: #2980b9;
+    -fx-tertiary-color: #595959;
+}
+
+/*applies to everything*/
+* {
+    -fx-alignment: CENTER;
+    -fx-text-alignment: CENTER;
+}
+
+/* the root box of each scene*/
+.root {
+    -fx-background-color: -fx-primary-color;
+    -fx-padding: 30;
+    -fx-spacing: 10;
+    -fx-pref-height:400;
+    -fx-pref-width:600;
+}
+
+
