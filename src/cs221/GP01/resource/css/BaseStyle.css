@@ -26,4 +26,8 @@
     -fx-pref-width:600;
 }
 
+.button {
+    -fx-cursor: hand;
+}
+
 
