@@ -63,7 +63,7 @@
     -fx-background-color: -fx-secondary-color;
     -fx-pref-height: 80px;
     -fx-alignment: center;
-    -fx-spacing: 30px;
+    -fx-spacing: 40px;
 }
 
 .footerIcon{
@@ -72,6 +72,10 @@
     -fx-cursor: hand;
     -fx-pref-height: 64;
     -fx-pref-width: 64;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 64 64;
+    -fx-background-insets: 0 0 0 0, 0, 0, 0;
 }
 
 #btnSettings{

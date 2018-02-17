@@ -44,9 +44,9 @@
    <bottom>
       <HBox styleClass="footer" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnSettings" mnemonicParsing="false" styleClass="footerIcon"/>
-            <Button fx:id="btnHighScore" mnemonicParsing="false" styleClass="footerIcon"/>
-            <Button fx:id="btnHelp" mnemonicParsing="false" styleClass="footerIcon"/>
+            <Button fx:id="btnSettings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" styleClass="footerIcon" />
+            <Button fx:id="btnHighScore" mnemonicParsing="false" styleClass="footerIcon" />
+            <Button fx:id="btnHelp" mnemonicParsing="false" styleClass="footerIcon" />
          </children>
       </HBox>
    </bottom>
