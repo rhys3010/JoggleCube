@@ -24,7 +24,7 @@
     -fx-spacing: 20px;
 }
 
-.button{
+.startMenuButton{
     -fx-pref-width: 300px;
     -fx-pref-height: 50px;
     -fx-background-color: -fx-tertiary-color;
@@ -54,7 +54,7 @@
     -fx-background-image: url("../img/icon/load_icon.png");
 }
 
-.button:hover{
+.startMenuButton:hover{
     -fx-text-fill: white;
 }
 

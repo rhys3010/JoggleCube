@@ -35,8 +35,8 @@
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="mainContainer">
          <VBox styleClass="buttonContainer">
             <children>
-                  <Button fx:id="btnStartNewGrid" mnemonicParsing="false" onAction="#btnStartNewGridClicked" styleClass="button" text="Start New Grid" />
-                  <Button fx:id="btnLoadGrid" mnemonicParsing="false" onAction="#btnLoadGridClicked" styleClass="button" text="Load Grid" />
+                  <Button fx:id="btnStartNewGrid" mnemonicParsing="false" onAction="#btnStartNewGridClicked" styleClass="startMenuButton" text="Start New Grid" />
+                  <Button fx:id="btnLoadGrid" mnemonicParsing="false" onAction="#btnLoadGridClicked" styleClass="startMenuButton" text="Load Grid" />
             </children>
          </VBox>
       </VBox>
