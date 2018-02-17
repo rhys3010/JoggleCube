@@ -44,21 +44,9 @@
    <bottom>
       <HBox styleClass="footer" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" styleClass="footerIcon">
-               <image>
-                  <Image url="@../img/icon/settings_icon.png" />
-               </image>
-            </ImageView>
-             <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" styleClass="footerIcon">
-                 <image>
-                     <Image url="@../img/icon/highscore_icon.png" />
-                 </image>
-             </ImageView>
-             <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" styleClass="footerIcon">
-                 <image>
-                     <Image url="@../img/icon/help_icon.png" />
-                 </image>
-             </ImageView>
+            <Button fx:id="btnSettings" mnemonicParsing="false" styleClass="footerIcon"/>
+            <Button fx:id="btnHighScore" mnemonicParsing="false" styleClass="footerIcon"/>
+            <Button fx:id="btnHelp" mnemonicParsing="false" styleClass="footerIcon"/>
          </children>
       </HBox>
    </bottom>

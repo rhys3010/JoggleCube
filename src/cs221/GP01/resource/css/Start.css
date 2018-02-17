@@ -39,10 +39,18 @@
 }
 
 #btnStartNewGrid{
-    -fx-background-image: url("../img/icon/new_icon.png");
+    -fx-background-image: url("../img/icon/new_icon_grey.png");
 }
 
 #btnLoadGrid{
+    -fx-background-image: url("../img/icon/load_icon_grey.png");
+}
+
+#btnStartNewGrid:hover{
+    -fx-background-image: url("../img/icon/new_icon.png");
+}
+
+#btnLoadGrid:hover{
     -fx-background-image: url("../img/icon/load_icon.png");
 }
 
@@ -59,5 +67,33 @@
 }
 
 .footerIcon{
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
     -fx-cursor: hand;
+    -fx-pref-height: 64;
+    -fx-pref-width: 64;
+}
+
+#btnSettings{
+    -fx-background-image: url("../img/icon/settings_icon_grey.png");
+}
+
+#btnHighScore{
+    -fx-background-image: url("../img/icon/highscore_icon_grey.png");
+}
+
+#btnHelp{
+    -fx-background-image: url("../img/icon/help_icon_grey.png");
+}
+
+#btnSettings:hover{
+    -fx-background-image: url("../img/icon/settings_icon.png");
+}
+
+#btnHighScore:hover{
+    -fx-background-image: url("../img/icon/highscore_icon.png");
+}
+
+#btnHelp:hover{
+    -fx-background-image: url("../img/icon/help_icon.png");
 }
