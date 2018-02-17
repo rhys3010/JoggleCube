@@ -4,10 +4,20 @@ import javafx.collections.ObservableList;
 
 import java.io.File;
 
-public class JoggleCubeController implements JoggleCube{
+public class JoggleCubeController implements IJoggleCubeController{
+
+    private Dictionary dictionary = new Dictionary();
+
+    //dictionary.txt was taken from an open source scrabble bot at
+    //URL: https://github.com/jonbcard/scrabble-bot/blob/master/src/dictionary.txt
+    //todo adding in functionality for different dictionaries, as well as loading letters in different languages
+    private final String dictionaryFileName = "dictionary.txt";
+
     public JoggleCubeController(){
-        //loadDictionary();
         //etc
+        dictionary.loadDictionary(dictionaryFileName);
+        System.out.println(dictionary.searchDictionary("AA"));
+        System.out.println(dictionary.searchDictionary("ZYZZYVAS"));
     }
 
     public void startRandomGame() { }
