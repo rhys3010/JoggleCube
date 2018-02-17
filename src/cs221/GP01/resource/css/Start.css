@@ -6,14 +6,12 @@
    *
    */
 
-.mainContainer{
-    -fx-spacing: 40px;
-}
-
 .banner{
     -fx-alignment: center;
     -fx-pref-width: 300px;
     -fx-pref-height: 100px;
+    -fx-spacing: 30px;
+    -fx-padding: 20 0 0 0;
 }
 
 .title{
@@ -33,12 +31,20 @@
     -fx-text-fill: #cecece;
     -fx-font-size: 18px;
     -fx-alignment: center;
-    -fx-background-image: url("../img/icon/icon32.png");
     -fx-background-size: 32 32;
     -fx-background-repeat: no-repeat;
     -fx-background-position: left;
     -fx-background-insets: 0 0 0 -10, 0, 0, 0;
     -fx-background-radius: 10px;
+}
+
+#btnStartNewGrid{
+    -fx-background-image: url("../img/icon/new_icon.png");
+
+}
+
+#btnLoadGrid{
+    -fx-background-image: url("../img/icon/load_icon.png");
 }
 
 .button:hover{
