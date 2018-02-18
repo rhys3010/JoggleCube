@@ -64,7 +64,7 @@
 }
 
 #btnSettings{
-    -fx-background-image: url("../img/icon/settings_icon_grey.png");
+    -fx-background-image: url("../img/icon/settings_icon_inactive.png");
 }
 
 #btnHighScore{
