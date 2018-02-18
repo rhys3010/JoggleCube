@@ -43,7 +43,7 @@
 }
 
 #btnLoadGrid{
-    -fx-background-image: url("../img/icon/load_icon_grey.png");
+    -fx-background-image: url("../img/icon/load_icon_inactive.png");
 }
 
 #btnStartNewGrid:hover{
@@ -83,11 +83,11 @@
 }
 
 #btnHighScore{
-    -fx-background-image: url("../img/icon/highscore_icon_grey.png");
+    -fx-background-image: url("../img/icon/highscore_icon_inactive.png");
 }
 
 #btnHelp{
-    -fx-background-image: url("../img/icon/help_icon_grey.png");
+    -fx-background-image: url("../img/icon/help_icon_inactive.png");
 }
 
 #btnSettings:hover{
