@@ -15,6 +15,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
 <!--
     * Used with the HighScoreController to display a scene to show Score, Highscores and restart button
@@ -29,14 +30,25 @@
         <URL value="@../css/HighScore.css" />
     </stylesheets>
    <center>
-       <TableView fx:id="highScoreTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="highScoreTable">
-           <columns>
-               <TableColumn fx:id="idCol" sortable="false" text="#" />
-               <TableColumn fx:id="nameCol" editable="false" resizable="false" sortable="false" text="Name" />
-               <TableColumn fx:id="scoreCol" editable="false" resizable="false" text="SCORE" />
-               <TableColumn fx:id="dateCol" editable="false" resizable="false" sortable="false" text="DATE / TIME" />
-           </columns>
-       </TableView>
+      <VBox styleClass="mainContainer">
+         <children>
+            <HBox styleClass="selectionContainer">
+               <children>
+                  <Button mnemonicParsing="false" />
+                  <Label text="All Cubes" />
+                  <Button mnemonicParsing="false" />
+               </children>
+            </HBox>
+             <TableView fx:id="highScoreTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="highScoreTable">
+                 <columns>
+                     <TableColumn fx:id="idCol" sortable="false" text="#" />
+                     <TableColumn fx:id="nameCol" editable="false" resizable="false" sortable="false" text="Name" />
+                     <TableColumn fx:id="scoreCol" editable="false" resizable="false" text="SCORE" />
+                     <TableColumn fx:id="dateCol" editable="false" resizable="false" sortable="false" text="DATE / TIME" />
+                 </columns>
+             </TableView>
+         </children>
+      </VBox>
    </center>
    <top>
       <HBox styleClass="header">

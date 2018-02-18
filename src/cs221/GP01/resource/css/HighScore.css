@@ -7,11 +7,36 @@
    */
 
 .root{
-    -fx-spacing: 30px;
+    -fx-spacing: 10px;
 }
 
 #btnHighScore{
     -fx-background-image: url("../img/icon/highscore_icon.png");
+}
+
+.mainContainer{
+    -fx-alignment: center;
+    -fx-spacing: 20px;
+}
+
+.selectionContainer{
+    -fx-spacing: 20px;
+    -fx-alignment: center;
+}
+
+.selectionContainer .label{
+    -fx-text-fill: white;
+    -fx-font-size: 28px;
+}
+
+.selectionContainer .button{
+    -fx-background-color: white;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 48 48;
+    -fx-background-insets: 0 0 0 0, 0, 0, 0;
+    -fx-pref-height: 48;
+    -fx-pref-width: 48;
 }
 
 .highScoreTable{
