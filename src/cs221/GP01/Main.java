@@ -72,7 +72,6 @@ public class Main extends Application {
 
         // Initialize UIController game
         UIController.initialize(mainScene);
-
     }
 
     /**

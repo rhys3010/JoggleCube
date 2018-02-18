@@ -8,6 +8,42 @@
 
 /* Game Screen CSS */
 
+
+.mainContainer{
+    -fx-spacing: 50px;
+}
+
+.topMenu{
+    -fx-background-color: -fx-secondary-color;
+    -fx-pref-width: 600px;
+    -fx-pref-height: 70px;
+    -fx-alignment: center;
+    -fx-spacing: 170px;
+}
+
+.topMenu .timer{
+    -fx-font-size: 48px;
+    -fx-text-fill: white;
+}
+
+.topMenu .button{
+    -fx-background-color: -fx-tertiary-color;
+    -fx-pref-height: 32;
+    -fx-pref-width: 32;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 32 32;
+}
+
+#pauseButton{
+
+}
+
+#settingsButton{
+}
+
+
+
 /*2d grid CSS */
 
 GridPane {
