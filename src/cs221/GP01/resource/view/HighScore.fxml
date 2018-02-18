@@ -34,9 +34,9 @@
          <children>
             <HBox styleClass="selectionContainer">
                <children>
-                  <Button mnemonicParsing="false" onAction="#previousPage" />
+                  <Button fx:id="leftPageNav" mnemonicParsing="false" onAction="#previousPage" />
                   <Label fx:id="highScorePageLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="All Cubes" />
-                  <Button mnemonicParsing="false" onAction="#nextPage" />
+                  <Button fx:id="rightPageNav" mnemonicParsing="false" onAction="#nextPage" />
                </children>
             </HBox>
              <TableView fx:id="highScoreTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="highScoreTable">

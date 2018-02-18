@@ -32,13 +32,29 @@
 }
 
 .selectionContainer .button{
-    -fx-background-color: white;
+    -fx-background-color: transparent;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-size: 48 48;
+    -fx-background-size: 32 32;
     -fx-background-insets: 0 0 0 0, 0, 0, 0;
-    -fx-pref-height: 48;
-    -fx-pref-width: 48;
+    -fx-pref-height: 32;
+    -fx-pref-width: 32;
+}
+
+#leftPageNav{
+    -fx-background-image: url("../img/icon/left_arrow_icon_inactive.png");
+}
+
+#rightPageNav{
+    -fx-background-image: url("../img/icon/right_arrow_icon_inactive.png");
+}
+
+#leftPageNav:hover{
+    -fx-background-image: url("../img/icon/left_arrow_icon.png");
+}
+
+#rightPageNav:hover{
+    -fx-background-image: url("../img/icon/right_arrow_icon.png");
 }
 
 .highScoreTable{
