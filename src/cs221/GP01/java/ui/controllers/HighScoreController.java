@@ -82,6 +82,12 @@ public class HighScoreController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources){
 
+        // Highscores for overall cubes
+        ObservableList<HighScore> overallHighScores = UIController.getJoggleCube().getOverallHighScores();
+
+        // Highscores for current cube
+        ObservableList<HighScore> currentCubeHighScores = UIController.getJoggleCube().getCurrentCubeHighScores();
+
         // Set Default Values for Cells
         dateCol.setCellValueFactory(
                 new PropertyValueFactory<HighScore, String>("Date")
@@ -99,17 +105,8 @@ public class HighScoreController implements Initializable{
         // Set Score sort type
         scoreCol.setSortType(TableColumn.SortType.DESCENDING);
 
-        //gets highScores from the UIController
-        ObservableList<HighScore> highScores = UIController.getJoggleCube().getOverallHighScores();
-
-        //filters it to the top 10
-        FilteredList<HighScore> filteredHighScores = new FilteredList<HighScore>(
-                highScores,
-                HighScore -> highScores.indexOf(HighScore) < 10
-        );
-
         // Populate the Table with filtered high scores
-        highScoreTable.setItems(filteredHighScores);
+        populateTable(overallHighScores);
 
         // Prevent user from reordering table
         columnReorder(highScoreTable, idCol, nameCol, scoreCol, dateCol);
@@ -166,5 +163,20 @@ public class HighScoreController implements Initializable{
      */
     public Node getRoot(){
         return root;
+    }
+
+    /**
+     * Helper function to populate the highscore table
+     * @param list - a filtered list of the highscores to populate the table with
+     */
+    private void populateTable(ObservableList<HighScore> list){
+
+        //filters list to the top 10
+        FilteredList<HighScore> filteredList = new FilteredList<HighScore>(
+                list,
+                HighScore -> list.indexOf(HighScore) < 10
+        );
+
+        highScoreTable.setItems(filteredList);
     }
 }

@@ -59,6 +59,12 @@ public interface JoggleCube {
 
     /**
      *
+     * @return the current cube highscores
+     */
+    ObservableList<HighScore> getCurrentCubeHighScores();
+
+    /**
+     *
      * @return recently loaded grids
      */
     ObservableList<String> getRecentGrids();
