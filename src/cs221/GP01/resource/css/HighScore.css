@@ -27,6 +27,8 @@
 .selectionContainer .label{
     -fx-text-fill: white;
     -fx-font-size: 28px;
+    -fx-pref-width: 200px;
+    -fx-alignment: center;
 }
 
 .selectionContainer .button{

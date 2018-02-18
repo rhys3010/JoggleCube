@@ -1,10 +1,10 @@
 /*
-   * @(#) HighScoreController.java 1.0 2018/02/12
-   *
-   * Copyright (c) 2018 University of Wales, Aberystwyth.
-   * All rights reserved.
-   *
-   */
+ * @(#) HighScoreController.java 1.0 2018/02/12
+ *
+ * Copyright (c) 2018 University of Wales, Aberystwyth.
+ * All rights reserved.
+ *
+ */
 
 package cs221.GP01.java.ui.controllers;
 
@@ -17,6 +17,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -38,8 +39,6 @@ import java.util.ResourceBundle;
  */
 public class HighScoreController implements Initializable{
 
-
-
     /**
      * Parent Anchor
      */
@@ -58,6 +57,11 @@ public class HighScoreController implements Initializable{
     @FXML
     private TableColumn idCol, dateCol, scoreCol, nameCol;
 
+    /**
+     * The label of the highscore page
+     */
+    @FXML
+    private Label highScorePageLabel;
 
     /**
      * An instance of the UIController object to interface with backend
@@ -65,10 +69,34 @@ public class HighScoreController implements Initializable{
     private UIController UIController;
 
     /**
+     * Highscores for all cubes
+     */
+    private ObservableList<HighScore> overallHighScores;
+
+    /**
+     * Highscores for the currently played cube
+     */
+    private ObservableList<HighScore> currentCubeHighScores;
+
+    /**
+     * The index of the current high score page
+     */
+    private int currentHighScorePageIndex = 0;
+
+    /**
+     * The different highscore pages that can be displayed
+     */
+    private final String HIGH_SCORE_PAGES[] = {"Overall", "Current"};
+
+    /**
      * Constructor to ensure UIController object is passed
      * @param UIController the UIController between UI and Backend.
      */
-    public HighScoreController(UIController UIController){ this.UIController = UIController; }
+    public HighScoreController(UIController UIController){
+        this.UIController = UIController;
+        overallHighScores = UIController.getJoggleCube().getOverallHighScores();
+        currentCubeHighScores = UIController.getJoggleCube().getCurrentCubeHighScores();
+    }
 
 
     /**
@@ -81,12 +109,6 @@ public class HighScoreController implements Initializable{
      */
     @Override
     public void initialize(URL location, ResourceBundle resources){
-
-        // Highscores for overall cubes
-        ObservableList<HighScore> overallHighScores = UIController.getJoggleCube().getOverallHighScores();
-
-        // Highscores for current cube
-        ObservableList<HighScore> currentCubeHighScores = UIController.getJoggleCube().getCurrentCubeHighScores();
 
         // Set Default Values for Cells
         dateCol.setCellValueFactory(
@@ -105,9 +127,6 @@ public class HighScoreController implements Initializable{
         // Set Score sort type
         scoreCol.setSortType(TableColumn.SortType.DESCENDING);
 
-        // Populate the Table with filtered high scores
-        populateTable(overallHighScores);
-
         // Prevent user from reordering table
         columnReorder(highScoreTable, idCol, nameCol, scoreCol, dateCol);
 
@@ -115,6 +134,9 @@ public class HighScoreController implements Initializable{
         highScoreTable.getSortOrder().add(scoreCol);
         highScoreTable.sort();
         scoreCol.setSortable(false);
+
+        // Populate the Table with filtered high scores
+        populateTable(overallHighScores);
     }
 
 
@@ -157,19 +179,15 @@ public class HighScoreController implements Initializable{
         });
     }
 
-    /**
-     * Get the root node of the FXML
-     * @return root - the root node
-     */
-    public Node getRoot(){
-        return root;
-    }
 
     /**
      * Helper function to populate the highscore table
      * @param list - a filtered list of the highscores to populate the table with
      */
     private void populateTable(ObservableList<HighScore> list){
+
+        // Clear table
+        //highScoreTable.getItems().clear();
 
         //filters list to the top 10
         FilteredList<HighScore> filteredList = new FilteredList<HighScore>(
@@ -178,5 +196,54 @@ public class HighScoreController implements Initializable{
         );
 
         highScoreTable.setItems(filteredList);
+    }
+
+    /**
+     * Advance to the next page in the Highscores list
+     * todo consider other ways of doing this
+     */
+    @FXML
+    public void nextPage(){
+        currentHighScorePageIndex++;
+
+        // Use modulo to circulate through the list
+        currentHighScorePageIndex %= HIGH_SCORE_PAGES.length;
+
+        changePage();
+    }
+
+    /**
+     * Go the previous page in the highscores list
+     */
+    @FXML
+    public void previousPage(){
+        currentHighScorePageIndex--;
+
+        // Java made this happen, I'm sorry :(
+        // (Java always returns the remainder of a modulo operation so it doesn't do well with modulo of negative numbers, that's why the below line is such a cluster-fun)
+        currentHighScorePageIndex  = (((currentHighScorePageIndex % HIGH_SCORE_PAGES.length) + HIGH_SCORE_PAGES.length) % HIGH_SCORE_PAGES.length);
+
+        changePage();
+    }
+
+    /**
+     * Utility function to change the page of the high score table
+     */
+    private void changePage(){
+        if(HIGH_SCORE_PAGES[currentHighScorePageIndex].equals("Overall")){
+            populateTable(overallHighScores);
+            highScorePageLabel.setText("All Cubes");
+        }else if(HIGH_SCORE_PAGES[currentHighScorePageIndex].equals("Current")) {
+            populateTable(currentCubeHighScores);
+            highScorePageLabel.setText("Current Cube");
+        }
+    }
+
+    /**
+     * Get the root node of the FXML
+     * @return root - the root node
+     */
+    public Node getRoot(){
+        return root;
     }
 }
