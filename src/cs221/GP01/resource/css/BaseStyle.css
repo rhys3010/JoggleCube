@@ -33,20 +33,20 @@
 /* Footer of each scene*/
 .footer{
     -fx-background-color: -fx-secondary-color;
-    -fx-pref-height: 80px;
+    -fx-pref-height: 60px;
     -fx-alignment: center;
-    -fx-spacing: 40px;
+    -fx-spacing: 30px;
 }
 
 .footerIcon{
     -fx-background-color: transparent;
     -fx-background-radius: 0;
     -fx-cursor: hand;
-    -fx-pref-height: 64;
-    -fx-pref-width: 64;
+    -fx-pref-height: 48;
+    -fx-pref-width: 48;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-size: 64 64;
+    -fx-background-size: 48 48;
     -fx-background-insets: 0 0 0 0, 0, 0, 0;
 }
 
@@ -62,6 +62,10 @@
     -fx-background-image: url("../img/icon/help_icon_inactive.png");
 }
 
+#btnMenu{
+   -fx-background-image: url("../img/icon/menu_icon_inactive.png");
+}
+
 #btnSettings:hover{
     -fx-background-image: url("../img/icon/settings_icon.png");
 }
@@ -72,6 +76,10 @@
 
 #btnHelp:hover{
     -fx-background-image: url("../img/icon/help_icon.png");
+}
+
+#btnMenu:hover{
+    -fx-background-image: url("../img/icon/menu_icon.png");
 }
 
 

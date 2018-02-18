@@ -57,3 +57,7 @@
 .startMenuButton:hover{
     -fx-text-fill: white;
 }
+
+#btnMenu{
+    -fx-background-image: url("../img/icon/menu_icon.png");
+}

@@ -28,8 +28,8 @@
 
 <BorderPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
-        <URL value="@../css/Start.css" />
         <URL value="@../css/BaseStyle.css" />
+        <URL value="@../css/Start.css" />
     </stylesheets>
    <center>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="mainContainer">
@@ -44,8 +44,9 @@
    <bottom>
       <HBox styleClass="footer" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnSettings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnSettingsClicked" styleClass="footerIcon" />
+            <Button fx:id="btnMenu" mnemonicParsing="false" styleClass="footerIcon" />
             <Button fx:id="btnHighScore" mnemonicParsing="false" onAction="#btnHighScoreClicked" styleClass="footerIcon" />
+            <Button fx:id="btnSettings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnSettingsClicked" styleClass="footerIcon" />
             <Button fx:id="btnHelp" mnemonicParsing="false" styleClass="footerIcon" />
          </children>
       </HBox>
