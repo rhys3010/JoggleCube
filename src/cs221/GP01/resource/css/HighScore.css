@@ -42,20 +42,13 @@
 }
 
 #leftPageNav{
-    -fx-background-image: url("../img/icon/left_arrow_icon_inactive.png");
-}
-
-#rightPageNav{
-    -fx-background-image: url("../img/icon/right_arrow_icon_inactive.png");
-}
-
-#leftPageNav:hover{
     -fx-background-image: url("../img/icon/left_arrow_icon.png");
 }
 
-#rightPageNav:hover{
+#rightPageNav{
     -fx-background-image: url("../img/icon/right_arrow_icon.png");
 }
+
 
 .highScoreTable{
     -fx-pref-height: 300px;
