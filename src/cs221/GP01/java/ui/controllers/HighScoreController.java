@@ -127,8 +127,16 @@ public class HighScoreController implements Initializable{
      * @throws IOException if Start.fxml doesn't exist
      */
     @FXML
-    void btnReturnClicked() throws IOException {
+    void btnMenuClicked() throws IOException {
         UIController.getScreenController().show(ScreenType.START);
+    }
+
+    /**
+     * Open settings menu when the settings button is clicked
+     */
+    @FXML
+    public void btnSettingsClicked() {
+        UIController.getScreenController().show(ScreenType.SETTINGS);
     }
 
 

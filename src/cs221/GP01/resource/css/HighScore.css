@@ -5,3 +5,32 @@
    * All rights reserved.
    *
    */
+
+.root{
+    -fx-spacing: 30px;
+}
+
+#btnHighScore{
+    -fx-background-image: url("../img/icon/highscore_icon.png");
+}
+
+.highScoreTable{
+    -fx-pref-height: 300px;
+    -fx-pref-width: 500px;
+}
+
+#idCol{
+    -fx-pref-width: 45px;
+}
+
+#nameCol{
+    -fx-pref-width: 120px;
+}
+
+#scoreCol{
+    -fx-pref-width: 150px;
+}
+
+#dateCol{
+    -fx-pref-width: 185px;
+}

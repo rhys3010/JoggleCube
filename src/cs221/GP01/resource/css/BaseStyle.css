@@ -30,6 +30,19 @@
     -fx-cursor: hand;
 }
 
+/* Header of each scene */
+.header{
+    -fx-background-color: -fx-secondary-color;
+    -fx-pref-height: 70px;
+    -fx-alignment: center;
+    -fx-pref-width: 300px;
+}
+
+.headerTitle{
+    -fx-text-fill: white;
+    -fx-font-size: 38px;
+}
+
 /* Footer of each scene*/
 .footer{
     -fx-background-color: -fx-secondary-color;
