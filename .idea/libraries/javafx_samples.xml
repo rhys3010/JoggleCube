@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="javafx_samples">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dev/20180208/JavaFX testing/javafx_samples/Ensemble8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dev/20180208/JavaFX testing/javafx_samples/Modena.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dev/20180208/JavaFX testing/javafx_samples/MandelbrotSet.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
