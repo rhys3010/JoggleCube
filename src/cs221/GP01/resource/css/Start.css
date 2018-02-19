@@ -6,6 +6,11 @@
    *
    */
 
+@font-face{
+    font-family: Digital-7;
+    stc: url('../font/Digital-7.ttf');
+}
+
 .banner{
     -fx-alignment: center;
     -fx-pref-width: 300px;

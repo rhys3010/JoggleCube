@@ -9,7 +9,7 @@
 /* Game Screen CSS */
 
 @font-face{
-    font-family: Digital-7;
+    font-family: 'Digital-7';
     stc: url('../font/Digital-7.ttf');
 }
 
@@ -29,7 +29,6 @@
 .topMenu .timerLabel{
     -fx-font-size: 48px;
     -fx-text-fill: white;
-    -fx-font-family: "Courier New";
 }
 
 .topMenu .scoreLabel{
