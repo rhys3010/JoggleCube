@@ -1,0 +1,110 @@
+\documentclass{project}
+\usepackage[pdfauthor={Nathan Williams},pdftitle={Software Engineering Group Project, User Interface Specification},pdftex]{hyperref}
+\begin{document}
+\title{Software Engineering Group Project}
+\subtitle{User Interface Specification, Use Case Document}
+\author{Nathan Williams - naw21}     
+\shorttitle{Use Case Document}
+\version{0.1.3}
+\status{Draft}
+\date{2018-02-01}
+\configref{GP01-UIS-UCD}
+\maketitle
+\tableofcontents
+\newpage
+\section{INTRODUCTION}
+
+\subsection{Purpose of this Document}
+
+This document describes the main use cases of the system. It should be read in the context of the Group Project, taking into account the JoggleCube Requirements Specification \cite{SE.QA.CSRS}
+
+\subsection{Scope}
+
+This document covers who the typical users of the system are, their needs, use cases and any errors they may come across.
+
+The document should be read by the developers working on implementing the system.
+
+\subsection{Objectives}
+This Document aims to:
+\begin{itemize}
+	\item define who the users of the system are.
+	\item identify their specific needs.
+	\item explain the use cases of the system for each type of user.
+	\item identify possible error conditions and what is to be done about them.
+\end{itemize}
+
+\section{Typical Users}
+\subsection{Second Year Computer Science Students}
+	As described in the JoggleCube Requirements Specification \cite{SE.QA.CSRS}, these users are familiar with standard software tools, and with WIMP software. They are by default, quite lazy, and so the software should provide the indicated features with the fewest possible mouse movements and keystrokes.
+	\subsubsection{Typical Sceond Year Computer Science Student}
+		\paragraph{John Doe}
+			John Doe is a student at Aberystwyth University who loves to spend his time lazing around in bed and gaming when he is not sitting in lectures playing games on his laptop trying to look interested. He enjoys puzzle games to keep his mind occupied and currently plays Boggle religiously against the same grid trying to find more and more obscure words. He currently struggles to get the same grid over and over again and has to keep track of the score on a separate txt document from the game. He would love it if this could be automated and he could challenge himself against the same grid multiple times.
+		\paragraph{Patrick Butcher}
+			Patrick Butcher is a student at Aberystwyth University who enjoys challenging his friends. He'll challenge them to beat his high scores on various games. He would love a game where he can challenge his friends by simply sharing a high score table, that they can load with ease and see his high score.
+		\paragraph{Faith Berry}
+			Faith Berry is one of the few girls studying compsci at Aberystwyth University and likes new and interesting challenges, so instead of playing repeatedly against the same board, Faith would like to play against a new grid each time and have an overall high score table, to see how many points she scored compared to previous games.
+	
+	
+
+\section{Use Cases}
+	\subsection{Second Year Computer Science Students}
+		\subsubsection{Play against a new Grid}
+			The user will click the Start Game button and a new grid will be generated for 	the user to compete against, the user will now be able to play the game (please see use case: \ref{Playing the game}).
+		\subsubsection{Compete against a saved grid}
+			The user will click the load Grid button and a screen will be displayed where the user can select a saved grid from a list of recently saved grids or load a grid from a file using a standard fileChooser. Once that has happened the user can click the start grid button to load the grid, the user will now be able to play the game (please see use case: \ref{Playing the game}).
+		\subsubsection{Playing the game} \label{Playing the game}
+			The user will be faced with a 3d cube with the 27 letters in a 3x3x3 grid. Space for the words that the user has found, an input bar for building words from the letters, a button for confirming the found word and pause and end game buttons. 
+			
+			The user can then repeat these actions until the timer runs out.
+			
+			\paragraph{Cube rotation}
+			The user will be able to rotate the cube by holding the right mouse button and moving the mouse.
+			\paragraph{Finding a Word}
+			The user can select letters by clicking on the relevant boxes on the 3d cube with the mouse, to build up a word, or they can enter the letters manually into the input box. They can then press the confirm word button to check that is it a valid word. If it is valid, the button will go green and the word will be added to the found words list and the input box will be cleared ready for the next word. If it is not a valid word the button will go red, the user may then change the letters to try alternative words.
+		
+			
+		\subsubsection{Pausing} \label{Pausing}
+		The user can pause the game by pressing the pause button with the mouse or pressing the escape key.
+		\subsubsection{Ending the game} \label{Ending the game}
+		The user can finish the game early before the timer runs out by clicking the exit game button or the timer will run out.
+		\subsubsection{Save Score} \label{Save score}
+			Once the user has ended the game they may enter a name into a box and press the save score button which will added them to the overall high score table and the grids own high score table.
+		\subsubsection{Save Grid}	\label{Save grid}
+			If they would like to replay a grid they must save the grid by clicking the save button which will allow them to save the grid to file by selecting a file name in the fileChooser.
+		\subsubsection{View Overall high score} \label{View Overall highscore}
+		From the home screen the user can press the high scores button to view the current overall high scores.
+		\subsubsection{View Grid High score} \label{View Grid HigScore}
+		Click the load grid button on the home screen then a screen will be displayed where the user can select a saved grid from a list of recently saved grids or load a grid from a file using a standard fileChooser. Once that has happened the user can click the View Grid scores button to display the high score for this grid.
+		
+		Or when a user finishes the game the user will be displayed the high score for that grid and have the option to save their score to the high score table(see \ref{Save score}  on saving a score).
+		\subsubsection{Finding help} \label{Finding help}
+		From the home screen or pause screen the user can press the help button to bring up a helpful guide on how to play.
+		
+\section{Error Conditions}
+	Non yet will look into these at a later date. 
+
+\clearpage
+\addcontentsline{toc}{section}{REFERENCES}
+\begin{thebibliography}{5}
+\bibitem{SE.QA.CSRS} \emph{Software Engineering Group Projects}
+JoggleCube Game Requirements Specification.
+C. J. Price SE.QA.CSRS. 1.0 Release.
+\end{thebibliography}
+\clearpage
+\addcontentsline{toc}{section}{DOCUMENT HISTORY}
+\section*{DOCUMENT HISTORY}
+\begin{tabular}{|l | l | l | l | l |}
+\hline
+Version & CCF No. & Date & Changes made to Document & Changed by \\
+\hline
+0.1 & N/A & 2018-02-01 & Initial creation & NAW21 \\
+\hline
+0.1.1 & N/A & 2018-02-02 & Begun writing the introduction and Typical Users Section & NAW21 \\
+\hline
+0.1.2 & N/A & 2018-02-06 & Started writing use cases & NAW21 \\
+\hline
+0.1.3 & N/A & 2018-02-07 & More Use Cases & NAW21 \\
+\hline
+\end{tabular}
+\label{thelastpage}
+\end{document}
