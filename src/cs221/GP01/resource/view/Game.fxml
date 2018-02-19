@@ -40,9 +40,14 @@
 <StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
       <VBox fx:id="gameScreen" styleClass="mainContainer">
          <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="topMenu">
-         <Button fx:id="settingsButton" mnemonicParsing="false" />
-             <Label styleClass="timer" text="10:00" />
-         <Button fx:id="pauseButton" mnemonicParsing="false" />
+         <Label styleClass="scoreLabel" text="156" />
+             <Label styleClass="timerLabel" text="10:00" />
+         <HBox styleClass="buttonContainer">
+            <children>
+               <Button fx:id="settingsButton" mnemonicParsing="false" />
+               <Button fx:id="pauseButton" mnemonicParsing="false" />
+            </children>
+         </HBox>
          </HBox>
          <HBox>
             <TabPane prefHeight="237.0" prefWidth="367.0" tabClosingPolicy="UNAVAILABLE">
@@ -143,7 +148,7 @@
          </HBox>
       </VBox>
    <stylesheets>
-      <URL value="@../css/BaseStyle.css" />
       <URL value="@../css/Game.css" />
+      <URL value="@../css/BaseStyle.css" />
    </stylesheets>
 </StackPane>

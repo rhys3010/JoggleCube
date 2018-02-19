@@ -8,6 +8,11 @@
 
 /* Game Screen CSS */
 
+@font-face{
+    font-family: Digital-7;
+    stc: url('../font/Digital-7.ttf');
+}
+
 .mainContainer{
     -fx-spacing: 50px;
 }
@@ -17,15 +22,29 @@
     -fx-pref-width: 600px;
     -fx-pref-height: 70px;
     -fx-alignment: center;
-    -fx-spacing: 170px;
+    -fx-spacing: 140px;
 }
 
-.topMenu .timer{
+
+.topMenu .timerLabel{
     -fx-font-size: 48px;
+    -fx-text-fill: white;
+    -fx-font-family: "Courier New";
+}
+
+.topMenu .scoreLabel{
+    -fx-font-size: 32px;
     -fx-text-fill: white;
 }
 
-.topMenu .button{
+
+.topMenu .buttonContainer {
+    -fx-spacing: 10px;
+    -fx-alignment: center;
+}
+
+
+.topMenu .buttonContainer .button{
     -fx-background-color: -fx-tertiary-color;
     -fx-pref-height: 32;
     -fx-pref-width: 32;
