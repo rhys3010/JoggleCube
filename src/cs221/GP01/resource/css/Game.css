@@ -8,9 +8,10 @@
 
 /* Game Screen CSS */
 
+/* Digital Clock font*/
 @font-face{
-    font-family: 'Digital-7';
-    stc: url('../font/Digital-7.ttf');
+    font-family: 'DS-Digital';
+    src: url('../font/DS-DIGI.TTF');
 }
 
 .mainContainer{
@@ -22,18 +23,20 @@
     -fx-pref-width: 600px;
     -fx-pref-height: 70px;
     -fx-alignment: center;
-    -fx-spacing: 140px;
+    -fx-spacing: 160px;
 }
 
 
 .topMenu .timerLabel{
     -fx-font-size: 48px;
     -fx-text-fill: white;
+    -fx-font-family: DS-Digital;
 }
 
 .topMenu .scoreLabel{
-    -fx-font-size: 32px;
+    -fx-font-size: 48px;
     -fx-text-fill: white;
+    -fx-font-family: DS-Digital;
 }
 
 

@@ -44,7 +44,7 @@
              <Label styleClass="timerLabel" text="5:00" />
          <HBox styleClass="buttonContainer">
             <children>
-               <Button fx:id="settingsButton" mnemonicParsing="false" />
+               <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#btnPauseGameClicked" />
                <Button fx:id="pauseButton" mnemonicParsing="false" />
             </children>
          </HBox>
