@@ -52,14 +52,23 @@
     -fx-pref-width: 32;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-size: 32 32;
+    -fx-background-size: 20 20;
 }
 
 #pauseButton{
+    -fx-background-image: url("../img/icon/pause_icon_inactive.png");
+}
 
+#pauseButton:hover{
+    -fx-background-image: url("../img/icon/pause_icon.png");
 }
 
 #settingsButton{
+    -fx-background-image: url("../img/icon/settings_icon_inactive_alt.png");
+}
+
+#settingsButton:hover{
+    -fx-background-image: url("../img/icon/settings_icon.png");
 }
 
 
