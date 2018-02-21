@@ -27,8 +27,13 @@ public class Dictionary implements IDictionary{
      */
     public void loadDictionary(String filename){
         //Load
-        File file = new File("out\\production\\GP01\\cs221\\GP01\\resource\\dictionary\\" + filename);
-        System.out.println(file.getAbsolutePath());
+        File file = new File("src\\cs221\\GP01\\resource\\dictionary\\" + filename);
+        //Finding the absolute path
+        //System.out.println(file.getAbsolutePath());
+
+        //Variable to take load time of the dictionary
+        long currentTime = System.currentTimeMillis();
+
         String input;
         try{
             Scanner in = new Scanner(file);
@@ -40,7 +45,8 @@ public class Dictionary implements IDictionary{
             //An error in file name
             System.out.println("Dictionary file not found");
         }
-
+        System.out.print("Time taken to load dictionary: ");
+        System.out.println(System.currentTimeMillis() - currentTime);
     }
 
     /**
@@ -50,7 +56,13 @@ public class Dictionary implements IDictionary{
      */
     public boolean searchDictionary(String word){
         //Uses toUpperCase as all words are stored in upper case
-        return dictionary.containsKey(word.toUpperCase());
+        long currentTime = System.currentTimeMillis();
+
+        boolean hasBeenFound = dictionary.containsKey(word.toUpperCase());
+
+        System.out.print("Time taken to search dictionary: ");
+        System.out.println(System.currentTimeMillis() - currentTime);
+        return hasBeenFound;
     }
 
     /**
