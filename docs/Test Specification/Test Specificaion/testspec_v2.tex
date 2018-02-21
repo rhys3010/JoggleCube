@@ -1,6 +1,8 @@
 \documentclass{project}
 \usepackage[pdfauthor={Author},pdftitle={Software Engineering Group Project, Test Specification},pdftex]{hyperref}
 
+\usepackage{longtable}
+
 \begin{document}
 \title{Software Engineering Group Project}
 \subtitle{Test Specification}
@@ -24,7 +26,7 @@
 
 \section{TESTS}
 
-\begin{tabular}{|p{0.7cm}|p{1cm}|p{3.5cm}|p{3.2cm}|p{3.5cm}|p{3.5cm}|}
+\begin{longtable}{|p{0.7cm}|p{1cm}|p{3.5cm}|p{3.2cm}|p{3.5cm}|p{3.5cm}|}
 \hline
 Test Ref & Req Tested & Test Content & Input  & Output & Pass Criteria \\ \hline \hline
 
@@ -194,7 +196,7 @@ Third plane: none
 052 & FR11 & Check that final game score is calculated correctly. & Finish game creating more than one word.
 & Total score is displayed on the end screen. & Total score is sum of scores for each word. \\ \hline
 
-\end{tabular}
+\end{longtable}
 
 \clearpage
 \addcontentsline{toc}{section}{REFERENCES}
