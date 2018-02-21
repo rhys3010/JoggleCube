@@ -8,7 +8,7 @@
 
 package cs221.GP01.java.ui;
 
-import cs221.GP01.java.model.JoggleCube;
+import cs221.GP01.java.model.IJoggleCubeController;
 import cs221.GP01.java.model.PretendBackEnd;
 import cs221.GP01.java.ui.controllers.*;
 import javafx.fxml.FXMLLoader;
@@ -46,9 +46,9 @@ public class UIController {
     /**
      * The JoggleCube object to handle backend logic
      */
-    private JoggleCube joggleCube ;
+    private IJoggleCubeController joggleCube ;
 
-    public UIController(JoggleCube joggleCube) {
+    public UIController(IJoggleCubeController joggleCube) {
         this.joggleCube = joggleCube;
     }
 
@@ -159,7 +159,7 @@ public class UIController {
      * Get the handle input object
      * @return joggleCube
      */
-    public JoggleCube getJoggleCube() {
+    public IJoggleCubeController getJoggleCube() {
         return joggleCube;
     }
 }
