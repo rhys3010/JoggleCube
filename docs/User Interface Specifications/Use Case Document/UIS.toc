@@ -23,5 +23,16 @@
 \contentsline {subsubsection}{\numberline {3.1.9}View Grid High score}{4}{subsubsection.3.1.9}
 \contentsline {subsubsection}{\numberline {3.1.10}Finding help}{4}{subsubsection.3.1.10}
 \contentsline {section}{\numberline {4}Error Conditions}{4}{section.4}
-\contentsline {section}{REFERENCES}{5}{section.4}
-\contentsline {section}{DOCUMENT HISTORY}{6}{section*.2}
+\contentsline {subsection}{\numberline {4.1}Start view}{4}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Description}{4}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Possible errors}{4}{subsubsection.4.1.2}
+\contentsline {subsection}{\numberline {4.2}Load grid view}{5}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Description}{5}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Possible errors}{5}{subsubsection.4.2.2}
+\contentsline {subsection}{\numberline {4.3}High score view}{5}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Description}{5}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Possible errors}{5}{subsubsection.4.3.2}
+\contentsline {subsection}{\numberline {4.4}Settings view}{5}{subsection.4.4}
+\contentsline {subsubsection}{\numberline {4.4.1}Description}{5}{subsubsection.4.4.1}
+\contentsline {section}{REFERENCES}{6}{subsubsection.4.4.1}
+\contentsline {section}{DOCUMENT HISTORY}{7}{section*.2}
