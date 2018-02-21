@@ -137,7 +137,7 @@
          </HBox>
       <VBox styleClass="wordInputContainer">
          <children>
-               <TextField fx:id="textField" prefHeight="26.0" prefWidth="294.0" />
+               <TextField fx:id="textField" prefHeight="26.0" />
                 <Button mnemonicParsing="false" onAction="#btnSubmitClicked" text="Submit Word" />
          </children>
       </VBox>

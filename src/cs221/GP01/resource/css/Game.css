@@ -72,8 +72,27 @@
 }
 
 .gameElementsContainer{
-    -fx-spacing: 50px;
+    -fx-spacing: 10px;
     -fx-alignment: center;
+}
+
+.gameElementsContainer .tab-pane .tab-header-area .tab-header-background{
+    -fx-background-color: transparent;
+}
+
+.gameElementsContainer .cubeContainer{
+    -fx-pref-width: 360px;
+}
+
+.foundWordsContainer{
+    -fx-pref-width: 200px;
+    -fx-pref-height: 80px;
+    -fx-alignment: center;
+}
+
+.foundWordsContainer .label{
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
 }
 
 
