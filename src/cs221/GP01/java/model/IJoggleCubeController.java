@@ -20,12 +20,12 @@ public interface IJoggleCubeController {
     /**
      * pauses
      */
-    //void pauseGame();
+    void pauseGame();
 
     /**
      * resumes the timer
      */
-    //void resumeGame();
+    void resumeGame();
 
     /**
      * ends the game

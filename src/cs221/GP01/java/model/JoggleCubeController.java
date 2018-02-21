@@ -31,12 +31,12 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     public void startGame(File file) { }
 
-    /* handle later
+    /* handle later */
       public void pauseGame() { }
-    */
-    /* handle later
+
+    /* handle later */
     public void resumeGame() { }
-    */
+
 
     public void endGame() { }
     public boolean testWordValidity(String word) {
