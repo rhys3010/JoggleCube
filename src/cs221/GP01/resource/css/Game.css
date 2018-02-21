@@ -1,0 +1,102 @@
+/*
+   * @(#) Game.css 1.1 2018/02/16
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
+
+/* Game Screen CSS */
+
+/* Digital Clock font*/
+@font-face{
+    font-family: 'DS-Digital';
+    src: url('../font/DS-DIGI.TTF');
+}
+
+.mainContainer{
+    -fx-spacing: 50px;
+}
+
+.topMenu{
+    -fx-background-color: -fx-secondary-color;
+    -fx-pref-width: 600px;
+    -fx-pref-height: 70px;
+    -fx-alignment: center;
+    -fx-spacing: 160px;
+}
+
+
+.topMenu .timerLabel{
+    -fx-font-size: 48px;
+    -fx-text-fill: white;
+    -fx-font-family: DS-Digital;
+}
+
+.topMenu .scoreLabel{
+    -fx-font-size: 48px;
+    -fx-text-fill: white;
+    -fx-font-family: DS-Digital;
+}
+
+
+.topMenu .buttonContainer {
+    -fx-spacing: 10px;
+    -fx-alignment: center;
+}
+
+
+.topMenu .buttonContainer .button{
+    -fx-background-color: -fx-tertiary-color;
+    -fx-pref-height: 32;
+    -fx-pref-width: 32;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 20 20;
+}
+
+#pauseButton{
+    -fx-background-image: url("../img/icon/pause_icon_inactive.png");
+}
+
+#pauseButton:hover{
+    -fx-background-image: url("../img/icon/pause_icon.png");
+}
+
+#settingsButton{
+    -fx-background-image: url("../img/icon/settings_icon_inactive_alt.png");
+}
+
+#settingsButton:hover{
+    -fx-background-image: url("../img/icon/settings_icon.png");
+}
+
+.gameElementsContainer{
+    -fx-spacing: 50px;
+    -fx-alignment: center;
+}
+
+
+/*2d grid CSS */
+
+GridPane {
+    -fx-alignment: CENTER;
+    -fx-spacing:10;
+}
+
+GridPane Label {
+    -fx-background-color: black, white ;
+    -fx-background-insets: 0, 1 ;
+    -fx-pref-height:30;
+    -fx-pref-width:30;
+
+}
+
+/* 2.5D Grid CSS */
+
+Box {
+    -fx-rotate:-40;
+    -fx-pref-height:20px;
+    -fx-pref-width:20px;
+    -fx-pref-depth:20px;
+}

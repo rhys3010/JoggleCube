@@ -9,7 +9,7 @@ import java.io.File;
  * @author Nathan - naw21
  * @version 0.2
  */
-public interface IJoggleCubeController {
+public interface JoggleCube {
 
 
     void startRandomGame();
@@ -56,6 +56,12 @@ public interface IJoggleCubeController {
      * @return the overall highscores
      */
     ObservableList<HighScore> getOverallHighScores();
+
+    /**
+     *
+     * @return the current cube highscores
+     */
+    ObservableList<HighScore> getCurrentCubeHighScores();
 
     /**
      *

@@ -16,6 +16,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -51,6 +52,8 @@ public class Main extends Application {
                 new Image("cs221/GP01/resource/img/icon/icon128.png")
         };
 
+
+
         // Create main scene and initialize with a dummy root node
         Pane dummyRoot = new Pane();
         Scene mainScene = new Scene(dummyRoot, 600, 600);
@@ -73,7 +76,6 @@ public class Main extends Application {
 
         // Initialize UIController game
         UIController.initialize(mainScene);
-
     }
 
     /**

@@ -105,6 +105,28 @@ public class PretendBackEnd implements IJoggleCubeController{
         return highScores;
     }
 
+    public ObservableList<HighScore> getCurrentCubeHighScores(){
+        System.out.println("getting current cube High Scores");
+        //List of Example High Score entries
+        //todo create an actual list of data
+        ObservableList<HighScore> highScores = FXCollections.observableArrayList(
+                new HighScore(1515, "Levi"),
+                new HighScore(1616, "James"),
+                new HighScore(2515, "Andy"),
+                new HighScore(5151, "Jenny"),
+                new HighScore(6711, "Jill"),
+                new HighScore(1314, "Gendry"),
+                new HighScore(4215, "Chris"),
+                new HighScore(1455, "Wayne"),
+                new HighScore(6161, "Bill"),
+                new HighScore(3671, "William"),
+                new HighScore(1551, "Faye"),
+                new HighScore(2565, "Drake")
+        );
+
+        return highScores;
+    }
+
     /**
      * Get recently played/loaded grids
      * @return a list of the recently opened grids
