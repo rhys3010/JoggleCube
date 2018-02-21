@@ -14,8 +14,10 @@
     src: url('../font/DS-DIGI.TTF');
 }
 
+
 .mainContainer{
     -fx-spacing: 50px;
+    -fx-alignment: top-center;
 }
 
 .topMenu{
@@ -80,6 +82,24 @@
     -fx-background-color: transparent;
 }
 
+.gameElementsContainer .tab-pane .tab{
+    -fx-background-color: -fx-tertiary-color;
+    -fx-alignment: center;
+}
+
+.gameElementsContainer .tab-pane .tab Label{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.gameElementsContainer .tab-pane .tab:selected{
+    -fx-background-color: white;
+}
+
+.gameElementsContainer .tab-pane .tab:selected Label{
+    -fx-text-fill: -fx-tertiary-color;
+}
+
 .gameElementsContainer .cubeContainer{
     -fx-pref-width: 360px;
 }
@@ -95,20 +115,47 @@
     -fx-font-size: 18px;
 }
 
+.wordInputContainer{
+    -fx-pref-width: 300px;
+    -fx-spacing: 30px;
+    -fx-alignment: center;
+}
+
+.wordInputContainer #textField{
+    -fx-pref-height: 35px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-tertiary-color;
+
+}
+
+.wordInputContainer .button{
+    -fx-background-color: -fx-tertiary-color;
+    -fx-text-fill: #cecece;
+    -fx-font-size: 14px;
+    -fx-font-weight: bolder;
+}
+
+.wordInputContainer .button:hover{
+    -fx-text-fill: white;
+}
+
 
 /*2d grid CSS */
 
 GridPane {
-    -fx-alignment: CENTER;
     -fx-spacing:10;
 }
 
 GridPane Label {
-    -fx-background-color: black, white ;
+    -fx-background-color: -fx-tertiary-color, white ;
     -fx-background-insets: 0, 1 ;
     -fx-pref-height:30;
     -fx-pref-width:30;
-
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-text-fill: -fx-tertiary-color;
+    -fx-font-weight: bold;
 }
 
 /* 2.5D Grid CSS */
