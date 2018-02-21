@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2018.2.21)  21 FEB 2018 17:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.11.24)  21 FEB 2018 21:39
 entering extended mode
 **./testspec_v2.tex
 (testspec_v2.tex
@@ -378,6 +378,9 @@ Underfull \hbox (badness 3646) in paragraph at lines 64--64
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no œ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no  in font cmr10!
 
 Underfull \hbox (badness 10000) in paragraph at lines 64--65
 []|\OT1/cmr/m/n/10.95 Choose player
@@ -1713,16 +1716,12 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 329.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 329.
 Package rerunfilecheck Info: File `testspec_v2.out' has not changed.
 (rerunfilecheck)             Checksum: 8F324A44EA65D056880F690B70DEB580;1183.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 329.
  ) 
 Here is how much of TeX's memory you used:
  4885 strings out of 493333
- 72612 string characters out of 3139194
- 195870 words of memory out of 3000000
+ 72612 string characters out of 3139190
+ 195869 words of memory out of 3000000
  8371 multiletter control sequences out of 15000+200000
  8243 words of font info for 29 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1733,7 +1732,7 @@ les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmti10.pfb>
-Output written on testspec_v2.pdf (10 pages, 127374 bytes).
+Output written on testspec_v2.pdf (10 pages, 128456 bytes).
 PDF statistics:
  198 PDF objects out of 1000 (max. 8388607)
  43 named destinations out of 1000 (max. 500000)

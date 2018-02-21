@@ -9,7 +9,7 @@
 \author{Aleksandra Madej, Agata Lefek}     
 \shorttitle{Test Specification}
 \version{1.0}
-\status{Draft}
+\status{Release}
 \date{2018-02-21}
 \configref{GP01-TS-TS}
 \maketitle
@@ -61,7 +61,7 @@ Test Ref & Req Tested & Test Content & Input  & Output & Pass Criteria \\ \hline
 004 & FR1 & Entering blank player’s name. & Choose blank name. & Blank player name is illegal.
 & Player name is rejected. \\ \hline
 
-005 & FR1 & Entering the player’s name with illegal characters. & Choose player name: “agl*%$#”. 
+005 & FR1 & Entering the player’s name with illegal characters. & Choose player name: “agl*\%\$\#”. 
 & Player is told that name contains illegal characters. & Player name is rejected. \\ \hline
 
 006 & FR1 & Entering to long player’s name. & Choose player name which contains more than 10 characters. 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2018.2.21)  21 FEB 2018 17:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.11.24)  21 FEB 2018 21:39
 entering extended mode
 **./UIS.tex
 (UIS.tex
@@ -289,7 +289,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 186.
  ) 
 Here is how much of TeX's memory you used:
  4851 strings out of 493333
- 72700 string characters out of 3139194
+ 72700 string characters out of 3139190
  164730 words of memory out of 3000000
  8321 multiletter control sequences out of 15000+200000
  8243 words of font info for 29 fonts, out of 3000000 for 9000
@@ -300,7 +300,7 @@ ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on UIS.pdf (9 pages, 134428 bytes).
+Output written on UIS.pdf (9 pages, 134767 bytes).
 PDF statistics:
  343 PDF objects out of 1000 (max. 8388607)
  63 named destinations out of 1000 (max. 500000)
