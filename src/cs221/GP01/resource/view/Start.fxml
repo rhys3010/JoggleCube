@@ -8,8 +8,13 @@
         *
 -->
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <!--
@@ -21,13 +26,41 @@
     * @version 0.1  DRAFT
 -->
 
-<VBox fx:id="root"
-      stylesheets="/cs221/GP01/resource/css/JoggleCube.css"
-      xmlns="http://javafx.com/javafx/8.0.121"
-      xmlns:fx="http://javafx.com/fxml/1">
-      <Label styleClass="title" text="JoggleCube" />
-      <Button fx:id="btnStartNewGrid" mnemonicParsing="false" onAction="#btnStartNewGridClicked" text="Start New Grid" />
-      <Button fx:id="btnLoadGrid" mnemonicParsing="false" onAction="#btnLoadGridClicked" text="Load Grid" />
-      <Button fx:id="btnHighScore" mnemonicParsing="false" onAction="#btnHighScoreClicked" text="High Score" />
-      <Button fx:id="btnSettings" mnemonicParsing="false" onAction="#btnSettingsClicked" text="Settings" />
-</VBox>
+<BorderPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@../css/BaseStyle.css" />
+        <URL value="@../css/Start.css" />
+    </stylesheets>
+   <center>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="mainContainer">
+         <VBox styleClass="buttonContainer">
+            <children>
+                  <Button fx:id="btnStartNewGrid" mnemonicParsing="false" onAction="#btnStartNewGridClicked" styleClass="startMenuButton" text="Start New Grid" />
+                  <Button fx:id="btnLoadGrid" mnemonicParsing="false" onAction="#btnLoadGridClicked" styleClass="startMenuButton" text="Load Grid" />
+            </children>
+         </VBox>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox styleClass="footer" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnMenu" mnemonicParsing="false" styleClass="footerIcon" />
+            <Button fx:id="btnHighScore" mnemonicParsing="false" onAction="#btnHighScoreClicked" styleClass="footerIcon" />
+            <Button fx:id="btnSettings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnSettingsClicked" styleClass="footerIcon" />
+            <Button fx:id="btnHelp" mnemonicParsing="false" styleClass="footerIcon" />
+         </children>
+      </HBox>
+   </bottom>
+   <top>
+      <HBox styleClass="banner" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/icon/joggle_icon.png" />
+               </image>
+            </ImageView>
+               <Label styleClass="title" text="JoggleCube" />
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

@@ -1,0 +1,95 @@
+/*
+   * @(#) JoggleCube.css 1.1 2018/02/16
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
+
+
+
+/* COLOR CONSTANTS */
+*{
+    -fx-primary-color: #3498db;
+    -fx-secondary-color: #2980b9;
+    -fx-tertiary-color: #595959;
+}
+
+
+/* the root box of each scene*/
+.root{
+    -fx-background-color: -fx-primary-color;
+    -fx-pref-height:600;
+    -fx-pref-width:600;
+}
+
+.button {
+    -fx-cursor: hand;
+}
+
+/* Header of each scene */
+.header{
+    -fx-background-color: -fx-secondary-color;
+    -fx-pref-height: 70px;
+    -fx-alignment: center;
+    -fx-pref-width: 300px;
+}
+
+.headerTitle{
+    -fx-text-fill: white;
+    -fx-font-size: 38px;
+}
+
+/* Footer of each scene*/
+.footer{
+    -fx-background-color: -fx-secondary-color;
+    -fx-pref-height: 60px;
+    -fx-alignment: center;
+    -fx-spacing: 30px;
+}
+
+.footerIcon{
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-cursor: hand;
+    -fx-pref-height: 48;
+    -fx-pref-width: 48;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 48 48;
+    -fx-background-insets: 0 0 0 0, 0, 0, 0;
+}
+
+#btnSettings{
+    -fx-background-image: url("../img/icon/settings_icon_inactive.png");
+}
+
+#btnHighScore{
+    -fx-background-image: url("../img/icon/highscore_icon_inactive.png");
+}
+
+#btnHelp{
+    -fx-background-image: url("../img/icon/help_icon_inactive.png");
+}
+
+#btnMenu{
+   -fx-background-image: url("../img/icon/menu_icon_inactive.png");
+}
+
+#btnSettings:hover{
+    -fx-background-image: url("../img/icon/settings_icon.png");
+}
+
+#btnHighScore:hover{
+    -fx-background-image: url("../img/icon/highscore_icon.png");
+}
+
+#btnHelp:hover{
+    -fx-background-image: url("../img/icon/help_icon.png");
+}
+
+#btnMenu:hover{
+    -fx-background-image: url("../img/icon/menu_icon.png");
+}
+
+

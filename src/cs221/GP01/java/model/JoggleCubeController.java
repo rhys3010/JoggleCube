@@ -50,5 +50,6 @@ public class JoggleCubeController implements IJoggleCubeController{
     public String[][][] getCubeData() { return new String[0][][]; }
     public ObservableList<HighScore> getLoadedGridHighScores() { return null; }
     public ObservableList<HighScore> getOverallHighScores() { return null; }
+    public ObservableList<HighScore> getCurrentCubeHighScores() { return null; }
     public ObservableList<String> getRecentGrids() { return null; }
 }
