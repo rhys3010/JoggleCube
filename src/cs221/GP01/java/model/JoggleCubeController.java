@@ -31,12 +31,12 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     public void startGame(File file) { }
 
-    /* handle later
-      public void pauseGame() { }
-    */
-    /* handle later
+    //handle later
+    public void pauseGame() { }
+
+    //handle later
     public void resumeGame() { }
-    */
+
 
     public void endGame() { }
     public boolean testWordValidity(String word) {
@@ -48,7 +48,6 @@ public class JoggleCubeController implements IJoggleCubeController{
         return dictionary.searchDictionary(word);
     }
     public String[][][] getCubeData() { return new String[0][][]; }
-    public ObservableList<HighScore> getLoadedGridHighScores() { return null; }
     public ObservableList<HighScore> getOverallHighScores() { return null; }
     public ObservableList<HighScore> getCurrentCubeHighScores() { return null; }
     public ObservableList<String> getRecentGrids() { return null; }
