@@ -1,5 +1,6 @@
 out
 *.iml
+.idea
 .project
 .classpath
 GP01.eml
