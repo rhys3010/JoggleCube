@@ -5,13 +5,29 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="root" stylesheets="@../css/Settings.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
-    <Label text="Settings" />
-    <!--todo add options here such as clear high scores -->
-    <Button fx:id="btnBack" mnemonicParsing="false" onAction="#btnBackClicked" text="Back" />
-
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
         <URL value="@../css/Settings.css" />
         <URL value="@../css/BaseStyle.css" />
     </stylesheets>
-</VBox>
+    <bottom>
+        <HBox styleClass="footer" BorderPane.alignment="CENTER">
+                <Button fx:id="btnMenu" onAction="#btnStartClicked" styleClass="footerIcon" />
+                <Button fx:id="btnHighScore" onAction="#btnHighScoreClicked" styleClass="footerIcon" />
+                <Button fx:id="btnSettings" styleClass="footerIcon" />
+                <Button fx:id="btnHelp" onAction="#btnHelpClicked" styleClass="footerIcon"  />
+        </HBox>
+    </bottom>
+    <top>
+        <HBox styleClass="banner" BorderPane.alignment="CENTER">
+                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../img/icon/joggle_icon.png" />
+                </ImageView>
+                <Label styleClass="title" text="JoggleCube" />
+        </HBox>
+    </top>
+</BorderPane>

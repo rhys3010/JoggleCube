@@ -37,13 +37,7 @@ import java.util.ResourceBundle;
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @version 0.2  DRAFT
  */
-public class HighScoreController implements Initializable{
-
-    /**
-     * Parent Anchor
-     */
-    @FXML
-    private Node root;
+public class HighScoreController extends BaseController implements Initializable{
 
     /**
      * High Score Table
@@ -62,11 +56,6 @@ public class HighScoreController implements Initializable{
      */
     @FXML
     private Label highScorePageLabel;
-
-    /**
-     * An instance of the UIController object to interface with backend
-     */
-    private UIController UIController;
 
     /**
      * Highscores for all cubes
@@ -93,7 +82,7 @@ public class HighScoreController implements Initializable{
      * @param UIController the UIController between UI and Backend.
      */
     public HighScoreController(UIController UIController){
-        this.UIController = UIController;
+        super(UIController);
         overallHighScores = UIController.getJoggleCube().getOverallHighScores();
         currentCubeHighScores = UIController.getJoggleCube().getCurrentCubeHighScores();
     }
@@ -139,24 +128,6 @@ public class HighScoreController implements Initializable{
         populateTable(overallHighScores);
     }
 
-
-    /**
-     * When the return button is clicked it will return to the start screen of the game
-     * @see StartController
-     * @throws IOException if Start.fxml doesn't exist
-     */
-    @FXML
-    void btnMenuClicked() throws IOException {
-        UIController.getScreenController().show(ScreenType.START);
-    }
-
-    /**
-     * Open settings menu when the settings button is clicked
-     */
-    @FXML
-    public void btnSettingsClicked() {
-        UIController.getScreenController().show(ScreenType.SETTINGS);
-    }
 
 
     /**
@@ -237,13 +208,5 @@ public class HighScoreController implements Initializable{
             populateTable(currentCubeHighScores);
             highScorePageLabel.setText("Current Cube");
         }
-    }
-
-    /**
-     * Get the root node of the FXML
-     * @return root - the root node
-     */
-    public Node getRoot(){
-        return root;
     }
 }
