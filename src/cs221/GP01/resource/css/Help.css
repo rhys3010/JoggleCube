@@ -1,5 +1,5 @@
 /*
-   * @(#) Settings.css 1.1 2018/02/16
+   * @(#) Start.css 1.1 2018/02/16
    *
    * Copyright (c) 2018 University of Wales, Aberystwyth.
    * All rights reserved.
@@ -29,6 +29,6 @@
     -fx-spacing: 20px;
 }
 
-#btnSettings{
-    -fx-background-image: url("../img/icon/settings_icon.png");
+#btnHelp{
+    -fx-background-image: url("../img/icon/help_icon.png");
 }

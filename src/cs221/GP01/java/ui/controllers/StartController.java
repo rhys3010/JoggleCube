@@ -27,24 +27,9 @@ import java.util.ResourceBundle;
  * @version 0.2  DRAFT
  */
 
-public class StartController implements Initializable{
-    /**
-     * The root Node in this scene.
-     */
-    @FXML
-    private Node root;
-
-    /**
-     * An instance of the UIController object to interface with backend
-     */
-    private UIController UIController;
-
-    /**
-     * Constructor to ensure UIController object is passed
-     * @param UIController
-     */
+public class StartController extends BaseController implements Initializable {
     public StartController(UIController UIController){
-        this.UIController = UIController;
+        super(UIController);
     }
 
     /**
@@ -75,31 +60,6 @@ public class StartController implements Initializable{
     private void btnLoadGridClicked() {
         UIController.getScreenController().show(ScreenType.LOAD);
         UIController.initalizeController(ScreenType.LOAD);
-    }
-
-    /**
-     *
-     */
-    @FXML
-    public void btnSettingsClicked() {
-        UIController.getScreenController().show(ScreenType.SETTINGS);
-    }
-
-    /**
-     * When the HighScore button is clicked it will load the Highscore scene.
-     */
-    @FXML
-    public void btnHighScoreClicked() throws IOException{
-        UIController.getScreenController().show(ScreenType.HIGH_SCORES);
-        UIController.initalizeController(ScreenType.HIGH_SCORES);
-    }
-
-    /**
-     * Get the root node of the FXML
-     * @return root - the root node
-     */
-    public Node getRoot(){
-        return root;
     }
 
 }
