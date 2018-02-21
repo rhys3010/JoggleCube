@@ -9,7 +9,6 @@
 -->
 
 <?import java.net.URL?>
-<?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -49,8 +48,8 @@
             </children>
          </HBox>
          </HBox>
-         <HBox>
-            <TabPane prefHeight="237.0" prefWidth="367.0" tabClosingPolicy="UNAVAILABLE">
+         <HBox styleClass="gameElementsContainer">
+            <TabPane styleClass="cubeContainer" tabClosingPolicy="UNAVAILABLE">
                 <Tab text="3D View">
                     <AnchorPane prefHeight="180.0" prefWidth="200.0">
                         <Box depth="120" height="120" layoutX="150" layoutY="100" width="120"><rotationAxis><Point3D x="-0.5" y="1.0" z="0.5" /></rotationAxis></Box>
@@ -131,21 +130,17 @@
                         </AnchorPane>
                 </Tab>
             </TabPane>
-             <VBox>
-                 <Label styleClass="subTitle" text="Words Found" />
-                 <ListView fx:id="foundWordsList" prefHeight="200.0" prefWidth="200.0" />
+             <VBox styleClass="foundWordsContainer">
+                 <Label text="Words Found" />
+                 <ListView fx:id="foundWordsList" />
              </VBox>
          </HBox>
-         <TextField fx:id="textField" prefHeight="26.0" prefWidth="294.0">
-            <VBox.margin>
-               <Insets bottom="10.0" />
-            </VBox.margin>
-         </TextField>
-          <Button mnemonicParsing="false" onAction="#btnSubmitClicked" text="Submit Word" />
-         <HBox>
-               <Button mnemonicParsing="false" onAction="#btnPauseGameClicked" text="Pause Game" />
-               <Button mnemonicParsing="false" onAction="#btnEndGameClicked" text="End Game" />
-         </HBox>
+      <VBox styleClass="wordInputContainer">
+         <children>
+               <TextField fx:id="textField" prefHeight="26.0" prefWidth="294.0" />
+                <Button mnemonicParsing="false" onAction="#btnSubmitClicked" text="Submit Word" />
+         </children>
+      </VBox>
       </VBox>
    <stylesheets>
       <URL value="@../css/Game.css" />

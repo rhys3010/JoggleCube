@@ -71,6 +71,11 @@
     -fx-background-image: url("../img/icon/settings_icon.png");
 }
 
+.gameElementsContainer{
+    -fx-spacing: 50px;
+    -fx-alignment: center;
+}
+
 
 /*2d grid CSS */
 
