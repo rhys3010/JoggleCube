@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="3DViewer">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/dev/20180208/JavaFX testing/javafx_samples/3DViewer/3DViewer.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
