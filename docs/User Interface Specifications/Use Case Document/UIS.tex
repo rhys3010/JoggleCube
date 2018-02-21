@@ -5,8 +5,8 @@
 \subtitle{User Interface Specification, Use Case Document}
 \author{Nathan Williams - naw21}     
 \shorttitle{Use Case Document}
-\version{0.1.3}
-\status{Draft}
+\version{1}
+\status{Review}
 \date{2018-02-01}
 \configref{GP01-UIS-UCD}
 \maketitle
@@ -97,7 +97,7 @@ Due to implementation the other views are loaded before the game is launched so 
 
 \subsection{Load grid view} \label{Load View}
 \subsubsection{Description}
-This view contains 3 buttons that allow the user to pick a file, start the grid from file and go back to the start view (see \ref{start View}). The view also contains a list of selectable files to choose from.
+This view contains 3 buttons that allow the user to pick a file, start the grid from file and go back to the start view (see \ref{Start View}). The view also contains a list of selectable files to choose from.
 
 When the pick file button is pressed a dialogue will open to allow the user to browse their files for a grid, it is constrained to only allow them to open .grid files that store grids.
 \subsubsection{Possible errors}
@@ -128,19 +128,32 @@ This view will contain details on the controls and how the user can play the gam
 
 \subsection{Game view} \label{Game View}
 \subsubsection{Description}
+This view has a points display, a Timer display, pause and settings button across the top. The center contains a view of the grid and a list of the found words. The bottom has a text field with the current word and a submit button.
 \subsubsection{Possible errors}
-
+\begin{itemize}
+\item If grid is not loaded from file properly, it will return to the Load view.
+\end{itemize}
 
 \subsection{Pause overlay} \label{Pause Overlay}
 \subsubsection{Description}
-This will overlay the game view(see \ref{Game View} when it is paused and will contain the following:
+This will overlay the game view(see \ref{Game View}) when it is paused and will contain the following buttons:
 \begin{itemize}
-
+\item[Resume]Hides overlay and resumes the game.
+\item[Exit] Exits the Game to the Start view(see \ref{Start View}).
+\item[Help] Allow you to view the Help view(see \ref{Help View}).
+\item[Settings] Allow you to view the Settings view (see \ref{Settings View}).
 \end{itemize}
 \subsubsection{Possible errors}
 
+
 \subsection{End overlay} \label{End Overlay}
 \subsubsection{Description}
+This will overlay the game view(see \ref{Game View}) when the game ends and will display the players Score and will contain the following buttons:
+\begin{itemize}
+\item[Save Game] Brings up a dialogue to allow the user to save the game and cube.
+\item[High Scores] Allows the user to view the High score view (see \ref{High score View}).
+\item[Exit] Exits to the Start view (see \ref{Start View}).
+\end{itemize}
 \subsubsection{Possible errors}
 
 
@@ -154,7 +167,7 @@ C. J. Price SE.QA.CSRS. 1.0 Release.
 \clearpage
 \addcontentsline{toc}{section}{DOCUMENT HISTORY}
 \section*{DOCUMENT HISTORY}
-\begin{tabular}{|l | l | l | l | l |}
+\begin{tabular}{| l | l | l | l | l |}
 \hline
 Version & CCF No. & Date & Changes made to Document & Changed by \\
 \hline
@@ -165,6 +178,8 @@ Version & CCF No. & Date & Changes made to Document & Changed by \\
 0.1.2 & N/A & 2018-02-06 & Started writing use cases & NAW21 \\
 \hline
 0.1.3 & N/A & 2018-02-07 & More Use Cases & NAW21 \\
+\hline
+1.0 & N/A & 2018-02-21 & Added Error Conditions & NAW21 \\
 \hline
 \end{tabular}
 \label{thelastpage}

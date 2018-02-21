@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2018.2.21)  21 FEB 2018 14:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2018.2.21)  21 FEB 2018 17:12
 entering extended mode
 **./testspec_v2.tex
 (testspec_v2.tex
@@ -286,37 +286,37 @@ Overfull \hbox (0.5119pt too wide) in paragraph at lines 16--16
 
 
 [1]
-Overfull \hbox (0.52316pt too wide) in paragraph at lines 31--31
+Overfull \hbox (0.52316pt too wide) in paragraph at lines 47--47
 []|\OT1/cmr/m/n/10.95 Test
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--31
+Underfull \hbox (badness 10000) in paragraph at lines 47--47
 []|\OT1/cmr/m/n/10.95 Req
  []
 
 
-Overfull \hbox (2.93727pt too wide) in paragraph at lines 31--31
+Overfull \hbox (2.93727pt too wide) in paragraph at lines 47--47
 \OT1/cmr/m/n/10.95 Tested| 
  []
 
 
-Underfull \hbox (badness 3503) in paragraph at lines 33--34
+Underfull \hbox (badness 3503) in paragraph at lines 49--50
 []|\OT1/cmr/m/n/10.95 Check that ap-pro-
  []
 
 
-Underfull \hbox (badness 3895) in paragraph at lines 33--34
+Underfull \hbox (badness 3895) in paragraph at lines 49--50
 \OT1/cmr/m/n/10.95 pri-ate start screen
  []
 
 
-Underfull \hbox (badness 8132) in paragraph at lines 33--34
+Underfull \hbox (badness 8132) in paragraph at lines 49--50
 \OT1/cmr/m/n/10.95 is dis-played when
  []
 
 
-Underfull \hbox (badness 5217) in paragraph at lines 34--35
+Underfull \hbox (badness 5217) in paragraph at lines 50--51
 \OT1/cmr/m/n/10.95 ing new game or
  []
 
@@ -327,7 +327,7 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 5105) in paragraph at lines 37--38
+Underfull \hbox (badness 5105) in paragraph at lines 53--54
 \OT1/cmr/m/n/10.95 ask-ing user for a
  []
 
@@ -344,7 +344,7 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 5105) in paragraph at lines 41--42
+Underfull \hbox (badness 5105) in paragraph at lines 57--58
 \OT1/cmr/m/n/10.95 ask-ing user for a
  []
 
@@ -358,12 +358,12 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ô in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 45--45
+Underfull \hbox (badness 10000) in paragraph at lines 61--61
 []|\OT1/cmr/m/n/10.95 Choose blank
  []
 
 
-Underfull \hbox (badness 1221) in paragraph at lines 46--46
+Underfull \hbox (badness 1221) in paragraph at lines 62--62
 []|\OT1/cmr/m/n/10.95 Player name is re-
  []
 
@@ -371,7 +371,7 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ô in font cmr10!
 
-Underfull \hbox (badness 3646) in paragraph at lines 48--48
+Underfull \hbox (badness 3646) in paragraph at lines 64--64
 []|\OT1/cmr/m/n/10.95 Entering the play-
  []
 
@@ -379,17 +379,17 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ú in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 48--49
+Underfull \hbox (badness 10000) in paragraph at lines 64--65
 []|\OT1/cmr/m/n/10.95 Choose player
  []
 
 
-Underfull \hbox (badness 1062) in paragraph at lines 49--49
+Underfull \hbox (badness 1062) in paragraph at lines 65--65
 []|\OT1/cmr/m/n/10.95 Player is told that
  []
 
 
-Underfull \hbox (badness 1221) in paragraph at lines 49--49
+Underfull \hbox (badness 1221) in paragraph at lines 65--65
 []|\OT1/cmr/m/n/10.95 Player name is re-
  []
 
@@ -397,32 +397,32 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ô in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 67--67
 []|\OT1/cmr/m/n/10.95 Entering to long
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--52
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
 []|\OT1/cmr/m/n/10.95 Choose player
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--52
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
 \OT1/cmr/m/n/10.95 name which
  []
 
 
-Underfull \hbox (badness 1062) in paragraph at lines 52--52
+Underfull \hbox (badness 1062) in paragraph at lines 68--68
 []|\OT1/cmr/m/n/10.95 Player is told that
  []
 
 
-Underfull \hbox (badness 3039) in paragraph at lines 52--52
+Underfull \hbox (badness 3039) in paragraph at lines 68--68
 \OT1/cmr/m/n/10.95 name is too long,
  []
 
 
-Underfull \hbox (badness 1221) in paragraph at lines 52--52
+Underfull \hbox (badness 1221) in paragraph at lines 68--68
 []|\OT1/cmr/m/n/10.95 Player name is re-
  []
 
@@ -430,37 +430,37 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ô in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--54
+Underfull \hbox (badness 10000) in paragraph at lines 70--70
 []|\OT1/cmr/m/n/10.95 Entering to short
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--54
+Underfull \hbox (badness 10000) in paragraph at lines 70--70
 []|\OT1/cmr/m/n/10.95 Choose player
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--54
+Underfull \hbox (badness 10000) in paragraph at lines 70--70
 \OT1/cmr/m/n/10.95 name with less
  []
 
 
-Underfull \hbox (badness 1062) in paragraph at lines 55--55
+Underfull \hbox (badness 1062) in paragraph at lines 71--71
 []|\OT1/cmr/m/n/10.95 Player is told that
  []
 
 
-Underfull \hbox (badness 3861) in paragraph at lines 55--55
+Underfull \hbox (badness 3861) in paragraph at lines 71--71
 \OT1/cmr/m/n/10.95 name is to short,
  []
 
 
-Underfull \hbox (badness 1221) in paragraph at lines 55--55
+Underfull \hbox (badness 1221) in paragraph at lines 71--71
 []|\OT1/cmr/m/n/10.95 Player name is re-
  []
 
 
-Underfull \hbox (badness 1975) in paragraph at lines 57--57
+Underfull \hbox (badness 1975) in paragraph at lines 73--73
 []|\OT1/cmr/m/n/10.95 Loading is not al-
  []
 
@@ -471,27 +471,27 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 1546) in paragraph at lines 57--58
+Underfull \hbox (badness 1546) in paragraph at lines 73--74
 []|\OT1/cmr/m/n/10.95 Choose load past
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 57--58
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
 \OT1/cmr/m/n/10.95 pre-vi-ously saved
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 58--58
+Underfull \hbox (badness 10000) in paragraph at lines 74--74
 []|\OT1/cmr/m/n/10.95 Game can-not be
  []
 
 
-Underfull \hbox (badness 2229) in paragraph at lines 60--60
+Underfull \hbox (badness 2229) in paragraph at lines 76--76
 \OT1/cmr/m/n/10.95 grids are dis-played
  []
 
 
-Underfull \hbox (badness 2111) in paragraph at lines 60--60
+Underfull \hbox (badness 2111) in paragraph at lines 76--76
 \OT1/cmr/m/n/10.95 for user to choose
  []
 
@@ -502,22 +502,22 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 1546) in paragraph at lines 60--61
+Underfull \hbox (badness 1546) in paragraph at lines 76--77
 []|\OT1/cmr/m/n/10.95 Choose load past
  []
 
 
-Underfull \hbox (badness 4673) in paragraph at lines 60--61
+Underfull \hbox (badness 4673) in paragraph at lines 76--77
 \OT1/cmr/m/n/10.95 grid op-tion with
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--61
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
 \OT1/cmr/m/n/10.95 some pre-vi-ously
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--63
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
 \OT1/cmr/m/n/10.95 but-ton stops the
  []
 
@@ -528,7 +528,7 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 2221) in paragraph at lines 63--63
+Underfull \hbox (badness 2221) in paragraph at lines 79--79
 []|\OT1/cmr/m/n/10.95 During the game
  []
 
@@ -551,27 +551,27 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 66--67
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
 []|\OT1/cmr/m/n/10.95 Check that
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 66--67
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
 \OT1/cmr/m/n/10.95 ap-pro-pri-ate start
  []
 
 
-Underfull \hbox (badness 3098) in paragraph at lines 66--67
+Underfull \hbox (badness 3098) in paragraph at lines 82--83
 \OT1/cmr/m/n/10.95 screen is dis-played
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 66--67
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
 \OT1/cmr/m/n/10.95 (Game Paused)
  []
 
 
-Underfull \hbox (badness 3029) in paragraph at lines 66--67
+Underfull \hbox (badness 3029) in paragraph at lines 82--83
 \OT1/cmr/m/n/10.95 when Pause Game
  []
 
@@ -582,7 +582,7 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 2221) in paragraph at lines 67--67
+Underfull \hbox (badness 2221) in paragraph at lines 83--83
 []|\OT1/cmr/m/n/10.95 During the game
  []
 
@@ -599,12 +599,12 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--68
+Underfull \hbox (badness 10000) in paragraph at lines 84--84
 []|\OT1/cmr/m/n/10.95 Game Paused
  []
 
 
-Underfull \hbox (badness 3098) in paragraph at lines 68--68
+Underfull \hbox (badness 3098) in paragraph at lines 84--84
 \OT1/cmr/m/n/10.95 screen is dis-played
  []
 
@@ -633,17 +633,17 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--71
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 []|\OT1/cmr/m/n/10.95 On the Game
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--71
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 \OT1/cmr/m/n/10.95 Paused screen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--71
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 \OT1/cmr/m/n/10.95 choose Re-sume
  []
 
@@ -654,7 +654,7 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 7433) in paragraph at lines 71--71
+Underfull \hbox (badness 7433) in paragraph at lines 87--87
 []|\OT1/cmr/m/n/10.95 Resume but-ton is
  []
 
@@ -671,7 +671,7 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 5175) in paragraph at lines 73--73
+Underfull \hbox (badness 5175) in paragraph at lines 89--89
 \OT1/cmr/m/n/10.95 ton in the Game
  []
 
@@ -688,17 +688,17 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
 []|\OT1/cmr/m/n/10.95 On the Game
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
 \OT1/cmr/m/n/10.95 Paused screen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
 \OT1/cmr/m/n/10.95 choose Exit
  []
 
@@ -715,12 +715,12 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 3679) in paragraph at lines 76--76
+Underfull \hbox (badness 3679) in paragraph at lines 92--92
 []|\OT1/cmr/m/n/10.95 Check if the End
  []
 
 
-Underfull \hbox (badness 2469) in paragraph at lines 76--76
+Underfull \hbox (badness 2469) in paragraph at lines 92--92
 \OT1/cmr/m/n/10.95 Game but-ton ends
  []
 
@@ -731,7 +731,7 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 2221) in paragraph at lines 76--76
+Underfull \hbox (badness 2221) in paragraph at lines 92--92
 []|\OT1/cmr/m/n/10.95 During the game
  []
 
@@ -742,71 +742,134 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--80
-[]|\OT1/cmr/m/n/10.95 Grid is gen-er-ated
- []
-
-
-Underfull \hbox (badness 3514) in paragraph at lines 82--82
-[]|\OT1/cmr/m/n/10.95 There is no more
- []
-
-
-Underfull \hbox (badness 1769) in paragraph at lines 82--82
-\OT1/cmr/m/n/10.95 let-ter than al-lowed
- []
-
-
-Underfull \hbox (badness 6047) in paragraph at lines 82--83
-[]|\OT1/cmr/m/n/10.95 Create new grid
- []
-
-
-Underfull \hbox (badness 2119) in paragraph at lines 82--83
-\OT1/cmr/m/n/10.95 and count oc-cur-
- []
-
-
-Underfull \hbox (badness 1603) in paragraph at lines 83--83
-[]|\OT1/cmr/m/n/10.95 List of let-ters and
- []
-
-
-Underfull \hbox (badness 1558) in paragraph at lines 83--83
-\OT1/cmr/m/n/10.95 cor-re-spond-ing num-
- []
-
-
-Underfull \hbox (badness 3148) in paragraph at lines 86--86
-[]|\OT1/cmr/m/n/10.95 Names of pre-vi-ous
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 86--86
-\OT1/cmr/m/n/10.95 with match-ing
- []
-
-
-Underfull \hbox (badness 1014) in paragraph at lines 89--89
-\OT1/cmr/m/n/10.95 utes when game is
- []
-
-
-Underfull \hbox (badness 3219) in paragraph at lines 91--92
-[]|\OT1/cmr/m/n/10.95 Time dis-played on
- []
-
-
-Overfull \hbox (26.47536pt too wide) in alignment at lines 29--92
+Overfull \hbox (26.47536pt too wide) in alignment at lines 45--95
  [] [] [] [] [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 92
+Underfull \vbox (badness 10000) detected at line 95
+ []
+
+[2]
+Overfull \hbox (0.52316pt too wide) in paragraph at lines 101--101
+[]|\OT1/cmr/m/n/10.95 Test
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--95
+Underfull \hbox (badness 10000) in paragraph at lines 101--101
+[]|\OT1/cmr/m/n/10.95 Req
+ []
+
+
+Overfull \hbox (2.93727pt too wide) in paragraph at lines 101--101
+\OT1/cmr/m/n/10.95 Tested| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
+[]|\OT1/cmr/m/n/10.95 Grid is gen-er-ated
+ []
+
+
+Underfull \hbox (badness 3514) in paragraph at lines 107--107
+[]|\OT1/cmr/m/n/10.95 There is no more
+ []
+
+
+Underfull \hbox (badness 1769) in paragraph at lines 107--107
+\OT1/cmr/m/n/10.95 let-ter than al-lowed
+ []
+
+
+Underfull \hbox (badness 6047) in paragraph at lines 107--108
+[]|\OT1/cmr/m/n/10.95 Create new grid
+ []
+
+
+Underfull \hbox (badness 2119) in paragraph at lines 107--108
+\OT1/cmr/m/n/10.95 and count oc-cur-
+ []
+
+
+Underfull \hbox (badness 1603) in paragraph at lines 108--108
+[]|\OT1/cmr/m/n/10.95 List of let-ters and
+ []
+
+
+Underfull \hbox (badness 1558) in paragraph at lines 108--108
+\OT1/cmr/m/n/10.95 cor-re-spond-ing num-
+ []
+
+
+Overfull \hbox (26.47536pt too wide) in alignment at lines 99--110
+ [] [] [] [] [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 110
+ []
+
+
+Overfull \hbox (0.52316pt too wide) in paragraph at lines 117--117
+[]|\OT1/cmr/m/n/10.95 Test
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 117--117
+[]|\OT1/cmr/m/n/10.95 Req
+ []
+
+
+Overfull \hbox (2.93727pt too wide) in paragraph at lines 117--117
+\OT1/cmr/m/n/10.95 Tested| 
+ []
+
+
+Underfull \hbox (badness 3148) in paragraph at lines 121--121
+[]|\OT1/cmr/m/n/10.95 Names of pre-vi-ous
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--121
+\OT1/cmr/m/n/10.95 with match-ing
+ []
+
+
+Overfull \hbox (26.47536pt too wide) in alignment at lines 115--123
+ [] [] [] [] [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 123
+ []
+
+
+Overfull \hbox (0.52316pt too wide) in paragraph at lines 129--129
+[]|\OT1/cmr/m/n/10.95 Test
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
+[]|\OT1/cmr/m/n/10.95 Req
+ []
+
+
+Overfull \hbox (2.93727pt too wide) in paragraph at lines 129--129
+\OT1/cmr/m/n/10.95 Tested| 
+ []
+
+
+Underfull \hbox (badness 1014) in paragraph at lines 133--133
+\OT1/cmr/m/n/10.95 utes when game is
+ []
+
+
+Underfull \hbox (badness 3219) in paragraph at lines 135--136
+[]|\OT1/cmr/m/n/10.95 Time dis-played on
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 139--139
 []|\OT1/cmr/m/n/10.95 Game stops
  []
 
@@ -817,12 +880,12 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 2478) in paragraph at lines 97--97
+Underfull \hbox (badness 2478) in paragraph at lines 141--141
 []|\OT1/cmr/m/n/10.95 Clock stops count-
  []
 
 
-Underfull \hbox (badness 1215) in paragraph at lines 97--97
+Underfull \hbox (badness 1215) in paragraph at lines 141--141
 \OT1/cmr/m/n/10.95 ing the time while
  []
 
@@ -833,7 +896,7 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 4048) in paragraph at lines 97--98
+Underfull \hbox (badness 4048) in paragraph at lines 141--142
 \OT1/cmr/m/n/10.95 dur-ing the game
  []
 
@@ -844,7 +907,7 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--100
+Underfull \hbox (badness 10000) in paragraph at lines 144--144
 []|\OT1/cmr/m/n/10.95 Clock re-sumes
  []
 
@@ -861,7 +924,7 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 4084) in paragraph at lines 100--101
+Underfull \hbox (badness 4084) in paragraph at lines 144--145
 \OT1/cmr/m/n/10.95 but-ton and then
  []
 
@@ -872,127 +935,178 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--101
+Underfull \hbox (badness 10000) in paragraph at lines 145--145
 []|\OT1/cmr/m/n/10.95 Clock starts with
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--101
+Underfull \hbox (badness 10000) in paragraph at lines 145--145
 \OT1/cmr/m/n/10.95 time game been
  []
 
 
-Underfull \hbox (badness 6995) in paragraph at lines 101--101
+Underfull \hbox (badness 6995) in paragraph at lines 145--145
 []|\OT1/cmr/m/n/10.95 Clock is back to
  []
 
 
-Underfull \hbox (badness 2293) in paragraph at lines 103--104
+Underfull \hbox (badness 2293) in paragraph at lines 147--148
 []|\OT1/cmr/m/n/10.95 Final score is dis-
  []
 
 
-Underfull \hbox (badness 4859) in paragraph at lines 103--104
+Underfull \hbox (badness 4859) in paragraph at lines 147--148
 \OT1/cmr/m/n/10.95 utes from start-ing
  []
 
 
-Underfull \hbox (badness 5288) in paragraph at lines 106--107
+Overfull \hbox (26.47536pt too wide) in alignment at lines 127--149
+ [] [] [] [] [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3]
+Underfull \vbox (badness 10000) detected at line 149
+ []
+
+
+Overfull \hbox (0.52316pt too wide) in paragraph at lines 155--155
+[]|\OT1/cmr/m/n/10.95 Test
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--155
+[]|\OT1/cmr/m/n/10.95 Req
+ []
+
+
+Overfull \hbox (2.93727pt too wide) in paragraph at lines 155--155
+\OT1/cmr/m/n/10.95 Tested| 
+ []
+
+
+Underfull \hbox (badness 5288) in paragraph at lines 157--158
 []|\OT1/cmr/m/n/10.95 Empty high-score
  []
 
 
-Underfull \hbox (badness 5274) in paragraph at lines 106--107
+Underfull \hbox (badness 5274) in paragraph at lines 157--158
 \OT1/cmr/m/n/10.95 game with score
  []
 
 
-Underfull \hbox (badness 5359) in paragraph at lines 107--107
+Underfull \hbox (badness 5359) in paragraph at lines 158--158
 []|\OT1/cmr/m/n/10.95 Score is saved in
  []
 
 
-Underfull \hbox (badness 3098) in paragraph at lines 109--109
+Underfull \hbox (badness 3098) in paragraph at lines 160--160
 \OT1/cmr/m/n/10.95 screen is dis-played
  []
 
 
-Underfull \hbox (badness 1231) in paragraph at lines 109--110
+Underfull \hbox (badness 1231) in paragraph at lines 160--161
 \OT1/cmr/m/n/10.95 game, load-ing past
  []
 
 
-Underfull \hbox (badness 4899) in paragraph at lines 109--110
+Underfull \hbox (badness 4899) in paragraph at lines 160--161
 \OT1/cmr/m/n/10.95 rent game is dis-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 110--110
+Underfull \hbox (badness 10000) in paragraph at lines 161--161
 \OT1/cmr/m/n/10.95 all re-quired
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--112
+Underfull \hbox (badness 10000) in paragraph at lines 163--163
 \OT1/cmr/m/n/10.95 ta-ble are or-dered
  []
 
 
-Underfull \hbox (badness 1442) in paragraph at lines 112--113
+Underfull \hbox (badness 1442) in paragraph at lines 163--164
 \OT1/cmr/m/n/10.95 ble with dif-fer-ent
  []
 
 
-Underfull \hbox (badness 3029) in paragraph at lines 112--113
+Underfull \hbox (badness 3029) in paragraph at lines 163--164
 \OT1/cmr/m/n/10.95 val-ues. Achieve
  []
 
 
-Underfull \hbox (badness 8132) in paragraph at lines 112--113
+Underfull \hbox (badness 8132) in paragraph at lines 163--164
 \OT1/cmr/m/n/10.95 a score be-tween
  []
 
 
-Underfull \hbox (badness 2253) in paragraph at lines 113--114
+Underfull \hbox (badness 2253) in paragraph at lines 164--165
 \OT1/cmr/m/n/10.95 scores. All lower
  []
 
 
-Underfull \hbox (badness 2197) in paragraph at lines 116--116
+Overfull \hbox (26.47536pt too wide) in alignment at lines 153--167
+ [] [] [] [] [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 167
+ []
+
+
+Overfull \hbox (0.52316pt too wide) in paragraph at lines 173--173
+[]|\OT1/cmr/m/n/10.95 Test
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 173--173
+[]|\OT1/cmr/m/n/10.95 Req
+ []
+
+
+Overfull \hbox (2.93727pt too wide) in paragraph at lines 173--173
+\OT1/cmr/m/n/10.95 Tested| 
+ []
+
+
+Underfull \hbox (badness 2197) in paragraph at lines 176--176
 []|\OT1/cmr/m/n/10.95 Finish new game
  []
 
 
-Underfull \hbox (badness 1838) in paragraph at lines 116--117
+Underfull \hbox (badness 1838) in paragraph at lines 176--177
 []|\OT1/cmr/m/n/10.95 Message ask-ing for
  []
 
 
-Underfull \hbox (badness 1789) in paragraph at lines 116--117
+Underfull \hbox (badness 1789) in paragraph at lines 176--177
 \OT1/cmr/m/n/10.95 file-name and in-put
  []
 
 
-Underfull \hbox (badness 2197) in paragraph at lines 119--119
+Underfull \hbox (badness 2197) in paragraph at lines 179--179
 []|\OT1/cmr/m/n/10.95 Finish new game
  []
 
 
-Underfull \hbox (badness 1478) in paragraph at lines 119--120
+Underfull \hbox (badness 1478) in paragraph at lines 179--180
 \OT1/cmr/m/n/10.95 in file spec-i-fied by
  []
 
 
-Underfull \hbox (badness 1281) in paragraph at lines 122--123
+Underfull \hbox (badness 1281) in paragraph at lines 182--183
 \OT1/cmr/m/n/10.95 in file that it was
  []
 
 
-Underfull \hbox (badness 1540) in paragraph at lines 125--125
+Underfull \hbox (badness 1540) in paragraph at lines 185--185
 []|\OT1/cmr/m/n/10.95 It is im-pos-si-ble to
  []
 
 
-Underfull \hbox (badness 4531) in paragraph at lines 125--125
+Underfull \hbox (badness 4531) in paragraph at lines 185--185
 \OT1/cmr/m/n/10.95 save a new game
  []
 
@@ -1003,7 +1117,7 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 2065) in paragraph at lines 126--126
+Underfull \hbox (badness 2065) in paragraph at lines 186--186
 \OT1/cmr/m/n/10.95 Player is asked to
  []
 
@@ -1014,22 +1128,22 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ú in font cmr10!
 
-Underfull \hbox (badness 1565) in paragraph at lines 128--129
+Underfull \hbox (badness 1565) in paragraph at lines 188--189
 []|\OT1/cmr/m/n/10.95 Try sav-ing newly
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 128--129
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
 \OT1/cmr/m/n/10.95 gen-er-ated grid
  []
 
 
-Underfull \hbox (badness 2065) in paragraph at lines 129--129
+Underfull \hbox (badness 2065) in paragraph at lines 189--189
 \OT1/cmr/m/n/10.95 Player is asked to
  []
 
 
-Underfull \hbox (badness 2799) in paragraph at lines 129--129
+Underfull \hbox (badness 2799) in paragraph at lines 189--189
 []|\OT1/cmr/m/n/10.95 File has not been
  []
 
@@ -1040,27 +1154,27 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 1565) in paragraph at lines 131--132
+Underfull \hbox (badness 1565) in paragraph at lines 191--192
 []|\OT1/cmr/m/n/10.95 Try sav-ing newly
  []
 
 
-Underfull \hbox (badness 8019) in paragraph at lines 131--132
+Underfull \hbox (badness 8019) in paragraph at lines 191--192
 \OT1/cmr/m/n/10.95 name Test Grid
  []
 
 
-Underfull \hbox (badness 4505) in paragraph at lines 131--132
+Underfull \hbox (badness 4505) in paragraph at lines 191--192
 \OT1/cmr/m/n/10.95 With Very Long
  []
 
 
-Underfull \hbox (badness 2065) in paragraph at lines 132--132
+Underfull \hbox (badness 2065) in paragraph at lines 192--192
 \OT1/cmr/m/n/10.95 Player is asked to
  []
 
 
-Underfull \hbox (badness 2799) in paragraph at lines 132--132
+Underfull \hbox (badness 2799) in paragraph at lines 192--192
 []|\OT1/cmr/m/n/10.95 File has not been
  []
 
@@ -1068,102 +1182,126 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ú in font cmr10!
 
-Underfull \hbox (badness 1565) in paragraph at lines 134--135
+Underfull \hbox (badness 1565) in paragraph at lines 194--195
 []|\OT1/cmr/m/n/10.95 Try sav-ing newly
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--135
+Underfull \hbox (badness 10000) in paragraph at lines 194--195
 \OT1/cmr/m/n/10.95 gen-er-ated grid
  []
 
 
-Underfull \hbox (badness 2065) in paragraph at lines 135--135
+Underfull \hbox (badness 2065) in paragraph at lines 195--195
 \OT1/cmr/m/n/10.95 Player is asked to
  []
 
 
-Underfull \hbox (badness 2799) in paragraph at lines 135--135
+Underfull \hbox (badness 2799) in paragraph at lines 195--195
 []|\OT1/cmr/m/n/10.95 File has not been
  []
 
 
-Underfull \hbox (badness 6708) in paragraph at lines 137--137
+Underfull \hbox (badness 6708) in paragraph at lines 197--197
 []|\OT1/cmr/m/n/10.95 Scores for spe-cific
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 138--138
+Underfull \hbox (badness 10000) in paragraph at lines 198--198
 []|\OT1/cmr/m/n/10.95 Player name and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 138--138
+Underfull \hbox (badness 10000) in paragraph at lines 198--198
 \OT1/cmr/m/n/10.95 score are saved
  []
 
 
-Underfull \hbox (badness 3780) in paragraph at lines 138--138
+Underfull \hbox (badness 3780) in paragraph at lines 198--198
 \OT1/cmr/m/n/10.95 be-tween all higher
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--141
+Overfull \hbox (26.47536pt too wide) in alignment at lines 171--200
+ [] [] [] [] [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 200
+ []
+
+[4]
+Overfull \hbox (0.52316pt too wide) in paragraph at lines 206--206
+[]|\OT1/cmr/m/n/10.95 Test
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 206--206
+[]|\OT1/cmr/m/n/10.95 Req
+ []
+
+
+Overfull \hbox (2.93727pt too wide) in paragraph at lines 206--206
+\OT1/cmr/m/n/10.95 Tested| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 210--210
 \OT1/cmr/m/n/10.95 blocks or blocks
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--141
+Underfull \hbox (badness 10000) in paragraph at lines 210--210
 \OT1/cmr/m/n/10.95 con-tain-ing more
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--141
+Underfull \hbox (badness 10000) in paragraph at lines 210--210
 \OT1/cmr/m/n/10.95 than one let-ter.
  []
 
 
-Underfull \hbox (badness 4621) in paragraph at lines 143--143
+Underfull \hbox (badness 4621) in paragraph at lines 212--212
 []|\OT1/cmr/m/n/10.95 Check that let-ters
  []
 
 
-Underfull \hbox (badness 1881) in paragraph at lines 143--143
+Underfull \hbox (badness 1881) in paragraph at lines 212--212
 \OT1/cmr/m/n/10.95 are dis-played as 3
  []
 
 
-Underfull \hbox (badness 6173) in paragraph at lines 143--144
+Underfull \hbox (badness 6173) in paragraph at lines 212--213
 \OT1/cmr/m/n/10.95 by 3 planes con-
  []
 
 
-Underfull \hbox (badness 1755) in paragraph at lines 143--144
+Underfull \hbox (badness 1755) in paragraph at lines 212--213
 \OT1/cmr/m/n/10.95 sist-ing of 9 blocks
  []
 
 
-Underfull \hbox (badness 1552) in paragraph at lines 143--144
+Underfull \hbox (badness 1552) in paragraph at lines 212--213
 \OT1/cmr/m/n/10.95 each. Each block
  []
 
 
-Underfull \hbox (badness 4531) in paragraph at lines 146--146
+Underfull \hbox (badness 4531) in paragraph at lines 215--215
 []|\OT1/cmr/m/n/10.95 Player can change
  []
 
 
-Underfull \hbox (badness 1215) in paragraph at lines 146--146
+Underfull \hbox (badness 1215) in paragraph at lines 215--215
 \OT1/cmr/m/n/10.95 the view as if the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 146--147
+Underfull \hbox (badness 10000) in paragraph at lines 215--216
 []|\OT1/cmr/m/n/10.95 Start a game.
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 146--147
+Underfull \hbox (badness 2772) in paragraph at lines 215--216
 \OT1/cmr/m/n/10.95 Change the view
  []
 
@@ -1171,222 +1309,265 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ì in font cmr10!
 
-Underfull \hbox (badness 6526) in paragraph at lines 147--147
+Underfull \hbox (badness 6526) in paragraph at lines 216--216
 []|\OT1/cmr/m/n/10.95 Each face is dis-
  []
 
 
-Underfull \hbox (badness 3323) in paragraph at lines 149--149
+Overfull \hbox (26.47536pt too wide) in alignment at lines 204--218
+ [] [] [] [] [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 218
+ []
+
+[5]
+Overfull \hbox (0.52316pt too wide) in paragraph at lines 224--224
+[]|\OT1/cmr/m/n/10.95 Test
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
+[]|\OT1/cmr/m/n/10.95 Req
+ []
+
+
+Overfull \hbox (2.93727pt too wide) in paragraph at lines 224--224
+\OT1/cmr/m/n/10.95 Tested| 
+ []
+
+
+Underfull \hbox (badness 3323) in paragraph at lines 227--227
 []|\OT1/cmr/m/n/10.95 Words can be se-
  []
 
 
-Underfull \hbox (badness 1924) in paragraph at lines 149--150
+Underfull \hbox (badness 1924) in paragraph at lines 227--228
 \OT1/cmr/m/n/10.95 word cre-ation win-
  []
 
 
-Underfull \hbox (badness 1917) in paragraph at lines 152--152
+Underfull \hbox (badness 1917) in paragraph at lines 230--230
 \OT1/cmr/m/n/10.95 not been used yet
  []
 
 
-Underfull \hbox (badness 4048) in paragraph at lines 152--153
+Underfull \hbox (badness 4048) in paragraph at lines 230--231
 []|\OT1/cmr/m/n/10.95 Start new game.
  []
 
 
-Underfull \hbox (badness 2547) in paragraph at lines 153--153
+Underfull \hbox (badness 2547) in paragraph at lines 231--231
 []|\OT1/cmr/m/n/10.95 There is no let-ter
  []
 
 
-Underfull \hbox (badness 1112) in paragraph at lines 153--153
+Underfull \hbox (badness 1112) in paragraph at lines 231--231
 \OT1/cmr/m/n/10.95 that can-not be se-
  []
 
 
-Overfull \hbox (26.47536pt too wide) in alignment at lines 92--153
- [] [] [] [] [] [] 
- []
-
-[2]
-Underfull \hbox (badness 1577) in paragraph at lines 155--155
+Underfull \hbox (badness 1577) in paragraph at lines 233--233
 \OT1/cmr/m/n/10.95 se-lected only let-ter
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 155--156
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
 []|\OT1/cmr/m/n/10.95 Choose start-ing
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 155--156
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
 \OT1/cmr/m/n/10.95 let-ter. Then
  []
 
 
-Underfull \hbox (badness 1577) in paragraph at lines 158--158
+Underfull \hbox (badness 1577) in paragraph at lines 236--236
 \OT1/cmr/m/n/10.95 se-lected only let-ter
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--159
+Underfull \hbox (badness 10000) in paragraph at lines 236--237
 []|\OT1/cmr/m/n/10.95 Choose start-ing
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--159
+Underfull \hbox (badness 10000) in paragraph at lines 236--237
 \OT1/cmr/m/n/10.95 let-ter. Then
  []
 
 
-Underfull \hbox (badness 8170) in paragraph at lines 159--160
+Underfull \hbox (badness 8170) in paragraph at lines 237--238
 []|\OT1/cmr/m/n/10.95 Only start-ing let-
  []
 
 
-Underfull \hbox (badness 1881) in paragraph at lines 159--160
+Underfull \hbox (badness 1881) in paragraph at lines 237--238
 \OT1/cmr/m/n/10.95 ter is dis-played in
  []
 
 
-Underfull \hbox (badness 1924) in paragraph at lines 159--160
+Underfull \hbox (badness 1924) in paragraph at lines 237--238
 \OT1/cmr/m/n/10.95 word cre-ation win-
  []
 
 
-Underfull \hbox (badness 2261) in paragraph at lines 159--160
+Underfull \hbox (badness 2261) in paragraph at lines 237--238
 \OT1/cmr/m/n/10.95 dow. Block with
  []
 
 
-Underfull \hbox (badness 3724) in paragraph at lines 159--160
+Underfull \hbox (badness 3724) in paragraph at lines 237--238
 \OT1/cmr/m/n/10.95 avail-able for se-lec-
  []
 
 
-Underfull \hbox (badness 2096) in paragraph at lines 162--162
+Underfull \hbox (badness 2096) in paragraph at lines 240--240
 []|\OT1/cmr/m/n/10.95 After sub-mit-ting a
  []
 
 
-Underfull \hbox (badness 1342) in paragraph at lines 162--163
+Underfull \hbox (badness 1342) in paragraph at lines 240--241
 \OT1/cmr/m/n/10.95 let-ter is a start-ing
  []
 
 
-Underfull \hbox (badness 3724) in paragraph at lines 165--165
+Underfull \hbox (badness 3724) in paragraph at lines 243--243
 \OT1/cmr/m/n/10.95 avail-able for se-lec-
  []
 
 
-Underfull \hbox (badness 3724) in paragraph at lines 166--166
+Underfull \hbox (badness 3724) in paragraph at lines 244--244
 \OT1/cmr/m/n/10.95 avail-able for se-lec-
  []
 
 
-Underfull \hbox (badness 1320) in paragraph at lines 166--166
+Underfull \hbox (badness 1320) in paragraph at lines 244--244
 []|\OT1/cmr/m/n/10.95 Letters are marked
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
+Underfull \hbox (badness 10000) in paragraph at lines 244--244
 \OT1/cmr/m/n/10.95 as se-lectable
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
+Underfull \hbox (badness 10000) in paragraph at lines 244--244
 \OT1/cmr/m/n/10.95 cor-rectly in all
  []
 
 
-Underfull \hbox (badness 3724) in paragraph at lines 168--168
+Underfull \hbox (badness 3724) in paragraph at lines 246--246
 \OT1/cmr/m/n/10.95 avail-able for se-lec-
  []
 
 
-Underfull \hbox (badness 3271) in paragraph at lines 169--173
+Underfull \hbox (badness 3271) in paragraph at lines 247--251
 []|\OT1/cmr/m/n/10.95 The only avail-able
  []
 
 
-Underfull \hbox (badness 5189) in paragraph at lines 169--173
+Underfull \hbox (badness 5189) in paragraph at lines 247--251
 \OT1/cmr/m/n/10.95 let-ters are: First
  []
 
 
-Underfull \hbox (badness 1320) in paragraph at lines 173--173
+Underfull \hbox (badness 1320) in paragraph at lines 251--251
 []|\OT1/cmr/m/n/10.95 Letters are marked
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
+Underfull \hbox (badness 10000) in paragraph at lines 251--251
 \OT1/cmr/m/n/10.95 as se-lectable
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
+Underfull \hbox (badness 10000) in paragraph at lines 251--251
 \OT1/cmr/m/n/10.95 cor-rectly in all
  []
 
 
-Underfull \hbox (badness 7047) in paragraph at lines 175--175
+Underfull \hbox (badness 7047) in paragraph at lines 253--253
 []|\OT1/cmr/m/n/10.95 Letters can-not be
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--176
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
 []|\OT1/cmr/m/n/10.95 Create a word.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--176
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
 \OT1/cmr/m/n/10.95 Choose a block
  []
 
 
-Underfull \hbox (badness 4291) in paragraph at lines 175--176
+Underfull \hbox (badness 4291) in paragraph at lines 253--254
 \OT1/cmr/m/n/10.95 that has al-ready
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--178
+Underfull \hbox (badness 10000) in paragraph at lines 256--256
 []|\OT1/cmr/m/n/10.95 Words are
  []
 
 
-Underfull \hbox (badness 2495) in paragraph at lines 178--178
+Underfull \hbox (badness 2495) in paragraph at lines 256--256
 \OT1/cmr/m/n/10.95 rec-og-nized as le-gal
  []
 
 
-Underfull \hbox (badness 6032) in paragraph at lines 179--179
+Underfull \hbox (badness 6032) in paragraph at lines 257--257
 []|\OT1/cmr/m/n/10.95 Word is ac-cepted.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--181
+Underfull \hbox (badness 10000) in paragraph at lines 259--259
 []|\OT1/cmr/m/n/10.95 Words are
  []
 
 
-Underfull \hbox (badness 2495) in paragraph at lines 181--181
+Underfull \hbox (badness 2495) in paragraph at lines 259--259
 \OT1/cmr/m/n/10.95 rec-og-nized as le-gal
  []
 
 
-Underfull \hbox (badness 1009) in paragraph at lines 181--182
+Underfull \hbox (badness 1009) in paragraph at lines 259--260
 \OT1/cmr/m/n/10.95 does not ex-ist in
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--182
+Underfull \hbox (badness 10000) in paragraph at lines 260--260
 []|\OT1/cmr/m/n/10.95 Word is not
  []
 
 
-Underfull \hbox (badness 2486) in paragraph at lines 184--185
+Overfull \hbox (26.47536pt too wide) in alignment at lines 222--262
+ [] [] [] [] [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 262
+ []
+
+[6]
+Overfull \hbox (0.52316pt too wide) in paragraph at lines 268--268
+[]|\OT1/cmr/m/n/10.95 Test
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 268--268
+[]|\OT1/cmr/m/n/10.95 Req
+ []
+
+
+Overfull \hbox (2.93727pt too wide) in paragraph at lines 268--268
+\OT1/cmr/m/n/10.95 Tested| 
+ []
+
+
+Underfull \hbox (badness 2486) in paragraph at lines 271--272
 \OT1/cmr/m/n/10.95 has al-ready been
  []
 
@@ -1397,22 +1578,22 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 1558) in paragraph at lines 185--185
+Underfull \hbox (badness 1558) in paragraph at lines 272--272
 []|\OT1/cmr/m/n/10.95 Error mes-sage say-
  []
 
 
-Underfull \hbox (badness 1448) in paragraph at lines 185--185
+Underfull \hbox (badness 1448) in paragraph at lines 272--272
 \OT1/cmr/m/n/10.95 ing This word has
  []
 
 
-Underfull \hbox (badness 3701) in paragraph at lines 187--188
+Underfull \hbox (badness 3701) in paragraph at lines 274--275
 []|\OT1/cmr/m/n/10.95 Choose no let-ter
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
+Underfull \hbox (badness 10000) in paragraph at lines 274--275
 \OT1/cmr/m/n/10.95 and sub-mit the
  []
 
@@ -1423,82 +1604,138 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--193
+Overfull \hbox (26.47536pt too wide) in alignment at lines 266--280
+ [] [] [] [] [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 280
+ []
+
+
+Overfull \hbox (0.52316pt too wide) in paragraph at lines 286--286
+[]|\OT1/cmr/m/n/10.95 Test
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 286--286
+[]|\OT1/cmr/m/n/10.95 Req
+ []
+
+
+Overfull \hbox (2.93727pt too wide) in paragraph at lines 286--286
+\OT1/cmr/m/n/10.95 Tested| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 289--289
 []|\OT1/cmr/m/n/10.95 Check that game
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--193
+Underfull \hbox (badness 10000) in paragraph at lines 289--289
 \OT1/cmr/m/n/10.95 score for each
  []
 
 
-Underfull \hbox (badness 2951) in paragraph at lines 193--193
+Underfull \hbox (badness 2951) in paragraph at lines 289--289
 \OT1/cmr/m/n/10.95 let-ter is cal-cu-lated
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--194
+Underfull \hbox (badness 10000) in paragraph at lines 289--290
 []|\OT1/cmr/m/n/10.95 Create a le-gal
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--196
+Overfull \hbox (26.47536pt too wide) in alignment at lines 284--292
+ [] [] [] [] [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 292
+ []
+
+
+Overfull \hbox (0.52316pt too wide) in paragraph at lines 298--298
+[]|\OT1/cmr/m/n/10.95 Test
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 298--298
+[]|\OT1/cmr/m/n/10.95 Req
+ []
+
+
+Overfull \hbox (2.93727pt too wide) in paragraph at lines 298--298
+\OT1/cmr/m/n/10.95 Tested| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 301--301
 []|\OT1/cmr/m/n/10.95 Check that fi-nal
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--196
+Underfull \hbox (badness 10000) in paragraph at lines 301--301
 \OT1/cmr/m/n/10.95 game score is
  []
 
 
-Underfull \hbox (badness 2103) in paragraph at lines 197--197
+Underfull \hbox (badness 2103) in paragraph at lines 302--302
 []|\OT1/cmr/m/n/10.95 Total score is dis-
  []
 
 
-Underfull \hbox (badness 1708) in paragraph at lines 197--197
+Underfull \hbox (badness 1708) in paragraph at lines 302--302
 \OT1/cmr/m/n/10.95 played on the end
  []
 
 
-Overfull \hbox (26.47536pt too wide) in alignment at lines 153--199
+Overfull \hbox (26.47536pt too wide) in alignment at lines 296--304
  [] [] [] [] [] [] 
  []
 
-[3] [4] [5] [6] [7
+
+Underfull \vbox (badness 10000) detected at line 304
+ []
+
+[7] [8
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 224.
- [8
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 329.
+ [9
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 224.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 329.
  (testspec_v2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 224.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 224.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 329.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 329.
 Package rerunfilecheck Info: File `testspec_v2.out' has not changed.
-(rerunfilecheck)             Checksum: 291B00B503A21ADA137ADD0CEDB1ABD4;375.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 224.
+(rerunfilecheck)             Checksum: 8F324A44EA65D056880F690B70DEB580;1183.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 329.
  ) 
 Here is how much of TeX's memory you used:
- 4842 strings out of 493333
- 72147 string characters out of 3139194
- 213800 words of memory out of 3000000
- 8350 multiletter control sequences out of 15000+200000
+ 4885 strings out of 493333
+ 72612 string characters out of 3139194
+ 195870 words of memory out of 3000000
+ 8371 multiletter control sequences out of 15000+200000
  8243 words of font info for 29 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 31i,13n,34p,307b,416s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 31i,13n,34p,330b,416s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmti10.pfb>
-Output written on testspec_v2.pdf (9 pages, 113623 bytes).
+Output written on testspec_v2.pdf (10 pages, 127374 bytes).
 PDF statistics:
- 121 PDF objects out of 1000 (max. 8388607)
- 21 named destinations out of 1000 (max. 500000)
- 57 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 198 PDF objects out of 1000 (max. 8388607)
+ 43 named destinations out of 1000 (max. 500000)
+ 145 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,5 +1,5 @@
 \documentclass{project}
-\usepackage[pdfauthor={Author},pdftitle={Software Engineering Group Project, Test Specification},pdftex]{hyperref}
+\usepackage[pdfauthor={Aleksandra Madej, Agata Lefek},pdftitle={Software Engineering Group Project, Test Specification},pdftex]{hyperref}
 
 \usepackage{longtable}
 
@@ -7,7 +7,7 @@
 \title{Software Engineering Group Project}
 \subtitle{Test Specification}
 \author{Aleksandra Madej, Agata Lefek}     
-\shorttitle{author}
+\shorttitle{Test Specification}
 \version{1.0}
 \status{Draft}
 \date{2018-02-21}
@@ -20,11 +20,27 @@
 
 \subsection{Purpose of this Document}
 
+Specify the details of each of the system tests to be executed as part of a formal test process.
+
 \subsection{Scope}
+
+This document covers the system tests and references the the functional requirements as stated in the Game Requirments\cite{SE.QA.CSRS}.
+
+
+The document should be read by the developers working on implementing the system and the testers.
 
 \subsection{Objectives}
 
+This Document aims to:
+
+\begin{itemize}
+\item Define the system tests upon which we will design our code.
+\end{itemize}
+
+
 \section{TESTS}
+
+\subsection{FR1 Start up conditions}
 
 \begin{longtable}{|p{0.7cm}|p{1cm}|p{3.5cm}|p{3.2cm}|p{3.5cm}|p{3.5cm}|}
 \hline
@@ -76,14 +92,42 @@ Player is told that name is to short, there must be more than 3 characters. & Pl
 014 & FR1 & Check if the “End Game” button ends the game. & During the game Press “End Game”. & Game is finished.
 & “End Game” button is work correctly. \\ \hline
 
+\end{longtable}
+
+\subsection{FR2 Generating new grid}
+
+\begin{longtable}{|p{0.7cm}|p{1cm}|p{3.5cm}|p{3.2cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+Test Ref & Req Tested & Test Content & Input  & Output & Pass Criteria \\ \hline \hline
+
+
 015 & FR2 & Letters are generated randomly. & Start new game 3 times. & Grid is generated randomly 3 times.
 & Generated grids are not identical. \\ \hline
 
 016 & FR2 & There is no more occurrences of each letter than allowed population. & Create new grid and count occurrences of each letter.
 & List of letters and corresponding number of occurrences. & Each letter is used less or as many times as allowed. \\ \hline
 
+\end{longtable}
+
+\subsection{FR3  Loading a past grid}
+
+
+\begin{longtable}{|p{0.7cm}|p{1cm}|p{3.5cm}|p{3.2cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+Test Ref & Req Tested & Test Content & Input  & Output & Pass Criteria \\ \hline \hline
+
+
 017 & FR3 & Previous scores and names of players are displayed while playing loaded grid. & Choose a past grid from the list and load it.
 & Names of previous players are displayed with matching scores. & Names are displayed against correct score. \\ \hline
+
+\end{longtable}
+
+\subsection{FR4 Timing a game}
+
+\begin{longtable}{|p{0.7cm}|p{1cm}|p{3.5cm}|p{3.2cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+Test Ref & Req Tested & Test Content & Input  & Output & Pass Criteria \\ \hline \hline
+
 
 018 & FR4 & Clock starts as soon as grid is displayed. & Start a game. & Clock displays time of the game left.
 & Clock displays 3 minutes when game is started. \\ \hline
@@ -102,6 +146,13 @@ Player is told that name is to short, there must be more than 3 characters. & Pl
 
 023 & FR4 & Score of the player is noted when game is finished. & Finish the game. & Final score is displayed after 3 minutes from starting the game.
 & Correct score is displayed. \\ \hline
+\end{longtable}
+
+\subsection{FR5 Actions on game completion}
+
+\begin{longtable}{|p{0.7cm}|p{1cm}|p{3.5cm}|p{3.2cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+Test Ref & Req Tested & Test Content & Input  & Output & Pass Criteria \\ \hline \hline
 
 024 & FR5 & Score is saved if it is one of highest ever achieved. & Empty high-score table. Finish the game with score greater than 0.
 & Score is highest score ever achieved. & Score is saved in high-score table. \\ \hline
@@ -112,6 +163,15 @@ Player is told that name is to short, there must be more than 3 characters. & Pl
 026 & FR5 & Scores in high-score table are ordered correctly. & Add high-score table with different values. Achieve a score between highest and lowest in the table.
 & New score is added to the table between all higher and lower scores. All lower scores are moved one position down.
 & Scores are in correct order from highest to lowest. \\ \hline
+
+\end{longtable}
+
+\subsection{FR6 Saving a grid}
+
+\begin{longtable}{|p{0.7cm}|p{1cm}|p{3.5cm}|p{3.2cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+Test Ref & Req Tested & Test Content & Input  & Output & Pass Criteria \\ \hline \hline
+
 
 027 & FR6 & User is prompted for filename when saving new game. & Finish new game and save it. & Message asking  for filename and input box are displayed.
 & User is able to type in filename. \\ \hline
@@ -137,6 +197,15 @@ Player is told that name is to short, there must be more than 3 characters. & Pl
 034 & FR6 & Scores for specific grid are ordered from highest to lowest. & Load a grid, finish the game and save it.
 & Player name and score are saved between all higher and all lower scores in this grid file. & Scores are in correct order. \\ \hline
 
+\end{longtable}
+
+\subsection{FR7 Displaying the grid}
+
+\begin{longtable}{|p{0.7cm}|p{1cm}|p{3.5cm}|p{3.2cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+Test Ref & Req Tested & Test Content & Input  & Output & Pass Criteria \\ \hline \hline
+
+
 035 & FR7 & Check that 27 letters are generated when starting new grid. & Start a new game. & Cube contains of 27 blocks filled with one letter each. 
 & There are no empty blocks or blocks containing more than one letter. \( Exception: Qu \)  \\ \hline
 
@@ -145,6 +214,15 @@ Player is told that name is to short, there must be more than 3 characters. & Pl
 
 037 & FR7 & Player can change the view as if the cube was seen from any of its faces. & Start a game. Change the view to each face.  
 & There are 6 different views – 1 for each of the faces. & Each face is displayed correctly. \\ \hline
+
+\end{longtable}
+
+\subsection{FR8 Enabling the user to enter words}
+
+\begin{longtable}{|p{0.7cm}|p{1cm}|p{3.5cm}|p{3.2cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+Test Ref & Req Tested & Test Content & Input  & Output & Pass Criteria \\ \hline \hline
+
 
 038 & FR8 & Words can be selected with mouse. & Choose one letter with a mouse. & Letter is displayed in word creation window.
 & Selection is working properly. \\ \hline
@@ -181,6 +259,15 @@ Third plane: none
 047 & FR8 & Words are recognized as legal or illegal correctly. & Create a word that does not exist in used dictionary.
 & Word is not accepted. & Word is given a score of 0. \\ \hline
 
+\end{longtable}
+
+\subsection{FR9 Legal words}
+
+\begin{longtable}{|p{0.7cm}|p{1cm}|p{3.5cm}|p{3.2cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+Test Ref & Req Tested & Test Content & Input  & Output & Pass Criteria \\ \hline \hline
+
+
 048 & FR9 & The same word cannot be selected twice. & Create a word that has already been created. 
 & Error message saying “This word has already been created” is displayed.  & Word is rejected. \\ \hline
 
@@ -190,8 +277,26 @@ Third plane: none
 050 & FR9 & Words have to consist of at least one letter. & Create a word that consists of exactly one letter.
 & Word is added to the list of created words and given associated score. & Word is accepted \\ \hline
 
+\end{longtable}
+
+\subsection{FR10 Scoring words}
+
+\begin{longtable}{|p{0.7cm}|p{1cm}|p{3.5cm}|p{3.2cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+Test Ref & Req Tested & Test Content & Input  & Output & Pass Criteria \\ \hline \hline
+
+
 051 & FR10 & Check that game score for each letter is calculated correctly. & Create a legal word. 
 & Score for the word is calculated. & Score for the word is square of Scrabble score of the word. \\ \hline
+
+\end{longtable}
+
+\subsection{FR11  Scoring the game}
+
+\begin{longtable}{|p{0.7cm}|p{1cm}|p{3.5cm}|p{3.2cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+Test Ref & Req Tested & Test Content & Input  & Output & Pass Criteria \\ \hline \hline
+
 
 052 & FR11 & Check that final game score is calculated correctly. & Finish game creating more than one word.
 & Total score is displayed on the end screen. & Total score is sum of scores for each word. \\ \hline
