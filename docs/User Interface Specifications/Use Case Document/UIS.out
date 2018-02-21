@@ -18,5 +18,16 @@
 \BOOKMARK [3][-]{subsubsection.3.1.9}{View Grid High score}{subsection.3.1}% 18
 \BOOKMARK [3][-]{subsubsection.3.1.10}{Finding help}{subsection.3.1}% 19
 \BOOKMARK [1][-]{section.4}{Error Conditions}{}% 20
-\BOOKMARK [1][-]{section.4}{REFERENCES}{}% 21
-\BOOKMARK [1][-]{section*.2}{DOCUMENT HISTORY}{}% 22
+\BOOKMARK [2][-]{subsection.4.1}{Start view}{section.4}% 21
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Description}{subsection.4.1}% 22
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Possible errors}{subsection.4.1}% 23
+\BOOKMARK [2][-]{subsection.4.2}{Load grid view}{section.4}% 24
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Description}{subsection.4.2}% 25
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Possible errors}{subsection.4.2}% 26
+\BOOKMARK [2][-]{subsection.4.3}{High score view}{section.4}% 27
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Description}{subsection.4.3}% 28
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Possible errors}{subsection.4.3}% 29
+\BOOKMARK [2][-]{subsection.4.4}{Settings view}{section.4}% 30
+\BOOKMARK [3][-]{subsubsection.4.4.1}{Description}{subsection.4.4}% 31
+\BOOKMARK [1][-]{subsubsection.4.4.1}{REFERENCES}{}% 32
+\BOOKMARK [1][-]{section*.2}{DOCUMENT HISTORY}{}% 33

@@ -114,7 +114,7 @@ public class GameController implements Initializable{
 
     @FXML
     private void btnSubmitClicked() {
-        if(textField.getText().equals("")) {
+        if(!textField.getText().equals("")) {
             if (UIController.getJoggleCube().testWordValidity(textField.getText())) {
                 foundWords.add(textField.getText());
                 textField.setText("");

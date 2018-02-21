@@ -81,7 +81,68 @@ This Document aims to:
 		From the home screen or pause screen the user can press the help button to bring up a helpful guide on how to play.
 		
 \section{Error Conditions}
-	Non yet will look into these at a later date. 
+
+\subsection{Start view} \label{Start View}
+\subsubsection{Description}
+The Start view contains 5 buttons which navigate to the various features of the JoggleCube application. They are as follows:
+\begin{itemize}
+\item[Start New Grid] This will begin the game with a new grid(see \ref{Game View}).
+\item[Load Grid] This will navigate to the load view (see \ref{Load View}).
+\item[High Score] This will navigate to the high score view (see \ref{High score View}
+\item[Settings] This will navigate to the Settings view (see \ref{Settings View}).
+\item[help] This will navigate to the help view (see \ref{Help View}).
+\end{itemize} 
+\subsubsection{Possible errors}
+Due to implementation the other views are loaded before the game is launched so no errors will occur when switching views.
+
+\subsection{Load grid view} \label{Load View}
+\subsubsection{Description}
+This view contains 3 buttons that allow the user to pick a file, start the grid from file and go back to the start view (see \ref{start View}). The view also contains a list of selectable files to choose from.
+
+When the pick file button is pressed a dialogue will open to allow the user to browse their files for a grid, it is constrained to only allow them to open .grid files that store grids.
+\subsubsection{Possible errors}
+\begin{itemize}
+\item If there are no recent grid files it will not display any.
+\item If the Start grid button is pressed and no file is loaded a dialogue will pop-up informing the user to select a file.
+\item If a recent file is selected but it has been removed from the system, a dialogue will pop-up informing the user such so they may go and pick another file, the null file will then be removed from the list.
+\end{itemize}
+
+\subsection{High score view} \label{High score View}
+\subsubsection{Description}
+This view contains 5 buttons: 3 navigation buttons to the start screen, settings and help screens. 2 for navigating from viewing the current cube to the overall high score table.
+\subsubsection{Possible errors}
+\begin{itemize}
+\item If no grid is loaded the navigation buttons will be disabled to stop the user trying to view current cube high scores, so only the overall high scores table will be displayed.
+\item If there are no high scores to display, a message will display instead of a high score table informing the user to navigate to the start view (see \ref{Start View}) to play a game.
+\end{itemize}
+
+\subsection{Settings view} \label{Settings View}
+\subsubsection{Description}
+This view will contain the possible settings that will be displayed.
+\subsubsection{Possible errors}
+
+\subsection{Help view} \label{Help View}
+\subsubsection{Description}
+This view will contain details on the controls and how the user can play the game.
+\subsubsection{Possible errors}
+
+\subsection{Game view} \label{Game View}
+\subsubsection{Description}
+\subsubsection{Possible errors}
+
+
+\subsection{Pause overlay} \label{Pause Overlay}
+\subsubsection{Description}
+This will overlay the game view(see \ref{Game View} when it is paused and will contain the following:
+\begin{itemize}
+
+\end{itemize}
+\subsubsection{Possible errors}
+
+\subsection{End overlay} \label{End Overlay}
+\subsubsection{Description}
+\subsubsection{Possible errors}
+
 
 \clearpage
 \addcontentsline{toc}{section}{REFERENCES}
