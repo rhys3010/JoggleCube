@@ -7,6 +7,14 @@ package cs221.GP01.java.model;
  */
 
 public interface IBlock {
+    /**
+     * Generates a letter using the weighted levels of the "Scrabble bag"
+     */
     void generateLetter();
+
+    /**
+     *
+     * @param letter
+     */
     void setLetter(String letter);
 }

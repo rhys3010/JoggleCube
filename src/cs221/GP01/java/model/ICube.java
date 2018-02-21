@@ -1,5 +1,7 @@
 package cs221.GP01.java.model;
 
+import java.util.ArrayList;
+
 /**
  * The Interface which handles and looks after the Cube
  * @author Samuel Jones - srj12
@@ -21,6 +23,12 @@ public interface ICube {
      */
     void populateCube();
 
-
-    ArrayList<Block*> getNeighbours(int x, int y, int z);
+    /**
+     *
+     * @param x
+     * @param y
+     * @param z
+     * @return
+     */
+    ArrayList<int[]> getNeighbours(int x, int y, int z);
 }
