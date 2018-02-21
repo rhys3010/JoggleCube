@@ -1,0 +1,222 @@
+\documentclass{project}
+\usepackage[pdfauthor={Author},pdftitle={Software Engineering Group Project, Test Specification},pdftex]{hyperref}
+
+\begin{document}
+\title{Software Engineering Group Project}
+\subtitle{Test Specification}
+\author{Aleksandra Madej, Agata Lefek}     
+\shorttitle{author}
+\version{1.0}
+\status{Draft}
+\date{2018-02-21}
+\configref{GP01-TS-TS}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{INTRODUCTION}
+
+\subsection{Purpose of this Document}
+
+\subsection{Scope}
+
+\subsection{Objectives}
+
+\section{TESTS}
+
+\begin{tabular}{|p{0.7cm}|p{1cm}|p{3.5cm}|p{3.2cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+Test Ref & Req Tested & Test Content & Input  & Output & Pass Criteria \\ \hline \hline
+
+001 & FR1 & Check that appropriate start screen is displayed when starting the game. 
+& Start software. & Start screen containing options of starting new game or loading saved grid is displayed. 
+& Start screen is displayed correctly. \\ \hline
+
+002 & FR1 &  Check that game is asking user for a name after choosing “new game” option.
+& Choose “new game” option. & Window with name box is displayed. 
+& The game is asking user for a name at the beginning of the game. \\ \hline
+
+003 & FR1 & Check that game is asking user for a name after choosing “load cube” option.
+& Choose “load cube” option. & Window with name box is displayed. 
+& The game is asking user for a name at the beginning of the game. \\ \hline
+
+004 & FR1 & Entering blank player’s name. & Choose blank name. & Blank player name is illegal.
+& Player name is rejected. \\ \hline
+
+005 & FR1 & Entering the player’s name with illegal characters. & Choose player name: “agl*%$#”. 
+& Player is told that name contains illegal characters. & Player name is rejected. \\ \hline
+
+006 & FR1 & Entering to long player’s name. & Choose player name which contains more than 10 characters. 
+& Player is told that name is too long, limit of the characters is 10. & Player name is rejected. \\ \hline
+
+007 & FR1 & Entering to short player’s name. & Choose player name with less than 3 characters. &
+Player is told that name is to short, there must be more than 3 characters. & Player name is rejected. \\ \hline
+
+008 & FR1 & Loading is not allowed if there are no saved grids. & Choose “load past grid” option with no previously saved grids.
+& Load option is not available. & Game cannot be loaded. \\ \hline
+
+009 & FR1 & Check that all saved grids are displayed for user to choose from. & Choose “load past grid” option with some previously saved grids.
+& List of saved grids is displayed. & All saved grids are displayed on the list. \\ \hline
+
+010 & FR1 & Check if the pause button stops the game & During the game press “Pause Game” button. & Game stops. 
+&“Pause Game” button is work correctly. \\ \hline
+
+011 & FR1 & Check that appropriate start screen is displayed (“Game Paused”) when “Pause Game” button is pressed. 
+& During the game press “Pause Game” button. & “Game Paused” screen is displayed and containing options of resume, exit and settings.
+& “Game Paused” screen is displayed correctly. \\ \hline
+
+012 & FR1 & Check that “Resume” button in the “Game Paused” screed is resume the game. & On the “Game Paused” screen choose “Resume” button.
+& Game is resumed. &  “Resume” button is work correctly. \\ \hline
+
+013 & FR1 & Check that “Exit” button in the “Game Paused” screen is exiting the game. & On the “Game Paused” screen choose “Exit” button. 
+& Game is exited. & “Exit” button is work correctly. \\ \hline
+
+014 & FR1 & Check if the “End Game” button ends the game. & During the game Press “End Game”. & Game is finished.
+& “End Game” button is work correctly. \\ \hline
+
+015 & FR2 & Letters are generated randomly. & Start new game 3 times. & Grid is generated randomly 3 times.
+& Generated grids are not identical. \\ \hline
+
+016 & FR2 & There is no more occurrences of each letter than allowed population. & Create new grid and count occurrences of each letter.
+& List of letters and corresponding number of occurrences. & Each letter is used less or as many times as allowed. \\ \hline
+
+017 & FR3 & Previous scores and names of players are displayed while playing loaded grid. & Choose a past grid from the list and load it.
+& Names of previous players are displayed with matching scores. & Names are displayed against correct score. \\ \hline
+
+018 & FR4 & Clock starts as soon as grid is displayed. & Start a game. & Clock displays time of the game left.
+& Clock displays 3 minutes when game is started. \\ \hline
+
+019 & FR4 & Clock is updated as the time is passing. & Start a game and wait 10 seconds. & Time displayed on clock is decreasing as time is passing.
+& Displayed time is updated at least every second. \\ \hline
+
+020 & FR4 & Game stops after 3 minutes. & Start a game and wait 3 minutes. & User is no longer able to create new words after 3 minutes. 
+& Game stops correctly. \\ \hline
+
+021 & FR4 & Clock stops counting the time while “Pause Game” button is pressed. & Start a game and during the game press “Pause Game” button.
+& Clock stops on time when “Pause Button” been pressed. & Clock stops counting the time. \\ \hline
+
+022 & FR4 & Clock resumes counting the time  & Start a game and press “Pause Game” button and then “Resume” button to resume the game.
+& Clock starts with time game been before “Pause Game” button. & Clock is back to counting the time. \\ \hline
+
+023 & FR4 & Score of the player is noted when game is finished. & Finish the game. & Final score is displayed after 3 minutes from starting the game.
+& Correct score is displayed. \\ \hline
+
+024 & FR5 & Score is saved if it is one of highest ever achieved. & Empty high-score table. Finish the game with score greater than 0.
+& Score is highest score ever achieved. & Score is saved in high-score table. \\ \hline
+
+025 & FR5 & Check that end game screen is displayed correctly. & Finish the game. & End screen with options of starting new game, loading past grid or saving current game is displayed.
+& End screen contains all required elements. \\ \hline
+
+026 & FR5 & Scores in high-score table are ordered correctly. & Add high-score table with different values. Achieve a score between highest and lowest in the table.
+& New score is added to the table between all higher and lower scores. All lower scores are moved one position down.
+& Scores are in correct order from highest to lowest. \\ \hline
+
+027 & FR6 & User is prompted for filename when saving new game. & Finish new game and save it. & Message asking  for filename and input box are displayed.
+& User is able to type in filename. \\ \hline
+
+028 & FR6 & Check that game is saved in correct file. & Finish new game and save it. & Game data is stored in file specified by user.
+& New file with game data is created. \\ \hline
+
+029 & FR6 & Check that game is saved in correct file. & Finish loaded game and save it. & Game data is stored in file that it was loaded from.
+& Data is added to old file. No new file is created. \\ \hline
+
+030 & FR6 & It is impossible to save a new game in file that already exists. & Generate new grid  and try to save it into file named “test” twice. 
+& Filename is rejected. Player is asked to choose different filename. & Original file has not been altered. \\ \hline
+
+031 & FR6 & Filename for saving the grid has to consist of at least one non whitespace character. & Try saving newly generated grid with name “ “ \(space\)
+& Filename is rejected. Player is asked to choose different filename.  & File has not been created. \\ \hline
+
+032 & FR6 & Filename for saving the grid can consist of maximum 20 characters. & Try saving newly generated grit with name “Test Grid With Very Long Name”.
+& Filename is rejected. Player is asked to choose different filename. & File has not been created. \\ \hline
+
+033 & FR6 & Filename for saving the grid cannot contain any special characters. & Try saving newly generated grid with name “Grid%”.
+&Filename is rejected. Player is asked to choose different filename. & File has not been created. \\ \hline
+
+034 & FR6 & Scores for specific grid are ordered from highest to lowest. & Load a grid, finish the game and save it.
+& Player name and score are saved between all higher and all lower scores in this grid file. & Scores are in correct order. \\ \hline
+
+035 & FR7 & Check that 27 letters are generated when starting new grid. & Start a new game. & Cube contains of 27 blocks filled with one letter each. 
+& There are no empty blocks or blocks containing more than one letter. \( Exception: Qu \)  \\ \hline
+
+036 & FR7 & Check that letters are displayed as 3 groups of 9 letters. & Start a new game. & Cube is represented by 3 planes consisting of 9 blocks each. Each block represents one letter.
+& Letters are grouped correctly. \\ \hline 
+
+037 & FR7 & Player can change the view as if the cube was seen from any of its faces. & Start a game. Change the view to each face.  
+& There are 6 different views – 1 for each of the faces. & Each face is displayed correctly. \\ \hline
+
+038 & FR8 & Words can be selected with mouse. & Choose one letter with a mouse. & Letter is displayed in word creation window.
+& Selection is working properly. \\ \hline
+
+039 & FR8 & Any block that has not been used yet can be chosen as first letter of a new word. & Start new game. Choose one letter and undo \(?\). Repeat with all other letters.
+& Each of the letters appear in word creation window when selected. & There is no letter that cannot be selected. \\ \hline
+
+040 & FR8 & After first letter is selected only letter adjacent to last selected letter can be chosen. & Choose starting letter. Then choose letter that is adjacent to it.
+& Both letters are selected and displayed in word creation window. & User is able to choose adjacent letter. \\ \hline
+
+041 & FR8 & After first letter is selected only letter adjacent to last selected letter can be chosen. & Choose starting letter. Then choose letter that is not adjacent to it.
+& Only starting letter is displayed in word creation window. Block with second letter is not available for selection.
+& User is not able to choose letter that is not adjacent to previous letter. \\ \hline
+
+042 & FR8 & After submitting a word creation of new word starts. & Start a new game. Create a word and submit.  & Word creation window is cleared.
+Next letter is a starting letter of a new word. & All letters that were not used in creation of previous word are marked as available again. \\ \hline
+
+043 & FR8 & After choosing a letter all adjacent letters are marked as available for selection. & Choose middle letter in middle plane as starting letter.
+& All other letters are available for selection. & Letters are marked as selectable correctly in all planes. \\ \hline
+
+044 & FR8 & After choosing a letter all adjacent letters are marked as available for selection. & Choose first letter in first plane.
+& The only available letters are: 
+First plane: 2nd letter in 1st row, 1st and 2nd letter in 2nd row
+Second Plane: 1st and 2nd letter in both 1st and 2nd row
+Third plane: none
+& Letters are marked as selectable correctly in all planes. \\ \hline
+
+045 & FR8 & Letters cannot be reused. & Create a word. Choose a block that has already been used. 
+& Block is not available for selection. & Letter cannot be selected. \\ \hline
+
+046 & FR8 & Words are recognized as legal or illegal correctly. & Create a word existing in used dictionary. 
+& Word is accepted. Score for it is calculated and added to the total score. & Word is given associated score. \\ \hline
+
+047 & FR8 & Words are recognized as legal or illegal correctly. & Create a word that does not exist in used dictionary.
+& Word is not accepted. & Word is given a score of 0. \\ \hline
+
+048 & FR9 & The same word cannot be selected twice. & Create a word that has already been created. 
+& Error message saying “This word has already been created” is displayed.  & Word is rejected. \\ \hline
+
+049 & FR9 & Words have to consist of at least one letter. & Choose no letter and submit the word.
+& Error message saying “Word has to contain at least one letter” is displayed. & Word is rejected. \\ \hline
+
+050 & FR9 & Words have to consist of at least one letter. & Create a word that consists of exactly one letter.
+& Word is added to the list of created words and given associated score. & Word is accepted \\ \hline
+
+051 & FR10 & Check that game score for each letter is calculated correctly. & Create a legal word. 
+& Score for the word is calculated. & Score for the word is square of Scrabble score of the word. \\ \hline
+
+052 & FR11 & Check that final game score is calculated correctly. & Finish game creating more than one word.
+& Total score is displayed on the end screen. & Total score is sum of scores for each word. \\ \hline
+
+\end{tabular}
+
+\clearpage
+\addcontentsline{toc}{section}{REFERENCES}
+\begin{thebibliography}{5}
+\bibitem{SE.QA.CSRS} \emph{Software Engineering Group Projects}
+JoggleCube Game Requirements Specification.
+C. J. Price SE.QA.CSRS. 1.0 Release.
+\bibitem{SE.QA.06} \emph{Software Engineering Group Projects}
+Test Procedure Standards.
+C. J. Price SE.QA.06 2.0 Release.
+\end{thebibliography}
+\clearpage
+\addcontentsline{toc}{section}{DOCUMENT HISTORY}
+\section*{DOCUMENT HISTORY}
+\begin{tabular}{|l | l | l | l | l |}
+\hline
+Version & CCF No. & Date & Changes made to Document & Changed by \\
+\hline
+0.1 & N/A & 2018-02-19 & Initial creation & NAW21 \\
+\hline
+1.0 & N/A & 2018-02-21 & Adding entries to the test table & ALM82 \\
+\hline
+\end{tabular}
+\label{thelastpage}
+\end{document}
