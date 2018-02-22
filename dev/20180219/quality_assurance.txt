@@ -1,0 +1,57 @@
+Minutes of Meetings
+Minutes of meetings should be in plain text, and should be emailed to all project members within 24 hours of the meeting. They must contain the following information at the start:
+• a project title, which should include the name of the project (e.g., Group Project 07);
+• the meeting purpose (e.g., Weekly Project Meeting);
+• a list of the people present at the meeting plus any apologies;
+• the place and date of the meeting;
+• a circulation list, which should include all those present plus other persons as appropriate;
+• the author of the minutes;
+• the date the minutes were produced;
+• the version number of the minutes, increased if they have to be recirculated because of errors.
+• Matters arising - this section will describe matters arising from previous meetings;
+• New business - this section will describe each significant new piece of business, numbering each item;
+• AOB - this section will describe items discussed as any other business (AOB), and each significant point will be numbered;
+
+Software Configuration Management
+•All software modules, associated software documentation, internal working documents, and documents ultimately for release to the customer, should be administered under control of a software configuration management system.
+ 
+Tools, techniques and methodologies
+•All program code must be written in the specified programming language, unless you have written permission from the group project coordinator.
+•Systems produced on the project must execute on platforms provided by the Department of Computer Science, AU, unless otherwise specified.
+•All code to be delivered must adhere to the standards specified in QA document SE.QA.09, Coding Standards. 
+
+Basic Information Content And Layout
+All formal project documents must contain the following information on the front cover:
+• a title, which should clearly indicate both the project and nature of the particular document (e.g., Group
+Project 07 - Design Specification);
+• the author(s) of the document;
+• the configuration reference for the document (see QA document SE.QA.08 [3] for details of configuration references);
+• the date the latest version of the document was produced;
+• the version number of the document. This should be incremented if a new release of the document is made.
+• the document status 
+• the name and address of the Department, together with a copyright notice.
+
+Each page within the document must contain the following information:
+• a page header containing:
+	o the title of the document
+	o the version number of the document;
+	o the status of the document, in brackets (e.g. Draft or Released);
+• a page footer containing:
+	o the phrase Aberystwyth University / Computer Science;
+	o a page number in the form: Page x of y where x is the page number and y is the total number of pages; page 1 will be the front cover.
+
+Every formal document must contain the following lists and sections:
+• CONTENTS - this list should come after the title page and must list the titles of all sections and
+subsections together with their page numbers;
+• INTRODUCTION - this section must contain the following subsections:
+	o Purpose of this Document
+	o Scope - this subsection must describe the parameters of the document
+	o Objectives - this subsection must list the specific objectives of the document. 
+• SPECIFIC SECTIONS
+§ REFERENCES - this section must list any books, manuals, documents, etc. which are referred to
+§ DOCUMENT CHANGE HISTORY - The Change History is a summary of changes made
+	o Version - the version of the document being described;
+	o CCF No. - the number of the Change Control Form (CCF) authorising the changes from the previous version. 
+	o Date - the date the change was put under change control, in the form nn/mm/yy
+	o Sections Changed From Previous Versions - a list of the amended sections or a very brief description of more general changes;
+	o Changed By - the initials of the person who carried out the change; 
