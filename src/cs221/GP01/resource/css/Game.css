@@ -66,11 +66,11 @@
 }
 
 #quitButton{
-    -fx-background-image: url("../img/icon/settings_icon_inactive_alt.png");
+    -fx-background-image: url("../img/icon/quit_icon_inactive.png");
 }
 
 #quitButton:hover{
-    -fx-background-image: url("../img/icon/settings_icon.png");
+    -fx-background-image: url("../img/icon/quit_icon.png");
 }
 
 .gameElementsContainer{

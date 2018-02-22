@@ -45,9 +45,9 @@
             <Button mnemonicParsing="false" onAction="#btnHighScoreClicked" styleClass="highScoreBtn" text="View Highscores" />
             <HBox prefHeight="100.0" prefWidth="200.0" styleClass="buttonsContainer">
                <children>
-                  <Button mnemonicParsing="false" />
-                  <Button mnemonicParsing="false" />
-                  <Button mnemonicParsing="false" />
+                  <Button fx:id="homeButton" mnemonicParsing="false" />
+                  <Button fx:id="replayButton" mnemonicParsing="false" />
+                  <Button fx:id="saveButton" mnemonicParsing="false" />
                </children>
             </HBox>
          </children>

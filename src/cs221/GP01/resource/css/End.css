@@ -51,7 +51,7 @@
 }
 
 .buttonsContainer .button{
-    -fx-background-color: white;
+    -fx-background-color: transparent;
     -fx-cursor: hand;
     -fx-pref-height: 48;
     -fx-pref-width: 48;
@@ -59,6 +59,30 @@
     -fx-background-position: center;
     -fx-background-size: 48 48;
     -fx-background-insets: 0 0 0 0, 0, 0, 0;
+}
+
+#homeButton{
+    -fx-background-image: url("../img/icon/menu_icon_inactive_alt.png");
+}
+
+#replayButton{
+    -fx-background-image: url("../img/icon/replay_icon_inactive.png");
+}
+
+#saveButton{
+    -fx-background-image: url("../img/icon/save_icon_inactive.png");
+}
+
+#homeButton:hover{
+    -fx-background-image: url("../img/icon/menu_icon.png");
+}
+
+#replayButton:hover{
+    -fx-background-image: url("../img/icon/replay_icon.png");
+}
+
+#saveButton:hover{
+    -fx-background-image: url("../img/icon/save_icon.png");
 }
 
 
