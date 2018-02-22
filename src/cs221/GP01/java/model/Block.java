@@ -1,20 +1,27 @@
 package cs221.GP01.java.model;
 
+/**
+ * The Interface which holds all the details for the Block
+ * @author Samuel Jones - srj12
+ * @version 0.1
+ */
+
 public class Block implements IBlock {
+    private String letter;
 
-    /**
-     * Generates a letter using the weighted levels of the "Scrabble bag"
-     */
-    @Override
-    public void generateLetter() {
-
+    public Block(String newLetter){
+        this.letter = newLetter;
     }
 
     /**
-     * @param letter
+     * @param newLetter
      */
     @Override
-    public void setLetter(String letter) {
+    public void setLetter(String newLetter) {
+        letter = newLetter;
+    }
 
+    public String getLetter(){
+        return letter;
     }
 }

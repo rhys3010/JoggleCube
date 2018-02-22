@@ -56,12 +56,12 @@ public class Dictionary implements IDictionary{
      */
     public boolean searchDictionary(String word){
         //Uses toUpperCase as all words are stored in upper case
-        long currentTime = System.currentTimeMillis();
+       // long currentTime = System.currentTimeMillis();
 
         boolean hasBeenFound = dictionary.containsKey(word.toUpperCase());
 
-        System.out.print("Time taken to search dictionary: ");
-        System.out.println(System.currentTimeMillis() - currentTime);
+        //System.out.print("Time taken to search dictionary: ");
+        //System.out.println(System.currentTimeMillis() - currentTime);
         return hasBeenFound;
     }
 

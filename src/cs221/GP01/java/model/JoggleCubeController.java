@@ -8,23 +8,34 @@ import java.util.ArrayList;
 public class JoggleCubeController implements IJoggleCubeController{
 
     private Dictionary dictionary = new Dictionary();
+    private Cube cube;
 
     private ArrayList<String> storedWords;
+
+    //en = English (American)
+    private String language = "en";
 
     //dictionary.txt was taken from an open source scrabble bot at
     //Currently American English
     //URL: https://github.com/jonbcard/scrabble-bot/blob/master/src/dictionary.txt
     //todo adding in functionality for different dictionaries, as well as loading letters in different languages
-    private final String dictionaryFileName = "dictionary.txt";
+    private final String dictionaryFileName = language + "_dictionary.txt";
 
     public JoggleCubeController(){
         //etc
+        /*
         dictionary.loadDictionary(dictionaryFileName);
         System.out.println(dictionary.searchDictionary("INVALIDATED"));
         System.out.println(dictionary.searchDictionary("AA"));
         System.out.println(dictionary.searchDictionary("ZYZZYVAS"));
         System.out.println(dictionary.searchDictionary("llllllllllllllllllllllllllllllllll"));
         System.out.println(dictionary.searchDictionary(""));
+        */
+        cube = new Cube();
+        cube.populateCube(language + "_letters.txt");
+        ArrayList<int[]> xyzNeighbours = cube.getNeighbours(2,2,2);
+
+        int i = 0;
     }
 
     public void startRandomGame() { }

@@ -10,7 +10,7 @@ public interface IBlock {
     /**
      * Generates a letter using the weighted levels of the "Scrabble bag"
      */
-    void generateLetter();
+    String getLetter();
 
     /**
      *

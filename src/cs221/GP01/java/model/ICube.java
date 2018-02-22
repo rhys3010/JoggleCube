@@ -21,7 +21,7 @@ public interface ICube {
     /**
      * Generates the cube using sudo random Java functions in the block objects
      */
-    void populateCube();
+    void populateCube(String letterFilename);
 
     /**
      *
