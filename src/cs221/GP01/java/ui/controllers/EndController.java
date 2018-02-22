@@ -111,4 +111,13 @@ public class EndController implements Initializable{
         // Unload End Overlay
         UIController.getScreenController().hide(ScreenType.END);
     }
+
+    /**
+     * When the 'replay' button is clicked restart a game
+     */
+    @FXML
+    void btnReplayClicked() throws IOException{
+        UIController.getScreenController().show(ScreenType.GAME);
+        UIController.getScreenController().hide(ScreenType.END);
+    }
 }
