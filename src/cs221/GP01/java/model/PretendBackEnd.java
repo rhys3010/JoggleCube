@@ -20,7 +20,7 @@ import java.util.Random;
  * @author Nathan Williams
  * @version 0.2
  */
-public class PretendBackEnd implements JoggleCube{
+public class PretendBackEnd implements IJoggleCubeController{
 
     public void startRandomGame(){
         //todo load a random grid and start the timer

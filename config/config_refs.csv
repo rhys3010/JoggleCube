@@ -1,0 +1,4 @@
+CONFIG_REF,Item,Name,Location,Status,Version
+GP01-UIS-UCD,User Interface Specification: Use Case Document,GP01-UIS-UCD.pdf,/docs/UserInterfaceSpecifications,DRAFT,0.1.3
+GP01-UIS-OP,User Interface Specification: Online Presentation,GP01-UIS-OP.pdf,/docs/UserInterfaceSpecifications,DRAFT,0.1
+GP01-TS-TS,Test Specification,GP01-TS-TS.pdf,/docs/TestSpecifications,DRAFT,0.1
