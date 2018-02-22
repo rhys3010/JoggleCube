@@ -80,32 +80,95 @@ public class GameController implements Initializable{
         this.UIController = UIController;
     }
 
+
+    private Label[][][] labelCube;
+
+
+    void CubeClicked(int k,int i,int j,Label label){
+        for (int x = 0; x < 3; x++) {
+            for (int y = 0; y < 3; y++) {
+                for (int z = 0; z < 3; z++) {
+                    if(x == k && y == i && z == j){
+                        setSelected(x,y,z);
+                    } else if(neighbour(k,i,j,x,y,z)){
+                        setActive(x,y,z,false);
+                    } else {
+                        setInActive(x,y,z);
+                    }
+                }
+            }
+        }
+        textField.appendText(label.getText());
+    }
+
+    private void setSelected(int x, int y, int z) {
+        labelCube[x][y][z].setStyle("-fx-background-color:#ff0000;");
+        labelCube[x][y][z].setOnMouseClicked(null);
+    }
+
+    private void setInActive(int x, int y, int z) {
+        if(!labelCube[x][y][z].getStyle().contains("-fx-background-color:#550000;")){
+            labelCube[x][y][z].setStyle("-fx-background-color:#566377;");
+            labelCube[x][y][z].setOnMouseClicked(null);
+        }
+    }
+
+    private void setActive(int x, int y, int z, boolean overide) {
+        if(labelCube[x][y][z].getStyle().contains("-fx-background-color:#ff0000;") && !overide){
+            labelCube[x][y][z].setStyle("-fx-background-color:#550000;");
+        } else if(!labelCube[x][y][z].getStyle().contains("-fx-background-color:#550000;") || overide) {
+            labelCube[x][y][z].setStyle("-fx-background-color:#2980b9;");
+            labelCube[x][y][z].setOnMouseClicked(e -> CubeClicked(x, y, z, labelCube[x][y][z]));
+        }
+    }
+
     /**
      * Initialize game screen
      */
     @Override
     public void initialize(URL location, ResourceBundle resources){
-
+        labelCube = new Label[3][3][3];
         //
         foundWordsList.setItems(foundWords);
 
 
         String[][][] letters = UIController.getJoggleCube().getCubeData();
-        GridPane[] twoDGrid =  {top,middle,bottom};
-        for(int k = 0; k<3; k++){
-            for(int i = 0; i<3;i++){
-                for(int j = 0; j < 3; j++){
-                    Label label = new Label(letters[k][i][j]);
-                    label.setOnMouseClicked( e ->{
-                        //todo write checks etc.
-                        textField.appendText(label.getText());
-                    });
-                    twoDGrid[k].add(label,i,j);
+        if(letters[0][0][0] != null) {
+            GridPane[] twoDGrid = {top, middle, bottom};
+            for (int k = 0; k < 3; k++) {
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 3; j++) {
+                        Label label = new Label(letters[k][i][j]);
+                        labelCube[k][i][j] = label;
+                        setActive(k,i,j,true);
+                        twoDGrid[k].add(label, i, j);
+                    }
                 }
             }
         }
-
         //todo load this data into the other grids for display
+
+
+        //todo create an instance of timer and start it to keep updating
+    }
+
+    private boolean neighbour(int f,int g, int h, int a, int b, int c) {
+        int x,y,z;
+        for(int i = -1; i<2; i++) {
+            x = f;
+            x += i;
+            for (int j = -1; j < 2; j++) {
+                y = g;
+                y += j;
+                for (int k = -1; k < 2; k++) {
+                    z = h;
+                    z += k;
+                    if(a == x && b == y && c == z)
+                        return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -125,6 +188,16 @@ public class GameController implements Initializable{
             if (UIController.getJoggleCube().testWordValidity(textField.getText())) {
                 foundWords.add(textField.getText());
                 textField.setText("");
+                for (int x = 0; x < 3; x++) {
+                    for (int y = 0; y < 3; y++) {
+                        for (int z = 0; z < 3; z++) {
+                            setActive(x,y,z,true);
+                        }
+                    }
+                }
+
+
+
                 //todo change the colour of the button to green
             } else {
                 //todo change the colour of the button to red
@@ -132,6 +205,8 @@ public class GameController implements Initializable{
         } else {
             //todo change the colour of the button to red
         }
+
+
     }
 
     //todo add method to change the submit buttons colour back when the the mouse is next clicked maybe?
