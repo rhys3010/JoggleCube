@@ -13,6 +13,8 @@ import cs221.GP01.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,32 +29,17 @@ import java.util.ResourceBundle;
  * @version 0.2  DRAFT
  */
 
-public class StartController implements Initializable{
-    /**
-     * The root Node in this scene.
-     */
-    @FXML
-    private Node root;
-
-    /**
-     * An instance of the UIController object to interface with backend
-     */
-    private UIController UIController;
-
-    /**
-     * Constructor to ensure UIController object is passed
-     * @param UIController
-     */
+public class StartController extends BaseController implements Initializable {
     public StartController(UIController UIController){
-        this.UIController = UIController;
+        super(UIController);
     }
+
 
     /**
      * todo Do initialization stuff here
      */
     @Override
     public void initialize(URL location, ResourceBundle resources){
-
     }
 
 
@@ -75,31 +62,6 @@ public class StartController implements Initializable{
     private void btnLoadGridClicked() {
         UIController.getScreenController().show(ScreenType.LOAD);
         UIController.initalizeController(ScreenType.LOAD);
-    }
-
-    /**
-     *
-     */
-    @FXML
-    public void btnSettingsClicked() {
-        UIController.getScreenController().show(ScreenType.SETTINGS);
-    }
-
-    /**
-     * When the HighScore button is clicked it will load the Highscore scene.
-     */
-    @FXML
-    public void btnHighScoreClicked() throws IOException{
-        UIController.getScreenController().show(ScreenType.HIGH_SCORES);
-        UIController.initalizeController(ScreenType.HIGH_SCORES);
-    }
-
-    /**
-     * Get the root node of the FXML
-     * @return root - the root node
-     */
-    public Node getRoot(){
-        return root;
     }
 
 }

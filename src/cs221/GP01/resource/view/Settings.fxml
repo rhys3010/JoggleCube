@@ -2,13 +2,28 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="root" stylesheets="@../css/Settings.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
-    <Label text="Settings" />
-    <!--todo add options here such as clear high scores -->
-    <Button fx:id="btnBack" mnemonicParsing="false" onAction="#btnBackClicked" text="Back" />
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="settingsOverlay" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox styleClass="topMenu">
+         <children>
+            <Label styleClass="title" text="Settings" />
+            <Button fx:id="settingsCloseBtn" mnemonicParsing="false" onAction="#btnCloseClicked" styleClass="closeButton" />
+         </children>
+      </HBox>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="settingsContainer">
+         <children>
+            <CheckBox mnemonicParsing="false" styleClass="colorBlindToggle" text="Colour Blind Mode" />
+            <CheckBox mnemonicParsing="false" text="Some other Setting" />
+            <CheckBox mnemonicParsing="false" text="Foo" />
+            <CheckBox mnemonicParsing="false" text="Bar" />
+         </children>
+      </VBox>
+   </children>
 
     <stylesheets>
         <URL value="@../css/Settings.css" />

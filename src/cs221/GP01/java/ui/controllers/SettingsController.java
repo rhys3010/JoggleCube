@@ -10,24 +10,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SettingsController implements Initializable {
-    /**
-     * The root Node in this scene.
-     */
-    @FXML
-    private Node root;
+public class SettingsController extends BaseController implements Initializable {
 
-    /**
-     * An instance of the UIController object to interface with backend
-     */
-    private UIController UIController;
 
     /**
      * Constructor to ensure UIController object is passed
      * @param UIController
      */
     public SettingsController(UIController UIController){
-        this.UIController = UIController;
+        super(UIController);
     }
 
     /**
@@ -39,20 +30,12 @@ public class SettingsController implements Initializable {
     }
 
     /**
-     * Get the root node of the FXML
-     * @return root - the root node
+     * When the close button is pressed, remove the hide the overlay and re-enable the screen
+     * @see GameController
+     * @throws IOException
      */
-    public Node getRoot(){
-        return root;
-    }
-
     @FXML
-    private void btnBackClicked() throws IOException {
-        UIController.getScreenController().show(ScreenType.START);
-
+    void btnCloseClicked() throws IOException{
+        UIController.getScreenController().hide(ScreenType.SETTINGS);
     }
-
-
-
-
 }
