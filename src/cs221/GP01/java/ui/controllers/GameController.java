@@ -141,6 +141,14 @@ public class GameController implements Initializable{
         UIController.getJoggleCube().pauseGame();
     }
 
+    /**
+     * Handle the settings button being clicked
+     */
+    @FXML
+    private void btnSettingsClicked(){
+        UIController.getScreenController().show(ScreenType.SETTINGS);
+    }
+
 
     /**
      * Get the root node of the FXML

@@ -67,7 +67,7 @@ public class ScreenController {
      */
     public void show(ScreenType name){
         // Special Cases for Overlay screens
-        if(name == ScreenType.PAUSE || name == ScreenType.END){
+        if(name == ScreenType.PAUSE || name == ScreenType.END || name == ScreenType.SETTINGS) {
 
             // Get game screen controller
             GameController controller = screens.get(ScreenType.GAME).getController();
@@ -77,6 +77,7 @@ public class ScreenController {
 
             // Disable Background
             controller.getGameScreen().setDisable(true);
+
         }else{
             // Get the FXML loader of a given name and get it's root pane
             main.setRoot(screens.get(name).getRoot());

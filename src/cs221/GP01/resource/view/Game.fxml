@@ -44,7 +44,7 @@
             <HBox styleClass="buttonContainer">
                 <children>
                     <Button fx:id="pauseButton" mnemonicParsing="false" onAction="#btnPauseGameClicked" />
-                    <Button fx:id="settingsButton" mnemonicParsing="false" />
+                    <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#btnSettingsClicked" />
                 </children>
             </HBox>
         </HBox>

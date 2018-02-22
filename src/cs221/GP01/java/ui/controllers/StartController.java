@@ -13,6 +13,8 @@ import cs221.GP01.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,12 +34,12 @@ public class StartController extends BaseController implements Initializable {
         super(UIController);
     }
 
+
     /**
      * todo Do initialization stuff here
      */
     @Override
     public void initialize(URL location, ResourceBundle resources){
-
     }
 
 
