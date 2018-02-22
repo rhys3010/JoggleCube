@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -41,6 +42,12 @@ public class GameController implements Initializable{
      */
     @FXML
     private StackPane root;
+
+    /**
+     * The tab pane that contains the cube representations
+     */
+    @FXML
+    private TabPane cubeContainer;
 
     @FXML
     private ListView<String> foundWordsList;
@@ -164,5 +171,13 @@ public class GameController implements Initializable{
      */
     public VBox getGameScreen(){
         return gameScreen;
+    }
+
+    /**
+     * Get the cube container tab pane
+     * @return cubeContainer - the FXML node for tabpane
+     */
+    public TabPane getCubeContainer(){
+        return cubeContainer;
     }
 }
