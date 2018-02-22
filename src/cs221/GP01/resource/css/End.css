@@ -1,0 +1,88 @@
+/*
+   * @(#) End.css 1.1 2018/02/22
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+*/
+
+.endOverlay{
+    -fx-background-color: rgba(64, 64, 64, 0.95);
+    -fx-pref-width: 250;
+    -fx-pref-height: 360;
+    -fx-spacing: 30px;
+    -fx-alignment: top-center;
+}
+
+.title{
+    -fx-alignment: center;
+    -fx-text-fill: white;
+    -fx-font-size: 28px;
+    -fx-padding: 10px;
+}
+
+.mainContainer{
+    -fx-alignment: center;
+}
+
+.scoresContainer{
+    -fx-alignment: center;
+    -fx-spacing: 60px
+}
+
+.scoresContainer .scoreDisplay{
+    -fx-alignment: center;
+}
+
+.scoresContainer .scoreDisplay Label{
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+}
+
+.mainContainer .highScoreBtn{
+    -fx-pref-height: 50px;
+    -fx-font-weight: bold;
+
+}
+
+.buttonsContainer{
+    -fx-alignment: center;
+    -fx-spacing: 30px;
+}
+
+.buttonsContainer .button{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-pref-height: 48;
+    -fx-pref-width: 48;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 48 48;
+    -fx-background-insets: 0 0 0 0, 0, 0, 0;
+}
+
+#homeButton{
+    -fx-background-image: url("../img/icon/menu_icon_inactive_alt.png");
+}
+
+#replayButton{
+    -fx-background-image: url("../img/icon/replay_icon_inactive.png");
+}
+
+#saveButton{
+    -fx-background-image: url("../img/icon/save_icon_inactive.png");
+}
+
+#homeButton:hover{
+    -fx-background-image: url("../img/icon/menu_icon.png");
+}
+
+#replayButton:hover{
+    -fx-background-image: url("../img/icon/replay_icon.png");
+}
+
+#saveButton:hover{
+    -fx-background-image: url("../img/icon/save_icon.png");
+}
+
+

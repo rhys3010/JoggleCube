@@ -67,7 +67,7 @@ public class ScreenController {
      */
     public void show(ScreenType name){
         // Special Cases for Overlay screens
-        if(name == ScreenType.PAUSE || name == ScreenType.END){
+        if(name == ScreenType.PAUSE || name == ScreenType.END || name == ScreenType.SETTINGS) {
 
             // Get game screen controller
             GameController controller = screens.get(ScreenType.GAME).getController();
@@ -77,6 +77,10 @@ public class ScreenController {
 
             // Disable Background
             controller.getGameScreen().setDisable(true);
+
+            // Hide cube tabpane
+            controller.getCubeContainer().setVisible(false);
+
         }else{
             // Get the FXML loader of a given name and get it's root pane
             main.setRoot(screens.get(name).getRoot());
@@ -92,13 +96,16 @@ public class ScreenController {
         GameController gameController = screens.get(ScreenType.GAME).getController();
 
         // Remove pause overlay and enable background
-        if(name == ScreenType.PAUSE){
+        if(name == ScreenType.PAUSE || name == ScreenType.SETTINGS){
 
             // Remove Overlay
             gameController.getRootNode().getChildren().remove(screens.get(name).getRoot());
 
             // Enable background
             gameController.getGameScreen().setDisable(false);
+
+            // Show cube tabpane
+            gameController.getCubeContainer().setVisible(true);
 
             // Remove End overlay and Re-enable game screen
         }else if(name == ScreenType.END){
@@ -108,6 +115,7 @@ public class ScreenController {
             }
 
             gameController.getGameScreen().setDisable(false);
+            gameController.getCubeContainer().setVisible(true);
         }
     }
 }

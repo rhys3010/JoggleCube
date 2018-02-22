@@ -6,29 +6,47 @@
    *
    */
 
-@font-face{
-    font-family: Digital-7;
-    stc: url('../font/Digital-7.ttf');
-}
-
-.banner{
-    -fx-alignment: center;
-    -fx-pref-width: 300px;
-    -fx-pref-height: 100px;
+.settingsOverlay{
+    -fx-background-color: rgba(64, 64, 64, 0.95);
+    -fx-pref-width: 250;
+    -fx-pref-height: 360;
     -fx-spacing: 30px;
-    -fx-padding: 20 0 0 0;
+    -fx-alignment: top-center;
 }
 
-.title{
-    -fx-text-fill: white;
-    -fx-font-size: 48px;
-}
-
-.buttonContainer{
+.topMenu{
     -fx-alignment: center;
+    -fx-spacing: 50px;
+    -fx-background-color: transparent;
+}
+
+.topMenu .title{
+    -fx-text-fill: white;
+    -fx-font-size: 28px;
+    -fx-padding: 10px;
+}
+
+.topMenu .button{
+    -fx-background-color: transparent;
+    -fx-pref-height: 20;
+    -fx-pref-width: 20;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 20 20;
+    -fx-background-image: url("../img/icon/close_icon_inactive.png");
+}
+
+.topMenu .button:hover{
+    -fx-background-image: url("../img/icon/close_icon.png");
+}
+
+
+.settingsContainer{
+    -fx-alignment: center-left;
     -fx-spacing: 20px;
 }
 
-#btnSettings{
-    -fx-background-image: url("../img/icon/settings_icon.png");
+.settingsContainer .check-box{
+    -fx-text-fill: white;
+
 }

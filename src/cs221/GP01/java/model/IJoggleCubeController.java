@@ -49,7 +49,7 @@ public interface IJoggleCubeController {
      *
      * @return the loaded grid high scores
      */
-    ObservableList<HighScore> getLoadedGridHighScores();
+    ObservableList<HighScore> getCurrentCubeHighScores();
 
     /**
      *
@@ -62,6 +62,4 @@ public interface IJoggleCubeController {
      * @return recently loaded grids
      */
     ObservableList<String> getRecentGrids();
-
-    ObservableList<HighScore> getCurrentCubeHighScores();
 }

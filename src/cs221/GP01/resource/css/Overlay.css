@@ -8,6 +8,8 @@
 
 /* Overlay css */
 
+/* WILL BE DEPRECATED - DO NOT UPDATE -*/
+
 VBox.Overlay {
     -fx-background-color: rgba(64, 64, 64, 0.75);
     -fx-padding: 30;

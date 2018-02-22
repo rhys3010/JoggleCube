@@ -11,6 +11,7 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <!--
@@ -20,14 +21,41 @@
     * @version 0.1  DRAFT
 -->
 
-<VBox fx:id="endOverlay" styleClass="Overlay" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
-    <Label styleClass="Overlay" text="GAME OVER" />
-    <Button fx:id="menuBtn" mnemonicParsing="false" onAction="#btnMenuClicked" text="Back to Menu" />
-    <Button fx:id="SaveBtn" mnemonicParsing="false" onAction="#btnSaveClicked" text="Save Grid" />
-    <Button fx:id="HighScoreBtn" mnemonicParsing="false" onAction="#btnHighScoreClicked" text="HighScores" />
+<VBox fx:id="endOverlay" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="endOverlay" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label styleClass="title" text="Game Over!" />
+      <VBox styleClass="mainContainer">
+         <children>
+            <HBox styleClass="scoresContainer">
+               <children>
+                  <VBox styleClass="scoreDisplay">
+                     <children>
+                        <Label text="Score" />
+                        <Label text="72" />
+                     </children>
+                  </VBox>
+                  <VBox styleClass="scoreDisplay">
+                     <children>
+                        <Label text="Best" />
+                        <Label text="186" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#btnHighScoreClicked" styleClass="highScoreBtn" text="View Highscores" />
+            <HBox prefHeight="100.0" prefWidth="200.0" styleClass="buttonsContainer">
+               <children>
+                  <Button fx:id="homeButton" mnemonicParsing="false" onAction="#btnMenuClicked" />
+                  <Button fx:id="replayButton" mnemonicParsing="false" onAction="#btnReplayClicked" />
+                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#btnSaveClicked" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
 
     <stylesheets>
-        <URL value="@../css/Overlay.css" />
+        <URL value="@../css/End.css" />
         <URL value="@../css/BaseStyle.css" />
     </stylesheets>
 </VBox>

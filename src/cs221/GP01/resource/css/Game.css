@@ -14,8 +14,10 @@
     src: url('../font/DS-DIGI.TTF');
 }
 
+
 .mainContainer{
     -fx-spacing: 50px;
+    -fx-alignment: top-center;
 }
 
 .topMenu{
@@ -39,8 +41,7 @@
     -fx-font-family: DS-Digital;
 }
 
-
-.topMenu .buttonContainer {
+.topMenu .buttonContainer{
     -fx-spacing: 10px;
     -fx-alignment: center;
 }
@@ -55,13 +56,6 @@
     -fx-background-size: 20 20;
 }
 
-#pauseButton{
-    -fx-background-image: url("../img/icon/pause_icon_inactive.png");
-}
-
-#pauseButton:hover{
-    -fx-background-image: url("../img/icon/pause_icon.png");
-}
 
 #settingsButton{
     -fx-background-image: url("../img/icon/settings_icon_inactive_alt.png");
@@ -71,25 +65,97 @@
     -fx-background-image: url("../img/icon/settings_icon.png");
 }
 
+#quitButton{
+    -fx-background-image: url("../img/icon/quit_icon_inactive.png");
+}
+
+#quitButton:hover{
+    -fx-background-image: url("../img/icon/quit_icon.png");
+}
+
 .gameElementsContainer{
-    -fx-spacing: 50px;
+    -fx-spacing: 10px;
     -fx-alignment: center;
+}
+
+.gameElementsContainer .tab-pane .tab-header-area .tab-header-background{
+    -fx-background-color: transparent;
+}
+
+.gameElementsContainer .tab-pane .tab{
+    -fx-background-color: -fx-tertiary-color;
+    -fx-alignment: center;
+}
+
+.gameElementsContainer .tab-pane .tab Label{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.gameElementsContainer .tab-pane .tab:selected{
+    -fx-background-color: white;
+}
+
+.gameElementsContainer .tab-pane .tab:selected Label{
+    -fx-text-fill: -fx-tertiary-color;
+}
+
+.gameElementsContainer .cubeContainer{
+    -fx-pref-width: 360px;
+}
+
+.foundWordsContainer{
+    -fx-pref-width: 200px;
+    -fx-pref-height: 80px;
+    -fx-alignment: center;
+}
+
+.foundWordsContainer .label{
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+}
+
+.wordInputContainer{
+    -fx-pref-width: 300px;
+    -fx-spacing: 30px;
+    -fx-alignment: center;
+}
+
+.wordInputContainer #textField{
+    -fx-pref-height: 35px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-tertiary-color;
+
+}
+
+.wordInputContainer .button{
+    -fx-background-color: -fx-tertiary-color;
+    -fx-text-fill: #cecece;
+    -fx-font-size: 14px;
+    -fx-font-weight: bolder;
+}
+
+.wordInputContainer .button:hover{
+    -fx-text-fill: white;
 }
 
 
 /*2d grid CSS */
 
 GridPane {
-    -fx-alignment: CENTER;
     -fx-spacing:10;
 }
 
 GridPane Label {
-    -fx-background-color: black, white ;
+    -fx-background-color: -fx-tertiary-color, white ;
     -fx-background-insets: 0, 1 ;
     -fx-pref-height:30;
     -fx-pref-width:30;
-
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-text-fill: -fx-tertiary-color;
+    -fx-font-weight: bold;
 }
 
 /* 2.5D Grid CSS */
