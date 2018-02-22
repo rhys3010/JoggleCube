@@ -27,13 +27,17 @@
 }
 
 .topMenu .button{
-    -fx-background-color: white;
-    -fx-pref-height: 32;
-    -fx-pref-width: 32;
+    -fx-background-color: transparent;
+    -fx-pref-height: 20;
+    -fx-pref-width: 20;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-size: 32 32;
-    -fx-background-radius: 60;
+    -fx-background-size: 20 20;
+    -fx-background-image: url("../img/icon/close_icon_inactive.png");
+}
+
+.topMenu .button:hover{
+    -fx-background-image: url("../img/icon/close_icon.png");
 }
 
 
