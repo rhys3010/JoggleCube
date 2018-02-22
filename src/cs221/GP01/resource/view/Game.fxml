@@ -41,12 +41,7 @@
         <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="topMenu">
             <Label styleClass="scoreLabel" text="156" />
             <Label styleClass="timerLabel" text="5:00" />
-            <HBox styleClass="buttonContainer">
-                <children>
-                    <Button fx:id="pauseButton" mnemonicParsing="false" onAction="#btnPauseGameClicked" />
-                    <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#btnSettingsClicked" />
-                </children>
-            </HBox>
+              <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#btnSettingsClicked" />
         </HBox>
         <HBox styleClass="gameElementsContainer">
             <TabPane styleClass="cubeContainer" tabClosingPolicy="UNAVAILABLE">
