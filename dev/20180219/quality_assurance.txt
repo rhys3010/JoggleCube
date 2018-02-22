@@ -1,5 +1,9 @@
 Minutes of Meetings
-Minutes of meetings should be in plain text, and should be emailed to all project members within 24 hours of the meeting. They must contain the following information at the start:
+
+Minutes of meetings should be in plain text, and should be emailed to all project members within 24 hours of the meeting. 
+
+They must contain the following information at the start:
+
 • a project title, which should include the name of the project (e.g., Group Project 07);
 • the meeting purpose (e.g., Weekly Project Meeting);
 • a list of the people present at the meeting plus any apologies;
@@ -13,15 +17,19 @@ Minutes of meetings should be in plain text, and should be emailed to all projec
 • AOB - this section will describe items discussed as any other business (AOB), and each significant point will be numbered;
 
 Software Configuration Management
+
 •All software modules, associated software documentation, internal working documents, and documents ultimately for release to the customer, should be administered under control of a software configuration management system.
  
 Tools, techniques and methodologies
+
 •All program code must be written in the specified programming language, unless you have written permission from the group project coordinator.
 •Systems produced on the project must execute on platforms provided by the Department of Computer Science, AU, unless otherwise specified.
 •All code to be delivered must adhere to the standards specified in QA document SE.QA.09, Coding Standards. 
 
 Basic Information Content And Layout
+
 All formal project documents must contain the following information on the front cover:
+
 • a title, which should clearly indicate both the project and nature of the particular document (e.g., Group
 Project 07 - Design Specification);
 • the author(s) of the document;
@@ -32,6 +40,7 @@ Project 07 - Design Specification);
 • the name and address of the Department, together with a copyright notice.
 
 Each page within the document must contain the following information:
+
 • a page header containing:
 	o the title of the document
 	o the version number of the document;
@@ -48,8 +57,9 @@ subsections together with their page numbers;
 	o Scope - this subsection must describe the parameters of the document
 	o Objectives - this subsection must list the specific objectives of the document. 
 • SPECIFIC SECTIONS
-§ REFERENCES - this section must list any books, manuals, documents, etc. which are referred to
-§ DOCUMENT CHANGE HISTORY - The Change History is a summary of changes made
+
+• REFERENCES - this section must list any books, manuals, documents, etc. which are referred to
+• DOCUMENT CHANGE HISTORY - The Change History is a summary of changes made
 	o Version - the version of the document being described;
 	o CCF No. - the number of the Change Control Form (CCF) authorising the changes from the previous version. 
 	o Date - the date the change was put under change control, in the form nn/mm/yy
