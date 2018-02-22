@@ -28,4 +28,14 @@ public class SettingsController extends BaseController implements Initializable 
     public void initialize(URL location, ResourceBundle resources){
 
     }
+
+    /**
+     * When the close button is pressed, remove the hide the overlay and re-enable the screen
+     * @see GameController
+     * @throws IOException
+     */
+    @FXML
+    void btnCloseClicked() throws IOException{
+        UIController.getScreenController().hide(ScreenType.SETTINGS);
+    }
 }

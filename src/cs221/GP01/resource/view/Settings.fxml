@@ -2,26 +2,31 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="settingsOverlay" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <HBox styleClass="topMenu" BorderPane.alignment="CENTER">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="settingsOverlay" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox styleClass="topMenu">
          <children>
             <Label styleClass="title" text="Settings" />
-            <Button styleClass="closeButton" mnemonicParsing="false" />
+            <Button fx:id="settingsCloseBtn" mnemonicParsing="false" onAction="#btnCloseClicked" styleClass="closeButton" />
          </children>
       </HBox>
-   </top>
-   <center>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER" />
-   </center>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="settingsContainer">
+         <children>
+            <CheckBox mnemonicParsing="false" styleClass="colorBlindToggle" text="Colour Blind Mode" />
+            <CheckBox mnemonicParsing="false" text="Some other Setting" />
+            <CheckBox mnemonicParsing="false" text="Foo" />
+            <CheckBox mnemonicParsing="false" text="Bar" />
+         </children>
+      </VBox>
+   </children>
 
     <stylesheets>
         <URL value="@../css/Settings.css" />
         <URL value="@../css/BaseStyle.css" />
     </stylesheets>
-</BorderPane>
+</VBox>

@@ -93,7 +93,7 @@ public class ScreenController {
         GameController gameController = screens.get(ScreenType.GAME).getController();
 
         // Remove pause overlay and enable background
-        if(name == ScreenType.PAUSE){
+        if(name == ScreenType.PAUSE || name == ScreenType.SETTINGS){
 
             // Remove Overlay
             gameController.getRootNode().getChildren().remove(screens.get(name).getRoot());

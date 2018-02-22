@@ -10,10 +10,17 @@
     -fx-background-color: rgba(64, 64, 64, 0.95);
     -fx-pref-width: 250;
     -fx-pref-height: 360;
-    -fx-spacing: 20px;
+    -fx-spacing: 30px;
+    -fx-alignment: top-center;
 }
 
-.title{
+.topMenu{
+    -fx-alignment: center;
+    -fx-spacing: 50px;
+    -fx-background-color: transparent;
+}
+
+.topMenu .title{
     -fx-text-fill: white;
     -fx-font-size: 28px;
     -fx-padding: 10px;
@@ -29,8 +36,13 @@
     -fx-background-radius: 60;
 }
 
-.topMenu{
-    -fx-alignment: center;
-    -fx-spacing: 65px;
-    -fx-background-color: transparent;
+
+.settingsContainer{
+    -fx-alignment: center-left;
+    -fx-spacing: 20px;
+}
+
+.settingsContainer .check-box{
+    -fx-text-fill: white;
+
 }
