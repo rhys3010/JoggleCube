@@ -12,7 +12,7 @@
       <HBox styleClass="topMenu">
          <children>
             <Label styleClass="title" text="Settings" />
-            <Button fx:id="settingsCloseBtn" mnemonicParsing="false" styleClass="closeButton" />
+            <Button fx:id="settingsCloseBtn" mnemonicParsing="false" onAction="#closeBtnClicked" styleClass="closeButton" />
          </children>
       </HBox>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="settingsContainer">

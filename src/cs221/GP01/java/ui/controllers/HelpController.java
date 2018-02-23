@@ -6,7 +6,7 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HelpController extends RegularController implements Initializable {
+public class HelpController extends BaseScreenController implements Initializable {
     /**
      * Constructor to ensure UIController object is passed
      * @param UIController

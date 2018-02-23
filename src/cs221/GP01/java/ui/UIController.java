@@ -31,14 +31,14 @@ public class UIController {
     private final String VIEWS_PATH_PREFIX = "../../resource/view/";
 
     /**
-     * The MasterController object
+     * The NavigationController object
      */
-    private MasterController masterController;
+    private NavigationController navigationController;
 
     private HashMap<ScreenType, Initializable> controllers = new HashMap<>();
 
     /**
-     * All screen names (used to create and add to masterController)
+     * All screen names (used to create and add to navigationController)
      */
     private static final ScreenType SCREENS[] = {ScreenType.START, ScreenType.SETTINGS, ScreenType.LOAD, ScreenType.GAME, ScreenType.END, ScreenType.HIGH_SCORES, ScreenType.HELP};
 
@@ -59,25 +59,25 @@ public class UIController {
     public void initialize(Scene main) throws IOException{
 
         // Initialize the screen controller
-        masterController = new MasterController(main);
+        navigationController = new NavigationController(main);
 
-        // Iteratively create screens and add to masterController
+        // Iteratively create screens and add to navigationController
         for(int i = 0; i < SCREENS.length; i++){
             // Create FXML loader and populate with root and controller
-            masterController.add(SCREENS[i], createScreen(SCREENS[i]));
+            navigationController.add(SCREENS[i], createScreen(SCREENS[i]));
         }
 
         // Show the Start Screen
-        masterController.show(ScreenType.START);
+        navigationController.switchScreen(ScreenType.START);
     }
 
 
     /**
      * Retrieve the Screen Controller
-     * @return MasterController
+     * @return NavigationController
      */
-    public MasterController getMasterController(){
-        return masterController;
+    public NavigationController getNavigationController(){
+        return navigationController;
     }
 
     /**

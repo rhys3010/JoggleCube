@@ -32,31 +32,15 @@ import java.util.ResourceBundle;
  * @author Nathan Williams (naw21)
  * @version 0.2  DRAFT
  */
-public class EndController implements Initializable{
+public class EndController extends BaseOverlayController implements Initializable{
 
-    /**
-     * The root node
-     */
-    @FXML
-    Node root;
-
-    /**
-     * The End Overlay
-     */
-    @FXML
-    Node mainNode;
-
-    /**
-     * An instance of the UIController object to interface with backend
-     */
-    private UIController UIController;
 
     /**
      * Constructor to ensure UIController object is passed
      * @param UIController
      */
     public EndController(UIController UIController){
-        this.UIController = UIController;
+        super(UIController);
     }
 
     /**
@@ -74,12 +58,35 @@ public class EndController implements Initializable{
      */
     @FXML
     void btnHighScoreClicked() throws IOException {
-        UIController.getMasterController().show(ScreenType.HIGH_SCORES);
+        UIController.getNavigationController().switchScreen(ScreenType.HIGH_SCORES);
         UIController.initalizeController(ScreenType.HIGH_SCORES);
-        // Unload End Overlay
-        UIController.getMasterController().hide(ScreenType.END);
+
+        // Hide the End Overlay
+        UIController.getNavigationController().hideOverlay(ScreenType.END, parentController);
+    }
 
 
+    /**
+     * When the 'return to menu' button is clicked change scene to menu scene
+     * @see StartController
+     */
+    @FXML
+    void btnMenuClicked() throws IOException{
+        UIController.getNavigationController().switchScreen(ScreenType.START);
+        UIController.initalizeController(ScreenType.START);
+
+        UIController.getNavigationController().hideOverlay(ScreenType.END, parentController);
+    }
+
+    /**
+     * When the 'replay' button is clicked restart a game
+     */
+    @FXML
+    void btnReplayClicked() throws IOException{
+        UIController.getNavigationController().switchScreen(ScreenType.GAME);
+        UIController.initalizeController(ScreenType.GAME);
+
+        UIController.getNavigationController().hideOverlay(ScreenType.END, parentController);
     }
 
     /**
@@ -97,27 +104,5 @@ public class EndController implements Initializable{
         } else {
             //todo add try again pop-up
         }
-    }
-
-
-    /**
-     * When the 'return to menu' button is clicked change scene to menu scene
-     * @see StartController
-     */
-    @FXML
-    void btnMenuClicked() throws IOException{
-        UIController.getMasterController().show(ScreenType.START);
-
-        // Unload End Overlay
-        UIController.getMasterController().hide(ScreenType.END);
-    }
-
-    /**
-     * When the 'replay' button is clicked restart a game
-     */
-    @FXML
-    void btnReplayClicked() throws IOException{
-        UIController.getMasterController().show(ScreenType.GAME);
-        UIController.getMasterController().hide(ScreenType.END);
     }
 }

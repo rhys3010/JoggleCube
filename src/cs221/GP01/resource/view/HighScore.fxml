@@ -25,7 +25,6 @@
     * @version 0.1  DRAFT
 -->
 
-
 <StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane fx:id="mainNode">
@@ -36,7 +35,7 @@
                      <children>
                         <Button fx:id="leftPageNav" mnemonicParsing="false" />
                         <Label fx:id="highScorePageLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="All Cubes" />
-                        <Button fx:id="rightPageNav" mnemonicParsing="false"/>
+                        <Button fx:id="rightPageNav" mnemonicParsing="false" />
                      </children>
                   </HBox>
                    <TableView fx:id="highScoreTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="highScoreTable">
@@ -60,10 +59,10 @@
          <bottom>
              <HBox styleClass="footer" BorderPane.alignment="CENTER">
                  <children>
-                     <Button fx:id="btnMenu"  styleClass="footerIcon" />
+                     <Button fx:id="btnMenu" onAction="#btnMenuClicked" styleClass="footerIcon" />
                      <Button fx:id="btnHighScore" styleClass="footerIcon" />
-                     <Button fx:id="btnSettings" styleClass="footerIcon" />
-                     <Button fx:id="btnHelp" styleClass="footerIcon" />
+                     <Button fx:id="btnSettings" onAction="#btnSettingsClicked" styleClass="footerIcon" />
+                     <Button fx:id="btnHelp" onAction="#btnHelpClicked" styleClass="footerIcon" />
                  </children>
              </HBox>
          </bottom>

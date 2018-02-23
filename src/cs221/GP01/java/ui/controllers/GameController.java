@@ -36,7 +36,7 @@ import java.util.ResourceBundle;
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @version 0.2  DRAFT
  */
-public class GameController extends RegularController implements Initializable{
+public class GameController extends BaseScreenController implements Initializable{
 
     /**
      * The tab pane that contains the cube representations
@@ -283,15 +283,6 @@ public class GameController extends RegularController implements Initializable{
         return false;
     }
 
-    /**
-     * When the End Game button is clicked it will load the EndGui scene.
-     */
-    @FXML
-    private void btnEndGameClicked() {
-        UIController.getMasterController().show(ScreenType.END);
-        UIController.getJoggleCube().endGame();
-    }
-
     @FXML
     private void btnSubmitClicked() {
         if(!textField.getText().equals("")) {
@@ -333,7 +324,16 @@ public class GameController extends RegularController implements Initializable{
      */
     @FXML
     private void btnSettingsClicked(){
-        UIController.getMasterController().show(ScreenType.SETTINGS);
+        UIController.getNavigationController().showOverlay(ScreenType.SETTINGS, this);
+    }
+
+    /**
+     * When the End Game button is clicked it will load the EndGui scene.
+     */
+    @FXML
+    private void btnEndGameClicked() {
+        UIController.getNavigationController().showOverlay(ScreenType.END, this);
+        UIController.getJoggleCube().endGame();
     }
 
     /**

@@ -1,13 +1,25 @@
+/*
+ * @(#) BaseScreenController.java 0.1 2018/02/23
+ *
+ * Copyright (c) 2018 University of Wales, Aberystwyth.
+ * All rights reserved.
+ *
+ */
+
 package cs221.GP01.java.ui.controllers;
 
 import cs221.GP01.java.ui.ScreenType;
 import cs221.GP01.java.ui.UIController;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
-public class RegularController {
+/**
+ * The Parent Class of any screen controller
+ * @author Rhys Evans (rhe24@aber.ac.uk)
+ * @version 0.1
+ */
+public class BaseScreenController {
 
 
     /**
@@ -19,7 +31,7 @@ public class RegularController {
      * Constructor to ensure UIController object is passed
      * @param UIController
      */
-    public RegularController(UIController UIController){
+    public BaseScreenController(UIController UIController){
         this.UIController = UIController;
     }
 
@@ -58,7 +70,7 @@ public class RegularController {
      */
     @FXML
     private void btnMenuClicked(){
-        UIController.getMasterController().show(ScreenType.START);
+        UIController.getNavigationController().switchScreen(ScreenType.START);
         UIController.initalizeController(ScreenType.START);
     }
 
@@ -67,7 +79,7 @@ public class RegularController {
      */
     @FXML
     private void btnHighScoreClicked(){
-        UIController.getMasterController().show(ScreenType.HIGH_SCORES);
+        UIController.getNavigationController().switchScreen(ScreenType.HIGH_SCORES);
         UIController.initalizeController(ScreenType.HIGH_SCORES);
     }
 
@@ -76,7 +88,7 @@ public class RegularController {
      */
     @FXML
     private void btnHelpClicked(){
-        UIController.getMasterController().show(ScreenType.HELP);
+        UIController.getNavigationController().switchScreen(ScreenType.HELP);
         UIController.initalizeController(ScreenType.HELP);
     }
 
@@ -85,7 +97,7 @@ public class RegularController {
      */
     @FXML
     private void btnSettingsClicked(){
-        UIController.getMasterController().show(ScreenType.SETTINGS);
+        UIController.getNavigationController().showOverlay(ScreenType.SETTINGS, this);
         UIController.initalizeController(ScreenType.SETTINGS);
     }
 

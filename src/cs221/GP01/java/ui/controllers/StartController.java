@@ -12,8 +12,6 @@ import cs221.GP01.java.ui.UIController;
 import cs221.GP01.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,7 +25,7 @@ import java.util.ResourceBundle;
  * @version 0.2  DRAFT
  */
 
-public class StartController extends RegularController implements Initializable {
+public class StartController extends BaseScreenController implements Initializable {
     public StartController(UIController UIController){
         super(UIController);
     }
@@ -46,7 +44,7 @@ public class StartController extends RegularController implements Initializable 
      */
     @FXML
     private void btnStartNewGridClicked() {
-        UIController.getMasterController().show(ScreenType.GAME);
+        UIController.getNavigationController().switchScreen(ScreenType.GAME);
         UIController.getJoggleCube().startRandomGame();
         UIController.initalizeController(ScreenType.GAME);
     }
@@ -57,9 +55,8 @@ public class StartController extends RegularController implements Initializable 
      */
     @FXML
     private void btnLoadGridClicked() {
-        UIController.getMasterController().show(ScreenType.LOAD);
+        UIController.getNavigationController().switchScreen(ScreenType.LOAD);
         UIController.initalizeController(ScreenType.LOAD);
     }
-
 
 }
