@@ -36,12 +36,7 @@ import java.util.ResourceBundle;
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @version 0.2  DRAFT
  */
-public class GameController implements Initializable{
-    /**
-     * the parent StackPane in this scene.
-     */
-    @FXML
-    private StackPane root;
+public class GameController extends RegularController implements Initializable{
 
     /**
      * The tab pane that contains the cube representations
@@ -61,26 +56,15 @@ public class GameController implements Initializable{
     private Button btnSubmit;
 
 
-    /**
-     * The main game screen content (cube I/O etc)
-     */
-    @FXML
-    private VBox gameScreen;
-
     @FXML
     private TextField textField;
-
-    /**
-     * An instance of the UIController object to interface with backend
-     */
-    private UIController UIController;
 
     /**
      * Constructor to ensure UIController object is passed
      * @param UIController
      */
     public GameController(UIController UIController){
-        this.UIController = UIController;
+        super(UIController);
     }
 
 
@@ -304,7 +288,7 @@ public class GameController implements Initializable{
      */
     @FXML
     private void btnEndGameClicked() {
-        UIController.getScreenController().show(ScreenType.END);
+        UIController.getMasterController().show(ScreenType.END);
         UIController.getJoggleCube().endGame();
     }
 
@@ -349,7 +333,7 @@ public class GameController implements Initializable{
      */
     @FXML
     private void btnSettingsClicked(){
-        UIController.getScreenController().show(ScreenType.SETTINGS);
+        UIController.getMasterController().show(ScreenType.SETTINGS);
     }
 
     /**
@@ -361,22 +345,6 @@ public class GameController implements Initializable{
         //todo create an instance of timer and start it to keep updating th label
     }
 
-
-    /**
-     * Get the root node of the FXML
-     * @return root - the root node
-     */
-    public StackPane getRootNode(){
-        return root;
-    }
-
-    /**
-     * Get the game screen
-     * @return gameScreen - the FXML node of the game screen
-     */
-    public VBox getGameScreen(){
-        return gameScreen;
-    }
 
     /**
      * Get the cube container tab pane

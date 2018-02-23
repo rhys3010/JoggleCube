@@ -27,16 +27,15 @@
     * @version 0.1  DRAFT
 -->
 
-
 <StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane fx:id="startScreen">
+      <BorderPane fx:id="mainNode">
          <center>
             <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="mainContainer">
                <VBox styleClass="buttonContainer">
                   <children>
-                        <Button fx:id="btnStartNewGrid" mnemonicParsing="false" onAction="#btnStartNewGridClicked" styleClass="startMenuButton" text="Start New Grid" />
-                        <Button fx:id="btnLoadGrid" mnemonicParsing="false" onAction="#btnLoadGridClicked" styleClass="startMenuButton" text="Load Grid" />
+                        <Button fx:id="btnStartNewGrid" mnemonicParsing="false" styleClass="startMenuButton" text="Start New Grid" />
+                        <Button fx:id="btnLoadGrid" mnemonicParsing="false" styleClass="startMenuButton" text="Load Grid" />
                   </children>
                </VBox>
             </VBox>
@@ -44,7 +43,7 @@
          <bottom>
             <HBox styleClass="footer" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btnMenu" styleClass="footerIcon" />
+                  <Button fx:id="btnMenu" onAction="#btnMenuClicked" styleClass="footerIcon" />
                   <Button fx:id="btnHighScore" onAction="#btnHighScoreClicked" styleClass="footerIcon" />
                   <Button fx:id="btnSettings" onAction="#btnSettingsClicked" styleClass="footerIcon" />
                   <Button fx:id="btnHelp" onAction="#btnHelpClicked" styleClass="footerIcon" />

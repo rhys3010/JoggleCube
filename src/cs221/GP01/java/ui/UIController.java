@@ -9,7 +9,6 @@
 package cs221.GP01.java.ui;
 
 import cs221.GP01.java.model.IJoggleCubeController;
-import cs221.GP01.java.model.PretendBackEnd;
 import cs221.GP01.java.ui.controllers.*;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -32,14 +31,14 @@ public class UIController {
     private final String VIEWS_PATH_PREFIX = "../../resource/view/";
 
     /**
-     * The ScreenController object
+     * The MasterController object
      */
-    private ScreenController screenController;
+    private MasterController masterController;
 
     private HashMap<ScreenType, Initializable> controllers = new HashMap<>();
 
     /**
-     * All screen names (used to create and add to screenController)
+     * All screen names (used to create and add to masterController)
      */
     private static final ScreenType SCREENS[] = {ScreenType.START, ScreenType.SETTINGS, ScreenType.LOAD, ScreenType.GAME, ScreenType.END, ScreenType.HIGH_SCORES, ScreenType.HELP};
 
@@ -60,25 +59,25 @@ public class UIController {
     public void initialize(Scene main) throws IOException{
 
         // Initialize the screen controller
-        screenController = new ScreenController(main);
+        masterController = new MasterController(main);
 
-        // Iteratively create screens and add to screenController
+        // Iteratively create screens and add to masterController
         for(int i = 0; i < SCREENS.length; i++){
             // Create FXML loader and populate with root and controller
-            screenController.add(SCREENS[i], createScreen(SCREENS[i]));
+            masterController.add(SCREENS[i], createScreen(SCREENS[i]));
         }
 
         // Show the Start Screen
-        screenController.show(ScreenType.START);
+        masterController.show(ScreenType.START);
     }
 
 
     /**
      * Retrieve the Screen Controller
-     * @return ScreenController
+     * @return MasterController
      */
-    public ScreenController getScreenController(){
-        return screenController;
+    public MasterController getMasterController(){
+        return masterController;
     }
 
     /**

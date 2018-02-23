@@ -10,19 +10,18 @@ package cs221.GP01.java.ui.controllers;
 
 import cs221.GP01.java.model.HighScore;
 import cs221.GP01.java.ui.UIController;
-import cs221.GP01.java.ui.ScreenType;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -37,7 +36,7 @@ import java.util.ResourceBundle;
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @version 0.2  DRAFT
  */
-public class HighScoreController extends BaseController implements Initializable{
+public class HighScoreController extends RegularController implements Initializable{
 
     /**
      * High Score Table
@@ -209,4 +208,5 @@ public class HighScoreController extends BaseController implements Initializable
             highScorePageLabel.setText("Current Cube");
         }
     }
+
 }

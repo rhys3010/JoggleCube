@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="settingsOverlay" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="settingsOverlay" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox styleClass="topMenu">
          <children>
             <Label styleClass="title" text="Settings" />
-            <Button fx:id="settingsCloseBtn" mnemonicParsing="false" onAction="#btnCloseClicked" styleClass="closeButton" />
+            <Button fx:id="settingsCloseBtn" mnemonicParsing="false" styleClass="closeButton" />
          </children>
       </HBox>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="settingsContainer">

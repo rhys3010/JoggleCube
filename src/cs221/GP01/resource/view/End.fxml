@@ -21,7 +21,7 @@
     * @version 0.1  DRAFT
 -->
 
-<VBox fx:id="endOverlay" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="endOverlay" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="endOverlay" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label styleClass="title" text="Game Over!" />
       <VBox styleClass="mainContainer">
@@ -42,12 +42,12 @@
                   </VBox>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" onAction="#btnHighScoreClicked" styleClass="highScoreBtn" text="View Highscores" />
+            <Button mnemonicParsing="false" styleClass="highScoreBtn" text="View Highscores" />
             <HBox prefHeight="100.0" prefWidth="200.0" styleClass="buttonsContainer">
                <children>
-                  <Button fx:id="homeButton" mnemonicParsing="false" onAction="#btnMenuClicked" />
-                  <Button fx:id="replayButton" mnemonicParsing="false" onAction="#btnReplayClicked" />
-                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#btnSaveClicked" />
+                  <Button fx:id="homeButton" mnemonicParsing="false"  />
+                  <Button fx:id="replayButton" mnemonicParsing="false"/>
+                  <Button fx:id="saveButton" mnemonicParsing="false"/>
                </children>
             </HBox>
          </children>

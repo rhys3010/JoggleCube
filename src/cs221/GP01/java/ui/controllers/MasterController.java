@@ -15,7 +15,7 @@ import javafx.stage.Screen;
 import java.util.HashMap;
 
 /**
- * ScreenController - Control the screens being displayed
+ * MasterController - Control the screens being displayed
  * <p>
  * All screens are stored in a HashMap and can be activated, added or removed. The screen are stored as an FXML Loader with
  * an FXML file and root pane 'pre-loaded'
@@ -23,7 +23,7 @@ import java.util.HashMap;
  * @version 0.1
  */
 
-public class ScreenController {
+public class MasterController {
 
     /**
      * All screens to be stored, store Type as Key and an FXML loader as value
@@ -38,7 +38,7 @@ public class ScreenController {
     /**
      * Constructor to get main Scene
      */
-    public ScreenController(Scene main){
+    public MasterController(Scene main){
         this.main = main;
     }
 
@@ -73,10 +73,10 @@ public class ScreenController {
             GameController controller = screens.get(ScreenType.GAME).getController();
 
             // Get root node of game screen and inject FXML
-            controller.getRootNode().getChildren().add(screens.get(name).getRoot());
+            controller.getRoot().getChildren().add(screens.get(name).getRoot());
 
             // Disable Background
-            controller.getGameScreen().setDisable(true);
+            controller.getMainNode().setDisable(true);
 
             // Hide cube tabpane
             controller.getCubeContainer().setVisible(false);
@@ -99,10 +99,10 @@ public class ScreenController {
         if(name == ScreenType.SETTINGS){
 
             // Remove Overlay
-            gameController.getRootNode().getChildren().remove(screens.get(name).getRoot());
+            gameController.getRoot().getChildren().remove(screens.get(name).getRoot());
 
             // Enable background
-            gameController.getGameScreen().setDisable(false);
+            gameController.getMainNode().setDisable(false);
 
             // Show cube tabpane
             gameController.getCubeContainer().setVisible(true);
@@ -110,11 +110,11 @@ public class ScreenController {
             // Remove End overlay and Re-enable game screen
         }else if(name == ScreenType.END){
 
-            if(gameController.getRootNode().getChildren().contains(screens.get(name).getRoot())){
-                gameController.getRootNode().getChildren().remove(screens.get(name).getRoot());
+            if(gameController.getRoot().getChildren().contains(screens.get(name).getRoot())){
+                gameController.getRoot().getChildren().remove(screens.get(name).getRoot());
             }
 
-            gameController.getGameScreen().setDisable(false);
+            gameController.getMainNode().setDisable(false);
             gameController.getCubeContainer().setVisible(true);
         }
     }

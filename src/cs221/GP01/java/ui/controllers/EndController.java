@@ -44,7 +44,7 @@ public class EndController implements Initializable{
      * The End Overlay
      */
     @FXML
-    Node endOverlay;
+    Node mainNode;
 
     /**
      * An instance of the UIController object to interface with backend
@@ -74,10 +74,10 @@ public class EndController implements Initializable{
      */
     @FXML
     void btnHighScoreClicked() throws IOException {
-        UIController.getScreenController().show(ScreenType.HIGH_SCORES);
+        UIController.getMasterController().show(ScreenType.HIGH_SCORES);
         UIController.initalizeController(ScreenType.HIGH_SCORES);
         // Unload End Overlay
-        UIController.getScreenController().hide(ScreenType.END);
+        UIController.getMasterController().hide(ScreenType.END);
 
 
     }
@@ -106,10 +106,10 @@ public class EndController implements Initializable{
      */
     @FXML
     void btnMenuClicked() throws IOException{
-        UIController.getScreenController().show(ScreenType.START);
+        UIController.getMasterController().show(ScreenType.START);
 
         // Unload End Overlay
-        UIController.getScreenController().hide(ScreenType.END);
+        UIController.getMasterController().hide(ScreenType.END);
     }
 
     /**
@@ -117,7 +117,7 @@ public class EndController implements Initializable{
      */
     @FXML
     void btnReplayClicked() throws IOException{
-        UIController.getScreenController().show(ScreenType.GAME);
-        UIController.getScreenController().hide(ScreenType.END);
+        UIController.getMasterController().show(ScreenType.GAME);
+        UIController.getMasterController().hide(ScreenType.END);
     }
 }

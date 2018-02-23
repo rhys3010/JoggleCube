@@ -29,7 +29,7 @@
       <children>
          <VBox alignment="CENTER" prefHeight="207.0" prefWidth="213.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#btnPickFileClicked" text="Pick a File" />
+                <Button mnemonicParsing="false" text="Pick a File" />
                <Label text="or select from recents" />
             </children>
          </VBox>

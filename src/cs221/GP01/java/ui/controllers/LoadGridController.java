@@ -85,7 +85,7 @@ public class LoadGridController implements Initializable{
      */
     @FXML
     void btnStartGridClicked() throws IOException {
-        UIController.getScreenController().show(ScreenType.GAME);
+        UIController.getMasterController().show(ScreenType.GAME);
 
         // Backend Example
         UIController.getJoggleCube().startGame(gridFile);
@@ -99,7 +99,7 @@ public class LoadGridController implements Initializable{
      */
     @FXML
     void btnBackClicked() throws IOException {
-        UIController.getScreenController().show(ScreenType.START);
+        UIController.getMasterController().show(ScreenType.START);
     }
 
     /**
