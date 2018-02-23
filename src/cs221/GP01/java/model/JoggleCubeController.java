@@ -40,7 +40,9 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     public void startRandomGame() { }
 
-    public void startGame(File file) { }
+    public void startGame(File file) {
+
+    }
 
     //handle later
     public void pauseGame() { }
@@ -51,9 +53,30 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     public void endGame() { }
     public boolean testWordValidity(String word) {
+        /*
         //Test if valid word in the grid
+        //Is this even nessercary at this point???? No it isn't.
+        ArrayList<String> indLetters = new ArrayList<>();
+        for(int i = 0; i<word.length();i++){
+            if(word.charAt(i) == 'Q'){
+                //Then handle Q and u after it
+                indLetters.add("Qu");
+                continue;
+            }
+            indLetters.add(String.valueOf(word.charAt(i)));
+        }
 
+        //Discover potential locations of the word
+        for(int i = 0; i<3; i++){
+            for(int j = 0; j<3; j++){
+                for(int k = 0; k<3; k++){
+                    //If
+                }
+            }
+        }
+        */
         //Test if already used
+        if (storedWords.contains(word)){return false;}
 
         //Test if valid dictionary word
         return dictionary.searchDictionary(word);
@@ -62,4 +85,68 @@ public class JoggleCubeController implements IJoggleCubeController{
     public ObservableList<HighScore> getOverallHighScores() { return null; }
     public ObservableList<HighScore> getCurrentCubeHighScores() { return null; }
     public ObservableList<String> getRecentGrids() { return null; }
+
+    private void loadSavedCube(){}
+
+    //Stopped working on this because it only handles english and takes too long to write anyways.
+    /*
+    private int calculateValueOfWord(String word){
+        int sumOfWord = 0;
+
+        //Handle the word by having all characters confirmed to be upper case
+        word = word.toUpperCase();
+
+        //For the switch statement I will assume that the Q and u are handled together and just increment i by 1
+        for(int i = 0; i<word.length(); i++){
+            switch(word.charAt(i)) {
+                case 'A':
+                    sumOfWord += 1;
+                    break;
+                case 'B':
+                    sumOfWord += 3;
+                    break;
+                case 'C':
+                    sumOfWord += 3;
+                    break;
+                case 'D':
+                    sumOfWord += 2;
+                    break;
+                case 'E':
+                    sumOfWord += 1;
+                    break;
+                case 'F':
+                    sumOfWord += 4;
+                    break;
+                case 'G':
+                    sumOfWord += 2;
+                    break;
+                case 'H':
+                    sumOfWord += 4;
+                    break;
+                case 'I':
+                    sumOfWord += 1;
+                    break;
+                case 'J':
+                    sumOfWord += 8;
+                    break;
+                case 'K':
+                    sumOfWord += 5;
+                    break;
+                case 'L':
+                    sumOfWord += 1;
+                    break;
+                case 'M':
+                    sumOfWord += 3;
+                    break;
+                case 'N':
+                    sumOfWord += 6;
+                    break;
+
+            }
+        }
+
+        //Return 3 times the value of the scrabble points
+        return sumOfWord*3;
+    }
+    */
 }
