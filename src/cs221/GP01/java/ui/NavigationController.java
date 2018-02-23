@@ -122,4 +122,11 @@ public class NavigationController {
             }
         }
     }
+
+    /**
+     * Returns a game controller
+     */
+    public GameController getGameController(){
+        return screens.get(ScreenType.GAME).getController();
+    }
 }

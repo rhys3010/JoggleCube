@@ -35,6 +35,9 @@ public class UIController {
      */
     private NavigationController navigationController;
 
+    /**
+     * Hashmap to store all controllers
+     */
     private HashMap<ScreenType, Initializable> controllers = new HashMap<>();
 
     /**
@@ -47,6 +50,10 @@ public class UIController {
      */
     private IJoggleCubeController joggleCube ;
 
+    /**
+     * Constructor to get the joggleCube object
+     * @param joggleCube
+     */
     public UIController(IJoggleCubeController joggleCube) {
         this.joggleCube = joggleCube;
     }
@@ -71,14 +78,6 @@ public class UIController {
         navigationController.switchScreen(ScreenType.START);
     }
 
-
-    /**
-     * Retrieve the Screen Controller
-     * @return NavigationController
-     */
-    public NavigationController getNavigationController(){
-        return navigationController;
-    }
 
     /**
      * allows the backend or GUI to re-initialise a controller so it gets updated data from the backend.
@@ -160,5 +159,22 @@ public class UIController {
      */
     public IJoggleCubeController getJoggleCube() {
         return joggleCube;
+    }
+
+
+    /**
+     * Retrieve the Screen Controller
+     * @return NavigationController
+     */
+    public NavigationController getNavigationController(){
+        return navigationController;
+    }
+
+    /**
+     * Retrieve a screen controller object
+     * @return GameController
+     */
+    public GameController getGameController(){
+        return navigationController.getGameController();
     }
 }
