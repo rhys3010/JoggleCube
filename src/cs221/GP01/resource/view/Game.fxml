@@ -42,6 +42,7 @@
 <?import javafx.scene.PerspectiveCamera?>
 <?import javafx.scene.SubScene?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.BorderPane?>
 <StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <VBox fx:id="mainNode" styleClass="mainContainer">
         <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="topMenu">
@@ -57,6 +58,7 @@
         <HBox styleClass="gameElementsContainer">
             <TabPane fx:id="cubeContainer" styleClass="cubeContainer" tabClosingPolicy="UNAVAILABLE">
                 <Tab text="3D View">
+                    <BorderPane fx:id="back" prefHeight="300" prefWidth="400">
                         <SubScene fx:id="subScene" height="300" width="400" depthBuffer="true" >
                             <root>
                                 <Group fx:id="groupy">
@@ -65,6 +67,7 @@
                                 </Group>
                             </root>
                         </SubScene>
+                    </BorderPane>
                 </Tab>
                 <Tab text="2.5D View">
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250" prefWidth="250" styleClass="gridView">
@@ -174,10 +177,13 @@
                 <ListView fx:id="foundWordsList" />
             </VBox>
         </HBox>
-        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="wordInputContainer">
+        <VBox styleClass="wordInputContainer">
             <children>
                 <TextField fx:id="textField" prefHeight="26.0" />
+                <HBox >
                 <Button fx:id="btnSubmit" mnemonicParsing="false" onAction="#btnSubmitClicked" text="Submit Word" />
+                <Button fx:id="btnClear" mnemonicParsing="false" onAction="#btnClearClicked" text="Clear Word" />
+                </HBox>
             </children>
         </VBox>
     </VBox>
