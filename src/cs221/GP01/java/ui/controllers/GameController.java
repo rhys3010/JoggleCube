@@ -12,17 +12,23 @@ import cs221.GP01.java.ui.UIController;
 import cs221.GP01.java.ui.ScreenType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.Point3D;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
+import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.PickResult;
 import javafx.scene.layout.*;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
+import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Translate;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -69,7 +75,7 @@ public class GameController extends BaseScreenController implements Initializabl
 
 
     private Label[][][] labelCube;
-    private Box[][][] boxCube;
+    private Box[][][] boxCube,boxCube3;
 
 
     /**
@@ -105,11 +111,17 @@ public class GameController extends BaseScreenController implements Initializabl
      */
 
     private void setSelected(int x, int y, int z) {
+
+        //2d
         labelCube[x][y][z].setStyle("-fx-background-color:#ff0000;");
         labelCube[x][y][z].setOnMouseClicked(null);
-
+        //2.5d
         boxCube[x][y][z].setMaterial(generateMaterial(labelCube[x][y][z].getText(),"#ff0000"));
         boxCube[x][y][z].setOnMouseClicked(null);
+
+        //3d
+        boxCube3[x][y][z].setMaterial(generateMaterial(labelCube[x][y][z].getText(),"#ff0000"));
+        boxCube3[x][y][z].setOnMouseClicked(null);
     }
 
 
@@ -123,11 +135,17 @@ public class GameController extends BaseScreenController implements Initializabl
 
     private void setInActive(int x, int y, int z) {
         if(!labelCube[x][y][z].getStyle().contains("-fx-background-color:#550000;")){
+            //2d
             labelCube[x][y][z].setStyle("-fx-background-color:#566377;");
             labelCube[x][y][z].setOnMouseClicked(null);
-
+            //2.5d
             boxCube[x][y][z].setMaterial(generateMaterial(labelCube[x][y][z].getText(),"#566377"));
             boxCube[x][y][z].setOnMouseClicked(null);
+
+            //3d
+            boxCube3[x][y][z].setMaterial(generateMaterial(labelCube[x][y][z].getText(),"#566377"));
+            boxCube3[x][y][z].setOnMouseClicked(null);
+
         }
     }
 
@@ -142,22 +160,85 @@ public class GameController extends BaseScreenController implements Initializabl
 
     private void setActive(int x, int y, int z, boolean override) {
         if(labelCube[x][y][z].getStyle().contains("-fx-background-color:#ff0000;") && !override){
+
+            //2d
             labelCube[x][y][z].setStyle("-fx-background-color:#550000;");
+            //2.5d
             boxCube[x][y][z].setMaterial(generateMaterial(labelCube[x][y][z].getText(),"#550000"));
+            //3d
+            boxCube3[x][y][z].setMaterial(generateMaterial(labelCube[x][y][z].getText(),"#550000"));
 
         } else if(!labelCube[x][y][z].getStyle().contains("-fx-background-color:#550000;") || override) {
+            //2d
             labelCube[x][y][z].setStyle("-fx-background-color:#2980b9;");
             labelCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z));
-
+            //2.5d
             boxCube[x][y][z].setMaterial(generateMaterial(labelCube[x][y][z].getText(),"#2980b9"));
             boxCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z));
+            //3d
+            boxCube3[x][y][z].setMaterial(generateMaterial(labelCube[x][y][z].getText(),"#2980b9"));
+            boxCube3[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z));
         }
     }
 
+
+
+
+    @FXML
+    private SubScene subScene;
+    @FXML
+    private Group groupy;
+
+
+    private double oldMouseX, oldMouseY;
+
+    private Rotate rotateAboutX = new Rotate(0,0,60,0, Rotate.X_AXIS);
+    private Rotate rotateAboutY = new Rotate(0,60,0,0, Rotate.Y_AXIS);
+
+
     private void buildGrids(String[][][] letters) {
+        Camera camera = new ParallelCamera();
+        camera.getTransforms().addAll (
+                rotateAboutX,
+                rotateAboutY,
+            new Translate(-150, -100, 0)
+        );
+        groupy.getChildren().add(camera);
+        subScene.setCamera(camera);
+
+        subScene.setOnMouseDragged( e ->{
+                    if(e.getButton().equals(MouseButton.SECONDARY)){
+                        if(oldMouseY != 0 && oldMouseX != 0){
+                            rotateAboutX.setAngle((rotateAboutX.getAngle() + oldMouseX-e.getY()) % 360);
+                            rotateAboutY.setAngle((rotateAboutY.getAngle() + e.getX()-oldMouseY) % 360);
+                        }
+                        oldMouseX = e.getY();
+                        oldMouseY = e.getX();
+                    }
+        });
+
+        subScene.setOnMouseDragReleased(
+                e -> {oldMouseX = 0; oldMouseY = 0;}
+        );
+
+        subScene.setOnMouseClicked((event)->{
+            if(event.getButton().equals(MouseButton.PRIMARY)){
+            PickResult res = event.getPickResult();
+            System.out.println("click");
+            if (res.getIntersectedNode() instanceof Box){
+                EventHandler e = res.getIntersectedNode().getOnMouseClicked();
+                if(e != null){
+                    e.handle(event);
+                }
+            }
+            }
+        });
+
+
         //creates space ready for the boxes and labels
         labelCube = new Label[3][3][3];
         boxCube = new Box[3][3][3];
+        boxCube3 = new Box[3][3][3];
 
         //easy access of the three planes
         GridPane[] twoDGrid = {top2d, middle2d, bottom2d};
@@ -175,11 +256,17 @@ public class GameController extends BaseScreenController implements Initializabl
             for (int k = 0; k < 3; k++) {
                 for (int i = 0; i < 3; i++) {
                     for (int j = 0; j < 3; j++) {
+                        //3D
                         Box box = new Box(30, 30, 30);
-                        box.setRotationAxis(new Point3D(0,0,0));
-                        box.setRotate(0);
-                        boxCube[k][i][j] = box;
+                        boxCube3[k][i][j] = box;
 
+                        //2.5D
+                        Box box1 = new Box(30, 30, 30);
+                        box1.setRotationAxis(new Point3D(0,0,0));
+                        box1.setRotate(0);
+                        boxCube[k][i][j] = box1;
+
+                        //2D
                         Label label = new Label(letters[k][i][j]);
                         labelCube[k][i][j] = label;
 
@@ -190,14 +277,25 @@ public class GameController extends BaseScreenController implements Initializabl
 
             //render the labels and blocks (adds them to relevant grids)
             for (int k = 0; k < 3; k++) {
-                //rotates the grids ready for display todo move to FXML
-                twoFiveDGrid[k].setRotationAxis(new Point3D(0.3,-1.0,0));
-                twoFiveDGrid[k].setRotate(45);
-
                 for (int i = 0; i < 3; i++) {
                     for (int j = 2; j > -1; j--) {
                         twoDGrid[k].add(labelCube[k][j][i], i, j);
-                        twoFiveDGrid[k].add(boxCube[k][j][i],j,i);
+                        twoFiveDGrid[k].add(boxCube[k][i][j],j,i);
+
+                    }
+                }
+            }
+            Rotate rotateY = new Rotate(45,20,0,0, Rotate.Y_AXIS);
+            for (int k = 0; k < 3; k++) {
+
+                for (int i = 2; i > -1; i--) {
+                    int x = 2;
+                    for (int j = 0; j < 3; j++) {
+                        groupy.getChildren().add(boxCube3[k][i][x]);
+                        boxCube3[k][i][x].setTranslateX(j*40);
+                        boxCube3[k][i][x].setTranslateY(i*40);
+                        boxCube3[k][i][x].setTranslateZ(k*40);
+                        x--;
                     }
                 }
             }

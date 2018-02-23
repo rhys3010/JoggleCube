@@ -37,6 +37,11 @@
 -->
 <!-- @formatter:off -->
 
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.PerspectiveCamera?>
+<?import javafx.scene.SubScene?>
+<?import javafx.scene.layout.Region?>
 <StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <VBox fx:id="mainNode" styleClass="mainContainer">
         <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="topMenu">
@@ -52,9 +57,14 @@
         <HBox styleClass="gameElementsContainer">
             <TabPane fx:id="cubeContainer" styleClass="cubeContainer" tabClosingPolicy="UNAVAILABLE">
                 <Tab text="3D View">
-                    <AnchorPane prefHeight="180.0" prefWidth="200.0">
-                        <Box depth="120" height="120" layoutX="150" layoutY="100" width="120"><rotationAxis><Point3D x="-0.5" y="1.0" z="0.5" /></rotationAxis></Box>
-                    </AnchorPane>
+                        <SubScene fx:id="subScene" height="300" width="400" depthBuffer="true" >
+                            <root>
+                                <Group fx:id="groupy">
+                                    <children>
+                                    </children>
+                                </Group>
+                            </root>
+                        </SubScene>
                 </Tab>
                 <Tab text="2.5D View">
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250" prefWidth="250" styleClass="gridView">
@@ -77,7 +87,8 @@
                             <endX>330</endX>
                             <endY>100</endY>
                         </Line>
-                        <GridPane fx:id="top25d" layoutX="10" layoutY="10" prefHeight="90" prefWidth="90">
+                        <GridPane fx:id="top25d" layoutX="10" layoutY="10" prefHeight="90" prefWidth="90" rotate="45">
+                            <rotationAxis><Point3D x="0.3" y="-1.0" z="0" /></rotationAxis>
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="40" prefWidth="40" />
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="40" prefWidth="40" />
@@ -89,7 +100,8 @@
                                 <RowConstraints minHeight="40" prefHeight="40" vgrow="SOMETIMES" />
                             </rowConstraints>
                         </GridPane>
-                        <GridPane fx:id="middle25d" layoutX="120" layoutY="50" prefHeight="90" prefWidth="90">
+                        <GridPane fx:id="middle25d" layoutX="120" layoutY="50" prefHeight="90" prefWidth="90" rotate="45">
+                            <rotationAxis><Point3D x="0.3" y="-1.0" z="0" /></rotationAxis>
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="40" prefWidth="40" />
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="40" prefWidth="40" />
@@ -101,7 +113,8 @@
                                 <RowConstraints minHeight="40" prefHeight="40" vgrow="SOMETIMES" />
                             </rowConstraints>
                         </GridPane>
-                        <GridPane fx:id="bottom25d" layoutX="230" layoutY="100" prefHeight="90" prefWidth="90">
+                        <GridPane fx:id="bottom25d" layoutX="230" layoutY="100" prefHeight="90" prefWidth="90" rotate="45">
+                            <rotationAxis><Point3D x="0.3" y="-1.0" z="0" /></rotationAxis>
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="40" prefWidth="40" />
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="40" prefWidth="40" />
