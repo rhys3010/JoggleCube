@@ -67,7 +67,7 @@ public class ScreenController {
      */
     public void show(ScreenType name){
         // Special Cases for Overlay screens
-        if(name == ScreenType.PAUSE || name == ScreenType.END || name == ScreenType.SETTINGS) {
+        if(name == ScreenType.END || name == ScreenType.SETTINGS) {
 
             // Get game screen controller
             GameController controller = screens.get(ScreenType.GAME).getController();
@@ -96,7 +96,7 @@ public class ScreenController {
         GameController gameController = screens.get(ScreenType.GAME).getController();
 
         // Remove pause overlay and enable background
-        if(name == ScreenType.PAUSE || name == ScreenType.SETTINGS){
+        if(name == ScreenType.SETTINGS){
 
             // Remove Overlay
             gameController.getRootNode().getChildren().remove(screens.get(name).getRoot());

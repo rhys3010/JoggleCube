@@ -345,15 +345,6 @@ public class GameController implements Initializable{
 
 
     /**
-     * When the pause button is clicked it will display an overlay and pause the game
-     */
-    @FXML
-    private void btnPauseGameClicked(){
-        UIController.getScreenController().show(ScreenType.PAUSE);
-        UIController.getJoggleCube().pauseGame();
-    }
-
-    /**
      * Handle the settings button being clicked
      */
     @FXML

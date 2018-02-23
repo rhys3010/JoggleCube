@@ -41,7 +41,7 @@ public class UIController {
     /**
      * All screen names (used to create and add to screenController)
      */
-    private static final ScreenType SCREENS[] = {ScreenType.START, ScreenType.SETTINGS, ScreenType.LOAD, ScreenType.GAME, ScreenType.PAUSE, ScreenType.END, ScreenType.HIGH_SCORES, ScreenType.HELP};
+    private static final ScreenType SCREENS[] = {ScreenType.START, ScreenType.SETTINGS, ScreenType.LOAD, ScreenType.GAME, ScreenType.END, ScreenType.HIGH_SCORES, ScreenType.HELP};
 
     /**
      * The JoggleCube object to handle backend logic
@@ -125,12 +125,6 @@ public class UIController {
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Game.fxml"));
                 controllers.put(ScreenType.GAME,new GameController(this));
                 loader.setController(controllers.get(ScreenType.GAME));
-                break;
-
-            case PAUSE:
-                loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Pause.fxml"));
-                controllers.put(ScreenType.PAUSE,new PauseController(this));
-                loader.setController(controllers.get(ScreenType.PAUSE));
                 break;
 
             case END:
