@@ -15,5 +15,5 @@ package cs221.GP01.java.ui;
  */
 public enum ScreenType {
 
-    START, SETTINGS, LOAD, GAME, PAUSE, END, HELP, HIGH_SCORES
+    START, SETTINGS, LOAD, GAME, END, HELP, HIGH_SCORES
 }

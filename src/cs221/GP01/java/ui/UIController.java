@@ -9,14 +9,11 @@
 package cs221.GP01.java.ui;
 
 import cs221.GP01.java.model.IJoggleCubeController;
-import cs221.GP01.java.model.PretendBackEnd;
 import cs221.GP01.java.ui.controllers.*;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 /**
  * UIController - A class to behave as a mediator between UI and Backend.
@@ -24,7 +21,7 @@ import java.util.HashMap;
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @version 0.1
  */
-public class UIController {
+public class UIController implements IUIController {
 
     /**
      * The Path to the views package
@@ -32,24 +29,64 @@ public class UIController {
     private final String VIEWS_PATH_PREFIX = "../../resource/view/";
 
     /**
-     * The ScreenController object
+     * The NavigationController object
      */
-    private ScreenController screenController;
+    private IViewNavigation navigationController;
 
-    private HashMap<ScreenType, Initializable> controllers = new HashMap<>();
+
+    private IGameController IGameController;
+    private StartController startController;
+    private HighScoreController highScoreController;
+    private LoadGridController loadGridController;
+    private EndController endController;
+    private SettingsController settingsController;
+    private HelpController helpController;
+
+    public IGameController getGameController() {
+        return IGameController;
+    }
+
+    public StartController getStartController() {
+        return startController;
+    }
+
+    public HighScoreController getHighScoreController() {
+        return highScoreController;
+    }
+
+    public LoadGridController getLoadGridController() {
+        return loadGridController;
+    }
+
+    public EndController getEndController() {
+        return endController;
+    }
+
+    public SettingsController getSettingsController() {
+        return settingsController;
+    }
+
+    public HelpController getHelpController() {
+        return helpController;
+    }
 
     /**
-     * All screen names (used to create and add to screenController)
+     * All screen names (used to create and add to navigationController)
      */
-    private static final ScreenType SCREENS[] = {ScreenType.START, ScreenType.SETTINGS, ScreenType.LOAD, ScreenType.GAME, ScreenType.PAUSE, ScreenType.END, ScreenType.HIGH_SCORES, ScreenType.HELP};
+    private static final ScreenType SCREENS[] = {ScreenType.START, ScreenType.SETTINGS, ScreenType.LOAD, ScreenType.GAME, ScreenType.END, ScreenType.HIGH_SCORES, ScreenType.HELP};
 
     /**
      * The JoggleCube object to handle backend logic
      */
     private IJoggleCubeController joggleCube ;
 
+    /**
+     * Constructor to get the joggleCube object
+     * @param joggleCube
+     */
     public UIController(IJoggleCubeController joggleCube) {
         this.joggleCube = joggleCube;
+        joggleCube.setUI(this);
     }
 
 
@@ -60,36 +97,17 @@ public class UIController {
     public void initialize(Scene main) throws IOException{
 
         // Initialize the screen controller
-        screenController = new ScreenController(main);
+        navigationController = new NavigationController(main);
 
-        // Iteratively create screens and add to screenController
+        // Iteratively create screens and add to navigationController
         for(int i = 0; i < SCREENS.length; i++){
             // Create FXML loader and populate with root and controller
-            screenController.add(SCREENS[i], createScreen(SCREENS[i]));
+            navigationController.add(SCREENS[i], createScreen(SCREENS[i]));
         }
 
         // Show the Start Screen
-        screenController.show(ScreenType.START);
+        navigationController.switchScreen(ScreenType.START);
     }
-
-
-    /**
-     * Retrieve the Screen Controller
-     * @return ScreenController
-     */
-    public ScreenController getScreenController(){
-        return screenController;
-    }
-
-    /**
-     * allows the backend or GUI to re-initialise a controller so it gets updated data from the backend.
-     *
-     * @param screenType the type of screen that needs its controller updating
-     */
-    public void initalizeController(ScreenType screenType){
-        controllers.get(screenType).initialize(null,null);
-    };
-
     /**
      * Utility function to create a scene and store in a loader
      * @param screenType - The type of screen to create
@@ -106,49 +124,43 @@ public class UIController {
 
             case START:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Start.fxml"));
-                controllers.put(ScreenType.START,new StartController(this));
-                loader.setController(controllers.get(ScreenType.START));
+                startController = new StartController(this);
+                loader.setController(startController);
                 break;
 
             case SETTINGS:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Settings.fxml"));
-                controllers.put(ScreenType.SETTINGS,new SettingsController(this));
-                loader.setController(controllers.get(ScreenType.SETTINGS));
+                settingsController =  new SettingsController(this);
+                loader.setController(settingsController);
                 break;
             case LOAD:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Load.fxml"));
-                controllers.put(ScreenType.LOAD,new LoadGridController(this));
-                loader.setController(controllers.get(ScreenType.LOAD));
+                loadGridController = new LoadGridController(this);
+                loader.setController(loadGridController);
                 break;
 
             case GAME:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Game.fxml"));
-                controllers.put(ScreenType.GAME,new GameController(this));
-                loader.setController(controllers.get(ScreenType.GAME));
-                break;
-
-            case PAUSE:
-                loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Pause.fxml"));
-                controllers.put(ScreenType.PAUSE,new PauseController(this));
-                loader.setController(controllers.get(ScreenType.PAUSE));
+                IGameController = new GameController(this);
+                loader.setController(IGameController);
                 break;
 
             case END:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "End.fxml"));
-                controllers.put(ScreenType.END,new EndController(this));
-                loader.setController(controllers.get(ScreenType.END));
+                endController = new EndController(this);
+                loader.setController(endController);
                 break;
 
             case HIGH_SCORES:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "HighScore.fxml"));
-                controllers.put(ScreenType.HIGH_SCORES,new HighScoreController(this));
-                loader.setController(controllers.get(ScreenType.HIGH_SCORES));
+                highScoreController = new HighScoreController(this);
+                loader.setController(highScoreController);
                 break;
 
             case HELP:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Help.fxml"));
-                controllers.put(ScreenType.HELP,new HelpController(this));
-                loader.setController(controllers.get(ScreenType.HELP));
+                helpController = new HelpController(this);
+                loader.setController(helpController);
                 break;
 
             default:
@@ -167,5 +179,15 @@ public class UIController {
      */
     public IJoggleCubeController getJoggleCube() {
         return joggleCube;
+    }
+
+
+
+    /**
+     * Retrieve the Screen Controller
+     * @return NavigationController
+     */
+    public IViewNavigation getNavigationController(){
+        return navigationController;
     }
 }

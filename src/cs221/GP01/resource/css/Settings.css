@@ -16,13 +16,13 @@
 
 .topMenu{
     -fx-alignment: center;
-    -fx-spacing: 50px;
+    -fx-spacing: 80px;
     -fx-background-color: transparent;
 }
 
 .topMenu .title{
     -fx-text-fill: white;
-    -fx-font-size: 28px;
+    -fx-font-size: 24px;
     -fx-padding: 10px;
 }
 
@@ -43,10 +43,35 @@
 
 .settingsContainer{
     -fx-alignment: center-left;
-    -fx-spacing: 20px;
+    -fx-spacing: 30px;
 }
 
 .settingsContainer .check-box{
     -fx-text-fill: white;
+}
 
+
+.settingsContainer .volumeContainer{
+    -fx-spacing: 5px;
+    -fx-alignment: center;
+}
+
+.settingsContainer .volumeContainer Label{
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.settingsContainer .volumeContainer .slider .thumb{
+    -fx-background-color: -fx-secondary-color;
+}
+
+.settingsContainer .highScoreButtonContainer{
+    -fx-alignment: center;
+    -fx-spacing: 30px;
+}
+
+.settingsContainer .highScoreButtonContainer Button{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-color: #d33030;
 }

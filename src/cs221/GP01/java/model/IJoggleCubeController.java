@@ -1,5 +1,6 @@
 package cs221.GP01.java.model;
 
+import cs221.GP01.java.ui.IUIController;
 import javafx.collections.ObservableList;
 
 import java.io.File;
@@ -11,35 +12,36 @@ import java.io.File;
  */
 public interface IJoggleCubeController {
 
-
-    void startRandomGame();
-
-
-    void startGame(File file);
-
     /**
-     * pauses
+     *  Allows the backend to access the UI if it needs to.
      */
-    void pauseGame();
+    void setUI(IUIController controller);
 
     /**
-     * resumes the timer
+     * create a random grid
+     *
+     *
      */
-    void resumeGame();
+    void generateRandomGrid();
+
 
     /**
-     * ends the game
+     * load grid from file.
+     *
+     * @param file
      */
-    void endGame();
+    void loadGrid(File file);
 
     /**
-     * checks if word is valid
+     * checks if the word is valid or not.
+     *
      * @param word the word to check
      * @return the validity of the word
      */
     boolean testWordValidity(String word);
 
     /**
+     * allows the game Controller to get a grid.
      *
      * @return the cubes data
      */
@@ -47,11 +49,12 @@ public interface IJoggleCubeController {
 
     /**
      *
-     * @return the loaded grid high scores
+     * @return the loaded grid high scores, return null if no grid loaded
      */
     ObservableList<HighScore> getCurrentCubeHighScores();
 
     /**
+     *
      *
      * @return the overall highscores
      */
@@ -59,7 +62,15 @@ public interface IJoggleCubeController {
 
     /**
      *
-     * @return recently loaded grids
+     * @return recently loaded grid files as strings
      */
     ObservableList<String> getRecentGrids();
+
+    /**
+     *
+     * saves the current score to grid file and overall.
+     *
+     * @param file
+     */
+    void saveGrid(File file,String name);
 }

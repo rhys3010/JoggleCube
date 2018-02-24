@@ -33,7 +33,7 @@ import java.util.ResourceBundle;
  * @author Nathan Williams (naw21)
  * @version 0.2  DRAFT
  */
-public class LoadGridController implements Initializable{
+public class LoadGridController extends BaseScreenController implements INeedPrep {
 
     /**
      * List to store recently played cubes
@@ -48,58 +48,41 @@ public class LoadGridController implements Initializable{
     private File gridFile = null;
 
     /**
-     * Get recently played cubes from backend
-     */
-    @Override
-    public void initialize(URL location, ResourceBundle resources){
-        // Load in from UIController
-        listViewRecents.setItems(UIController.getJoggleCube().getRecentGrids());
-    }
-
-
-    /**
-     * the parent VBox in this scene.
-     */
-    @FXML
-    Node root;
-
-    /**
-     * An instance of the UIController object to interface with backend
-     */
-    private UIController UIController;
-
-    /**
      * Constructor to ensure UIController object is passed
      * @param UIController
      */
     public LoadGridController(UIController UIController){
-        this.UIController = UIController;
+        super(UIController);
     }
+
+    /**
+     * Get recently played cubes from backend
+     */
+    public void prepView(){
+        listViewRecents.setItems(UIController.getJoggleCube().getRecentGrids());
+    }
+
 
 
     /**
      * When the Start Grid button is clicked it will load the Game scene.
      *
      * @see GameController
-     * @throws IOException if the Game.fxml is not found.
      */
     @FXML
-    void btnStartGridClicked() throws IOException {
-        UIController.getScreenController().show(ScreenType.GAME);
-
-        // Backend Example
-        UIController.getJoggleCube().startGame(gridFile);
+    void btnStartGridClicked() {
+        UIController.getJoggleCube().loadGrid(gridFile);
+        UIController.getNavigationController().switchScreen(ScreenType.GAME);
     }
 
     /**
      * When the back button is clicked it will load the Start scene.
      *
      * @see StartController
-     * @throws IOException if the Start.fxml is not found.
      */
     @FXML
-    void btnBackClicked() throws IOException {
-        UIController.getScreenController().show(ScreenType.START);
+    private void btnBackClicked() {
+        UIController.getNavigationController().switchScreen(ScreenType.START);
     }
 
     /**
@@ -107,10 +90,11 @@ public class LoadGridController implements Initializable{
      *
      */
     @FXML
-    void btnPickFileClicked() {
+    private void btnPickFileClicked() {
         Stage stage = new Stage();
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
+        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("A file containing the date from a saved grid.",".grid"));
         gridFile = fileChooser.showOpenDialog(stage);
         if (gridFile != null) {
             //todo do more checks, check a valid gridFile etc
@@ -130,13 +114,5 @@ public class LoadGridController implements Initializable{
         } else {
             //todo add try again pop-up
         }
-    }
-
-    /**
-     * Get the root node of the FXML
-     * @return root - the root node
-     */
-    public Node getRoot(){
-        return root;
     }
 }

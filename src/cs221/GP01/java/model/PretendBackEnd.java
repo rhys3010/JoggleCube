@@ -8,6 +8,7 @@
 
 package cs221.GP01.java.model;
 
+import cs221.GP01.java.ui.IUIController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -22,39 +23,25 @@ import java.util.Random;
  */
 public class PretendBackEnd implements IJoggleCubeController{
 
-    public void startRandomGame(){
-        //todo load a random grid and start the timer
+    @Override
+    public void setUI(IUIController controller) {
+
+    }
+
+    public void generateRandomGrid(){
         System.out.println("Random Game Started");
     }
 
-    public void startGame(File file){
-        //todo load grid from file and start the timer
+    public void loadGrid(File file){
         System.out.println("Game Started from file");
     }
 
-    public void pauseGame(){
-        //todo pause the timer
-        System.out.println("Game Paused");
-    }
-
-    public void resumeGame(){
-        //todo resume the timer
-        System.out.println("Game Resumed");
-    }
-
-    public void endGame(){
-        //todo end the game early stop timer etc.
-        System.out.println("Game Ended");
-    }
-
     public boolean testWordValidity(String word) {
-        //todo test if word is valid in the dictionary or not.
         System.out.println("Checking Validity");
         return true;
     }
 
     public String[][][] getCubeData(){
-        //todo create an actual list of data
         System.out.println("Loading Cube");
 
         String[] alphabet = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Qu","R","S","T","U","V","W","X","Y","Z"};
@@ -72,15 +59,6 @@ public class PretendBackEnd implements IJoggleCubeController{
 
 
         return letters;
-    }
-
-    public ObservableList<HighScore> getLoadedGridHighScores(){
-        //todo create an actual list of data
-        //if(gridloaded){
-        // return list of scores;
-        // } else {
-        return null;
-        // }
     }
 
     public ObservableList<HighScore> getOverallHighScores(){
@@ -142,5 +120,10 @@ public class PretendBackEnd implements IJoggleCubeController{
                 "grid04.grid"
         );
         return recentGrids;
+    }
+
+    @Override
+    public void saveGrid(File file, String name) {
+
     }
 }

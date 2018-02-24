@@ -1,35 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
 <?import java.net.URL?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<BorderPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="helpOverlay" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
         <URL value="@../css/BaseStyle.css" />
         <URL value="@../css/Help.css" />
     </stylesheets>
     <center>
-
     </center>
-    <bottom>
-        <HBox styleClass="footer" BorderPane.alignment="CENTER">
-            <Button fx:id="btnMenu" onAction="#btnStartClicked" styleClass="footerIcon" />
-            <Button fx:id="btnHighScore" onAction="#btnHighScoreClicked" styleClass="footerIcon" />
-            <Button fx:id="btnSettings" onAction="#btnSettingsClicked" styleClass="footerIcon" />
-            <Button fx:id="btnHelp" styleClass="footerIcon" />
-        </HBox>
-    </bottom>
-    <top>
-        <HBox styleClass="banner" BorderPane.alignment="CENTER">
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                <image>
-                    <Image url="@../img/icon/joggle_icon.png" />
-                </image>
-            </ImageView>
-            <Label styleClass="title" text="Help" />
-        </HBox>
-    </top>
+   <top>
+      <HBox styleClass="topMenu">
+         <children>
+            <Label text="Help" />
+            <Button mnemonicParsing="false" onAction="#closeBtnClicked" />
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <Button fx:id="leftPageNav" mnemonicParsing="false" styleClass="navButton" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Button fx:id="rightPageNav" mnemonicParsing="false" styleClass="navButton" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <HBox styleClass="bottomNavContainer">
+         <children>
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" />
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" />
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" />
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" />
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>

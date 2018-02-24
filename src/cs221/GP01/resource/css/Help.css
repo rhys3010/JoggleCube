@@ -6,29 +6,71 @@
    *
    */
 
-@font-face{
-    font-family: Digital-7;
-    stc: url('../font/Digital-7.ttf');
+.helpOverlay{
+    -fx-pref-height: 500px;
+    -fx-pref-width: 500px;
+    -fx-background-color: rgba(64, 64, 64, 0.95);;
 }
 
-.banner{
+.topMenu{
     -fx-alignment: center;
-    -fx-pref-width: 300px;
-    -fx-pref-height: 100px;
-    -fx-spacing: 30px;
-    -fx-padding: 20 0 0 0;
+    -fx-spacing: 340px;
 }
 
-.title{
+.topMenu Label{
     -fx-text-fill: white;
-    -fx-font-size: 48px;
+    -fx-font-size: 32px;
+    -fx-padding: 10px;
 }
 
-.buttonContainer{
+.topMenu Button {
+    -fx-background-color: transparent;
+    -fx-pref-height: 32;
+    -fx-pref-width: 32;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 32 32;
+    -fx-background-image: url("../img/icon/close_icon_inactive.png");
+}
+
+.topMenu Button:hover{
+    -fx-background-image: url("../img/icon/close_icon.png");
+}
+
+.navButton{
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 32 32;
+    -fx-background-insets: 0 0 0 0, 0, 0, 0;
+    -fx-pref-height: 32;
+    -fx-pref-width: 32;
+}
+
+#leftPageNav{
+    -fx-background-image: url("../img/icon/left_arrow_icon.png");
+    -fx-padding: 0 0 0 70;
+}
+
+#rightPageNav{
+    -fx-background-image: url("../img/icon/right_arrow_icon.png");
+    -fx-padding: 0 70 0 0;
+}
+
+.bottomNavContainer{
     -fx-alignment: center;
     -fx-spacing: 20px;
+    -fx-padding: 0 0 30 0;
 }
 
-#btnHelp{
-    -fx-background-image: url("../img/icon/help_icon.png");
+.bottomNavContainer Button{
+    -fx-background-color: #828080;
+    -fx-background-size: 16 16;
+    -fx-pref-width: 16;
+    -fx-pref-height: 16;
+    -fx-background-radius: 20;
+}
+
+.bottomNavContainer Button:hover{
+    -fx-background-color: white;
 }
