@@ -64,9 +64,13 @@
 }
 
 .bottomNavContainer Button{
-    -fx-background-color: #cecece;
+    -fx-background-color: #828080;
     -fx-background-size: 16 16;
     -fx-pref-width: 16;
     -fx-pref-height: 16;
     -fx-background-radius: 20;
+}
+
+.bottomNavContainer Button:hover{
+    -fx-background-color: white;
 }
