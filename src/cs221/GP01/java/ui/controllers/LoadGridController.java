@@ -33,7 +33,7 @@ import java.util.ResourceBundle;
  * @author Nathan Williams (naw21)
  * @version 0.2  DRAFT
  */
-public class LoadGridController implements Initializable{
+public class LoadGridController extends BaseScreenController implements Initializable{
 
     /**
      * List to store recently played cubes
@@ -48,6 +48,14 @@ public class LoadGridController implements Initializable{
     private File gridFile = null;
 
     /**
+     * Constructor to ensure UIController object is passed
+     * @param UIController
+     */
+    public LoadGridController(UIController UIController){
+        super(UIController);
+    }
+
+    /**
      * Get recently played cubes from backend
      */
     @Override
@@ -56,25 +64,6 @@ public class LoadGridController implements Initializable{
         listViewRecents.setItems(UIController.getJoggleCube().getRecentGrids());
     }
 
-
-    /**
-     * the parent VBox in this scene.
-     */
-    @FXML
-    Node root;
-
-    /**
-     * An instance of the UIController object to interface with backend
-     */
-    private UIController UIController;
-
-    /**
-     * Constructor to ensure UIController object is passed
-     * @param UIController
-     */
-    public LoadGridController(UIController UIController){
-        this.UIController = UIController;
-    }
 
 
     /**
@@ -130,13 +119,5 @@ public class LoadGridController implements Initializable{
         } else {
             //todo add try again pop-up
         }
-    }
-
-    /**
-     * Get the root node of the FXML
-     * @return root - the root node
-     */
-    public Node getRoot(){
-        return root;
     }
 }
