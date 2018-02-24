@@ -53,17 +53,17 @@
 }
 
 #loadButton{
-    -fx-background-image: url("../img/icon/new_icon_inactive.png");
+    -fx-background-image: url("../img/icon/file_load_icon_inactive.png");
 }
 
 #startButton{
-    -fx-background-image: url("../img/icon/new_icon_inactive.png");
+    -fx-background-image: url("../img/icon/start_icon_inactive.png");
 }
 
 #loadButton:hover{
-    -fx-background-image: url("../img/icon/new_icon.png");
+    -fx-background-image: url("../img/icon/file_load_icon.png");
 }
 
 #startButton:hover{
-    -fx-background-image: url("../img/icon/new_icon.png");
+    -fx-background-image: url("../img/icon/start_icon.png");
 }
