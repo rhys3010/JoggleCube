@@ -8,10 +8,7 @@
 
 package cs221.GP01.java.ui.controllers;
 
-import cs221.GP01.java.ui.ScreenType;
-import cs221.GP01.java.ui.UIController;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import cs221.GP01.java.ui.IUIController;
 
 /**
  * The Parent Class of any overlay controller
@@ -23,7 +20,7 @@ public class BaseOverlayController {
     /**
      * An instance of the UIController object to interface with backend
      */
-    protected UIController UIController;
+    protected IUIController UIController;
 
     /**
      * An instance of the overlay's parent controller
@@ -35,7 +32,7 @@ public class BaseOverlayController {
      * Constructor to ensure UIController object is passed
      * @param UIController
      */
-    public BaseOverlayController(UIController UIController){
+    public BaseOverlayController(IUIController UIController){
         this.UIController = UIController;
     }
 

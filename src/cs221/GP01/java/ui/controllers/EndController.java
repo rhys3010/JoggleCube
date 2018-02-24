@@ -32,7 +32,7 @@ import java.util.ResourceBundle;
  * @author Nathan Williams (naw21)
  * @version 0.2  DRAFT
  */
-public class EndController extends BaseOverlayController implements Initializable{
+public class EndController extends BaseOverlayController{
 
 
     /**
@@ -43,13 +43,6 @@ public class EndController extends BaseOverlayController implements Initializabl
         super(UIController);
     }
 
-    /**
-     * todo initialize stuff
-     */
-    @Override
-    public void initialize(URL location, ResourceBundle resources){
-    }
-
 
     /**
      * When the High Score button is pressed, change scene to high score screen
@@ -57,11 +50,9 @@ public class EndController extends BaseOverlayController implements Initializabl
      * @throws IOException - if FXML file could not be found/opened
      */
     @FXML
-    void btnHighScoreClicked() throws IOException {
-        UIController.getNavigationController().switchScreen(ScreenType.HIGH_SCORES);
-        UIController.initalizeController(ScreenType.HIGH_SCORES);
+    void btnHighScoreClicked()  {
 
-        // Hide the End Overlay
+        UIController.getNavigationController().switchScreen(ScreenType.HIGH_SCORES);
         UIController.getNavigationController().hideOverlay(ScreenType.END, parentController);
     }
 
@@ -71,10 +62,8 @@ public class EndController extends BaseOverlayController implements Initializabl
      * @see StartController
      */
     @FXML
-    void btnMenuClicked() throws IOException{
+    void btnMenuClicked(){
         UIController.getNavigationController().switchScreen(ScreenType.START);
-        UIController.initalizeController(ScreenType.START);
-
         UIController.getNavigationController().hideOverlay(ScreenType.END, parentController);
     }
 
@@ -82,10 +71,8 @@ public class EndController extends BaseOverlayController implements Initializabl
      * When the 'replay' button is clicked restart a game
      */
     @FXML
-    void btnReplayClicked() throws IOException{
+    void btnReplayClicked() {
         UIController.getNavigationController().switchScreen(ScreenType.GAME);
-        UIController.initalizeController(ScreenType.GAME);
-
         UIController.getNavigationController().hideOverlay(ScreenType.END, parentController);
     }
 
@@ -96,11 +83,13 @@ public class EndController extends BaseOverlayController implements Initializabl
     void btnSaveClicked(){
         Stage newStage = new Stage();
         FileChooser fileChooser = new FileChooser();
-
         fileChooser.setTitle("Save Cube");
+        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("A file containing grid data",".grid"));
         File file = fileChooser.showSaveDialog(newStage);
         if (file != null) {
-
+            //todo get the users name
+            String name = "bob";
+            UIController.getJoggleCube().saveGrid(file,name);
         } else {
             //todo add try again pop-up
         }

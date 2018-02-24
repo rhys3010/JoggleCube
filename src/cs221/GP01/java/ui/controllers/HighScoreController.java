@@ -15,6 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -34,7 +35,7 @@ import java.util.ResourceBundle;
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @version 0.2  DRAFT
  */
-public class HighScoreController extends BaseScreenController implements Initializable{
+public class HighScoreController extends BaseScreenController implements Initializable, INeedPrep {
 
     /**
      * High Score Table
@@ -65,64 +66,46 @@ public class HighScoreController extends BaseScreenController implements Initial
     private ObservableList<HighScore> currentCubeHighScores;
 
     /**
-     * The index of the current high score page
-     */
-    private int currentHighScorePageIndex = 0;
-
-    /**
      * The different highscore pages that can be displayed
      */
     private final String HIGH_SCORE_PAGES[] = {"Overall", "Current"};
 
     /**
      * Constructor to ensure UIController object is passed
+     *
+     *
+     *
      * @param UIController the UIController between UI and Backend.
      */
-    public HighScoreController(UIController UIController){
+    public HighScoreController(UIController UIController) {
         super(UIController);
-        overallHighScores = UIController.getJoggleCube().getOverallHighScores();
-        currentCubeHighScores = UIController.getJoggleCube().getCurrentCubeHighScores();
     }
+
+    @FXML
+    private Button leftPageNav, rightPageNav;
 
 
     /**
-     * Populate HighScore table with highscore data at end screen load
-     * todo Add Rank Number to table
+     * Populate HighScore table with highscore data
      *
-     * todo add a loaded grid High score tab that is only displayed if UIController.getHandleInput().getLoadedGridHighScores() does not return a null and load in the data.
-     * @param location
-     * @param resources
      */
-    @Override
-    public void initialize(URL location, ResourceBundle resources){
+    public void prepView(){
 
-        // Set Default Values for Cells
-        dateCol.setCellValueFactory(
-                new PropertyValueFactory<HighScore, String>("Date")
-        );
+        overallHighScores = UIController.getJoggleCube().getOverallHighScores();
+        currentCubeHighScores = UIController.getJoggleCube().getCurrentCubeHighScores();
 
-        scoreCol.setCellValueFactory(
-                new PropertyValueFactory<HighScore, Integer>("Score")
-        );
-
-        nameCol.setCellValueFactory(
-                new PropertyValueFactory<HighScore, String>("Name")
-        );
-
-
-        // Set Score sort type
-        scoreCol.setSortType(TableColumn.SortType.DESCENDING);
-
-        // Prevent user from reordering table
-        columnReorder(highScoreTable, idCol, nameCol, scoreCol, dateCol);
-
-        // Sort by score
-        highScoreTable.getSortOrder().add(scoreCol);
-        highScoreTable.sort();
-        scoreCol.setSortable(false);
+        if(currentCubeHighScores == null){
+            leftPageNav.setVisible(false);
+            rightPageNav.setVisible(false);
+        } else {
+            leftPageNav.setVisible(true);
+            rightPageNav.setVisible(true);
+        }
 
         // Populate the Table with filtered high scores
-        populateTable(overallHighScores);
+        if(overallHighScores != null) {
+            populateTable(overallHighScores, "All Cubes");
+        }
     }
 
 
@@ -150,12 +133,14 @@ public class HighScoreController extends BaseScreenController implements Initial
 
     /**
      * Helper function to populate the highscore table
+     *
+     * todo do we need to limit to top 10?
+     *
      * @param list - a filtered list of the highscores to populate the table with
      */
-    private void populateTable(ObservableList<HighScore> list){
+    private void populateTable(ObservableList<HighScore> list, String title){
 
-        // Clear table
-        //highScoreTable.getItems().clear();
+        highScorePageLabel.setText(title);
 
         //filters list to the top 10
         FilteredList<HighScore> filteredList = new FilteredList<HighScore>(
@@ -164,19 +149,15 @@ public class HighScoreController extends BaseScreenController implements Initial
         );
 
         highScoreTable.setItems(filteredList);
+        highScoreTable.sort();
     }
 
     /**
      * Advance to the next page in the Highscores list
-     * todo consider other ways of doing this
+     *
      */
     @FXML
     public void nextPage(){
-        currentHighScorePageIndex++;
-
-        // Use modulo to circulate through the list
-        currentHighScorePageIndex %= HIGH_SCORE_PAGES.length;
-
         changePage();
     }
 
@@ -185,26 +166,57 @@ public class HighScoreController extends BaseScreenController implements Initial
      */
     @FXML
     public void previousPage(){
-        currentHighScorePageIndex--;
-
-        // Java made this happen, I'm sorry :(
-        // (Java always returns the remainder of a modulo operation so it doesn't do well with modulo of negative numbers, that's why the below line is such a cluster-fun)
-        currentHighScorePageIndex  = (((currentHighScorePageIndex % HIGH_SCORE_PAGES.length) + HIGH_SCORE_PAGES.length) % HIGH_SCORE_PAGES.length);
-
         changePage();
     }
 
     /**
      * Utility function to change the page of the high score table
+     *
+     * todo if not filtering to top 10 compare the data in table: highScoreTable.getItems().equals(overallHighScores);
      */
     private void changePage(){
-        if(HIGH_SCORE_PAGES[currentHighScorePageIndex].equals("Overall")){
-            populateTable(overallHighScores);
-            highScorePageLabel.setText("All Cubes");
-        }else if(HIGH_SCORE_PAGES[currentHighScorePageIndex].equals("Current")) {
-            populateTable(currentCubeHighScores);
-            highScorePageLabel.setText("Current Cube");
+        if(highScorePageLabel.getText().equals("Current Cube")){
+            populateTable(overallHighScores,"All Cubes");
+        }else if(highScorePageLabel.getText().equals("All Cubes")) {
+            populateTable(currentCubeHighScores, "Current Cube");
         }
     }
+    /**
+     *
+     * table setup stuff
+     *
+     *
+     * todo Add Rank Number to table
+     *
+     * @param location
+     * @param resources
+     */
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // Set Default Values for Cells
+        dateCol.setCellValueFactory(
+                new PropertyValueFactory<HighScore, String>("Date")
+        );
+
+        scoreCol.setCellValueFactory(
+                new PropertyValueFactory<HighScore, Integer>("Score")
+        );
+
+        nameCol.setCellValueFactory(
+                new PropertyValueFactory<HighScore, String>("Name")
+        );
+
+
+        // Set Score sort type
+        scoreCol.setSortType(TableColumn.SortType.DESCENDING);
+
+        // Prevent user from reordering table
+        columnReorder(highScoreTable, idCol, nameCol, scoreCol, dateCol);
+
+        // Sort by score
+        highScoreTable.getSortOrder().add(scoreCol);
+
+        scoreCol.setSortable(false);
+    }
 }

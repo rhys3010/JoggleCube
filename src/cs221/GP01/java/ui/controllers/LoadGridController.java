@@ -33,7 +33,7 @@ import java.util.ResourceBundle;
  * @author Nathan Williams (naw21)
  * @version 0.2  DRAFT
  */
-public class LoadGridController extends BaseScreenController implements Initializable{
+public class LoadGridController extends BaseScreenController implements INeedPrep {
 
     /**
      * List to store recently played cubes
@@ -58,9 +58,7 @@ public class LoadGridController extends BaseScreenController implements Initiali
     /**
      * Get recently played cubes from backend
      */
-    @Override
-    public void initialize(URL location, ResourceBundle resources){
-        // Load in from UIController
+    public void prepView(){
         listViewRecents.setItems(UIController.getJoggleCube().getRecentGrids());
     }
 
@@ -70,24 +68,20 @@ public class LoadGridController extends BaseScreenController implements Initiali
      * When the Start Grid button is clicked it will load the Game scene.
      *
      * @see GameController
-     * @throws IOException if the Game.fxml is not found.
      */
     @FXML
-    void btnStartGridClicked() throws IOException {
+    void btnStartGridClicked() {
+        UIController.getJoggleCube().loadGrid(gridFile);
         UIController.getNavigationController().switchScreen(ScreenType.GAME);
-
-        // Backend Example
-        UIController.getJoggleCube().startGame(gridFile);
     }
 
     /**
      * When the back button is clicked it will load the Start scene.
      *
      * @see StartController
-     * @throws IOException if the Start.fxml is not found.
      */
     @FXML
-    void btnBackClicked() throws IOException {
+    private void btnBackClicked() {
         UIController.getNavigationController().switchScreen(ScreenType.START);
     }
 
@@ -96,10 +90,11 @@ public class LoadGridController extends BaseScreenController implements Initiali
      *
      */
     @FXML
-    void btnPickFileClicked() {
+    private void btnPickFileClicked() {
         Stage stage = new Stage();
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
+        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("A file containing the date from a saved grid.",".grid"));
         gridFile = fileChooser.showOpenDialog(stage);
         if (gridFile != null) {
             //todo do more checks, check a valid gridFile etc

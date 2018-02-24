@@ -1,11 +1,14 @@
 package cs221.GP01.java.model;
 
+import cs221.GP01.java.ui.IUIController;
 import javafx.collections.ObservableList;
 
 import java.io.File;
 import java.util.ArrayList;
 
-public class JoggleCubeController implements IJoggleCubeController{
+public class JoggleCubeController implements IJoggleCubeController {
+
+    private IUIController ui;
 
     private Dictionary dictionary = new Dictionary();
     private Cube cube = new Cube();
@@ -24,33 +27,29 @@ public class JoggleCubeController implements IJoggleCubeController{
     public JoggleCubeController(){
         //Load dictionary on creation of JoggleCubeController
         dictionary.loadDictionary(dictionaryFileName);
-
-        //Populate the cube when JoggleCubeController is called so there ia already a cube there
-        //Just overwrite this cube if needed
-        cube.populateCube(language + "_letters");
-
-
     }
 
-    public void startRandomGame() { }
 
-    public void startGame(File file) {
-
+    @Override
+    public void setUI(IUIController controller) {
+        ui = controller;
     }
 
-    //handle later
-    public void pauseGame() { }
 
-    //handle later
-    public void resumeGame() { }
+    public void generateRandomGrid() { cube.populateCube(language + "_letters"); }
+
+    public void loadGrid(File file) {
+        //load this file into grid and highscores
+
+        //cube.loadCube(file);
+    }
+
+    public void endGame(){ }
 
 
-    public void endGame() { }
-
-    //DOne
     public boolean testWordValidity(String word) {
         //Test if already used
-        if (storedWords.contains(word)){return false;}
+        //if (storedWords.contains(word)){return false;}
 
         //Test if valid dictionary word
         return dictionary.searchDictionary(word);
@@ -73,6 +72,9 @@ public class JoggleCubeController implements IJoggleCubeController{
     public ObservableList<HighScore> getOverallHighScores() { return null; }
     public ObservableList<HighScore> getCurrentCubeHighScores() { return null; }
     public ObservableList<String> getRecentGrids() { return null; }
+    public void saveGrid(File file, String name) {
+
+    }
 
     /**
      * Using the first to letters as an example set the language by using "en" for american english
@@ -83,5 +85,4 @@ public class JoggleCubeController implements IJoggleCubeController{
     }
 
     private void loadSavedCube(){}
-    
 }

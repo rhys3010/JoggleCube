@@ -42,7 +42,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
 
         //todo launch the real back end
-        IJoggleCubeController joggleCube = new PretendBackEnd();
+        //IJoggleCubeController joggleCube = new PretendBackEnd();
+        IJoggleCubeController joggleCube = new JoggleCubeController();
 
         // Array to store all program icons
         Image icons[] = {
@@ -85,7 +86,6 @@ public class Main extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-        //JoggleCubeController main = new JoggleCubeController();
     }
 
 }

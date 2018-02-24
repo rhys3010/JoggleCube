@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SettingsController extends BaseOverlayController implements Initializable {
+public class SettingsController extends BaseOverlayController implements INeedPrep {
 
 
     /**
@@ -20,13 +20,6 @@ public class SettingsController extends BaseOverlayController implements Initial
         super(UIController);
     }
 
-    /**
-     * todo Do initialization stuff here
-     */
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 
     /**
      * Handles the close button of the overlay being clicked
@@ -36,4 +29,8 @@ public class SettingsController extends BaseOverlayController implements Initial
         UIController.getNavigationController().hideOverlay(ScreenType.SETTINGS, parentController);
     }
 
+    @Override
+    public void prepView() {
+        //display the relevant stuff.
+    }
 }

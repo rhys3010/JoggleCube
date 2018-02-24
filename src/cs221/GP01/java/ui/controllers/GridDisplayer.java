@@ -1,7 +1,6 @@
 package cs221.GP01.java.ui.controllers;
 
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Point3D;
 import javafx.geometry.Pos;
@@ -20,6 +19,14 @@ import javafx.scene.shape.Box;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 
+
+/**
+ *
+ * A class to help GameController display the grids.
+ *
+ * @author Nathan Williams
+ * @version 1.0
+ */
 public class GridDisplayer {
 
     private double oldMouseX, oldMouseY;
@@ -29,12 +36,15 @@ public class GridDisplayer {
 
     private TextField textField;
 
+
+    //FXML stuff
     private SubScene subScene;
     private Group groupy;
     private BorderPane back;
     private GridPane[] twoDGrid,twoFiveDGrid;
 
 
+    //storage for the labels and boxes with letters in them.
     private Label[][][] labelCube;
     private Box[][][] boxCube,boxCube3;
 
@@ -84,12 +94,15 @@ public class GridDisplayer {
         //2d
         labelCube[x][y][z].setStyle("-fx-background-color:#ff0000;");
         labelCube[x][y][z].setOnMouseClicked(null);
+
+        PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),"#ff0000");
+
         //2.5d
-        boxCube[x][y][z].setMaterial(generateMaterial(labelCube[x][y][z].getText(),"#ff0000"));
+        boxCube[x][y][z].setMaterial(mat);
         boxCube[x][y][z].setOnMouseClicked(null);
 
         //3d
-        boxCube3[x][y][z].setMaterial(generateMaterial(labelCube[x][y][z].getText(),"#ff0000"));
+        boxCube3[x][y][z].setMaterial(mat);
         boxCube3[x][y][z].setOnMouseClicked(null);
     }
 
@@ -107,12 +120,15 @@ public class GridDisplayer {
             //2d
             labelCube[x][y][z].setStyle("-fx-background-color:#566377;");
             labelCube[x][y][z].setOnMouseClicked(null);
+
+
+            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),"#566377");
             //2.5d
-            boxCube[x][y][z].setMaterial(generateMaterial(labelCube[x][y][z].getText(),"#566377"));
+            boxCube[x][y][z].setMaterial(mat);
             boxCube[x][y][z].setOnMouseClicked(null);
 
             //3d
-            boxCube3[x][y][z].setMaterial(generateMaterial(labelCube[x][y][z].getText(),"#566377"));
+            boxCube3[x][y][z].setMaterial(mat);
             boxCube3[x][y][z].setOnMouseClicked(null);
 
         }
@@ -132,26 +148,37 @@ public class GridDisplayer {
 
             //2d
             labelCube[x][y][z].setStyle("-fx-background-color:#550000;");
+
+            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),"#550000");
             //2.5d
-            boxCube[x][y][z].setMaterial(generateMaterial(labelCube[x][y][z].getText(),"#550000"));
+            boxCube[x][y][z].setMaterial(mat);
             //3d
-            boxCube3[x][y][z].setMaterial(generateMaterial(labelCube[x][y][z].getText(),"#550000"));
+            boxCube3[x][y][z].setMaterial(mat);
 
         } else if(!labelCube[x][y][z].getStyle().contains("-fx-background-color:#550000;") || override) {
             //2d
             labelCube[x][y][z].setStyle("-fx-background-color:#2980b9;");
             labelCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z));
             //2.5d
-            boxCube[x][y][z].setMaterial(generateMaterial(labelCube[x][y][z].getText(),"#2980b9"));
+            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),"#2980b9");
+
+            boxCube[x][y][z].setMaterial(mat);
             boxCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z));
             //3d
-            boxCube3[x][y][z].setMaterial(generateMaterial(labelCube[x][y][z].getText(),"#2980b9"));
+            boxCube3[x][y][z].setMaterial(mat);
             boxCube3[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z));
         }
     }
 
 
+    /**
+     * sets up 3d enviroment, loads letters into labels and boxes, adds them to the display.
+     *
+     * @param letters
+     */
     public void buildGrids(String[][][] letters) {
+
+        //sets up the 3D enviroment
         Camera camera = new ParallelCamera();
         camera.getTransforms().addAll (
                 rotateAboutX,
@@ -178,10 +205,11 @@ public class GridDisplayer {
                 e -> {oldMouseX = 0; oldMouseY = 0;}
         );
 
+
+        //checks if a block was clicked
         subScene.setOnMouseClicked((event)->{
             if(event.getButton().equals(MouseButton.PRIMARY)){
                 PickResult res = event.getPickResult();
-                System.out.println("click");
                 if (res.getIntersectedNode() instanceof Box){
                     EventHandler e = res.getIntersectedNode().getOnMouseClicked();
                     if(e != null){
@@ -196,11 +224,6 @@ public class GridDisplayer {
         labelCube = new Label[3][3][3];
         boxCube = new Box[3][3][3];
         boxCube3 = new Box[3][3][3];
-
-        //easy access of the three planes
-
-
-        //links the ListView with the list
 
 
         //stops user editing the textField todo test this

@@ -12,27 +12,11 @@ import cs221.GP01.java.ui.UIController;
 import cs221.GP01.java.ui.ScreenType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.geometry.HPos;
-import javafx.geometry.Point3D;
-import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.PickResult;
 import javafx.scene.layout.*;
-import javafx.scene.paint.PhongMaterial;
-import javafx.scene.shape.Box;
-import javafx.scene.shape.Sphere;
-import javafx.scene.transform.Rotate;
-import javafx.scene.transform.Translate;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 
 /**
  * GameController - A class that controls the Game scene that is defined in Game.fxml
@@ -43,7 +27,7 @@ import java.util.ResourceBundle;
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @version 0.2  DRAFT
  */
-public class GameController extends BaseScreenController implements Initializable{
+public class GameController extends BaseScreenController implements IGameController, INeedPrep {
 
     private GridDisplayer gridDisplayer;
     /**
@@ -54,6 +38,9 @@ public class GameController extends BaseScreenController implements Initializabl
 
     @FXML
     private ListView<String> foundWordsList;
+
+    @FXML
+    private Label scoreLabel, timerLabel;
 
     private ObservableList<String> foundWords = FXCollections.observableArrayList();
 
@@ -71,6 +58,15 @@ public class GameController extends BaseScreenController implements Initializabl
     public GameController(UIController UIController){
         super(UIController);
     }
+
+    @FXML
+    private GridPane top2d,middle2d,bottom2d,top25d,middle25d,bottom25d;
+    @FXML
+    private SubScene subScene;
+    @FXML
+    private Group groupy;
+    @FXML
+    private BorderPane back;
 
 
     @FXML
@@ -107,9 +103,6 @@ public class GameController extends BaseScreenController implements Initializabl
         );
     }
 
-    //todo add method to change the submit buttons colour back when the the mouse is next clicked maybe?
-
-
     /**
      * Handle the settings button being clicked
      */
@@ -123,24 +116,16 @@ public class GameController extends BaseScreenController implements Initializabl
      */
     @FXML
     private void btnEndGameClicked() {
+        //todo stop timer add up score etc
         UIController.getNavigationController().showOverlay(ScreenType.END, this);
-        UIController.getJoggleCube().endGame();
     }
 
-    @FXML
-    private GridPane top2d,middle2d,bottom2d,top25d,middle25d,bottom25d;
-    @FXML
-    private SubScene subScene;
-    @FXML
-    private Group groupy;
-    @FXML
-    private BorderPane back;
 
     /**
      * Initialize game screen
      */
     @Override
-    public void initialize(URL location, ResourceBundle resources){
+    public void prepView(){
         GridPane[] twoDGrid = {top2d, middle2d, bottom2d};
         GridPane[] twoFiveDGrid = {top25d, middle25d, bottom25d};
         gridDisplayer = new GridDisplayer(textField,twoDGrid,twoFiveDGrid,subScene,groupy,back);
@@ -148,12 +133,18 @@ public class GameController extends BaseScreenController implements Initializabl
         foundWordsList.setItems(foundWords);
     }
 
+    @Override
+    public Label getTimerLabel() {
+        return timerLabel;
+    }
 
-    /**
-     * Get the cube container tab pane
-     * @return cubeContainer - the FXML node for tabpane
-     */
-    public TabPane getCubeContainer(){
+    @Override
+    public Label getScoreLabel() {
+        return scoreLabel;
+    }
+
+    @Override
+    public TabPane getCubeContainer() {
         return cubeContainer;
     }
 }

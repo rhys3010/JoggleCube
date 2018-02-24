@@ -33,12 +33,12 @@
                <children>
                   <HBox styleClass="selectionContainer">
                      <children>
-                        <Button fx:id="leftPageNav" mnemonicParsing="false" />
-                        <Label fx:id="highScorePageLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="All Cubes" />
-                        <Button fx:id="rightPageNav" mnemonicParsing="false" />
+                        <Button fx:id="leftPageNav" onAction="#nextPage" />
+                        <Label fx:id="highScorePageLabel" text="All Cubes" />
+                        <Button fx:id="rightPageNav" onAction="#previousPage" />
                      </children>
                   </HBox>
-                   <TableView fx:id="highScoreTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="highScoreTable">
+                   <TableView fx:id="highScoreTable" styleClass="highScoreTable">
                        <columns>
                            <TableColumn fx:id="idCol" sortable="false" text="#" />
                            <TableColumn fx:id="nameCol" editable="false" resizable="false" sortable="false" text="Name" />

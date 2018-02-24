@@ -71,7 +71,6 @@ public class BaseScreenController {
     @FXML
     private void btnMenuClicked(){
         UIController.getNavigationController().switchScreen(ScreenType.START);
-        UIController.initalizeController(ScreenType.START);
     }
 
     /**
@@ -80,7 +79,6 @@ public class BaseScreenController {
     @FXML
     private void btnHighScoreClicked(){
         UIController.getNavigationController().switchScreen(ScreenType.HIGH_SCORES);
-        UIController.initalizeController(ScreenType.HIGH_SCORES);
     }
 
     /**
@@ -89,7 +87,6 @@ public class BaseScreenController {
     @FXML
     private void btnHelpClicked(){
         UIController.getNavigationController().showOverlay(ScreenType.HELP, this);
-        UIController.initalizeController(ScreenType.HELP);
     }
 
     /**
@@ -98,7 +95,6 @@ public class BaseScreenController {
     @FXML
     private void btnSettingsClicked(){
         UIController.getNavigationController().showOverlay(ScreenType.SETTINGS, this);
-        UIController.initalizeController(ScreenType.SETTINGS);
     }
 
 }

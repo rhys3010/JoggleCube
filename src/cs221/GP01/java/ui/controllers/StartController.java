@@ -44,9 +44,8 @@ public class StartController extends BaseScreenController implements Initializab
      */
     @FXML
     private void btnStartNewGridClicked() {
+        UIController.getJoggleCube().generateRandomGrid();
         UIController.getNavigationController().switchScreen(ScreenType.GAME);
-        UIController.getJoggleCube().startRandomGame();
-        UIController.initalizeController(ScreenType.GAME);
     }
 
     /**
@@ -56,7 +55,6 @@ public class StartController extends BaseScreenController implements Initializab
     @FXML
     private void btnLoadGridClicked() {
         UIController.getNavigationController().switchScreen(ScreenType.LOAD);
-        UIController.initalizeController(ScreenType.LOAD);
     }
 
 }

@@ -8,9 +8,7 @@
 package cs221.GP01.java.ui;
 
 import cs221.GP01.java.ui.ScreenType;
-import cs221.GP01.java.ui.controllers.BaseOverlayController;
-import cs221.GP01.java.ui.controllers.BaseScreenController;
-import cs221.GP01.java.ui.controllers.GameController;
+import cs221.GP01.java.ui.controllers.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
@@ -26,7 +24,7 @@ import java.util.HashMap;
  * @version 0.1
  */
 
-public class NavigationController {
+public class NavigationController implements IViewNavigation{
 
     /**
      * All screens to be stored, store Type as Key and an FXML loader as value
@@ -72,6 +70,10 @@ public class NavigationController {
     public void switchScreen(ScreenType newScreen){
         // Only allow screen switching if screen type isn't an overlay
         if(screens.get(newScreen).getController() instanceof BaseScreenController){
+            //checks if the View needs prep before displaying
+            if(screens.get(newScreen).getController() instanceof INeedPrep) {
+                ((INeedPrep) screens.get(newScreen).getController()).prepView();
+            }
             main.setRoot(screens.get(newScreen).getRoot());
         }
     }
@@ -85,6 +87,11 @@ public class NavigationController {
         // Verify that the overlay is of type BaseOverlayController
         if(screens.get(overlay).getController() instanceof BaseOverlayController){
 
+            //checks if the overlay needs prep before displaying
+            if(screens.get(overlay).getController() instanceof INeedPrep) {
+                ((INeedPrep) screens.get(overlay).getController()).prepView();
+            }
+
             // Add the overlay's FXML to the parent screen's root
             parent.getRoot().getChildren().add(screens.get(overlay).getRoot());
 
@@ -93,7 +100,7 @@ public class NavigationController {
 
             // If the parent screen is a GameController, then disable the game cube
             if(parent instanceof GameController){
-                ((GameController) parent).getCubeContainer().setVisible(false);
+                ((IGameController) parent).getCubeContainer().setVisible(false);
             }
 
             // Set the parent of the overlay
@@ -118,15 +125,8 @@ public class NavigationController {
 
             // If the parent screen is Game Controller, re-enable the game cube
             if(parent instanceof GameController){
-                ((GameController) parent).getCubeContainer().setVisible(true);
+                ((IGameController) parent).getCubeContainer().setVisible(true);
             }
         }
-    }
-
-    /**
-     * Returns a game controller
-     */
-    public GameController getGameController(){
-        return screens.get(ScreenType.GAME).getController();
     }
 }
