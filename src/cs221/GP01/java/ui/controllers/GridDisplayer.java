@@ -8,6 +8,7 @@
 
 package cs221.GP01.java.ui.controllers;
 
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Point3D;
@@ -17,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.PickResult;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
@@ -74,21 +76,23 @@ public class GridDisplayer {
      * @param i the position of the block that called the method
      * @param j the position of the block that called the method
      */
-    private void blockClicked(int k, int i, int j){
-        for (int x = 0; x < 3; x++) {
-            for (int y = 0; y < 3; y++) {
-                for (int z = 0; z < 3; z++) {
-                    if(x == k && y == i && z == j){
-                        setSelected(x,y,z);
-                    } else if(isNeighbour(k,i,j,x,y,z)){
-                        setActive(x,y,z,false);
-                    } else {
-                        setInActive(x,y,z);
+    private void blockClicked(int k, int i, int j, MouseEvent e){
+        if(e.getButton().equals(MouseButton.PRIMARY)) {
+            for (int x = 0; x < 3; x++) {
+                for (int y = 0; y < 3; y++) {
+                    for (int z = 0; z < 3; z++) {
+                        if (x == k && y == i && z == j) {
+                            setSelected(x, y, z);
+                        } else if (isNeighbour(k, i, j, x, y, z)) {
+                            setActive(x, y, z, false);
+                        } else {
+                            setInActive(x, y, z);
+                        }
                     }
                 }
             }
+            textField.appendText(labelCube[k][i][j].getText());
         }
-        textField.appendText(labelCube[k][i][j].getText());
     }
 
     /**
@@ -168,15 +172,15 @@ public class GridDisplayer {
         } else if(!labelCube[x][y][z].getStyle().contains("-fx-background-color:#550000;") || override) {
             //2d
             labelCube[x][y][z].setStyle("-fx-background-color:#2980b9;");
-            labelCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z));
+            labelCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z,e));
             //2.5d
             PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),"#2980b9");
 
             boxCube[x][y][z].setMaterial(mat);
-            boxCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z));
+            boxCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z,e));
             //3d
             boxCube3[x][y][z].setMaterial(mat);
-            boxCube3[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z));
+            boxCube3[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z,e));
         }
     }
 
@@ -214,21 +218,6 @@ public class GridDisplayer {
         back.setOnMouseReleased(
                 e -> {oldMouseX = 0; oldMouseY = 0;}
         );
-
-
-        //checks if a block was clicked
-        subScene.setOnMouseClicked((event)->{
-            if(event.getButton().equals(MouseButton.PRIMARY)){
-                PickResult res = event.getPickResult();
-                if (res.getIntersectedNode() instanceof Box){
-                    EventHandler e = res.getIntersectedNode().getOnMouseClicked();
-                    if(e != null){
-                        e.handle(event);
-                    }
-                }
-            }
-        });
-
 
         //creates space ready for the boxes and labels
         labelCube = new Label[3][3][3];
