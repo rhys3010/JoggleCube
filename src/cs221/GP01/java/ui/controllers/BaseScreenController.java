@@ -88,7 +88,7 @@ public class BaseScreenController {
      */
     @FXML
     private void btnHelpClicked(){
-        UIController.getNavigationController().switchScreen(ScreenType.HELP);
+        UIController.getNavigationController().showOverlay(ScreenType.HELP, this);
         UIController.initalizeController(ScreenType.HELP);
     }
 

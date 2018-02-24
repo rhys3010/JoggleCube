@@ -6,29 +6,8 @@
    *
    */
 
-@font-face{
-    font-family: Digital-7;
-    stc: url('../font/Digital-7.ttf');
-}
-
-.banner{
-    -fx-alignment: center;
-    -fx-pref-width: 300px;
-    -fx-pref-height: 100px;
-    -fx-spacing: 30px;
-    -fx-padding: 20 0 0 0;
-}
-
-.title{
-    -fx-text-fill: white;
-    -fx-font-size: 48px;
-}
-
-.buttonContainer{
-    -fx-alignment: center;
-    -fx-spacing: 20px;
-}
-
-#btnHelp{
-    -fx-background-image: url("../img/icon/help_icon.png");
+.helpOverlay{
+    -fx-pref-height: 500px;
+    -fx-pref-width: 500px;
+    -fx-background-color: rgba(64, 64, 64, 0.95);;
 }
