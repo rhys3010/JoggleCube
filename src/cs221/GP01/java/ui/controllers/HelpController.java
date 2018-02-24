@@ -1,6 +1,8 @@
 package cs221.GP01.java.ui.controllers;
 
+import cs221.GP01.java.ui.ScreenType;
 import cs221.GP01.java.ui.UIController;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
@@ -17,4 +19,12 @@ public class HelpController extends BaseOverlayController implements Initializab
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {    }
+
+    /**
+     * Handles the close button of the overlay being clicked
+     */
+    @FXML
+    public void closeBtnClicked(){
+        UIController.getNavigationController().hideOverlay(ScreenType.HELP, parentController);
+    }
 }
