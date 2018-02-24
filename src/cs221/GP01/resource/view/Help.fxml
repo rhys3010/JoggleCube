@@ -22,9 +22,19 @@
       </HBox>
    </top>
    <left>
-      <Button styleClass="navButton" fx:id="leftPageNav" mnemonicParsing="false" BorderPane.alignment="CENTER" />
+      <Button fx:id="leftPageNav" mnemonicParsing="false" styleClass="navButton" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <Button styleClass="navButton" fx:id="rightPageNav" mnemonicParsing="false" BorderPane.alignment="CENTER" />
+      <Button fx:id="rightPageNav" mnemonicParsing="false" styleClass="navButton" BorderPane.alignment="CENTER" />
    </right>
+   <bottom>
+      <HBox styleClass="bottomNavContainer">
+         <children>
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" />
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" />
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" />
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" />
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>
