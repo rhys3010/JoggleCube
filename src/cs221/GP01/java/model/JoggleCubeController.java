@@ -55,7 +55,7 @@ public class JoggleCubeController implements IJoggleCubeController {
         return dictionary.searchDictionary(word);
     }
 
-    //Done
+    //todo check data in cube before loading
     public String[][][] getCubeData() {
         String[][][] stringCube = new String[3][3][3];
 

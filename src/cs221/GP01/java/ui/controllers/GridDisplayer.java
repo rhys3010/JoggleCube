@@ -1,3 +1,11 @@
+/*
+ * @(#) GridDisplayer.java 1.0 2018/02/24
+ *
+ * Copyright (c) 2018 University of Wales, Aberystwyth.
+ * All rights reserved.
+ *
+ */
+
 package cs221.GP01.java.ui.controllers;
 
 import javafx.event.EventHandler;
@@ -23,6 +31,8 @@ import javafx.scene.transform.Translate;
 /**
  *
  * A class to help GameController display the grids.
+ *
+ * todo optimize
  *
  * @author Nathan Williams
  * @version 1.0

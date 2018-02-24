@@ -30,9 +30,7 @@ import javafx.scene.layout.*;
 public class GameController extends BaseScreenController implements IGameController, INeedPrep {
 
     private GridDisplayer gridDisplayer;
-    /**
-     * The tab pane that contains the cube representations
-     */
+
     @FXML
     private TabPane cubeContainer;
 
@@ -51,14 +49,6 @@ public class GameController extends BaseScreenController implements IGameControl
     @FXML
     private TextField textField;
 
-    /**
-     * Constructor to ensure UIController object is passed
-     * @param UIController
-     */
-    public GameController(UIController UIController){
-        super(UIController);
-    }
-
     @FXML
     private GridPane top2d,middle2d,bottom2d,top25d,middle25d,bottom25d;
     @FXML
@@ -68,6 +58,13 @@ public class GameController extends BaseScreenController implements IGameControl
     @FXML
     private BorderPane back;
 
+    /**
+     * Constructor to ensure UIController object is passed
+     * @param UIController
+     */
+    public GameController(UIController UIController){
+        super(UIController);
+    }
 
     @FXML
     private void btnClearClicked() {
@@ -131,6 +128,11 @@ public class GameController extends BaseScreenController implements IGameControl
         gridDisplayer = new GridDisplayer(textField,twoDGrid,twoFiveDGrid,subScene,groupy,back);
         gridDisplayer.buildGrids(UIController.getJoggleCube().getCubeData());
         foundWordsList.setItems(foundWords);
+    }
+
+    @Override
+    public ObservableList<String> getFoundWords() {
+        return foundWords;
     }
 
     @Override
