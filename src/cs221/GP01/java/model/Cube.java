@@ -96,7 +96,7 @@ public class Cube implements ICube{
 
     private void loadBagOfLetters(String lettersFilename){
         bagOfLetters.clear();
-        File file = new File("src\\cs221\\GP01\\resource\\letters\\" + lettersFilename);
+        File file = new File("src/cs221/GP01/resource/letters/" + lettersFilename);
 
         String input;
         try{
