@@ -10,6 +10,8 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Point3D?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.SubScene?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -17,13 +19,13 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Box?>
 <?import javafx.scene.shape.Line?>
 
 <!--
@@ -37,17 +39,11 @@
 -->
 <!-- @formatter:off -->
 
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.Group?>
-<?import javafx.scene.PerspectiveCamera?>
-<?import javafx.scene.SubScene?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.BorderPane?>
 <StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <VBox fx:id="mainNode" styleClass="mainContainer">
         <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="topMenu">
-            <Label styleClass="scoreLabel" fx:id="scoreLabel" text="156" />
-            <Label styleClass="timerLabel" fx:id="timerLabel" text="3:00" />
+            <Label fx:id="scoreLabel" styleClass="scoreLabel" text="156" />
+            <Label fx:id="timerLabel" styleClass="timerLabel" text="3:00" />
          <HBox styleClass="buttonContainer">
             <children>
                <Button fx:id="quitButton" mnemonicParsing="false" onAction="#btnEndGameClicked" />
@@ -59,7 +55,7 @@
             <TabPane fx:id="cubeContainer" styleClass="cubeContainer" tabClosingPolicy="UNAVAILABLE">
                 <Tab text="3D View">
                     <BorderPane fx:id="back" prefHeight="300" prefWidth="400">
-                        <SubScene fx:id="subScene" height="300" width="400" depthBuffer="true" >
+                        <SubScene fx:id="subScene" depthBuffer="true" height="300" width="400">
                             <root>
                                 <Group fx:id="groupy">
                                     <children>
@@ -179,8 +175,8 @@
         </HBox>
         <VBox styleClass="wordInputContainer">
             <children>
-                <TextField fx:id="textField" prefHeight="26.0" />
-                <HBox >
+                <TextField fx:id="textField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" />
+                <HBox styleClass="wordInputButtonContainer">
                 <Button fx:id="btnSubmit" mnemonicParsing="false" onAction="#btnSubmitClicked" text="Submit Word" />
                 <Button fx:id="btnClear" mnemonicParsing="false" onAction="#btnClearClicked" text="Clear Word" />
                 </HBox>
