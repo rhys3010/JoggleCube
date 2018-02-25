@@ -226,7 +226,7 @@ public class GridDisplayer {
 
 
         //stops user editing the textField todo test this
-        textField.setDisable(true);
+        textField.setEditable(false);
 
         //checks the letters actually exist before making a fool of ones self and trying to display them.
         if(letters[0][0][0] != null) {

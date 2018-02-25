@@ -81,12 +81,13 @@ public class GameController extends BaseScreenController implements IGameControl
                 textField.setText("");
                 gridDisplayer.setAllActive();
                 //todo make these css variables
-                btnSubmit.setStyle("-fx-background-color:#006600;");
+                btnSubmit.setStyle("-fx-background-color: -fx-valid-color;");
             } else {
-                btnSubmit.setStyle("-fx-background-color:#880000;");
+                btnSubmit.setStyle("-fx-background-color: -fx-invalid-color;");
             }
         } else {
-            btnSubmit.setStyle("-fx-background-color:#880000;");
+            btnSubmit.setStyle("-fx-background-color: -fx-invalid-color;");
+            textField.setStyle("-fx-background-color: -fx-invalid-color;");
         }
 
         new java.util.Timer().schedule(
@@ -94,6 +95,7 @@ public class GameController extends BaseScreenController implements IGameControl
                     @Override
                     public void run() {
                         btnSubmit.setStyle("-fx-background-color:-fx-tertiary-color;");
+                        textField.setStyle("-fx-background-color: white;");
                     }
                 },
                 1000
