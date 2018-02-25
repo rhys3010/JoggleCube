@@ -78,10 +78,9 @@ public class GameController extends BaseScreenController implements IGameControl
         if(!textField.getText().equals("")) {
             if (UIController.getJoggleCube().testWordValidity(textField.getText())) {
                 foundWords.add(textField.getText());
-                textField.setText("");
-                gridDisplayer.setAllActive();
                 btnSubmit.setStyle("-fx-background-color: -fx-valid-color;");
                 textField.setStyle("-fx-background-color: -fx-valid-color; -fx-text-fill: white;");
+                gridDisplayer.setAllActive();
             } else {
                 btnSubmit.setStyle("-fx-background-color: -fx-invalid-color;");
                 textField.setStyle("-fx-background-color: -fx-invalid-color; -fx-text-fill: white;");
@@ -97,6 +96,9 @@ public class GameController extends BaseScreenController implements IGameControl
                     public void run() {
                         btnSubmit.setStyle("-fx-background-color:-fx-tertiary-color;");
                         textField.setStyle("-fx-background-color: white; -fx-text-fill: -fx-tertiary-color;");
+
+                        // Clear the textfield
+                        textField.setText("");
                     }
                 },
                 1000
