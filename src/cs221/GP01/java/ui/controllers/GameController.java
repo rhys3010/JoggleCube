@@ -10,12 +10,24 @@ package cs221.GP01.java.ui.controllers;
 
 import cs221.GP01.java.ui.UIController;
 import cs221.GP01.java.ui.ScreenType;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.*;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.*;
+
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 
 /**
@@ -34,8 +46,6 @@ public class GameController extends BaseScreenController implements IGameControl
     @FXML
     private TabPane cubeContainer;
 
-    @FXML
-    private ListView<String> foundWordsList;
 
     @FXML
     private Label scoreLabel, timerLabel;
@@ -57,6 +67,10 @@ public class GameController extends BaseScreenController implements IGameControl
     private Group groupy;
     @FXML
     private BorderPane back;
+
+    @FXML
+    private ListView<String> foundWordsList;
+
 
     /**
      * Constructor to ensure UIController object is passed
@@ -128,11 +142,77 @@ public class GameController extends BaseScreenController implements IGameControl
      */
     @Override
     public void prepView(){
+
+        createCellFactory();
+
         GridPane[] twoDGrid = {top2d, middle2d, bottom2d};
         GridPane[] twoFiveDGrid = {top25d, middle25d, bottom25d};
         gridDisplayer = new GridDisplayer(textField,twoDGrid,twoFiveDGrid,subScene,groupy,back);
         gridDisplayer.buildGrids(UIController.getJoggleCube().getCubeData());
         foundWordsList.setItems(foundWords);
+    }
+
+    /**
+     * Helper function to create listview cell factory
+     */
+    private void createCellFactory(){
+        // Create cell factory for found words list
+        foundWordsList.setCellFactory(lv -> {
+
+            // Create context menu and cell
+            ListCell<String> cell = new ListCell<>();
+            ContextMenu contextMenu = new ContextMenu();
+
+            // Create a menu item for looking up a word
+            MenuItem lookupItem = new MenuItem();
+            lookupItem.textProperty().bind(Bindings.format("Lookup \"%s\" in Dictionary", cell.itemProperty()));
+
+            // Handle item menu click
+            lookupItem.setOnAction(event -> {
+                // Launch dictionary URL in user's default browser
+                try{
+                    Desktop.getDesktop().browse(new URI("http://www.dictionary.com/browse/" + cell.textProperty().get()));
+                }catch (IOException ex1){
+                    ex1.printStackTrace();
+
+                }catch (URISyntaxException ex2){
+                    ex2.printStackTrace();
+                }
+            });
+
+
+            // Create copy option in menu
+            MenuItem copyItem = new MenuItem();
+            copyItem.textProperty().bind(Bindings.format("Copy", cell.itemProperty()));
+
+            // Behaviour of copy item
+            copyItem.setOnAction(event -> {
+
+                // Create clipboard object and add the cell contents to it
+                Clipboard clipboard = Clipboard.getSystemClipboard();
+
+                ClipboardContent clipboardContent = new ClipboardContent();
+                clipboardContent.putString(cell.textProperty().get());
+
+                clipboard.setContent(clipboardContent);
+            });
+
+
+            // Add items to context menu
+            contextMenu.getItems().addAll(lookupItem, copyItem);
+            cell.textProperty().bind(cell.itemProperty());
+
+            // Add context menu to each added cell
+            cell.emptyProperty().addListener((obs, wasEmpty, isNowEmpty) -> {
+                if(isNowEmpty){
+                    cell.setContextMenu(null);
+                }else{
+                    cell.setContextMenu(contextMenu);
+                }
+            });
+
+            return cell;
+        });
     }
 
     @Override
