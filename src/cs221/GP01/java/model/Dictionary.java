@@ -27,7 +27,7 @@ public class Dictionary implements IDictionary{
      */
     public void loadDictionary(String filename){
         //Load
-        File file = new File("src\\cs221\\GP01\\resource\\dictionary\\" + filename);
+        File file = new File(getClass().getResource("../../resource/dictionary/" + filename).getFile());
         //Finding the absolute path
         //System.out.println(file.getAbsolutePath());
 
