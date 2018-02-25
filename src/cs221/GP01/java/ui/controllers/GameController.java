@@ -190,6 +190,11 @@ public class GameController extends BaseScreenController implements IGameControl
             // Handle item menu click
             lookupItem.setOnAction(event -> {
                 // Launch dictionary URL in user's default browser
+
+                // Don't uncomment this - it'll brick your PC :(
+                // todo fix.
+
+                /*
                 try{
                     Desktop.getDesktop().browse(new URI("http://www.dictionary.com/browse/" + cell.textProperty().get()));
                 }catch (IOException ex1){
@@ -197,7 +202,7 @@ public class GameController extends BaseScreenController implements IGameControl
 
                 }catch (URISyntaxException ex2){
                     ex2.printStackTrace();
-                }
+                }*/
             });
 
 
