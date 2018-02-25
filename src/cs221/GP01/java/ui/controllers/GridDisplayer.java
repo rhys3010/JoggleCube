@@ -41,6 +41,16 @@ import javafx.scene.transform.Translate;
  */
 public class GridDisplayer {
 
+    /**
+     * COLOR VARIABLES
+     */
+    String currentlySelectedColor = "#54ad54";
+    String availableColor = "#2980b9";
+    String alreadySelectedColor = "#e3ed7b";
+    String unavailableColor = "#595959";
+
+
+
     private double oldMouseX, oldMouseY;
 
     private Rotate rotateAboutX = new Rotate(0,40,40,40, Rotate.X_AXIS);
@@ -106,10 +116,10 @@ public class GridDisplayer {
     private void setSelected(int x, int y, int z) {
 
         //2d
-        labelCube[x][y][z].setStyle("-fx-background-color:#ff0000;");
+        labelCube[x][y][z].setStyle("-fx-background-color:" + currentlySelectedColor + ";");
         labelCube[x][y][z].setOnMouseClicked(null);
 
-        PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),"#ff0000");
+        PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),currentlySelectedColor);
 
         //2.5d
         boxCube[x][y][z].setMaterial(mat);
@@ -130,13 +140,13 @@ public class GridDisplayer {
      */
 
     private void setInActive(int x, int y, int z) {
-        if(!labelCube[x][y][z].getStyle().contains("-fx-background-color:#550000;")){
+        if(!labelCube[x][y][z].getStyle().contains("-fx-background-color:" + alreadySelectedColor + ";")){
             //2d
-            labelCube[x][y][z].setStyle("-fx-background-color:#566377;");
+            labelCube[x][y][z].setStyle("-fx-background-color:" + unavailableColor + ";");
             labelCube[x][y][z].setOnMouseClicked(null);
 
 
-            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),"#566377");
+            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(), unavailableColor);
             //2.5d
             boxCube[x][y][z].setMaterial(mat);
             boxCube[x][y][z].setOnMouseClicked(null);
@@ -158,23 +168,23 @@ public class GridDisplayer {
      */
 
     private void setActive(int x, int y, int z, boolean override) {
-        if(labelCube[x][y][z].getStyle().contains("-fx-background-color:#ff0000;") && !override){
+        if(labelCube[x][y][z].getStyle().contains("-fx-background-color:" + currentlySelectedColor + ";") && !override){
 
             //2d
-            labelCube[x][y][z].setStyle("-fx-background-color:#550000;");
+            labelCube[x][y][z].setStyle("-fx-background-color:" + alreadySelectedColor +";");
 
-            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),"#550000");
+            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(), alreadySelectedColor);
             //2.5d
             boxCube[x][y][z].setMaterial(mat);
             //3d
             boxCube3[x][y][z].setMaterial(mat);
 
-        } else if(!labelCube[x][y][z].getStyle().contains("-fx-background-color:#550000;") || override) {
+        } else if(!labelCube[x][y][z].getStyle().contains("-fx-background-color:" + alreadySelectedColor + ";") || override) {
             //2d
-            labelCube[x][y][z].setStyle("-fx-background-color:#2980b9;");
+            labelCube[x][y][z].setStyle("-fx-background-color:" + availableColor + ";");
             labelCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z,e));
             //2.5d
-            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),"#2980b9");
+            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),availableColor);
 
             boxCube[x][y][z].setMaterial(mat);
             boxCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z,e));
@@ -291,7 +301,7 @@ public class GridDisplayer {
 
         //create a label with the letter
         Label label = new Label(letter);
-        label.setStyle("-fx-font-size: 22; -fx-text-fill:white;");
+        label.setStyle("-fx-font-size: 22; -fx-text-fill: white;");
         GridPane.setHalignment(label, HPos.CENTER);
 
         //add the label to the grid
