@@ -42,6 +42,9 @@ public class JoggleCubeController implements IJoggleCubeController {
         //load this file into grid and highscores
 
         //cube.loadCube(file);
+
+        //temp
+        cube.populateCube(language + "_letters");
     }
 
     public void endGame(){ }
