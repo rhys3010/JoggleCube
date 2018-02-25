@@ -44,10 +44,10 @@ public class GridDisplayer {
     /**
      * COLOR VARIABLES
      */
-    String currentlySelectedColor = "#54ad54";
-    String availableColor = "#2980b9";
-    String alreadySelectedColor = "#e3ed7b";
-    String unavailableColor = "#595959";
+    private String currentlySelectedColor = "#54ad54";
+    private String availableColor = "#30599b";
+    private String alreadySelectedColor = "#54ad54";
+    private String unavailableColor = "#595959";
 
 
 
