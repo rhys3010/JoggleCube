@@ -22,6 +22,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
 import java.awt.*;
@@ -54,7 +55,7 @@ public class GameController extends BaseScreenController implements IGameControl
 
 
     @FXML
-    private Button btnSubmit;
+    private Button btnSubmit, menuButton;
 
     @FXML
     private TextField textField;
@@ -70,6 +71,9 @@ public class GameController extends BaseScreenController implements IGameControl
 
     @FXML
     private ListView<String> foundWordsList;
+
+    @FXML
+    private ContextMenu hamburgerContext;
 
 
     /**
@@ -120,7 +124,15 @@ public class GameController extends BaseScreenController implements IGameControl
     }
 
     /**
-     * Handle the settings button being clicked
+     * Handles the hamburger menu being clicked
+     */
+    @FXML
+    private void btnMenuClicked(){
+        // todo show context menu here
+    }
+
+    /**
+     * Handle the settings option from the hamburger context menu is being clicked
      */
     @FXML
     private void btnSettingsClicked(){
@@ -128,12 +140,20 @@ public class GameController extends BaseScreenController implements IGameControl
     }
 
     /**
-     * When the End Game button is clicked it will load the EndGui scene.
+     * When the End Game option is clicked it will load the EndGui scene.
      */
     @FXML
     private void btnEndGameClicked() {
         //todo stop timer add up score etc
         UIController.getNavigationController().showOverlay(ScreenType.END, this);
+    }
+
+    /**
+     * When the help option is clicked it will open the help overlay
+     */
+    @FXML
+    private void btnHelpClicked(){
+        UIController.getNavigationController().showOverlay(ScreenType.HELP, this);
     }
 
 

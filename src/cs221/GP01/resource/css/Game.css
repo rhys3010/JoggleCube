@@ -25,7 +25,7 @@
     -fx-pref-width: 600px;
     -fx-pref-height: 70px;
     -fx-alignment: center;
-    -fx-spacing: 160px;
+    -fx-spacing: 180px;
 }
 
 
@@ -57,21 +57,14 @@
 }
 
 
-#settingsButton{
-    -fx-background-image: url("../img/icon/settings_icon_inactive_alt.png");
+#menuButton{
+    -fx-background-image: url("../img/icon/hamburger_icon_inactive.png");
 }
 
-#settingsButton:hover{
-    -fx-background-image: url("../img/icon/settings_icon.png");
+#menuButton:hover{
+    -fx-background-image: url("../img/icon/hamburger_icon.png");
 }
 
-#quitButton{
-    -fx-background-image: url("../img/icon/quit_icon_inactive.png");
-}
-
-#quitButton:hover{
-    -fx-background-image: url("../img/icon/quit_icon.png");
-}
 
 .gameElementsContainer{
     -fx-spacing: 10px;
