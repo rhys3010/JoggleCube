@@ -53,8 +53,8 @@ public class GridDisplayer {
 
     private double oldMouseX, oldMouseY;
 
-    private Rotate rotateAboutX = new Rotate(0,40,40,40, Rotate.X_AXIS);
-    private Rotate rotateAboutY = new Rotate(0,40,40,40, Rotate.Y_AXIS);
+    private Rotate rotateAboutX = new Rotate(20,40,40,40, Rotate.X_AXIS);
+    private Rotate rotateAboutY = new Rotate(45,40,40,40, Rotate.Y_AXIS);
 
     private TextField textField;
 

@@ -18,6 +18,8 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -63,6 +65,17 @@
                                 </Group>
                             </root>
                         </SubScene>
+                  <bottom>
+                     <HBox styleClass="rotateIcon">
+                        <children>
+                           <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../img/icon/icon32.png" />
+                              </image>
+                           </ImageView>
+                        </children>
+                     </HBox>
+                  </bottom>
                     </BorderPane>
                 </Tab>
                 <Tab text="2.5D View">

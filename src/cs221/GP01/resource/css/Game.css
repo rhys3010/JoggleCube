@@ -110,13 +110,18 @@
     -fx-padding: 0.416667em 0.166667em 0.0em 0.0em; /* overridden as 5 2 0 0 */
 }
 
-
 .gameElementsContainer .cubeContainer{
     -fx-pref-width: 360px;
 }
 
+
 .gameElementsContainer .cubeContainer .gridTab{
     -fx-background-color: white;
+}
+
+.gameElementsContainer .cubeContainer .gridTab .rotateIcon{
+    -fx-alignment: bottom-right;
+    -fx-padding: 15px;
 }
 
 .foundWordsContainer{
