@@ -119,6 +119,7 @@
     -fx-pref-width: 300px;
     -fx-spacing: 30px;
     -fx-alignment: center;
+    -fx-padding: 0 0 20 0;
 }
 
 .wordInputContainer #textField{
