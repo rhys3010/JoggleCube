@@ -10,8 +10,8 @@ public class JoggleCubeController implements IJoggleCubeController {
 
     private IUIController ui;
 
-    private Dictionary dictionary = new Dictionary();
-    private Cube cube = new Cube();
+    private Dictionary dictionary;
+    private Cube cube;
 
     private ArrayList<String> storedWords;
 
@@ -26,7 +26,10 @@ public class JoggleCubeController implements IJoggleCubeController {
 
     public JoggleCubeController(){
         //Load dictionary on creation of JoggleCubeController
+        cube = new Cube();
+        dictionary = new Dictionary();
         dictionary.loadDictionary(dictionaryFileName);
+        storedWords = new ArrayList<>();
     }
 
 
@@ -52,10 +55,14 @@ public class JoggleCubeController implements IJoggleCubeController {
 
     public boolean testWordValidity(String word) {
         //Test if already used
-        //if (storedWords.contains(word)){return false;}
+        if (storedWords.contains(word)){return false;}
 
         //Test if valid dictionary word
-        return dictionary.searchDictionary(word);
+        if(dictionary.searchDictionary(word)){
+            storedWords.add(word);
+            return true;
+        }
+        return false;
     }
 
     //todo check data in cube before loading
