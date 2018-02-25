@@ -123,20 +123,26 @@
 
 .wordInputContainer #textField{
     -fx-pref-height: 35px;
+    -fx-pref-width: 300px;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-text-fill: -fx-tertiary-color;
 
 }
 
-.wordInputContainer .button{
+.wordInputContainer .wordInputButtonContainer{
+    -fx-alignment: center;
+    -fx-spacing: 20px;
+}
+
+.wordInputContainer .wordInputButtonContainer .button{
     -fx-background-color: -fx-tertiary-color;
     -fx-text-fill: #cecece;
     -fx-font-size: 14px;
     -fx-font-weight: bolder;
 }
 
-.wordInputContainer .button:hover{
+.wordInputContainer .wordInputButtonContainer .button:hover{
     -fx-text-fill: white;
 }
 
