@@ -80,7 +80,7 @@
                         <children>
                            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../img/icon/icon32.png" />
+                                 <Image url="@../img/icon/rotate_icon.png" />
                               </image>
                            </ImageView>
                         </children>
