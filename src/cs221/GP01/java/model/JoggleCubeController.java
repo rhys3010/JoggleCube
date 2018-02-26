@@ -1,7 +1,11 @@
 package cs221.GP01.java.model;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import cs221.GP01.java.ui.IUIController;
+=======
+import cs221.GP01.java.ui.controllers.GameController;
+>>>>>>> Stashed changes
 =======
 import cs221.GP01.java.ui.controllers.GameController;
 >>>>>>> Stashed changes
@@ -13,8 +17,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 public class JoggleCubeController implements IJoggleCubeController {
 =======
+=======
+>>>>>>> Stashed changes
 /**
  * The backend main controller
  * @author Samuel Jones - srj12@aber.ac.uk
@@ -56,12 +63,15 @@ public class JoggleCubeController implements IJoggleCubeController{
         ui = controller;
     }
 
+<<<<<<< Updated upstream
 
     public void generateRandomGrid() { cube.populateCube(language + "_letters"); }
 
     public void loadGrid(File file) {
         //load this file into grid and highscores
 =======
+=======
+>>>>>>> Stashed changes
         //todo Find a way to point to theGameController
     }
 
@@ -98,11 +108,19 @@ public class JoggleCubeController implements IJoggleCubeController{
             //An error in file name
             System.out.println("Game Save not found");
         }
+<<<<<<< Updated upstream
 
         if(!(letters.size() == 27)){
             System.out.println("Cube that is loaded is corrupt");
         }
 
+=======
+
+        if(!(letters.size() == 27)){
+            System.out.println("Cube that is loaded is corrupt");
+        }
+
+>>>>>>> Stashed changes
         //Letters contains all of the cube in order from 0,0,0 to 2,2,2
         int index = 0;
         for(int i = 0; i<3;i++){
@@ -125,9 +143,12 @@ public class JoggleCubeController implements IJoggleCubeController{
     }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public void endGame(){ }
 
 =======
+=======
+>>>>>>> Stashed changes
     //Needs clarification on structure of this method
     public void endGame() { }
 >>>>>>> Stashed changes
@@ -191,6 +212,10 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     private void loadSavedCube(){}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
