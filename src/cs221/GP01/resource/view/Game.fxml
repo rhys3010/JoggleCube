@@ -198,7 +198,7 @@
         </HBox>
         <VBox styleClass="wordInputContainer">
             <children>
-                <TextField fx:id="textField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" />
+                <TextField fx:id="textField" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" />
                 <HBox styleClass="wordInputButtonContainer">
                 <Button fx:id="btnSubmit" mnemonicParsing="false" onAction="#btnSubmitClicked" text="Submit Word" />
                 <Button fx:id="btnClear" mnemonicParsing="false" onAction="#btnClearClicked" text="Clear Word" />

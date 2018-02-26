@@ -44,7 +44,7 @@ public class GridDisplayer {
     /**
      * COLOR VARIABLES
      */
-    private String currentlySelectedColor = "#54ad54";
+    private String currentlySelectedColor = "#38aa38";
     private String availableColor = "#30599b";
     private String alreadySelectedColor = "#54ad54";
     private String unavailableColor = "#595959";
@@ -53,8 +53,8 @@ public class GridDisplayer {
 
     private double oldMouseX, oldMouseY;
 
-    private Rotate rotateAboutX = new Rotate(20,40,40,40, Rotate.X_AXIS);
-    private Rotate rotateAboutY = new Rotate(45,40,40,40, Rotate.Y_AXIS);
+    private Rotate rotateAboutX = new Rotate(-20,40,40,40, Rotate.X_AXIS);
+    private Rotate rotateAboutY = new Rotate(-45,40,40,40, Rotate.Y_AXIS);
 
     private TextField textField;
 
@@ -80,6 +80,102 @@ public class GridDisplayer {
     }
 
     /**
+     * sets up 3d enviroment, loads letters into labels and boxes, adds them to the display.
+     *
+     * @param letters
+     */
+    public void buildGrids(String[][][] letters) {
+
+        //sets up the 3D enviroment
+        Camera camera = new ParallelCamera();
+        camera.getTransforms().addAll (
+                rotateAboutX,
+                rotateAboutY,
+                new Translate(-150, -100, 0)
+        );
+        groupy.getChildren().add(camera);
+        subScene.setCamera(camera);
+
+        //sets up the right mouse button for rotating the cube
+        back.setOnMouseDragged( e ->{
+            if(e.getButton().equals(MouseButton.SECONDARY)){
+                double mouseX = e.getY();
+                double mouseY = e.getX();
+                if(oldMouseY != 0 && oldMouseX != 0){
+                    rotateAboutX.setAngle((rotateAboutX.getAngle() + oldMouseX-mouseX) % 360);
+                    rotateAboutY.setAngle((rotateAboutY.getAngle() + mouseY-oldMouseY) % 360);
+                }
+                oldMouseX = mouseX;
+                oldMouseY = mouseY;
+            }
+        });
+
+        //when the drg is released reset the variables
+        back.setOnMouseReleased(
+            e -> {
+                if(e.getButton().equals(MouseButton.SECONDARY)) {
+                    oldMouseX = 0;
+                    oldMouseY = 0;
+                }
+            }
+        );
+
+        //creates space ready for the boxes and labels
+        labelCube = new Label[3][3][3];
+        boxCube = new Box[3][3][3];
+        boxCube3 = new Box[3][3][3];
+
+        //checks the letters actually exist before making a fool of ones self and trying to display them.
+        if(letters != null) {
+            //Create the labels and boxes ready for display
+            for (int k = 0; k < 3; k++) {
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 3; j++) {
+                        //3D
+                        Box box = new Box(30, 30, 30);
+                        boxCube3[k][i][j] = box;
+
+                        //2.5D
+                        Box box1 = new Box(30, 30, 30);
+                        box1.setRotationAxis(new Point3D(0,0,0));
+                        box1.setRotate(0);
+                        boxCube[k][i][j] = box1;
+
+                        //2D
+                        Label label = new Label(letters[k][i][j]);
+                        labelCube[k][i][j] = label;
+
+                        setActive(k,i,j,true);
+                    }
+                }
+            }
+
+            //adds the labels and blocks to the 2d and 2.5d view
+            for (int k = 0; k < 3; k++) {
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 2; j > -1; j--) { //revered to render the block overlap correctly
+                        twoDGrid[k].add(labelCube[k][j][i], i, j);
+                        twoFiveDGrid[k].add(boxCube[k][i][j],j,i);
+
+                    }
+                }
+            }
+
+            //adds the blocks to the 3d view and positions them.
+            for (int k = 0; k < 3; k++) {
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 3; j++) {
+                        groupy.getChildren().add(boxCube3[k][i][j]);
+                        boxCube3[k][i][j].setTranslateX(k*40);
+                        boxCube3[k][i][j].setTranslateY(i*40);
+                        boxCube3[k][i][j].setTranslateZ(j*40);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
      * When a block is clicked this method is called.
      *
      * @param k the position of the block that called the method
@@ -102,6 +198,19 @@ public class GridDisplayer {
                 }
             }
             textField.appendText(labelCube[k][i][j].getText());
+        }
+    }
+
+    /**
+     * resets the cube so they can all be clicked
+     */
+    public void setAllActive() {
+        for (int x = 0; x < 3; x++) {
+            for (int y = 0; y < 3; y++) {
+                for (int z = 0; z < 3; z++) {
+                    setActive(x,y,z,true);
+                }
+            }
         }
     }
 
@@ -196,98 +305,6 @@ public class GridDisplayer {
 
 
     /**
-     * sets up 3d enviroment, loads letters into labels and boxes, adds them to the display.
-     *
-     * @param letters
-     */
-    public void buildGrids(String[][][] letters) {
-
-        //sets up the 3D enviroment
-        Camera camera = new ParallelCamera();
-        camera.getTransforms().addAll (
-                rotateAboutX,
-                rotateAboutY,
-                new Translate(-150, -100, 0)
-        );
-        groupy.getChildren().add(camera);
-        subScene.setCamera(camera);
-
-        back.setOnMouseDragged( e ->{
-            if(e.getButton().equals(MouseButton.SECONDARY)){
-                double mouseX = e.getY();
-                double mouseY = e.getX();
-                if(oldMouseY != 0 && oldMouseX != 0){
-                    rotateAboutX.setAngle((rotateAboutX.getAngle() + oldMouseX-mouseX) % 360);
-                    rotateAboutY.setAngle((rotateAboutY.getAngle() + mouseY-oldMouseY) % 360);
-                }
-                oldMouseX = mouseX;
-                oldMouseY = mouseY;
-            }
-        });
-
-        back.setOnMouseReleased(
-                e -> {oldMouseX = 0; oldMouseY = 0;}
-        );
-
-        //creates space ready for the boxes and labels
-        labelCube = new Label[3][3][3];
-        boxCube = new Box[3][3][3];
-        boxCube3 = new Box[3][3][3];
-
-
-        //stops user editing the textField todo test this
-        textField.setEditable(false);
-
-        //checks the letters actually exist before making a fool of ones self and trying to display them.
-        if(letters[0][0][0] != null) {
-            //Create the labels and boxes ready for display
-            for (int k = 0; k < 3; k++) {
-                for (int i = 0; i < 3; i++) {
-                    for (int j = 0; j < 3; j++) {
-                        //3D
-                        Box box = new Box(30, 30, 30);
-                        boxCube3[k][i][j] = box;
-
-                        //2.5D
-                        Box box1 = new Box(30, 30, 30);
-                        box1.setRotationAxis(new Point3D(0,0,0));
-                        box1.setRotate(0);
-                        boxCube[k][i][j] = box1;
-
-                        //2D
-                        Label label = new Label(letters[k][i][j]);
-                        labelCube[k][i][j] = label;
-
-                        setActive(k,i,j,true);
-                    }
-                }
-            }
-
-            //render the labels and blocks (adds them to relevant grids)
-            for (int k = 0; k < 3; k++) {
-                for (int i = 0; i < 3; i++) {
-                    for (int j = 2; j > -1; j--) {
-                        twoDGrid[k].add(labelCube[k][j][i], i, j);
-                        twoFiveDGrid[k].add(boxCube[k][i][j],j,i);
-
-                    }
-                }
-            }
-            for (int k = 0; k < 3; k++) {
-                for (int i = 0; i < 3; i++) {
-                    for (int j = 0; j < 3; j++) {
-                        groupy.getChildren().add(boxCube3[k][i][j]);
-                        boxCube3[k][i][j].setTranslateX(k*40);
-                        boxCube3[k][i][j].setTranslateY(i*40);
-                        boxCube3[k][i][j].setTranslateZ(j*40);
-                    }
-                }
-            }
-        }
-    }
-
-
-    /**
      * generates a material with a letter on it to display a block
      *
      * @param letter the letter to display
@@ -363,16 +380,5 @@ public class GridDisplayer {
             }
         }
         return false;
-    }
-
-
-    public void setAllActive() {
-        for (int x = 0; x < 3; x++) {
-            for (int y = 0; y < 3; y++) {
-                for (int z = 0; z < 3; z++) {
-                    setActive(x,y,z,true);
-                }
-            }
-        }
     }
 }
