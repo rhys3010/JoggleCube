@@ -17,7 +17,6 @@ import java.util.regex.Pattern;
 
 public class Dictionary implements IDictionary{
     private HashMap<String, String> dictionary = new HashMap();
-    private String dictionaryFileName = "dictionary.txt";
 
     public Dictionary(){
         //Do nothing except make the hashmap instance variable
@@ -43,7 +42,7 @@ public class Dictionary implements IDictionary{
             try{
                 Scanner in = new Scanner(file);
                 while(in.hasNext()){
-                    input = in.nextLine();
+                    input = in.nextLine().toUpperCase();
                     dictionary.put(input, input);
                 }
             } catch(FileNotFoundException e){
