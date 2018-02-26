@@ -98,7 +98,7 @@ public class JoggleCubeController implements IJoggleCubeController{
     }
 
     public boolean testWordValidity(String word) {
-        //Add all of the stored words to the arrayList
+      /* //Add all of the stored words to the arrayList
         for (int i = 0; i<theGameController.getFoundWords().size(); i++){
             String newWord = theGameController.getFoundWords().get(i);
             //If not already in the array add to the array else do nothing
@@ -107,7 +107,7 @@ public class JoggleCubeController implements IJoggleCubeController{
                 storedWords.add(newWord);
             }
         }
-
+*/
         //Test if already used
         if (storedWords.contains(word)){return false;}
 
