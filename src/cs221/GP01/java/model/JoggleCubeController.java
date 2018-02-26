@@ -6,9 +6,6 @@ import cs221.GP01.java.ui.IUIController;
 =======
 import cs221.GP01.java.ui.controllers.GameController;
 >>>>>>> Stashed changes
-=======
-import cs221.GP01.java.ui.controllers.GameController;
->>>>>>> Stashed changes
 import javafx.collections.ObservableList;
 
 import java.io.File;
@@ -16,12 +13,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-public class JoggleCubeController implements IJoggleCubeController {
-=======
-=======
->>>>>>> Stashed changes
 /**
  * The backend main controller
  * @author Samuel Jones - srj12@aber.ac.uk
@@ -62,6 +53,8 @@ public class JoggleCubeController implements IJoggleCubeController{
     public void setUI(IUIController controller) {
         ui = controller;
     }
+        //todo Find a way to point to theGameController
+    }
 
 <<<<<<< Updated upstream
 
@@ -73,15 +66,14 @@ public class JoggleCubeController implements IJoggleCubeController{
 =======
 >>>>>>> Stashed changes
         //todo Find a way to point to theGameController
-    }
-
     //Ditto with startGame()
     public void startRandomGame() {
         //Create a random cube
         cube.populateCube(language + "_letters");
     }
 
-    //Need some clarification on structure of this method
+    public void startRandomGame() { }
+
     public void startGame(File file) {
         //Load save game from the file stream given
         String input;
@@ -108,19 +100,11 @@ public class JoggleCubeController implements IJoggleCubeController{
             //An error in file name
             System.out.println("Game Save not found");
         }
-<<<<<<< Updated upstream
 
         if(!(letters.size() == 27)){
             System.out.println("Cube that is loaded is corrupt");
         }
 
-=======
-
-        if(!(letters.size() == 27)){
-            System.out.println("Cube that is loaded is corrupt");
-        }
-
->>>>>>> Stashed changes
         //Letters contains all of the cube in order from 0,0,0 to 2,2,2
         int index = 0;
         for(int i = 0; i<3;i++){
@@ -142,13 +126,6 @@ public class JoggleCubeController implements IJoggleCubeController{
         cube.populateCube(language + "_letters");
     }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    public void endGame(){ }
-
-=======
-=======
->>>>>>> Stashed changes
     //Needs clarification on structure of this method
     public void endGame() { }
 >>>>>>> Stashed changes
@@ -211,12 +188,5 @@ public class JoggleCubeController implements IJoggleCubeController{
     }
 
     private void loadSavedCube(){}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
 }
