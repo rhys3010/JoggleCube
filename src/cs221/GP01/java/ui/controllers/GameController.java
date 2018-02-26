@@ -51,7 +51,7 @@ public class GameController extends BaseScreenController implements IGameControl
     @FXML
     private Label scoreLabel, timerLabel;
 
-    private ObservableList<String> foundWords = FXCollections.observableArrayList();
+    private ObservableList<String> foundWords;
 
 
     @FXML
@@ -160,7 +160,7 @@ public class GameController extends BaseScreenController implements IGameControl
      */
     @Override
     public void prepView(){
-
+        foundWords = FXCollections.observableArrayList();
         createCellFactory();
 
         GridPane[] twoDGrid = {top2d, middle2d, bottom2d};
