@@ -72,8 +72,7 @@ public class JoggleCubeController implements IJoggleCubeController{
         cube.populateCube(language + "_letters");
     }
 
-    public void startRandomGame() { }
-
+    //Need some clarification on structure of this method
     public void startGame(File file) {
         //Load save game from the file stream given
         String input;
