@@ -156,10 +156,21 @@ public class JoggleCubeController implements IJoggleCubeController{
     public int getWordScore(String word){
         //Split the word up into the different letters including 'Qu' and then search the hashmap for each and
         //return a sum of the scores
+        int sumOf = 0;
         for(int i = 0; i<word.length(); i++){
-
+            if(scores.containsKey(String.valueOf(word.charAt(i)))){
+                //If scores contains the word continue else check for double letters
+                sumOf += Integer.getInteger(scores.get(word.charAt(i) + ""));
+            } else if(scores.containsKey(word.charAt(i) + word.charAt(i+1) + "")){
+                //Else if scores contains word[i] + word[i+1] then handle
+                sumOf += Integer.getInteger(scores.get(word.charAt(i) + word.charAt(i+1)+ ""));
+                i++;
+            } else{
+                System.out.println("Score is broken for this letter" + word.charAt(i));
+            }
         }
-        return 0;
+        //Return * 3 scores
+        return sumOf * 3;
     }
 
 
