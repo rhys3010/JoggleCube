@@ -134,11 +134,6 @@ public class GameController extends BaseScreenController implements IGameControl
     }
 
     @Override
-    public ObservableList<String> getFoundWords() {
-        return foundWords;
-    }
-
-    @Override
     public Label getTimerLabel() {
         return timerLabel;
     }
@@ -153,42 +148,12 @@ public class GameController extends BaseScreenController implements IGameControl
         return cubeContainer;
     }
 
-
     /**
      * Returns the list of found words so it can be used in the backend as it is currently only stored in the frontend
      * @author Samuel Jones - srj12
      * @return returns an observableList of strings of all currently found words
      */
-    public ObservableList<String> getFoundWords() {
-        return foundWords;
-    }
-
-
-    /**
-     * Returns the list of found words so it can be used in the backend as it is currently only stored in the frontend
-     * @author Samuel Jones - srj12
-     * @return returns an observableList of strings of all currently found words
-     */
-    public ObservableList<String> getFoundWords() {
-        return foundWords;
-    }
-
-
-    /**
-     * Returns the list of found words so it can be used in the backend as it is currently only stored in the frontend
-     * @author Samuel Jones - srj12
-     * @return returns an observableList of strings of all currently found words
-     */
-    public ObservableList<String> getFoundWords() {
-        return foundWords;
-    }
-
-
-    /**
-     * Returns the list of found words so it can be used in the backend as it is currently only stored in the frontend
-     * @author Samuel Jones - srj12
-     * @return returns an observableList of strings of all currently found words
-     */
+    @Override
     public ObservableList<String> getFoundWords() {
         return foundWords;
     }
