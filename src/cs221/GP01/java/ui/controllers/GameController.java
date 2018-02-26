@@ -10,12 +10,25 @@ package cs221.GP01.java.ui.controllers;
 
 import cs221.GP01.java.ui.UIController;
 import cs221.GP01.java.ui.ScreenType;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.*;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 
 /**
@@ -34,8 +47,6 @@ public class GameController extends BaseScreenController implements IGameControl
     @FXML
     private TabPane cubeContainer;
 
-    @FXML
-    private ListView<String> foundWordsList;
 
     @FXML
     private Label scoreLabel, timerLabel;
@@ -44,7 +55,7 @@ public class GameController extends BaseScreenController implements IGameControl
 
 
     @FXML
-    private Button btnSubmit;
+    private Button btnSubmit, menuButton;
 
     @FXML
     private TextField textField;
@@ -57,6 +68,13 @@ public class GameController extends BaseScreenController implements IGameControl
     private Group groupy;
     @FXML
     private BorderPane back;
+
+    @FXML
+    private ListView<String> foundWordsList;
+
+    @FXML
+    private ContextMenu hamburgerContext;
+
 
     /**
      * Constructor to ensure UIController object is passed
@@ -78,15 +96,17 @@ public class GameController extends BaseScreenController implements IGameControl
         if(!textField.getText().equals("")) {
             if (UIController.getJoggleCube().testWordValidity(textField.getText())) {
                 foundWords.add(textField.getText());
-                textField.setText("");
+                btnSubmit.setStyle("-fx-background-color: -fx-valid-color;");
+                textField.setStyle("-fx-background-color: -fx-valid-color; -fx-text-fill: white;");
                 gridDisplayer.setAllActive();
-                //todo make these css variables
-                btnSubmit.setStyle("-fx-background-color:#006600;");
+                textField.setText("");
             } else {
-                btnSubmit.setStyle("-fx-background-color:#880000;");
+                btnSubmit.setStyle("-fx-background-color: -fx-invalid-color;");
+                textField.setStyle("-fx-background-color: -fx-invalid-color; -fx-text-fill: white;");
             }
         } else {
-            btnSubmit.setStyle("-fx-background-color:#880000;");
+            btnSubmit.setStyle("-fx-background-color: -fx-invalid-color;");
+            textField.setStyle("-fx-background-color: -fx-invalid-color; -fx-text-fill: white;");
         }
 
         new java.util.Timer().schedule(
@@ -94,6 +114,7 @@ public class GameController extends BaseScreenController implements IGameControl
                     @Override
                     public void run() {
                         btnSubmit.setStyle("-fx-background-color:-fx-tertiary-color;");
+                        textField.setStyle("-fx-background-color: white; -fx-text-fill: -fx-tertiary-color;");
                     }
                 },
                 1000
@@ -101,7 +122,15 @@ public class GameController extends BaseScreenController implements IGameControl
     }
 
     /**
-     * Handle the settings button being clicked
+     * Handles the hamburger menu being clicked
+     */
+    @FXML
+    private void btnMenuClicked(){
+        // todo show context menu here
+    }
+
+    /**
+     * Handle the settings option from the hamburger context menu is being clicked
      */
     @FXML
     private void btnSettingsClicked(){
@@ -109,12 +138,20 @@ public class GameController extends BaseScreenController implements IGameControl
     }
 
     /**
-     * When the End Game button is clicked it will load the EndGui scene.
+     * When the End Game option is clicked it will load the EndGui scene.
      */
     @FXML
     private void btnEndGameClicked() {
         //todo stop timer add up score etc
         UIController.getNavigationController().showOverlay(ScreenType.END, this);
+    }
+
+    /**
+     * When the help option is clicked it will open the help overlay
+     */
+    @FXML
+    private void btnHelpClicked(){
+        UIController.getNavigationController().showOverlay(ScreenType.HELP, this);
     }
 
 
@@ -123,11 +160,82 @@ public class GameController extends BaseScreenController implements IGameControl
      */
     @Override
     public void prepView(){
+
+        createCellFactory();
+
         GridPane[] twoDGrid = {top2d, middle2d, bottom2d};
         GridPane[] twoFiveDGrid = {top25d, middle25d, bottom25d};
         gridDisplayer = new GridDisplayer(textField,twoDGrid,twoFiveDGrid,subScene,groupy,back);
         gridDisplayer.buildGrids(UIController.getJoggleCube().getCubeData());
         foundWordsList.setItems(foundWords);
+    }
+
+    /**
+     * Helper function to create listview cell factory
+     */
+    private void createCellFactory(){
+        // Create cell factory for found words list
+        foundWordsList.setCellFactory(lv -> {
+
+            // Create context menu and cell
+            ListCell<String> cell = new ListCell<>();
+            ContextMenu contextMenu = new ContextMenu();
+
+            // Create a menu item for looking up a word
+            MenuItem lookupItem = new MenuItem();
+            lookupItem.textProperty().bind(Bindings.format("Lookup \"%s\" in Dictionary", cell.itemProperty()));
+
+            // Handle item menu click
+            lookupItem.setOnAction(event -> {
+                // Launch dictionary URL in user's default browser
+
+                // Don't uncomment this - it'll brick your PC :(
+                // todo fix.
+
+                /*
+                try{
+                    Desktop.getDesktop().browse(new URI("http://www.dictionary.com/browse/" + cell.textProperty().get()));
+                }catch (IOException ex1){
+                    ex1.printStackTrace();
+
+                }catch (URISyntaxException ex2){
+                    ex2.printStackTrace();
+                }*/
+            });
+
+
+            // Create copy option in menu
+            MenuItem copyItem = new MenuItem();
+            copyItem.textProperty().bind(Bindings.format("Copy", cell.itemProperty()));
+
+            // Behaviour of copy item
+            copyItem.setOnAction(event -> {
+
+                // Create clipboard object and add the cell contents to it
+                Clipboard clipboard = Clipboard.getSystemClipboard();
+
+                ClipboardContent clipboardContent = new ClipboardContent();
+                clipboardContent.putString(cell.textProperty().get());
+
+                clipboard.setContent(clipboardContent);
+            });
+
+
+            // Add items to context menu
+            contextMenu.getItems().addAll(lookupItem, copyItem);
+            cell.textProperty().bind(cell.itemProperty());
+
+            // Add context menu to each added cell
+            cell.emptyProperty().addListener((obs, wasEmpty, isNowEmpty) -> {
+                if(isNowEmpty){
+                    cell.setContextMenu(null);
+                }else{
+                    cell.setContextMenu(contextMenu);
+                }
+            });
+
+            return cell;
+        });
     }
 
     @Override

@@ -8,6 +8,7 @@
 
 package cs221.GP01.java.ui.controllers;
 
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Point3D;
@@ -17,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.PickResult;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
@@ -39,10 +41,20 @@ import javafx.scene.transform.Translate;
  */
 public class GridDisplayer {
 
+    /**
+     * COLOR VARIABLES
+     */
+    private String currentlySelectedColor = "#38aa38";
+    private String availableColor = "#30599b";
+    private String alreadySelectedColor = "#54ad54";
+    private String unavailableColor = "#595959";
+
+
+
     private double oldMouseX, oldMouseY;
 
-    private Rotate rotateAboutX = new Rotate(0,40,40,40, Rotate.X_AXIS);
-    private Rotate rotateAboutY = new Rotate(0,40,40,40, Rotate.Y_AXIS);
+    private Rotate rotateAboutX = new Rotate(-20,40,40,40, Rotate.X_AXIS);
+    private Rotate rotateAboutY = new Rotate(-45,40,40,40, Rotate.Y_AXIS);
 
     private TextField textField;
 
@@ -68,120 +80,6 @@ public class GridDisplayer {
     }
 
     /**
-     * When a block is clicked this method is called.
-     *
-     * @param k the position of the block that called the method
-     * @param i the position of the block that called the method
-     * @param j the position of the block that called the method
-     */
-    private void blockClicked(int k, int i, int j){
-        for (int x = 0; x < 3; x++) {
-            for (int y = 0; y < 3; y++) {
-                for (int z = 0; z < 3; z++) {
-                    if(x == k && y == i && z == j){
-                        setSelected(x,y,z);
-                    } else if(isNeighbour(k,i,j,x,y,z)){
-                        setActive(x,y,z,false);
-                    } else {
-                        setInActive(x,y,z);
-                    }
-                }
-            }
-        }
-        textField.appendText(labelCube[k][i][j].getText());
-    }
-
-    /**
-     * sets the state of the block to selected
-     *
-     * @param x position of the block in question
-     * @param y position of the block in question
-     * @param z position of the block in question
-     */
-
-    private void setSelected(int x, int y, int z) {
-
-        //2d
-        labelCube[x][y][z].setStyle("-fx-background-color:#ff0000;");
-        labelCube[x][y][z].setOnMouseClicked(null);
-
-        PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),"#ff0000");
-
-        //2.5d
-        boxCube[x][y][z].setMaterial(mat);
-        boxCube[x][y][z].setOnMouseClicked(null);
-
-        //3d
-        boxCube3[x][y][z].setMaterial(mat);
-        boxCube3[x][y][z].setOnMouseClicked(null);
-    }
-
-
-    /**
-     * sets the state of the block to in-active
-     *
-     * @param x position of the block in question
-     * @param y position of the block in question
-     * @param z position of the block in question
-     */
-
-    private void setInActive(int x, int y, int z) {
-        if(!labelCube[x][y][z].getStyle().contains("-fx-background-color:#550000;")){
-            //2d
-            labelCube[x][y][z].setStyle("-fx-background-color:#566377;");
-            labelCube[x][y][z].setOnMouseClicked(null);
-
-
-            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),"#566377");
-            //2.5d
-            boxCube[x][y][z].setMaterial(mat);
-            boxCube[x][y][z].setOnMouseClicked(null);
-
-            //3d
-            boxCube3[x][y][z].setMaterial(mat);
-            boxCube3[x][y][z].setOnMouseClicked(null);
-
-        }
-    }
-
-    /**
-     * sets the state of the block to Active allowing the user to click on it
-     *
-     * @param x position of the block in question
-     * @param y position of the block in question
-     * @param z position of the block in question
-     * @param override overides any other states ready to begin selecting again
-     */
-
-    private void setActive(int x, int y, int z, boolean override) {
-        if(labelCube[x][y][z].getStyle().contains("-fx-background-color:#ff0000;") && !override){
-
-            //2d
-            labelCube[x][y][z].setStyle("-fx-background-color:#550000;");
-
-            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),"#550000");
-            //2.5d
-            boxCube[x][y][z].setMaterial(mat);
-            //3d
-            boxCube3[x][y][z].setMaterial(mat);
-
-        } else if(!labelCube[x][y][z].getStyle().contains("-fx-background-color:#550000;") || override) {
-            //2d
-            labelCube[x][y][z].setStyle("-fx-background-color:#2980b9;");
-            labelCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z));
-            //2.5d
-            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),"#2980b9");
-
-            boxCube[x][y][z].setMaterial(mat);
-            boxCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z));
-            //3d
-            boxCube3[x][y][z].setMaterial(mat);
-            boxCube3[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z));
-        }
-    }
-
-
-    /**
      * sets up 3d enviroment, loads letters into labels and boxes, adds them to the display.
      *
      * @param letters
@@ -198,6 +96,7 @@ public class GridDisplayer {
         groupy.getChildren().add(camera);
         subScene.setCamera(camera);
 
+        //sets up the right mouse button for rotating the cube
         back.setOnMouseDragged( e ->{
             if(e.getButton().equals(MouseButton.SECONDARY)){
                 double mouseX = e.getY();
@@ -211,36 +110,23 @@ public class GridDisplayer {
             }
         });
 
+        //when the drg is released reset the variables
         back.setOnMouseReleased(
-                e -> {oldMouseX = 0; oldMouseY = 0;}
-        );
-
-
-        //checks if a block was clicked
-        subScene.setOnMouseClicked((event)->{
-            if(event.getButton().equals(MouseButton.PRIMARY)){
-                PickResult res = event.getPickResult();
-                if (res.getIntersectedNode() instanceof Box){
-                    EventHandler e = res.getIntersectedNode().getOnMouseClicked();
-                    if(e != null){
-                        e.handle(event);
-                    }
+            e -> {
+                if(e.getButton().equals(MouseButton.SECONDARY)) {
+                    oldMouseX = 0;
+                    oldMouseY = 0;
                 }
             }
-        });
-
+        );
 
         //creates space ready for the boxes and labels
         labelCube = new Label[3][3][3];
         boxCube = new Box[3][3][3];
         boxCube3 = new Box[3][3][3];
 
-
-        //stops user editing the textField todo test this
-        textField.setDisable(true);
-
         //checks the letters actually exist before making a fool of ones self and trying to display them.
-        if(letters[0][0][0] != null) {
+        if(letters != null) {
             //Create the labels and boxes ready for display
             for (int k = 0; k < 3; k++) {
                 for (int i = 0; i < 3; i++) {
@@ -264,16 +150,18 @@ public class GridDisplayer {
                 }
             }
 
-            //render the labels and blocks (adds them to relevant grids)
+            //adds the labels and blocks to the 2d and 2.5d view
             for (int k = 0; k < 3; k++) {
                 for (int i = 0; i < 3; i++) {
-                    for (int j = 2; j > -1; j--) {
+                    for (int j = 2; j > -1; j--) { //revered to render the block overlap correctly
                         twoDGrid[k].add(labelCube[k][j][i], i, j);
                         twoFiveDGrid[k].add(boxCube[k][i][j],j,i);
 
                     }
                 }
             }
+
+            //adds the blocks to the 3d view and positions them.
             for (int k = 0; k < 3; k++) {
                 for (int i = 0; i < 3; i++) {
                     for (int j = 0; j < 3; j++) {
@@ -284,6 +172,134 @@ public class GridDisplayer {
                     }
                 }
             }
+        }
+    }
+
+    /**
+     * When a block is clicked this method is called.
+     *
+     * @param k the position of the block that called the method
+     * @param i the position of the block that called the method
+     * @param j the position of the block that called the method
+     */
+    private void blockClicked(int k, int i, int j, MouseEvent e){
+        if(e.getButton().equals(MouseButton.PRIMARY)) {
+            for (int x = 0; x < 3; x++) {
+                for (int y = 0; y < 3; y++) {
+                    for (int z = 0; z < 3; z++) {
+                        if (x == k && y == i && z == j) {
+                            setSelected(x, y, z);
+                        } else if (isNeighbour(k, i, j, x, y, z)) {
+                            setActive(x, y, z, false);
+                        } else {
+                            setInActive(x, y, z);
+                        }
+                    }
+                }
+            }
+            textField.appendText(labelCube[k][i][j].getText());
+        }
+    }
+
+    /**
+     * resets the cube so they can all be clicked
+     */
+    public void setAllActive() {
+        for (int x = 0; x < 3; x++) {
+            for (int y = 0; y < 3; y++) {
+                for (int z = 0; z < 3; z++) {
+                    setActive(x,y,z,true);
+                }
+            }
+        }
+    }
+
+    /**
+     * sets the state of the block to selected
+     *
+     * @param x position of the block in question
+     * @param y position of the block in question
+     * @param z position of the block in question
+     */
+
+    private void setSelected(int x, int y, int z) {
+
+        //2d
+        labelCube[x][y][z].setStyle("-fx-background-color:" + currentlySelectedColor + ";");
+        labelCube[x][y][z].setOnMouseClicked(null);
+
+        PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),currentlySelectedColor);
+
+        //2.5d
+        boxCube[x][y][z].setMaterial(mat);
+        boxCube[x][y][z].setOnMouseClicked(null);
+
+        //3d
+        boxCube3[x][y][z].setMaterial(mat);
+        boxCube3[x][y][z].setOnMouseClicked(null);
+    }
+
+
+    /**
+     * sets the state of the block to in-active
+     *
+     * @param x position of the block in question
+     * @param y position of the block in question
+     * @param z position of the block in question
+     */
+
+    private void setInActive(int x, int y, int z) {
+        if(!labelCube[x][y][z].getStyle().contains("-fx-background-color:" + alreadySelectedColor + ";")){
+            //2d
+            labelCube[x][y][z].setStyle("-fx-background-color:" + unavailableColor + ";");
+            labelCube[x][y][z].setOnMouseClicked(null);
+
+
+            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(), unavailableColor);
+            //2.5d
+            boxCube[x][y][z].setMaterial(mat);
+            boxCube[x][y][z].setOnMouseClicked(null);
+
+            //3d
+            boxCube3[x][y][z].setMaterial(mat);
+            boxCube3[x][y][z].setOnMouseClicked(null);
+
+        }
+    }
+
+    /**
+     * sets the state of the block to Active allowing the user to click on it
+     *
+     * @param x position of the block in question
+     * @param y position of the block in question
+     * @param z position of the block in question
+     * @param override overides any other states ready to begin selecting again
+     */
+
+    private void setActive(int x, int y, int z, boolean override) {
+        if(labelCube[x][y][z].getStyle().contains("-fx-background-color:" + currentlySelectedColor + ";") && !override){
+
+            //2d
+            labelCube[x][y][z].setStyle("-fx-background-color:" + alreadySelectedColor +";");
+
+            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(), alreadySelectedColor);
+            //2.5d
+            boxCube[x][y][z].setMaterial(mat);
+            //3d
+            boxCube3[x][y][z].setMaterial(mat);
+
+        } else if(!labelCube[x][y][z].getStyle().contains("-fx-background-color:" + alreadySelectedColor + ";") || override) {
+            //2d
+            labelCube[x][y][z].setStyle("-fx-background-color:" + availableColor + ";");
+            labelCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z,e));
+            //2.5d
+            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),availableColor);
+
+            boxCube[x][y][z].setMaterial(mat);
+            boxCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z,e));
+            //3d
+            boxCube3[x][y][z].setMaterial(mat);
+            boxCube3[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z,e));
         }
     }
 
@@ -302,7 +318,7 @@ public class GridDisplayer {
 
         //create a label with the letter
         Label label = new Label(letter);
-        label.setStyle("-fx-font-size: 22; -fx-text-fill:white;");
+        label.setStyle("-fx-font-size: 22; -fx-text-fill: white;");
         GridPane.setHalignment(label, HPos.CENTER);
 
         //add the label to the grid
@@ -364,16 +380,5 @@ public class GridDisplayer {
             }
         }
         return false;
-    }
-
-
-    public void setAllActive() {
-        for (int x = 0; x < 3; x++) {
-            for (int y = 0; y < 3; y++) {
-                for (int z = 0; z < 3; z++) {
-                    setActive(x,y,z,true);
-                }
-            }
-        }
     }
 }
