@@ -1,11 +1,7 @@
 package cs221.GP01.java.model;
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 import cs221.GP01.java.ui.IUIController;
-=======
 import cs221.GP01.java.ui.controllers.GameController;
->>>>>>> Stashed changes
 import javafx.collections.ObservableList;
 
 import java.io.File;
@@ -19,7 +15,6 @@ import java.util.Scanner;
  * @version 0.3
  */
 public class JoggleCubeController implements IJoggleCubeController{
->>>>>>> Stashed changes
 
     private IUIController ui;
 
@@ -47,33 +42,17 @@ public class JoggleCubeController implements IJoggleCubeController{
         storedWords = new ArrayList<>();
     }
 
-<<<<<<< Updated upstream
 
     @Override
     public void setUI(IUIController controller) {
         ui = controller;
     }
-        //todo Find a way to point to theGameController
-    }
-
-<<<<<<< Updated upstream
 
     public void generateRandomGrid() { cube.populateCube(language + "_letters"); }
 
     public void loadGrid(File file) {
         //load this file into grid and highscores
-=======
-=======
->>>>>>> Stashed changes
         //todo Find a way to point to theGameController
-    //Ditto with startGame()
-    public void startRandomGame() {
-        //Create a random cube
-        cube.populateCube(language + "_letters");
-    }
-
-    //Need some clarification on structure of this method
-    public void startGame(File file) {
         //Load save game from the file stream given
         String input;
         ArrayList<String> letters = new ArrayList<>();
@@ -117,17 +96,6 @@ public class JoggleCubeController implements IJoggleCubeController{
 
         //At this point the cube has been loaded in
     }
->>>>>>> Stashed changes
-
-        //cube.loadCube(file);
-
-        //temp
-        cube.populateCube(language + "_letters");
-    }
-
-    //Needs clarification on structure of this method
-    public void endGame() { }
->>>>>>> Stashed changes
 
     public boolean testWordValidity(String word) {
         //Add all of the stored words to the arrayList
@@ -185,7 +153,4 @@ public class JoggleCubeController implements IJoggleCubeController{
     public void setLanguage(String lang){
         language = lang;
     }
-
-    private void loadSavedCube(){}
-
 }
