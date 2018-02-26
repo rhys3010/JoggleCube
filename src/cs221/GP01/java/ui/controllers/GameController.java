@@ -25,6 +25,7 @@ import javafx.scene.layout.*;
  * todo improve this description
  * @author Nathan Williams (naw21)
  * @author Rhys Evans (rhe24@aber.ac.uk)
+ * @author Samuel Jones - srj12@aber.ac.uk
  * @version 0.2  DRAFT
  */
 public class GameController extends BaseScreenController implements IGameController, INeedPrep {
@@ -150,5 +151,15 @@ public class GameController extends BaseScreenController implements IGameControl
     @Override
     public TabPane getCubeContainer() {
         return cubeContainer;
+    }
+
+
+    /**
+     * Returns the list of found words so it can be used in the backend as it is currently only stored in the frontend
+     * @author Samuel Jones - srj12
+     * @return returns an observableList of strings of all currently found words
+     */
+    public ObservableList<String> getFoundWords() {
+        return foundWords;
     }
 }

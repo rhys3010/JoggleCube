@@ -94,6 +94,10 @@ public class Cube implements ICube{
         return neighbours;
     }
 
+    public void setBlock(int x, int y, int z, Block block){
+        cube[x][y][z] = block;
+    }
+
     private void loadBagOfLetters(String lettersFilename){
         bagOfLetters.clear();
         File file = new File(getClass().getResource("../../resource/letters/" + lettersFilename).getFile());
