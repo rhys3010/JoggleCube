@@ -1,12 +1,20 @@
 package cs221.GP01.java.model;
 
 import cs221.GP01.java.ui.IUIController;
+import cs221.GP01.java.ui.controllers.GameController;
 import javafx.collections.ObservableList;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class JoggleCubeController implements IJoggleCubeController {
+/**
+ * The backend main controller
+ * @author Samuel Jones - srj12@aber.ac.uk
+ * @version 0.3
+ */
+public class JoggleCubeController implements IJoggleCubeController{
 
     private IUIController ui;
 
@@ -14,6 +22,8 @@ public class JoggleCubeController implements IJoggleCubeController {
     private Cube cube;
 
     private ArrayList<String> storedWords;
+
+    private GameController theGameController;
 
     //en = English (American)
     private String language = "en";
@@ -38,22 +48,66 @@ public class JoggleCubeController implements IJoggleCubeController {
         ui = controller;
     }
 
-
     public void generateRandomGrid() { cube.populateCube(language + "_letters"); }
 
     public void loadGrid(File file) {
         //load this file into grid and highscores
+        //todo Find a way to point to theGameController
+        //Load save game from the file stream given
+        String input;
+        ArrayList<String> letters = new ArrayList<>();
+        try{
+            Scanner in = new Scanner(file);
+            while(in.hasNext()){
+                input = in.nextLine();
+                String next;
+                int forLoopLength = 3;
+                for(int i = 0; i<forLoopLength; i++){
+                    if(input.charAt(i) == 'Q'){
+                        //Handle Qu for the english dictionary
+                        next = "Qu";
+                        //Happens at the end to skip the u part
+                        forLoopLength++;
+                    } else {
+                        next = String.valueOf(input.charAt(i));
+                    }
+                    letters.add(next);
+                }
+            }
+        } catch(FileNotFoundException e){
+            //An error in file name
+            System.out.println("Game Save not found");
+        }
 
-        //cube.loadCube(file);
+        if(!(letters.size() == 27)){
+            System.out.println("Cube that is loaded is corrupt");
+        }
 
-        //temp
-        cube.populateCube(language + "_letters");
+        //Letters contains all of the cube in order from 0,0,0 to 2,2,2
+        int index = 0;
+        for(int i = 0; i<3;i++){
+            for(int j = 0; j<3; j++){
+                for(int k = 0; k<3; k++){
+                    cube.setBlock(i,j,k,new Block(letters.get(index)));
+                    index++;
+                }
+            }
+        }
+
+        //At this point the cube has been loaded in
     }
 
-    public void endGame(){ }
-
-
     public boolean testWordValidity(String word) {
+        //Add all of the stored words to the arrayList
+        for (int i = 0; i<theGameController.getFoundWords().size(); i++){
+            String newWord = theGameController.getFoundWords().get(i);
+            //If not already in the array add to the array else do nothing
+            //Don't necessarily need to check the arraylist for original contents as it would work with duplicates anyways
+            if(!storedWords.contains(newWord)){
+                storedWords.add(newWord);
+            }
+        }
+
         //Test if already used
         if (storedWords.contains(word)){return false;}
 
@@ -79,8 +133,14 @@ public class JoggleCubeController implements IJoggleCubeController {
 
         return stringCube;
     }
+
+    //Need to look into how the HighScore classes are built from Lampros
     public ObservableList<HighScore> getOverallHighScores() { return null; }
+
+    //Need to look into the same thing
     public ObservableList<HighScore> getCurrentCubeHighScores() { return null; }
+
+    //Get the grids from a saved
     public ObservableList<String> getRecentGrids() { return null; }
     public void saveGrid(File file, String name) {
 
@@ -93,6 +153,4 @@ public class JoggleCubeController implements IJoggleCubeController {
     public void setLanguage(String lang){
         language = lang;
     }
-
-    private void loadSavedCube(){}
 }
