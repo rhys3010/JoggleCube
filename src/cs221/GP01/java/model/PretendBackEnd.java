@@ -126,4 +126,9 @@ public class PretendBackEnd implements IJoggleCubeController{
     public void saveGrid(File file, String name) {
 
     }
+
+    @Override
+    public int getScore(String word) {
+        return 0;
+    }
 }

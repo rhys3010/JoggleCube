@@ -85,7 +85,8 @@ public class Main extends Application {
      * @param args no launch arguments needed.
      */
     public static void main(String[] args) {
-        launch(args);
+        IJoggleCubeController joggleCube = new JoggleCubeController();
+        //launch(args);
     }
 
 }

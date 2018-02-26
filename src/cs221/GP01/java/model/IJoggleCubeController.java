@@ -73,4 +73,11 @@ public interface IJoggleCubeController {
      * @param file
      */
     void saveGrid(File file,String name);
+
+    /**
+     * Generate the word score for this word using scrabble score * 3
+     * @param word the word to get the score for
+     * @return returns an int that is the socre
+     */
+    int getScore(String word);
 }

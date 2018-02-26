@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -31,17 +32,18 @@ public class JoggleCubeController implements IJoggleCubeController{
     //dictionary.txt was taken from an open source scrabble bot at
     //Currently American English
     //URL: https://github.com/jonbcard/scrabble-bot/blob/master/src/dictionary.txt
-    //todo adding in functionality for different dictionaries, as well as loading letters in different languages
-    private final String dictionaryFileName = language + "_dictionary";
+    private String dictionaryFileName = language + "_dictionary";
+
+    private HashMap<String, String> scores;
 
     public JoggleCubeController(){
         //Load dictionary on creation of JoggleCubeController
-        cube = new Cube();
+        cube = new Cube(language + "_letters");
         dictionary = new Dictionary();
         dictionary.loadDictionary(dictionaryFileName);
         storedWords = new ArrayList<>();
+        scores = cube.getScores();
     }
-
 
     @Override
     public void setUI(IUIController controller) {
@@ -93,21 +95,10 @@ public class JoggleCubeController implements IJoggleCubeController{
                 }
             }
         }
-
         //At this point the cube has been loaded in
     }
 
     public boolean testWordValidity(String word) {
-        //Add all of the stored words to the arrayList
-        for (int i = 0; i<theGameController.getFoundWords().size(); i++){
-            String newWord = theGameController.getFoundWords().get(i);
-            //If not already in the array add to the array else do nothing
-            //Don't necessarily need to check the arraylist for original contents as it would work with duplicates anyways
-            if(!storedWords.contains(newWord)){
-                storedWords.add(newWord);
-            }
-        }
-
         //Test if already used
         if (storedWords.contains(word)){return false;}
 
@@ -142,6 +133,8 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     //Get the grids from a saved
     public ObservableList<String> getRecentGrids() { return null; }
+
+
     public void saveGrid(File file, String name) {
 
     }
@@ -152,5 +145,20 @@ public class JoggleCubeController implements IJoggleCubeController{
      */
     public void setLanguage(String lang){
         language = lang;
+    }
+
+    /**
+     * Generate the word score for this word using scrabble score * 3
+     * @param word the word to get the score for
+     * @return returns an int that is the score
+     */
+    //Scores are stored in the file next to the letter seperated by a ':' e.g. A:3
+    public int getScore(String word){
+        //Split the word up into the different letters including 'Qu' and then search the hashmap for each and
+        //return a sum of the scores
+        for(int i = 0; i<word.length(); i++){
+
+        }
+        return 0;
     }
 }
