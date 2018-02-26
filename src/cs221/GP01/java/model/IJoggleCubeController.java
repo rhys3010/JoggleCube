@@ -79,5 +79,19 @@ public interface IJoggleCubeController {
      * @param word the word to get the score for
      * @return returns an int that is the socre
      */
-    int getScore(String word);
+    int getWordScore(String word);
+
+
+    /**
+     * gets the score for the current game.
+     *
+     * @return the score for the current game
+     */
+    int getScore();
+
+    /**
+     * returns the top highscore
+     * @return the top high score.
+     */
+    int getHighScore();
 }

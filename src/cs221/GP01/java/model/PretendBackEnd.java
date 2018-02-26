@@ -128,7 +128,17 @@ public class PretendBackEnd implements IJoggleCubeController{
     }
 
     @Override
-    public int getScore(String word) {
+    public int getWordScore(String word) {
         return 0;
+    }
+
+    @Override
+    public int getScore() {
+        return 365;
+    }
+
+    @Override
+    public int getHighScore() {
+        return 545;
     }
 }

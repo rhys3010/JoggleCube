@@ -153,12 +153,31 @@ public class JoggleCubeController implements IJoggleCubeController{
      * @return returns an int that is the score
      */
     //Scores are stored in the file next to the letter seperated by a ':' e.g. A:3
-    public int getScore(String word){
+    public int getWordScore(String word){
         //Split the word up into the different letters including 'Qu' and then search the hashmap for each and
         //return a sum of the scores
         for(int i = 0; i<word.length(); i++){
 
         }
+        return 0;
+    }
+
+
+    /**
+     * gets the score for the current game.
+     *
+     * @return the score for the current game
+     */
+    public int getScore() {
+        return 0;
+    }
+
+    /**
+     * returns the top highscore
+     *
+     * @return the top high score.
+     */
+    public int getHighScore() {
         return 0;
     }
 }

@@ -31,13 +31,13 @@
                   <VBox styleClass="scoreDisplay">
                      <children>
                         <Label text="Score" />
-                        <Label text="72" />
+                        <Label fx:id="scoreLabel" text="72" />
                      </children>
                   </VBox>
                   <VBox styleClass="scoreDisplay">
                      <children>
                         <Label text="Best" />
-                        <Label text="186" />
+                        <Label fx:id="highScoreLabel" text="186" />
                      </children>
                   </VBox>
                </children>
