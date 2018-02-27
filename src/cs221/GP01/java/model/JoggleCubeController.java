@@ -43,11 +43,6 @@ public class JoggleCubeController implements IJoggleCubeController{
         dictionary.loadDictionary(dictionaryFileName);
         storedWords = new ArrayList<>();
         scores = cube.getScores();
-
-        //Debug for loadGrid
-        File file = new File("exampleSavedGrids/grid_2.grid");
-        loadGrid(file);
-
     }
 
     @Override
