@@ -13,7 +13,9 @@ import cs221.GP01.java.ui.ScreenType;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Point2D;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -22,10 +24,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -72,6 +72,9 @@ public class GameController extends BaseScreenController implements IGameControl
     @FXML
     private ListView<String> foundWordsList;
 
+    /**
+     * The Context menu at the top right of the screen
+     */
     @FXML
     private ContextMenu hamburgerContext;
 
@@ -125,8 +128,12 @@ public class GameController extends BaseScreenController implements IGameControl
      * Handles the hamburger menu being clicked
      */
     @FXML
-    private void btnMenuClicked(){
-        // todo show context menu here
+    private void btnMenuClicked(ActionEvent event) {
+        // Get the coordinates of the menu button
+        Point2D screenPos = menuButton.localToScreen(menuButton.getLayoutX(), menuButton.getLayoutY());
+        
+        // Show the context menu at the X, Y co-ordinates
+        hamburgerContext.show(menuButton, screenPos.getX(), screenPos.getY());
     }
 
     /**
