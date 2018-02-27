@@ -15,6 +15,7 @@
 .topMenu{
     -fx-alignment: center;
     -fx-spacing: 340px;
+    -fx-background-color: transparent;
 }
 
 .topMenu Label{
