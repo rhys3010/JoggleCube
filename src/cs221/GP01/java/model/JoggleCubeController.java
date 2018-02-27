@@ -43,6 +43,11 @@ public class JoggleCubeController implements IJoggleCubeController{
         dictionary.loadDictionary(dictionaryFileName);
         storedWords = new ArrayList<>();
         scores = cube.getScores();
+
+        //Debug for loadGrid
+        File file = new File("exampleSavedGrids/grid_2.grid");
+        loadGrid(file);
+
     }
 
     @Override
@@ -53,29 +58,24 @@ public class JoggleCubeController implements IJoggleCubeController{
     public void generateRandomGrid() { cube.populateCube(language + "_letters"); }
 
     public void loadGrid(File file) {
-        //load this file into grid and highscores
-        //todo Find a way to point to theGameController
+        //load this file into grid and high scores
         //Load save game from the file stream given
         String input;
         ArrayList<String> letters = new ArrayList<>();
         try{
             Scanner in = new Scanner(file);
-            while(in.hasNext()){
-                input = in.nextLine();
-                String next;
-                int forLoopLength = 3;
-                for(int i = 0; i<forLoopLength; i++){
-                    if(input.charAt(i) == 'Q'){
-                        //Handle Qu for the english dictionary
-                        next = "Qu";
-                        //Happens at the end to skip the u part
-                        forLoopLength++;
-                    } else {
-                        next = String.valueOf(input.charAt(i));
-                    }
-                    letters.add(next);
-                }
+            //Load in all of the letters
+            while(in.hasNext() && letters.size() < 27) {
+                input = in.next();
+                letters.add(input);
             }
+            //Load in all of the high scores
+            /*
+            while(in.hasNext()){
+                input = in.next()
+            }
+             */
+
         } catch(FileNotFoundException e){
             //An error in file name
             System.out.println("Game Save not found");
@@ -98,6 +98,7 @@ public class JoggleCubeController implements IJoggleCubeController{
         //At this point the cube has been loaded in
     }
 
+    //todo Question whether if return true should get the score and then add to the score in a private instance variable
     public boolean testWordValidity(String word) {
         //Test if already used
         if (storedWords.contains(word)){return false;}
@@ -190,5 +191,13 @@ public class JoggleCubeController implements IJoggleCubeController{
      */
     public int getHighScore() {
         return 0;
+    }
+
+    /**
+     * Based on the current language will rebuild the backend dictionary object with the correct language
+     */
+    public void reloadDictionary() {
+        dictionary = new Dictionary();
+        dictionary.loadDictionary(language + "_dictionary");
     }
 }
