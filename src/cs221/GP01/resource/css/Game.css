@@ -57,8 +57,25 @@
 }
 
 .hamburgerContext{
-    -fx-pref-width: 200px;
-    -fx-alignment: center-right;
+    -fx-pref-width: 150px;
+}
+
+.hamburgerContext .contextMenuItem{
+    -fx-background-size: 16 16;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 125;
+}
+
+.hamburgerContext #settingsBtn{
+    -fx-background-image: url("../img/icon/settings_icon_inactive_alt.png");
+}
+
+.hamburgerContext #helpBtn{
+    -fx-background-image: url("../img/icon/help_icon_inactive.png");
+}
+
+.hamburgerContext #quitBtn{
+    -fx-background-image: url("../img/icon/quit_icon_inactive.png");
 }
 
 

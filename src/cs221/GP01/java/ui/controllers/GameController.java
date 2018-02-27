@@ -134,8 +134,8 @@ public class GameController extends BaseScreenController implements IGameControl
         // Get the coordinates of the menu button
         Point2D screenPos = menuButton.localToScreen(menuButton.getLayoutX(), menuButton.getLayoutY());
 
-        // Show the context menu at the X, Y co-ordinates
-        hamburgerContext.show(menuButton, screenPos.getX()-70, screenPos.getY()+20);
+        // Show the context menu at the X, Y co-ordinates with an offset
+        hamburgerContext.show(menuButton, screenPos.getX()-100, screenPos.getY()+20);
     }
 
     /**
