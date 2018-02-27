@@ -137,6 +137,20 @@
     -fx-padding: 0 0 20 0;
 }
 
+.wordInputContainer .wordInputTextContainer{
+    -fx-alignment: center;
+}
+
+.wordInputContainer .wordInputTextContainer .button{
+    -fx-pref-height: 20px;
+    -fx-pref-width: 20px;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 20 20;
+    -fx-background-image: url("../img/icon/close_icon_inactive.png");
+}
+
 .wordInputContainer #textField{
     -fx-pref-height: 35px;
     -fx-pref-width: 300px;
@@ -156,6 +170,7 @@
     -fx-text-fill: #cecece;
     -fx-font-size: 14px;
     -fx-font-weight: bolder;
+    -fx-pref-width: 150px;
 }
 
 .wordInputContainer .wordInputButtonContainer .button:hover{
