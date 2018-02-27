@@ -14,6 +14,7 @@ import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.*;
@@ -24,6 +25,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.layout.*;
 
 import java.io.IOException;
@@ -128,12 +130,12 @@ public class GameController extends BaseScreenController implements IGameControl
      * Handles the hamburger menu being clicked
      */
     @FXML
-    private void btnMenuClicked(ActionEvent event) {
+    private void btnMenuClicked() {
         // Get the coordinates of the menu button
         Point2D screenPos = menuButton.localToScreen(menuButton.getLayoutX(), menuButton.getLayoutY());
 
         // Show the context menu at the X, Y co-ordinates
-        hamburgerContext.show(menuButton, screenPos.getX(), screenPos.getY());
+        hamburgerContext.show(menuButton, screenPos.getX()-70, screenPos.getY()+20);
     }
 
     /**
@@ -167,6 +169,9 @@ public class GameController extends BaseScreenController implements IGameControl
      */
     @Override
     public void prepView(){
+
+        // Disable hamburger context on right click
+        menuButton.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
 
         createCellFactory();
 
