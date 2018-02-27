@@ -56,6 +56,12 @@
     -fx-background-size: 20 20;
 }
 
+.hamburgerContext{
+    -fx-pref-width: 200px;
+    -fx-alignment: center-right;
+}
+
+
 
 #menuButton{
     -fx-background-image: url("../img/icon/hamburger_icon_inactive.png");
