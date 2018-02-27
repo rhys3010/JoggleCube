@@ -67,15 +67,15 @@
 }
 
 .hamburgerContext #settingsBtn{
-    -fx-background-image: url("../img/icon/settings_icon_inactive_alt.png");
+    -fx-background-image: url("../img/icon/settings_icon_context.png");
 }
 
 .hamburgerContext #helpBtn{
-    -fx-background-image: url("../img/icon/help_icon_inactive.png");
+    -fx-background-image: url("../img/icon/help_icon_context.png");
 }
 
 .hamburgerContext #quitBtn{
-    -fx-background-image: url("../img/icon/quit_icon_inactive.png");
+    -fx-background-image: url("../img/icon/quit_icon_context.png");
 }
 
 
@@ -172,6 +172,10 @@
     -fx-background-position: center;
     -fx-background-size: 20 20;
     -fx-background-image: url("../img/icon/close_icon_inactive.png");
+}
+
+.wordInputContainer .wordInputTextContainer .button:hover{
+    -fx-background-image: url("../img/icon/close_icon_alt.png");
 }
 
 .wordInputContainer #textField{
