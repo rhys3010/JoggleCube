@@ -132,7 +132,8 @@ public class HelpController extends BaseOverlayController implements INeedPrep{
 
         // Make sure the value is within the bounds of the array (if not loop around)
         // todo this is really long maybe it can be shortened?
-        currentPageIndex = (((currentPageIndex % helpScreens.size()) + helpScreens.size()) % helpScreens.size());
+        if(currentPageIndex < 0) currentPageIndex = helpScreens.size() - 1;
+        //currentPageIndex = (((currentPageIndex % helpScreens.size()) + helpScreens.size()) % helpScreens.size());
 
         // Update the page to display the correct screen
         changePage();
