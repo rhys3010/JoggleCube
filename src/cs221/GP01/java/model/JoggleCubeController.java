@@ -127,7 +127,7 @@ public class JoggleCubeController implements IJoggleCubeController{
     //Need to look into the same thing
     public ObservableList<HighScore> getCurrentCubeHighScores() { return null; }
 
-    //Get the grids from a saved
+    //Get the grids from a saved file
     public ObservableList<String> getRecentGrids() { return null; }
 
 
