@@ -10,32 +10,22 @@ package cs221.GP01.java.ui.controllers;
 
 import cs221.GP01.java.ui.UIController;
 import cs221.GP01.java.ui.ScreenType;
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.ClipboardContent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.layout.*;
 import javafx.stage.StageStyle;
 
-import javax.print.URIException;
-import java.awt.*;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.Optional;
 
 
 /**
@@ -179,11 +169,13 @@ public class GameController extends BaseScreenController implements IGameControl
     @Override
     public void prepView(){
 
-        TextInputDialog dialog = new TextInputDialog("Walter");
-        dialog.setTitle("Users Name");
-        dialog.setHeaderText("Look, a Text Input Dialog");
+        TextInputDialog dialog = new TextInputDialog("John");
+        dialog.setTitle("Enter Name");
+        dialog.setHeaderText("Name Input");
         dialog.setContentText("Please enter your name:");
         dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
+        // todo: make this the correct icon
+        dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("../../../resource/img/icon/start_icon_inactive.png"))));
         dialog.initStyle(StageStyle.UNDECORATED);
         boolean done = false;
         while(!done) {
@@ -193,11 +185,11 @@ public class GameController extends BaseScreenController implements IGameControl
                 UIController.getJoggleCube().setName(result);
                 done = true;
             } else {
-                dialog.setHeaderText("Hey, that wasn't a valid name, try again!");
+                dialog.setHeaderText("Invalid Name Entry, Please try again");
             }
         }
+
         foundWords = FXCollections.observableArrayList();
-        createCellFactory();
 
 
         // Disable hamburger context on right click
