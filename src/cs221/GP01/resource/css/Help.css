@@ -38,6 +38,9 @@
     -fx-background-image: url("../img/icon/close_icon.png");
 }
 
+.helpPageContainer{
+}
+
 .navButton{
     -fx-background-color: transparent;
     -fx-background-repeat: no-repeat;
