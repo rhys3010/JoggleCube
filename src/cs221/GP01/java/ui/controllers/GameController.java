@@ -13,6 +13,7 @@ import cs221.GP01.java.ui.ScreenType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.*;
@@ -23,6 +24,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.stage.StageStyle;
 
@@ -177,10 +180,15 @@ public class GameController extends BaseScreenController implements IGameControl
         // todo: make this the correct icon
         dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("../../../resource/img/icon/start_icon_inactive.png"))));
         dialog.initStyle(StageStyle.UNDECORATED);
+
+
         boolean done = false;
+        // todo: add more in-depth validation checking
         while(!done) {
             dialog.showAndWait();
-            String result = dialog.getResult();
+            // Remove spaces from input
+            String result = dialog.getResult().replace(" ", "");
+
             if (result.matches("(\\w*)")) {
                 UIController.getJoggleCube().setName(result);
                 done = true;
