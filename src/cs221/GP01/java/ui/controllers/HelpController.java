@@ -87,21 +87,6 @@ public class HelpController extends BaseOverlayController implements INeedPrep{
         // Create the indicators at the bottom of the screen
         createCarouselIndicators();
 
-        // Add behaviour to all the carousel indicators
-        for(int i = 0; i < carouselIndicatorContainer.getChildren().size(); i++){
-
-            Node currButton = carouselIndicatorContainer.getChildren().get(i);
-
-            currButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    // Set correct index
-                    currentPageIndex = carouselIndicatorContainer.getChildren().indexOf(currButton);
-                    changePage();
-                }
-            });
-        }
-
         // Inject FXML of first entry in the helpScreens list to the subscene root
         changePage();
     }
@@ -162,7 +147,18 @@ public class HelpController extends BaseOverlayController implements INeedPrep{
             newButton.getStyleClass().add("carouselIndicator");
             newButton.setMinSize(16, 16);
 
+            // add newly created button to the hbox
             carouselIndicatorContainer.getChildren().add(newButton);
+
+            // Add button behaviour to the carousel indicator
+            newButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    // Change the index of the page to the index of the indicator
+                    currentPageIndex = carouselIndicatorContainer.getChildren().indexOf(newButton);
+                    changePage();
+                }
+            });
         }
     }
 
