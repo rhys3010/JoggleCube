@@ -28,6 +28,8 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.layout.*;
 
+import javax.print.URIException;
+import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -173,8 +175,6 @@ public class GameController extends BaseScreenController implements IGameControl
         // Disable hamburger context on right click
         menuButton.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
 
-        createCellFactory();
-
         GridPane[] twoDGrid = {top2d, middle2d, bottom2d};
         GridPane[] twoFiveDGrid = {top25d, middle25d, bottom25d};
         gridDisplayer = new GridDisplayer(textField,twoDGrid,twoFiveDGrid,subScene,groupy,back);
@@ -182,73 +182,6 @@ public class GameController extends BaseScreenController implements IGameControl
         foundWordsList.setItems(foundWords);
     }
 
-    /**
-     * Helper function to create listview cell factory
-     */
-    private void createCellFactory(){
-        // Create cell factory for found words list
-        foundWordsList.setCellFactory(lv -> {
-
-            // Create context menu and cell
-            ListCell<String> cell = new ListCell<>();
-            ContextMenu contextMenu = new ContextMenu();
-
-            // Create a menu item for looking up a word
-            MenuItem lookupItem = new MenuItem();
-            lookupItem.textProperty().bind(Bindings.format("Lookup \"%s\" in Dictionary", cell.itemProperty()));
-
-            // Handle item menu click
-            lookupItem.setOnAction(event -> {
-                // Launch dictionary URL in user's default browser
-
-                // Don't uncomment this - it'll brick your PC :(
-                // todo fix.
-
-                /*
-                try{
-                    Desktop.getDesktop().browse(new URI("http://www.dictionary.com/browse/" + cell.textProperty().get()));
-                }catch (IOException ex1){
-                    ex1.printStackTrace();
-
-                }catch (URISyntaxException ex2){
-                    ex2.printStackTrace();
-                }*/
-            });
-
-
-            // Create copy option in menu
-            MenuItem copyItem = new MenuItem();
-            copyItem.textProperty().bind(Bindings.format("Copy", cell.itemProperty()));
-
-            // Behaviour of copy item
-            copyItem.setOnAction(event -> {
-
-                // Create clipboard object and add the cell contents to it
-                Clipboard clipboard = Clipboard.getSystemClipboard();
-
-                ClipboardContent clipboardContent = new ClipboardContent();
-                clipboardContent.putString(cell.textProperty().get());
-
-                clipboard.setContent(clipboardContent);
-            });
-
-
-            // Add items to context menu
-            contextMenu.getItems().addAll(lookupItem, copyItem);
-            cell.textProperty().bind(cell.itemProperty());
-
-            // Add context menu to each added cell
-            cell.emptyProperty().addListener((obs, wasEmpty, isNowEmpty) -> {
-                if(isNowEmpty){
-                    cell.setContextMenu(null);
-                }else{
-                    cell.setContextMenu(contextMenu);
-                }
-            });
-
-            return cell;
-        });
-    }
 
     @Override
     public ObservableList<String> getFoundWords() {
