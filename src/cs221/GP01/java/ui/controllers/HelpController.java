@@ -19,6 +19,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.SubScene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
@@ -87,8 +88,18 @@ public class HelpController extends BaseOverlayController implements INeedPrep{
         createCarouselIndicators();
 
         // Add behaviour to all the carousel indicators
-        for(Node button : carouselIndicatorContainer.getChildren()){
+        for(int i = 0; i < carouselIndicatorContainer.getChildren().size(); i++){
 
+            Node currButton = carouselIndicatorContainer.getChildren().get(i);
+
+            currButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    // Set correct index
+                    currentPageIndex = carouselIndicatorContainer.getChildren().indexOf(currButton);
+                    changePage();
+                }
+            });
         }
 
         // Inject FXML of first entry in the helpScreens list to the subscene root
@@ -131,9 +142,7 @@ public class HelpController extends BaseOverlayController implements INeedPrep{
         currentPageIndex--;
 
         // Make sure the value is within the bounds of the array (if not loop around)
-        // todo this is really long maybe it can be shortened?
         if(currentPageIndex < 0) currentPageIndex = helpScreens.size() - 1;
-        //currentPageIndex = (((currentPageIndex % helpScreens.size()) + helpScreens.size()) % helpScreens.size());
 
         // Update the page to display the correct screen
         changePage();
