@@ -45,16 +45,6 @@ public class Main extends Application {
         //IJoggleCubeController joggleCube = new PretendBackEnd();
         IJoggleCubeController joggleCube = new JoggleCubeController();
 
-        // Array to store all program icons
-        Image icons[] = {
-                new Image("cs221/GP01/resource/img/icon/icon16.png"),
-                new Image("cs221/GP01/resource/img/icon/icon32.png"),
-                new Image("cs221/GP01/resource/img/icon/icon64.png"),
-                new Image("cs221/GP01/resource/img/icon/icon128.png")
-        };
-
-
-
         // Create main scene and initialize with a dummy root node
         Pane dummyRoot = new Pane();
         Scene mainScene = new Scene(dummyRoot, 600, 600);
@@ -65,9 +55,8 @@ public class Main extends Application {
         primaryStage.setResizable(false);
 
         // Add all icon sizes to stage
-        // todo: is there a better way to do this? Probably. Maybe .ico support or some equivalent? ヽ༼ຈل͜ຈ༽ﾉ
-        for(int i = 0; i < icons.length; i++){
-            primaryStage.getIcons().add(icons[i]);
+        for(int i = 0; i < 4; i++){
+            primaryStage.getIcons().add(new Image("cs221/GP01/resource/img/icon/icon" + (int)Math.pow(2,(i+4)) + ".png"));
         }
 
         primaryStage.show();
