@@ -39,7 +39,10 @@
 }
 
 .helpPageContainer{
+    -fx-alignment: center;
+    -fx-background-color: white;
 }
+
 
 .navButton{
     -fx-background-color: transparent;
@@ -67,11 +70,9 @@
     -fx-padding: 0 0 30 0;
 }
 
+
 .carouselIndicatorContainer .carouselIndicator{
     -fx-background-color: #828080;
-    -fx-background-size: 16 16;
-    -fx-pref-width: 16;
-    -fx-pref-height: 16;
     -fx-background-radius: 20;
 }
 

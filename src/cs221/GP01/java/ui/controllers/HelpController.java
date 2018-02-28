@@ -31,7 +31,7 @@ import java.util.ResourceBundle;
  * Controller for the Help.fxml file to handle the displaying of various help screens
  * @author Rhys Evans (rhe24)
  */
-public class HelpController extends BaseOverlayController implements INeedPrep{
+public class HelpController extends BaseOverlayController implements Initializable, INeedPrep {
 
     /**
      * The file path prefix to the helppages
@@ -77,15 +77,24 @@ public class HelpController extends BaseOverlayController implements INeedPrep{
     }
 
     /**
+     * Initialize the help overlay for first time use
+     * @param location
+     * @param resources
+     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
+        // Create the indicators at the bottom of the screen
+        createCarouselIndicators();
+
+    }
+
+    /**
      * Prep the overlay by loading the default page every time
      */
     @Override
     public void prepView(){
         // Set current index to 0
         currentPageIndex = 0;
-
-        // Create the indicators at the bottom of the screen
-        createCarouselIndicators();
 
         // Inject FXML of first entry in the helpScreens list to the subscene root
         changePage();
@@ -145,7 +154,9 @@ public class HelpController extends BaseOverlayController implements INeedPrep{
             Button newButton = new Button();
 
             newButton.getStyleClass().add("carouselIndicator");
-            newButton.setMinSize(16, 16);
+            newButton.setMinSize(12, 12);
+            newButton.setMaxSize(12, 12);
+            newButton.setPrefSize(12, 12);
 
             // add newly created button to the hbox
             carouselIndicatorContainer.getChildren().add(newButton);
