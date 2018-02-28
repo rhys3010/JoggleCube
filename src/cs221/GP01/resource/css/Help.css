@@ -15,6 +15,7 @@
 .topMenu{
     -fx-alignment: center;
     -fx-spacing: 340px;
+    -fx-background-color: transparent;
 }
 
 .topMenu Label{
@@ -37,6 +38,12 @@
     -fx-background-image: url("../img/icon/close_icon.png");
 }
 
+.helpPageContainer{
+    -fx-alignment: center;
+    -fx-background-color: white;
+}
+
+
 .navButton{
     -fx-background-color: transparent;
     -fx-background-repeat: no-repeat;
@@ -57,20 +64,22 @@
     -fx-padding: 0 70 0 0;
 }
 
-.bottomNavContainer{
+.carouselIndicatorContainer{
     -fx-alignment: center;
     -fx-spacing: 20px;
     -fx-padding: 0 0 30 0;
 }
 
-.bottomNavContainer Button{
+
+.carouselIndicatorContainer .carouselIndicator{
     -fx-background-color: #828080;
-    -fx-background-size: 16 16;
-    -fx-pref-width: 16;
-    -fx-pref-height: 16;
     -fx-background-radius: 20;
 }
 
-.bottomNavContainer Button:hover{
+.carouselIndicatorContainer .carouselIndicator-selected{
+    -fx-background-color: white;
+}
+
+.carouselIndicatorContainer .carouselIndicator:hover{
     -fx-background-color: white;
 }

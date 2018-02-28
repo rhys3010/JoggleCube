@@ -52,11 +52,11 @@
             <children>
                     <Button fx:id="menuButton" mnemonicParsing="false" onAction="#btnMenuClicked">
                   <contextMenu>
-                     <ContextMenu fx:id="hamburgerContext" autoFix="false">
+                     <ContextMenu fx:id="hamburgerContext" autoFix="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="hamburgerContext">
                         <items>
-                           <MenuItem mnemonicParsing="false" onAction="#btnSettingsClicked" text="Settings" />
-                           <MenuItem mnemonicParsing="false" onAction="#btnHelpClicked" text="Help" />
-                           <MenuItem mnemonicParsing="false" onAction="#btnEndGameClicked" text="Quit" />
+                           <MenuItem fx:id="settingsBtn" mnemonicParsing="false" onAction="#btnSettingsClicked" styleClass="contextMenuItem" text="Settings" />
+                           <MenuItem fx:id="helpBtn" mnemonicParsing="false" onAction="#btnHelpClicked" styleClass="contextMenuItem" text="Help" />
+                           <MenuItem fx:id="quitBtn" mnemonicParsing="false" onAction="#btnEndGameClicked" styleClass="contextMenuItem" text="Quit" />
                         </items>
                      </ContextMenu>
                   </contextMenu></Button>
@@ -198,10 +198,14 @@
         </HBox>
         <VBox styleClass="wordInputContainer">
             <children>
-                <TextField fx:id="textField" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" />
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="wordInputTextContainer">
+               <children>
+                      <TextField fx:id="textField" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Button graphicTextGap="0.0" minHeight="10.0" minWidth="13.0" mnemonicParsing="false" onAction="#btnClearClicked" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="4.0" />
+               </children>
+            </AnchorPane>
                 <HBox styleClass="wordInputButtonContainer">
-                <Button fx:id="btnSubmit" mnemonicParsing="false" onAction="#btnSubmitClicked" text="Submit Word" />
-                <Button fx:id="btnClear" mnemonicParsing="false" onAction="#btnClearClicked" text="Clear Word" />
+                <Button fx:id="btnSubmit" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnSubmitClicked" text="Submit Word" />
                 </HBox>
             </children>
         </VBox>
