@@ -86,6 +86,11 @@ public class JoggleCubeController implements IJoggleCubeController {
 
     }
 
+    @Override
+    public void setName(String name) {
+        System.out.println(name);
+    }
+
     /**
      * Using the first to letters as an example set the language by using "en" for american english
      * @param lang a string representing the language you wanted to create

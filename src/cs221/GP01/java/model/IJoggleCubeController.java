@@ -73,4 +73,9 @@ public interface IJoggleCubeController {
      * @param file
      */
     void saveGrid(File file,String name);
+
+    /**
+     * sets the current players name
+     */
+    void setName(String name);
 }

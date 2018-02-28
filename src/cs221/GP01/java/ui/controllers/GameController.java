@@ -20,6 +20,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
@@ -27,12 +28,14 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.layout.*;
+import javafx.stage.StageStyle;
 
 import javax.print.URIException;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Optional;
 
 
 /**
@@ -171,6 +174,25 @@ public class GameController extends BaseScreenController implements IGameControl
      */
     @Override
     public void prepView(){
+
+        TextInputDialog dialog = new TextInputDialog("Walter");
+        dialog.setTitle("Users Name");
+        dialog.setHeaderText("Look, a Text Input Dialog");
+        dialog.setContentText("Please enter your name:");
+        dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
+        dialog.initStyle(StageStyle.UNDECORATED);
+        boolean done = false;
+        while(!done) {
+            dialog.showAndWait();
+            String result = dialog.getResult();
+            if (result.matches("(\\w*)")) {
+                UIController.getJoggleCube().setName(result);
+                done = true;
+            } else {
+                dialog.setHeaderText("Hey, that wasn't a valid name, try again!");
+            }
+        }
+
 
         // Disable hamburger context on right click
         menuButton.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);

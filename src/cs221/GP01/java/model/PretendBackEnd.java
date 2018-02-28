@@ -21,7 +21,7 @@ import java.util.Random;
  * @author Nathan Williams
  * @version 0.2
  */
-public class PretendBackEnd implements IJoggleCubeController{
+        public class PretendBackEnd implements IJoggleCubeController{
 
     @Override
     public void setUI(IUIController controller) {
@@ -125,5 +125,10 @@ public class PretendBackEnd implements IJoggleCubeController{
     @Override
     public void saveGrid(File file, String name) {
 
+    }
+
+    @Override
+    public void setName(String name) {
+        System.out.println(name);
     }
 }
