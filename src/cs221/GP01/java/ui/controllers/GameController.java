@@ -178,7 +178,7 @@ public class GameController extends BaseScreenController implements IGameControl
         dialog.setContentText("Please enter your name:");
         dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
         // todo: make this the correct icon
-        dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("../../../resource/img/icon/start_icon_inactive.png"))));
+        dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("../../../resource/img/icon/person_icon.png"))));
         dialog.initStyle(StageStyle.UNDECORATED);
 
 
