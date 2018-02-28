@@ -30,13 +30,7 @@
       <Button fx:id="rightPageNav" mnemonicParsing="false" onAction="#btnRightNavClicked" styleClass="navButton" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
-      <HBox styleClass="bottomNavContainer">
-         <children>
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" />
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" />
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" />
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" />
-         </children>
+      <HBox fx:id="carouselIndicatorContainer" styleClass="carouselIndicatorContainer">
       </HBox>
    </bottom>
    <center>
