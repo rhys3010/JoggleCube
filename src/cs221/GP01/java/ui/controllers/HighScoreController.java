@@ -47,7 +47,13 @@ public class HighScoreController extends BaseScreenController implements Initial
      * Table Columns
      */
     @FXML
-    private TableColumn idCol, dateCol, scoreCol, nameCol;
+    private TableColumn idCol;
+    @FXML
+    private TableColumn<HighScore, String> dateCol;
+    @FXML
+    private TableColumn scoreCol;
+    @FXML
+    private TableColumn<HighScore, String> nameCol;
 
     /**
      * The label of the highscore page
@@ -114,9 +120,10 @@ public class HighScoreController extends BaseScreenController implements Initial
      * Stop users from being able to reorder table columns (temporary fix)
      * Solution used here: https://bittlife.com/javafx-disable-column-reorder-tableview/
      */
-    public static <S, T> void columnReorder(TableView table, TableColumn<S, T> ...columns){
+    @SafeVarargs
+    private static <S, T> void columnReorder(TableView table, TableColumn<S, T>... columns){
         table.getColumns().addListener(new ListChangeListener() {
-            public boolean suspended;
+            boolean suspended;
 
             @Override
             public void onChanged(Change change) {
@@ -188,8 +195,8 @@ public class HighScoreController extends BaseScreenController implements Initial
      *
      * todo Add Rank Number to table
      *
-     * @param location
-     * @param resources
+     * @param location axc
+     * @param resources axc
      */
 
     @Override
@@ -206,7 +213,6 @@ public class HighScoreController extends BaseScreenController implements Initial
         nameCol.setCellValueFactory(
                 new PropertyValueFactory<HighScore, String>("Name")
         );
-
 
         // Set Score sort type
         scoreCol.setSortType(TableColumn.SortType.DESCENDING);

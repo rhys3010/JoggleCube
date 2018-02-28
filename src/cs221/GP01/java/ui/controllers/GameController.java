@@ -10,25 +10,25 @@ package cs221.GP01.java.ui.controllers;
 
 import cs221.GP01.java.ui.UIController;
 import cs221.GP01.java.ui.ScreenType;
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Point2D;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.stage.StageStyle;
 
-import java.awt.*;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 
 /**
@@ -52,7 +52,7 @@ public class GameController extends BaseScreenController implements IGameControl
     @FXML
     private Label scoreLabel, timerLabel;
 
-    private ObservableList<String> foundWords = FXCollections.observableArrayList();
+    private ObservableList<String> foundWords;
 
 
     @FXML
@@ -73,6 +73,9 @@ public class GameController extends BaseScreenController implements IGameControl
     @FXML
     private ListView<String> foundWordsList;
 
+    /**
+     * The Context menu at the top right of the screen
+     */
     @FXML
     private ContextMenu hamburgerContext;
 
@@ -94,40 +97,48 @@ public class GameController extends BaseScreenController implements IGameControl
 
     @FXML
     private void btnSubmitClicked() {
-        if(!textField.getText().equals("")) {
-            if (UIController.getJoggleCube().testWordValidity(textField.getText())) {
-                foundWords.add(textField.getText());
-                btnSubmit.setStyle("-fx-background-color: -fx-valid-color;");
-                textField.setStyle("-fx-background-color: -fx-valid-color; -fx-text-fill: white;");
-                gridDisplayer.setAllActive();
-                textField.setText("");
-            } else {
-                btnSubmit.setStyle("-fx-background-color: -fx-invalid-color;");
-                textField.setStyle("-fx-background-color: -fx-invalid-color; -fx-text-fill: white;");
-            }
+        if (!textField.getText().equals("") && UIController.getJoggleCube().testWordValidity(textField.getText())) {
+            foundWords.add(textField.getText());
+            btnSubmit.setStyle("-fx-background-color: -fx-valid-color;");
+            textField.setStyle("-fx-background-color: -fx-valid-color; -fx-text-fill: white;");
+            gridDisplayer.setAllActive();
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            btnSubmit.setStyle("-fx-background-color:-fx-tertiary-color;");
+                            textField.setStyle("-fx-background-color: white; -fx-text-fill: -fx-tertiary-color;");
+                            textField.setText(""); //todo hmmmmmm
+                        }
+                    },
+                    1000
+            );
         } else {
             btnSubmit.setStyle("-fx-background-color: -fx-invalid-color;");
             textField.setStyle("-fx-background-color: -fx-invalid-color; -fx-text-fill: white;");
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            btnSubmit.setStyle("-fx-background-color:-fx-tertiary-color;");
+                            textField.setStyle("-fx-background-color: white; -fx-text-fill: -fx-tertiary-color;");
+                        }
+                    },
+                    1000
+            );
         }
-
-        new java.util.Timer().schedule(
-                new java.util.TimerTask() {
-                    @Override
-                    public void run() {
-                        btnSubmit.setStyle("-fx-background-color:-fx-tertiary-color;");
-                        textField.setStyle("-fx-background-color: white; -fx-text-fill: -fx-tertiary-color;");
-                    }
-                },
-                1000
-        );
     }
 
     /**
      * Handles the hamburger menu being clicked
      */
     @FXML
-    private void btnMenuClicked(){
-        // todo show context menu here
+    private void btnMenuClicked() {
+        // Get the coordinates of the menu button
+        Point2D screenPos = menuButton.localToScreen(menuButton.getLayoutX(), menuButton.getLayoutY());
+
+        // Show the context menu at the X, Y co-ordinates with an offset
+        hamburgerContext.show(menuButton, screenPos.getX()-100, screenPos.getY()+20);
     }
 
     /**
@@ -162,7 +173,36 @@ public class GameController extends BaseScreenController implements IGameControl
     @Override
     public void prepView(){
 
-        createCellFactory();
+        TextInputDialog dialog = new TextInputDialog("John");
+        dialog.setTitle("Enter Name");
+        dialog.setHeaderText("Name Input");
+        dialog.setContentText("Please enter your name:");
+        dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
+        // todo: make this the correct icon
+        dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("../../../resource/img/icon/person_icon.png"))));
+        dialog.initStyle(StageStyle.UNDECORATED);
+
+
+        boolean done = false;
+        // todo: add more in-depth validation checking
+        while(!done) {
+            dialog.showAndWait();
+            // Remove spaces from input
+            String result = dialog.getResult().replace(" ", "");
+
+            if (result.matches("(\\w*)")) {
+                UIController.getJoggleCube().setName(result);
+                done = true;
+            } else {
+                dialog.setHeaderText("Invalid Name Entry, Please try again");
+            }
+        }
+
+        foundWords = FXCollections.observableArrayList();
+
+
+        // Disable hamburger context on right click
+        menuButton.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
 
         GridPane[] twoDGrid = {top2d, middle2d, bottom2d};
         GridPane[] twoFiveDGrid = {top25d, middle25d, bottom25d};
@@ -171,73 +211,6 @@ public class GameController extends BaseScreenController implements IGameControl
         foundWordsList.setItems(foundWords);
     }
 
-    /**
-     * Helper function to create listview cell factory
-     */
-    private void createCellFactory(){
-        // Create cell factory for found words list
-        foundWordsList.setCellFactory(lv -> {
-
-            // Create context menu and cell
-            ListCell<String> cell = new ListCell<>();
-            ContextMenu contextMenu = new ContextMenu();
-
-            // Create a menu item for looking up a word
-            MenuItem lookupItem = new MenuItem();
-            lookupItem.textProperty().bind(Bindings.format("Lookup \"%s\" in Dictionary", cell.itemProperty()));
-
-            // Handle item menu click
-            lookupItem.setOnAction(event -> {
-                // Launch dictionary URL in user's default browser
-
-                // Don't uncomment this - it'll brick your PC :(
-                // todo fix.
-
-                /*
-                try{
-                    Desktop.getDesktop().browse(new URI("http://www.dictionary.com/browse/" + cell.textProperty().get()));
-                }catch (IOException ex1){
-                    ex1.printStackTrace();
-
-                }catch (URISyntaxException ex2){
-                    ex2.printStackTrace();
-                }*/
-            });
-
-
-            // Create copy option in menu
-            MenuItem copyItem = new MenuItem();
-            copyItem.textProperty().bind(Bindings.format("Copy", cell.itemProperty()));
-
-            // Behaviour of copy item
-            copyItem.setOnAction(event -> {
-
-                // Create clipboard object and add the cell contents to it
-                Clipboard clipboard = Clipboard.getSystemClipboard();
-
-                ClipboardContent clipboardContent = new ClipboardContent();
-                clipboardContent.putString(cell.textProperty().get());
-
-                clipboard.setContent(clipboardContent);
-            });
-
-
-            // Add items to context menu
-            contextMenu.getItems().addAll(lookupItem, copyItem);
-            cell.textProperty().bind(cell.itemProperty());
-
-            // Add context menu to each added cell
-            cell.emptyProperty().addListener((obs, wasEmpty, isNowEmpty) -> {
-                if(isNowEmpty){
-                    cell.setContextMenu(null);
-                }else{
-                    cell.setContextMenu(contextMenu);
-                }
-            });
-
-            return cell;
-        });
-    }
 
     @Override
     public Label getTimerLabel() {
