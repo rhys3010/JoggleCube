@@ -103,32 +103,36 @@ public class GameController extends BaseScreenController implements IGameControl
 
     @FXML
     private void btnSubmitClicked() {
-        if(!textField.getText().equals("")) {
-            if (UIController.getJoggleCube().testWordValidity(textField.getText())) {
-                foundWords.add(textField.getText());
-                btnSubmit.setStyle("-fx-background-color: -fx-valid-color;");
-                textField.setStyle("-fx-background-color: -fx-valid-color; -fx-text-fill: white;");
-                gridDisplayer.setAllActive();
-                textField.setText("");
-            } else {
-                btnSubmit.setStyle("-fx-background-color: -fx-invalid-color;");
-                textField.setStyle("-fx-background-color: -fx-invalid-color; -fx-text-fill: white;");
-            }
+        if (!textField.getText().equals("") && UIController.getJoggleCube().testWordValidity(textField.getText())) {
+            foundWords.add(textField.getText());
+            btnSubmit.setStyle("-fx-background-color: -fx-valid-color;");
+            textField.setStyle("-fx-background-color: -fx-valid-color; -fx-text-fill: white;");
+            gridDisplayer.setAllActive();
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            btnSubmit.setStyle("-fx-background-color:-fx-tertiary-color;");
+                            textField.setStyle("-fx-background-color: white; -fx-text-fill: -fx-tertiary-color;");
+                            textField.setText(""); //todo hmmmmmm
+                        }
+                    },
+                    1000
+            );
         } else {
             btnSubmit.setStyle("-fx-background-color: -fx-invalid-color;");
             textField.setStyle("-fx-background-color: -fx-invalid-color; -fx-text-fill: white;");
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            btnSubmit.setStyle("-fx-background-color:-fx-tertiary-color;");
+                            textField.setStyle("-fx-background-color: white; -fx-text-fill: -fx-tertiary-color;");
+                        }
+                    },
+                    1000
+            );
         }
-
-        new java.util.Timer().schedule(
-                new java.util.TimerTask() {
-                    @Override
-                    public void run() {
-                        btnSubmit.setStyle("-fx-background-color:-fx-tertiary-color;");
-                        textField.setStyle("-fx-background-color: white; -fx-text-fill: -fx-tertiary-color;");
-                    }
-                },
-                1000
-        );
     }
 
     /**
