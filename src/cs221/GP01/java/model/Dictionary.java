@@ -2,6 +2,8 @@ package cs221.GP01.java.model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -15,7 +17,6 @@ import java.util.regex.Pattern;
 
 public class Dictionary implements IDictionary{
     private HashMap<String, String> dictionary = new HashMap();
-    private String dictionaryFileName = "dictionary.txt";
 
     public Dictionary(){
         //Do nothing except make the hashmap instance variable
@@ -27,23 +28,29 @@ public class Dictionary implements IDictionary{
      */
     public void loadDictionary(String filename){
         //Load
-        File file = new File(getClass().getResource("../../resource/dictionary/" + filename).getFile());
         //Finding the absolute path
         //System.out.println(file.getAbsolutePath());
 
         //Variable to take load time of the dictionary
         long currentTime = System.currentTimeMillis();
 
-        String input;
-        try{
-            Scanner in = new Scanner(file);
-            while(in.hasNext()){
-                input = in.nextLine();
-                dictionary.put(input, input);
+        String filePath = getClass().getResource("../../resource/dictionary/" + filename).getFile();
+        try {
+            URI uri = new URI(filePath.trim().replaceAll("\\u0020", "%20"));
+            File file = new File(uri.getPath());
+            String input;
+            try{
+                Scanner in = new Scanner(file);
+                while(in.hasNext()){
+                    input = in.nextLine().toUpperCase();
+                    dictionary.put(input, input);
+                }
+            } catch(FileNotFoundException e){
+                //An error in file name
+                System.out.println("Dictionary file not found");
             }
-        } catch(FileNotFoundException e){
-            //An error in file name
-            System.out.println("Dictionary file not found");
+        } catch (URISyntaxException ex) {
+            System.out.println(ex.toString());
         }
         System.out.print("Time taken to load dictionary: ");
         System.out.println(System.currentTimeMillis() - currentTime);

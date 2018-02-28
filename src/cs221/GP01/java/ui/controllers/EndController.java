@@ -13,6 +13,7 @@ import cs221.GP01.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -32,7 +33,11 @@ import java.util.ResourceBundle;
  * @author Nathan Williams (naw21)
  * @version 0.2  DRAFT
  */
-public class EndController extends BaseOverlayController{
+public class EndController extends BaseOverlayController implements INeedPrep {
+
+    @FXML
+    Label scoreLabel,highScoreLabel;
+
 
 
     /**
@@ -41,6 +46,13 @@ public class EndController extends BaseOverlayController{
      */
     public EndController(UIController UIController){
         super(UIController);
+    }
+
+
+    @Override
+    public void prepView() {
+        scoreLabel.setText(UIController.getJoggleCube().getScore() + "");
+        highScoreLabel.setText(UIController.getJoggleCube().getHighScore() + "");
     }
 
 

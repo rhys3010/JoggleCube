@@ -209,6 +209,14 @@ public class GameController extends BaseScreenController implements IGameControl
         gridDisplayer = new GridDisplayer(textField,twoDGrid,twoFiveDGrid,subScene,groupy,back);
         gridDisplayer.buildGrids(UIController.getJoggleCube().getCubeData());
         foundWordsList.setItems(foundWords);
+
+
+        /** todo enable timer code
+        Timer timer = new timer(Label,this);
+
+        timer.start();
+
+        */
     }
 
 

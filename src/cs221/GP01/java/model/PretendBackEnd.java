@@ -128,6 +128,21 @@ import java.util.Random;
     }
 
     @Override
+    public int getWordScore(String word) {
+        return 0;
+    }
+
+    @Override
+    public int getScore() {
+        return 365;
+    }
+
+    @Override
+    public int getHighScore() {
+        return 545;
+    }
+
+    @Override
     public void setName(String name) {
         System.out.println(name);
     }

@@ -2,7 +2,10 @@ package cs221.GP01.java.model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,6 +18,11 @@ import java.util.Scanner;
 public class Cube implements ICube{
     private Block cube[][][] = new Block[3][3][3];
     private ArrayList<String> bagOfLetters = new ArrayList<>();
+    private HashMap<String, String> scores = new HashMap<>();
+
+    public Cube(String letterFilename){
+        loadBagOfLetters(letterFilename);
+    }
 
     public Cube(){}
 
@@ -100,17 +108,43 @@ public class Cube implements ICube{
 
     private void loadBagOfLetters(String lettersFilename){
         bagOfLetters.clear();
-        File file = new File(getClass().getResource("../../resource/letters/" + lettersFilename).getFile());
-        String input;
-        try{
-            Scanner in = new Scanner(file);
-            while(in.hasNext()){
-                input = in.nextLine();
-                bagOfLetters.add(input);
+        String filePath = getClass().getResource("../../resource/letters/" + lettersFilename).getFile();
+        try {
+            URI uri = new URI(filePath.trim().replaceAll("\\u0020", "%20"));
+            File file = new File(uri.getPath());
+            String input;
+            try{
+                Scanner in = new Scanner(file);
+                //Counter
+                int i = 0;
+                String lastLetter = "";
+                while(in.hasNext()){
+                    input = in.next();
+                    if (i%3 == 0){
+                        //If it is a 3 then it is a letter
+                        lastLetter = input;
+                    } else if ( i%3 == 1){
+                        //Its the number of times its been pulled in
+                        for (int j = 0; j<Integer.parseInt(input); j++){
+                            bagOfLetters.add(lastLetter);
+                        }
+                    } else{
+                        //Its the score for the letter
+                        scores.put(lastLetter, input);
+                    }
+                    i++;
+                }
+            } catch(FileNotFoundException e){
+                //An error in file name
+                System.out.println("Letters not found");
+                System.out.println(e.toString());
             }
-        } catch(FileNotFoundException e){
-            //An error in file name
-            System.out.println("Dictionary file not found");
+        } catch (URISyntaxException ex) {
+            System.out.println(ex.toString());
         }
+    }
+
+    public HashMap<String, String> getScores(){
+        return scores;
     }
 }

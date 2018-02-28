@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -31,17 +32,18 @@ public class JoggleCubeController implements IJoggleCubeController{
     //dictionary.txt was taken from an open source scrabble bot at
     //Currently American English
     //URL: https://github.com/jonbcard/scrabble-bot/blob/master/src/dictionary.txt
-    //todo adding in functionality for different dictionaries, as well as loading letters in different languages
-    private final String dictionaryFileName = language + "_dictionary";
+    private String dictionaryFileName = language + "_dictionary";
+
+    private HashMap<String, String> scores;
 
     public JoggleCubeController(){
         //Load dictionary on creation of JoggleCubeController
-        cube = new Cube();
+        cube = new Cube(language + "_letters");
         dictionary = new Dictionary();
         dictionary.loadDictionary(dictionaryFileName);
         storedWords = new ArrayList<>();
+        scores = cube.getScores();
     }
-
 
     @Override
     public void setUI(IUIController controller) {
@@ -51,29 +53,24 @@ public class JoggleCubeController implements IJoggleCubeController{
     public void generateRandomGrid() { cube.populateCube(language + "_letters"); }
 
     public void loadGrid(File file) {
-        //load this file into grid and highscores
-        //todo Find a way to point to theGameController
+        //load this file into grid and high scores
         //Load save game from the file stream given
         String input;
         ArrayList<String> letters = new ArrayList<>();
         try{
             Scanner in = new Scanner(file);
-            while(in.hasNext()){
-                input = in.nextLine();
-                String next;
-                int forLoopLength = 3;
-                for(int i = 0; i<forLoopLength; i++){
-                    if(input.charAt(i) == 'Q'){
-                        //Handle Qu for the english dictionary
-                        next = "Qu";
-                        //Happens at the end to skip the u part
-                        forLoopLength++;
-                    } else {
-                        next = String.valueOf(input.charAt(i));
-                    }
-                    letters.add(next);
-                }
+            //Load in all of the letters
+            while(in.hasNext() && letters.size() < 27) {
+                input = in.next();
+                letters.add(input);
             }
+            //Load in all of the high scores
+            /*
+            while(in.hasNext()){
+                input = in.next()
+            }
+             */
+
         } catch(FileNotFoundException e){
             //An error in file name
             System.out.println("Game Save not found");
@@ -93,21 +90,11 @@ public class JoggleCubeController implements IJoggleCubeController{
                 }
             }
         }
-
         //At this point the cube has been loaded in
     }
 
+    //todo Question whether if return true should get the score and then add to the score in a private instance variable
     public boolean testWordValidity(String word) {
-      /* //Add all of the stored words to the arrayList
-        for (int i = 0; i<theGameController.getFoundWords().size(); i++){
-            String newWord = theGameController.getFoundWords().get(i);
-            //If not already in the array add to the array else do nothing
-            //Don't necessarily need to check the arraylist for original contents as it would work with duplicates anyways
-            if(!storedWords.contains(newWord)){
-                storedWords.add(newWord);
-            }
-        }
-*/
         //Test if already used
         if (storedWords.contains(word)){return false;}
 
@@ -142,6 +129,8 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     //Get the grids from a saved
     public ObservableList<String> getRecentGrids() { return null; }
+
+
     public void saveGrid(File file, String name) {
 
     }
@@ -157,5 +146,58 @@ public class JoggleCubeController implements IJoggleCubeController{
      */
     public void setLanguage(String lang){
         language = lang;
+    }
+
+    /**
+     * Generate the word score for this word using scrabble score * 3
+     * @param word the word to get the score for
+     * @return returns an int that is the score
+     */
+    //Scores are stored in the file next to the letter seperated by a ':' e.g. A:3
+    public int getWordScore(String word){
+        //Split the word up into the different letters including 'Qu' and then search the hashmap for each and
+        //return a sum of the scores
+        int sumOf = 0;
+        for(int i = 0; i<word.length(); i++){
+            if(scores.containsKey(String.valueOf(word.charAt(i)))){
+                //If scores contains the word continue else check for double letters
+                sumOf += Integer.getInteger(scores.get(word.charAt(i) + ""));
+            } else if(scores.containsKey(word.charAt(i) + word.charAt(i+1) + "")){
+                //Else if scores contains word[i] + word[i+1] then handle
+                sumOf += Integer.getInteger(scores.get(word.charAt(i) + word.charAt(i+1)+ ""));
+                i++;
+            } else{
+                System.out.println("Score is broken for this letter" + word.charAt(i));
+            }
+        }
+        //Return * 3 scores
+        return sumOf * 3;
+    }
+
+
+    /**
+     * gets the score for the current game.
+     *
+     * @return the score for the current game
+     */
+    public int getScore() {
+        return 0;
+    }
+
+    /**
+     * returns the top highscore
+     *
+     * @return the top high score.
+     */
+    public int getHighScore() {
+        return 0;
+    }
+
+    /**
+     * Based on the current language will rebuild the backend dictionary object with the correct language
+     */
+    public void reloadDictionary() {
+        dictionary = new Dictionary();
+        dictionary.loadDictionary(language + "_dictionary");
     }
 }
