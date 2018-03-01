@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.ComboBox?>
 <VBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="settingsOverlay" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox styleClass="topMenu">
@@ -21,6 +22,10 @@
             <CheckBox mnemonicParsing="false" styleClass="colorBlindToggle" text="Enable Colour Blind Mode" />
             <CheckBox mnemonicParsing="false" selected="true" text="Enable Music" />
             <CheckBox mnemonicParsing="false" selected="true" text="Enable Sound Effects" />
+            <HBox>
+               <Label text="Language:"/>
+               <ComboBox fx:id="languageSelector" promptText="English"/>
+            </HBox>
             <VBox styleClass="volumeContainer">
                <children>
                   <Label text="Master Volume" />

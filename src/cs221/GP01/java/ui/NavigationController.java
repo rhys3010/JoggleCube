@@ -86,6 +86,16 @@ public class NavigationController implements IViewNavigation{
     public void showOverlay(ScreenType overlay, BaseScreenController parent){
         // Verify that the overlay is of type BaseOverlayController
         if(screens.get(overlay).getController() instanceof BaseOverlayController){
+            // Disable the background of the parent screen
+            parent.getMainNode().setDisable(true);
+
+            // If the parent screen is a GameController, then disable the game cube
+            if(parent instanceof GameController){
+                ((IGameController) parent).getCubeContainer().setVisible(false);
+            }
+            
+            // Set the parent of the overlay
+            ((BaseOverlayController) screens.get(overlay).getController()).setParentController(parent);
 
             //checks if the overlay needs prep before displaying
             if(screens.get(overlay).getController() instanceof INeedPrep) {
@@ -94,17 +104,6 @@ public class NavigationController implements IViewNavigation{
 
             // Add the overlay's FXML to the parent screen's root
             parent.getRoot().getChildren().add(screens.get(overlay).getRoot());
-
-            // Disable the background of the parent screen
-            parent.getMainNode().setDisable(true);
-
-            // If the parent screen is a GameController, then disable the game cube
-            if(parent instanceof GameController){
-                ((IGameController) parent).getCubeContainer().setVisible(false);
-            }
-
-            // Set the parent of the overlay
-            ((BaseOverlayController) screens.get(overlay).getController()).setParentController(parent);
         }
     }
 
