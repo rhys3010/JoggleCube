@@ -102,4 +102,6 @@ public interface IJoggleCubeController {
     void setName(String name);
 
     void startTimer();
+
+    void interruptTimer();
 }

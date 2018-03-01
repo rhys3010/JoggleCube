@@ -22,6 +22,7 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     private Dictionary dictionary;
     private Cube cube;
+    private IGameTimer timer;
 
     private ArrayList<String> storedWords;
 
@@ -44,6 +45,7 @@ public class JoggleCubeController implements IJoggleCubeController{
         dictionary.loadDictionary(dictionaryFileName);
         storedWords = new ArrayList<>();
         scores = cube.getScores();
+        timer = new GameTimer(ui);
     }
 
     @Override
@@ -143,9 +145,14 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     @Override
     public void startTimer() {
-        IGameTimer timer = new GameTimer(ui);
         //todo start this in a separate thread
         //timer.startTimer();
+    }
+
+    @Override
+    public void interruptTimer() {
+        //timer.interrupt();
+        timer.resetTime();
     }
 
     /**

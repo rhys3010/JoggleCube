@@ -154,7 +154,7 @@ public class GameController extends BaseScreenController implements IGameControl
      */
     @FXML
     private void btnEndGameClicked() {
-        //todo stop timer add up score etc
+        UIController.getJoggleCube().interruptTimer();
         UIController.getNavigationController().showOverlay(ScreenType.END, this);
     }
 

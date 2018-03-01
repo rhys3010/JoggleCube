@@ -22,7 +22,7 @@ import java.util.Random;
  * @author Nathan Williams
  * @version 0.2
  */
-        public class PretendBackEnd implements IJoggleCubeController{
+public class PretendBackEnd implements IJoggleCubeController{
 
     @Override
     public void setUI(IUIController controller) {
@@ -150,6 +150,11 @@ import java.util.Random;
 
     @Override
     public void startTimer() {
+
+    }
+
+    @Override
+    public void interruptTimer() {
 
     }
 }
