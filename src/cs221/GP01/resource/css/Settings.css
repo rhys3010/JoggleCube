@@ -14,6 +14,10 @@
     -fx-alignment: top-center;
 }
 
+.label {
+    -fx-font-color: white;
+}
+
 .topMenu{
     -fx-alignment: center;
     -fx-spacing: 80px;

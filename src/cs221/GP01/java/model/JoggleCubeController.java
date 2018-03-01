@@ -3,7 +3,6 @@ package cs221.GP01.java.model;
 import cs221.GP01.java.ui.IUIController;
 import cs221.GP01.java.ui.controllers.GameController;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Label;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,6 +20,9 @@ public class JoggleCubeController implements IJoggleCubeController{
     private IUIController ui;
 
     private Dictionary dictionary;
+
+    private HashMap<String, Dictionary> loadedDictionaries = new HashMap<>();
+
     private Cube cube;
     private IGameTimer timer;
 
@@ -34,15 +36,13 @@ public class JoggleCubeController implements IJoggleCubeController{
     //dictionary.txt was taken from an open source scrabble bot at
     //Currently American English
     //URL: https://github.com/jonbcard/scrabble-bot/blob/master/src/dictionary.txt
-    private String dictionaryFileName = language + "_dictionary";
 
     private HashMap<String, String> scores;
 
     public JoggleCubeController(){
         //Load dictionary on creation of JoggleCubeController
         cube = new Cube(language + "_letters");
-        dictionary = new Dictionary();
-        dictionary.loadDictionary(dictionaryFileName);
+        loadNewDictionary();
         storedWords = new ArrayList<>();
         scores = cube.getScores();
         timer = new GameTimer(ui);
@@ -161,6 +161,12 @@ public class JoggleCubeController implements IJoggleCubeController{
      */
     public void setLanguage(String lang){
         language = lang;
+        if (loadedDictionaries.containsKey(lang)) {
+            dictionary = loadedDictionaries.get(lang);
+        } else {
+            loadNewDictionary();
+        }
+        cube = new Cube(language + "_letters");
     }
 
     /**
@@ -211,8 +217,9 @@ public class JoggleCubeController implements IJoggleCubeController{
     /**
      * Based on the current language will rebuild the backend dictionary object with the correct language
      */
-    public void reloadDictionary() {
+    public void loadNewDictionary() {
         dictionary = new Dictionary();
+        loadedDictionaries.put(language,dictionary);
         dictionary.loadDictionary(language + "_dictionary");
     }
 }
