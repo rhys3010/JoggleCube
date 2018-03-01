@@ -30,9 +30,12 @@
     -fx-pref-height: 50px;
     -fx-background-radius: 10px;
     -fx-background-insets: 0 0 0 -10, 0, 0, 0;
-    -fx-spacing: 20px;
+    -fx-background-size: 30 30;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-background-image: url("../img/icon/language_icon_inactive.png");
     -fx-background-color: -fx-tertiary-color;
-    -fx-alignment: center;
+    -fx-alignment: center-right;
 }
 
 .buttonContainer .languageSelectorContainer Label{
@@ -51,7 +54,7 @@
 }
 
 .buttonContainer .languageSelectorContainer .list-cell:hover{
-    -fx-text-fill: #cecece;
+    -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-background-color: -fx-secondary-color;
 }
