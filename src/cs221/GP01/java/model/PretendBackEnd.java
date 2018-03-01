@@ -149,7 +149,7 @@ import java.util.Random;
     }
 
     @Override
-    public void startTimer(Label timer) {
+    public void startTimer() {
 
     }
 }

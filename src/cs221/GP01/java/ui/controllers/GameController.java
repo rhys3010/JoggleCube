@@ -212,7 +212,7 @@ public class GameController extends BaseScreenController implements IGameControl
         foundWordsList.setItems(foundWords);
 
 
-       UIController.getJoggleCube().startTimer(timerLabel);
+       UIController.getJoggleCube().startTimer();
     }
 
 

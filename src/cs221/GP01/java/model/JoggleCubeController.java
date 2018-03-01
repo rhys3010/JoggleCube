@@ -142,8 +142,10 @@ public class JoggleCubeController implements IJoggleCubeController{
     }
 
     @Override
-    public void startTimer(Label timer) {
-        
+    public void startTimer() {
+        IGameTimer timer = new GameTimer(ui);
+        //todo start this in a separate thread
+        //timer.startTimer();
     }
 
     /**

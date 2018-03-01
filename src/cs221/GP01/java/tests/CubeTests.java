@@ -1,7 +1,6 @@
 package cs221.GP01.java.tests;
 
 import cs221.GP01.java.model.Cube;
-import cs221.GP01.java.model.Block;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

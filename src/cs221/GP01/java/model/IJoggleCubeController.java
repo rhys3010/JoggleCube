@@ -101,5 +101,5 @@ public interface IJoggleCubeController {
      */
     void setName(String name);
 
-    void startTimer(Label timer);
+    void startTimer();
 }
