@@ -101,7 +101,7 @@ public class EndController extends BaseOverlayController implements INeedPrep {
         if (file != null) {
             //todo get the users name
             String name = "bob";
-            UIController.getJoggleCube().saveGrid(file,name);
+            UIController.getJoggleCube().saveGrid(file);
         } else {
             //todo add try again pop-up
         }

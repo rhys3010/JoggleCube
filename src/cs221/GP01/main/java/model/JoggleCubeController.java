@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -13,7 +14,7 @@ import java.util.Scanner;
 /**
  * The backend main controller
  * @author Samuel Jones - srj12@aber.ac.uk
- * @version 0.3
+ * @version 0.7
  */
 public class JoggleCubeController implements IJoggleCubeController{
 
@@ -28,9 +29,14 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     private ArrayList<String> storedWords;
 
+    private IHighScores currentCubeHighScores;
+
+    private IHighScores overallHighScores;
+
     private GameController theGameController;
 
     //en = English (American)
+    //cy = Cymraeg (Welsh)
     private String language = "en";
 
     //dictionary.txt was taken from an open source scrabble bot at
@@ -134,8 +140,40 @@ public class JoggleCubeController implements IJoggleCubeController{
     public ObservableList<String> getRecentGrids() { return null; }
 
 
-    public void saveGrid(File file, String name) {
+    public void saveGrid(File file) {
+        try{
+            PrintWriter out = new PrintWriter(file);
+            //Print cube to a single array for output
+            String flatCube[] = new String[27];
+            int c = 0;
+            for(int i = 0; i<3; i++){
+                for(int j = 0; j<3; j++){
+                    for(int k = 0; k<3; k++){
+                        //flatCube[c] = "";
+                        flatCube[c] = cube.getBlock(i, j, k).getLetter();
+                        c++;
+                    }
+                }
+            }
 
+            //Use the Flat cube to output in the correct format
+            int b = 0;
+            for(int i = 0; i<9; i++){
+                out.print(flatCube[b] + " ");
+                out.print(flatCube[b+1] + " ");
+                out.print(flatCube[b+2]);
+                if(b != 25){
+                    out.print("\n");
+                }
+                b += 3;
+            }
+
+            //Output the highscores
+            // todo wait for highscores
+            out.close();
+        } catch (FileNotFoundException e){
+            System.out.println(e.toString());
+        }
     }
 
     @Override
