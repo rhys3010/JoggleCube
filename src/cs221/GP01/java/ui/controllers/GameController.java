@@ -173,7 +173,7 @@ public class GameController extends BaseScreenController implements IGameControl
     @Override
     public void prepView(){
 
-        TextInputDialog dialog = new TextInputDialog("John");
+        TextInputDialog dialog = new TextInputDialog("Walter");
         dialog.setTitle("Enter Name");
         dialog.setHeaderText("Name Input");
         dialog.setContentText("Please enter your name:");
