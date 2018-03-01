@@ -14,7 +14,7 @@ import java.util.Scanner;
 /**
  * The backend main controller
  * @author Samuel Jones - srj12@aber.ac.uk
- * @version 0.3
+ * @version 0.7
  */
 public class JoggleCubeController implements IJoggleCubeController{
 
@@ -29,9 +29,14 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     private ArrayList<String> storedWords;
 
+    private IHighScores currentCubeHighScores;
+
+    private IHighScores overallHighScores;
+
     private GameController theGameController;
 
     //en = English (American)
+    //cy = Cymraeg (Welsh)
     private String language = "en";
 
     //dictionary.txt was taken from an open source scrabble bot at
