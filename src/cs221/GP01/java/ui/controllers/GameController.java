@@ -212,12 +212,7 @@ public class GameController extends BaseScreenController implements IGameControl
         foundWordsList.setItems(foundWords);
 
 
-        /** todo enable timer code
-        Timer timer = new timer(Label,this);
-
-        timer.start();
-
-        */
+       UIController.getJoggleCube().startTimer(timerLabel);
     }
 
 

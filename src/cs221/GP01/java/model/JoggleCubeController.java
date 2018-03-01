@@ -3,6 +3,7 @@ package cs221.GP01.java.model;
 import cs221.GP01.java.ui.IUIController;
 import cs221.GP01.java.ui.controllers.GameController;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Label;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -138,6 +139,11 @@ public class JoggleCubeController implements IJoggleCubeController{
     @Override
     public void setName(String name) {
         System.out.println(name);
+    }
+
+    @Override
+    public void startTimer(Label timer) {
+        
     }
 
     /**

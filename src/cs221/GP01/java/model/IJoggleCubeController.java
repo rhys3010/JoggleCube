@@ -2,6 +2,7 @@ package cs221.GP01.java.model;
 
 import cs221.GP01.java.ui.IUIController;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Label;
 
 import java.io.File;
 
@@ -99,4 +100,6 @@ public interface IJoggleCubeController {
      * sets the current players name
      */
     void setName(String name);
+
+    void startTimer(Label timer);
 }
