@@ -104,4 +104,6 @@ public interface IJoggleCubeController {
     void startTimer();
 
     void interruptTimer();
+
+    void setLanguage(String language);
 }

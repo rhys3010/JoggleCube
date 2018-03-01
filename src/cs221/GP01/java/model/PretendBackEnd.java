@@ -157,4 +157,9 @@ public class PretendBackEnd implements IJoggleCubeController{
     public void interruptTimer() {
 
     }
+
+    @Override
+    public void setLanguage(String language) {
+
+    }
 }
