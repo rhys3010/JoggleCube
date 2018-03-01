@@ -3,6 +3,7 @@ package cs221.GP01.java.model;
 import cs221.GP01.java.ui.IUIController;
 import cs221.GP01.java.ui.controllers.GameController;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Label;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,6 +22,7 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     private Dictionary dictionary;
     private Cube cube;
+    private IGameTimer timer;
 
     private ArrayList<String> storedWords;
 
@@ -43,6 +45,7 @@ public class JoggleCubeController implements IJoggleCubeController{
         dictionary.loadDictionary(dictionaryFileName);
         storedWords = new ArrayList<>();
         scores = cube.getScores();
+        timer = new GameTimer(ui);
     }
 
     @Override
@@ -127,7 +130,7 @@ public class JoggleCubeController implements IJoggleCubeController{
     //Need to look into the same thing
     public ObservableList<HighScore> getCurrentCubeHighScores() { return null; }
 
-    //Get the grids from a saved
+    //Get the grids from a saved file
     public ObservableList<String> getRecentGrids() { return null; }
 
 
@@ -138,6 +141,18 @@ public class JoggleCubeController implements IJoggleCubeController{
     @Override
     public void setName(String name) {
         System.out.println(name);
+    }
+
+    @Override
+    public void startTimer() {
+        //todo start this in a separate thread
+        //timer.startTimer();
+    }
+
+    @Override
+    public void interruptTimer() {
+        //timer.interrupt();
+        timer.resetTime();
     }
 
     /**
@@ -171,7 +186,7 @@ public class JoggleCubeController implements IJoggleCubeController{
             }
         }
         //Return * 3 scores
-        return sumOf * 3;
+        return sumOf * sumOf;
     }
 
 

@@ -154,7 +154,7 @@ public class GameController extends BaseScreenController implements IGameControl
      */
     @FXML
     private void btnEndGameClicked() {
-        //todo stop timer add up score etc
+        UIController.getJoggleCube().interruptTimer();
         UIController.getNavigationController().showOverlay(ScreenType.END, this);
     }
 
@@ -179,6 +179,7 @@ public class GameController extends BaseScreenController implements IGameControl
         dialog.setContentText("Please enter your name:");
         dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
         // todo: make this the correct icon
+        // todo: make this call using proper URI to allow for those dodgy PCs
         dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("../../../resource/img/icon/person_icon.png"))));
         dialog.initStyle(StageStyle.UNDECORATED);
 
@@ -211,12 +212,7 @@ public class GameController extends BaseScreenController implements IGameControl
         foundWordsList.setItems(foundWords);
 
 
-        /** todo enable timer code
-        Timer timer = new timer(Label,this);
-
-        timer.start();
-
-        */
+       UIController.getJoggleCube().startTimer();
     }
 
 

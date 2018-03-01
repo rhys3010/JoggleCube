@@ -11,6 +11,7 @@ package cs221.GP01.java.model;
 import cs221.GP01.java.ui.IUIController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Label;
 
 import java.io.File;
 import java.util.Random;
@@ -21,7 +22,7 @@ import java.util.Random;
  * @author Nathan Williams
  * @version 0.2
  */
-        public class PretendBackEnd implements IJoggleCubeController{
+public class PretendBackEnd implements IJoggleCubeController{
 
     @Override
     public void setUI(IUIController controller) {
@@ -145,5 +146,20 @@ import java.util.Random;
     @Override
     public void setName(String name) {
         System.out.println(name);
+    }
+
+    @Override
+    public void startTimer() {
+
+    }
+
+    @Override
+    public void interruptTimer() {
+
+    }
+
+    @Override
+    public void setLanguage(String language) {
+
     }
 }
