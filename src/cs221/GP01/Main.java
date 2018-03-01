@@ -42,7 +42,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
 
         //As a fix for the inability to load custom fonts on some computers (apparently a common bug in JavaFX8+)
-        Font.loadFont(getClass().getResourceAsStream("resource/font/DS-DIGI.TTF"), 16);
+        Font.loadFont(getClass().getResourceAsStream("main/resource/font/DS-DIGI.TTF"), 16);
 
         //todo launch the real back end
         //IJoggleCubeController joggleCube = new PretendBackEnd();
