@@ -3,9 +3,9 @@
  */
 
 package cs221.GP01.main.java.model;
-import cs221.GP01.java.ui.IUIController;
-import cs221.GP01.java.ui.ScreenType;
-import cs221.GP01.java.ui.controllers.BaseScreenController;
+import cs221.GP01.main.java.ui.IUIController;
+import cs221.GP01.main.java.ui.ScreenType;
+import cs221.GP01.main.java.ui.controllers.BaseScreenController;
 import javafx.scene.control.Label;
 
 import java.time.Duration;
