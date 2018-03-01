@@ -123,8 +123,13 @@ public class PretendBackEnd implements IJoggleCubeController{
         return recentGrids;
     }
 
+    /**
+     * saves the current score to grid file and overall.
+     *
+     * @param file
+     */
     @Override
-    public void saveGrid(File file, String name) {
+    public void saveGrid(File file) {
 
     }
 

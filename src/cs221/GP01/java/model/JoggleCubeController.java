@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -134,8 +135,40 @@ public class JoggleCubeController implements IJoggleCubeController{
     public ObservableList<String> getRecentGrids() { return null; }
 
 
-    public void saveGrid(File file, String name) {
+    public void saveGrid(File file) {
+        try{
+            PrintWriter out = new PrintWriter(file);
+            //Print cube to a single array for output
+            String flatCube[] = new String[27];
+            int c = 0;
+            for(int i = 0; i<3; i++){
+                for(int j = 0; j<3; j++){
+                    for(int k = 0; k<3; k++){
+                        //flatCube[c] = "";
+                        flatCube[c] = cube.getBlock(i, j, k).getLetter();
+                        c++;
+                    }
+                }
+            }
 
+            //Use the Flat cube to output in the correct format
+            int b = 0;
+            for(int i = 0; i<9; i++){
+                out.print(flatCube[b] + " ");
+                out.print(flatCube[b+1] + " ");
+                out.print(flatCube[b+2]);
+                if(b != 25){
+                    out.print("\n");
+                }
+                b += 3;
+            }
+
+            //Output the highscores
+            // todo wait for highscores
+            out.close();
+        } catch (FileNotFoundException e){
+            System.out.println(e.toString());
+        }
     }
 
     @Override

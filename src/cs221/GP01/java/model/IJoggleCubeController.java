@@ -73,7 +73,7 @@ public interface IJoggleCubeController {
      *
      * @param file
      */
-    void saveGrid(File file,String name);
+    void saveGrid(File file);
 
     /**
      * Generate the word score for this word using scrabble score * 3
