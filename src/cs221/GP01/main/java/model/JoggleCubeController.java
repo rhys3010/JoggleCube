@@ -25,6 +25,7 @@ public class JoggleCubeController implements IJoggleCubeController{
     private HashMap<String, Dictionary> loadedDictionaries = new HashMap<>();
 
     private Cube cube;
+    
     private IGameTimer timer;
 
     private ArrayList<String> storedWords;
@@ -33,15 +34,15 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     private IHighScores overallHighScores;
 
+    //Possibly not needed and is a leftover
     private GameController theGameController;
 
+    //en_dictionary was taken from an open source scrabble bot at
+    //Currently American English
+    //URL: https://github.com/jonbcard/scrabble-bot/blob/master/src/dictionary.txt
     //en = English (American)
     //cy = Cymraeg (Welsh)
     private String language = "en";
-
-    //dictionary.txt was taken from an open source scrabble bot at
-    //Currently American English
-    //URL: https://github.com/jonbcard/scrabble-bot/blob/master/src/dictionary.txt
 
     private HashMap<String, String> scores;
 
