@@ -318,7 +318,7 @@ public class GridDisplayer {
 
         //create a label with the letter
         Label label = new Label(letter);
-        label.setStyle("-fx-font-size: 21; -fx-text-fill: white;");
+        label.setStyle("-fx-font-size: 19; -fx-text-fill: white;");
         GridPane.setHalignment(label, HPos.CENTER);
 
         //add the label to the grid

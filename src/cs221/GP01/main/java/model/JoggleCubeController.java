@@ -30,9 +30,9 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     private ArrayList<String> storedWords;
 
-    private HighScore currentCubeHighScores;
+    private IHighScores currentCubeHighScores;
 
-    private HighScore overallHighScores;
+    private IHighScores overallHighScores;
 
     //Possibly not needed and is a leftover
     private GameController theGameController;
