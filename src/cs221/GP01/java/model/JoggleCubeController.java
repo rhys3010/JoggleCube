@@ -171,7 +171,7 @@ public class JoggleCubeController implements IJoggleCubeController{
             }
         }
         //Return * 3 scores
-        return sumOf * 3;
+        return sumOf * sumOf;
     }
 
 
