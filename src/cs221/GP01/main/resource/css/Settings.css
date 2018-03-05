@@ -1,0 +1,81 @@
+/*
+   * @(#) Settings.css 1.1 2018/02/16
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
+
+.settingsOverlay{
+    -fx-background-color: rgba(64, 64, 64, 0.95);
+    -fx-pref-width: 250;
+    -fx-pref-height: 360;
+    -fx-spacing: 30px;
+    -fx-alignment: top-center;
+}
+
+.label {
+    -fx-font-color: white;
+}
+
+.topMenu{
+    -fx-alignment: center;
+    -fx-spacing: 80px;
+    -fx-background-color: transparent;
+}
+
+.topMenu .title{
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-padding: 10px;
+}
+
+.topMenu .button{
+    -fx-background-color: transparent;
+    -fx-pref-height: 20;
+    -fx-pref-width: 20;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 20 20;
+    -fx-background-image: url("../img/icon/close_icon_inactive.png");
+}
+
+.topMenu .button:hover{
+    -fx-background-image: url("../img/icon/close_icon.png");
+}
+
+
+.settingsContainer{
+    -fx-alignment: center-left;
+    -fx-spacing: 30px;
+}
+
+.settingsContainer .check-box{
+    -fx-text-fill: white;
+}
+
+
+.settingsContainer .volumeContainer{
+    -fx-spacing: 5px;
+    -fx-alignment: center;
+}
+
+.settingsContainer .volumeContainer Label{
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.settingsContainer .volumeContainer .slider .thumb{
+    -fx-background-color: -fx-secondary-color;
+}
+
+.settingsContainer .highScoreButtonContainer{
+    -fx-alignment: center;
+    -fx-spacing: 30px;
+}
+
+.settingsContainer .highScoreButtonContainer Button{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-color: #d33030;
+}

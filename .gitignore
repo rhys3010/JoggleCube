@@ -3,6 +3,7 @@ out
 .idea
 .project
 .classpath
+.log
 GP01.eml
 GP01.userlibraries
 .vscode/launch.json

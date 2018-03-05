@@ -8,10 +8,10 @@
 
 package cs221.GP01;
 
-import cs221.GP01.java.model.IJoggleCubeController;
-import cs221.GP01.java.model.JoggleCubeController;
-import cs221.GP01.java.model.PretendBackEnd;
-import cs221.GP01.java.ui.UIController;
+import cs221.GP01.main.java.model.IJoggleCubeController;
+import cs221.GP01.main.java.model.JoggleCubeController;
+import cs221.GP01.main.java.model.PretendBackEnd;
+import cs221.GP01.main.java.ui.UIController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -41,6 +41,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
+        //As a fix for the inability to load custom fonts on some computers (apparently a common bug in JavaFX8+)
+        Font.loadFont(getClass().getResourceAsStream("main/resource/font/DS-DIGI.TTF"), 16);
+
         //todo launch the real back end
         //IJoggleCubeController joggleCube = new PretendBackEnd();
         IJoggleCubeController joggleCube = new JoggleCubeController();
@@ -56,7 +59,7 @@ public class Main extends Application {
 
         // Add all icon sizes to stage
         for(int i = 0; i < 4; i++){
-            primaryStage.getIcons().add(new Image("cs221/GP01/resource/img/icon/icon" + (int)Math.pow(2,(i+4)) + ".png"));
+            primaryStage.getIcons().add(new Image("cs221/GP01/main/resource/img/icon/icon" + (int)Math.pow(2,(i+4)) + ".png"));
         }
 
         primaryStage.show();
