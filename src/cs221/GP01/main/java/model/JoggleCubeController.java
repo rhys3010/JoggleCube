@@ -35,9 +35,6 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     private IHighScores overallHighScores;
 
-    //Possibly not needed and is a leftover
-    private GameController theGameController;
-
     //en_dictionary was taken from an open source scrabble bot at
     //Currently American English
     //URL: https://github.com/jonbcard/scrabble-bot/blob/master/src/dictionary.txt
@@ -64,12 +61,20 @@ public class JoggleCubeController implements IJoggleCubeController{
     }
 
     //Start Random Game
-    public void generateRandomGrid() { cube.populateCube(language + "_letters"); }
+    public void generateRandomGrid() {
+        //Reset game score
+        currentScore = 0;
+        ui.getGameController().getScoreLabel().setText(currentScore + "");
+
+        //Populate the cube randomly
+        cube.populateCube(language + "_letters");
+    }
 
     //Start loaded game
     public void loadGrid(File file) {
-
+        //Reset game score
         currentScore = 0;
+        ui.getGameController().getScoreLabel().setText(currentScore + "");
         //load this file into grid and high scores
         //Load save game from the file stream given
         String input;
@@ -95,7 +100,7 @@ public class JoggleCubeController implements IJoggleCubeController{
         }
 
         if(!(letters.size() == 27)){
-            // todo: send to frontend
+            //todo: send to frontend
             System.out.println("Cube that is loaded is corrupt");
         }
 
@@ -122,7 +127,6 @@ public class JoggleCubeController implements IJoggleCubeController{
             storedWords.add(word);
             currentScore += getWordScore(word);
             ui.getGameController().getScoreLabel().setText(currentScore + "");
-            // Add End game score label here
             return true;
         }
         return false;
