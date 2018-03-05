@@ -63,9 +63,13 @@ public class JoggleCubeController implements IJoggleCubeController{
         ui = controller;
     }
 
+    //Start Random Game
     public void generateRandomGrid() { cube.populateCube(language + "_letters"); }
 
+    //Start loaded game
     public void loadGrid(File file) {
+
+        currentScore = 0;
         //load this file into grid and high scores
         //Load save game from the file stream given
         String input;
