@@ -1,6 +1,7 @@
 package cs221.GP01.main.java.model;
 
 import cs221.GP01.main.java.ui.IUIController;
+import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.controllers.GameController;
 import javafx.collections.ObservableList;
 
@@ -45,6 +46,8 @@ public class JoggleCubeController implements IJoggleCubeController{
     private String language = "en";
 
     private HashMap<String, String> scores;
+
+    private int currentScore = 0;
 
     public JoggleCubeController(){
         //Load dictionary on creation of JoggleCubeController
@@ -111,6 +114,8 @@ public class JoggleCubeController implements IJoggleCubeController{
         //Test if valid dictionary word
         if(dictionary.searchDictionary(word)){
             storedWords.add(word);
+            currentScore += getWordScore(word);
+            ui.getGameController().getScoreLabel().setText(currentScore + "");
             return true;
         }
         return false;
@@ -221,10 +226,10 @@ public class JoggleCubeController implements IJoggleCubeController{
         for(int i = 0; i<word.length(); i++){
             if(scores.containsKey(String.valueOf(word.charAt(i)))){
                 //If scores contains the word continue else check for double letters
-                sumOf += Integer.getInteger(scores.get(word.charAt(i) + ""));
+                sumOf += Integer.parseInt(scores.get(word.charAt(i) + ""));
             } else if(scores.containsKey(word.charAt(i) + word.charAt(i+1) + "")){
                 //Else if scores contains word[i] + word[i+1] then handle
-                sumOf += Integer.getInteger(scores.get(word.charAt(i) + word.charAt(i+1)+ ""));
+                sumOf += Integer.parseInt(scores.get(word.charAt(i) + word.charAt(i+1)+ ""));
                 i++;
             } else{
                 System.out.println("Score is broken for this letter" + word.charAt(i));
