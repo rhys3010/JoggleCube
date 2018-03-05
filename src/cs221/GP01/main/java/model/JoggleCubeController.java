@@ -120,6 +120,7 @@ public class JoggleCubeController implements IJoggleCubeController{
             storedWords.add(word);
             currentScore += getWordScore(word);
             ui.getGameController().getScoreLabel().setText(currentScore + "");
+            // Add End game score label here
             return true;
         }
         return false;
