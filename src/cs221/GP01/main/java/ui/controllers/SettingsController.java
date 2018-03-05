@@ -31,7 +31,6 @@ public class SettingsController extends BaseOverlayController implements INeedPr
 
     @Override
     public void prepView() {
-
         //display the relevant stuff.
     }
 
