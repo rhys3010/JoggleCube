@@ -38,6 +38,14 @@
     -fx-alignment: center-right;
 }
 
+.buttonContainer .languageSelectorContainer:hover Label{
+    -fx-text-fill: white;
+}
+
+.buttonContainer .languageSelectorContainer:hover .list-cell{
+    -fx-text-fill: white;
+}
+
 .buttonContainer .languageSelectorContainer Label{
     -fx-text-fill: #cecece;
     -fx-font-size: 16px;
