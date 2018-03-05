@@ -5,8 +5,8 @@
 \subtitle{User Interface Specification, Use Case Document}
 \author{Nathan Williams - naw21, Alex Thumwood - alt38}     
 \shorttitle{Use Case Document}
-\version{1.0}
-\status{Release}
+\version{1.2}
+\status{Review}
 \date{2018-02-01}
 \configref{GP01-UIS-UCD}
 \maketitle
@@ -45,7 +45,8 @@ This Document aims to:
 			Faith Berry is one of the few girls studying compsci at Aberystwyth University and likes new and interesting challenges, so instead of playing repeatedly against the same board, Faith would like to play against a new grid each time and have an overall high score table, to see how many points she scored compared to previous games.
 		\paragraph{Lyle Johnston and Francis West}
 		    Lyle and Francis are both students at Aberystwyth University. They are both very competitive and love challenging each other in different games. Both Lyle and Francis are colour-blind, although they have different types of colour-blindness (Lyle has Protanopia, also known as red-green colour blindness, while Francis has Tritanopia, blue-yellow colour blindness). Therefore, not only do they need their games to a have colour-blind friendly option, but for that option to be suitable for all types of colour-blindness.
-		    
+		  \paragraph{Rhys Evans}  
+		  	Rhys is a student at Aberystwyth University . He has come to Aberystwyth from another part of wales and would like to play JoggleCube in Welsh. 
 	
 	
 
@@ -55,6 +56,7 @@ This Document aims to:
 			The user will click the Start Game button and a new grid will be generated for 	the user to compete against, the user will now be able to play the game (please see use case: \ref{Playing the game}).
 		\subsubsection{Compete against a saved grid}
 			The user will click the load Grid button and a screen will be displayed where the user can select a saved grid from a list of recently saved grids or load a grid from a file using a standard fileChooser. Once that has happened the user can click the start grid button to load the grid, the user will now be able to play the game (please see use case: \ref{Playing the game}).
+		
 		\subsubsection{Playing the game} \label{Playing the game}
 			The user will be faced with a 3d cube with the 27 letters in a 3x3x3 grid. Space for the words that the user has found, an input bar for building words from the letters, a button for confirming the found word and pause and end game buttons. 
 			
@@ -63,13 +65,9 @@ This Document aims to:
 			\paragraph{Cube rotation}
 			The user will be able to rotate the cube by holding the right mouse button and moving the mouse.
 			\paragraph{Finding a Word}
-			The user can select letters by clicking on the relevant boxes on the 3d cube with the mouse, to build up a word, or they can enter the letters manually into the input box. They can then press the confirm word button to check that is it a valid word. If it is valid, the button will go green and the word will be added to the found words list and the input box will be cleared ready for the next word. If it is not a valid word the button will go red, the user may then change the letters to try alternative words.
-		
-			
-		\subsubsection{Pausing} \label{Pausing}
-		The user can pause the game by pressing the pause button with the mouse or pressing the escape key.
+			The user can select letters by clicking on the relevant boxes on the 3d cube with the mouse, to build up a word. They can then press the confirm word button to check that is it a valid word. If it is valid, the button will go green and the word will be added to the found words list, the score will eb added to the current score and the input box will be cleared ready for the next word. If it is not a valid word the button will go red, the user may then change the letters to try alternative words.
 		\subsubsection{Ending the game} \label{Ending the game}
-		The user can finish the game early before the timer runs out by clicking the exit game button or the timer will run out.
+			The user can finish the game early before the timer runs out by clicking the exit game button or the timer will run out.
 		\subsubsection{Save Score} \label{Save score}
 			Once the user has ended the game they may enter a name into a box and press the save score button which will added them to the overall high score table and the grids own high score table.
 		\subsubsection{Save Grid}	\label{Save grid}
@@ -81,7 +79,10 @@ This Document aims to:
 		
 		Or when a user finishes the game the user will be displayed the high score for that grid and have the option to save their score to the high score table(see \ref{Save score}  on saving a score).
 		\subsubsection{Finding help} \label{Finding help}
-		From the home screen or pause screen the user can press the help button to bring up a helpful guide on how to play.
+			From the home screen or pause screen the user can press the help button to bring up a helpful guide on how to play.
+		\subsubsection{Changing Grid Language}
+			The user can select the language to play the game in from the home screen from a drop down
+		
 		
 \section{Error Conditions}
 
@@ -89,11 +90,11 @@ This Document aims to:
 \subsubsection{Description}
 The Start view contains 5 buttons which navigate to the various features of the JoggleCube application. They are as follows:
 \begin{itemize}
-\item[Start New Grid] This will begin the game with a new grid(see \ref{Game View}).
-\item[Load Grid] This will navigate to the load view (see \ref{Load View}).
-\item[High Score] This will navigate to the high score view (see \ref{High score View}
-\item[Settings] This will navigate to the Settings view (see \ref{Settings View}).
-\item[Help] This will navigate to the help view (see \ref{Help View}).
+\item[]Start New Grid: This will begin the game with a new grid(see \ref{Game View}).
+\item[]Load Grid: This will navigate to the load view (see \ref{Load View}).
+\item[]High Score: This will navigate to the high score view (see \ref{High score View}
+\item[]Settings: This will navigate to the Settings view (see \ref{Settings View}).
+\item[]Help: This will navigate to the help view (see \ref{Help View}).
 \end{itemize} 
 \subsubsection{Possible errors}
 Due to implementation the other views are loaded before the game is launched so no errors will occur when switching views.
@@ -131,7 +132,7 @@ This view will contain details on the controls and how the user can play the gam
 
 \subsection{Game view} \label{Game View}
 \subsubsection{Description}
-This view has a points display, a Timer display, pause and settings button across the top. The center contains a view of the grid and a list of the found words. The bottom has a text field with the current word and a submit button.
+This view has a points display, a Timer display, pause and settings button across the top. The centre contains a view of the grid and a list of the found words. The bottom has a text field with the current word and a submit button.
 \subsubsection{Possible errors}
 \begin{itemize}
 \item If grid is not loaded from file properly, it will return to the Load view.
@@ -141,10 +142,10 @@ This view has a points display, a Timer display, pause and settings button acros
 \subsubsection{Description}
 This will overlay the game view(see \ref{Game View}) when it is paused and will contain the following buttons:
 \begin{itemize}
-\item[Resume]Hides overlay and resumes the game.
-\item[Exit] Exits the Game to the Start view(see \ref{Start View}).
-\item[Help] Allow you to view the Help view(see \ref{Help View}).
-\item[Settings] Allow you to view the Settings view (see \ref{Settings View}).
+\item[]Resume: Hides overlay and resumes the game.
+\item[]Exit: Exits the Game to the Start view(see \ref{Start View}).
+\item[]Help: Allow you to view the Help view(see \ref{Help View}).
+\item[]Settings: Allow you to view the Settings view (see \ref{Settings View}).
 \end{itemize}
 \subsubsection{Possible errors}
 
@@ -153,9 +154,9 @@ This will overlay the game view(see \ref{Game View}) when it is paused and will 
 \subsubsection{Description}
 This will overlay the game view(see \ref{Game View}) when the game ends and will display the players Score and will contain the following buttons:
 \begin{itemize}
-\item[Save Game] Brings up a dialogue to allow the user to save the game and cube.
-\item[High Scores] Allows the user to view the High score view (see \ref{High score View}).
-\item[Exit] Exits to the Start view (see \ref{Start View}).
+\item[]Save Game: Brings up a dialogue to allow the user to save the game and cube.
+\item[]High Scores: Allows the user to view the High score view (see \ref{High score View}).
+\item[]Exit: Exits to the Start view (see \ref{Start View}).
 \end{itemize}
 \subsubsection{Possible errors}
 
@@ -170,7 +171,7 @@ C. J. Price SE.QA.CSRS. 1.0 Release.
 \clearpage
 \addcontentsline{toc}{section}{DOCUMENT HISTORY}
 \section*{DOCUMENT HISTORY}
-\begin{tabular}{| l | l | l | l | l | l |}
+\begin{tabular}{| l | l | l | l | l |}
 \hline
 Version & CCF No. & Date & Changes made to Document & Changed by \\
 \hline
@@ -185,6 +186,8 @@ Version & CCF No. & Date & Changes made to Document & Changed by \\
 1.0 & N/A & 2018-02-21 & Added Error Conditions & NAW21 \\
 \hline
 1.1 & N/A & 2018-02-21 & Added New Use Case & ALT38 \\
+\hline
+1.2 & N/A & 2018-03-05 & Made edits based on feedback & NAW21 \\
 \hline
 \end{tabular}
 \label{thelastpage}
