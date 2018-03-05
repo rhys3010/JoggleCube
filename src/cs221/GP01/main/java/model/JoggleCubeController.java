@@ -247,7 +247,7 @@ public class JoggleCubeController implements IJoggleCubeController{
      * @return the score for the current game
      */
     public int getScore() {
-        return 0;
+        return currentScore;
     }
 
     /**
