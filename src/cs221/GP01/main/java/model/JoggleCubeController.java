@@ -86,10 +86,12 @@ public class JoggleCubeController implements IJoggleCubeController{
 
         } catch(FileNotFoundException e){
             //An error in file name
+            // todo: send it to frontend
             System.out.println("Game Save not found");
         }
 
         if(!(letters.size() == 27)){
+            // todo: send to frontend
             System.out.println("Cube that is loaded is corrupt");
         }
 

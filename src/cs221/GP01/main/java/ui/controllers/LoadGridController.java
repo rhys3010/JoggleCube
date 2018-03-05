@@ -94,7 +94,8 @@ public class LoadGridController extends BaseScreenController implements INeedPre
         Stage stage = new Stage();
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
-        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("A file containing the date from a saved grid.",".grid"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(".grid Files","*.grid"));
+
         gridFile = fileChooser.showOpenDialog(stage);
         if (gridFile != null) {
             //todo do more checks, check a valid gridFile etc
