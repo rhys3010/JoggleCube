@@ -83,6 +83,7 @@
                                  <Image url="@../img/icon/rotate_icon.png" />
                               </image>
                            </ImageView>
+                            <Button onAction="#btnExplodeClicked" text="explode"/>
                         </children>
                      </HBox>
                   </bottom>

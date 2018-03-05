@@ -142,6 +142,14 @@ public class GameController extends BaseScreenController implements IGameControl
     }
 
     /**
+     * Handles the explode button being clicked
+     */
+    @FXML
+    private void btnExplodeClicked() {
+        gridDisplayer.toggleExplode();
+    }
+
+    /**
      * Handle the settings option from the hamburger context menu is being clicked
      */
     @FXML
