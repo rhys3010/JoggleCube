@@ -200,5 +200,4 @@ public class HelpController extends BaseOverlayController implements Initializab
         // Update the carousel indicator
         carouselIndicatorContainer.getChildren().get(currentPageIndex).getStyleClass().add("carouselIndicator-selected");
     }
-
 }
