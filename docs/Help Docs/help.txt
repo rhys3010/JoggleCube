@@ -1,0 +1,44 @@
+Help
+
+What is Jogglecube?
+
+Jogglecube is a 3d word-finding game. The goal is to find the most, and most high scoring words on the cube, before time runs out!
+
+How to select a word:
+1) Click the first letter of the word on the grid
+2) Click on the second letter of the word, which will be on an adjacent square in the cube.
+3) Continue clicking on letters adjacent to the last selected, until the word is complete. 
+4) Click submit, and add that words's points will be added to your total - IF the word is in the dictionary 
+
+Different letters have different values: so the longest word you can find on a grid isn't always the highest scoring! 
+
+Letter Values: (Could be stored in a table, and/or ordered by point value)
+
+A = 1
+B = 3
+C = 3
+D = 2
+E = 1
+F = 4
+G = 2
+H = 4
+I = 1
+J = 8
+K = 5
+L = 1
+M = 3
+N = 1
+O = 1
+P = 3
+Qu = 10
+R = 1
+S = 1
+T = 1
+U = 1
+V = 4
+W = 4
+X = 8
+Y = 4
+Z = 10 
+
+Cube Colour Guide: (see sample on slide x in use case document.)
