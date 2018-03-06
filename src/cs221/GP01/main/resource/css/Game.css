@@ -134,11 +134,6 @@
     -fx-background-color: white;
 }
 
-.gameElementsContainer .cubeContainer .gridTab .rotateIcon{
-    -fx-alignment: bottom-right;
-    -fx-padding: 15px;
-}
-
 .foundWordsContainer{
     -fx-pref-width: 200px;
     -fx-pref-height: 320px;
