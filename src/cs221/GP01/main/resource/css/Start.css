@@ -38,6 +38,10 @@
     -fx-alignment: center-right;
 }
 
+.buttonContainer .languageSelectorContainer:hover{
+    -fx-background-image: url("../img/icon/language_icon.png");
+}
+
 .buttonContainer .languageSelectorContainer:hover Label{
     -fx-text-fill: white;
 }
