@@ -15,6 +15,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.Point3D;
 import javafx.geometry.Pos;
 import javafx.scene.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -65,19 +66,21 @@ public class GridDisplayer {
     private Group groupy;
     private BorderPane back;
     private GridPane[] twoDGrid,twoFiveDGrid;
+    private Button explodeIcon;
 
 
     //storage for the labels and boxes with letters in them.
     private Label[][][] labelCube;
     private Box[][][] boxCube,boxCube3;
 
-    public GridDisplayer(TextField field, GridPane[] two, GridPane[] twoFive, SubScene sub, Group group, BorderPane b) {
+    public GridDisplayer(TextField field, GridPane[] two, GridPane[] twoFive, SubScene sub, Group group, BorderPane b, Button explode) {
         textField = field;
         twoDGrid = two;
         twoFiveDGrid = twoFive;
         subScene = sub;
         groupy = group;
         back = b;
+        explodeIcon = explode;
     }
 
     /**
@@ -387,7 +390,15 @@ public class GridDisplayer {
 
     public void toggleExplode() {
 
+        // Clear explode button class
+        explodeIcon.getStyleClass().clear();
+
         // Switch buttons between explode/implode
+        if(toggle) {
+            explodeIcon.getStyleClass().add("explode");
+        }else{
+            explodeIcon.getStyleClass().add("implode");
+        }
 
 
         Timeline timeline = new Timeline();

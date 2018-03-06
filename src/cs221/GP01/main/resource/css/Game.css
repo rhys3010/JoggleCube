@@ -144,13 +144,14 @@
     -fx-pref-width: 36px;
     -fx-background-color: transparent;
     -fx-background-position: center;
-}
-
-.gameElementsContainer .cubeContainer .gridTab .explodeIconContainer #explodeIcon{
     -fx-background-image: url("../img/icon/explode_icon.png");
 }
 
-.gameElementsContainer .cubeContainer .gridTab .cubeContainer #implodeIcon{
+.gameElementsContainer .cubeContainer .gridTab .explodeIconContainer .explode{
+    -fx-background-image: url("../img/icon/explode_icon.png");
+}
+
+.gameElementsContainer .cubeContainer .gridTab .explodeIconContainer .implode{
     -fx-background-image: url("../img/icon/implode_icon.png");
 }
 

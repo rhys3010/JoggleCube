@@ -56,7 +56,7 @@ public class GameController extends BaseScreenController implements IGameControl
 
 
     @FXML
-    private Button btnSubmit, menuButton;
+    private Button btnSubmit, menuButton, explodeIcon;
 
     @FXML
     private TextField textField;
@@ -215,7 +215,7 @@ public class GameController extends BaseScreenController implements IGameControl
 
         GridPane[] twoDGrid = {top2d, middle2d, bottom2d};
         GridPane[] twoFiveDGrid = {top25d, middle25d, bottom25d};
-        gridDisplayer = new GridDisplayer(textField,twoDGrid,twoFiveDGrid,subScene,groupy,back);
+        gridDisplayer = new GridDisplayer(textField,twoDGrid,twoFiveDGrid,subScene,groupy,back, explodeIcon);
         gridDisplayer.buildGrids(UIController.getJoggleCube().getCubeData());
         foundWordsList.setItems(foundWords);
 
