@@ -74,9 +74,9 @@
                             </root>
                         </SubScene>
                   <bottom>
-                     <HBox styleClass="rotateIcon">
+                     <HBox styleClass="explodeIconContainer">
                         <children>
-                            <Button onAction="#btnExplodeClicked" text="explode" />
+                            <Button fx:id="explodeIcon" styleClass="explodeToggle" onAction="#btnExplodeClicked"/>
                         </children>
                      </HBox>
                   </bottom>
