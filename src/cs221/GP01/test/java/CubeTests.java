@@ -1,10 +1,13 @@
 package cs221.GP01.test.java;
 
+import cs221.GP01.main.java.model.Block;
 import cs221.GP01.main.java.model.Cube;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,7 +19,28 @@ public class CubeTests {
     public void load(){ cube.populateCube("en_letters");}
 
     @Test
-    public void testLoadBagofLetters (){
+    public void testOccurrences(){
+
+        ArrayList<String> cubeLetters = new ArrayList<>();
+
+        for(int i = 0; i<3; i++) {
+            for (int j = 0; j < 3; j++) {
+                for (int k = 0; k < 3; k++) {
+                    cubeLetters.add(cube.getBlock(i,j,k).getLetter());
+                }
+            }
+        }
+        assertTrue(Collections.frequency(cubeLetters, "A") <= 9);
+        assertTrue(Collections.frequency(cubeLetters, "B") <= 2);
+        assertTrue(Collections.frequency(cubeLetters, "I") <= 9);
+        assertTrue(Collections.frequency(cubeLetters, "Qu") <= 1);
+        assertTrue(Collections.frequency(cubeLetters, "Y") <= 2);
+        assertTrue(Collections.frequency(cubeLetters, "Z") <= 1);
+
+    }
+
+    @Test
+    public void testLoadBagOfLetters (){
 
         ArrayList<String> bagOfLetters = cube.getBagOfLetters();
         assertEquals(97, bagOfLetters.size());

@@ -55,6 +55,10 @@ public class JoggleCubeController implements IJoggleCubeController{
         timer = new GameTimer(ui);
     }
 
+    public HashMap<String, Dictionary> getLoadedDictionaries() {
+        return loadedDictionaries;
+    }
+
     @Override
     public void setUI(IUIController controller) {
         ui = controller;

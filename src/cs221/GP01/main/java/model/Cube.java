@@ -32,6 +32,9 @@ public class Cube implements ICube{
     public HashMap<String, String> getScores(){
         return scores;
     }
+    public Block[][][] getCube() {
+        return cube;
+    }
 
     @Override
     public Block getBlock(int x, int y, int z) {
