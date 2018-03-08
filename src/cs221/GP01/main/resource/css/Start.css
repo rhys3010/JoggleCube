@@ -25,6 +25,53 @@
     -fx-spacing: 20px;
 }
 
+.buttonContainer .languageSelectorContainer{
+    -fx-pref-width: 300px;
+    -fx-pref-height: 50px;
+    -fx-background-radius: 10px;
+    -fx-background-insets: 0 0 0 -10, 0, 0, 0;
+    -fx-background-size: 30 30;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left;
+    -fx-background-image: url("../img/icon/language_icon_inactive.png");
+    -fx-background-color: -fx-tertiary-color;
+    -fx-alignment: center-right;
+}
+
+.buttonContainer .languageSelectorContainer:hover{
+    -fx-background-image: url("../img/icon/language_icon.png");
+}
+
+.buttonContainer .languageSelectorContainer:hover Label{
+    -fx-text-fill: white;
+}
+
+.buttonContainer .languageSelectorContainer:hover .list-cell{
+    -fx-text-fill: white;
+}
+
+.buttonContainer .languageSelectorContainer Label{
+    -fx-text-fill: #cecece;
+    -fx-font-size: 16px;
+}
+
+.buttonContainer .languageSelectorContainer .combo-box{
+    -fx-background-color: transparent;
+}
+
+.buttonContainer .languageSelectorContainer .list-cell{
+    -fx-text-fill: #cecece;
+    -fx-font-size: 16px;
+    -fx-background-color: -fx-tertiary-color;
+}
+
+.buttonContainer .languageSelectorContainer .list-cell:hover{
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-background-color: -fx-secondary-color;
+}
+
+
 .startMenuButton{
     -fx-pref-width: 300px;
     -fx-pref-height: 50px;

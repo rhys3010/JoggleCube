@@ -77,8 +77,6 @@
     -fx-background-image: url("../img/icon/quit_icon_context.png");
 }
 
-
-
 #menuButton{
     -fx-background-image: url("../img/icon/hamburger_icon_inactive.png");
 }
@@ -134,9 +132,27 @@
     -fx-background-color: white;
 }
 
-.gameElementsContainer .cubeContainer .gridTab .rotateIcon{
+.gameElementsContainer .cubeContainer .gridTab .explodeIconContainer{
     -fx-alignment: bottom-right;
-    -fx-padding: 15px;
+    -fx-padding: 12px;
+}
+
+.gameElementsContainer .cubeContainer .gridTab .explodeIconContainer Button{
+    -fx-background-size: 36 36;
+    -fx-background-repeat: no-repeat;
+    -fx-pref-height: 36px;
+    -fx-pref-width: 36px;
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-image: url("../img/icon/explode_icon.png");
+}
+
+.gameElementsContainer .cubeContainer .gridTab .explodeIconContainer .explode{
+    -fx-background-image: url("../img/icon/explode_icon.png");
+}
+
+.gameElementsContainer .cubeContainer .gridTab .explodeIconContainer .implode{
+    -fx-background-image: url("../img/icon/implode_icon.png");
 }
 
 .foundWordsContainer{

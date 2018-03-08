@@ -12,6 +12,7 @@ import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,6 +27,13 @@ import java.util.ResourceBundle;
  */
 
 public class StartController extends BaseScreenController implements Initializable {
+
+    /**
+     * The FXML node of the language dropdown selector
+     */
+    @FXML
+    ComboBox languageSelector;
+
     public StartController(UIController UIController){
         super(UIController);
     }
@@ -35,6 +43,11 @@ public class StartController extends BaseScreenController implements Initializab
      */
     @Override
     public void initialize(URL location, ResourceBundle resources){
+        //todo get this list of info from a another class?
+        languageSelector.getItems().setAll("English","Cymraeg");
+        languageSelector.setOnAction(e -> {
+            UIController.getJoggleCube().setLanguage(languageSelector.getValue().toString().substring(0,2).toLowerCase());
+        });
     }
 
 

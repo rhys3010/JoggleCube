@@ -26,6 +26,16 @@ public class Cube implements ICube{
 
     public Cube(){}
 
+    public ArrayList<String> getBagOfLetters() {
+        return bagOfLetters;
+    }
+    public HashMap<String, String> getScores(){
+        return scores;
+    }
+    public Block[][][] getCube() {
+        return cube;
+    }
+
     @Override
     public Block getBlock(int x, int y, int z) {
         return cube[x][y][z];
@@ -142,9 +152,5 @@ public class Cube implements ICube{
         } catch (URISyntaxException ex) {
             System.out.println(ex.toString());
         }
-    }
-
-    public HashMap<String, String> getScores(){
-        return scores;
     }
 }
