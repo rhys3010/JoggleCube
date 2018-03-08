@@ -22,10 +22,6 @@
             <CheckBox mnemonicParsing="false" styleClass="colorBlindToggle" text="Enable Colour Blind Mode" />
             <CheckBox mnemonicParsing="false" selected="true" text="Enable Music" />
             <CheckBox mnemonicParsing="false" selected="true" text="Enable Sound Effects" />
-            <HBox>
-               <Label text="Language:"/>
-               <ComboBox fx:id="languageSelector" promptText="English"/>
-            </HBox>
             <VBox styleClass="volumeContainer">
                <children>
                   <Label text="Master Volume" />

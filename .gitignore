@@ -4,6 +4,7 @@ out
 .project
 .classpath
 .log
-GP01.eml
-GP01.userlibraries
+*.eml
+*.userlibraries
 .vscode/launch.json
+*.code-workspace
