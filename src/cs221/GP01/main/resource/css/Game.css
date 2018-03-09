@@ -38,6 +38,8 @@
     -fx-font-size: 48px;
     -fx-text-fill: white;
     -fx-font-family: DS-Digital;
+    -fx-pref-width: 70px;
+    -fx-text-alignment: left;
 }
 
 .topMenu .buttonContainer{
