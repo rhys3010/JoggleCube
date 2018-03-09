@@ -8,6 +8,8 @@
 
 package cs221.GP01.main.java.ui.controllers;
 
+import cs221.GP01.main.java.model.JoggleCubeController;
+import cs221.GP01.main.java.ui.NavigationController;
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.collections.FXCollections;
@@ -42,6 +44,21 @@ import javafx.stage.StageStyle;
  * @version 0.2  DRAFT
  */
 public class GameController extends BaseScreenController implements IGameController, INeedPrep {
+
+    private static GameController gameController;
+
+    private GameController(){}
+
+    public static GameController getInstance(){
+        if(gameController == null){
+            synchronized (UIController.class){
+                if(gameController == null){
+                    gameController = new GameController();
+                }
+            }
+        }
+        return gameController;
+    }
 
     private GridDisplayer gridDisplayer;
 
@@ -79,15 +96,6 @@ public class GameController extends BaseScreenController implements IGameControl
     @FXML
     private ContextMenu hamburgerContext;
 
-
-    /**
-     * Constructor to ensure UIController object is passed
-     * @param UIController
-     */
-    public GameController(UIController UIController){
-        super(UIController);
-    }
-
     @FXML
     private void btnClearClicked() {
         textField.setText("");
@@ -97,7 +105,7 @@ public class GameController extends BaseScreenController implements IGameControl
 
     @FXML
     private void btnSubmitClicked() {
-        if (!textField.getText().equals("") && UIController.getJoggleCube().testWordValidity(textField.getText())) {
+        if (!textField.getText().equals("") && JoggleCubeController.getInstance().testWordValidity(textField.getText())) {
             foundWords.add(textField.getText());
             btnSubmit.setStyle("-fx-background-color: -fx-valid-color;");
             textField.setStyle("-fx-background-color: -fx-valid-color; -fx-text-fill: white;");
@@ -154,7 +162,7 @@ public class GameController extends BaseScreenController implements IGameControl
      */
     @FXML
     private void btnSettingsClicked(){
-        UIController.getNavigationController().showOverlay(ScreenType.SETTINGS, this);
+        NavigationController.getInstance().showOverlay(ScreenType.SETTINGS, this);
     }
 
     /**
@@ -162,8 +170,8 @@ public class GameController extends BaseScreenController implements IGameControl
      */
     @FXML
     private void btnEndGameClicked() {
-        UIController.getJoggleCube().interruptTimer();
-        UIController.getNavigationController().showOverlay(ScreenType.END, this);
+        JoggleCubeController.getInstance().interruptTimer();
+        NavigationController.getInstance().showOverlay(ScreenType.END, this);
     }
 
     /**
@@ -171,7 +179,7 @@ public class GameController extends BaseScreenController implements IGameControl
      */
     @FXML
     private void btnHelpClicked(){
-        UIController.getNavigationController().showOverlay(ScreenType.HELP, this);
+        NavigationController.getInstance().showOverlay(ScreenType.HELP, this);
     }
 
 
@@ -200,7 +208,7 @@ public class GameController extends BaseScreenController implements IGameControl
             String result = dialog.getResult().replace(" ", "");
 
             if (result.matches("(\\w*)")) {
-                UIController.getJoggleCube().setName(result);
+                JoggleCubeController.getInstance().setName(result);
                 done = true;
             } else {
                 dialog.setHeaderText("Invalid Name Entry, Please try again");
@@ -216,11 +224,11 @@ public class GameController extends BaseScreenController implements IGameControl
         GridPane[] twoDGrid = {top2d, middle2d, bottom2d};
         GridPane[] twoFiveDGrid = {top25d, middle25d, bottom25d};
         gridDisplayer = new GridDisplayer(textField,twoDGrid,twoFiveDGrid,subScene,groupy,back, explodeIcon);
-        gridDisplayer.buildGrids(UIController.getJoggleCube().getCubeData());
+        gridDisplayer.buildGrids(JoggleCubeController.getInstance().getCubeData());
         foundWordsList.setItems(foundWords);
 
 
-       UIController.getJoggleCube().startTimer();
+        JoggleCubeController.getInstance().startTimer();
     }
 
 

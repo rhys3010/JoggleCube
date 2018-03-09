@@ -1,6 +1,5 @@
 package cs221.GP01.main.java.model;
 
-import cs221.GP01.main.java.ui.IUIController;
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.controllers.GameController;
 import javafx.collections.ObservableList;
@@ -19,7 +18,29 @@ import java.util.Scanner;
  */
 public class JoggleCubeController implements IJoggleCubeController{
 
-    private IUIController ui;
+    private static JoggleCubeController joggleCube;
+
+    private JoggleCubeController(){
+        //Load dictionary on creation of JoggleCubeController
+        cube = new Cube(language + "_letters");
+        loadNewDictionary();
+        storedWords = new ArrayList<>();
+        scores = cube.getScores();
+        timer = new GameTimer();
+    }
+
+    public static JoggleCubeController getInstance(){
+        if(joggleCube == null){
+            synchronized (UIController.class){
+                if(joggleCube == null){
+                    joggleCube = new JoggleCubeController();
+                }
+            }
+        }
+        return joggleCube;
+    }
+
+
 
     private Dictionary dictionary;
 
@@ -46,29 +67,16 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     private int currentScore = 0;
 
-    public JoggleCubeController(){
-        //Load dictionary on creation of JoggleCubeController
-        cube = new Cube(language + "_letters");
-        loadNewDictionary();
-        storedWords = new ArrayList<>();
-        scores = cube.getScores();
-        timer = new GameTimer(ui);
-    }
-
     public HashMap<String, Dictionary> getLoadedDictionaries() {
         return loadedDictionaries;
     }
 
-    @Override
-    public void setUI(IUIController controller) {
-        ui = controller;
-    }
 
     //Start Random Game
     public void generateRandomGrid() {
         //Reset game score
         currentScore = 0;
-        ui.getGameController().getScoreLabel().setText(currentScore + "");
+        GameController.getInstance().getScoreLabel().setText(currentScore + "");
 
         //Populate the cube randomly
         cube.populateCube(language + "_letters");
@@ -78,7 +86,7 @@ public class JoggleCubeController implements IJoggleCubeController{
     public void loadGrid(File file) {
         //Reset game score
         currentScore = 0;
-        ui.getGameController().getScoreLabel().setText(currentScore + "");
+        GameController.getInstance().getScoreLabel().setText(currentScore + "");
         //load this file into grid and high scores
         //Load save game from the file stream given
         String input;
@@ -130,7 +138,7 @@ public class JoggleCubeController implements IJoggleCubeController{
         if(dictionary.searchDictionary(word)){
             storedWords.add(word);
             currentScore += getWordScore(word);
-            ui.getGameController().getScoreLabel().setText(currentScore + "");
+            GameController.getInstance().getScoreLabel().setText(currentScore + "");
             return true;
         }
         return false;
@@ -242,9 +250,9 @@ public class JoggleCubeController implements IJoggleCubeController{
             if(scores.containsKey(String.valueOf(word.charAt(i)))){
                 //If scores contains the word continue else check for double letters
                 sumOf += Integer.parseInt(scores.get(word.charAt(i) + ""));
-            } else if(scores.containsKey(word.charAt(i) + word.charAt(i+1) + "")){
+            } else if(scores.containsKey((word.charAt(i)+ "") + (word.charAt(i+1) + ""))){
                 //Else if scores contains word[i] + word[i+1] then handle
-                sumOf += Integer.parseInt(scores.get(word.charAt(i) + word.charAt(i+1)+ ""));
+                sumOf += Integer.parseInt(scores.get((word.charAt(i)+ "") + (word.charAt(i+1) + "")));
                 i++;
             } else{
                 System.out.println("Score is broken for this letter" + word.charAt(i));

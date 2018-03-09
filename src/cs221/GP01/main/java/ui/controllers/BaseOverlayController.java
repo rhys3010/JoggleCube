@@ -8,8 +8,6 @@
 
 package cs221.GP01.main.java.ui.controllers;
 
-import cs221.GP01.main.java.ui.IUIController;
-
 /**
  * The Parent Class of any overlay controller
  * @author Rhys Evans (rhe24@aber.ac.uk)
@@ -17,24 +15,12 @@ import cs221.GP01.main.java.ui.IUIController;
  */
 public class BaseOverlayController {
 
-    /**
-     * An instance of the UIController object to interface with backend
-     */
-    protected IUIController UIController;
 
     /**
      * An instance of the overlay's parent controller
      */
     protected BaseScreenController parentController;
 
-
-    /**
-     * Constructor to ensure UIController object is passed
-     * @param UIController
-     */
-    public BaseOverlayController(IUIController UIController){
-        this.UIController = UIController;
-    }
 
     /**
      * Set the Overlay's parent controller

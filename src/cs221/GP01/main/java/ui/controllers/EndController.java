@@ -8,6 +8,8 @@
 
 package cs221.GP01.main.java.ui.controllers;
 
+import cs221.GP01.main.java.model.JoggleCubeController;
+import cs221.GP01.main.java.ui.NavigationController;
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
@@ -35,24 +37,31 @@ import java.util.ResourceBundle;
  */
 public class EndController extends BaseOverlayController implements INeedPrep {
 
+    private static EndController endController;
+
+    private EndController(){}
+
+    public static EndController getInstance(){
+        if(endController == null){
+            synchronized (UIController.class){
+                if(endController == null){
+                    endController = new EndController();
+                }
+            }
+        }
+        return endController;
+    }
+
     @FXML
     Label scoreLabel,highScoreLabel;
 
 
 
-    /**
-     * Constructor to ensure UIController object is passed
-     * @param UIController
-     */
-    public EndController(UIController UIController){
-        super(UIController);
-    }
-
 
     @Override
     public void prepView() {
-        scoreLabel.setText(UIController.getJoggleCube().getScore() + "");
-        highScoreLabel.setText(UIController.getJoggleCube().getHighScore() + "");
+        scoreLabel.setText(JoggleCubeController.getInstance().getScore() + "");
+        highScoreLabel.setText(JoggleCubeController.getInstance().getHighScore() + "");
     }
 
 
@@ -63,9 +72,8 @@ public class EndController extends BaseOverlayController implements INeedPrep {
      */
     @FXML
     void btnHighScoreClicked()  {
-
-        UIController.getNavigationController().switchScreen(ScreenType.HIGH_SCORES);
-        UIController.getNavigationController().hideOverlay(ScreenType.END, parentController);
+        NavigationController.getInstance().switchScreen(ScreenType.HIGH_SCORES);
+        NavigationController.getInstance().hideOverlay(ScreenType.END, parentController);
     }
 
 
@@ -75,8 +83,8 @@ public class EndController extends BaseOverlayController implements INeedPrep {
      */
     @FXML
     void btnMenuClicked(){
-        UIController.getNavigationController().switchScreen(ScreenType.START);
-        UIController.getNavigationController().hideOverlay(ScreenType.END, parentController);
+        NavigationController.getInstance().switchScreen(ScreenType.START);
+        NavigationController.getInstance().hideOverlay(ScreenType.END, parentController);
     }
 
     /**
@@ -84,8 +92,8 @@ public class EndController extends BaseOverlayController implements INeedPrep {
      */
     @FXML
     void btnReplayClicked() {
-        UIController.getNavigationController().switchScreen(ScreenType.GAME);
-        UIController.getNavigationController().hideOverlay(ScreenType.END, parentController);
+        NavigationController.getInstance().switchScreen(ScreenType.GAME);
+        NavigationController.getInstance().hideOverlay(ScreenType.END, parentController);
     }
 
     /**
@@ -101,7 +109,7 @@ public class EndController extends BaseOverlayController implements INeedPrep {
         if (file != null) {
             //todo get the users name
             String name = "bob";
-            UIController.getJoggleCube().saveGrid(file);
+            JoggleCubeController.getInstance().saveGrid(file);
         } else {
             //todo add try again pop-up
         }
