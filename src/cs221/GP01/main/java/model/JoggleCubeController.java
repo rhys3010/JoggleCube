@@ -27,7 +27,6 @@ public class JoggleCubeController implements IJoggleCubeController{
         storedWords = new ArrayList<>();
         scores = cube.getScores();
         timer = new GameTimer();
-        System.out.println(getWordScore("QuEEN") + "is the score for QuEEN");
     }
 
     public static JoggleCubeController getInstance(){
