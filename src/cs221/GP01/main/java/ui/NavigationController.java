@@ -26,6 +26,21 @@ import java.util.HashMap;
 
 public class NavigationController implements IViewNavigation{
 
+    private static NavigationController navController;
+
+    private NavigationController(){}
+
+    public static NavigationController getInstance(){
+        if(navController == null){
+            synchronized (UIController.class){
+                if(navController == null){
+                    navController = new NavigationController();
+                }
+            }
+        }
+        return navController;
+    }
+
     /**
      * All screens to be stored, store Type as Key and an FXML loader as value
      */
@@ -39,7 +54,7 @@ public class NavigationController implements IViewNavigation{
     /**
      * Constructor to get main Scene
      */
-    public NavigationController(Scene main){
+    public void setMainScene(Scene main){
         this.main = main;
     }
 

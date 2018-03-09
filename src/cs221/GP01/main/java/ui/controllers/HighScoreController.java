@@ -9,6 +9,7 @@
 package cs221.GP01.main.java.ui.controllers;
 
 import cs221.GP01.main.java.model.HighScore;
+import cs221.GP01.main.java.model.JoggleCubeController;
 import cs221.GP01.main.java.ui.UIController;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -36,6 +37,22 @@ import java.util.ResourceBundle;
  * @version 0.2  DRAFT
  */
 public class HighScoreController extends BaseScreenController implements Initializable, INeedPrep {
+
+
+    private static HighScoreController highScoreController;
+
+    private HighScoreController(){}
+
+    public static HighScoreController getInstance(){
+        if(highScoreController == null){
+            synchronized (HighScoreController.class){
+                if(highScoreController == null){
+                    highScoreController = new HighScoreController();
+                }
+            }
+        }
+        return highScoreController;
+    }
 
     /**
      * High Score Table
@@ -76,17 +93,6 @@ public class HighScoreController extends BaseScreenController implements Initial
      */
     private final String HIGH_SCORE_PAGES[] = {"Overall", "Current"};
 
-    /**
-     * Constructor to ensure UIController object is passed
-     *
-     *
-     *
-     * @param UIController the UIController between UI and Backend.
-     */
-    public HighScoreController(UIController UIController) {
-        super(UIController);
-    }
-
     @FXML
     private Button leftPageNav, rightPageNav;
 
@@ -97,8 +103,8 @@ public class HighScoreController extends BaseScreenController implements Initial
      */
     public void prepView(){
 
-        overallHighScores = UIController.getJoggleCube().getOverallHighScores();
-        currentCubeHighScores = UIController.getJoggleCube().getCurrentCubeHighScores();
+        overallHighScores = JoggleCubeController.getInstance().getOverallHighScores();
+        currentCubeHighScores = JoggleCubeController.getInstance().getCurrentCubeHighScores();
 
         if(currentCubeHighScores == null){
             leftPageNav.setVisible(false);
