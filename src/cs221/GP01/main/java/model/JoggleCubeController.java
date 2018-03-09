@@ -14,7 +14,7 @@ import java.util.Scanner;
 /**
  * The backend main controller
  * @author Samuel Jones - srj12@aber.ac.uk
- * @version 0.7
+ * @version 0.8
  */
 public class JoggleCubeController implements IJoggleCubeController{
 
@@ -126,8 +126,6 @@ public class JoggleCubeController implements IJoggleCubeController{
         }
         //At this point the cube has been loaded in
     }
-
-    //todo Question whether if return true should get the score and then add to the score in a private instance variable
     public boolean testWordValidity(String word) {
         //Test if already used
         if (storedWords.contains(word)){return false;}
@@ -142,7 +140,6 @@ public class JoggleCubeController implements IJoggleCubeController{
         return false;
     }
 
-    //todo check data in cube before loading
     public String[][][] getCubeData() {
         String[][][] stringCube = new String[3][3][3];
 
