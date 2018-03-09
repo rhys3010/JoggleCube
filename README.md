@@ -28,6 +28,20 @@
 * Remember to update your local repo before starting work incase changes have been made.
 * Use: git pull origin master.
 
+## Online docs links
+
+Use case Document.
+
+* https://www.overleaf.com/14423395dhpzyjhytjcs
+
+Design Spec.
+
+* https://www.overleaf.com/14422811ssxtzsfsnxdd
+
+Test Spec.
+
+* https://www.overleaf.com/14423457gtchkhnhyjgk
+
 ## Contributors
 
 * Rhys Evans (rhe24@aber.ac.uk)
