@@ -26,7 +26,7 @@ public class BaseScreenController {
      * The root node of a given screen
      */
     @FXML
-    private StackPane root;
+    protected StackPane root;
 
     /**
      * The main node of a given screen

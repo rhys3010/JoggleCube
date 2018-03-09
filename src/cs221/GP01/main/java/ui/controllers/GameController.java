@@ -31,6 +31,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.stage.StageStyle;
 
+import java.util.Optional;
 
 
 /**
@@ -170,8 +171,20 @@ public class GameController extends BaseScreenController implements IGameControl
      */
     @FXML
     private void btnEndGameClicked() {
+        // Display 'are you sure' overlay
+        Alert sureAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        sureAlert.setTitle("Quit Game");
+        sureAlert.setHeaderText(null);
+        sureAlert.setContentText("Are you sure you want to quit the current game?");
+        Optional<ButtonType> result = sureAlert.showAndWait();
+
+
+        if (result.get() == ButtonType.OK) {
         JoggleCubeController.getInstance().interruptTimer();
         NavigationController.getInstance().showOverlay(ScreenType.END, this);
+        } else {
+            sureAlert.close();
+        }
     }
 
     /**

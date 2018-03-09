@@ -12,12 +12,15 @@ import cs221.GP01.main.java.model.JoggleCubeController;
 import cs221.GP01.main.java.ui.UIController;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Optional;
 
 /**
  * Main - A class that starts the Main application.
@@ -58,6 +61,7 @@ public class Main extends Application {
         for(int i = 0; i < 4; i++){
             primaryStage.getIcons().add(new Image("cs221/GP01/main/resource/img/icon/icon" + (int)Math.pow(2,(i+4)) + ".png"));
         }
+
 
         primaryStage.show();
 
