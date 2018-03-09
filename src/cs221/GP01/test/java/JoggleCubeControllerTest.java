@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class JoggleCubeControllerTest {
 
-    JoggleCubeController controller = new JoggleCubeController();
+    JoggleCubeController controller = JoggleCubeController.getInstance();
 
     @Test
     public void testLoadNewDictionary(){

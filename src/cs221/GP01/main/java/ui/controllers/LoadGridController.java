@@ -8,6 +8,8 @@
 
 package cs221.GP01.main.java.ui.controllers;
 
+import cs221.GP01.main.java.model.JoggleCubeController;
+import cs221.GP01.main.java.ui.NavigationController;
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
@@ -35,6 +37,22 @@ import java.util.ResourceBundle;
  */
 public class LoadGridController extends BaseScreenController implements INeedPrep {
 
+
+    private static LoadGridController loadGridController;
+
+    private LoadGridController(){}
+
+    public static LoadGridController getInstance(){
+        if(loadGridController == null){
+            synchronized (LoadGridController.class){
+                if(loadGridController == null){
+                    loadGridController = new LoadGridController();
+                }
+            }
+        }
+        return loadGridController;
+    }
+
     /**
      * List to store recently played cubes
      */
@@ -47,19 +65,12 @@ public class LoadGridController extends BaseScreenController implements INeedPre
      */
     private File gridFile = null;
 
-    /**
-     * Constructor to ensure UIController object is passed
-     * @param UIController
-     */
-    public LoadGridController(UIController UIController){
-        super(UIController);
-    }
 
     /**
      * Get recently played cubes from backend
      */
     public void prepView(){
-        listViewRecents.setItems(UIController.getJoggleCube().getRecentGrids());
+        listViewRecents.setItems(JoggleCubeController.getInstance().getRecentGrids());
     }
 
 
@@ -71,8 +82,8 @@ public class LoadGridController extends BaseScreenController implements INeedPre
      */
     @FXML
     void btnStartGridClicked() {
-        UIController.getJoggleCube().loadGrid(gridFile);
-        UIController.getNavigationController().switchScreen(ScreenType.GAME);
+        JoggleCubeController.getInstance().loadGrid(gridFile);
+        NavigationController.getInstance().switchScreen(ScreenType.GAME);
     }
 
     /**
@@ -82,7 +93,7 @@ public class LoadGridController extends BaseScreenController implements INeedPre
      */
     @FXML
     private void btnBackClicked() {
-        UIController.getNavigationController().switchScreen(ScreenType.START);
+        NavigationController.getInstance().switchScreen(ScreenType.START);
     }
 
     /**

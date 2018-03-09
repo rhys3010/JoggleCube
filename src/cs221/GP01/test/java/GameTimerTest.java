@@ -2,7 +2,6 @@ package cs221.GP01.test.java;
 
 import cs221.GP01.main.java.model.GameTimer;
 import cs221.GP01.main.java.model.JoggleCubeController;
-import cs221.GP01.main.java.ui.IUIController;
 import cs221.GP01.main.java.ui.UIController;
 import org.junit.jupiter.api.Test;
 
@@ -11,9 +10,9 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameTimerTest {
-    JoggleCubeController controller = new JoggleCubeController();
-    IUIController uicontroller = new UIController(controller);
-    GameTimer timer = new GameTimer(uicontroller);
+    JoggleCubeController controller = JoggleCubeController.getInstance();
+    UIController uicontroller = UIController.getInstance();
+    GameTimer timer = new GameTimer();
 
     @Test
     public void testResetTime(){

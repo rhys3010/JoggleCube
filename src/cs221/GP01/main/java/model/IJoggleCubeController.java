@@ -1,8 +1,6 @@
 package cs221.GP01.main.java.model;
 
-import cs221.GP01.main.java.ui.IUIController;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Label;
 
 import java.io.File;
 
@@ -13,10 +11,7 @@ import java.io.File;
  */
 public interface IJoggleCubeController {
 
-    /**
-     *  Allows the backend to access the UI if it needs to.
-     */
-    void setUI(IUIController controller);
+
 
     /**
      * create a random grid
