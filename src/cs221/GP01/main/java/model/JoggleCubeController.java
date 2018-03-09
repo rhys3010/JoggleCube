@@ -27,6 +27,7 @@ public class JoggleCubeController implements IJoggleCubeController{
         storedWords = new ArrayList<>();
         scores = cube.getScores();
         timer = new GameTimer();
+        System.out.println(getWordScore("QuEEN") + "is the score for QuEEN");
     }
 
     public static JoggleCubeController getInstance(){
@@ -250,9 +251,9 @@ public class JoggleCubeController implements IJoggleCubeController{
             if(scores.containsKey(String.valueOf(word.charAt(i)))){
                 //If scores contains the word continue else check for double letters
                 sumOf += Integer.parseInt(scores.get(word.charAt(i) + ""));
-            } else if(scores.containsKey(word.charAt(i) + word.charAt(i+1) + "")){
+            } else if(scores.containsKey((word.charAt(i)+ "") + (word.charAt(i+1) + ""))){
                 //Else if scores contains word[i] + word[i+1] then handle
-                sumOf += Integer.parseInt(scores.get(word.charAt(i) + word.charAt(i+1)+ ""));
+                sumOf += Integer.parseInt(scores.get((word.charAt(i)+ "") + (word.charAt(i+1) + "")));
                 i++;
             } else{
                 System.out.println("Score is broken for this letter" + word.charAt(i));
