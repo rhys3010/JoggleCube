@@ -108,7 +108,7 @@ public class UIController {
                 break;
 
             case HIGH_SCORES:
-                loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "HighScore.fxml"));
+                loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Score.fxml"));
                 loader.setController(HighScoreController.getInstance());
                 break;
 

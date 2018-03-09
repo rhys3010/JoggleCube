@@ -8,17 +8,18 @@
 
 package cs221.GP01.main.java.model;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- *  HighScore - Encapsulate and represent a given High Score entry
+ *  Score - Encapsulate and represent a given High Score entry
  *  Represent a Given High Score Entry -> Date/time of Score, Score
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @version 0.1  DRAFT
  */
-public class HighScore {
+public class Score implements IScore {
 
     /**
      * Achieved score
@@ -40,7 +41,7 @@ public class HighScore {
      * Convert score and date value to string
      * @param score as an int
      */
-    public HighScore(Integer score, String name){
+    public Score(Integer score, String name){
         // Convert Score to String
         this.score = score;
 
@@ -54,6 +55,16 @@ public class HighScore {
         // Display date as string
         this.date = dateFormat.format(currDate);
     }
+
+
+    /**
+    * Construct Score from the next entry in the file.
+    */
+    /*
+    public Score(File file){
+        //todo construct the Score from the next file entry
+    }
+    */
 
     /**
      * Get the date of a given high score entry
@@ -77,6 +88,16 @@ public class HighScore {
      */
     public String getName(){
         return name;
+    }
+
+    /**
+     * Save this score to the file
+     *
+     * @param file the file to save the score to.
+     */
+    @Override
+    public void saveScore(File file) {
+        //todo implement this.
     }
 
 }

@@ -154,11 +154,11 @@ public class JoggleCubeController implements IJoggleCubeController{
         return stringCube;
     }
 
-    //Need to look into how the HighScore classes are built from Lampros
-    public ObservableList<HighScore> getOverallHighScores() { return null; }
+    //Need to look into how the Score classes are built from Lampros
+    public ObservableList<Score> getOverallHighScores() { return null; }
 
     //Need to look into the same thing
-    public ObservableList<HighScore> getCurrentCubeHighScores() { return null; }
+    public ObservableList<Score> getCurrentCubeHighScores() { return null; }
 
     //Get the grids from a saved file
     public ObservableList<String> getRecentGrids() { return null; }

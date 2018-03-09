@@ -47,14 +47,14 @@ public interface IJoggleCubeController {
      *
      * @return the loaded grid high scores, return null if no grid loaded
      */
-    ObservableList<HighScore> getCurrentCubeHighScores();
+    ObservableList<Score> getCurrentCubeHighScores();
 
     /**
      *
      *
      * @return the overall highscores
      */
-    ObservableList<HighScore> getOverallHighScores();
+    ObservableList<Score> getOverallHighScores();
 
     /**
      *
