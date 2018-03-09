@@ -145,6 +145,7 @@
     -fx-background-color: transparent;
     -fx-background-position: center;
     -fx-background-image: url("../img/icon/explode_icon.png");
+    -fx-cursor: hand;
 }
 
 .gameElementsContainer .cubeContainer .gridTab .explodeIconContainer .explode{
