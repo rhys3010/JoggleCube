@@ -23,7 +23,6 @@ import java.util.ResourceBundle;
  * StartController - A class that does something.
  * <p>
  * How it is used
- * todo add a Highscore button
  * @author Nathan Williams (naw21)
  * @version 0.2  DRAFT
  */
@@ -53,7 +52,7 @@ public class StartController extends BaseScreenController implements Initializab
 
 
     /**
-     * todo Do initialization stuff here
+     *
      */
     @Override
     public void initialize(URL location, ResourceBundle resources){

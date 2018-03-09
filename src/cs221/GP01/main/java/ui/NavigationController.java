@@ -21,7 +21,8 @@ import java.util.HashMap;
  * All screens are stored in a HashMap and can be activated, added or removed. The screen are stored as an FXML Loader with
  * an FXML file and root pane 'pre-loaded'
  * @author Rhys Evans (rhe24@aber.ac.uk)
- * @version 0.1
+ * @author Nathan Williams (naw21)
+ * @version 0.2  DRAFT
  */
 
 public class NavigationController implements IViewNavigation{

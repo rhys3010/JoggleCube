@@ -34,7 +34,8 @@ import java.util.ResourceBundle;
  * Used with HighScore.fxml
  * todo improve this description
  * @author Rhys Evans (rhe24@aber.ac.uk)
- * @version 0.2  DRAFT
+ * @author Nathan Williams (naw21@aber.ac.uk)
+ * @version 0.2
  */
 public class HighScoreController extends BaseScreenController implements Initializable, INeedPrep {
 

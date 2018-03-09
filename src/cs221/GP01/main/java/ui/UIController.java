@@ -19,7 +19,8 @@ import java.io.IOException;
  * UIController - A class to behave as a mediator between UI and Backend.
  * <p>
  * @author Rhys Evans (rhe24@aber.ac.uk)
- * @version 0.1
+ * @author Nathan Williams (naw21)
+ * @version 0.2  DRAFT
  */
 public class UIController {
 

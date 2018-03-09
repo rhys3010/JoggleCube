@@ -18,7 +18,8 @@ import javafx.scene.layout.StackPane;
 /**
  * The Parent Class of any screen controller
  * @author Rhys Evans (rhe24@aber.ac.uk)
- * @version 0.1
+ * @author Nathan Williams (naw21@aber.ac.uk)
+ * @version 0.2
  */
 public class BaseScreenController {
 
