@@ -229,8 +229,8 @@ GridPane {
 GridPane Label {
     -fx-background-color: -fx-tertiary-color, white ;
     -fx-background-insets: 0, 1 ;
-    -fx-pref-height:30;
-    -fx-pref-width:30;
+    -fx-pref-height:29;
+    -fx-pref-width:29;
     -fx-alignment: center;
     -fx-text-alignment: center;
     -fx-text-fill: white;
