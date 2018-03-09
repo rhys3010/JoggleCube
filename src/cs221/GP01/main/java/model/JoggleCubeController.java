@@ -20,28 +20,6 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     private static JoggleCubeController joggleCube;
 
-    private JoggleCubeController(){
-        //Load dictionary on creation of JoggleCubeController
-        cube = new Cube(language + "_letters");
-        loadNewDictionary();
-        storedWords = new ArrayList<>();
-        scores = cube.getScores();
-        timer = new GameTimer();
-    }
-
-    public static JoggleCubeController getInstance(){
-        if(joggleCube == null){
-            synchronized (UIController.class){
-                if(joggleCube == null){
-                    joggleCube = new JoggleCubeController();
-                }
-            }
-        }
-        return joggleCube;
-    }
-
-
-
     private Dictionary dictionary;
 
     private HashMap<String, Dictionary> loadedDictionaries = new HashMap<>();
@@ -71,6 +49,26 @@ public class JoggleCubeController implements IJoggleCubeController{
         return loadedDictionaries;
     }
 
+
+    private JoggleCubeController(){
+        //Load dictionary on creation of JoggleCubeController
+        cube = new Cube(language + "_letters");
+        loadNewDictionary();
+        storedWords = new ArrayList<>();
+        scores = cube.getScores();
+        timer = new GameTimer();
+    }
+
+    public static JoggleCubeController getInstance(){
+        if(joggleCube == null){
+            synchronized (UIController.class){
+                if(joggleCube == null){
+                    joggleCube = new JoggleCubeController();
+                }
+            }
+        }
+        return joggleCube;
+    }
 
     //Start Random Game
     public void generateRandomGrid() {
