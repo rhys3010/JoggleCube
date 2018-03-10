@@ -20,6 +20,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -45,7 +46,7 @@
     <VBox fx:id="mainNode" styleClass="mainContainer">
         <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="topMenu">
             <Label fx:id="scoreLabel" styleClass="scoreLabel" text="0" />
-            <Label fx:id="timerLabel" styleClass="timerLabel" text="3:00" />
+            <Label fx:id="timerLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="timerLabel" text="3:00" />
          <HBox styleClass="buttonContainer">
             <children>
                     <Button fx:id="menuButton" mnemonicParsing="false" onAction="#btnMenuClicked">
@@ -76,7 +77,10 @@
                   <bottom>
                      <HBox styleClass="explodeIconContainer">
                         <children>
-                            <Button fx:id="explodeIcon" styleClass="explodeToggle" onAction="#btnExplodeClicked"/>
+                            <Button fx:id="explodeIcon" onAction="#btnExplodeClicked" styleClass="explodeToggle">
+                              <tooltip>
+                                 <Tooltip opacity="0.8" text="Explode/Implode Cube" />
+                              </tooltip></Button>
                         </children>
                      </HBox>
                   </bottom>

@@ -8,6 +8,7 @@
 
 package cs221.GP01.main.java.ui.controllers;
 
+import cs221.GP01.main.java.ui.NavigationController;
 import cs221.GP01.main.java.ui.ScreenType;
 import cs221.GP01.main.java.ui.UIController;
 import javafx.fxml.FXML;
@@ -21,26 +22,11 @@ import javafx.scene.layout.StackPane;
  */
 public class BaseScreenController {
 
-
-    /**
-     * An instance of the UIController object to interface with backend
-     */
-    protected UIController UIController;
-
-    /**
-     * Constructor to ensure UIController object is passed
-     * @param UIController
-     */
-    public BaseScreenController(UIController UIController){
-        this.UIController = UIController;
-    }
-
-
     /**
      * The root node of a given screen
      */
     @FXML
-    private StackPane root;
+    protected StackPane root;
 
     /**
      * The main node of a given screen
@@ -70,7 +56,7 @@ public class BaseScreenController {
      */
     @FXML
     private void btnMenuClicked(){
-        UIController.getNavigationController().switchScreen(ScreenType.START);
+        NavigationController.getInstance().switchScreen(ScreenType.START);
     }
 
     /**
@@ -78,7 +64,7 @@ public class BaseScreenController {
      */
     @FXML
     private void btnHighScoreClicked(){
-        UIController.getNavigationController().switchScreen(ScreenType.HIGH_SCORES);
+        NavigationController.getInstance().switchScreen(ScreenType.HIGH_SCORES);
     }
 
     /**
@@ -86,7 +72,7 @@ public class BaseScreenController {
      */
     @FXML
     private void btnHelpClicked(){
-        UIController.getNavigationController().showOverlay(ScreenType.HELP, this);
+        NavigationController.getInstance().showOverlay(ScreenType.HELP, this);
     }
 
     /**
@@ -94,7 +80,7 @@ public class BaseScreenController {
      */
     @FXML
     private void btnSettingsClicked(){
-        UIController.getNavigationController().showOverlay(ScreenType.SETTINGS, this);
+        NavigationController.getInstance().showOverlay(ScreenType.SETTINGS, this);
     }
 
 }

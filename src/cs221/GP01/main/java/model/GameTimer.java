@@ -3,9 +3,11 @@
  */
 
 package cs221.GP01.main.java.model;
-import cs221.GP01.main.java.ui.IUIController;
+import cs221.GP01.main.java.ui.NavigationController;
 import cs221.GP01.main.java.ui.ScreenType;
+import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.controllers.BaseScreenController;
+import cs221.GP01.main.java.ui.controllers.GameController;
 import javafx.scene.control.Label;
 
 import java.time.Duration;
@@ -24,11 +26,9 @@ public class GameTimer implements IGameTimer {
 
     private Duration currentTime;
 
-    IUIController ui;
 
-    public GameTimer(IUIController iui) {
-        ui = iui;
-    }
+
+    public GameTimer(){}
 
     public void setCurrentTime(Duration currentTime) {
         this.currentTime = currentTime;
@@ -46,7 +46,7 @@ public class GameTimer implements IGameTimer {
     @Override
     public void startTimer() {
         //todo update the timer label with current time
-        Label timerLabel = ui.getGameController().getScoreLabel();
+        Label timerLabel = GameController.getInstance().getScoreLabel();
         //
         int timeLeft = 180;
         currentTime = Duration.ofSeconds(180);
@@ -65,6 +65,6 @@ public class GameTimer implements IGameTimer {
     @Override
     public void finishTimer() {
         //ends the game
-        ui.getNavigationController().showOverlay(ScreenType.END, (BaseScreenController) ui.getGameController());
+        NavigationController.getInstance().showOverlay(ScreenType.END, (BaseScreenController) GameController.getInstance());
     }
 }

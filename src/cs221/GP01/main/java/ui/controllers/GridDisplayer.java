@@ -89,6 +89,13 @@ public class GridDisplayer {
      * @param letters
      */
     public void buildGrids(String[][][] letters) {
+        groupy.getChildren().clear();
+        for(int i = 0; i < 3; i++){
+            twoDGrid[i].getChildren().clear();
+            twoFiveDGrid[i].getChildren().clear();
+        }
+
+
 
         //sets up the 3D enviroment
         Camera camera = new ParallelCamera();

@@ -2,6 +2,7 @@ package cs221.GP01.main.java.ui;
 
 import cs221.GP01.main.java.ui.controllers.BaseScreenController;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 
 public interface IViewNavigation {
 
@@ -16,4 +17,5 @@ public interface IViewNavigation {
     void hideOverlay(ScreenType overlay, BaseScreenController parent);
 
 
+    void setMainScene(Scene main);
 }

@@ -1,9 +1,13 @@
 package cs221.GP01.test.java;
 
+import cs221.GP01.main.java.model.Block;
 import cs221.GP01.main.java.model.Cube;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,13 +15,54 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CubeTests {
 
     Cube cube = new Cube();
+    @BeforeEach
+    public void load(){ cube.populateCube("en_letters");}
 
+    @Test
+    public void testOccurrences(){
+
+        ArrayList<String> cubeLetters = new ArrayList<>();
+
+        for(int i = 0; i<3; i++) {
+            for (int j = 0; j < 3; j++) {
+                for (int k = 0; k < 3; k++) {
+                    cubeLetters.add(cube.getBlock(i,j,k).getLetter());
+                }
+            }
+        }
+        assertTrue(Collections.frequency(cubeLetters, "A") <= 9);
+        assertTrue(Collections.frequency(cubeLetters, "B") <= 2);
+        assertTrue(Collections.frequency(cubeLetters, "I") <= 9);
+        assertTrue(Collections.frequency(cubeLetters, "Qu") <= 1);
+        assertTrue(Collections.frequency(cubeLetters, "Y") <= 2);
+        assertTrue(Collections.frequency(cubeLetters, "Z") <= 1);
+
+    }
+
+    @Test
+    public void testLoadBagOfLetters (){
+
+        ArrayList<String> bagOfLetters = cube.getBagOfLetters();
+        assertEquals(97, bagOfLetters.size());
+    }
+
+    @Test
+    public void testLetterScores (){
+
+        assertEquals(1,Integer.parseInt(cube.getScores().get("A")));
+        assertEquals(3,Integer.parseInt(cube.getScores().get("B")));
+        assertEquals(4,Integer.parseInt(cube.getScores().get("F")));
+        assertEquals(8,Integer.parseInt(cube.getScores().get("Qu")));
+        assertEquals(4,Integer.parseInt(cube.getScores().get("Y")));
+        assertEquals(10,Integer.parseInt(cube.getScores().get("Z")));
+
+    }
     @Test
     public void testIsPopulateCubeRandom(){
         String[] letter = new String[3];
 
         for(int i=0; i<3; i++) {
-            cube.populateCube("en_letters.txt");
+            cube.populateCube("en_letters");
             letter[i] = cube.getBlock(0, 0, 0).getLetter();
             System.out.println(letter[i]);
         }
@@ -28,7 +73,6 @@ public class CubeTests {
     @Test
     public void testNeighboursNum(){
 
-        cube.populateCube("en_letters.txt");
         ArrayList<int[]> neighbours;
 
         neighbours = cube.getNeighbours(0,0,0);
@@ -47,7 +91,7 @@ public class CubeTests {
 
     @Test
     public void testNeighbourPos (){
-        cube.populateCube("en_letters.txt");
+
         ArrayList<int[]> neighbours;
 
         int x; int z; int y;
@@ -61,4 +105,5 @@ public class CubeTests {
             assertTrue(Math.abs(i[2] - z) <= 1);
         }
     }
+
 }

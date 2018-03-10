@@ -8,18 +8,19 @@
 
 package cs221.GP01;
 
-import cs221.GP01.main.java.model.IJoggleCubeController;
 import cs221.GP01.main.java.model.JoggleCubeController;
-import cs221.GP01.main.java.model.PretendBackEnd;
 import cs221.GP01.main.java.ui.UIController;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Optional;
 
 /**
  * Main - A class that starts the Main application.
@@ -44,9 +45,8 @@ public class Main extends Application {
         //As a fix for the inability to load custom fonts on some computers (apparently a common bug in JavaFX8+)
         Font.loadFont(getClass().getResourceAsStream("main/resource/font/DS-DIGI.TTF"), 16);
 
-        //todo launch the real back end
-        //IJoggleCubeController joggleCube = new PretendBackEnd();
-        IJoggleCubeController joggleCube = new JoggleCubeController();
+        //start the backend
+        JoggleCubeController.getInstance();
 
         // Create main scene and initialize with a dummy root node
         Pane dummyRoot = new Pane();
@@ -62,13 +62,11 @@ public class Main extends Application {
             primaryStage.getIcons().add(new Image("cs221/GP01/main/resource/img/icon/icon" + (int)Math.pow(2,(i+4)) + ".png"));
         }
 
+
         primaryStage.show();
 
-        // Create a Joggle Cube object
-        UIController UIController = new UIController(joggleCube);
-
         // Initialize UIController game
-        UIController.initialize(mainScene);
+        UIController.getInstance().initialize(mainScene);
     }
 
     /**

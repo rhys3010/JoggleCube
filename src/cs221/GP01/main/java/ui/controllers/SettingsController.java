@@ -1,23 +1,34 @@
 package cs221.GP01.main.java.ui.controllers;
 
+import cs221.GP01.main.java.ui.NavigationController;
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SettingsController extends BaseOverlayController implements INeedPrep, Initializable {
 
 
-    /**
-     * Constructor to ensure UIController object is passed
-     * @param UIController
-     */
-    public SettingsController(UIController UIController){
-        super(UIController);
+    private static SettingsController settingsController;
+
+    private SettingsController(){}
+
+    public static SettingsController getInstance(){
+        if(settingsController == null){
+            synchronized (SettingsController.class){
+                if(settingsController == null){
+                    settingsController = new SettingsController();
+                }
+            }
+        }
+        return settingsController;
     }
 
 
@@ -26,7 +37,27 @@ public class SettingsController extends BaseOverlayController implements INeedPr
      */
     @FXML
     public void closeBtnClicked(){
-        UIController.getNavigationController().hideOverlay(ScreenType.SETTINGS, parentController);
+        NavigationController.getInstance().hideOverlay(ScreenType.SETTINGS, parentController);
+    }
+
+    /**
+     * Handle the clearing of highscores
+     */
+    @FXML
+    public void clearHighScoreClicked(){
+        // Display 'are you sure' overlay
+        Alert sureAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        sureAlert.setTitle("Quit Game");
+        sureAlert.setHeaderText(null);
+        sureAlert.setContentText("Are you sure you want to clear all High Scores?");
+
+        Optional<ButtonType> result = sureAlert.showAndWait();
+
+        if (result.get() == ButtonType.OK) {
+            // todo: Clear high scores here
+        } else {
+            sureAlert.close();
+        }
     }
 
     @Override
