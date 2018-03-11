@@ -1,6 +1,8 @@
 package cs221.GP01.main.java.model;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * The Interface which handles and looks after the Cube
@@ -31,4 +33,7 @@ public interface ICube {
      * @return
      */
     ArrayList<int[]> getNeighbours(int x, int y, int z);
+
+    boolean saveCube(PrintWriter file);
+    boolean loadCube(Scanner file);
 }

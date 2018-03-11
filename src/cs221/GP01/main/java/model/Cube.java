@@ -2,6 +2,7 @@ package cs221.GP01.main.java.model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -19,6 +20,8 @@ public class Cube implements ICube{
     private Block cube[][][] = new Block[3][3][3];
     private ArrayList<String> bagOfLetters = new ArrayList<>();
     private HashMap<String, String> scores = new HashMap<>();
+
+    private String cubeLanguage;
 
     public Cube(String letterFilename){
         loadBagOfLetters(letterFilename);
@@ -112,6 +115,51 @@ public class Cube implements ICube{
         return neighbours;
     }
 
+    @Override
+    public boolean saveCube(PrintWriter file) {
+        file.print(cubeLanguage + "\n");
+        for(int i = 0; i<3; i++){
+            for(int j = 0; j<3; j++){
+                for(int k = 0; k<3; k++){
+                    file.print(cube[i][j][k].getLetter());
+                    if(k == 2){
+                        file.print("\n");
+                    } else {
+                        file.print(" ");
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean loadCube(Scanner file) {
+        ArrayList<String> letters = new ArrayList<>();
+        String input;
+        //Load in all of the letters
+        while(file.hasNext() && letters.size() < 27) {
+            input = file.next();
+            letters.add(input);
+        }
+        if(!(letters.size() == 27)){
+            System.out.println("Cube that is loaded is corrupt");
+            return false;
+        }
+
+        //Letters contains all of the cube in order from 0,0,0 to 2,2,2
+        int index = 0;
+        for(int i = 0; i<3;i++){
+            for(int j = 0; j<3; j++){
+                for(int k = 0; k<3; k++){
+                    setBlock(i,j,k,new Block(letters.get(index)));
+                    index++;
+                }
+            }
+        }
+        return true;
+    }
+
     public void setBlock(int x, int y, int z, Block block){
         cube[x][y][z] = block;
     }
@@ -152,5 +200,9 @@ public class Cube implements ICube{
         } catch (URISyntaxException ex) {
             System.out.println(ex.toString());
         }
+    }
+
+    public void setLanguage(String language) {
+        this.cubeLanguage = language;
     }
 }

@@ -56,12 +56,8 @@ public class JoggleCubeController implements IJoggleCubeController{
 
 
     private JoggleCubeController(){
-        //Load dictionary on creation of JoggleCubeController
-        cube = new Cube(language + "_letters");
+        loadOverallScores();
         loadNewDictionary();
-        storedWords = new ArrayList<>();
-        scores = cube.getScores();
-        timer = new GameTimer();
         //todo during project start up write private method to check if folder for JoggleCube is in the User.home directory and create if not present, including the saves.
         findDocumentFolder();
     }
@@ -84,7 +80,9 @@ public class JoggleCubeController implements IJoggleCubeController{
         GameController.getInstance().getScoreLabel().setText(currentScore + "");
 
         //Populate the cube randomly
+        setLanguage(language);
         cube.populateCube(language + "_letters");
+        storedWords = new ArrayList<>();
     }
 
     //Start loaded game
@@ -94,46 +92,21 @@ public class JoggleCubeController implements IJoggleCubeController{
         GameController.getInstance().getScoreLabel().setText(currentScore + "");
         //load this file into grid and high scores
         //Load save game from the file stream given
-        String input;
-        ArrayList<String> letters = new ArrayList<>();
         try{
             //todo write an actual path to the documents/saves directory
-            File file = new File("path" + filename);
+            File file = new File("" + filename + ".grid");
             Scanner in = new Scanner(file);
-            //Load in all of the letters
-            while(in.hasNext() && letters.size() < 27) {
-                input = in.next();
-                letters.add(input);
-            }
-            //Load in all of the high scores
-            /*
-            while(in.hasNext()){
-                input = in.next()
-            }
-             */
-
+            //overrides the language settings
+            setLanguage(in.next());
+            //loads in the cube letters
+            cube.loadCube(in);
         } catch(FileNotFoundException e){
             //An error in file name
             System.out.println("Game Save not found");
             return false;
         }
-
-        if(!(letters.size() == 27)){
-            System.out.println("Cube that is loaded is corrupt");
-            return false;
-        }
-
-        //Letters contains all of the cube in order from 0,0,0 to 2,2,2
-        int index = 0;
-        for(int i = 0; i<3;i++){
-            for(int j = 0; j<3; j++){
-                for(int k = 0; k<3; k++){
-                    cube.setBlock(i,j,k,new Block(letters.get(index)));
-                    index++;
-                }
-            }
-        }
         //At this point the cube has been loaded in
+        storedWords = new ArrayList<>();
         return true;
     }
     public boolean testWordValidity(String word) {
@@ -160,7 +133,6 @@ public class JoggleCubeController implements IJoggleCubeController{
                 }
             }
         }
-
         return stringCube;
     }
 
@@ -175,38 +147,11 @@ public class JoggleCubeController implements IJoggleCubeController{
 
 
     public boolean saveGrid(String filename) {
-
         try{
             //todo write an actual path, to the documents folder
-            File file = new File("path" + filename);
+            File file = new File("" + filename + ".grid");
             PrintWriter out = new PrintWriter(file);
-            //Print cube to a single array for output
-            String flatCube[] = new String[27];
-            int c = 0;
-            for(int i = 0; i<3; i++){
-                for(int j = 0; j<3; j++){
-                    for(int k = 0; k<3; k++){
-                        //flatCube[c] = "";
-                        flatCube[c] = cube.getBlock(i, j, k).getLetter();
-                        c++;
-                    }
-                }
-            }
-
-            //Use the Flat cube to output in the correct format
-            int b = 0;
-            for(int i = 0; i<9; i++){
-                out.print(flatCube[b] + " ");
-                out.print(flatCube[b+1] + " ");
-                out.print(flatCube[b+2]);
-                if(b != 25){
-                    out.print("\n");
-                }
-                b += 3;
-            }
-
-            //Output the highscores
-            // todo wait for highscores
+            cube.saveCube(out);
             out.close();
         } catch (FileNotFoundException e){
             System.out.println(e.toString());
@@ -220,7 +165,24 @@ public class JoggleCubeController implements IJoggleCubeController{
      */
     @Override
     public void saveOverallScores() {
+        //todo implement this
+    }
 
+    /**
+     * loads the overall scores from file
+     */
+    private void loadOverallScores(){
+        //todo implement this
+    }
+
+    /**
+     * returns the top highscore
+     *
+     * @return the top high score.
+     */
+    public int getHighScore() {
+        //todo get the highest overall score.
+        return 0;
     }
 
     @Override
@@ -230,6 +192,7 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     @Override
     public void startTimer() {
+        timer = new GameTimer();
         //todo start this in a separate thread
         //timer.startTimer();
     }
@@ -237,7 +200,7 @@ public class JoggleCubeController implements IJoggleCubeController{
     @Override
     public void interruptTimer() {
         //timer.interrupt();
-        timer.resetTime();
+        //timer.resetTime();
     }
 
     /**
@@ -252,6 +215,8 @@ public class JoggleCubeController implements IJoggleCubeController{
             loadNewDictionary();
         }
         cube = new Cube(language + "_letters");
+        cube.setLanguage(language);
+        scores = cube.getScores();
     }
 
     /**
@@ -288,15 +253,6 @@ public class JoggleCubeController implements IJoggleCubeController{
      */
     public int getScore() {
         return currentScore;
-    }
-
-    /**
-     * returns the top highscore
-     *
-     * @return the top high score.
-     */
-    public int getHighScore() {
-        return 0;
     }
 
     /**
