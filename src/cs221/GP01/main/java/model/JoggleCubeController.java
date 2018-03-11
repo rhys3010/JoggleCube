@@ -344,7 +344,6 @@ public class JoggleCubeController implements IJoggleCubeController{
             //Move the saved grids into this saves directory
             //Open the saved grids as files and highscores
             String savedGrids = getClass().getResource("../../data/savedgrids").getFile();
-            System.out.println(new File(savedGrids).getAbsolutePath());
             String highScores = getClass().getResource("../../data/highscores").getFile();
 
             try {
