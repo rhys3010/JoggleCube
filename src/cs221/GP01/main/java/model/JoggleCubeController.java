@@ -14,7 +14,7 @@ import java.util.Scanner;
 /**
  * The backend main controller
  * @author Samuel Jones - srj12@aber.ac.uk
- * @version 0.7
+ * @version 0.8
  */
 public class JoggleCubeController implements IJoggleCubeController{
 
@@ -81,7 +81,7 @@ public class JoggleCubeController implements IJoggleCubeController{
     }
 
     //Start loaded game
-    public void loadGrid(File file) {
+    public boolean loadGrid(String filename) {
         //Reset game score
         currentScore = 0;
         GameController.getInstance().getScoreLabel().setText(currentScore + "");
@@ -90,6 +90,8 @@ public class JoggleCubeController implements IJoggleCubeController{
         String input;
         ArrayList<String> letters = new ArrayList<>();
         try{
+            //todo write an actual path.
+            File file = new File("path" + filename);
             Scanner in = new Scanner(file);
             //Load in all of the letters
             while(in.hasNext() && letters.size() < 27) {
@@ -105,13 +107,13 @@ public class JoggleCubeController implements IJoggleCubeController{
 
         } catch(FileNotFoundException e){
             //An error in file name
-            // todo: send it to frontend
             System.out.println("Game Save not found");
+            return false;
         }
 
         if(!(letters.size() == 27)){
-            //todo: send to frontend
             System.out.println("Cube that is loaded is corrupt");
+            return false;
         }
 
         //Letters contains all of the cube in order from 0,0,0 to 2,2,2
@@ -125,9 +127,8 @@ public class JoggleCubeController implements IJoggleCubeController{
             }
         }
         //At this point the cube has been loaded in
+        return true;
     }
-
-    //todo Question whether if return true should get the score and then add to the score in a private instance variable
     public boolean testWordValidity(String word) {
         //Test if already used
         if (storedWords.contains(word)){return false;}
@@ -142,7 +143,6 @@ public class JoggleCubeController implements IJoggleCubeController{
         return false;
     }
 
-    //todo check data in cube before loading
     public String[][][] getCubeData() {
         String[][][] stringCube = new String[3][3][3];
 
@@ -157,18 +157,20 @@ public class JoggleCubeController implements IJoggleCubeController{
         return stringCube;
     }
 
-    //Need to look into how the HighScore classes are built from Lampros
-    public ObservableList<HighScore> getOverallHighScores() { return null; }
+    //Need to look into how the Score classes are built from Lampros
+    public ObservableList<Score> getOverallHighScores() { return null; }
 
     //Need to look into the same thing
-    public ObservableList<HighScore> getCurrentCubeHighScores() { return null; }
+    public ObservableList<Score> getCurrentCubeHighScores() { return null; }
 
     //Get the grids from a saved file
     public ObservableList<String> getRecentGrids() { return null; }
 
 
-    public void saveGrid(File file) {
+    public boolean saveGrid(String filename) {
         try{
+            //todo write an actual path.
+            File file = new File("path" + filename);
             PrintWriter out = new PrintWriter(file);
             //Print cube to a single array for output
             String flatCube[] = new String[27];
@@ -200,7 +202,17 @@ public class JoggleCubeController implements IJoggleCubeController{
             out.close();
         } catch (FileNotFoundException e){
             System.out.println(e.toString());
+            return false;
         }
+        return true;
+    }
+
+    /**
+     * saves the overall scores to file
+     */
+    @Override
+    public void saveOverallScores() {
+
     }
 
     @Override
