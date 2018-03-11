@@ -24,9 +24,9 @@ public interface IJoggleCubeController {
     /**
      * load grid from file.
      *
-     * @param file
+     * @param filename
      */
-    void loadGrid(File file);
+    boolean loadGrid(String filename);
 
     /**
      * checks if the word is valid or not.
@@ -66,9 +66,16 @@ public interface IJoggleCubeController {
      *
      * saves the current score to grid file and overall.
      *
-     * @param file
+     * @param filename
      */
-    void saveGrid(File file);
+    boolean saveGrid(String filename);
+
+    /**
+     *
+     * saves the overall scores to file
+     *
+     */
+    void saveOverallScores();
 
     /**
      * Generate the word score for this word using scrabble score * 3

@@ -81,7 +81,7 @@ public class JoggleCubeController implements IJoggleCubeController{
     }
 
     //Start loaded game
-    public void loadGrid(File file) {
+    public boolean loadGrid(String filename) {
         //Reset game score
         currentScore = 0;
         GameController.getInstance().getScoreLabel().setText(currentScore + "");
@@ -90,6 +90,8 @@ public class JoggleCubeController implements IJoggleCubeController{
         String input;
         ArrayList<String> letters = new ArrayList<>();
         try{
+            //todo write an actual path.
+            File file = new File("path" + filename);
             Scanner in = new Scanner(file);
             //Load in all of the letters
             while(in.hasNext() && letters.size() < 27) {
@@ -105,13 +107,13 @@ public class JoggleCubeController implements IJoggleCubeController{
 
         } catch(FileNotFoundException e){
             //An error in file name
-            // todo: send it to frontend
             System.out.println("Game Save not found");
+            return false;
         }
 
         if(!(letters.size() == 27)){
-            //todo: send to frontend
             System.out.println("Cube that is loaded is corrupt");
+            return false;
         }
 
         //Letters contains all of the cube in order from 0,0,0 to 2,2,2
@@ -125,6 +127,7 @@ public class JoggleCubeController implements IJoggleCubeController{
             }
         }
         //At this point the cube has been loaded in
+        return true;
     }
     public boolean testWordValidity(String word) {
         //Test if already used
@@ -164,8 +167,10 @@ public class JoggleCubeController implements IJoggleCubeController{
     public ObservableList<String> getRecentGrids() { return null; }
 
 
-    public void saveGrid(File file) {
+    public boolean saveGrid(String filename) {
         try{
+            //todo write an actual path.
+            File file = new File("path" + filename);
             PrintWriter out = new PrintWriter(file);
             //Print cube to a single array for output
             String flatCube[] = new String[27];
@@ -197,7 +202,17 @@ public class JoggleCubeController implements IJoggleCubeController{
             out.close();
         } catch (FileNotFoundException e){
             System.out.println(e.toString());
+            return false;
         }
+        return true;
+    }
+
+    /**
+     * saves the overall scores to file
+     */
+    @Override
+    public void saveOverallScores() {
+
     }
 
     @Override

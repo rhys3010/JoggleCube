@@ -62,7 +62,9 @@ public class Main extends Application {
             primaryStage.getIcons().add(new Image("cs221/GP01/main/resource/img/icon/icon" + (int)Math.pow(2,(i+4)) + ".png"));
         }
 
-
+        primaryStage.setOnCloseRequest(e ->{
+            JoggleCubeController.getInstance().saveOverallScores();
+        });
         primaryStage.show();
 
         // Initialize UIController game

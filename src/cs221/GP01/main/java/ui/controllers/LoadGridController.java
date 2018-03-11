@@ -15,9 +15,14 @@ import cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.io.IOException;
@@ -63,7 +68,7 @@ public class LoadGridController extends BaseScreenController implements INeedPre
     /**
      * File to load the grid from
      */
-    private File gridFile = null;
+    private String fileName = null;
 
 
     /**
@@ -82,8 +87,13 @@ public class LoadGridController extends BaseScreenController implements INeedPre
      */
     @FXML
     void btnStartGridClicked() {
-        JoggleCubeController.getInstance().loadGrid(gridFile);
-        NavigationController.getInstance().switchScreen(ScreenType.GAME);
+        if(JoggleCubeController.getInstance().loadGrid(fileName)){
+            NavigationController.getInstance().switchScreen(ScreenType.GAME);
+        } else {
+            //todo file not loaded message
+        }
+
+
     }
 
     /**
@@ -103,15 +113,29 @@ public class LoadGridController extends BaseScreenController implements INeedPre
     @FXML
     private void btnPickFileClicked() {
         Stage stage = new Stage();
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Resource File");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(".grid Files","*.grid"));
+        TextInputDialog dialog = new TextInputDialog("walter");
+        dialog.setTitle("Text Input Dialog");
+        dialog.setHeaderText("Look, a Text Input Dialog");
+        dialog.setContentText("Please enter a filename:");
 
-        gridFile = fileChooser.showOpenDialog(stage);
-        if (gridFile != null) {
-            //todo do more checks, check a valid gridFile etc
-        } else {
-            //todo add try again pop-up
+        dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
+        // todo: make this the correct icon
+        // todo: make this call using proper URI to allow for those dodgy PCs
+        dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("../../../resource/img/icon/person_icon.png"))));
+        dialog.initStyle(StageStyle.UNDECORATED);
+        boolean done = false;
+        // todo: add more in-depth validation checking
+        while(!done) {
+            dialog.showAndWait();
+            // Remove spaces from input
+            String result = dialog.getResult().replace(" ", "");
+
+            if (result.matches("(\\w*)")) {
+                fileName = result;
+                done = true;
+            } else {
+                dialog.setHeaderText("Invalid Name Entry, Please try again");
+            }
         }
     }
 
@@ -120,11 +144,6 @@ public class LoadGridController extends BaseScreenController implements INeedPre
      */
     @FXML
     public void handleMouseClick() {
-        gridFile = new File(listViewRecents.getSelectionModel().getSelectedItem());
-        if (gridFile != null) {
-            //todo do more checks, check a valid gridFile etc
-        } else {
-            //todo add try again pop-up
-        }
+        fileName = listViewRecents.getSelectionModel().getSelectedItem();
     }
 }
