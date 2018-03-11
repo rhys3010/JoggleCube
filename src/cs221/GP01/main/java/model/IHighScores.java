@@ -1,7 +1,11 @@
 package cs221.GP01.main.java.model;
 
+import javafx.collections.ObservableList;
+
 import java.io.File;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public interface IHighScores {
 
@@ -10,7 +14,7 @@ public interface IHighScores {
      *
      * @param file the file to load the scores from.
      */
-    void loadScores(File file);
+    void loadScores(Scanner file);
 
 
     /**
@@ -18,26 +22,26 @@ public interface IHighScores {
      *
      * @param file the file to save the scores to.
      */
-    void saveScores(File file);
+    void saveScores(PrintWriter file);
 
     /**
      * add an individual score
      *
      * @param score the score to be added to this list of HighScores
      */
-    void addScore(Score score);
+    void addScore(IScore score);
 
     /**
      * get the Highest score.
      *
      * @return the highest score
      */
-    Score getHighScore();
+    IScore getHighScore();
 
     /**
      *
      *
      * @return a list of the scores
      */
-    ArrayList<Score> getScores();
+    ArrayList<IScore> getScores();
 }
