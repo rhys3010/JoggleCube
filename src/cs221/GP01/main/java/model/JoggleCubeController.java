@@ -3,10 +3,16 @@ package cs221.GP01.main.java.model;
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.controllers.GameController;
 import javafx.collections.ObservableList;
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -57,6 +63,8 @@ public class JoggleCubeController implements IJoggleCubeController{
         storedWords = new ArrayList<>();
         scores = cube.getScores();
         timer = new GameTimer();
+        //todo during project start up write private method to check if folder for JoggleCube is in the User.home directory and create if not present, including the saves.
+        findDocumentFolder();
     }
 
     public static JoggleCubeController getInstance(){
@@ -90,7 +98,7 @@ public class JoggleCubeController implements IJoggleCubeController{
         String input;
         ArrayList<String> letters = new ArrayList<>();
         try{
-            //todo write an actual path.
+            //todo write an actual path to the documents/saves directory
             File file = new File("path" + filename);
             Scanner in = new Scanner(file);
             //Load in all of the letters
@@ -168,8 +176,9 @@ public class JoggleCubeController implements IJoggleCubeController{
 
 
     public boolean saveGrid(String filename) {
+
         try{
-            //todo write an actual path.
+            //todo write an actual path, to the documents folder
             File file = new File("path" + filename);
             PrintWriter out = new PrintWriter(file);
             //Print cube to a single array for output
@@ -298,5 +307,68 @@ public class JoggleCubeController implements IJoggleCubeController{
         dictionary = new Dictionary();
         loadedDictionaries.put(language,dictionary);
         dictionary.loadDictionary(language + "_dictionary");
+    }
+
+    private void findDocumentFolder(){
+        //Works this way for windows but is fixed for the URI later
+        //todo test on Linux @Rhys
+        String documents = System.getProperty("user.home") + "\\Documents\\JoggleCube";
+        try {
+            URI uri = new URI(documents.replace("\\", "/").trim().replaceAll("\\u0020", "%20"));
+            File file = new File(uri.toString());
+            //If Folder does not exist create the whole directory
+            if(!file.exists() || !file.isDirectory()) {
+                createDirectory(uri);
+            }
+        }catch(URISyntaxException e){
+            System.out.println("URI Issue probably an OS issue trying to create Documents folder");
+        }
+    }
+
+    private void createDirectory(URI uri){
+        //Create the folder + saves folder + 3 hard coded saved files
+        //todo confirm whether or not the uri.toString() + directory name works in all circumstances
+        File file = new File(uri.toString());
+        try{
+            //Create the JoggleCube folder
+            Files.createDirectory(file.toPath());
+
+            //Create the saves directory in JoggleCube
+            File savesDir = new File (uri.toString()+"/saves");
+            Files.createDirectory(savesDir.toPath());
+
+            //todo discuss the use of savings settings in it's own directory/main joggle cube directory
+            //Create the highscores directory in JoggleCube
+            File highScoresDir = new File(uri.toString()+"/highscores");
+            Files.createDirectory(highScoresDir.toPath());
+
+            //Move the saved grids into this saves directory
+            //Open the saved grids as files and highscores
+            String savedGrids = getClass().getResource("../../data/savedgrids").getFile();
+            System.out.println(new File(savedGrids).getAbsolutePath());
+            String highScores = getClass().getResource("../../data/highscores").getFile();
+
+            //Find grids
+            File grid_1 = new File(savedGrids+"\\grid_1.grid");
+            File grid_2 = new File(savedGrids+"\\grid_2.grid");
+            File grid_3 = new File(savedGrids+"\\grid_3.grid");
+
+            //Find highscores
+            File hgrid_1 = new File(highScores+"/grid_1.highscores");
+            File hgrid_2 = new File(highScores+"/grid_2.highscores");
+            File hgrid_3 = new File(highScores+"/grid_3.highscores");
+
+            //Then create them in the new directory
+            FileUtils.copyFileToDirectory(grid_1, savesDir);
+            FileUtils.copyFileToDirectory(grid_2, savesDir);
+            FileUtils.copyFileToDirectory(grid_3, savesDir);
+
+            FileUtils.copyFileToDirectory(hgrid_1, highScoresDir);
+            FileUtils.copyFileToDirectory(hgrid_2, highScoresDir);
+            FileUtils.copyFileToDirectory(hgrid_3, highScoresDir);
+
+        } catch (IOException e){
+            System.out.println("Failed creating Directories: " + e.toString());
+        }
     }
 }
