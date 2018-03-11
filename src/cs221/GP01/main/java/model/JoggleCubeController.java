@@ -348,25 +348,28 @@ public class JoggleCubeController implements IJoggleCubeController{
             System.out.println(new File(savedGrids).getAbsolutePath());
             String highScores = getClass().getResource("../../data/highscores").getFile();
 
-            //Find grids
-            File grid_1 = new File(savedGrids+"\\grid_1.grid");
-            File grid_2 = new File(savedGrids+"\\grid_2.grid");
-            File grid_3 = new File(savedGrids+"\\grid_3.grid");
+            try {
+                //Find grids
+                File grid_1 = new File(new URI((savedGrids+ "/grid_1.grid").trim().replaceAll("\\u0020", "%20")).getPath());
+                File grid_2 = new File(new URI((savedGrids+ "/grid_2.grid").trim().replaceAll("\\u0020", "%20")).getPath());
+                File grid_3 = new File(new URI((savedGrids+ "/grid_3.grid").trim().replaceAll("\\u0020", "%20")).getPath());
 
-            //Find highscores
-            File hgrid_1 = new File(highScores+"/grid_1.highscores");
-            File hgrid_2 = new File(highScores+"/grid_2.highscores");
-            File hgrid_3 = new File(highScores+"/grid_3.highscores");
+                //Find highscores
+                File hgrid_1 = new File(new URI((highScores+ "/grid_1.highscores").trim().replaceAll("\\u0020", "%20")).getPath());
+                File hgrid_2 = new File(new URI((highScores+ "/grid_2.highscores").trim().replaceAll("\\u0020", "%20")).getPath());
+                File hgrid_3 = new File(new URI((highScores+ "/grid_3.highscores").trim().replaceAll("\\u0020", "%20")).getPath());
 
-            //Then create them in the new directory
-            FileUtils.copyFileToDirectory(grid_1, savesDir);
-            FileUtils.copyFileToDirectory(grid_2, savesDir);
-            FileUtils.copyFileToDirectory(grid_3, savesDir);
+                //Then create them in the new directory
+                FileUtils.copyFileToDirectory(grid_1, savesDir);
+                FileUtils.copyFileToDirectory(grid_2, savesDir);
+                FileUtils.copyFileToDirectory(grid_3, savesDir);
 
-            FileUtils.copyFileToDirectory(hgrid_1, highScoresDir);
-            FileUtils.copyFileToDirectory(hgrid_2, highScoresDir);
-            FileUtils.copyFileToDirectory(hgrid_3, highScoresDir);
-
+                FileUtils.copyFileToDirectory(hgrid_1, highScoresDir);
+                FileUtils.copyFileToDirectory(hgrid_2, highScoresDir);
+                FileUtils.copyFileToDirectory(hgrid_3, highScoresDir);
+            } catch(URISyntaxException e){
+                System.out.println(e.toString());
+            }
         } catch (IOException e){
             System.out.println("Failed creating Directories: " + e.toString());
         }
