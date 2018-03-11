@@ -1,6 +1,8 @@
 package cs221.GP01.main.java.model;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 public interface IScore {
     /**
@@ -29,5 +31,5 @@ public interface IScore {
      *
      * @param file the file to save the score to.
      */
-    void saveScore(File file);
+    void saveScore(PrintWriter file);
 }
