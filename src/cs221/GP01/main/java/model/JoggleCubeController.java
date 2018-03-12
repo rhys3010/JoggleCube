@@ -60,10 +60,9 @@ public class JoggleCubeController implements IJoggleCubeController{
 
 
     private JoggleCubeController(){
+        findDocumentFolder();
         loadOverallScores();
         loadNewDictionary();
-        //todo during project start up write private method to check if folder for JoggleCube is in the User.home directory and create if not present, including the saves.
-        findDocumentFolder();
     }
 
     public static JoggleCubeController getInstance(){
