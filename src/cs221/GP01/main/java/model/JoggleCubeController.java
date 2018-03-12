@@ -62,7 +62,6 @@ public class JoggleCubeController implements IJoggleCubeController{
         loadNewDictionary();
         //todo during project start up write private method to check if folder for JoggleCube is in the User.home directory and create if not present, including the saves.
         findDocumentFolder();
-        getRecentGrids();
     }
 
     public static JoggleCubeController getInstance(){
@@ -96,15 +95,23 @@ public class JoggleCubeController implements IJoggleCubeController{
         //load this file into grid and high scores
         //Load save game from the file stream given
         try{
-            //todo write an actual path to the documents/saves directory
-            File file = new File("" + filename + ".grid");
-            Scanner in = new Scanner(file);
-            //overrides the language settings
-            setLanguage(in.next());
-            //loads in the cube letters
-            cube.loadCube(in);
-            currentCubeHighScores = new HighScores();
-            currentCubeHighScores.loadScores(in);
+            try {
+                //todo fix the handleMouseClick() in the LoadGridController.java as it's calling using null.grid
+                String loadPath = System.getProperty("user.home") + "/Documents/JoggleCube/saves/" + filename + ".grid";
+
+                File loadFile = new File(new URI(loadPath.replace("\\", "/")
+                        .trim().replaceAll("\\u0020", "%20")).getPath());
+                System.out.println(loadFile.getAbsolutePath());
+                Scanner in = new Scanner(loadFile);
+                //overrides the language settings
+                setLanguage(in.next());
+                //loads in the cube letters
+                cube.loadCube(in);
+                currentCubeHighScores = new HighScores();
+                currentCubeHighScores.loadScores(in);
+            }catch(URISyntaxException e){
+                System.out.println(e.toString());
+            }
         } catch(FileNotFoundException e){
             //An error in file name
             System.out.println("Game Save not found");
