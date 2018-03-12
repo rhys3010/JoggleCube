@@ -75,6 +75,7 @@ public class LoadGridController extends BaseScreenController implements INeedPre
      * Get recently played cubes from backend
      */
     public void prepView(){
+        listViewRecents.setOnMouseClicked(e->handleMouseClick());
         listViewRecents.setItems(JoggleCubeController.getInstance().getRecentGrids());
     }
 
@@ -144,6 +145,7 @@ public class LoadGridController extends BaseScreenController implements INeedPre
      */
     @FXML
     public void handleMouseClick() {
+
         fileName = listViewRecents.getSelectionModel().getSelectedItem();
     }
 }
