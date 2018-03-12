@@ -24,7 +24,7 @@
     -fx-pref-width: 600px;
     -fx-pref-height: 70px;
     -fx-alignment: center;
-    -fx-spacing: 170px;
+    -fx-spacing: 150px;
 }
 
 
@@ -39,7 +39,7 @@
     -fx-font-size: 48px;
     -fx-text-fill: white;
     -fx-font-family: DS-Digital;
-    -fx-pref-width: 70px;
+    -fx-pref-width: 120px;
     -fx-text-alignment: left;
 }
 
