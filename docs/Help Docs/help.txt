@@ -42,3 +42,13 @@ Y = 4
 Z = 10 
 
 Cube Colour Guide: (see sample on slide x in use case document.)
+
+
+=======================================
+
+Page 1: What is Joggle Cube?
+Page 2: Word Selection
+Page 3: Letter Value
+Page 4: Colour Guide
+Page 5: Saving/Loading Cube
+

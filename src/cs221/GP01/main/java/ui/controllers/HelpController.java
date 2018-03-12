@@ -40,9 +40,11 @@ public class HelpController extends BaseOverlayController implements Initializab
 
     private HelpController(){// Create all the pages as FXML parent nodes
         try {
-            helpScreens.add(createHelpPage("ExampleHelpPage.fxml"));
-            helpScreens.add(createHelpPage("AnotherExampleHelpPage.fxml"));
-            helpScreens.add(createHelpPage("LastHelpPageExample.fxml"));
+            helpScreens.add(createHelpPage("Introduction.fxml"));
+            helpScreens.add(createHelpPage("WordSelection.fxml"));
+            helpScreens.add(createHelpPage("Scoring.fxml"));
+            helpScreens.add(createHelpPage("CubeColouring.fxml"));
+            helpScreens.add(createHelpPage("SaveLoad.fxml"));
         } catch (IOException e) {
             //todo do something here
             e.printStackTrace();
