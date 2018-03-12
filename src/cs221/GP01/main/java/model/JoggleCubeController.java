@@ -2,11 +2,18 @@ package cs221.GP01.main.java.model;
 
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.controllers.GameController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -51,12 +58,10 @@ public class JoggleCubeController implements IJoggleCubeController{
 
 
     private JoggleCubeController(){
-        //Load dictionary on creation of JoggleCubeController
-        cube = new Cube(language + "_letters");
+        loadOverallScores();
         loadNewDictionary();
-        storedWords = new ArrayList<>();
-        scores = cube.getScores();
-        timer = new GameTimer();
+        //todo during project start up write private method to check if folder for JoggleCube is in the User.home directory and create if not present, including the saves.
+        findDocumentFolder();
     }
 
     public static JoggleCubeController getInstance(){
@@ -77,7 +82,10 @@ public class JoggleCubeController implements IJoggleCubeController{
         GameController.getInstance().getScoreLabel().setText(currentScore + "");
 
         //Populate the cube randomly
+        setLanguage(language);
         cube.populateCube(language + "_letters");
+        storedWords = new ArrayList<>();
+        currentCubeHighScores = new HighScores();
     }
 
     //Start loaded game
@@ -87,46 +95,31 @@ public class JoggleCubeController implements IJoggleCubeController{
         GameController.getInstance().getScoreLabel().setText(currentScore + "");
         //load this file into grid and high scores
         //Load save game from the file stream given
-        String input;
-        ArrayList<String> letters = new ArrayList<>();
         try{
-            //todo write an actual path.
-            File file = new File("path" + filename);
-            Scanner in = new Scanner(file);
-            //Load in all of the letters
-            while(in.hasNext() && letters.size() < 27) {
-                input = in.next();
-                letters.add(input);
-            }
-            //Load in all of the high scores
-            /*
-            while(in.hasNext()){
-                input = in.next()
-            }
-             */
+            try {
+                //todo fix the handleMouseClick() in the LoadGridController.java as it's calling using null.grid
+                String loadPath = System.getProperty("user.home") + "/Documents/JoggleCube/saves/" + filename + ".grid";
 
+                File loadFile = new File(new URI(loadPath.replace("\\", "/")
+                        .trim().replaceAll("\\u0020", "%20")).getPath());
+                System.out.println(loadFile.getAbsolutePath());
+                Scanner in = new Scanner(loadFile);
+                //overrides the language settings
+                setLanguage(in.next());
+                //loads in the cube letters
+                cube.loadCube(in);
+                currentCubeHighScores = new HighScores();
+                currentCubeHighScores.loadScores(in);
+            }catch(URISyntaxException e){
+                System.out.println(e.toString());
+            }
         } catch(FileNotFoundException e){
             //An error in file name
             System.out.println("Game Save not found");
             return false;
         }
-
-        if(!(letters.size() == 27)){
-            System.out.println("Cube that is loaded is corrupt");
-            return false;
-        }
-
-        //Letters contains all of the cube in order from 0,0,0 to 2,2,2
-        int index = 0;
-        for(int i = 0; i<3;i++){
-            for(int j = 0; j<3; j++){
-                for(int k = 0; k<3; k++){
-                    cube.setBlock(i,j,k,new Block(letters.get(index)));
-                    index++;
-                }
-            }
-        }
         //At this point the cube has been loaded in
+        storedWords = new ArrayList<>();
         return true;
     }
     public boolean testWordValidity(String word) {
@@ -153,53 +146,76 @@ public class JoggleCubeController implements IJoggleCubeController{
                 }
             }
         }
-
         return stringCube;
     }
 
-    //Need to look into how the Score classes are built from Lampros
-    public ObservableList<Score> getOverallHighScores() { return null; }
+    public ObservableList<IScore> getOverallHighScores() {
+        //return FXCollections.observableArrayList(overallHighScores.getScores());
+        return null;
+    }
 
-    //Need to look into the same thing
-    public ObservableList<Score> getCurrentCubeHighScores() { return null; }
+    public ObservableList<IScore> getCurrentCubeHighScores() {
+        return FXCollections.observableArrayList(currentCubeHighScores.getScores());
+    }
 
     //Get the grids from a saved file
-    public ObservableList<String> getRecentGrids() { return null; }
+    public ObservableList<String> getRecentGrids() {
+        ArrayList<String> results = new ArrayList<>();
+        try {
+            //Finding the save folder
+            String savePath = System.getProperty("user.home") + "/Documents/JoggleCube/saves";
+            File saveFolder = new File(new URI(savePath.replace("\\", "/")
+                    .trim().replaceAll("\\u0020", "%20")).getPath());
+
+            //Using the folder we get all of the
+            File[] listOfFiles = saveFolder.listFiles();
+            try {
+                //The NullPointerException is fine because it is caught in a try catch.
+                for (File listOfFile : listOfFiles) {
+                    results.add(listOfFile.getName());
+                }
+            }catch(NullPointerException e){
+                //todo send to front end
+                System.out.println("No recent grids found!");
+            }
+        } catch(URISyntaxException e){
+            System.out.println("Issue with the Syntax of URI in getRecentGrids()");
+            System.out.println(e.toString());
+        }
+
+        //Remove the .grid from the file name
+        ArrayList<String> newResults = new ArrayList<>();
+        //Foreach loops suck and thus I didn't use one because it just broke everything when I used it
+        for (int i = 0; i<results.size(); i++){
+            String currentString = results.get(i);
+            if(currentString.contains(".grid")){
+                StringBuilder newC = new StringBuilder();
+                //Remove .grid
+                //i = 5 because .grid is 5 charecters
+                for(int j = 5; j<currentString.length(); j++){
+                    newC.append(currentString.charAt(j - 5));
+                }
+                newResults.add(newC.toString());
+            }
+        }
+        return FXCollections.observableArrayList(newResults);
+    }
 
 
     public boolean saveGrid(String filename) {
         try{
-            //todo write an actual path.
-            File file = new File("path" + filename);
-            PrintWriter out = new PrintWriter(file);
-            //Print cube to a single array for output
-            String flatCube[] = new String[27];
-            int c = 0;
-            for(int i = 0; i<3; i++){
-                for(int j = 0; j<3; j++){
-                    for(int k = 0; k<3; k++){
-                        //flatCube[c] = "";
-                        flatCube[c] = cube.getBlock(i, j, k).getLetter();
-                        c++;
-                    }
-                }
+            //todo write an actual path, to the documents folder
+            try {
+                String savePath = System.getProperty("user.home") + "/Documents/JoggleCube/saves/" + filename + ".grid";
+                File saveFile = new File(new URI(savePath.replace("\\", "/")
+                        .trim().replaceAll("\\u0020", "%20")).getPath());
+                PrintWriter out = new PrintWriter(saveFile);
+                cube.saveCube(out);
+                currentCubeHighScores.saveScores(out);
+                out.close();
+            }catch(URISyntaxException e){
+                    System.out.println();
             }
-
-            //Use the Flat cube to output in the correct format
-            int b = 0;
-            for(int i = 0; i<9; i++){
-                out.print(flatCube[b] + " ");
-                out.print(flatCube[b+1] + " ");
-                out.print(flatCube[b+2]);
-                if(b != 25){
-                    out.print("\n");
-                }
-                b += 3;
-            }
-
-            //Output the highscores
-            // todo wait for highscores
-            out.close();
         } catch (FileNotFoundException e){
             System.out.println(e.toString());
             return false;
@@ -212,7 +228,24 @@ public class JoggleCubeController implements IJoggleCubeController{
      */
     @Override
     public void saveOverallScores() {
+        //todo implement this
+    }
 
+    /**
+     * loads the overall scores from file
+     */
+    private void loadOverallScores(){
+        //todo implement this
+    }
+
+    /**
+     * returns the top highscore
+     *
+     * @return the top high score.
+     */
+    public int getHighestScore() {
+        //todo get the highest overall score.
+        return 0;
     }
 
     @Override
@@ -222,6 +255,7 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     @Override
     public void startTimer() {
+        timer = new GameTimer();
         //todo start this in a separate thread
         //timer.startTimer();
     }
@@ -229,7 +263,7 @@ public class JoggleCubeController implements IJoggleCubeController{
     @Override
     public void interruptTimer() {
         //timer.interrupt();
-        timer.resetTime();
+        //timer.resetTime();
     }
 
     /**
@@ -244,6 +278,8 @@ public class JoggleCubeController implements IJoggleCubeController{
             loadNewDictionary();
         }
         cube = new Cube(language + "_letters");
+        cube.setLanguage(language);
+        scores = cube.getScores();
     }
 
     /**
@@ -283,20 +319,73 @@ public class JoggleCubeController implements IJoggleCubeController{
     }
 
     /**
-     * returns the top highscore
-     *
-     * @return the top high score.
-     */
-    public int getHighScore() {
-        return 0;
-    }
-
-    /**
      * Based on the current language will rebuild the backend dictionary object with the correct language
      */
     public void loadNewDictionary() {
         dictionary = new Dictionary();
         loadedDictionaries.put(language,dictionary);
         dictionary.loadDictionary(language + "_dictionary");
+    }
+
+    private void findDocumentFolder(){
+        //Works this way for windows but is fixed for the URI later
+        //todo test on Linux @Rhys
+        String documents = System.getProperty("user.home") + "\\Documents\\JoggleCube";
+        try {
+            URI uri = new URI(documents.replace("\\", "/").trim().replaceAll("\\u0020", "%20"));
+            File file = new File(uri.toString());
+            //If Folder does not exist create the whole directory
+            if(!file.exists() || !file.isDirectory()) {
+                createDirectory(uri);
+            }
+        }catch(URISyntaxException e){
+            System.out.println("URI Issue probably an OS issue trying to create Documents folder");
+        }
+    }
+
+    private void createDirectory(URI uri){
+        //Create the folder + saves folder + 3 hard coded saved files
+        //todo confirm whether or not the uri.toString() + directory name works in all circumstances
+        File file = new File(uri.toString());
+        try{
+            //Create the JoggleCube folder
+            Files.createDirectory(file.toPath());
+
+            //Create the saves directory in JoggleCube
+            File savesDir = new File (uri.toString()+"/saves");
+            Files.createDirectory(savesDir.toPath());
+
+            //todo discuss the use of savings settings in it's own directory/main joggle cube directory
+            //Create the highscores directory in JoggleCube
+            File highScoresDir = new File(uri.toString()+"/highscores");
+            Files.createDirectory(highScoresDir.toPath());
+
+            //Move the saved grids into this saves directory
+            //Open the saved grids as files and highscores
+            String savedGrids = getClass().getResource("../../data/savedgrids").getFile();
+            String highScores = getClass().getResource("../../data/highscores").getFile();
+
+            try {
+                //Find grids
+                File grid_1 = new File(new URI((savedGrids+ "/grid_1.grid").trim().replaceAll("\\u0020", "%20")).getPath());
+                File grid_2 = new File(new URI((savedGrids+ "/grid_2.grid").trim().replaceAll("\\u0020", "%20")).getPath());
+                File grid_3 = new File(new URI((savedGrids+ "/grid_3.grid").trim().replaceAll("\\u0020", "%20")).getPath());
+
+                //Find highscores
+                File overAllHighScores = new File(new URI((highScores+ "/overAll.highscores").trim().replaceAll("\\u0020", "%20")).getPath());
+
+
+                //Then create them in the new directory
+                FileUtils.copyFileToDirectory(grid_1, savesDir);
+                FileUtils.copyFileToDirectory(grid_2, savesDir);
+                FileUtils.copyFileToDirectory(grid_3, savesDir);
+
+                FileUtils.copyFileToDirectory(overAllHighScores, highScoresDir);
+            } catch(URISyntaxException e){
+                System.out.println(e.toString());
+            }
+        } catch (IOException e){
+            System.out.println("Failed creating Directories: " + e.toString());
+        }
     }
 }

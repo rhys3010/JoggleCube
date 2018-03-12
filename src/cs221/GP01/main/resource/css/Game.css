@@ -11,7 +11,7 @@
 /* Digital Clock font*/
 @font-face{
     font-family: 'DS-Digital';
-    src: url("/cs221/GP01/main/resource/font/DS-DIGI.TTF");
+    /*src: url("/cs221/GP01/main/resource/font/DS-DIGI.TTF");*/
 }
 
 .mainContainer{

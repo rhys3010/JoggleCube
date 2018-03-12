@@ -47,14 +47,14 @@ public interface IJoggleCubeController {
      *
      * @return the loaded grid high scores, return null if no grid loaded
      */
-    ObservableList<Score> getCurrentCubeHighScores();
+    ObservableList<IScore> getCurrentCubeHighScores();
 
     /**
      *
      *
      * @return the overall highscores
      */
-    ObservableList<Score> getOverallHighScores();
+    ObservableList<IScore> getOverallHighScores();
 
     /**
      *
@@ -96,7 +96,7 @@ public interface IJoggleCubeController {
      * returns the top highscore
      * @return the top high score.
      */
-    int getHighScore();
+    int getHighestScore();
 
     /**
      * sets the current players name

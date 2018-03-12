@@ -13,21 +13,15 @@ import cs221.GP01.main.java.ui.NavigationController;
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 /**
  * EndController - A class that controls the Pause subscene that is defined in End.fxml
@@ -66,7 +60,7 @@ public class EndController extends BaseOverlayController implements INeedPrep {
     @Override
     public void prepView() {
         scoreLabel.setText(JoggleCubeController.getInstance().getScore() + "");
-        highScoreLabel.setText(JoggleCubeController.getInstance().getHighScore() + "");
+        highScoreLabel.setText(JoggleCubeController.getInstance().getHighestScore() + "");
     }
 
 
