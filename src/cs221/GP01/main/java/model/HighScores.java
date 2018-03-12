@@ -67,16 +67,13 @@ public class HighScores implements IHighScores {
      */
     @Override
     public IScore getHighScore() {
-        scores.sort(new Comparator<IScore>() {
-            @Override
-            public int compare(IScore o1, IScore o2) {
-                if(o1.getScore() > o2.getScore()){
-                    return -1;
-                }else if(o1.getScore() < o2.getScore()){
-                    return  1;
-                } else {
-                    return 0;
-                }
+        scores.sort((o1, o2) -> {
+            if(o1.getScore() > o2.getScore()){
+                return -1;
+            }else if(o1.getScore() < o2.getScore()){
+                return  1;
+            } else {
+                return 0;
             }
         });
         return scores.get(0);

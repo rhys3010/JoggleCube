@@ -103,6 +103,8 @@ public class JoggleCubeController implements IJoggleCubeController{
             setLanguage(in.next());
             //loads in the cube letters
             cube.loadCube(in);
+            currentCubeHighScores = new HighScores();
+            currentCubeHighScores.loadScores(in);
         } catch(FileNotFoundException e){
             //An error in file name
             System.out.println("Game Save not found");
@@ -361,18 +363,15 @@ public class JoggleCubeController implements IJoggleCubeController{
                 File grid_3 = new File(new URI((savedGrids+ "/grid_3.grid").trim().replaceAll("\\u0020", "%20")).getPath());
 
                 //Find highscores
-                File hgrid_1 = new File(new URI((highScores+ "/grid_1.highscores").trim().replaceAll("\\u0020", "%20")).getPath());
-                File hgrid_2 = new File(new URI((highScores+ "/grid_2.highscores").trim().replaceAll("\\u0020", "%20")).getPath());
-                File hgrid_3 = new File(new URI((highScores+ "/grid_3.highscores").trim().replaceAll("\\u0020", "%20")).getPath());
+                File overAllHighScores = new File(new URI((highScores+ "/overAll.highscores").trim().replaceAll("\\u0020", "%20")).getPath());
+
 
                 //Then create them in the new directory
                 FileUtils.copyFileToDirectory(grid_1, savesDir);
                 FileUtils.copyFileToDirectory(grid_2, savesDir);
                 FileUtils.copyFileToDirectory(grid_3, savesDir);
 
-                FileUtils.copyFileToDirectory(hgrid_1, highScoresDir);
-                FileUtils.copyFileToDirectory(hgrid_2, highScoresDir);
-                FileUtils.copyFileToDirectory(hgrid_3, highScoresDir);
+                FileUtils.copyFileToDirectory(overAllHighScores, highScoresDir);
             } catch(URISyntaxException e){
                 System.out.println(e.toString());
             }
