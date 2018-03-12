@@ -12,6 +12,7 @@ import cs221.GP01.main.java.model.JoggleCubeController;
 import cs221.GP01.main.java.ui.NavigationController;
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.ScreenType;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -110,14 +111,14 @@ public class GameController extends BaseScreenController implements IGameControl
             foundWords.add(textField.getText());
             btnSubmit.setStyle("-fx-background-color: -fx-valid-color;");
             textField.setStyle("-fx-background-color: -fx-valid-color; -fx-text-fill: white;");
-            gridDisplayer.setAllActive();
             new java.util.Timer().schedule(
                     new java.util.TimerTask() {
                         @Override
                         public void run() {
                             btnSubmit.setStyle("-fx-background-color:-fx-tertiary-color;");
                             textField.setStyle("-fx-background-color: white; -fx-text-fill: -fx-tertiary-color;");
-                            textField.setText(""); //todo hmmmmmm
+                            Platform.runLater(()->gridDisplayer.setAllActive());
+                            textField.setText(""); //todo hmmmmmmmmmm
                         }
                     },
                     1000
