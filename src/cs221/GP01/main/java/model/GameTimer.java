@@ -8,6 +8,7 @@ import cs221.GP01.main.java.ui.ScreenType;
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.controllers.BaseScreenController;
 import cs221.GP01.main.java.ui.controllers.GameController;
+import javafx.application.Platform;
 import javafx.scene.control.Label;
 
 import java.time.Duration;
@@ -45,10 +46,9 @@ public class GameTimer implements IGameTimer, Runnable {
 
     @Override
     public void startTimer() {
-        //todo update the timer label with current time
-        Label timerLabel = GameController.getInstance().getScoreLabel();
+        Label timerLabel = GameController.getInstance().getTimerLabel();
         //
-        int timeLeft = 180;
+        int timeLeft = 10;
         currentTime = Duration.ofSeconds(180);
         while(!(currentTime.equals(Duration.ZERO))){
             try {
@@ -56,8 +56,9 @@ public class GameTimer implements IGameTimer, Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            currentTime = Duration.ofSeconds(timeLeft - 1);
-            timerLabel.setText(currentTime.toString());
+            timeLeft = timeLeft - 1;
+            currentTime = Duration.ofSeconds(timeLeft);
+            Platform.runLater(() -> timerLabel.setText(currentTime.getSeconds()/60 +":" + currentTime.getSeconds() % 60));
             if(interupt){
                 break;
             }
@@ -70,7 +71,7 @@ public class GameTimer implements IGameTimer, Runnable {
     @Override
     public void finishTimer() {
         //ends the game
-        NavigationController.getInstance().showOverlay(ScreenType.END, (BaseScreenController) GameController.getInstance());
+        Platform.runLater(() -> NavigationController.getInstance().showOverlay(ScreenType.END, (BaseScreenController) GameController.getInstance()));
     }
 
     /**
