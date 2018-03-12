@@ -89,6 +89,13 @@ public class GridDisplayer {
      * @param letters
      */
     public void buildGrids(String[][][] letters) {
+        groupy.getChildren().clear();
+        for(int i = 0; i < 3; i++){
+            twoDGrid[i].getChildren().clear();
+            twoFiveDGrid[i].getChildren().clear();
+        }
+
+
 
         //sets up the 3D enviroment
         Camera camera = new ParallelCamera();
@@ -410,9 +417,11 @@ public class GridDisplayer {
         }
         timeline.play();
         toggle = !toggle;
+
     }
 
     private void addAnimation(Timeline timeline, Box box,boolean left,int x,int y,int z) {
+
         int displacment = 60;
         if(left){
             timeline.getKeyFrames().addAll(
@@ -425,6 +434,5 @@ public class GridDisplayer {
                     new KeyFrame(new Duration(400), new KeyValue(box.translateXProperty(), box.getTranslateX() - displacment))
             );
         }
-
     }
 }

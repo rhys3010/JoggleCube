@@ -19,75 +19,36 @@ import java.io.IOException;
  * UIController - A class to behave as a mediator between UI and Backend.
  * <p>
  * @author Rhys Evans (rhe24@aber.ac.uk)
- * @version 0.1
+ * @author Nathan Williams (naw21)
+ * @version 0.2  DRAFT
  */
-public class UIController implements IUIController {
+public class UIController {
+
+    private static UIController uiController;
+
+    private UIController(){}
+
+    public static UIController getInstance(){
+        if(uiController == null){
+            synchronized (UIController.class){
+                if(uiController == null){
+                    uiController = new UIController();
+                }
+            }
+        }
+        return uiController;
+    }
 
     /**
      * The Path to the views package
      */
     private final String VIEWS_PATH_PREFIX = "../../resource/view/";
 
-    /**
-     * The NavigationController object
-     */
-    private IViewNavigation navigationController;
-
-
-    private IGameController IGameController;
-    private StartController startController;
-    private HighScoreController highScoreController;
-    private LoadGridController loadGridController;
-    private EndController endController;
-    private SettingsController settingsController;
-    private HelpController helpController;
-
-    public IGameController getGameController() {
-        return IGameController;
-    }
-
-    public StartController getStartController() {
-        return startController;
-    }
-
-    public HighScoreController getHighScoreController() {
-        return highScoreController;
-    }
-
-    public LoadGridController getLoadGridController() {
-        return loadGridController;
-    }
-
-    public EndController getEndController() {
-        return endController;
-    }
-
-    public SettingsController getSettingsController() {
-        return settingsController;
-    }
-
-    public HelpController getHelpController() {
-        return helpController;
-    }
 
     /**
      * All screen names (used to create and add to navigationController)
      */
     private static final ScreenType SCREENS[] = {ScreenType.START, ScreenType.SETTINGS, ScreenType.LOAD, ScreenType.GAME, ScreenType.END, ScreenType.HIGH_SCORES, ScreenType.HELP};
-
-    /**
-     * The JoggleCube object to handle backend logic
-     */
-    private IJoggleCubeController joggleCube ;
-
-    /**
-     * Constructor to get the joggleCube object
-     * @param joggleCube
-     */
-    public UIController(IJoggleCubeController joggleCube) {
-        this.joggleCube = joggleCube;
-        joggleCube.setUI(this);
-    }
 
 
     /**
@@ -97,8 +58,8 @@ public class UIController implements IUIController {
     public void initialize(Scene main) throws IOException{
 
         // Initialize the screen controller
-        navigationController = new NavigationController(main);
-
+        IViewNavigation navigationController = NavigationController.getInstance();
+        navigationController.setMainScene(main);
         // Iteratively create screens and add to navigationController
         for(int i = 0; i < SCREENS.length; i++){
             // Create FXML loader and populate with root and controller
@@ -124,43 +85,36 @@ public class UIController implements IUIController {
 
             case START:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Start.fxml"));
-                startController = new StartController(this);
-                loader.setController(startController);
+                loader.setController(StartController.getInstance());
                 break;
 
             case SETTINGS:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Settings.fxml"));
-                settingsController =  new SettingsController(this);
-                loader.setController(settingsController);
+                loader.setController(SettingsController.getInstance());
                 break;
             case LOAD:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Load.fxml"));
-                loadGridController = new LoadGridController(this);
-                loader.setController(loadGridController);
+                loader.setController(LoadGridController.getInstance());
                 break;
 
             case GAME:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Game.fxml"));
-                IGameController = new GameController(this);
-                loader.setController(IGameController);
+                loader.setController(GameController.getInstance());
                 break;
 
             case END:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "End.fxml"));
-                endController = new EndController(this);
-                loader.setController(endController);
+                loader.setController(EndController.getInstance());
                 break;
 
             case HIGH_SCORES:
-                loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "HighScore.fxml"));
-                highScoreController = new HighScoreController(this);
-                loader.setController(highScoreController);
+                loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Score.fxml"));
+                loader.setController(HighScoreController.getInstance());
                 break;
 
             case HELP:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Help.fxml"));
-                helpController = new HelpController(this);
-                loader.setController(helpController);
+                loader.setController(HelpController.getInstance());
                 break;
 
             default:
@@ -170,24 +124,5 @@ public class UIController implements IUIController {
         loader.setRoot(loader.load());
 
         return loader;
-    }
-
-
-    /**
-     * Get the handle input object
-     * @return joggleCube
-     */
-    public IJoggleCubeController getJoggleCube() {
-        return joggleCube;
-    }
-
-
-
-    /**
-     * Retrieve the Screen Controller
-     * @return NavigationController
-     */
-    public IViewNavigation getNavigationController(){
-        return navigationController;
     }
 }

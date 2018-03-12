@@ -8,6 +8,7 @@
 
 package cs221.GP01.main.java.ui.controllers;
 
+import cs221.GP01.main.java.ui.NavigationController;
 import cs221.GP01.main.java.ui.ScreenType;
 import cs221.GP01.main.java.ui.UIController;
 import javafx.event.ActionEvent;
@@ -30,8 +31,36 @@ import java.util.ResourceBundle;
 /**
  * Controller for the Help.fxml file to handle the displaying of various help screens
  * @author Rhys Evans (rhe24)
+ * @author Nathan Williams (naw21@aber.ac.uk)
+ * @version 0.2
  */
 public class HelpController extends BaseOverlayController implements Initializable, INeedPrep {
+
+    private static HelpController helpController;
+
+    private HelpController(){// Create all the pages as FXML parent nodes
+        try {
+            helpScreens.add(createHelpPage("Introduction.fxml"));
+            helpScreens.add(createHelpPage("WordSelection.fxml"));
+            helpScreens.add(createHelpPage("Scoring.fxml"));
+            helpScreens.add(createHelpPage("CubeColouring.fxml"));
+            helpScreens.add(createHelpPage("SaveLoad.fxml"));
+        } catch (IOException e) {
+            //todo do something here
+            e.printStackTrace();
+        }
+    }
+
+    public static HelpController getInstance(){
+        if(helpController == null){
+            synchronized (HelpController.class){
+                if(helpController == null){
+                    helpController = new HelpController();
+                }
+            }
+        }
+        return helpController;
+    }
 
     /**
      * The file path prefix to the helppages
@@ -63,20 +92,6 @@ public class HelpController extends BaseOverlayController implements Initializab
 
 
     /**
-     * Constructor to ensure UIController object is passed
-     * and help subscenes are instantiated
-     * @param UIController
-     */
-    public HelpController(UIController UIController) throws IOException{
-        super(UIController);
-
-        // Create all the pages as FXML parent nodes
-        helpScreens.add(createHelpPage("ExampleHelpPage.fxml"));
-        helpScreens.add(createHelpPage("AnotherExampleHelpPage.fxml"));
-        helpScreens.add(createHelpPage("LastHelpPageExample.fxml"));
-    }
-
-    /**
      * Initialize the help overlay for first time use
      * @param location
      * @param resources
@@ -106,7 +121,7 @@ public class HelpController extends BaseOverlayController implements Initializab
      */
     @FXML
     private void closeBtnClicked(){
-        UIController.getNavigationController().hideOverlay(ScreenType.HELP, parentController);
+        NavigationController.getInstance().hideOverlay(ScreenType.HELP, parentController);
     }
 
     /**

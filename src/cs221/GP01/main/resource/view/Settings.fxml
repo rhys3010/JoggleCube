@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.ComboBox?>
 <VBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="settingsOverlay" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox styleClass="topMenu">
@@ -30,7 +29,7 @@
             </VBox>
             <HBox styleClass="highScoreButtonContainer">
                <children>
-                  <Button mnemonicParsing="false" text="Clear High Scores" />
+                  <Button mnemonicParsing="false" onAction="#clearHighScoreClicked" text="Clear High Scores" />
                </children>
             </HBox>
          </children>

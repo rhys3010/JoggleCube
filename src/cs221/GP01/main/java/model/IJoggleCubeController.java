@@ -1,8 +1,6 @@
 package cs221.GP01.main.java.model;
 
-import cs221.GP01.main.java.ui.IUIController;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Label;
 
 import java.io.File;
 
@@ -13,10 +11,7 @@ import java.io.File;
  */
 public interface IJoggleCubeController {
 
-    /**
-     *  Allows the backend to access the UI if it needs to.
-     */
-    void setUI(IUIController controller);
+
 
     /**
      * create a random grid
@@ -29,9 +24,9 @@ public interface IJoggleCubeController {
     /**
      * load grid from file.
      *
-     * @param file
+     * @param filename
      */
-    void loadGrid(File file);
+    boolean loadGrid(String filename);
 
     /**
      * checks if the word is valid or not.
@@ -52,14 +47,14 @@ public interface IJoggleCubeController {
      *
      * @return the loaded grid high scores, return null if no grid loaded
      */
-    ObservableList<HighScore> getCurrentCubeHighScores();
+    ObservableList<IScore> getCurrentCubeHighScores();
 
     /**
      *
      *
      * @return the overall highscores
      */
-    ObservableList<HighScore> getOverallHighScores();
+    ObservableList<IScore> getOverallHighScores();
 
     /**
      *
@@ -71,9 +66,16 @@ public interface IJoggleCubeController {
      *
      * saves the current score to grid file and overall.
      *
-     * @param file
+     * @param filename
      */
-    void saveGrid(File file);
+    boolean saveGrid(String filename);
+
+    /**
+     *
+     * saves the overall scores to file
+     *
+     */
+    void saveOverallScores();
 
     /**
      * Generate the word score for this word using scrabble score * 3
@@ -94,7 +96,7 @@ public interface IJoggleCubeController {
      * returns the top highscore
      * @return the top high score.
      */
-    int getHighScore();
+    int getHighestScore();
 
     /**
      * sets the current players name

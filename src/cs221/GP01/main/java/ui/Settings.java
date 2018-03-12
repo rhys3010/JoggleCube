@@ -11,6 +11,26 @@ package cs221.GP01.main.java.ui;
 /**
  * Handle the system settings from the settings overlay
  * @author Rhys Evans
+ * @author Nathan Williams (naw21)
+ * @version 0.2  DRAFT
  */
 public class Settings {
+
+    private static Settings settings;
+
+    private Settings(){}
+
+    public static Settings getInstance(){
+        if(settings == null){
+            synchronized (Settings.class){
+                if(settings == null){
+                    settings = new Settings();
+                }
+            }
+        }
+        return settings;
+    }
+
+
+
 }

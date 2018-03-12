@@ -52,12 +52,12 @@
                   <VBox styleClass="recentsContainer">
                      <children>
                         <Label text="Recent Grids" />
-                        <ListView fx:id="listViewRecents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" />
+                        <ListView fx:id="listViewRecents" onMouseClicked="#handleMouseClick" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" />
                      </children>
                   </VBox>
                   <HBox styleClass="buttonContainer">
                      <children>
-                        <Button fx:id="loadButton" mnemonicParsing="false" onAction="#btnPickFileClicked" text="Load From File" />
+                        <Button fx:id="loadButton" mnemonicParsing="false" onAction="#prepView" text="Refresh" />
                         <Button fx:id="startButton" onAction="#btnStartGridClicked" mnemonicParsing="false" text="Start Game" />
                      </children>
                   </HBox>

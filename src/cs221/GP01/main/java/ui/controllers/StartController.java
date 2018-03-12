@@ -8,6 +8,8 @@
 
 package cs221.GP01.main.java.ui.controllers;
 
+import cs221.GP01.main.java.model.JoggleCubeController;
+import cs221.GP01.main.java.ui.NavigationController;
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
@@ -21,12 +23,26 @@ import java.util.ResourceBundle;
  * StartController - A class that does something.
  * <p>
  * How it is used
- * todo add a Highscore button
  * @author Nathan Williams (naw21)
  * @version 0.2  DRAFT
  */
 
 public class StartController extends BaseScreenController implements Initializable {
+
+    private static StartController startController;
+
+    private StartController(){}
+
+    public static StartController getInstance(){
+        if(startController == null){
+            synchronized (UIController.class){
+                if(startController == null){
+                    startController = new StartController();
+                }
+            }
+        }
+        return startController;
+    }
 
     /**
      * The FXML node of the language dropdown selector
@@ -34,19 +50,16 @@ public class StartController extends BaseScreenController implements Initializab
     @FXML
     ComboBox languageSelector;
 
-    public StartController(UIController UIController){
-        super(UIController);
-    }
 
     /**
-     * todo Do initialization stuff here
+     *
      */
     @Override
     public void initialize(URL location, ResourceBundle resources){
         //todo get this list of info from a another class?
         languageSelector.getItems().setAll("English","Cymraeg");
         languageSelector.setOnAction(e -> {
-            UIController.getJoggleCube().setLanguage(languageSelector.getValue().toString().substring(0,2).toLowerCase());
+            JoggleCubeController.getInstance().setLanguage(languageSelector.getValue().toString().substring(0,2).toLowerCase());
         });
     }
 
@@ -57,8 +70,8 @@ public class StartController extends BaseScreenController implements Initializab
      */
     @FXML
     private void btnStartNewGridClicked() {
-        UIController.getJoggleCube().generateRandomGrid();
-        UIController.getNavigationController().switchScreen(ScreenType.GAME);
+       JoggleCubeController.getInstance().generateRandomGrid();
+        NavigationController.getInstance().switchScreen(ScreenType.GAME);
     }
 
     /**
@@ -67,7 +80,7 @@ public class StartController extends BaseScreenController implements Initializab
      */
     @FXML
     private void btnLoadGridClicked() {
-        UIController.getNavigationController().switchScreen(ScreenType.LOAD);
+        NavigationController.getInstance().switchScreen(ScreenType.LOAD);
     }
 
 }

@@ -8,14 +8,21 @@
 
 package cs221.GP01.main.java.ui.controllers;
 
+import cs221.GP01.main.java.model.JoggleCubeController;
+import cs221.GP01.main.java.ui.NavigationController;
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,6 +42,22 @@ import java.util.ResourceBundle;
  */
 public class LoadGridController extends BaseScreenController implements INeedPrep {
 
+
+    private static LoadGridController loadGridController;
+
+    private LoadGridController(){}
+
+    public static LoadGridController getInstance(){
+        if(loadGridController == null){
+            synchronized (LoadGridController.class){
+                if(loadGridController == null){
+                    loadGridController = new LoadGridController();
+                }
+            }
+        }
+        return loadGridController;
+    }
+
     /**
      * List to store recently played cubes
      */
@@ -45,21 +68,14 @@ public class LoadGridController extends BaseScreenController implements INeedPre
     /**
      * File to load the grid from
      */
-    private File gridFile = null;
+    private String fileName = null;
 
-    /**
-     * Constructor to ensure UIController object is passed
-     * @param UIController
-     */
-    public LoadGridController(UIController UIController){
-        super(UIController);
-    }
 
     /**
      * Get recently played cubes from backend
      */
     public void prepView(){
-        listViewRecents.setItems(UIController.getJoggleCube().getRecentGrids());
+        listViewRecents.setItems(JoggleCubeController.getInstance().getRecentGrids());
     }
 
 
@@ -71,8 +87,13 @@ public class LoadGridController extends BaseScreenController implements INeedPre
      */
     @FXML
     void btnStartGridClicked() {
-        UIController.getJoggleCube().loadGrid(gridFile);
-        UIController.getNavigationController().switchScreen(ScreenType.GAME);
+        if(JoggleCubeController.getInstance().loadGrid(fileName)){
+            NavigationController.getInstance().switchScreen(ScreenType.GAME);
+        } else {
+            //todo file not loaded message
+        }
+
+
     }
 
     /**
@@ -82,38 +103,16 @@ public class LoadGridController extends BaseScreenController implements INeedPre
      */
     @FXML
     private void btnBackClicked() {
-        UIController.getNavigationController().switchScreen(ScreenType.START);
+        NavigationController.getInstance().switchScreen(ScreenType.START);
     }
 
-    /**
-     * When the Pick File button is clicked it opens a fileChooser.
-     *
-     */
-    @FXML
-    private void btnPickFileClicked() {
-        Stage stage = new Stage();
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Resource File");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(".grid Files","*.grid"));
-
-        gridFile = fileChooser.showOpenDialog(stage);
-        if (gridFile != null) {
-            //todo do more checks, check a valid gridFile etc
-        } else {
-            //todo add try again pop-up
-        }
-    }
 
     /**
      * Handle when a user clicks an option from the selection
      */
     @FXML
     public void handleMouseClick() {
-        gridFile = new File(listViewRecents.getSelectionModel().getSelectedItem());
-        if (gridFile != null) {
-            //todo do more checks, check a valid gridFile etc
-        } else {
-            //todo add try again pop-up
-        }
+
+        fileName = listViewRecents.getSelectionModel().getSelectedItem();
     }
 }

@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class JoggleCubeControllerTest {
 
-    JoggleCubeController controller = new JoggleCubeController();
+    JoggleCubeController controller = JoggleCubeController.getInstance();
 
     @Test
     public void testLoadNewDictionary(){
@@ -40,14 +40,11 @@ class JoggleCubeControllerTest {
     @Test
     public void testSaveToFile(){
 
-        // only works if load works correctly
-        File file = new File("test2.txt");
-
         controller.generateRandomGrid();
         String[][][] generatedCube = controller.getCubeData();
 
-        controller.saveGrid(file);
-        controller.loadGrid(file);
+        controller.saveGrid("test2.txt");
+        controller.loadGrid("test2.txt");
         String[][][] savedCube = controller.getCubeData();
 
         assertArrayEquals(generatedCube, savedCube);
@@ -60,8 +57,7 @@ class JoggleCubeControllerTest {
                 "1,0,0,J", "1,0,1,K", "1,0,2,L", "1,1,0,M", "1,1,1,N", "1,1,2,O", "1,2,0,P", "1,2,1,Qu", "1,2,2,R",
                 "2,0,0,S", "2,0,1,T", "2,0,2,U", "2,1,0,V", "2,1,1,W", "2,1,2,X", "2,2,0,Y", "2,2,1,Z", "2,2,2,A"})
     public void testLoadGridLetters(int x, int y, int z, String letter){
-        File file = new File("test.txt");
-        controller.loadGrid(file);
+        controller.loadGrid("test.txt");
         String[][][] stringCube = controller.getCubeData();
         assertEquals(letter, stringCube[x][y][z]);
         // ...
