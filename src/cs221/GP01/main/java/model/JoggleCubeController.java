@@ -37,9 +37,9 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     private ArrayList<String> storedWords;
 
-    private IHighScores currentCubeHighScores = new HighScores();
+    private IHighScores currentCubeHighScores;
 
-    private IHighScores overallHighScores = new HighScores();
+    private IHighScores overallHighScores;
 
     private String name;
 
@@ -151,8 +151,11 @@ public class JoggleCubeController implements IJoggleCubeController{
     }
 
     public ObservableList<IScore> getOverallHighScores() {
-        //return FXCollections.observableArrayList(overallHighScores.getScores());
-        return null;
+        if(overallHighScores != null){
+            return FXCollections.observableArrayList(overallHighScores.getScores());
+        } else {
+            return null;
+        }
     }
 
     public ObservableList<IScore> getCurrentCubeHighScores() {
@@ -211,6 +214,7 @@ public class JoggleCubeController implements IJoggleCubeController{
     public boolean saveGrid(String filename) {
         IScore score = new Score(currentScore,name);
         currentCubeHighScores.addScore(score);
+        overallHighScores.addScore(score);
         try{
             //todo write an actual path, to the documents folder
             try {
@@ -275,7 +279,7 @@ public class JoggleCubeController implements IJoggleCubeController{
                 File overallHighScoresFile = new File(highScores.getPath());
 
                 Scanner in = new Scanner(overallHighScoresFile);
-
+                overallHighScores = new HighScores();
                 overallHighScores.loadScores(in);
 
             } catch (URISyntaxException e) {

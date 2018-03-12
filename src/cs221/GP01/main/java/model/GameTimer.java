@@ -48,7 +48,7 @@ public class GameTimer implements IGameTimer, Runnable {
     public void startTimer() {
         Label timerLabel = GameController.getInstance().getTimerLabel();
         //
-        int timeLeft = 10;
+        int timeLeft = 180;
         currentTime = Duration.ofSeconds(180);
         while(!(currentTime.equals(Duration.ZERO))){
             try {
