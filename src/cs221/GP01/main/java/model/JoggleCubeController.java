@@ -3,7 +3,6 @@ package cs221.GP01.main.java.model;
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.controllers.GameController;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import org.apache.commons.io.FileUtils;
 
@@ -21,6 +20,7 @@ import java.util.Scanner;
 /**
  * The backend main controller
  * @author Samuel Jones - srj12@aber.ac.uk
+ * @author Nathan Williams - naw21@aber.ac.uk
  * @version 0.8
  */
 public class JoggleCubeController implements IJoggleCubeController{
@@ -155,7 +155,12 @@ public class JoggleCubeController implements IJoggleCubeController{
     }
 
     public ObservableList<IScore> getCurrentCubeHighScores() {
-        return FXCollections.observableArrayList(currentCubeHighScores.getScores());
+        if(currentCubeHighScores != null){
+            return FXCollections.observableArrayList(currentCubeHighScores.getScores());
+        } else {
+            return null;
+        }
+
     }
 
     //Get the grids from a saved file
