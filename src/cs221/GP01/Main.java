@@ -9,6 +9,8 @@
 package cs221.GP01;
 
 import cs221.GP01.main.java.model.JoggleCubeController;
+import cs221.GP01.main.java.ui.NavigationController;
+import cs221.GP01.main.java.ui.ScreenType;
 import cs221.GP01.main.java.ui.UIController;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -63,7 +65,24 @@ public class Main extends Application {
         }
 
         primaryStage.setOnCloseRequest(e ->{
+            // Save the highscores
             JoggleCubeController.getInstance().saveOverallScores();
+
+            // Display 'are you sure' overlayy
+            Alert sureAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            sureAlert.setTitle("Quit Game");
+            sureAlert.setHeaderText(null);
+            sureAlert.setContentText("Are you sure you want to quit the current game?");
+            Optional<ButtonType> result = sureAlert.showAndWait();
+
+
+            if (result.get() == ButtonType.OK) {
+                // Do nothing and allow the program to quit
+            } else {
+                sureAlert.close();
+                // Consume the event and stop the program from closing
+                e.consume();
+            }
         });
         primaryStage.show();
 
