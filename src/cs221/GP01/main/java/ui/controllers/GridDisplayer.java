@@ -31,6 +31,8 @@ import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 
+import java.util.Timer;
+
 
 /**
  *
@@ -66,7 +68,7 @@ public class GridDisplayer {
     private Group groupy;
     private BorderPane back;
     private GridPane[] twoDGrid,twoFiveDGrid;
-    private Button explodeIcon;
+    private Button btnExplode;
 
 
     //storage for the labels and boxes with letters in them.
@@ -80,7 +82,7 @@ public class GridDisplayer {
         subScene = sub;
         groupy = group;
         back = b;
-        explodeIcon = explode;
+        btnExplode = explode;
     }
 
     /**
@@ -398,14 +400,26 @@ public class GridDisplayer {
     public void toggleExplode() {
 
         // Clear explode button class
-        explodeIcon.getStyleClass().clear();
+        btnExplode.getStyleClass().clear();
 
         // Switch buttons between explode/implode
         if(toggle) {
-            explodeIcon.getStyleClass().add("explode");
+            btnExplode.getStyleClass().add("explode");
         }else{
-            explodeIcon.getStyleClass().add("implode");
+            btnExplode.getStyleClass().add("implode");
         }
+        
+        btnExplode.setDisable(true);
+
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        btnExplode.setDisable(false);
+                    }
+                },
+                400
+        );
 
 
         Timeline timeline = new Timeline();
