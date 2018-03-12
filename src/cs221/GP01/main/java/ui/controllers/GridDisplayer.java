@@ -417,9 +417,11 @@ public class GridDisplayer {
         }
         timeline.play();
         toggle = !toggle;
+
     }
 
     private void addAnimation(Timeline timeline, Box box,boolean left,int x,int y,int z) {
+
         int displacment = 60;
         if(left){
             timeline.getKeyFrames().addAll(
@@ -432,6 +434,5 @@ public class GridDisplayer {
                     new KeyFrame(new Duration(400), new KeyValue(box.translateXProperty(), box.getTranslateX() - displacment))
             );
         }
-
     }
 }

@@ -106,38 +106,6 @@ public class LoadGridController extends BaseScreenController implements INeedPre
         NavigationController.getInstance().switchScreen(ScreenType.START);
     }
 
-    /**
-     * When the Pick File button is clicked it opens a fileChooser.
-     *
-     */
-    @FXML
-    private void btnPickFileClicked() {
-        Stage stage = new Stage();
-        TextInputDialog dialog = new TextInputDialog("walter");
-        dialog.setTitle("Text Input Dialog");
-        dialog.setHeaderText("Look, a Text Input Dialog");
-        dialog.setContentText("Please enter a filename:");
-
-        dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
-        // todo: make this the correct icon
-        // todo: make this call using proper URI to allow for those dodgy PCs
-        dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("../../../resource/img/icon/person_icon.png"))));
-        dialog.initStyle(StageStyle.UNDECORATED);
-        boolean done = false;
-        // todo: add more in-depth validation checking
-        while(!done) {
-            dialog.showAndWait();
-            // Remove spaces from input
-            String result = dialog.getResult().replace(" ", "");
-
-            if (result.matches("(\\w*)")) {
-                fileName = result;
-                done = true;
-            } else {
-                dialog.setHeaderText("Invalid Name Entry, Please try again");
-            }
-        }
-    }
 
     /**
      * Handle when a user clicks an option from the selection

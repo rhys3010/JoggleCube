@@ -57,7 +57,7 @@
                   </VBox>
                   <HBox styleClass="buttonContainer">
                      <children>
-                        <Button fx:id="loadButton" mnemonicParsing="false" onAction="#btnPickFileClicked" text="Load From File" />
+                        <Button fx:id="loadButton" mnemonicParsing="false" onAction="#prepView" text="Refresh" />
                         <Button fx:id="startButton" onAction="#btnStartGridClicked" mnemonicParsing="false" text="Start Game" />
                      </children>
                   </HBox>

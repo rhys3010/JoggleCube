@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+        * @(#) CubeColouring.fxml 1.0 2018/03/11
+        *
+        * Copyright (c) 20018 University of Wales, Aberystwyth.
+        * All rights reserved.
+        *
+-->
+
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
-
-<?import java.net.URL?>
 <VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Label text="Example Help Page 2" />
+        <Label styleClass="title" text="Cube Colouring" />
+        <Label styleClass="content" text="Description Here" />
     </children>
     <stylesheets>
         <URL value="@../../css/HelpPage.css" />
