@@ -85,6 +85,7 @@ public class JoggleCubeController implements IJoggleCubeController{
         setLanguage(language);
         cube.populateCube(language + "_letters");
         storedWords = new ArrayList<>();
+        currentCubeHighScores = new HighScores();
     }
 
     //Start loaded game
@@ -149,11 +150,12 @@ public class JoggleCubeController implements IJoggleCubeController{
     }
 
     public ObservableList<IScore> getOverallHighScores() {
-        return FXCollections.observableArrayList(overallHighScores.getScores());
+        //return FXCollections.observableArrayList(overallHighScores.getScores());
+        return null;
     }
 
     public ObservableList<IScore> getCurrentCubeHighScores() {
-        return FXCollections.observableArrayList(overallHighScores.getScores());
+        return FXCollections.observableArrayList(currentCubeHighScores.getScores());
     }
 
     //Get the grids from a saved file

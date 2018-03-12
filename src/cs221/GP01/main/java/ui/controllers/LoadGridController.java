@@ -105,7 +105,7 @@ public class LoadGridController extends BaseScreenController implements INeedPre
     private void btnBackClicked() {
         NavigationController.getInstance().switchScreen(ScreenType.START);
     }
-    
+
 
     /**
      * Handle when a user clicks an option from the selection
