@@ -2,6 +2,7 @@ package cs221.GP01.main.java.model;
 
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.controllers.GameController;
+import cs221.GP01.main.java.ui.controllers.LoadGridController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.apache.commons.io.FileUtils;
@@ -15,6 +16,7 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -112,11 +114,19 @@ public class JoggleCubeController implements IJoggleCubeController{
                 currentCubeHighScores = new HighScores();
                 currentCubeHighScores.loadScores(in);
             }catch(URISyntaxException e){
-                System.out.println(e.toString());
+                System.err.println(e.toString());
             }
-        } catch(FileNotFoundException e){
-            //An error in file name
-            System.out.println("Game Save not found");
+        } catch(FileNotFoundException | NoSuchElementException e){
+            // Print error depending on caught exception
+            if(e instanceof FileNotFoundException){
+                // An error in file name
+                LoadGridController.getInstance().showError("No Game Save Selected");
+            }else{
+                // Error with the file format
+                LoadGridController.getInstance().showError("Invalid or Corrupted Game Save");
+            }
+
+
             return false;
         }
         //At this point the cube has been loaded in
@@ -184,12 +194,11 @@ public class JoggleCubeController implements IJoggleCubeController{
                     results.add(listOfFile.getName());
                 }
             }catch(NullPointerException e){
-                //todo send to front end
-                System.out.println("No recent grids found!");
+                System.err.println("No recent grids found!");
             }
         } catch(URISyntaxException e){
-            System.out.println("Issue with the Syntax of URI in getRecentGrids()");
-            System.out.println(e.toString());
+            System.err.println("Issue with the Syntax of URI in getRecentGrids()");
+            System.err.println(e.toString());
         }
 
         //Remove the .grid from the file name
@@ -390,7 +399,7 @@ public class JoggleCubeController implements IJoggleCubeController{
                 createDirectory(uri);
             }
         }catch(URISyntaxException e){
-            System.out.println("URI Issue probably an OS issue trying to create Documents folder");
+            System.err.println("URI Issue probably an OS issue trying to create Documents folder");
         }
     }
 
@@ -436,7 +445,7 @@ public class JoggleCubeController implements IJoggleCubeController{
                 System.out.println(e.toString());
             }
         } catch (IOException e){
-            System.out.println("Failed creating Directories: " + e.toString());
+            System.err.println("Failed creating Directories: " + e.toString());
         }
     }
 }
