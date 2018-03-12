@@ -17,6 +17,10 @@
     /* Cube colours */
     -fx-invalid-color: #ed3b3b;
     -fx-valid-color: #54ad54;
+
+    /* Timer Color */
+    -fx-timer-red: #ed3b3b;
+    -fx-timer-amber: #ed943b;
 }
 
 
