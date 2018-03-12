@@ -31,7 +31,7 @@ public class testMain {
         highScores.addScore(s3);
         IScore s4 = new Score(25, "pete");
         highScores.addScore(s4);
-        IScore highS = highScores.getHighScore();
+        IScore highS = highScores.getHighestScore();
         System.out.println(highS.toString());
         PrintWriter names = new PrintWriter(new File("file.highscores"));
         highScores.saveScores(names);
