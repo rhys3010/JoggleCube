@@ -120,10 +120,10 @@ public class JoggleCubeController implements IJoggleCubeController{
             // Print error depending on caught exception
             if(e instanceof FileNotFoundException){
                 // An error in file name
-                LoadGridController.getInstance().showError("No Game Save Selected");
+                LoadGridController.getInstance().showError("No Grid Selected");
             }else{
                 // Error with the file format
-                LoadGridController.getInstance().showError("Invalid or Corrupted Game Save");
+                LoadGridController.getInstance().showError("Invalid or Corrupted Grid File");
             }
 
 
