@@ -36,7 +36,7 @@ public interface IHighScores {
      *
      * @return the highest score
      */
-    IScore getHighScore();
+    IScore getHighestScore();
 
     /**
      *

@@ -66,7 +66,7 @@ public class HighScores implements IHighScores {
      * @return high score
      */
     @Override
-    public IScore getHighScore() {
+    public IScore getHighestScore() {
         scores.sort((o1, o2) -> {
             if(o1.getScore() > o2.getScore()){
                 return -1;
@@ -76,7 +76,12 @@ public class HighScores implements IHighScores {
                 return 0;
             }
         });
-        return scores.get(0);
+        if(!scores.isEmpty()){
+            return scores.get(0);
+        } else {
+            return new Score(0,"");
+        }
+
     }
 
     /**

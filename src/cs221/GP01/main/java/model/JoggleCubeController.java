@@ -33,13 +33,15 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     private Cube cube;
     
-    private IGameTimer timer;
+    private GameTimer timer;
 
     private ArrayList<String> storedWords;
 
     private IHighScores currentCubeHighScores;
 
     private IHighScores overallHighScores;
+
+    private String name;
 
     //en_dictionary was taken from an open source scrabble bot at
     //Currently American English
@@ -58,10 +60,9 @@ public class JoggleCubeController implements IJoggleCubeController{
 
 
     private JoggleCubeController(){
+        findDocumentFolder();
         loadOverallScores();
         loadNewDictionary();
-        //todo during project start up write private method to check if folder for JoggleCube is in the User.home directory and create if not present, including the saves.
-        findDocumentFolder();
     }
 
     public static JoggleCubeController getInstance(){
@@ -150,8 +151,11 @@ public class JoggleCubeController implements IJoggleCubeController{
     }
 
     public ObservableList<IScore> getOverallHighScores() {
-        //return FXCollections.observableArrayList(overallHighScores.getScores());
-        return null;
+        if(overallHighScores != null){
+            return FXCollections.observableArrayList(overallHighScores.getScores());
+        } else {
+            return null;
+        }
     }
 
     public ObservableList<IScore> getCurrentCubeHighScores() {
@@ -208,6 +212,9 @@ public class JoggleCubeController implements IJoggleCubeController{
 
 
     public boolean saveGrid(String filename) {
+        IScore score = new Score(currentScore,name);
+        currentCubeHighScores.addScore(score);
+        overallHighScores.addScore(score);
         try{
             //todo write an actual path, to the documents folder
             try {
@@ -234,13 +241,53 @@ public class JoggleCubeController implements IJoggleCubeController{
     @Override
     public void saveOverallScores() {
         //todo implement this
+        try {
+            try {
+                String highScore = System.getProperty("user.home") + "/Documents/JoggleCube/highscores/overAll.highscores";
+                URI highScores = new URI(highScore.replace("\\", "/")
+                        .trim().replaceAll("\\u0020", "%20"));
+                File highScoresFile = new File(highScores.getPath());
+
+                //Empty the file first
+                PrintWriter out = new PrintWriter(highScoresFile);
+                out.print("");
+                out.close();
+
+                //Create printwriter and pass to save method in highscores
+                PrintWriter outFeed = new PrintWriter(highScoresFile);
+                overallHighScores.saveScores(outFeed);
+
+            } catch (URISyntaxException e) {
+                System.out.println(e.toString());
+            }
+        }catch(FileNotFoundException e){
+            System.out.println(e.toString());
+        }
+
     }
 
     /**
      * loads the overall scores from file
      */
     private void loadOverallScores(){
-        //todo implement this
+        try {
+            try {
+                String highScore = System.getProperty("user.home") + "/Documents/JoggleCube/highscores/overAll.highscores";
+                URI highScores = new URI(highScore.replace("\\", "/")
+                        .trim().replaceAll("\\u0020", "%20"));
+
+                File overallHighScoresFile = new File(highScores.getPath());
+
+                Scanner in = new Scanner(overallHighScoresFile);
+                overallHighScores = new HighScores();
+                overallHighScores.loadScores(in);
+
+            } catch (URISyntaxException e) {
+                System.out.println(e.toString());
+            }
+        }catch(FileNotFoundException e){
+            System.out.println(e.toString());
+        }
     }
 
     /**
@@ -249,26 +296,24 @@ public class JoggleCubeController implements IJoggleCubeController{
      * @return the top high score.
      */
     public int getHighestScore() {
-        //todo get the highest overall score.
-        return 0;
+        return overallHighScores.getHighestScore().getScore();
     }
 
     @Override
     public void setName(String name) {
-        System.out.println(name);
+        this.name = name;
     }
 
     @Override
     public void startTimer() {
         timer = new GameTimer();
-        //todo start this in a separate thread
-        //timer.startTimer();
+        Thread t = new Thread(timer);
+        t.start();
     }
 
     @Override
     public void interruptTimer() {
-        //timer.interrupt();
-        //timer.resetTime();
+        timer.interrupt();
     }
 
     /**
@@ -296,6 +341,7 @@ public class JoggleCubeController implements IJoggleCubeController{
     public int getWordScore(String word){
         //Split the word up into the different letters including 'Qu' and then search the hashmap for each and
         //return a sum of the scores
+        word = word.toUpperCase();
         int sumOf = 0;
         for(int i = 0; i<word.length(); i++){
             if(scores.containsKey(String.valueOf(word.charAt(i)))){

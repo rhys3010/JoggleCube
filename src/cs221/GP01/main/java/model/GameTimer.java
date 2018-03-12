@@ -8,11 +8,12 @@ import cs221.GP01.main.java.ui.ScreenType;
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.controllers.BaseScreenController;
 import cs221.GP01.main.java.ui.controllers.GameController;
+import javafx.application.Platform;
 import javafx.scene.control.Label;
 
 import java.time.Duration;
 
-public class GameTimer implements IGameTimer {
+public class GameTimer implements IGameTimer, Runnable {
 
     /**
      * create instance of timer in joggle cube - private Timer timer
@@ -25,7 +26,7 @@ public class GameTimer implements IGameTimer {
      */
 
     private Duration currentTime;
-
+    private boolean interupt = false;
 
 
     public GameTimer(){}
@@ -45,8 +46,7 @@ public class GameTimer implements IGameTimer {
 
     @Override
     public void startTimer() {
-        //todo update the timer label with current time
-        Label timerLabel = GameController.getInstance().getScoreLabel();
+        Label timerLabel = GameController.getInstance().getTimerLabel();
         //
         int timeLeft = 180;
         currentTime = Duration.ofSeconds(180);
@@ -56,15 +56,41 @@ public class GameTimer implements IGameTimer {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            currentTime = Duration.ofSeconds(timeLeft - 1);
-            timerLabel.setText(currentTime.toString());
+            timeLeft = timeLeft - 1;
+            currentTime = Duration.ofSeconds(timeLeft);
+            Platform.runLater(() -> timerLabel.setText(currentTime.getSeconds()/60 +":" + currentTime.getSeconds() % 60));
+            if(interupt){
+                break;
+            }
         }
-        finishTimer();
+        if(!interupt){
+            finishTimer();
+        }
     }
 
     @Override
     public void finishTimer() {
         //ends the game
-        NavigationController.getInstance().showOverlay(ScreenType.END, (BaseScreenController) GameController.getInstance());
+        Platform.runLater(() -> NavigationController.getInstance().showOverlay(ScreenType.END, (BaseScreenController) GameController.getInstance()));
+    }
+
+    /**
+     * When an object implementing interface <code>Runnable</code> is used
+     * to create a thread, starting the thread causes the object's
+     * <code>run</code> method to be called in that separately executing
+     * thread.
+     * <p>
+     * The general contract of the method <code>run</code> is that it may
+     * take any action whatsoever.
+     *
+     * @see Thread#run()
+     */
+    @Override
+    public void run() {
+        startTimer();
+    }
+
+    public void interrupt() {
+        interupt = true;
     }
 }
