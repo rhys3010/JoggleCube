@@ -33,7 +33,7 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     private Cube cube;
     
-    private IGameTimer timer;
+    private GameTimer timer;
 
     private ArrayList<String> storedWords;
 
@@ -256,14 +256,13 @@ public class JoggleCubeController implements IJoggleCubeController{
     @Override
     public void startTimer() {
         timer = new GameTimer();
-        //todo start this in a separate thread
-        //timer.startTimer();
+        Thread t = new Thread(timer);
+        t.start();
     }
 
     @Override
     public void interruptTimer() {
-        //timer.interrupt();
-        //timer.resetTime();
+        timer.interrupt();
     }
 
     /**

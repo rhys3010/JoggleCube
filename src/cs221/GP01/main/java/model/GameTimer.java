@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 
 import java.time.Duration;
 
-public class GameTimer implements IGameTimer {
+public class GameTimer implements IGameTimer, Runnable {
 
     /**
      * create instance of timer in joggle cube - private Timer timer
@@ -25,7 +25,7 @@ public class GameTimer implements IGameTimer {
      */
 
     private Duration currentTime;
-
+    private boolean interupt = false;
 
 
     public GameTimer(){}
@@ -58,13 +58,38 @@ public class GameTimer implements IGameTimer {
             }
             currentTime = Duration.ofSeconds(timeLeft - 1);
             timerLabel.setText(currentTime.toString());
+            if(interupt){
+                break;
+            }
         }
-        finishTimer();
+        if(!interupt){
+            finishTimer();
+        }
     }
 
     @Override
     public void finishTimer() {
         //ends the game
         NavigationController.getInstance().showOverlay(ScreenType.END, (BaseScreenController) GameController.getInstance());
+    }
+
+    /**
+     * When an object implementing interface <code>Runnable</code> is used
+     * to create a thread, starting the thread causes the object's
+     * <code>run</code> method to be called in that separately executing
+     * thread.
+     * <p>
+     * The general contract of the method <code>run</code> is that it may
+     * take any action whatsoever.
+     *
+     * @see Thread#run()
+     */
+    @Override
+    public void run() {
+        startTimer();
+    }
+
+    public void interrupt() {
+        interupt = true;
     }
 }
