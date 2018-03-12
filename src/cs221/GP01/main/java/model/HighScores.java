@@ -49,12 +49,7 @@ public class HighScores implements IHighScores {
      */
     @Override
     public void saveScores(PrintWriter file) {
-        scores.forEach(new Consumer<IScore>() {
-            @Override
-            public void accept(IScore iScore) {
-                iScore.saveScore(file);
-            }
-        });
+        scores.forEach(iScore -> iScore.saveScore(file));
     }
 
     /**

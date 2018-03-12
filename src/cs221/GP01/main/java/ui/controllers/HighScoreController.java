@@ -8,7 +8,7 @@
 
 package cs221.GP01.main.java.ui.controllers;
 
-import cs221.GP01.main.java.model.Score;
+import cs221.GP01.main.java.model.IScore;
 import cs221.GP01.main.java.model.JoggleCubeController;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -25,12 +25,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * HighScoreController - A class that controls the Score scene that is defined in Score.fxml
+ * HighScoreController - A class that controls the IScore scene that is defined in IScore.fxml
  * Load and display highscores from another class
  * todo delete temp highscore class and establish a new one
  *
  * <p>
- * Used with Score.fxml
+ * Used with IScore.fxml
  * todo improve this description
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21@aber.ac.uk)
@@ -55,10 +55,10 @@ public class HighScoreController extends BaseScreenController implements Initial
     }
 
     /**
-     * High Score Table
+     * High IScore Table
      */
     @FXML
-    private TableView<Score> highScoreTable;
+    private TableView<IScore> highScoreTable;
 
     /**
      * Table Columns
@@ -66,11 +66,11 @@ public class HighScoreController extends BaseScreenController implements Initial
     @FXML
     private TableColumn idCol;
     @FXML
-    private TableColumn<Score, String> dateCol;
+    private TableColumn<IScore, String> dateCol;
     @FXML
     private TableColumn scoreCol;
     @FXML
-    private TableColumn<Score, String> nameCol;
+    private TableColumn<IScore, String> nameCol;
 
     /**
      * The label of the highscore page
@@ -81,12 +81,12 @@ public class HighScoreController extends BaseScreenController implements Initial
     /**
      * Highscores for all cubes
      */
-    private ObservableList<Score> overallScores;
+    private ObservableList<IScore> overallScores;
 
     /**
      * Highscores for the currently played cube
      */
-    private ObservableList<Score> currentCubeScores;
+    private ObservableList<IScore> currentCubeScores;
 
     /**
      * The different highscore pages that can be displayed
@@ -98,7 +98,7 @@ public class HighScoreController extends BaseScreenController implements Initial
 
 
     /**
-     * Populate Score table with highscore data
+     * Populate IScore table with highscore data
      *
      */
     public void prepView(){
@@ -151,12 +151,12 @@ public class HighScoreController extends BaseScreenController implements Initial
      *
      * @param list - a filtered list of the highscores to populate the table with
      */
-    private void populateTable(ObservableList<Score> list, String title){
+    private void populateTable(ObservableList<IScore> list, String title){
 
         highScorePageLabel.setText(title);
 
         //filters list to the top 10
-        FilteredList<Score> filteredList = new FilteredList<Score>(
+        FilteredList<IScore> filteredList = new FilteredList<IScore>(
                 list,
                 HighScore -> list.indexOf(HighScore) < 10
         );
@@ -209,18 +209,18 @@ public class HighScoreController extends BaseScreenController implements Initial
     public void initialize(URL location, ResourceBundle resources) {
         // Set Default Values for Cells
         dateCol.setCellValueFactory(
-                new PropertyValueFactory<Score, String>("Date")
+                new PropertyValueFactory<IScore, String>("Date")
         );
 
         scoreCol.setCellValueFactory(
-                new PropertyValueFactory<Score, Integer>("Score")
+                new PropertyValueFactory<IScore, Integer>("Score")
         );
 
         nameCol.setCellValueFactory(
-                new PropertyValueFactory<Score, String>("Name")
+                new PropertyValueFactory<IScore, String>("Name")
         );
 
-        // Set Score sort type
+        // Set IScore sort type
         scoreCol.setSortType(TableColumn.SortType.DESCENDING);
 
         // Prevent user from reordering table

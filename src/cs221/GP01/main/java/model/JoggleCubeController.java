@@ -2,6 +2,8 @@ package cs221.GP01.main.java.model;
 
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.controllers.GameController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import org.apache.commons.io.FileUtils;
 
@@ -60,6 +62,7 @@ public class JoggleCubeController implements IJoggleCubeController{
         loadNewDictionary();
         //todo during project start up write private method to check if folder for JoggleCube is in the User.home directory and create if not present, including the saves.
         findDocumentFolder();
+        getRecentGrids();
     }
 
     public static JoggleCubeController getInstance(){
@@ -136,23 +139,72 @@ public class JoggleCubeController implements IJoggleCubeController{
         return stringCube;
     }
 
-    //Need to look into how the Score classes are built from Lampros
-    public ObservableList<Score> getOverallHighScores() { return null; }
+    public ObservableList<IScore> getOverallHighScores() {
+        return FXCollections.observableArrayList(overallHighScores.getScores());
+    }
 
-    //Need to look into the same thing
-    public ObservableList<Score> getCurrentCubeHighScores() { return null; }
+    public ObservableList<IScore> getCurrentCubeHighScores() {
+        return FXCollections.observableArrayList(overallHighScores.getScores());
+    }
 
     //Get the grids from a saved file
-    public ObservableList<String> getRecentGrids() { return null; }
+    public ObservableList<String> getRecentGrids() {
+        ArrayList<String> results = new ArrayList<>();
+        try {
+            //Finding the save folder
+            String savePath = System.getProperty("user.home") + "/Documents/JoggleCube/saves";
+            File saveFolder = new File(new URI(savePath.replace("\\", "/")
+                    .trim().replaceAll("\\u0020", "%20")).getPath());
+
+            //Using the folder we get all of the
+            File[] listOfFiles = saveFolder.listFiles();
+            try {
+                //The NullPointerException is fine because it is caught in a try catch.
+                for (File listOfFile : listOfFiles) {
+                    results.add(listOfFile.getName());
+                }
+            }catch(NullPointerException e){
+                //todo send to front end
+                System.out.println("No recent grids found!");
+            }
+        } catch(URISyntaxException e){
+            System.out.println("Issue with the Syntax of URI in getRecentGrids()");
+            System.out.println(e.toString());
+        }
+
+        //Remove the .grid from the file name
+        ArrayList<String> newResults = new ArrayList<>();
+        //Foreach loops suck and thus I didn't use one because it just broke everything when I used it
+        for (int i = 0; i<results.size(); i++){
+            String currentString = results.get(i);
+            if(currentString.contains(".grid")){
+                StringBuilder newC = new StringBuilder();
+                //Remove .grid
+                //i = 5 because .grid is 5 charecters
+                for(int j = 5; j<currentString.length(); j++){
+                    newC.append(currentString.charAt(j - 5));
+                }
+                newResults.add(newC.toString());
+            }
+        }
+        return FXCollections.observableArrayList(newResults);
+    }
 
 
     public boolean saveGrid(String filename) {
         try{
             //todo write an actual path, to the documents folder
-            File file = new File("" + filename + ".grid");
-            PrintWriter out = new PrintWriter(file);
-            cube.saveCube(out);
-            out.close();
+            try {
+                String savePath = System.getProperty("user.home") + "/Documents/JoggleCube/saves/" + filename + ".grid";
+                File saveFile = new File(new URI(savePath.replace("\\", "/")
+                        .trim().replaceAll("\\u0020", "%20")).getPath());
+                PrintWriter out = new PrintWriter(saveFile);
+                cube.saveCube(out);
+                currentCubeHighScores.saveScores(out);
+                out.close();
+            }catch(URISyntaxException e){
+                    System.out.println();
+            }
         } catch (FileNotFoundException e){
             System.out.println(e.toString());
             return false;
@@ -180,7 +232,7 @@ public class JoggleCubeController implements IJoggleCubeController{
      *
      * @return the top high score.
      */
-    public int getHighScore() {
+    public int getHighestScore() {
         //todo get the highest overall score.
         return 0;
     }
