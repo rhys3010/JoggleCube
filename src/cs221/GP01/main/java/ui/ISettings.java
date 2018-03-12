@@ -38,7 +38,7 @@ public interface ISettings {
      * Get the volume value of the game
      * @return - 0-100 value
      */
-    int getVolume();
+    double getVolume();
 
     /**
      * Set the colour blind option to true/false
@@ -62,7 +62,7 @@ public interface ISettings {
      * Set the volume value to a value between 0-100
      * @param volume
      */
-    void setVolume(int volume);
+    void setVolume(double volume);
 
     /**
      * Clear the currently saved highscores

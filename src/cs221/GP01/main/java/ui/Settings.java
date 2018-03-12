@@ -47,7 +47,7 @@ public class Settings implements ISettings{
      * Store the current volume of the game (0-100)
      * 75% as default
      */
-    private int volume = 75;
+    private double volume = 75;
 
     /**
      * Constructor for settings class
@@ -83,7 +83,7 @@ public class Settings implements ISettings{
      * Get the volume value of the game
      * @return - 0-100 value
      */
-    public int getVolume(){
+    public double getVolume(){
         return volume;
     }
 
@@ -115,7 +115,7 @@ public class Settings implements ISettings{
      * Set the volume value to a value between 0-100
      * @param volume
      */
-    public void setVolume(int volume){
+    public void setVolume(double volume){
         // Verify that volume is between 0-100
         if(volume >= 0 && volume <= 100){
             this.volume = volume;
