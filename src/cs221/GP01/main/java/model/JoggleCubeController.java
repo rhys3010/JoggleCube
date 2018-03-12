@@ -3,7 +3,6 @@ package cs221.GP01.main.java.model;
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.controllers.GameController;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import org.apache.commons.io.FileUtils;
 
@@ -40,6 +39,8 @@ public class JoggleCubeController implements IJoggleCubeController{
     private IHighScores currentCubeHighScores;
 
     private IHighScores overallHighScores;
+
+    private String name;
 
     //en_dictionary was taken from an open source scrabble bot at
     //Currently American English
@@ -203,6 +204,8 @@ public class JoggleCubeController implements IJoggleCubeController{
 
 
     public boolean saveGrid(String filename) {
+        IScore score = new Score(currentScore,name);
+        currentCubeHighScores.addScore(score);
         try{
             //todo write an actual path, to the documents folder
             try {
@@ -250,7 +253,7 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     @Override
     public void setName(String name) {
-        System.out.println(name);
+        this.name = name;
     }
 
     @Override
