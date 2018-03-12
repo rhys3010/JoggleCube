@@ -38,7 +38,7 @@
                         <Button fx:id="rightPageNav" onAction="#previousPage" />
                      </children>
                   </HBox>
-                   <TableView fx:id="highScoreTable" editable="false" styleClass="highScoreTable">
+                   <TableView fx:id="highScoreTable" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="highScoreTable">
                        <columns>
                            <TableColumn fx:id="idCol" sortable="false" text="#" />
                            <TableColumn fx:id="nameCol" editable="false" resizable="false" sortable="false" text="Name" />

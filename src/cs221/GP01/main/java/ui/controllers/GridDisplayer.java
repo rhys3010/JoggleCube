@@ -8,18 +8,19 @@
 
 package cs221.GP01.main.java.ui.controllers;
 
-import javafx.event.Event;
-import javafx.event.EventHandler;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.geometry.HPos;
 import javafx.geometry.Point3D;
 import javafx.geometry.Pos;
 import javafx.scene.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.PickResult;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -28,6 +29,7 @@ import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
+import javafx.util.Duration;
 
 
 /**
@@ -64,19 +66,21 @@ public class GridDisplayer {
     private Group groupy;
     private BorderPane back;
     private GridPane[] twoDGrid,twoFiveDGrid;
+    private Button explodeIcon;
 
 
     //storage for the labels and boxes with letters in them.
     private Label[][][] labelCube;
     private Box[][][] boxCube,boxCube3;
 
-    public GridDisplayer(TextField field, GridPane[] two, GridPane[] twoFive, SubScene sub, Group group, BorderPane b) {
+    public GridDisplayer(TextField field, GridPane[] two, GridPane[] twoFive, SubScene sub, Group group, BorderPane b, Button explode) {
         textField = field;
         twoDGrid = two;
         twoFiveDGrid = twoFive;
         subScene = sub;
         groupy = group;
         back = b;
+        explodeIcon = explode;
     }
 
     /**
@@ -318,7 +322,7 @@ public class GridDisplayer {
 
         //create a label with the letter
         Label label = new Label(letter);
-        label.setStyle("-fx-font-size: 21; -fx-text-fill: white;");
+        label.setStyle("-fx-font-size: 19; -fx-text-fill: white;");
         GridPane.setHalignment(label, HPos.CENTER);
 
         //add the label to the grid
@@ -380,5 +384,47 @@ public class GridDisplayer {
             }
         }
         return false;
+    }
+
+    private boolean toggle;
+
+    public void toggleExplode() {
+
+        // Clear explode button class
+        explodeIcon.getStyleClass().clear();
+
+        // Switch buttons between explode/implode
+        if(toggle) {
+            explodeIcon.getStyleClass().add("explode");
+        }else{
+            explodeIcon.getStyleClass().add("implode");
+        }
+
+
+        Timeline timeline = new Timeline();
+        for(int i = 0; i<3; i++) {
+            for (int j = 0; j < 3; j++) {
+                addAnimation(timeline,boxCube3[0][i][j],toggle,0,i,j);
+                addAnimation(timeline,boxCube3[2][i][j],!toggle,2,i,j);
+            }
+        }
+        timeline.play();
+        toggle = !toggle;
+    }
+
+    private void addAnimation(Timeline timeline, Box box,boolean left,int x,int y,int z) {
+        int displacment = 60;
+        if(left){
+            timeline.getKeyFrames().addAll(
+                    new KeyFrame(Duration.ZERO,new KeyValue(box.translateXProperty(), box.getTranslateX())),
+                    new KeyFrame(new Duration(400),new KeyValue(box.translateXProperty(), box.getTranslateX() + displacment))
+            );
+        } else {
+            timeline.getKeyFrames().addAll(
+                    new KeyFrame(Duration.ZERO, new KeyValue(box.translateXProperty(), box.getTranslateX())),
+                    new KeyFrame(new Duration(400), new KeyValue(box.translateXProperty(), box.getTranslateX() - displacment))
+            );
+        }
+
     }
 }
