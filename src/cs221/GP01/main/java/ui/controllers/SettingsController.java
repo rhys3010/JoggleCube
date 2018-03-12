@@ -8,6 +8,7 @@
 package cs221.GP01.main.java.ui.controllers;
 
 import cs221.GP01.main.java.ui.NavigationController;
+import cs221.GP01.main.java.ui.Settings;
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
@@ -59,19 +60,7 @@ public class SettingsController extends BaseOverlayController implements INeedPr
      */
     @FXML
     public void clearHighScoreClicked(){
-        // Display 'are you sure' overlay
-        Alert sureAlert = new Alert(Alert.AlertType.CONFIRMATION);
-        sureAlert.setTitle("Quit Game");
-        sureAlert.setHeaderText(null);
-        sureAlert.setContentText("Are you sure you want to clear all High Scores?");
-
-        Optional<ButtonType> result = sureAlert.showAndWait();
-
-        if (result.get() == ButtonType.OK) {
-            // todo: Clear high scores here
-        } else {
-            sureAlert.close();
-        }
+        Settings.getInstance().clearHighScores();
     }
 
     @Override
