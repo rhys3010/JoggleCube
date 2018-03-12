@@ -12,6 +12,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -52,13 +53,16 @@
                   <VBox styleClass="recentsContainer">
                      <children>
                         <Label text="Recent Grids" />
-                        <ListView fx:id="listViewRecents" onMouseClicked="#handleMouseClick" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" />
+                        <ListView fx:id="listViewRecents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMouseClick" />
                      </children>
                   </VBox>
                   <HBox styleClass="buttonContainer">
                      <children>
-                        <Button fx:id="loadButton" mnemonicParsing="false" onAction="#prepView" text="Refresh" />
-                        <Button fx:id="startButton" onAction="#btnStartGridClicked" mnemonicParsing="false" text="Start Game" />
+                        <Button fx:id="loadButton" mnemonicParsing="false" onAction="#prepView" text="Refresh">
+                           <tooltip>
+                              <Tooltip opacity="0.8" text="Refresh the saves folder to detect any new additions" />
+                           </tooltip></Button>
+                        <Button fx:id="startButton" mnemonicParsing="false" onAction="#btnStartGridClicked" text="Start Game" />
                      </children>
                   </HBox>
                </children>
