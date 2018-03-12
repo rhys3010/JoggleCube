@@ -37,9 +37,9 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     private ArrayList<String> storedWords;
 
-    private IHighScores currentCubeHighScores;
+    private IHighScores currentCubeHighScores = new HighScores();
 
-    private IHighScores overallHighScores;
+    private IHighScores overallHighScores = new HighScores();
 
     private String name;
 
@@ -242,7 +242,7 @@ public class JoggleCubeController implements IJoggleCubeController{
                 String highScore = System.getProperty("user.home") + "/Documents/JoggleCube/highscores/overAll.highscores";
                 URI highScores = new URI(highScore.replace("\\", "/")
                         .trim().replaceAll("\\u0020", "%20"));
-                File highScoresFile = new File(highScores);
+                File highScoresFile = new File(highScores.getPath());
 
                 //Empty the file first
                 PrintWriter out = new PrintWriter(highScoresFile);
@@ -272,7 +272,7 @@ public class JoggleCubeController implements IJoggleCubeController{
                 URI highScores = new URI(highScore.replace("\\", "/")
                         .trim().replaceAll("\\u0020", "%20"));
 
-                File overallHighScoresFile = new File(highScores);
+                File overallHighScoresFile = new File(highScores.getPath());
 
                 Scanner in = new Scanner(overallHighScoresFile);
 
