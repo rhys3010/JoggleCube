@@ -121,8 +121,8 @@ public class Settings implements ISettings{
             this.volume = volume;
 
         }else{
-            // Todo: error handling
-            System.err.println("Invalid Volume Value! Volume Values must be between 0-100");
+            // Throw out of bounds exception
+            throw new IndexOutOfBoundsException("Volume " + volume + " is out of bounds! (Must be between 0-100)");
         }
     }
 
