@@ -53,7 +53,7 @@
 }
 
 #loadButton{
-    -fx-background-image: url("../img/icon/file_load_icon_inactive.png");
+    -fx-background-image: url("../img/icon/replay_icon_inactive.png");
 }
 
 #startButton{
@@ -61,7 +61,7 @@
 }
 
 #loadButton:hover{
-    -fx-background-image: url("../img/icon/file_load_icon.png");
+    -fx-background-image: url("../img/icon/replay_icon.png");
 }
 
 #startButton:hover{
