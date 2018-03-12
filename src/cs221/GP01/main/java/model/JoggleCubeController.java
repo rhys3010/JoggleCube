@@ -232,13 +232,53 @@ public class JoggleCubeController implements IJoggleCubeController{
     @Override
     public void saveOverallScores() {
         //todo implement this
+        try {
+            try {
+                String highScore = System.getProperty("user.home") + "/Documents/JoggleCube/highscores/overAll.highscores";
+                URI highScores = new URI(highScore.replace("\\", "/")
+                        .trim().replaceAll("\\u0020", "%20"));
+                File highScoresFile = new File(highScores);
+
+                //Empty the file first
+                PrintWriter out = new PrintWriter(highScoresFile);
+                out.print("");
+                out.close();
+
+                //Create printwriter and pass to save method in highscores
+                PrintWriter outFeed = new PrintWriter(highScoresFile);
+                overallHighScores.saveScores(outFeed);
+
+            } catch (URISyntaxException e) {
+                System.out.println(e.toString());
+            }
+        }catch(FileNotFoundException e){
+            System.out.println(e.toString());
+        }
+
     }
 
     /**
      * loads the overall scores from file
      */
     private void loadOverallScores(){
-        //todo implement this
+        try {
+            try {
+                String highScore = System.getProperty("user.home") + "/Documents/JoggleCube/highscores/overAll.highscores";
+                URI highScores = new URI(highScore.replace("\\", "/")
+                        .trim().replaceAll("\\u0020", "%20"));
+
+                File overallHighScoresFile = new File(highScores);
+
+                Scanner in = new Scanner(overallHighScoresFile);
+
+                overallHighScores.loadScores(in);
+
+            } catch (URISyntaxException e) {
+                System.out.println(e.toString());
+            }
+        }catch(FileNotFoundException e){
+            System.out.println(e.toString());
+        }
     }
 
     /**
@@ -247,8 +287,7 @@ public class JoggleCubeController implements IJoggleCubeController{
      * @return the top high score.
      */
     public int getHighestScore() {
-        //todo get the highest overall score.
-        return 0;
+        return overallHighScores.getHighestScore().getScore();
     }
 
     @Override
