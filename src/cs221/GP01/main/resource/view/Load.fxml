@@ -19,11 +19,13 @@
 <?import javafx.scene.layout.VBox?>
 
 <!--
-    * LoadGrid - LoadGrid user interface definition.
+    * Load - A screen to allow the user to load a grid file
     * <p>
-    * Used with the LoadGridController to display a scene to allow user to load a Grid from file.
+    * FXML layout of the load page with a list of the available grid files and buttons to refresh or start the game
+    * Can also navigate to other screens from here.
     *
     * @author Nathan Williams (naw21)
+    * @author Rhys Evans (rhe24)
     * @version 0.1  DRAFT
 -->
 

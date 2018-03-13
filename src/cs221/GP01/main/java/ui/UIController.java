@@ -122,7 +122,7 @@ public class UIController implements IFrontendController{
                 break;
 
             case HIGH_SCORES:
-                loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Score.fxml"));
+                loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "HighScore.fxml"));
                 loader.setController(HighScoreController.getInstance());
                 break;
 
