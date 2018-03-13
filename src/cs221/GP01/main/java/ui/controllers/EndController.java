@@ -101,7 +101,7 @@ public class EndController extends BaseOverlayController implements INeedPrep {
     @FXML
     void btnSaveClicked(){
         Stage stage = new Stage();
-        TextInputDialog dialog = new TextInputDialog("walter");
+        TextInputDialog dialog = new TextInputDialog("untitled");
         dialog.setTitle("Text Input Dialog");
         dialog.setHeaderText("Look, a Text Input Dialog");
         dialog.setContentText("Please enter a filename:");
