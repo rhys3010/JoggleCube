@@ -12,6 +12,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
+<!--
+    * Scoring - The help page that contains the game's scoring guide
+    *
+    * @author Rhys Evans (rhe24@aber.ac.uk)
+    * @version 0.1  DRAFT
+-->
+
 <VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Label styleClass="title" text="Scoring System" />
