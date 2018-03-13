@@ -103,7 +103,6 @@ public class EndController extends BaseOverlayController implements INeedPrep {
      */
     @FXML
     void btnSaveClicked(){
-        Stage stage = new Stage();
         TextInputDialog dialog = new TextInputDialog("untitled");
         dialog.setTitle("Text Input Dialog");
         dialog.setHeaderText("Save Cube");

@@ -204,31 +204,32 @@ public class GameController extends BaseScreenController implements IGameControl
     public void prepView(){
         scoreLabel.setText("0");
         timerLabel.setText("3:00");
+
+        // Pop-up dialog to get user's name
         TextInputDialog dialog = new TextInputDialog("Walter");
         dialog.setTitle("Enter Name");
         dialog.setHeaderText("Name Input");
         dialog.setContentText("Please enter your name:");
-        dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
-        // todo: make this the correct icon
         // todo: make this call using proper URI to allow for those dodgy PCs
         dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("../../../resource/img/icon/person_icon.png"))));
         dialog.initStyle(StageStyle.UNDECORATED);
+        dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
 
+        // Get result from text box
+        Optional<String> input = dialog.showAndWait();
 
-        boolean done = false;
-        // todo: add more in-depth validation checking
-        while(!done) {
-            dialog.showAndWait();
-            // Remove spaces from input
-            String result = dialog.getResult().replace(" ", "");
+        if(input.isPresent()){
+            // Normalize input and save to regular string
+            String result = input.get().replace(" ", "");
 
-            if (result.matches("(\\w*)")) {
-                JoggleCubeController.getInstance().setName(result);
-                done = true;
-            } else {
+            // todo: better validation
+            if(result.matches("(\\w*)")){
+               JoggleCubeController.getInstance().setName(result);
+            }else{
                 dialog.setHeaderText("Invalid Name Entry, Please try again");
             }
         }
+
 
         foundWords = FXCollections.observableArrayList();
 
