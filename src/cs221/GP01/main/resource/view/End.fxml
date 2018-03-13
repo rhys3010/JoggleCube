@@ -15,7 +15,10 @@
 <?import javafx.scene.layout.VBox?>
 
 <!--
-    * Used with the EndController to display a pause overlay on the main game screen.
+    * End - The overlay displayed at the end of the game
+    *
+    * The overlay has score labels to summarize the game, alongside 3 navigation buttons for the user to save,
+    * replay or return to menu
     *
     * @author Rhys Evans (rhe24@aber.ac.uk)
     * @version 0.1  DRAFT
