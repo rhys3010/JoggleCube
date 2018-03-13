@@ -1,5 +1,5 @@
 /*
- * @(#) Settings.java 1.0 2018/03/05
+ * @(#) Settings.java 1.0 2018/03/12
  *
  * Copyright (c) 2018 University of Wales, Aberystwyth.
  * All rights reserved.
@@ -14,10 +14,14 @@ import javafx.scene.control.ButtonType;
 import java.util.Optional;
 
 /**
- * Handle the system settings from the settings overlay
+ * Settings - Class to handle the preferred game configuration
+ * <p>
+ * Handle the settings of the game and adapt them depending on user input in the settings overlay
  * @author Rhys Evans
  * @author Nathan Williams (naw21)
  * @version 0.3  DRAFT
+ * @see ISettings
+ * @see cs221.GP01.main.java.ui.controllers.SettingsController
  */
 public class Settings implements ISettings{
 
@@ -51,6 +55,7 @@ public class Settings implements ISettings{
 
     /**
      * Constructor for settings class
+     * todo: needed?
      */
     private Settings(){}
 

@@ -9,7 +9,9 @@
 package cs221.GP01.main.java.ui;
 
 /**
- * Interface for the Settings class to handle game behaviour/state
+ * ISettings - Interface for the Settings class
+ * <p>
+ * Handle the preferred behaviour of several aspects of the game's behaviour / state
  * @author Rhys Evans (rhe24)
  * @version 0.1
  * @see Settings

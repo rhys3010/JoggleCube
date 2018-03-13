@@ -9,7 +9,6 @@ package cs221.GP01.main.java.ui.controllers;
 
 import cs221.GP01.main.java.ui.NavigationController;
 import cs221.GP01.main.java.ui.Settings;
-import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -18,7 +17,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
