@@ -202,7 +202,8 @@ public class GameController extends BaseScreenController implements IGameControl
      */
     @Override
     public void prepView(){
-
+        scoreLabel.setText("0");
+        timerLabel.setText("3:00");
         TextInputDialog dialog = new TextInputDialog("Walter");
         dialog.setTitle("Enter Name");
         dialog.setHeaderText("Name Input");
