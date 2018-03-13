@@ -265,7 +265,7 @@ public class JoggleCubeController implements IJoggleCubeController{
                 //Create printwriter and pass to save method in highscores
                 PrintWriter outFeed = new PrintWriter(highScoresFile);
                 overallHighScores.saveScores(outFeed);
-
+                outFeed.close();
             } catch (URISyntaxException e) {
                 System.out.println(e.toString());
             }
@@ -447,5 +447,15 @@ public class JoggleCubeController implements IJoggleCubeController{
         } catch (IOException e){
             System.err.println("Failed creating Directories: " + e.toString());
         }
+    }
+
+    public void resetGameState(){
+        IScore score = new Score(currentScore,name);
+        currentCubeHighScores.addScore(score);
+        overallHighScores.addScore(score);
+        storedWords = new ArrayList<>();
+        currentScore = 0;
+        timer.resetTime();
+
     }
 }

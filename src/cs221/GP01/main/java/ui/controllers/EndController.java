@@ -62,6 +62,7 @@ public class EndController extends BaseOverlayController implements INeedPrep {
     public void prepView() {
         scoreLabel.setText(JoggleCubeController.getInstance().getScore() + "");
         highScoreLabel.setText(JoggleCubeController.getInstance().getHighestScore() + "");
+        JoggleCubeController.getInstance().resetGameState();
     }
 
 
@@ -92,6 +93,7 @@ public class EndController extends BaseOverlayController implements INeedPrep {
      */
     @FXML
     void btnReplayClicked() {
+        //todo invoke a reset of the game state i.e. score, stored words etc.
         NavigationController.getInstance().switchScreen(ScreenType.GAME);
         NavigationController.getInstance().hideOverlay(ScreenType.END, parentController);
     }
