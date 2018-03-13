@@ -1,10 +1,20 @@
 /*
-   * @(#) Start.css 1.1 2018/02/16
+   * @(#) Help.css 1.1 2018/02/16
    *
    * Copyright (c) 2018 University of Wales, Aberystwyth.
    * All rights reserved.
    *
    */
+
+/**
+  * Help - The help overlay stylesheet
+  *
+  * This overlay acts as a parent to all the help pages, it styles the carousel system to navigate the pages and also
+  * dictates the style of the help page container. Help pages are all styles using the HelpPage.css stylesheet.
+  *
+  * @author Rhys Evans (rhe24)
+  * @version 0.1
+ */
 
 .helpOverlay{
     -fx-pref-height: 500px;

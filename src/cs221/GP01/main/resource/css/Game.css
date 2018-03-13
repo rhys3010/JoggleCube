@@ -6,12 +6,21 @@
    *
    */
 
-/* Game Screen CSS */
+
+/**
+  * Game - The stylesheet for the  main game screen
+  *
+  * Most styling is self-explanatory, information about the cube/grid display can be found in GridDisplayer.java
+  *
+  * @author Nathan Williams (naw21)
+  * @author Rhys Evans (rhe24)
+  * @version 0.1
+ */
+
 
 /* Digital Clock font*/
 @font-face{
     font-family: 'DS-Digital';
-    /*src: url("/cs221/GP01/main/resource/font/DS-DIGI.TTF");*/
 }
 
 .mainContainer{

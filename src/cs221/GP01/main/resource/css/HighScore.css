@@ -6,6 +6,17 @@
    *
    */
 
+/**
+  * HighScore - The stylesheet for the highscore screen
+  *
+  * This stylesheet dictates the styling for the high score screen, most notably the table(s) that contain all the
+  * scores.
+  *
+  * @author Rhys Evans (rhe24)
+  * @version 0.1
+ */
+
+
 .root{
     -fx-spacing: 10px;
 }

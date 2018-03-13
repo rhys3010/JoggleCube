@@ -6,6 +6,17 @@
    *
    */
 
+/**
+  * Settings - The settings overlay
+  *
+  * The stylesheet for the settings overlay, most styling is self-explanatory and closely relates to the other
+  * overlays (help, end, etc)
+  *
+  * @author Rhys Evans (rhe24)
+  * @version 0.1
+ */
+
+
 .settingsOverlay{
     -fx-background-color: rgba(64, 64, 64, 0.95);
     -fx-pref-width: 250;
