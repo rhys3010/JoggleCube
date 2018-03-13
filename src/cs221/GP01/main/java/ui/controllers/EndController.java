@@ -103,13 +103,13 @@ public class EndController extends BaseOverlayController implements INeedPrep {
         Stage stage = new Stage();
         TextInputDialog dialog = new TextInputDialog("untitled");
         dialog.setTitle("Text Input Dialog");
-        dialog.setHeaderText("Look, a Text Input Dialog");
+        dialog.setHeaderText("Save Cube");
         dialog.setContentText("Please enter a filename:");
 
         dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
         // todo: make this the correct icon
         // todo: make this call using proper URI to allow for those dodgy PCs
-        dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("../../../resource/img/icon/person_icon.png"))));
+        dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("../../../resource/img/icon/save_icon_inactive.png"))));
         dialog.initStyle(StageStyle.UNDECORATED);
         boolean done = false;
         // todo: add more in-depth validation checking
