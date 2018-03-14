@@ -94,6 +94,7 @@ public class Score implements IScore {
         return name;
     }
 
+
     /**
      * Save this score to the file
      *
@@ -108,10 +109,19 @@ public class Score implements IScore {
 
     @Override
     public String toString() {
-        return "Score{" +
-                "score=" + score +
-                ", date='" + date + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+        return "score =" + score +
+                ", date ='" + date + '\'' +
+                ", name ='" + name + '\'' ;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        Score otherScore = (Score)o;
+        if(this.date.equals(otherScore.date) && this.name.equals(otherScore.name) && this.score.equals(otherScore.score)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
