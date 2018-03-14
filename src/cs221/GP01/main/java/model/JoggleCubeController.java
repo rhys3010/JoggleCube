@@ -221,9 +221,6 @@ public class JoggleCubeController implements IJoggleCubeController{
 
 
     public boolean saveGrid(String filename) {
-        IScore score = new Score(currentScore,name);
-        currentCubeHighScores.addScore(score);
-        overallHighScores.addScore(score);
         try{
             //todo write an actual path, to the documents folder
             try {
@@ -456,6 +453,5 @@ public class JoggleCubeController implements IJoggleCubeController{
         storedWords = new ArrayList<>();
         currentScore = 0;
         timer.resetTime();
-
     }
 }

@@ -204,6 +204,7 @@ public class GameController extends BaseScreenController implements IGameControl
     public void prepView(){
         scoreLabel.setText("0");
         timerLabel.setText("3:00");
+        textField.setText("");
 
         // Pop-up dialog to get user's name
         TextInputDialog dialog = new TextInputDialog("Walter");
