@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.Optional;
 
 /**
  * EndController - A class that controls the Pause subscene that is defined in End.fxml
@@ -61,6 +62,7 @@ public class EndController extends BaseOverlayController implements INeedPrep {
     public void prepView() {
         scoreLabel.setText(JoggleCubeController.getInstance().getScore() + "");
         highScoreLabel.setText(JoggleCubeController.getInstance().getHighestScore() + "");
+        JoggleCubeController.getInstance().resetGameState();
     }
 
 
@@ -91,6 +93,7 @@ public class EndController extends BaseOverlayController implements INeedPrep {
      */
     @FXML
     void btnReplayClicked() {
+        //todo invoke a reset of the game state i.e. score, stored words etc.
         NavigationController.getInstance().switchScreen(ScreenType.GAME);
         NavigationController.getInstance().hideOverlay(ScreenType.END, parentController);
     }
@@ -100,34 +103,30 @@ public class EndController extends BaseOverlayController implements INeedPrep {
      */
     @FXML
     void btnSaveClicked(){
-        Stage stage = new Stage();
-        TextInputDialog dialog = new TextInputDialog("walter");
+        TextInputDialog dialog = new TextInputDialog("untitled");
         dialog.setTitle("Text Input Dialog");
-        dialog.setHeaderText("Look, a Text Input Dialog");
+        dialog.setHeaderText("Save Cube");
         dialog.setContentText("Please enter a filename:");
-
-        dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
-        // todo: make this the correct icon
         // todo: make this call using proper URI to allow for those dodgy PCs
-        dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("../../../resource/img/icon/person_icon.png"))));
+        dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("../../../resource/img/icon/save_icon_alt.png"))));
         dialog.initStyle(StageStyle.UNDECORATED);
-        boolean done = false;
-        // todo: add more in-depth validation checking
-        while(!done) {
-            dialog.showAndWait();
-            // Remove spaces from input
-            String result = dialog.getResult().replace(" ", "");
 
-            if (result.matches("(\\w*)")) {
+        // get result from text box
+        Optional<String> input = dialog.showAndWait();
+
+        if(input.isPresent()){
+            // Normalize input and save to regular java String
+            String result = input.get().replace(" ", "");
+
+            // todo: better validation
+            if(result.matches("(\\w*)")){
                 if(JoggleCubeController.getInstance().saveGrid(result)){
-                    //confirm file has been saved.
-                } else {
-                    //tell user to try saving again with a different file name.
-                };
 
-                done = true;
-            } else {
-                dialog.setHeaderText("Invalid Name Entry, Please try again");
+                }else{
+                    dialog.setHeaderText("Error Saving File, Please try again");
+                }
+            }else{
+                dialog.setHeaderText("Invalid Filename!, Please try again");
             }
         }
     }

@@ -1,5 +1,5 @@
 /*
-   * @(#) JoggleCube.java 1.1 2018/02/13
+   * @(#) JoggleCube.java 1.1 2018/03/12
    *
    * Copyright (c) 2012 University of Wales, Aberystwyth.
    * All rights reserved.
@@ -16,18 +16,32 @@ import javafx.scene.Scene;
 import java.io.IOException;
 
 /**
- * UIController - A class to behave as a mediator between UI and Backend.
+ * UIController - A class to implement IFrontendController
  * <p>
+ * This class will behave as a mediator between the game's logic and the game's display, it will handle state changes,
+ * screen changes and various aspects of user input
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21)
  * @version 0.2  DRAFT
+ * @see IFrontendController
  */
-public class UIController {
+public class UIController implements IFrontendController{
 
+    /**
+     * The singleton instance of the UIController class
+     */
     private static UIController uiController;
 
+    /**
+     * Default constructor
+     * todo: needed?
+     */
     private UIController(){}
 
+    /**
+     * Get the singleton instance of the UIController object
+     * @return uiController
+     */
     public static UIController getInstance(){
         if(uiController == null){
             synchronized (UIController.class){
@@ -40,9 +54,9 @@ public class UIController {
     }
 
     /**
-     * The Path to the views package
+     * The Path to the views package with all the FXML files for the screen
      */
-    private final String VIEWS_PATH_PREFIX = "../../resource/view/";
+    private static final String VIEWS_PATH_PREFIX = "../../resource/view/";
 
 
     /**
@@ -108,7 +122,7 @@ public class UIController {
                 break;
 
             case HIGH_SCORES:
-                loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Score.fxml"));
+                loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "HighScore.fxml"));
                 loader.setController(HighScoreController.getInstance());
                 break;
 

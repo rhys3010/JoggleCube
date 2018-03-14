@@ -58,7 +58,19 @@ public class GameTimer implements IGameTimer, Runnable {
             }
             timeLeft = timeLeft - 1;
             currentTime = Duration.ofSeconds(timeLeft);
-            Platform.runLater(() -> timerLabel.setText(currentTime.getSeconds()/60 +":" + currentTime.getSeconds() % 60));
+
+            // Change color of timer label depending on currentTime
+            if(currentTime.getSeconds() <= 10){
+                timerLabel.setStyle("-fx-text-fill: -fx-timer-red;");
+
+            }else if(currentTime.getSeconds() < 30 && currentTime.getSeconds() > 10){
+                timerLabel.setStyle("-fx-text-fill: -fx-timer-amber;");
+
+            }else{
+                timerLabel.setStyle("-fx-text-fill: white;");
+            }
+
+            Platform.runLater(() -> timerLabel.setText(String.format("%2d:%02d", currentTime.getSeconds()/60, currentTime.getSeconds() % 60)));
             if(interupt){
                 break;
             }

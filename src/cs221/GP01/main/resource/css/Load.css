@@ -6,6 +6,17 @@
    *
    */
 
+/**
+  * Load - The stylesheet for the Load page
+  *
+  * Styles the FXML for the recent grids list and control buttons, this stylsheet doesn't handle the JavaFX file picker
+  * in any way.
+  *
+  * @author Rhys Evans (rhe24)
+  * @version 0.1
+ */
+
+
 .mainContainer{
     -fx-spacing: 30px;
     -fx-alignment: center;

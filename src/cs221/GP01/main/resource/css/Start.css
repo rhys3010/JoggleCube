@@ -6,6 +6,15 @@
    *
    */
 
+/**
+  * Start - The start screen stylesheet
+  *
+  * The stylesheet for the start screen of the game, mainly styles the control buttons and the title/logo at the top
+  * of the scene.
+  *
+  * @author Rhys Evans (rhe24)
+  * @version 0.1
+ */
 
 .banner{
     -fx-alignment: center;

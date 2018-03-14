@@ -15,6 +15,7 @@ import cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextInputDialog;
@@ -114,5 +115,18 @@ public class LoadGridController extends BaseScreenController implements INeedPre
     public void handleMouseClick() {
 
         fileName = listViewRecents.getSelectionModel().getSelectedItem();
+    }
+
+    /**
+     * Error handling method to show the user an error alert when something goes wrong with file loading
+     * @param message - the error message to display on the popup
+     */
+    public void showError(String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("Error Loading File: \n\n" + message);
+
+        alert.showAndWait();
     }
 }
