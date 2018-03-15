@@ -65,19 +65,19 @@ public class Main extends Application {
         }
 
         primaryStage.setOnCloseRequest(e ->{
-            // Save the highscores
-            JoggleCubeController.getInstance().saveOverallScores();
 
-            // Display 'are you sure' overlayy
+
+            // Display 'are you sure' overlay
             Alert sureAlert = new Alert(Alert.AlertType.CONFIRMATION);
             sureAlert.setTitle("Quit Game");
             sureAlert.setHeaderText(null);
-            sureAlert.setContentText("Are you sure you want to quit the current game?");
+            sureAlert.setContentText("Are you sure you want to quit the game?");
             Optional<ButtonType> result = sureAlert.showAndWait();
 
 
             if (result.get() == ButtonType.OK) {
-                // Do nothing and allow the program to quit
+                // Save the highscores and allow the program to quit
+                JoggleCubeController.getInstance().saveOverallScores();
             } else {
                 sureAlert.close();
                 // Consume the event and stop the program from closing

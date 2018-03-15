@@ -1,0 +1,111 @@
+@startuml
+hide footbox
+
+title Start Screen Button Action Sequences
+
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 20
+skinparam maxmessagesize 60
+
+
+actor User
+
+participant Main
+
+box "User Interface Control" #LightBlue
+
+participant UIController
+participant NavigationController
+
+end box
+
+
+box "Back End" #c675c5
+
+participant JoggleCubeController
+participant HighScores
+participant Score
+participant Dictionary
+
+end box
+
+
+
+User -> Main : main()
+Main -> Main : start()
+activate Main
+
+== launch the backend ==
+Main -> JoggleCubeController : getInstance()
+JoggleCubeController -> JoggleCubeController : <<create>>
+activate JoggleCubeController
+
+JoggleCubeController -> HighScores : loadScores(file)
+activate HighScores
+
+loop as many times as needed
+    HighScores -> Score : loadScore()
+    activate Score
+    Score --> HighScores
+    deactivate Score
+end
+
+HighScores --> JoggleCubeController
+deactivate HighScores
+
+JoggleCubeController -> Dictionary : <<create>>
+activate Dictionary
+
+Dictionary --> JoggleCubeController
+deactivate Dictionary
+
+JoggleCubeController -> Dictionary : loadDictionary(language)
+activate Dictionary
+
+Dictionary --> JoggleCubeController
+deactivate Dictionary
+
+JoggleCubeController --> Main
+deactivate JoggleCubeController
+
+== Launch the front end ==
+
+Main -> UIController : getInstance()
+
+UIController -> UIController : <<create>>
+activate UIController
+
+
+UIController --> Main
+deactivate UIController
+Main -> UIController : initialize()
+activate UIController
+UIController -> NavigationController : getInstance()
+
+NavigationController -> NavigationController : <<create>>
+activate NavigationController
+NavigationController --> UIController
+deactivate NavigationController
+
+UIController -> NavigationController : setMainScene(main)
+activate NavigationController
+NavigationController --> UIController
+deactivate NavigationController
+
+loop foreach ScreenType
+    UIController -> UIController : createScreen(ScreenType)
+    UIController -> NavigationController : add(ScreenType,Screen)
+    activate NavigationController
+    NavigationController --> UIController
+    deactivate NavigationController
+end
+
+UIController -> NavigationController : switchScreen(ScreenType.Start)
+activate NavigationController
+NavigationController --> UIController
+deactivate NavigationController
+UIController --> Main
+deactivate UIController
+deactivate Main
+
+@enduml
