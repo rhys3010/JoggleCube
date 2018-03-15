@@ -32,10 +32,10 @@
 <?import javafx.scene.shape.Line?>
 
 <!--
-    * Game - Game user interface definition.
-    * <p>
-    * Used with the GameController to display a scene to allow user to play the game.
+    * Game - The javafx scene for the main game screen
     *
+    * This scene will contain all of the game elements, word submission, score and timing labels and a hamburger context menu
+    * All of the cube's representations will be displayed on this screen and controlled with both GameController and GridDisplayer
     * @author Nathan Williams (naw21)
     * @author Rhys Evans (rhe24@aber.ac.uk)
     * @version 0.1  DRAFT
@@ -45,7 +45,7 @@
 <StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <VBox fx:id="mainNode" styleClass="mainContainer">
         <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="topMenu">
-            <Label fx:id="scoreLabel" styleClass="scoreLabel" text="0" />
+            <Label fx:id="scoreLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="scoreLabel" text="0" />
             <Label fx:id="timerLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="timerLabel" text="3:00" />
          <HBox styleClass="buttonContainer">
             <children>

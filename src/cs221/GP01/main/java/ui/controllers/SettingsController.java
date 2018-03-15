@@ -8,16 +8,15 @@
 package cs221.GP01.main.java.ui.controllers;
 
 import cs221.GP01.main.java.ui.NavigationController;
-import cs221.GP01.main.java.ui.UIController;
+import cs221.GP01.main.java.ui.Settings;
 import cs221.GP01.main.java.ui.ScreenType;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
 
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -28,6 +27,21 @@ import java.util.ResourceBundle;
  * @version 0.2  DRAFT
  */
 public class SettingsController extends BaseOverlayController implements INeedPrep, Initializable {
+
+    /**
+     * All FXML nodes
+     */
+    @FXML
+    private CheckBox colorBlindToggle;
+
+    @FXML
+    private CheckBox musicToggle;
+
+    @FXML
+    private CheckBox soundEffectsToggle;
+
+    @FXML
+    private Slider volumeSlider;
 
 
     private static SettingsController settingsController;
@@ -59,24 +73,52 @@ public class SettingsController extends BaseOverlayController implements INeedPr
      */
     @FXML
     public void clearHighScoreClicked(){
-        // Display 'are you sure' overlay
-        Alert sureAlert = new Alert(Alert.AlertType.CONFIRMATION);
-        sureAlert.setTitle("Quit Game");
-        sureAlert.setHeaderText(null);
-        sureAlert.setContentText("Are you sure you want to clear all High Scores?");
+        Settings.getInstance().clearHighScores();
+    }
 
-        Optional<ButtonType> result = sureAlert.showAndWait();
+    /**
+     * Handle Music Toggle
+     */
+    @FXML
+    public void musicToggleClicked(){
+        // Switch the toggle to the opposite of what it currently is
+        Settings.getInstance().setMusicEnabled(musicToggle.isSelected());
+    }
 
-        if (result.get() == ButtonType.OK) {
-            // todo: Clear high scores here
-        } else {
-            sureAlert.close();
-        }
+    /**
+     * Handle Sound Effects Toggle
+     */
+    @FXML
+    public void soundEffectsToggleClicked(){
+        // Switch the toggle to the opposite of what it currently is
+        Settings.getInstance().setMusicEnabled(soundEffectsToggle.isSelected());
+    }
+
+    /**
+     * Handle Colour Blind Toggle
+     */
+    @FXML
+    public void colorBlindToggleClicked(){
+        // Switch the toggle to the opposite of what it currently is
+        Settings.getInstance().setMusicEnabled(colorBlindToggle.isSelected());
+    }
+
+    /**
+     * Handle volume slider - this method is called when the volume slider has finished being dragged
+     */
+    @FXML
+    public void volumeSliderChanged(){
+        // Set the volume value to the value currently in the slider
+        Settings.getInstance().setVolume(volumeSlider.getValue());
     }
 
     @Override
     public void prepView() {
-        //display the relevant stuff.
+        // Set the toggles and sliders to their default value from settings class
+        colorBlindToggle.setSelected(Settings.getInstance().isColorBlindEnabled());
+        musicToggle.setSelected(Settings.getInstance().isMusicEnabled());
+        soundEffectsToggle.setSelected(Settings.getInstance().isSoundEffectsEnabled());
+        volumeSlider.setValue(Settings.getInstance().getVolume());
     }
 
     /**
@@ -89,5 +131,14 @@ public class SettingsController extends BaseOverlayController implements INeedPr
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // add event listener for volume slider value being changed
+        volumeSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                volumeSliderChanged();
+            }
+        });
+
+
     }
 }
