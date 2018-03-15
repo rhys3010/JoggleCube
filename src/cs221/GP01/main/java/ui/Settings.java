@@ -47,6 +47,10 @@ public class Settings implements ISettings{
      */
     private boolean soundEffects = true;
 
+
+    private static String languages[] = {"English","Cymraeg"};
+    private static int timerLength = 180;
+
     /**
      * Store the current volume of the game (0-100)
      * 75% as default
@@ -168,5 +172,15 @@ public class Settings implements ISettings{
     }
 
 
+    public static String[] getLanguages() {
+        return languages;
+    }
 
+    public static int getTimerLength() {
+        return timerLength;
+    }
+
+    public static void setTimerLength(int timerLength) {
+        Settings.timerLength = timerLength;
+    }
 }

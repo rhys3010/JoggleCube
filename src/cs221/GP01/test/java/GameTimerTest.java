@@ -49,9 +49,9 @@ class GameTimerTest {
     @Test
     public void testInterrupt() {
 
-        assertFalse(timer.isInterupt());
+        assertFalse(timer.isInterrupt());
         timer.interrupt();
-        assertTrue(timer.isInterupt());
+        assertTrue(timer.isInterrupt());
 
     }
 }

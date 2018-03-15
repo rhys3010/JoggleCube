@@ -1,7 +1,7 @@
 @startuml
 hide footbox
 
-title Start Screen Button Action Sequences
+title Program Launch Action Sequence
 
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 20

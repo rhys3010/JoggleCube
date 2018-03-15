@@ -10,6 +10,7 @@ package cs221.GP01.main.java.ui.controllers;
 
 import cs221.GP01.main.java.model.JoggleCubeController;
 import cs221.GP01.main.java.ui.NavigationController;
+import cs221.GP01.main.java.ui.Settings;
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
@@ -27,7 +28,7 @@ import java.util.ResourceBundle;
  * @version 0.2  DRAFT
  */
 
-public class StartController extends BaseScreenController implements Initializable {
+public class StartController extends BaseScreenController implements INeedPrep {
 
     private static StartController startController;
 
@@ -48,16 +49,15 @@ public class StartController extends BaseScreenController implements Initializab
      * The FXML node of the language dropdown selector
      */
     @FXML
-    ComboBox languageSelector;
+    private ComboBox languageSelector;
 
 
     /**
      *
      */
     @Override
-    public void initialize(URL location, ResourceBundle resources){
-        //todo get this list of info from a another class?
-        languageSelector.getItems().setAll("English","Cymraeg");
+    public void prepView(){
+        languageSelector.getItems().setAll(Settings.getLanguages());
         languageSelector.setOnAction(e -> {
             JoggleCubeController.getInstance().setLanguage(languageSelector.getValue().toString().substring(0,2).toLowerCase());
         });

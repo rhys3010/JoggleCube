@@ -5,7 +5,7 @@
 package cs221.GP01.main.java.model;
 import cs221.GP01.main.java.ui.NavigationController;
 import cs221.GP01.main.java.ui.ScreenType;
-import cs221.GP01.main.java.ui.UIController;
+import cs221.GP01.main.java.ui.Settings;
 import cs221.GP01.main.java.ui.controllers.BaseScreenController;
 import cs221.GP01.main.java.ui.controllers.GameController;
 import javafx.application.Platform;
@@ -26,7 +26,7 @@ public class GameTimer implements IGameTimer, Runnable {
      */
 
     private Duration currentTime;
-    private boolean interupt = false;
+    private boolean interrupt = false;
 
 
     public GameTimer(){}
@@ -39,7 +39,7 @@ public class GameTimer implements IGameTimer, Runnable {
         return currentTime;
     }
 
-    public boolean isInterupt() { return interupt; }
+    public boolean isInterrupt() { return interrupt; }
 
     @Override
     public void resetTime() {
@@ -49,9 +49,9 @@ public class GameTimer implements IGameTimer, Runnable {
     @Override
     public void startTimer() {
         Label timerLabel = GameController.getInstance().getTimerLabel();
-        //
-        int timeLeft = 180;
-        currentTime = Duration.ofSeconds(180);
+        int timerLength = Settings.getTimerLength();
+        int timeLeft = timerLength;
+        currentTime = Duration.ofSeconds(timerLength);
         while(!(currentTime.equals(Duration.ZERO))){
             try {
                 Thread.sleep(1000);
@@ -73,11 +73,11 @@ public class GameTimer implements IGameTimer, Runnable {
             }
 
             Platform.runLater(() -> timerLabel.setText(String.format("%2d:%02d", currentTime.getSeconds()/60, currentTime.getSeconds() % 60)));
-            if(interupt){
+            if(interrupt){
                 break;
             }
         }
-        if(!interupt){
+        if(!interrupt){
             finishTimer();
         }
     }
@@ -105,6 +105,6 @@ public class GameTimer implements IGameTimer, Runnable {
     }
 
     public void interrupt() {
-        interupt = true;
+        interrupt = true;
     }
 }
