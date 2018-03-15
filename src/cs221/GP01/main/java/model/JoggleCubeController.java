@@ -52,7 +52,7 @@ public class JoggleCubeController implements IJoggleCubeController{
     //URL: https://github.com/jonbcard/scrabble-bot/blob/master/src/dictionary.txt
     //en = English (American)
     //cy = Cymraeg (Welsh)
-    private String language = "en";
+    private String language;
 
     private HashMap<String, String> scores;
 
@@ -66,7 +66,7 @@ public class JoggleCubeController implements IJoggleCubeController{
     private JoggleCubeController(){
         findDocumentFolder();
         loadOverallScores();
-        loadNewDictionary();
+        setLanguage();
     }
 
     public static JoggleCubeController getInstance(){
