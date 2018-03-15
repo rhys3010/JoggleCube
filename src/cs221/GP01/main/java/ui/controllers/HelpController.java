@@ -65,7 +65,7 @@ public class HelpController extends BaseOverlayController implements Initializab
     /**
      * The file path prefix to the helppages
      */
-    private static final String PAGES_PATH_PREFIX = "../../../resource/view/helppages/";
+    private static final String PAGES_PATH_PREFIX = "/cs221/GP01/main/resource/view/helppages/";
 
     /**
      * List to store all the help screens available as FXML parent nodes
