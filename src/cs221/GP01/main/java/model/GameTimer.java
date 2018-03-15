@@ -39,6 +39,8 @@ public class GameTimer implements IGameTimer, Runnable {
         return currentTime;
     }
 
+    public boolean isInterupt() { return interupt; }
+
     @Override
     public void resetTime() {
         currentTime = Duration.ofSeconds(180);

@@ -64,6 +64,10 @@ public class NavigationController implements IViewNavigation{
      */
     private Scene main;
 
+    public HashMap<ScreenType, FXMLLoader> getScreens() {
+        return screens;
+    }
+
     /**
      * Set the main screen of the game
      * @param main - the JavaFX scene object

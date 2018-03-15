@@ -99,8 +99,6 @@ public class HighScores implements IHighScores {
      */
     @Override
     public String toString() {
-        return "HighScores{" +
-                "scores=" + scores +
-                '}';
+        return "HighScores:"  + scores ;
     }
 }
