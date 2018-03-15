@@ -19,18 +19,30 @@ import java.util.HashMap;
  * NavigationController - Control the screens being displayed
  * <p>
  * All screens are stored in a HashMap and can be activated, added or removed. The screen are stored as an FXML Loader with
- * an FXML file and root pane 'pre-loaded'
+ * an FXML file and root pane 'pre-loaded'. Overlays and Scenes are displayed differently and are both handled in this class
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21)
  * @version 0.2  DRAFT
+ * @see IViewNavigation
  */
 
 public class NavigationController implements IViewNavigation{
 
+    /**
+     * The singleton instance of the NavigationController class
+     */
     private static NavigationController navController;
 
+    /**
+     * Default constructor for the NavigationController
+     * todo needed?
+     */
     private NavigationController(){}
 
+    /**
+     * Get the instantiated instance of the NavigationController singleton
+     * @return navController - the NavigationController object
+     */
     public static NavigationController getInstance(){
         if(navController == null){
             synchronized (UIController.class){
@@ -57,7 +69,8 @@ public class NavigationController implements IViewNavigation{
     }
 
     /**
-     * Constructor to get main Scene
+     * Set the main screen of the game
+     * @param main - the JavaFX scene object
      */
     public void setMainScene(Scene main){
         this.main = main;
@@ -66,17 +79,16 @@ public class NavigationController implements IViewNavigation{
 
     /**
      * Add screen to the hashmap
-     * @param name
-     * @param loader = the FXML loader
+     * @param name - The name of the screen to be added
+     * @param loader = the FXML loader of the screen to be added
      */
     public void add(ScreenType name, FXMLLoader loader){
         screens.put(name, loader);
-
     }
 
     /**
      * Remove  a Screen from the HashMap
-     * @param name
+     * @param name - The screen to be removed
      */
     public void remove(ScreenType name){
         screens.remove(name);

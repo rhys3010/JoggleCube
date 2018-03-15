@@ -6,6 +6,16 @@
    *
 */
 
+/**
+  * HelpPage - The common stylesheet for all helppages
+  *
+  * This stylesheet is used by all help pages to provide a common layout (title, content, description, etc)
+  *
+  * @author Rhys Evans (rhe24)
+  * @version 0.1
+ */
+
+
 .mainContainer{
     -fx-alignment: top-center;
     -fx-background-color: transparent;

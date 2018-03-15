@@ -9,9 +9,10 @@
 package cs221.GP01.main.java.ui;
 
 /**
- * The types of screens available
+ * ScreenType - An Enumerated type for the screens available to the Navigation controllers
+ * <p>
  * @author Rhys Evans (rhe24)
- * @version 0.1
+ * @version 0.2
  */
 public enum ScreenType {
 

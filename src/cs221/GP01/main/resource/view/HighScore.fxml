@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-        * @(#) Score.fxml 1.0 2018/02/04
+        * @(#) HighScore.fxml 1.0 2018/02/04
         *
         * Copyright (c) 2002 University of Wales, Aberystwyth.
         * All rights reserved.
@@ -19,7 +19,8 @@
 <?import javafx.scene.layout.VBox?>
 
 <!--
-    * Used with the HighScoreController to display a scene to show Score, Highscores and restart button
+    * HighScore - Used to display the highscores achieved overall and for a given cube
+    * FXML layout for user to navigate through different highscore tables and view their overall highscore
     *
     * @author Rhys Evans (rhe24@aber.ac.uk)
     * @version 0.1  DRAFT

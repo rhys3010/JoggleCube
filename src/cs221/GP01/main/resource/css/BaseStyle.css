@@ -1,5 +1,5 @@
 /*
-   * @(#) JoggleCube.css 1.1 2018/02/16
+   * @(#) BaseStyle.css 1.1 2018/02/16
    *
    * Copyright (c) 2018 University of Wales, Aberystwyth.
    * All rights reserved.
@@ -7,8 +7,34 @@
    */
 
 
+/**
+  * BaseStyle - The base stylesheet for all FXML files
+  *
+  * This stylesheet contains the colouring variables for all the scenes, including
+  * things like cube colouring and valid/invalid selecitons.
+  *
+  * It is also responsible for styling the root FXML node of all scenes and applying base styles to buttons and icons.
+  *
+  * This sheet handles styling of the recurring footer and the icons within it
+  *
+  * @author Rhys Evans (rhe24)
+  * @version 0.3
+ */
 
-/* COLOR CONSTANTS */
+
+
+/* COLOR CONSTANTS
+ * These are used to add colour to most nodes in the FXML...
+ * Primary Color -> The main colour used throughout the game display
+ * Secondary Color -> The colour most often used for accenting and various icons (darker than primary)
+ * Tertiary Color -> The colour used for buttons and some icons
+ *
+ * Invalid Color -> A red shade colour to signify invalidity
+ * Valid Color -> A green shade colour to signify validity
+ *
+ * Timer Red -> A red shade colour to change the colour of the timer
+ * Timer Amber -> An orange shade colour to change the colour of the timer
+*/
 *{
     -fx-primary-color: #3498db;
     -fx-secondary-color: #2980b9;
@@ -17,26 +43,43 @@
     /* Cube colours */
     -fx-invalid-color: #ed3b3b;
     -fx-valid-color: #54ad54;
+
+    /* Timer Color */
+    -fx-timer-red: #ed3b3b;
+    -fx-timer-amber: #ed943b;
 }
 
 
-/* the root box of each scene*/
+/** The root node of each screen
+  *
+  * All FXML files in the system have a root node (usually a StackPane or VBox)
+  * The below block handles some base styling for all these nodes, most notably their size
+  * NOTE: -fx-pref-width could cause some discrepancy as CSS's 'px' value may differ from the user's display
+*/
 .root{
     -fx-background-color: -fx-primary-color;
     -fx-pref-height:600;
     -fx-pref-width:600;
 }
 
-.button {
+/** All buttons throughout all FXML screens
+  *
+  * Simply ensures all buttons cause the cursor to become a hand (pointer >:()
+ */
+Button {
     -fx-cursor: hand;
 }
 
-/* Header of each scene */
+/** The header seen in most scenes
+  *
+  * Most scenes have a header at the top of the screen with a title and occasionally some other elements
+  * Specifies width and height of header and alignment of the title
+ */
 .header{
     -fx-background-color: -fx-secondary-color;
     -fx-pref-height: 70px;
     -fx-alignment: center;
-    -fx-pref-width: 300px;
+    -fx-pref-width: 600px;
 }
 
 .headerTitle{
@@ -44,7 +87,12 @@
     -fx-font-size: 38px;
 }
 
-/* Footer of each scene*/
+/** The footer seen in most scenes
+  *
+  * Most scenes have a footer at the bottom of the screen with some navigational icons, this block
+  * styles the overall footers and the icons.
+
+ */
 .footer{
     -fx-background-color: -fx-secondary-color;
     -fx-pref-height: 60px;
