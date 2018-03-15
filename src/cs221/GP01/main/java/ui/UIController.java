@@ -56,7 +56,7 @@ public class UIController implements IFrontendController{
     /**
      * The Path to the views package with all the FXML files for the screen
      */
-    private static final String VIEWS_PATH_PREFIX = "../../resource/view/";
+    private static final String VIEWS_PATH_PREFIX = "/cs221/GP01/main/resource/view/";
 
 
     /**

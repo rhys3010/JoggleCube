@@ -2,6 +2,7 @@ package cs221.GP01.main.java.model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
@@ -33,24 +34,12 @@ public class Dictionary implements IDictionary{
 
         //Variable to take load time of the dictionary
         long currentTime = System.currentTimeMillis();
-
-        String filePath = getClass().getResource("../../resource/dictionary/" + filename).getFile();
-        try {
-            URI uri = new URI(filePath.trim().replaceAll("\\u0020", "%20"));
-            File file = new File(uri.getPath());
-            String input;
-            try{
-                Scanner in = new Scanner(file);
-                while(in.hasNext()){
-                    input = in.nextLine().toUpperCase();
-                    dictionary.put(input, input);
-                }
-            } catch(FileNotFoundException e){
-                //An error in file name
-                System.out.println("Dictionary file not found");
-            }
-        } catch (URISyntaxException ex) {
-            System.out.println(ex.toString());
+        String input;
+        InputStream file = getClass().getResourceAsStream("/cs221/GP01/main/resource/dictionary/" + filename);
+        Scanner in = new Scanner(file);
+        while(in.hasNext()){
+            input = in.nextLine().toUpperCase();
+            dictionary.put(input, input);
         }
         System.out.print("Time taken to load dictionary: ");
         System.out.println(System.currentTimeMillis() - currentTime);
