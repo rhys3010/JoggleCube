@@ -103,6 +103,11 @@ public class HighScoreController extends BaseScreenController implements Initial
      */
     public void prepView(){
 
+        // Sort the table properly
+        scoreCol.setSortType(TableColumn.SortType.DESCENDING);
+        scoreCol.setSortable(true);
+        highScoreTable.getSortOrder().add(scoreCol);
+
         overallScores = JoggleCubeController.getInstance().getOverallHighScores();
         currentCubeScores = JoggleCubeController.getInstance().getCurrentCubeHighScores();
 
