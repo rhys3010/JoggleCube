@@ -19,6 +19,9 @@ class GameTimerTest {
 
     @Test
     public void testResetTime(){
+        timer = new GameTimer();
+        Thread t = new Thread(timer);
+        t.start();
         timer.resetTime();
         assertEquals(Duration.ofSeconds(180),timer.getCurrentTime());
 
