@@ -103,11 +103,6 @@ public class HighScoreController extends BaseScreenController implements Initial
      */
     public void prepView(){
 
-        // Sort the table properly
-        scoreCol.setSortType(TableColumn.SortType.DESCENDING);
-        scoreCol.setSortable(true);
-        highScoreTable.getSortOrder().add(scoreCol);
-
         overallScores = JoggleCubeController.getInstance().getOverallHighScores();
         currentCubeScores = JoggleCubeController.getInstance().getCurrentCubeHighScores();
 
@@ -123,6 +118,8 @@ public class HighScoreController extends BaseScreenController implements Initial
         if(overallScores != null) {
             populateTable(overallScores, "All Cubes");
         }
+        
+        highScoreTable.sort();
     }
 
 
@@ -152,22 +149,13 @@ public class HighScoreController extends BaseScreenController implements Initial
     /**
      * Helper function to populate the highscore table
      *
-     * todo do we need to limit to top 10?
-     *
      * @param list - a filtered list of the highscores to populate the table with
      */
     private void populateTable(ObservableList<IScore> list, String title){
 
         highScorePageLabel.setText(title);
 
-        //filters list to the top 10
-        FilteredList<IScore> filteredList = new FilteredList<IScore>(
-                list,
-                HighScore -> list.indexOf(HighScore) < 10
-        );
-
-        highScoreTable.setItems(filteredList);
-        highScoreTable.sort();
+        highScoreTable.setItems(list);
     }
 
     /**
@@ -225,15 +213,15 @@ public class HighScoreController extends BaseScreenController implements Initial
                 new PropertyValueFactory<IScore, String>("Name")
         );
 
-        // Set IScore sort type
-        scoreCol.setSortType(TableColumn.SortType.DESCENDING);
-
         // Prevent user from reordering table
         columnReorder(highScoreTable, idCol, nameCol, scoreCol, dateCol);
+
+        // Set IScore sort type
+        scoreCol.setSortType(TableColumn.SortType.DESCENDING);
 
         // Sort by score
         highScoreTable.getSortOrder().add(scoreCol);
 
-        scoreCol.setSortable(false);
+        scoreCol.setSortable(true);
     }
 }
