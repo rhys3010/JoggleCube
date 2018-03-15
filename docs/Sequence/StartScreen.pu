@@ -20,53 +20,35 @@ end box
 
 box "User Interface Control" #LightBlue
 
-participant UIController
-participant ScreenController
+participant NavigationController
 
 end box 
 
 
 box "Back End" #c675c5
 
-participant JoggleCube 
+participant JoggleCubeController
 
 end box
 == User Pressing Start Button ==
 
 User -> StartController : btnStartNewGridClicked()
 activate StartController
-
-StartController -> UIController : getScreenController.show(ScreenType.GAME)
-activate UIController
-UIController -> ScreenController : show(ScreenType.GAME)
-deactivate UIController
-
-StartController -> UIController : getJoggleCube.startRandomGrid()
-activate UIController
-UIController -> JoggleCube : startRandomGrid()
-activate JoggleCube
-deactivate JoggleCube
-deactivate UIController
-
-StartController -> UIController : initializeController(ScreenType.GAME)
-activate UIController
-
-UIController -> GameController : initialize()
-activate GameController
-
-GameController -> UIController : getJoggleCube().getCubeData()
-activate UIController #ff0000
-
-UIController -> JoggleCube : getCubeData()
-activate JoggleCube
-JoggleCube --> UIController : cube[3][3][3]
-deactivate JoggleCube
-
-UIController --> GameController : cube[3][3][3]
-deactivate UIController #ff0000
-deactivate GameController
-
-deactivate UIController
+    StartController -> JoggleCubeController : startRandomGrid()
+    activate JoggleCubeController
+        JoggleCubeController --> StartController
+    deactivate JoggleCubeController
+StartController -> NavigationController : show(ScreenType.GAME)
+    activate NavigationController
+        NavigationController -> GameController: prepView()
+        activate GameController
+            GameController -> JoggleCubeController : getCubeData()
+            activate JoggleCubeController
+                JoggleCubeController --> GameController : cube[3][3][3]
+            deactivate JoggleCubeController
+        deactivate GameController
+        NavigationController --> StartController
+    deactivate NavigationController
 deactivate StartController
 
 
@@ -75,29 +57,13 @@ deactivate StartController
 
 User -> StartController : btnLoadGridClicked()
 activate StartController
-
-StartController -> UIController : getScreenController.show(ScreenType.LOAD)
-activate UIController
-UIController -> ScreenController : show(ScreenType.LOAD)
-deactivate UIController
-
-StartController -> UIController : initializeController(ScreenType.LOAD)
-activate UIController
-
-UIController -> LoadGridController : initialize()
-activate LoadGridController
-
-LoadGridController -> UIController : getJoggleCube().getRecentGrids()
-activate UIController #ff0000
-UIController -> JoggleCube : getRecentGrids()
-activate JoggleCube
-JoggleCube --> UIController : ListOfRecents
-deactivate JoggleCube
-UIController --> LoadGridController : ListOfRecents
-deactivate UIController #ff0000
-
-deactivate LoadGridController
-deactivate UIController
-
+    StartController -> NavigationController : show(ScreenType.LOAD)
+    activate NavigationController
+        NavigationController -> LoadGridController : prepView()
+        activate LoadGridController
+        LoadGridController --> NavigationController
+        deactivate LoadGridController
+        NavigationController --> StartController
+    deactivate NavigationController
 deactivate StartController
 @enduml
