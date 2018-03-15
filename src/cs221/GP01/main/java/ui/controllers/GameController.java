@@ -205,6 +205,7 @@ public class GameController extends BaseScreenController implements IGameControl
         scoreLabel.setText("0");
         timerLabel.setText("3:00");
         textField.setText("");
+        timerLabel.setStyle("-fx-text-fill: white;");
 
         // Pop-up dialog to get user's name
         TextInputDialog dialog = new TextInputDialog("Walter");
