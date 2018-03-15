@@ -1,8 +1,10 @@
 package cs221.GP01.main.java.model;
 
+import cs221.GP01.main.java.ui.Settings;
 import cs221.GP01.main.java.ui.UIController;
 import cs221.GP01.main.java.ui.controllers.GameController;
 import cs221.GP01.main.java.ui.controllers.LoadGridController;
+import cs221.GP01.main.java.ui.controllers.SettingsController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.apache.commons.io.FileUtils;
@@ -85,7 +87,6 @@ public class JoggleCubeController implements IJoggleCubeController{
         GameController.getInstance().getScoreLabel().setText(currentScore + "");
 
         //Populate the cube randomly
-        setLanguage(language);
         cube.populateCube(language + "_letters");
         storedWords = new ArrayList<>();
         currentCubeHighScores = new HighScores();
@@ -108,7 +109,7 @@ public class JoggleCubeController implements IJoggleCubeController{
                 System.out.println(loadFile.getAbsolutePath());
                 Scanner in = new Scanner(loadFile);
                 //overrides the language settings
-                setLanguage(in.next());
+                Settings.setCurrLang(in.next());
                 //loads in the cube letters
                 cube.loadCube(in);
                 currentCubeHighScores = new HighScores();
@@ -324,12 +325,11 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     /**
      * Using the first to letters as an example set the language by using "en" for american english
-     * @param lang a string representing the language you wanted to create
      */
-    public void setLanguage(String lang){
-        language = lang;
-        if (loadedDictionaries.containsKey(lang)) {
-            dictionary = loadedDictionaries.get(lang);
+    public void setLanguage(){
+        language = Settings.getCurrLangPrefix();
+        if (loadedDictionaries.containsKey(language)) {
+            dictionary = loadedDictionaries.get(language);
         } else {
             loadNewDictionary();
         }

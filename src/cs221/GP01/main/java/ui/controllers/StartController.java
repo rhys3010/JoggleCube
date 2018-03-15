@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
  * @version 0.2  DRAFT
  */
 
-public class StartController extends BaseScreenController implements INeedPrep {
+public class StartController extends BaseScreenController implements INeedPrep, Initializable {
 
     private static StartController startController;
 
@@ -49,7 +49,7 @@ public class StartController extends BaseScreenController implements INeedPrep {
      * The FXML node of the language dropdown selector
      */
     @FXML
-    private ComboBox languageSelector;
+    private ComboBox<String> languageSelector;
 
 
     /**
@@ -57,10 +57,8 @@ public class StartController extends BaseScreenController implements INeedPrep {
      */
     @Override
     public void prepView(){
-        languageSelector.getItems().setAll(Settings.getLanguages());
-        languageSelector.setOnAction(e -> {
-            JoggleCubeController.getInstance().setLanguage(languageSelector.getValue().toString().substring(0,2).toLowerCase());
-        });
+        languageSelector.setValue(Settings.getCurrLang());
+        languageSelector.setOnAction(e -> Settings.setCurrLang(languageSelector.getValue()));
     }
 
 
@@ -83,4 +81,16 @@ public class StartController extends BaseScreenController implements INeedPrep {
         NavigationController.getInstance().switchScreen(ScreenType.LOAD);
     }
 
+    /**
+     * Called to initialize a controller after its root element has been
+     * completely processed.
+     *
+     * @param location  The location used to resolve relative paths for the root object, or
+     *                  {@code null} if the location is not known.
+     * @param resources The resources used to localize the root object, or {@code null} if
+     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        languageSelector.getItems().setAll(Settings.getLanguages());
+    }
 }

@@ -1,6 +1,7 @@
 package cs221.GP01.test.java;
 
 import cs221.GP01.main.java.model.JoggleCubeController;
+import cs221.GP01.main.java.ui.Settings;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -17,7 +18,7 @@ class JoggleCubeControllerTest {
     public void testLoadNewDictionary(){
         controller.loadNewDictionary();
         assertFalse(controller.getLoadedDictionaries().isEmpty());
-        controller.setLanguage("cy");
+        Settings.setCurrLang("cy");
         assertTrue(controller.getLoadedDictionaries().containsKey("cy"));
     }
 
@@ -66,12 +67,11 @@ class JoggleCubeControllerTest {
 
     @Test
     public void setLanguageTest(){
-
-        controller.setLanguage("en");
+        Settings.setCurrLang("en");
         assertTrue(controller.testWordValidity("egg"));
         assertFalse(controller.testWordValidity("Prifysgol"));
 
-        controller.setLanguage("cy");
+        Settings.setCurrLang("cy");
         assertTrue(controller.testWordValidity("Prifysgol"));
         assertFalse(controller.testWordValidity("egg"));
     }

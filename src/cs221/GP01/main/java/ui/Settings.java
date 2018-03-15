@@ -8,6 +8,7 @@
 
 package cs221.GP01.main.java.ui;
 
+import cs221.GP01.main.java.model.JoggleCubeController;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
@@ -49,7 +50,9 @@ public class Settings implements ISettings{
 
 
     private static String languages[] = {"English","Cymraeg"};
+    private static String currLang = "English";
     private static int timerLength = 180;
+
 
     /**
      * Store the current volume of the game (0-100)
@@ -62,6 +65,29 @@ public class Settings implements ISettings{
      * todo: needed?
      */
     private Settings(){}
+
+    public static String getCurrLang() {
+        return currLang;
+    }
+
+    public static void setCurrLang(String currLang) {
+        if(currLang.length() == 2){
+            for(String lang : languages){
+                if (lang.substring(0,2).toLowerCase().equals(currLang)) {
+                    Settings.currLang = lang;
+                    break;
+                }
+            }
+        } else {
+            Settings.currLang = currLang;
+        }
+        //when language is changed set the joggleCubeLanguage
+        JoggleCubeController.getInstance().setLanguage();
+    }
+
+    public static String getCurrLangPrefix() {
+        return currLang.substring(0,2).toLowerCase();
+    }
 
 
     /**
