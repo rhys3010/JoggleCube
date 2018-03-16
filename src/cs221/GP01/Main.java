@@ -74,14 +74,13 @@ public class Main extends Application {
             sureAlert.setContentText("Are you sure you want to quit the game?");
             Optional<ButtonType> result = sureAlert.showAndWait();
 
-
-            if (result.get() == ButtonType.OK) {
-                // Save the highscores and allow the program to quit
-                JoggleCubeController.getInstance().saveOverallScores();
-            } else {
+            if (!(result.get() == ButtonType.OK)) {
                 sureAlert.close();
                 // Consume the event and stop the program from closing
                 e.consume();
+            } else {
+                // Save the highscores and allow the program to quit
+                JoggleCubeController.getInstance().saveOverallScores();
             }
         });
         primaryStage.show();
