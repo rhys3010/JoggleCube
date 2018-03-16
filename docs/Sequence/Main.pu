@@ -14,15 +14,15 @@ participant Main
 
 box "User Interface Control" #LightBlue
 
-participant UIController
-participant NavigationController
+participant UI
+participant Navigation
 
 end box
 
 
 box "Back End" #c675c5
 
-participant JoggleCubeController
+participant JoggleCube
 participant HighScores
 participant Score
 participant Dictionary
@@ -36,11 +36,11 @@ Main -> Main : start()
 activate Main
 
 == launch the backend ==
-Main -> JoggleCubeController : getInstance()
-JoggleCubeController -> JoggleCubeController : <<create>>
-activate JoggleCubeController
+Main -> JoggleCube : getInstance()
+JoggleCube -> JoggleCube : <<create>>
+activate JoggleCube
 
-JoggleCubeController -> HighScores : loadScores(file)
+JoggleCube -> HighScores : loadScores(file)
 activate HighScores
 
 loop as many times as needed
@@ -50,62 +50,62 @@ loop as many times as needed
     deactivate Score
 end
 
-HighScores --> JoggleCubeController
+HighScores --> JoggleCube
 deactivate HighScores
 
-JoggleCubeController -> Dictionary : <<create>>
+JoggleCube -> Dictionary : <<create>>
 activate Dictionary
 
-Dictionary --> JoggleCubeController
+Dictionary --> JoggleCube
 deactivate Dictionary
 
-JoggleCubeController -> Dictionary : loadDictionary(language)
+JoggleCube -> Dictionary : loadDictionary(language)
 activate Dictionary
 
-Dictionary --> JoggleCubeController
+Dictionary --> JoggleCube
 deactivate Dictionary
 
-JoggleCubeController --> Main
-deactivate JoggleCubeController
+JoggleCube --> Main
+deactivate JoggleCube
 
 == Launch the front end ==
 
-Main -> UIController : getInstance()
+Main -> UI : getInstance()
 
-UIController -> UIController : <<create>>
-activate UIController
+UI -> UI : <<create>>
+activate UI
 
 
-UIController --> Main
-deactivate UIController
-Main -> UIController : initialize()
-activate UIController
-UIController -> NavigationController : getInstance()
+UI --> Main
+deactivate UI
+Main -> UI : initialize()
+activate UI
+UI -> Navigation : getInstance()
 
-NavigationController -> NavigationController : <<create>>
-activate NavigationController
-NavigationController --> UIController
-deactivate NavigationController
+Navigation -> Navigation : <<create>>
+activate Navigation
+Navigation --> UI
+deactivate Navigation
 
-UIController -> NavigationController : setMainScene(main)
-activate NavigationController
-NavigationController --> UIController
-deactivate NavigationController
+UI -> Navigation : setMainScene(main)
+activate Navigation
+Navigation --> UI
+deactivate Navigation
 
 loop foreach ScreenType
-    UIController -> UIController : createScreen(ScreenType)
-    UIController -> NavigationController : add(ScreenType,Screen)
-    activate NavigationController
-    NavigationController --> UIController
-    deactivate NavigationController
+    UI -> UI : createScreen(ScreenType)
+    UI -> Navigation : add(ScreenType,Screen)
+    activate Navigation
+    Navigation --> UI
+    deactivate Navigation
 end
 
-UIController -> NavigationController : switchScreen(ScreenType.Start)
-activate NavigationController
-NavigationController --> UIController
-deactivate NavigationController
-UIController --> Main
-deactivate UIController
+UI -> Navigation : switchScreen(ScreenType.Start)
+activate Navigation
+Navigation --> UI
+deactivate Navigation
+UI --> Main
+deactivate UI
 deactivate Main
 
 @enduml

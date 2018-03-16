@@ -82,10 +82,6 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     //Start Random Game
     public void generateRandomGrid() {
-        //Reset game score
-        currentScore = 0;
-        GameController.getInstance().getScoreLabel().setText(currentScore + "");
-
         //Populate the cube randomly
         cube.populateCube(language + "_letters");
         storedWords = new ArrayList<>();
@@ -94,9 +90,6 @@ public class JoggleCubeController implements IJoggleCubeController{
 
     //Start loaded game
     public boolean loadGrid(String filename) {
-        //Reset game score
-        currentScore = 0;
-        GameController.getInstance().getScoreLabel().setText(currentScore + "");
         //load this file into grid and high scores
         //Load save game from the file stream given
         try{
@@ -452,6 +445,7 @@ public class JoggleCubeController implements IJoggleCubeController{
         overallHighScores.addScore(score);
         storedWords = new ArrayList<>();
         currentScore = 0;
+        GameController.getInstance().getScoreLabel().setText(currentScore + "");
         timer.resetTime();
     }
 }
