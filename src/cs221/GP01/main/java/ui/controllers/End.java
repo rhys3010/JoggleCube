@@ -8,24 +8,22 @@
 
 package cs221.GP01.main.java.ui.controllers;
 
-import cs221.GP01.main.java.model.JoggleCubeController;
-import cs221.GP01.main.java.ui.NavigationController;
-import cs221.GP01.main.java.ui.UIController;
+import cs221.GP01.main.java.model.JoggleCube;
+import cs221.GP01.main.java.ui.Navigation;
+import cs221.GP01.main.java.ui.UI;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.Optional;
 
 /**
- * EndController - A class that controls the Pause subscene that is defined in End.fxml
+ * End - A class that controls the Pause subscene that is defined in End.fxml
  * <p>
  * todo fix dodgy model overlaying
  * todo add prompt for exiting
@@ -35,21 +33,21 @@ import java.util.Optional;
  * @author Nathan Williams (naw21)
  * @version 0.2  DRAFT
  */
-public class EndController extends BaseOverlayController implements INeedPrep {
+public class End extends BaseOverlay implements INeedPrep {
 
-    private static EndController endController;
+    private static End endView;
 
-    private EndController(){}
+    private End(){}
 
-    public static EndController getInstance(){
-        if(endController == null){
-            synchronized (UIController.class){
-                if(endController == null){
-                    endController = new EndController();
+    public static End getInstance(){
+        if(endView == null){
+            synchronized (UI.class){
+                if(endView == null){
+                    endView = new End();
                 }
             }
         }
-        return endController;
+        return endView;
     }
 
     @FXML
@@ -60,32 +58,32 @@ public class EndController extends BaseOverlayController implements INeedPrep {
 
     @Override
     public void prepView() {
-        scoreLabel.setText(JoggleCubeController.getInstance().getScore() + "");
-        highScoreLabel.setText(JoggleCubeController.getInstance().getHighestScore() + "");
-        JoggleCubeController.getInstance().resetGameState();
+        scoreLabel.setText(JoggleCube.getInstance().getScore() + "");
+        highScoreLabel.setText(JoggleCube.getInstance().getHighestScore() + "");
+        JoggleCube.getInstance().resetGameState();
     }
 
 
     /**
      * When the High Score button is pressed, change scene to high score screen
-     * @see HighScoreController
+     * @see HighScore
      * @throws IOException - if FXML file could not be found/opened
      */
     @FXML
     void btnHighScoreClicked()  {
-        NavigationController.getInstance().switchScreen(ScreenType.HIGH_SCORES);
-        NavigationController.getInstance().hideOverlay(ScreenType.END, parentController);
+        Navigation.getInstance().switchScreen(ScreenType.HIGH_SCORES);
+        Navigation.getInstance().hideOverlay(ScreenType.END, parentController);
     }
 
 
     /**
      * When the 'return to menu' button is clicked change scene to menu scene
-     * @see StartController
+     * @see Start
      */
     @FXML
     void btnMenuClicked(){
-        NavigationController.getInstance().switchScreen(ScreenType.START);
-        NavigationController.getInstance().hideOverlay(ScreenType.END, parentController);
+        Navigation.getInstance().switchScreen(ScreenType.START);
+        Navigation.getInstance().hideOverlay(ScreenType.END, parentController);
     }
 
     /**
@@ -94,8 +92,8 @@ public class EndController extends BaseOverlayController implements INeedPrep {
     @FXML
     void btnReplayClicked() {
         //todo invoke a reset of the game state i.e. score, stored words etc.
-        NavigationController.getInstance().switchScreen(ScreenType.GAME);
-        NavigationController.getInstance().hideOverlay(ScreenType.END, parentController);
+        Navigation.getInstance().switchScreen(ScreenType.GAME);
+        Navigation.getInstance().hideOverlay(ScreenType.END, parentController);
     }
 
     /**
@@ -120,7 +118,7 @@ public class EndController extends BaseOverlayController implements INeedPrep {
 
             // todo: better validation
             if(result.matches("(\\w*)")){
-                if(JoggleCubeController.getInstance().saveGrid(result)){
+                if(JoggleCube.getInstance().saveGrid(result)){
 
                 }else{
                     dialog.setHeaderText("Error Saving File, Please try again");

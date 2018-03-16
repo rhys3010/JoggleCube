@@ -8,19 +8,16 @@
 
 package cs221.GP01.main.java.ui.controllers;
 
-import cs221.GP01.main.java.ui.NavigationController;
+import cs221.GP01.main.java.ui.Navigation;
 import cs221.GP01.main.java.ui.ScreenType;
-import cs221.GP01.main.java.ui.UIController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.SubScene;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
@@ -34,11 +31,11 @@ import java.util.ResourceBundle;
  * @author Nathan Williams (naw21@aber.ac.uk)
  * @version 0.2
  */
-public class HelpController extends BaseOverlayController implements Initializable, INeedPrep {
+public class Help extends BaseOverlay implements Initializable, INeedPrep {
 
-    private static HelpController helpController;
+    private static Help helpView;
 
-    private HelpController(){// Create all the pages as FXML parent nodes
+    private Help(){// Create all the pages as FXML parent nodes
         try {
             helpScreens.add(createHelpPage("Introduction.fxml"));
             helpScreens.add(createHelpPage("WordSelection.fxml"));
@@ -51,15 +48,15 @@ public class HelpController extends BaseOverlayController implements Initializab
         }
     }
 
-    public static HelpController getInstance(){
-        if(helpController == null){
-            synchronized (HelpController.class){
-                if(helpController == null){
-                    helpController = new HelpController();
+    public static Help getInstance(){
+        if(helpView == null){
+            synchronized (Help.class){
+                if(helpView == null){
+                    helpView = new Help();
                 }
             }
         }
-        return helpController;
+        return helpView;
     }
 
     /**
@@ -121,7 +118,7 @@ public class HelpController extends BaseOverlayController implements Initializab
      */
     @FXML
     private void closeBtnClicked(){
-        NavigationController.getInstance().hideOverlay(ScreenType.HELP, parentController);
+        Navigation.getInstance().hideOverlay(ScreenType.HELP, parentController);
     }
 
     /**

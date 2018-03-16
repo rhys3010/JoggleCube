@@ -4,7 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.control.TabPane;
 
-public interface IGameController {
+public interface IGame {
 
     ObservableList<String> getFoundWords();
 

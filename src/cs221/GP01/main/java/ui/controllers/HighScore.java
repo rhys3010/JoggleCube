@@ -9,10 +9,9 @@
 package cs221.GP01.main.java.ui.controllers;
 
 import cs221.GP01.main.java.model.IScore;
-import cs221.GP01.main.java.model.JoggleCubeController;
+import cs221.GP01.main.java.model.JoggleCube;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -25,7 +24,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * HighScoreController - A class that controls the IScore scene that is defined in IScore.fxml
+ * HighScore - A class that controls the IScore scene that is defined in IScore.fxml
  * Load and display highscores from another class
  * todo delete temp highscore class and establish a new one
  *
@@ -36,22 +35,22 @@ import java.util.ResourceBundle;
  * @author Nathan Williams (naw21@aber.ac.uk)
  * @version 0.2
  */
-public class HighScoreController extends BaseScreenController implements Initializable, INeedPrep {
+public class HighScore extends BaseScreen implements Initializable, INeedPrep {
 
 
-    private static HighScoreController highScoreController;
+    private static HighScore highScoreView;
 
-    private HighScoreController(){}
+    private HighScore(){}
 
-    public static HighScoreController getInstance(){
-        if(highScoreController == null){
-            synchronized (HighScoreController.class){
-                if(highScoreController == null){
-                    highScoreController = new HighScoreController();
+    public static HighScore getInstance(){
+        if(highScoreView == null){
+            synchronized (HighScore.class){
+                if(highScoreView == null){
+                    highScoreView = new HighScore();
                 }
             }
         }
-        return highScoreController;
+        return highScoreView;
     }
 
     /**
@@ -103,8 +102,8 @@ public class HighScoreController extends BaseScreenController implements Initial
      */
     public void prepView(){
 
-        overallScores = JoggleCubeController.getInstance().getOverallHighScores();
-        currentCubeScores = JoggleCubeController.getInstance().getCurrentCubeHighScores();
+        overallScores = JoggleCube.getInstance().getOverallHighScores();
+        currentCubeScores = JoggleCube.getInstance().getCurrentCubeHighScores();
 
         if(currentCubeScores == null){
             leftPageNav.setVisible(false);

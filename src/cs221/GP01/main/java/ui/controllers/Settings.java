@@ -7,8 +7,7 @@
  */
 package cs221.GP01.main.java.ui.controllers;
 
-import cs221.GP01.main.java.ui.NavigationController;
-import cs221.GP01.main.java.ui.Settings;
+import cs221.GP01.main.java.ui.Navigation;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -20,13 +19,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * SettingsController - A class that does something.
+ * Settings - A class that does something.
  * <p>
  * How it is used
  * @author Nathan Williams (naw21)
  * @version 0.2  DRAFT
  */
-public class SettingsController extends BaseOverlayController implements INeedPrep, Initializable {
+public class Settings extends BaseOverlay implements INeedPrep, Initializable {
 
     /**
      * All FXML nodes
@@ -44,19 +43,19 @@ public class SettingsController extends BaseOverlayController implements INeedPr
     private Slider volumeSlider;
 
 
-    private static SettingsController settingsController;
+    private static Settings settingsView;
 
-    private SettingsController(){}
+    private Settings(){}
 
-    public static SettingsController getInstance(){
-        if(settingsController == null){
-            synchronized (SettingsController.class){
-                if(settingsController == null){
-                    settingsController = new SettingsController();
+    public static Settings getInstance(){
+        if(settingsView == null){
+            synchronized (Settings.class){
+                if(settingsView == null){
+                    settingsView = new Settings();
                 }
             }
         }
-        return settingsController;
+        return settingsView;
     }
 
 
@@ -65,7 +64,7 @@ public class SettingsController extends BaseOverlayController implements INeedPr
      */
     @FXML
     public void closeBtnClicked(){
-        NavigationController.getInstance().hideOverlay(ScreenType.SETTINGS, parentController);
+        Navigation.getInstance().hideOverlay(ScreenType.SETTINGS, parentController);
     }
 
     /**
@@ -73,7 +72,7 @@ public class SettingsController extends BaseOverlayController implements INeedPr
      */
     @FXML
     public void clearHighScoreClicked(){
-        Settings.getInstance().clearHighScores();
+        cs221.GP01.main.java.ui.Settings.getInstance().clearHighScores();
     }
 
     /**
@@ -82,7 +81,7 @@ public class SettingsController extends BaseOverlayController implements INeedPr
     @FXML
     public void musicToggleClicked(){
         // Switch the toggle to the opposite of what it currently is
-        Settings.getInstance().setMusicEnabled(musicToggle.isSelected());
+        cs221.GP01.main.java.ui.Settings.getInstance().setMusicEnabled(musicToggle.isSelected());
     }
 
     /**
@@ -91,7 +90,7 @@ public class SettingsController extends BaseOverlayController implements INeedPr
     @FXML
     public void soundEffectsToggleClicked(){
         // Switch the toggle to the opposite of what it currently is
-        Settings.getInstance().setMusicEnabled(soundEffectsToggle.isSelected());
+        cs221.GP01.main.java.ui.Settings.getInstance().setMusicEnabled(soundEffectsToggle.isSelected());
     }
 
     /**
@@ -100,7 +99,7 @@ public class SettingsController extends BaseOverlayController implements INeedPr
     @FXML
     public void colorBlindToggleClicked(){
         // Switch the toggle to the opposite of what it currently is
-        Settings.getInstance().setMusicEnabled(colorBlindToggle.isSelected());
+        cs221.GP01.main.java.ui.Settings.getInstance().setMusicEnabled(colorBlindToggle.isSelected());
     }
 
     /**
@@ -109,16 +108,16 @@ public class SettingsController extends BaseOverlayController implements INeedPr
     @FXML
     public void volumeSliderChanged(){
         // Set the volume value to the value currently in the slider
-        Settings.getInstance().setVolume(volumeSlider.getValue());
+        cs221.GP01.main.java.ui.Settings.getInstance().setVolume(volumeSlider.getValue());
     }
 
     @Override
     public void prepView() {
         // Set the toggles and sliders to their default value from settings class
-        colorBlindToggle.setSelected(Settings.getInstance().isColorBlindEnabled());
-        musicToggle.setSelected(Settings.getInstance().isMusicEnabled());
-        soundEffectsToggle.setSelected(Settings.getInstance().isSoundEffectsEnabled());
-        volumeSlider.setValue(Settings.getInstance().getVolume());
+        colorBlindToggle.setSelected(cs221.GP01.main.java.ui.Settings.getInstance().isColorBlindEnabled());
+        musicToggle.setSelected(cs221.GP01.main.java.ui.Settings.getInstance().isMusicEnabled());
+        soundEffectsToggle.setSelected(cs221.GP01.main.java.ui.Settings.getInstance().isSoundEffectsEnabled());
+        volumeSlider.setValue(cs221.GP01.main.java.ui.Settings.getInstance().getVolume());
     }
 
     /**

@@ -8,15 +8,14 @@
 
 package cs221.GP01.main.java.ui.controllers;
 
-import cs221.GP01.main.java.model.JoggleCubeController;
-import cs221.GP01.main.java.ui.NavigationController;
-import cs221.GP01.main.java.ui.UIController;
+import cs221.GP01.main.java.model.JoggleCube;
+import cs221.GP01.main.java.ui.Navigation;
+import cs221.GP01.main.java.ui.UI;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.*;
@@ -27,8 +26,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ContextMenuEvent;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.stage.StageStyle;
 
@@ -36,7 +33,7 @@ import java.util.Optional;
 
 
 /**
- * GameController - A class that controls the Game scene that is defined in Game.fxml
+ * GameView - A class that controls the Game scene that is defined in Game.fxml
  * <p>
  * Used with Game.fxml
  * todo improve this description
@@ -45,17 +42,17 @@ import java.util.Optional;
  * @author Samuel Jones - srj12@aber.ac.uk
  * @version 0.2  DRAFT
  */
-public class GameController extends BaseScreenController implements IGameController, INeedPrep {
+public class GameView extends BaseScreen implements IGame, INeedPrep {
 
-    private static GameController gameController;
+    private static GameView gameController;
 
-    private GameController(){}
+    private GameView(){}
 
-    public static GameController getInstance(){
+    public static GameView getInstance(){
         if(gameController == null){
-            synchronized (UIController.class){
+            synchronized (UI.class){
                 if(gameController == null){
-                    gameController = new GameController();
+                    gameController = new GameView();
                 }
             }
         }
@@ -107,7 +104,7 @@ public class GameController extends BaseScreenController implements IGameControl
 
     @FXML
     private void btnSubmitClicked() {
-        if (!textField.getText().equals("") && JoggleCubeController.getInstance().testWordValidity(textField.getText())) {
+        if (!textField.getText().equals("") && JoggleCube.getInstance().testWordValidity(textField.getText())) {
             foundWords.add(textField.getText());
             btnSubmit.setStyle("-fx-background-color: -fx-valid-color;");
             textField.setStyle("-fx-background-color: -fx-valid-color; -fx-text-fill: white;");
@@ -164,7 +161,7 @@ public class GameController extends BaseScreenController implements IGameControl
      */
     @FXML
     private void btnSettingsClicked(){
-        NavigationController.getInstance().showOverlay(ScreenType.SETTINGS, this);
+        Navigation.getInstance().showOverlay(ScreenType.SETTINGS, this);
     }
 
     /**
@@ -181,8 +178,8 @@ public class GameController extends BaseScreenController implements IGameControl
 
 
         if (result.get() == ButtonType.OK) {
-        JoggleCubeController.getInstance().interruptTimer();
-        NavigationController.getInstance().showOverlay(ScreenType.END, this);
+        JoggleCube.getInstance().interruptTimer();
+        Navigation.getInstance().showOverlay(ScreenType.END, this);
         } else {
             sureAlert.close();
         }
@@ -193,7 +190,7 @@ public class GameController extends BaseScreenController implements IGameControl
      */
     @FXML
     private void btnHelpClicked(){
-        NavigationController.getInstance().showOverlay(ScreenType.HELP, this);
+        Navigation.getInstance().showOverlay(ScreenType.HELP, this);
     }
 
 
@@ -226,7 +223,7 @@ public class GameController extends BaseScreenController implements IGameControl
 
             // todo: better validation
             if(result.matches("(\\w*)")){
-               JoggleCubeController.getInstance().setName(result);
+               JoggleCube.getInstance().setName(result);
             }else{
                 dialog.setHeaderText("Invalid Name Entry, Please try again");
             }
@@ -242,11 +239,11 @@ public class GameController extends BaseScreenController implements IGameControl
         GridPane[] twoDGrid = {top2d, middle2d, bottom2d};
         GridPane[] twoFiveDGrid = {top25d, middle25d, bottom25d};
         gridDisplayer = new GridDisplayer(textField,twoDGrid,twoFiveDGrid,subScene,groupy,back, explodeIcon);
-        gridDisplayer.buildGrids(JoggleCubeController.getInstance().getCubeData());
+        gridDisplayer.buildGrids(JoggleCube.getInstance().getCubeData());
         foundWordsList.setItems(foundWords);
 
 
-        JoggleCubeController.getInstance().startTimer();
+        JoggleCube.getInstance().startTimer();
     }
 
 

@@ -8,9 +8,8 @@
 
 package cs221.GP01.main.java.ui.controllers;
 
-import cs221.GP01.main.java.ui.NavigationController;
+import cs221.GP01.main.java.ui.Navigation;
 import cs221.GP01.main.java.ui.ScreenType;
-import cs221.GP01.main.java.ui.UIController;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
@@ -21,7 +20,7 @@ import javafx.scene.layout.StackPane;
  * @author Nathan Williams (naw21@aber.ac.uk)
  * @version 0.2
  */
-public class BaseScreenController {
+public class BaseScreen {
 
     /**
      * The root node of a given screen
@@ -57,7 +56,7 @@ public class BaseScreenController {
      */
     @FXML
     private void btnMenuClicked(){
-        NavigationController.getInstance().switchScreen(ScreenType.START);
+        Navigation.getInstance().switchScreen(ScreenType.START);
     }
 
     /**
@@ -65,7 +64,7 @@ public class BaseScreenController {
      */
     @FXML
     private void btnHighScoreClicked(){
-        NavigationController.getInstance().switchScreen(ScreenType.HIGH_SCORES);
+        Navigation.getInstance().switchScreen(ScreenType.HIGH_SCORES);
     }
 
     /**
@@ -73,7 +72,7 @@ public class BaseScreenController {
      */
     @FXML
     private void btnHelpClicked(){
-        NavigationController.getInstance().showOverlay(ScreenType.HELP, this);
+        Navigation.getInstance().showOverlay(ScreenType.HELP, this);
     }
 
     /**
@@ -81,7 +80,7 @@ public class BaseScreenController {
      */
     @FXML
     private void btnSettingsClicked(){
-        NavigationController.getInstance().showOverlay(ScreenType.SETTINGS, this);
+        Navigation.getInstance().showOverlay(ScreenType.SETTINGS, this);
     }
 
 }

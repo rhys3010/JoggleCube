@@ -14,20 +14,20 @@ package cs221.GP01.main.java.ui.controllers;
  * @author Nathan Williams (naw21@aber.ac.uk)
  * @version 0.2
  */
-public class BaseOverlayController {
+public class BaseOverlay {
 
 
     /**
      * An instance of the overlay's parent controller
      */
-    protected BaseScreenController parentController;
+    protected BaseScreen parentController;
 
 
     /**
      * Set the Overlay's parent controller
      * @param parent
      */
-    public void setParentController(BaseScreenController parent){
+    public void setParentController(BaseScreen parent){
         this.parentController = parent;
     }
 

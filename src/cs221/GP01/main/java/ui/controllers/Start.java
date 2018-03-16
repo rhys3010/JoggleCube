@@ -8,10 +8,10 @@
 
 package cs221.GP01.main.java.ui.controllers;
 
-import cs221.GP01.main.java.model.JoggleCubeController;
-import cs221.GP01.main.java.ui.NavigationController;
+import cs221.GP01.main.java.model.JoggleCube;
+import cs221.GP01.main.java.ui.Navigation;
 import cs221.GP01.main.java.ui.Settings;
-import cs221.GP01.main.java.ui.UIController;
+import cs221.GP01.main.java.ui.UI;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,28 +21,28 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * StartController - A class that does something.
+ * Start - A class that does something.
  * <p>
  * How it is used
  * @author Nathan Williams (naw21)
  * @version 0.2  DRAFT
  */
 
-public class StartController extends BaseScreenController implements INeedPrep, Initializable {
+public class Start extends BaseScreen implements INeedPrep, Initializable {
 
-    private static StartController startController;
+    private static Start startView;
 
-    private StartController(){}
+    private Start(){}
 
-    public static StartController getInstance(){
-        if(startController == null){
-            synchronized (UIController.class){
-                if(startController == null){
-                    startController = new StartController();
+    public static Start getInstance(){
+        if(startView == null){
+            synchronized (UI.class){
+                if(startView == null){
+                    startView = new Start();
                 }
             }
         }
-        return startController;
+        return startView;
     }
 
     /**
@@ -68,8 +68,8 @@ public class StartController extends BaseScreenController implements INeedPrep, 
      */
     @FXML
     private void btnStartNewGridClicked() {
-       JoggleCubeController.getInstance().generateRandomGrid();
-        NavigationController.getInstance().switchScreen(ScreenType.GAME);
+       JoggleCube.getInstance().generateRandomGrid();
+        Navigation.getInstance().switchScreen(ScreenType.GAME);
     }
 
     /**
@@ -78,7 +78,7 @@ public class StartController extends BaseScreenController implements INeedPrep, 
      */
     @FXML
     private void btnLoadGridClicked() {
-        NavigationController.getInstance().switchScreen(ScreenType.LOAD);
+        Navigation.getInstance().switchScreen(ScreenType.LOAD);
     }
 
     /**
