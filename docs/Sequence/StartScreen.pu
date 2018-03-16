@@ -12,58 +12,83 @@ actor User
 
 box "Views" #LightBlue
 
-participant StartController
-participant LoadGridController
-participant GameController
+participant Start
+participant LoadGrid
+participant Game
 
 end box
 
 box "User Interface Control" #LightBlue
 
-participant NavigationController
+participant Navigation
 
-end box 
-
+end box
 
 box "Back End" #c675c5
 
-participant JoggleCubeController
+participant JoggleCube
+participant Cube
+participant Block
+participant HighScores
 
 end box
 == User Pressing Start Button ==
 
-User -> StartController : btnStartNewGridClicked()
-activate StartController
-    StartController -> JoggleCubeController : startRandomGrid()
-    activate JoggleCubeController
-        JoggleCubeController --> StartController
-    deactivate JoggleCubeController
-StartController -> NavigationController : show(ScreenType.GAME)
-    activate NavigationController
-        NavigationController -> GameController: prepView()
-        activate GameController
-            GameController -> JoggleCubeController : getCubeData()
-            activate JoggleCubeController
-                JoggleCubeController --> GameController : cube[3][3][3]
-            deactivate JoggleCubeController
-        deactivate GameController
-        NavigationController --> StartController
-    deactivate NavigationController
-deactivate StartController
+User -> Start : btnStartNewGridClicked()
+activate Start
+    Start -> JoggleCube : generateRandomGrid()
+    activate JoggleCube
+        JoggleCube -> Cube : populateGrid(language)
+        activate Cube
+            loop foreach 27 blocks in the cube
+                Cube -> Block : <<create>>(randomLetter)
+                activate Block
+                    Block --> Cube
+                deactivate Block
+            end
+            Cube --> JoggleCube
+        deactivate Cube
+        JoggleCube -> HighScores : <<create>>
+        activate HighScores
+            HighScores --> JoggleCube
+        deactivate HighScores
+        JoggleCube --> Start
+    deactivate JoggleCube
+Start -> Navigation : show(ScreenType.GAME)
+    activate Navigation
+        Navigation -> Game: prepView()
+        activate Game
+            Game -> JoggleCube : getCubeData()
+            activate JoggleCube
+                JoggleCube -> Cube : getCube()
+                activate Cube
+                    Cube --> JoggleCube : cube[3][3][3]
+                deactivate Cube
+                JoggleCube --> Game : cube[3][3][3]
+            deactivate JoggleCube
+            Game --> Navigation
+        deactivate Game
+        Navigation --> Start
+    deactivate Navigation
+deactivate Start
 
 
 
 == User Pressing Load Grid Button ==
 
-User -> StartController : btnLoadGridClicked()
-activate StartController
-    StartController -> NavigationController : show(ScreenType.LOAD)
-    activate NavigationController
-        NavigationController -> LoadGridController : prepView()
-        activate LoadGridController
-        LoadGridController --> NavigationController
-        deactivate LoadGridController
-        NavigationController --> StartController
-    deactivate NavigationController
-deactivate StartController
+User -> Start : btnLoadGridClicked()
+activate Start
+    Start -> Navigation : show(ScreenType.LOAD)
+    activate Navigation
+        Navigation -> LoadGrid : prepView()
+        activate LoadGrid
+            LoadGrid -> JoggleCube : getRecentGrids()
+            activate JoggleCube
+                JoggleCube --> LoadGrid : listOfFiles
+            deactivate JoggleCube
+            LoadGrid --> Navigation
+        deactivate LoadGrid
+        Navigation --> Start
+    deactivate Navigation
+deactivate Start
 @enduml
