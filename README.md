@@ -4,29 +4,25 @@
 
 ## Installation
 
+### Development
+
+
 * In intellij Idea: File -> New from exsiting source -> select the GP01 folder -> new project from source -> click your way through the rest of the options.
 * Use Java 9 sdk if possible, as we are using JavaFx 2.0 features.
 
+### Build jar for the project
+
+*  goto: project structure -> artifacts ->  + -> jar -> from modules. 
+*  Then set the main class. 
+*  Click ok.
+*  Then remove the test libraries. 
+*  Then go to: build -> build artifacts
+*  then build the jar. 
+
 ## Usage
 
-### Setup
-
-* Use: https://gitlab.dcs.aber.ac.uk/rhe24/GP01.git
-* Or setup ssh on your gitlab account and use: gitlab@gitlab.dcs.aber.ac.uk:rhe24/GP01.git
-* add source using the command: git remote add origin <url>
-* navigate to the folder you want to hold the project: cd <folderpath>
-* run: git init
-* run: git pull origin master
-
-### Modifying files
-
-* add changes to your commit using: git add .
-* commit your changes to your local copy: git commit -m "I have changed this that and the other"
-* push your changes to the online repo for all to see: git push -u origin master
- 
-### Updating your copy
-* Remember to update your local repo before starting work incase changes have been made.
-* Use: git pull origin master.
+* Run the .jar file in the Release folder to play the game.
+* See in game help for instructions.
 
 ## Online docs links
 
