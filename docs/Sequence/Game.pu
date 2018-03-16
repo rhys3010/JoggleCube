@@ -1,0 +1,138 @@
+@startuml
+hide footbox
+
+title Program Launch Action Sequence
+
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 20
+skinparam maxmessagesize 60
+
+
+actor User
+
+box "Views" #LightBlue
+
+participant Game
+participant End
+
+end box
+
+box "User Interface Control" #LightBlue
+
+participant Navigation
+participant CubeFx
+participant BlockFx
+
+
+end box
+
+
+box "Back End" #c675c5
+
+participant JoggleCube
+participant GameTimer
+participant HighScores
+participant Score
+participant Dictionary
+participant Block
+participant Cube
+end box
+
+== Clear the text input and grid ==
+
+User -> Game : btnClearClicked()
+activate Game
+    Game -> CubeFx : setAllActive()
+    activate CubeFx
+        loop
+            CubeFx -> BlockFx : setActivateState()
+            activate BlockFx
+                BlockFx --> CubeFx
+            deactivate BlockFx
+        end
+        CubeFx --> Game
+    deactivate CubeFx
+deactivate Game
+
+== submit word button clicked ==
+
+User -> Game : btnSubmitClicked()
+activate Game
+    Game -> JoggleCube : testWordValidity(word)
+    activate JoggleCube
+        JoggleCube -> Dictionary : searchDictionary(word)
+        activate Dictionary
+            Dictionary --> JoggleCube : true/false
+        deactivate Dictionary
+        JoggleCube --> Game : true/false
+    deactivate JoggleCube
+
+    group if validWord
+        Game -> CubeFx : setAllActivate()
+        activate CubeFx
+            loop
+                CubeFx -> BlockFx : setActivateState()
+                activate BlockFx
+                        BlockFx --> CubeFx
+                deactivate BlockFx
+            end
+            CubeFx --> Game
+        deactivate CubeFx
+    end
+deactivate Game
+
+== button to toggle the explode view ==
+
+User -> Game : btnExplodeClicked()
+activate Game
+    Game -> CubeFx : toggleExplode()
+    activate CubeFx
+        loop
+            CubeFx -> BlockFx : setPos(x,y)
+            activate BlockFx
+                BlockFx --> CubeFx
+            deactivate BlockFx
+        end
+        CubeFx --> Game
+    deactivate CubeFx
+deactivate Game
+
+== End game button clicked ==
+
+User -> Game : btnEndGameClicked()
+activate Game
+    Game -> JoggleCube : interruptTimer()
+    activate JoggleCube
+        JoggleCube -> GameTimer : interruptTime()
+        activate GameTimer
+            GameTimer --> JoggleCube
+        deactivate GameTimer
+        JoggleCube --> Game
+    deactivate JoggleCube
+    Game -> Navigation : show(ScreenType.End)
+    activate Navigation
+        Navigation -> Game : hideGrids()
+        activate Game
+            Game --> Navigation
+        deactivate Game
+        Navigation -> End : prepView()
+        activate End
+            End -> JoggleCube : getScore()
+            activate JoggleCube
+                JoggleCube --> End
+            deactivate JoggleCube
+            End -> JoggleCube : getHighestScore()
+            activate JoggleCube
+                JoggleCube --> End
+            deactivate JoggleCube
+            End -> JoggleCube : resetGameState()
+            activate JoggleCube
+                JoggleCube --> End
+            deactivate JoggleCube
+            End --> Navigation
+        deactivate End
+        Navigation --> Game
+    deactivate Navigation
+deactivate Game
+
+@enduml

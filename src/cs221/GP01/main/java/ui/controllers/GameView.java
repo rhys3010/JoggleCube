@@ -156,13 +156,6 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         gridDisplayer.toggleExplode();
     }
 
-    /**
-     * Handle the settings option from the hamburger context menu is being clicked
-     */
-    @FXML
-    private void btnSettingsClicked(){
-        Navigation.getInstance().showOverlay(ScreenType.SETTINGS, this);
-    }
 
     /**
      * When the End Game option is clicked it will load the EndGui scene.
@@ -184,15 +177,6 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
             sureAlert.close();
         }
     }
-
-    /**
-     * When the help option is clicked it will open the help overlay
-     */
-    @FXML
-    private void btnHelpClicked(){
-        Navigation.getInstance().showOverlay(ScreenType.HELP, this);
-    }
-
 
     /**
      * Initialize game screen
