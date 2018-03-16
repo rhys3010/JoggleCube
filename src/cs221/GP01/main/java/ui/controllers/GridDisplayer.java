@@ -36,7 +36,7 @@ import java.util.Timer;
 
 /**
  *
- * A class to help GameController display the grids.
+ * A class to help GameView display the grids.
  *
  * todo optimize
  *

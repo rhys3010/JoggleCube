@@ -8,10 +8,8 @@
 
 package cs221.GP01;
 
-import cs221.GP01.main.java.model.JoggleCubeController;
-import cs221.GP01.main.java.ui.NavigationController;
-import cs221.GP01.main.java.ui.ScreenType;
-import cs221.GP01.main.java.ui.UIController;
+import cs221.GP01.main.java.model.JoggleCube;
+import cs221.GP01.main.java.ui.UI;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -48,7 +46,7 @@ public class Main extends Application {
         Font.loadFont(getClass().getResourceAsStream("/cs221/GP01/main/resource/font/DS-DIGI.TTF"), 16);
 
         //start the backend
-        JoggleCubeController.getInstance();
+        JoggleCube.getInstance();
 
         // Create main scene and initialize with a dummy root node
         Pane dummyRoot = new Pane();
@@ -80,13 +78,13 @@ public class Main extends Application {
                 e.consume();
             } else {
                 // Save the highscores and allow the program to quit
-                JoggleCubeController.getInstance().saveOverallScores();
+                JoggleCube.getInstance().saveOverallScores();
             }
         });
         primaryStage.show();
 
-        // Initialize UIController game
-        UIController.getInstance().initialize(mainScene);
+        // Initialize UI game
+        UI.getInstance().initialize(mainScene);
     }
 
     /**

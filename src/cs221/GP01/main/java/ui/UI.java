@@ -8,49 +8,49 @@
 
 package cs221.GP01.main.java.ui;
 
-import cs221.GP01.main.java.model.IJoggleCubeController;
 import cs221.GP01.main.java.ui.controllers.*;
+import cs221.GP01.main.java.ui.controllers.Settings;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
 import java.io.IOException;
 
 /**
- * UIController - A class to implement IFrontendController
+ * UI - A class to implement IFrontend
  * <p>
  * This class will behave as a mediator between the game's logic and the game's display, it will handle state changes,
  * screen changes and various aspects of user input
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21)
  * @version 0.2  DRAFT
- * @see IFrontendController
+ * @see IFrontend
  */
-public class UIController implements IFrontendController{
+public class UI implements IFrontend {
 
     /**
-     * The singleton instance of the UIController class
+     * The singleton instance of the UI class
      */
-    private static UIController uiController;
+    private static UI ui;
 
     /**
      * Default constructor
      * todo: needed?
      */
-    private UIController(){}
+    private UI(){}
 
     /**
-     * Get the singleton instance of the UIController object
-     * @return uiController
+     * Get the singleton instance of the UI object
+     * @return ui
      */
-    public static UIController getInstance(){
-        if(uiController == null){
-            synchronized (UIController.class){
-                if(uiController == null){
-                    uiController = new UIController();
+    public static UI getInstance(){
+        if(ui == null){
+            synchronized (UI.class){
+                if(ui == null){
+                    ui = new UI();
                 }
             }
         }
-        return uiController;
+        return ui;
     }
 
     /**
@@ -72,7 +72,7 @@ public class UIController implements IFrontendController{
     public void initialize(Scene main) throws IOException{
 
         // Initialize the screen controller
-        IViewNavigation navigationController = NavigationController.getInstance();
+        IViewNavigation navigationController = Navigation.getInstance();
         navigationController.setMainScene(main);
         // Iteratively create screens and add to navigationController
         for(int i = 0; i < SCREENS.length; i++){
@@ -99,36 +99,36 @@ public class UIController implements IFrontendController{
 
             case START:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Start.fxml"));
-                loader.setController(StartController.getInstance());
+                loader.setController(Start.getInstance());
                 break;
 
             case SETTINGS:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Settings.fxml"));
-                loader.setController(SettingsController.getInstance());
+                loader.setController(Settings.getInstance());
                 break;
             case LOAD:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Load.fxml"));
-                loader.setController(LoadGridController.getInstance());
+                loader.setController(LoadGrid.getInstance());
                 break;
 
             case GAME:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Game.fxml"));
-                loader.setController(GameController.getInstance());
+                loader.setController(GameView.getInstance());
                 break;
 
             case END:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "End.fxml"));
-                loader.setController(EndController.getInstance());
+                loader.setController(End.getInstance());
                 break;
 
             case HIGH_SCORES:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "HighScore.fxml"));
-                loader.setController(HighScoreController.getInstance());
+                loader.setController(HighScore.getInstance());
                 break;
 
             case HELP:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Help.fxml"));
-                loader.setController(HelpController.getInstance());
+                loader.setController(Help.getInstance());
                 break;
 
             default:

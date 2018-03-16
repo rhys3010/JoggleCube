@@ -22,7 +22,7 @@
 <!--
     * Start - The FXMl layout for the start screen of the game
     * <p>
-    * Used with the StartController to display a scene to allow user to start a new random grid, load grid or navigate other
+    * Used with the Start to display a scene to allow user to start a new random grid, load grid or navigate other
     * screens of the game
     *
     * @author Nathan Williams (naw21)

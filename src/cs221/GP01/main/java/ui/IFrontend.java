@@ -13,13 +13,13 @@ import javafx.scene.Scene;
 import java.io.IOException;
 
 /**
- * IFrontendController - An interface for the main controller of the game's frontend
+ * IFrontend - An interface for the main controller of the game's frontend
  * <p>
  * Class used to handle the mediation between the game logic and game display, passing values, changing state etc.
  * @author Rhys Evans (rhe24)
  * @version 0.1
  */
-public interface IFrontendController {
+public interface IFrontend {
 
     /**
      * Initialize the game's display

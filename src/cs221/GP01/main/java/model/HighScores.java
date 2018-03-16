@@ -16,7 +16,7 @@ import java.util.function.Consumer;
 /**
  * HighScores - The purpose of this class is to be able to store and load high scores from file
  * <p>
- * Used by JoggleCubeController
+ * Used by JoggleCube
  *
  * @author Lampros Petridis (lap12)
  * @version 0.1

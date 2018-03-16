@@ -35,7 +35,7 @@
     * Game - The javafx scene for the main game screen
     *
     * This scene will contain all of the game elements, word submission, score and timing labels and a hamburger context menu
-    * All of the cube's representations will be displayed on this screen and controlled with both GameController and GridDisplayer
+    * All of the cube's representations will be displayed on this screen and controlled with both GameView and GridDisplayer
     * @author Nathan Williams (naw21)
     * @author Rhys Evans (rhe24@aber.ac.uk)
     * @version 0.1  DRAFT

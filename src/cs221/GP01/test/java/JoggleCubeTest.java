@@ -1,18 +1,16 @@
 package cs221.GP01.test.java;
 
-import cs221.GP01.main.java.model.JoggleCubeController;
+import cs221.GP01.main.java.model.JoggleCube;
 import cs221.GP01.main.java.ui.Settings;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.io.File;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class JoggleCubeControllerTest {
+class JoggleCubeTest {
 
-    JoggleCubeController controller = JoggleCubeController.getInstance();
+    JoggleCube controller = JoggleCube.getInstance();
 
     @Test
     public void testLoadNewDictionary(){

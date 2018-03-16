@@ -3,11 +3,11 @@
  */
 
 package cs221.GP01.main.java.model;
-import cs221.GP01.main.java.ui.NavigationController;
+import cs221.GP01.main.java.ui.Navigation;
 import cs221.GP01.main.java.ui.ScreenType;
 import cs221.GP01.main.java.ui.Settings;
-import cs221.GP01.main.java.ui.controllers.BaseScreenController;
-import cs221.GP01.main.java.ui.controllers.GameController;
+import cs221.GP01.main.java.ui.controllers.BaseScreen;
+import cs221.GP01.main.java.ui.controllers.GameView;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 
@@ -48,7 +48,7 @@ public class GameTimer implements IGameTimer, Runnable {
 
     @Override
     public void startTimer() {
-        Label timerLabel = GameController.getInstance().getTimerLabel();
+        Label timerLabel = GameView.getInstance().getTimerLabel();
         int timerLength = Settings.getTimerLength();
         int timeLeft = timerLength;
         currentTime = Duration.ofSeconds(timerLength);
@@ -85,7 +85,7 @@ public class GameTimer implements IGameTimer, Runnable {
     @Override
     public void finishTimer() {
         //ends the game
-        Platform.runLater(() -> NavigationController.getInstance().showOverlay(ScreenType.END, (BaseScreenController) GameController.getInstance()));
+        Platform.runLater(() -> Navigation.getInstance().showOverlay(ScreenType.END, (BaseScreen) GameView.getInstance()));
     }
 
     /**

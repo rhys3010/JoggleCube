@@ -9,7 +9,7 @@ import java.io.File;
  * @author Nathan - naw21
  * @version 0.2
  */
-public interface IJoggleCubeController {
+public interface IJoggleCube {
 
 
 

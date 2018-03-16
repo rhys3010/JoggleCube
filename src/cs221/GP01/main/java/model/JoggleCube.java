@@ -1,10 +1,9 @@
 package cs221.GP01.main.java.model;
 
 import cs221.GP01.main.java.ui.Settings;
-import cs221.GP01.main.java.ui.UIController;
-import cs221.GP01.main.java.ui.controllers.GameController;
-import cs221.GP01.main.java.ui.controllers.LoadGridController;
-import cs221.GP01.main.java.ui.controllers.SettingsController;
+import cs221.GP01.main.java.ui.UI;
+import cs221.GP01.main.java.ui.controllers.GameView;
+import cs221.GP01.main.java.ui.controllers.LoadGrid;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.apache.commons.io.FileUtils;
@@ -27,9 +26,9 @@ import java.util.Scanner;
  * @author Nathan Williams - naw21@aber.ac.uk
  * @version 0.8
  */
-public class JoggleCubeController implements IJoggleCubeController{
+public class JoggleCube implements IJoggleCube {
 
-    private static JoggleCubeController joggleCube;
+    private static JoggleCube joggleCube;
 
     private Dictionary dictionary;
 
@@ -63,17 +62,17 @@ public class JoggleCubeController implements IJoggleCubeController{
     }
 
 
-    private JoggleCubeController(){
+    private JoggleCube(){
         findDocumentFolder();
         loadOverallScores();
         setLanguage();
     }
 
-    public static JoggleCubeController getInstance(){
+    public static JoggleCube getInstance(){
         if(joggleCube == null){
-            synchronized (UIController.class){
+            synchronized (UI.class){
                 if(joggleCube == null){
-                    joggleCube = new JoggleCubeController();
+                    joggleCube = new JoggleCube();
                 }
             }
         }
@@ -94,7 +93,7 @@ public class JoggleCubeController implements IJoggleCubeController{
         //Load save game from the file stream given
         try{
             try {
-                //todo fix the handleMouseClick() in the LoadGridController.java as it's calling using null.grid
+                //todo fix the handleMouseClick() in the LoadGrid.java as it's calling using null.grid
                 String loadPath = System.getProperty("user.home") + "/Documents/JoggleCube/saves/" + filename + ".grid";
 
                 File loadFile = new File(new URI(loadPath.replace("\\", "/")
@@ -114,10 +113,10 @@ public class JoggleCubeController implements IJoggleCubeController{
             // Print error depending on caught exception
             if(e instanceof FileNotFoundException){
                 // An error in file name
-                LoadGridController.getInstance().showError("No Grid Selected");
+                LoadGrid.getInstance().showError("No Grid Selected");
             }else{
                 // Error with the file format
-                LoadGridController.getInstance().showError("Invalid or Corrupted Grid File");
+                LoadGrid.getInstance().showError("Invalid or Corrupted Grid File");
             }
 
 
@@ -135,7 +134,7 @@ public class JoggleCubeController implements IJoggleCubeController{
         if(dictionary.searchDictionary(word)){
             storedWords.add(word);
             currentScore += getWordScore(word);
-            GameController.getInstance().getScoreLabel().setText(currentScore + "");
+            GameView.getInstance().getScoreLabel().setText(currentScore + "");
             return true;
         }
         return false;
@@ -445,7 +444,7 @@ public class JoggleCubeController implements IJoggleCubeController{
         overallHighScores.addScore(score);
         storedWords = new ArrayList<>();
         currentScore = 0;
-        GameController.getInstance().getScoreLabel().setText(currentScore + "");
+        GameView.getInstance().getScoreLabel().setText(currentScore + "");
         timer.resetTime();
     }
 }

@@ -7,16 +7,14 @@
    */
 package cs221.GP01.main.java.ui;
 
-import cs221.GP01.main.java.ui.ScreenType;
 import cs221.GP01.main.java.ui.controllers.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.stage.Screen;
 
 import java.util.HashMap;
 
 /**
- * NavigationController - Control the screens being displayed
+ * Navigation - Control the screens being displayed
  * <p>
  * All screens are stored in a HashMap and can be activated, added or removed. The screen are stored as an FXML Loader with
  * an FXML file and root pane 'pre-loaded'. Overlays and Scenes are displayed differently and are both handled in this class
@@ -26,28 +24,28 @@ import java.util.HashMap;
  * @see IViewNavigation
  */
 
-public class NavigationController implements IViewNavigation{
+public class Navigation implements IViewNavigation{
 
     /**
-     * The singleton instance of the NavigationController class
+     * The singleton instance of the Navigation class
      */
-    private static NavigationController navController;
+    private static Navigation navController;
 
     /**
-     * Default constructor for the NavigationController
+     * Default constructor for the Navigation
      * todo needed?
      */
-    private NavigationController(){}
+    private Navigation(){}
 
     /**
-     * Get the instantiated instance of the NavigationController singleton
-     * @return navController - the NavigationController object
+     * Get the instantiated instance of the Navigation singleton
+     * @return navController - the Navigation object
      */
-    public static NavigationController getInstance(){
+    public static Navigation getInstance(){
         if(navController == null){
-            synchronized (UIController.class){
+            synchronized (UI.class){
                 if(navController == null){
-                    navController = new NavigationController();
+                    navController = new Navigation();
                 }
             }
         }
@@ -101,7 +99,7 @@ public class NavigationController implements IViewNavigation{
      */
     public void switchScreen(ScreenType newScreen){
         // Only allow screen switching if screen type isn't an overlay
-        if(screens.get(newScreen).getController() instanceof BaseScreenController){
+        if(screens.get(newScreen).getController() instanceof BaseScreen){
             //checks if the View needs prep before displaying
             if(screens.get(newScreen).getController() instanceof INeedPrep) {
                 ((INeedPrep) screens.get(newScreen).getController()).prepView();
@@ -115,19 +113,19 @@ public class NavigationController implements IViewNavigation{
      * @param overlay - The overlay to be shown
      * @param parent - The parent scene of the overlay
      */
-    public void showOverlay(ScreenType overlay, BaseScreenController parent){
-        // Verify that the overlay is of type BaseOverlayController
-        if(screens.get(overlay).getController() instanceof BaseOverlayController){
+    public void showOverlay(ScreenType overlay, BaseScreen parent){
+        // Verify that the overlay is of type BaseOverlay
+        if(screens.get(overlay).getController() instanceof BaseOverlay){
             // Disable the background of the parent screen
             parent.getMainNode().setDisable(true);
 
-            // If the parent screen is a GameController, then disable the game cube
-            if(parent instanceof GameController){
-                ((IGameController) parent).getCubeContainer().setVisible(false);
+            // If the parent screen is a GameView, then disable the game cube
+            if(parent instanceof GameView){
+                ((IGame) parent).getCubeContainer().setVisible(false);
             }
             
             // Set the parent of the overlay
-            ((BaseOverlayController) screens.get(overlay).getController()).setParentController(parent);
+            ((BaseOverlay) screens.get(overlay).getController()).setParentController(parent);
 
             //checks if the overlay needs prep before displaying
             if(screens.get(overlay).getController() instanceof INeedPrep) {
@@ -143,10 +141,10 @@ public class NavigationController implements IViewNavigation{
      * Hide a given overlay
      * @param overlay - The overlay to be hidden
      */
-    public void hideOverlay(ScreenType overlay, BaseScreenController parent){
+    public void hideOverlay(ScreenType overlay, BaseScreen parent){
 
-        // Verify that the overlay is of type BaseOverlayController
-        if(screens.get(overlay).getController() instanceof BaseOverlayController){
+        // Verify that the overlay is of type BaseOverlay
+        if(screens.get(overlay).getController() instanceof BaseOverlay){
 
             // Remove the overlay's FXML from parent
             parent.getRoot().getChildren().remove(screens.get(overlay).getRoot());
@@ -155,8 +153,8 @@ public class NavigationController implements IViewNavigation{
             parent.getMainNode().setDisable(false);
 
             // If the parent screen is Game Controller, re-enable the game cube
-            if(parent instanceof GameController){
-                ((IGameController) parent).getCubeContainer().setVisible(true);
+            if(parent instanceof GameView){
+                ((IGame) parent).getCubeContainer().setVisible(true);
             }
         }
     }

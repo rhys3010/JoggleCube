@@ -8,7 +8,7 @@
 
 package cs221.GP01.main.java.ui;
 
-import cs221.GP01.main.java.ui.controllers.BaseScreenController;
+import cs221.GP01.main.java.ui.controllers.BaseScreen;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
@@ -48,14 +48,14 @@ public interface IViewNavigation {
      * @param overlay - The ScreenType Enumeration of the overlay to display
      * @param parent - The controller object of the overlay's parent FXML
      */
-    void showOverlay(ScreenType overlay, BaseScreenController parent);
+    void showOverlay(ScreenType overlay, BaseScreen parent);
 
     /**
      * Hide a given overlay by removing it from its parent FXML
      * @param overlay - The overlay to display
      * @param parent - The controller object of the overlay's parent
      */
-    void hideOverlay(ScreenType overlay, BaseScreenController parent);
+    void hideOverlay(ScreenType overlay, BaseScreen parent);
 
     /**
      * Declare the main scene of the application

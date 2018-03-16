@@ -8,7 +8,7 @@
 
 package cs221.GP01.main.java.ui;
 
-import cs221.GP01.main.java.model.JoggleCubeController;
+import cs221.GP01.main.java.model.JoggleCube;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
@@ -22,7 +22,7 @@ import java.util.Optional;
  * @author Nathan Williams (naw21)
  * @version 0.3  DRAFT
  * @see ISettings
- * @see cs221.GP01.main.java.ui.controllers.SettingsController
+ * @see cs221.GP01.main.java.ui.controllers.Settings
  */
 public class Settings implements ISettings{
 
@@ -82,7 +82,7 @@ public class Settings implements ISettings{
             Settings.currLang = currLang;
         }
         //when language is changed set the joggleCubeLanguage
-        JoggleCubeController.getInstance().setLanguage();
+        JoggleCube.getInstance().setLanguage();
     }
 
     public static String getCurrLangPrefix() {
