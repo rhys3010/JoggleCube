@@ -21,8 +21,6 @@ end box
 box "User Interface Control" #LightBlue
 
 participant Navigation
-participant CubeFx
-participant BlockFx
 
 
 end box
@@ -34,8 +32,6 @@ participant Settings
 participant JoggleCube
 participant HighScores
 participant Score
-participant GameTimer
-participant Dictionary
 participant Cube
 participant Block
 end box

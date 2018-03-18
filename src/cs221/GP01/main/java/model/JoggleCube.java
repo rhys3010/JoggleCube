@@ -134,7 +134,8 @@ public class JoggleCube implements IJoggleCube {
         if(dictionary.searchDictionary(word)){
             storedWords.add(word);
             currentScore += getWordScore(word);
-            GameView.getInstance().getScoreLabel().setText(currentScore + "");
+            if(GameView.getInstance().getScoreLabel() != null)
+                GameView.getInstance().getScoreLabel().setText(currentScore + "");
             return true;
         }
         return false;
@@ -446,7 +447,9 @@ public class JoggleCube implements IJoggleCube {
         }
         storedWords = new ArrayList<>();
         currentScore = 0;
-        GameView.getInstance().getScoreLabel().setText(currentScore + "");
-        timer.resetTime();
+        if(GameView.getInstance().getScoreLabel() != null)
+            GameView.getInstance().getScoreLabel().setText(currentScore + "");
+        if(timer!=null)
+            timer.resetTime();
     }
 }

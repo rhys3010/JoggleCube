@@ -24,9 +24,9 @@ class ScoreTest {
     @Test
     public void createScoreFromFile() throws FileNotFoundException {
 
-        File file = new File("scoreTest.txt");
-        Scanner in = new Scanner(file);
+        Scanner in = new Scanner(getClass().getResourceAsStream("/cs221/GP01/test/resource/scoreTest.txt"));
         Score score = new Score(in);
+        in.close();
         assertEquals("2018/05/20 12:02", score.getDate());
         assertEquals("player1", score.getName());
         assertEquals((Integer)54, score.getScore());
@@ -47,9 +47,9 @@ class ScoreTest {
 
         Scanner in = new Scanner(file);
         Score newScore = new Score(in);
-
+        in.close();
         assertEquals(score, newScore);
-
+        file.delete();
     }
 
 }

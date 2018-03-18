@@ -1,0 +1,54 @@
+@startuml Obect Diagram
+
+object app
+object ui
+object navigation
+
+object joggleCube {
+    dictionary=["a","aa","ab",....,"Zoo"]
+}
+
+object cube {
+    cube=[block,block,block]
+            [block,block,block]
+            [bock,block,block]
+    letterBag=["A","B",...."Qu",....,"Z"]
+    
+}
+
+object block {
+    letter="I"
+}
+
+object gridScores {
+    scores=[score,score,....]
+}
+
+object overallScores {
+    scores=[score,score....]
+}
+
+object score1 {
+    name="Tom"
+    score= 100
+    date="03/03/18 15:00"
+}
+object score2 {
+    name="Tom"
+    score= 100
+    date="03/03/18 15:00"
+}
+
+joggleCube --> gridScores
+joggleCube --> overallScores
+joggleCube --> cube
+
+gridScores --> "∞" score1
+overallScores --> "∞" score2
+
+cube --> "27" block
+
+app --> joggleCube
+app --> ui
+ui --> navigation
+@enduml
