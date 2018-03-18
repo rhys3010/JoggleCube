@@ -342,13 +342,14 @@ public class JoggleCube implements IJoggleCube {
         word = word.toUpperCase();
         int sumOf = 0;
         for(int i = 0; i<word.length(); i++){
-            if(scores.containsKey(String.valueOf(word.charAt(i)))){
-                //If scores contains the word continue else check for double letters
-                sumOf += Integer.parseInt(scores.get(word.charAt(i) + ""));
-            } else if(scores.containsKey((word.charAt(i)+ "") + (word.charAt(i+1) + ""))){
-                //Else if scores contains word[i] + word[i+1] then handle
+            if(scores.containsKey((word.charAt(i)+ "") + (word.charAt(i+1) + ""))){
+                //If scores contains word[i] + word[i+1] then handle the doule letters
                 sumOf += Integer.parseInt(scores.get((word.charAt(i)+ "") + (word.charAt(i+1) + "")));
                 i++;
+            } else if(scores.containsKey(String.valueOf(word.charAt(i)))){
+                //If scores the letter and it's not possible that it was originally a double letter
+                //handle the single letter addition of score.
+                sumOf += Integer.parseInt(scores.get(word.charAt(i) + ""));
             } else{
                 System.out.println("Score is broken for this letter" + word.charAt(i));
             }
@@ -356,7 +357,9 @@ public class JoggleCube implements IJoggleCube {
         //Return * 3 scores
         return sumOf * sumOf;
     }
-
+if(scores.containsKey(String.valueOf(word.charAt(i)))){
+                //If scores contains the word continue else check for double letters
+                sumOf += Integer.parseInt(scores.get(word.charAt(i) + ""));
 
     /**
      * gets the score for the current game.
