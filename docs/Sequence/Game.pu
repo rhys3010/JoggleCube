@@ -1,7 +1,7 @@
 @startuml
 hide footbox
 
-title Program Launch Action Sequence
+title Game screen Action Sequences
 
 skinparam sequenceArrowThickness 2
 skinparam roundcorner 20
@@ -31,11 +31,7 @@ box "Back End" #c675c5
 
 participant JoggleCube
 participant GameTimer
-participant HighScores
-participant Score
 participant Dictionary
-participant Block
-participant Cube
 end box
 
 == Clear the text input and grid ==

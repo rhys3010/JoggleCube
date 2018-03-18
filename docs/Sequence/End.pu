@@ -1,0 +1,39 @@
+@startuml
+hide footbox
+
+title End Screen Action Sequences
+
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 20
+skinparam maxmessagesize 60
+
+
+actor User
+
+box "Views" #LightBlue
+
+participant Game
+participant End
+
+end box
+
+box "User Interface Control" #LightBlue
+
+participant Navigation
+participant CubeFx
+participant BlockFx
+
+
+end box
+
+
+box "Back End" #c675c5
+
+participant JoggleCube
+participant GameTimer
+participant Dictionary
+end box
+
+==
+
+@enduml
