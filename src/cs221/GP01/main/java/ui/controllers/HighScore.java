@@ -158,27 +158,11 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
     }
 
     /**
-     * Advance to the next page in the Highscores list
-     *
-     */
-    @FXML
-    public void nextPage(){
-        changePage();
-    }
-
-    /**
-     * Go the previous page in the highscores list
-     */
-    @FXML
-    public void previousPage(){
-        changePage();
-    }
-
-    /**
      * Utility function to change the page of the high score table
      *
      * todo if not filtering to top 10 compare the data in table: highScoreTable.getItems().equals(overallScores);
      */
+    @FXML
     private void changePage(){
         if(highScorePageLabel.getText().equals("Current Cube")){
             populateTable(overallScores,"All Cubes");

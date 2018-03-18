@@ -439,9 +439,11 @@ public class JoggleCube implements IJoggleCube {
     }
 
     public void resetGameState(){
-        IScore score = new Score(currentScore,name);
-        currentCubeHighScores.addScore(score);
-        overallHighScores.addScore(score);
+        if(currentScore > 0){
+            IScore score = new Score(currentScore,name);
+            currentCubeHighScores.addScore(score);
+            overallHighScores.addScore(score);
+        }
         storedWords = new ArrayList<>();
         currentScore = 0;
         GameView.getInstance().getScoreLabel().setText(currentScore + "");

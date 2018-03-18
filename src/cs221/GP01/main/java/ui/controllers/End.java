@@ -91,7 +91,6 @@ public class End extends BaseOverlay implements INeedPrep {
      */
     @FXML
     void btnReplayClicked() {
-        //todo invoke a reset of the game state i.e. score, stored words etc.
         Navigation.getInstance().switchScreen(ScreenType.GAME);
         Navigation.getInstance().hideOverlay(ScreenType.END, parentController);
     }
