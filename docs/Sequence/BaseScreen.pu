@@ -1,0 +1,97 @@
+@startuml
+hide footbox
+
+title BaseScreen Action Sequences
+
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 20
+skinparam maxmessagesize 60
+
+
+actor User
+
+box "Views" #LightBlue
+
+participant HighScore
+participant Start
+participant Help
+
+end box
+
+box "User Interface Control" #LightBlue
+
+participant Navigation
+participant BaseScreen
+
+end box
+
+
+box "Back End" #c675c5
+
+participant Settings
+participant JoggleCube
+participant HighScores
+end box
+
+== Menu button clicked ==
+ User -> BaseScreen : btnMenuClicked()
+ activate BaseScreen
+    BaseScreen -> Navigation : show(ScreenType.Start)
+    activate Navigation
+        Navigation -> Start : prepView()
+        activate Start
+            Start -> Settings : getCurrLang()
+            activate Settings
+                Settings --> Start : currLang
+            deactivate Settings
+            Start --> Navigation
+        deactivate Start
+        Navigation --> BaseScreen
+    deactivate Navigation
+ deactivate BaseScreen
+
+== highScore button Clicked ==
+
+ User -> BaseScreen : btnMenuClicked()
+ activate BaseScreen
+    BaseScreen -> Navigation : show(ScreenType.Start)
+    activate Navigation
+        Navigation -> HighScore : prepView()
+            activate HighScore
+                HighScore -> JoggleCube : getOverallHighScores()
+                activate JoggleCube
+                JoggleCube -> HighScores : getScores()
+                    activate HighScores
+                        HighScores --> JoggleCube : scores
+                    deactivate HighScores
+                    JoggleCube --> HighScore : scores
+                deactivate JoggleCube
+                 HighScore -> JoggleCube : getCurrentCubeHighScores()
+                activate JoggleCube
+                    JoggleCube -> HighScores : getScores()
+                    activate HighScores
+                        HighScores --> JoggleCube : scores
+                    deactivate HighScores
+                    JoggleCube --> HighScore : scores
+                deactivate JoggleCube
+                HighScore --> Navigation
+            deactivate HighScore
+            Navigation --> BaseScreen
+    deactivate Navigation
+deactivate BaseScreen
+
+== help button clicked  ==
+
+User -> BaseScreen
+activate BaseScreen
+    BaseScreen -> Navigation : show(ScreenType.Help)
+    activate Navigation
+        Navigation -> Help : prepView()
+        activate Help
+            Help --> Navigation
+        deactivate Help
+        Navigation --> BaseScreen
+    deactivate Navigation
+deactivate BaseScreen
+
+@enduml

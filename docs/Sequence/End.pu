@@ -1,0 +1,150 @@
+@startuml
+hide footbox
+
+title End Screen Action Sequences
+
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 20
+skinparam maxmessagesize 60
+
+
+actor User
+
+box "Views" #LightBlue
+
+participant Game
+participant End
+participant HighScore
+participant Start
+end box
+
+box "User Interface Control" #LightBlue
+
+participant Navigation
+
+
+end box
+
+
+box "Back End" #c675c5
+
+participant Settings
+participant JoggleCube
+participant HighScores
+participant Score
+participant Cube
+participant Block
+end box
+
+== High Score button clicked ==
+
+User -> End : btnHighScoreClicked()
+activate End
+    End -> Navigation :  show(ScreenType.HighScore)
+    activate Navigation
+        Navigation -> HighScore : prepView()
+            activate HighScore
+                HighScore -> JoggleCube : getOverallHighScores()
+                activate JoggleCube
+                JoggleCube -> HighScores : getScores()
+                    activate HighScores
+                        HighScores --> JoggleCube : scores
+                    deactivate HighScores
+                    JoggleCube --> HighScore : scores
+                deactivate JoggleCube
+                 HighScore -> JoggleCube : getCurrentCubeHighScores()
+                activate JoggleCube
+                    JoggleCube -> HighScores : getScores()
+                    activate HighScores
+                        HighScores --> JoggleCube : scores
+                    deactivate HighScores
+                    JoggleCube --> HighScore : scores
+                deactivate JoggleCube
+                HighScore --> Navigation
+            deactivate HighScore
+            Navigation --> End
+    deactivate Navigation
+    End -> Navigation : hideOverlay(ScreenType.End)
+    activate Navigation
+        Navigation --> End
+    deactivate Navigation
+deactivate End
+
+== Menu Clicked ==
+
+User -> End : btnMenuClicked()
+activate End
+    End -> Navigation : show(ScreenType.Start)
+    activate Navigation
+        Navigation -> Start : prepView()
+        activate Start
+            Start -> Settings : getCurrLang()
+            activate Settings
+                Settings --> Start : English
+            deactivate Settings
+            Start --> Navigation
+        deactivate Start
+        Navigation --> End
+    deactivate Navigation
+    End -> Navigation : hideOverlay(ScreenType.End)
+    activate Navigation
+        Navigation --> End
+    deactivate Navigation
+deactivate End
+
+== Replay clicked ==
+User -> End : replayGrid()
+activate End
+    End -> Navigation : show(ScreenType.GAME)
+    activate Navigation
+        Navigation -> Game: prepView()
+        activate Game
+            Game -> JoggleCube : getCubeData()
+            activate JoggleCube
+                JoggleCube -> Cube : getCube()
+                activate Cube
+                    Cube --> JoggleCube : cube[3][3][3]
+                deactivate Cube
+                JoggleCube --> Game : cube[3][3][3]
+            deactivate JoggleCube
+            Game --> Navigation
+        deactivate Game
+        Navigation --> End
+    deactivate Navigation
+    End -> Navigation : hideOverlay(ScreenType.End)
+    activate Navigation
+        Navigation --> End
+    deactivate Navigation
+deactivate End
+
+== Save Clicked ==
+
+User -> End : btnSaveClicked()
+activate End
+    End -> JoggleCube : savGrid(filename)
+    activate JoggleCube
+        JoggleCube -> Cube : saveCube(outfile)
+        activate Cube
+            loop foreach Block
+                Cube -> Block : getLetter()
+                activate Block
+                    Block --> Cube
+                deactivate Block
+            end
+             Cube --> JoggleCube
+        deactivate Cube
+        JoggleCube -> HighScores : saveScore(outfile)
+        activate HighScores 
+            loop foreach score
+                HighScores -> Score : save(outfile)
+                activate Score
+                    Score --> HighScores
+                deactivate Score
+            end
+            HighScores --> JoggleCube
+        deactivate HighScores
+        JoggleCube --> End
+    deactivate JoggleCube
+deactivate End
+
+@enduml

@@ -12,7 +12,7 @@ class DictionaryTests {
 
     @BeforeEach
     public  void setUp(){
-        dic.loadDictionary("test_dictionary.txt");
+        dic.loadDictionary("test_dictionary");
     }
 
 

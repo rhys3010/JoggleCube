@@ -10,6 +10,8 @@ package cs221.GP01.main.java.ui.controllers;
 
 import cs221.GP01.main.java.model.IScore;
 import cs221.GP01.main.java.model.JoggleCube;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -127,17 +130,19 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
      * Stop users from being able to reorder table columns (temporary fix)
      * Solution used here: https://bittlife.com/javafx-disable-column-reorder-tableview/
      */
-    @SafeVarargs
+    @SuppressWarnings("unchecked")
     private static <S, T> void columnReorder(TableView table, TableColumn<S, T>... columns){
         table.getColumns().addListener(new ListChangeListener() {
             boolean suspended;
 
             @Override
+            @SuppressWarnings("unchecked")
             public void onChanged(Change change) {
                 change.next();
                 if(change.wasReplaced() && !suspended){
                     this.suspended = true;
-                    table.getColumns().setAll(columns);
+
+                    table.getColumns().setAll( (java.lang.Object[])columns);
                     this.suspended = false;
                 }
             }
@@ -158,27 +163,11 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
     }
 
     /**
-     * Advance to the next page in the Highscores list
-     *
-     */
-    @FXML
-    public void nextPage(){
-        changePage();
-    }
-
-    /**
-     * Go the previous page in the highscores list
-     */
-    @FXML
-    public void previousPage(){
-        changePage();
-    }
-
-    /**
      * Utility function to change the page of the high score table
      *
      * todo if not filtering to top 10 compare the data in table: highScoreTable.getItems().equals(overallScores);
      */
+    @FXML
     private void changePage(){
         if(highScorePageLabel.getText().equals("Current Cube")){
             populateTable(overallScores,"All Cubes");
@@ -198,19 +187,27 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
      */
 
     @Override
+    @SuppressWarnings("unchecked")
     public void initialize(URL location, ResourceBundle resources) {
         // Set Default Values for Cells
         dateCol.setCellValueFactory(
-                new PropertyValueFactory<IScore, String>("Date")
+                new PropertyValueFactory<>("Date")
         );
 
         scoreCol.setCellValueFactory(
                 new PropertyValueFactory<IScore, Integer>("Score")
         );
 
+
         nameCol.setCellValueFactory(
-                new PropertyValueFactory<IScore, String>("Name")
+                new PropertyValueFactory<>("Name")
         );
+
+        idCol.setCellValueFactory(
+                (Callback<TableColumn.CellDataFeatures<IScore, String>, ObservableValue<String>>)
+                        p -> new ReadOnlyObjectWrapper(highScoreTable.getItems().indexOf(p.getValue()) + 1 + "")
+        );
+
 
         // Prevent user from reordering table
         columnReorder(highScoreTable, idCol, nameCol, scoreCol, dateCol);

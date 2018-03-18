@@ -58,7 +58,6 @@ public class Start extends BaseScreen implements INeedPrep, Initializable {
     @Override
     public void prepView(){
         languageSelector.setValue(Settings.getCurrLang());
-        languageSelector.setOnAction(e -> Settings.setCurrLang(languageSelector.getValue()));
     }
 
 
@@ -91,6 +90,7 @@ public class Start extends BaseScreen implements INeedPrep, Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        languageSelector.setOnAction(e -> Settings.setCurrLang(languageSelector.getValue()));
         languageSelector.getItems().setAll(Settings.getLanguages());
     }
 }

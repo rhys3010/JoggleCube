@@ -1,0 +1,96 @@
+@startuml
+hide footbox
+
+title Program Launch Action Sequence
+
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 20
+skinparam maxmessagesize 60
+
+
+actor User
+
+box "Views" #LightBlue
+
+participant Start
+participant LoadGrid
+participant Game
+
+end box
+
+box "User Interface Control" #LightBlue
+
+participant Navigation
+
+end box
+
+
+box "Back End" #c675c5
+
+participant JoggleCube
+participant HighScores
+participant Score
+participant Dictionary
+participant Block
+participant Cube
+end box
+
+== Start Grid ==
+User -> LoadGrid : btnLoadGridClicked()
+activate LoadGrid
+    LoadGrid -> JoggleCube : LoadGrid(filename)
+    activate JoggleCube
+        JoggleCube -> Cube : loadCube(filename)
+        activate Cube
+            Cube --> JoggleCube
+        deactivate Cube
+        JoggleCube --> LoadGrid : true
+    deactivate JoggleCube
+
+    LoadGrid -> Navigation : show(ScreenType.Game)
+    activate Navigation
+        Navigation -> Game: prepView()
+            activate Game
+                Game -> JoggleCube : getCubeData()
+                activate JoggleCube
+                    JoggleCube -> Cube : getCube()
+                    activate Cube
+                        Cube --> JoggleCube : cube[3][3][3]
+                    deactivate Cube
+                    JoggleCube --> Game : cube[3][3][3]
+                deactivate JoggleCube
+                Game --> Navigation
+            deactivate Game
+        Navigation --> LoadGrid
+    deactivate Navigation
+deactivate LoadGrid
+
+== Refresh ==
+
+User -> LoadGrid : prepView()
+activate LoadGrid
+    LoadGrid -> JoggleCube : getRecentGrids()
+    activate JoggleCube
+        JoggleCube --> LoadGrid : listOfFiles
+    deactivate JoggleCube
+deactivate LoadGrid
+
+== Back ==
+
+User -> LoadGrid : back()
+activate LoadGrid
+    LoadGrid -> Navigation : show(ScreenType.Start)
+    activate Navigation
+        Navigation -> Start : prepView()
+        activate Start
+            Start -> Settings : getCurrLang()
+            activate Settings
+                Settings --> Start : currLang
+            deactivate Settings
+            Start --> Navigation
+        deactivate Start
+        Navigation --> LoadGrid
+    deactivate Navigation
+deactivate LoadGrid
+
+@enduml

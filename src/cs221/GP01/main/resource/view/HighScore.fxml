@@ -34,9 +34,9 @@
                <children>
                   <HBox styleClass="selectionContainer">
                      <children>
-                        <Button fx:id="leftPageNav" onAction="#nextPage" />
+                        <Button fx:id="leftPageNav" onAction="#changePage" />
                         <Label fx:id="highScorePageLabel" text="All Cubes" />
-                        <Button fx:id="rightPageNav" onAction="#previousPage" />
+                        <Button fx:id="rightPageNav" onAction="#changePage" />
                      </children>
                   </HBox>
                    <TableView fx:id="highScoreTable" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="highScoreTable">

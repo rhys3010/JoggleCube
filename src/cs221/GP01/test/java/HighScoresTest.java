@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Random;
 import java.util.Scanner;
@@ -26,7 +27,7 @@ class HighScoresTest {
     @Test
     void loadScores() throws FileNotFoundException {
 
-        Scanner file = new Scanner(new File("scoreTest.txt"));
+        Scanner file = new Scanner(getClass().getResourceAsStream("/cs221/GP01/test/resource/scoreTest.txt"));
         scoreList.loadScores(file);
 
         assertEquals(3,scoreList.getScores().size());
@@ -50,7 +51,7 @@ class HighScoresTest {
             scoreList.addScore(score);
         }
 
-        File file = new File("highscoresSaveTest.txt");
+        File file = new  File ("highscoresSaveTest.txt");
         PrintWriter pwfile = new PrintWriter(file);
         scoreList.saveScores(pwfile);
         pwfile.close();
@@ -58,19 +59,18 @@ class HighScoresTest {
         HighScores newScoreList = new HighScores();
         Scanner in = new Scanner(file);
         newScoreList.loadScores(in);
-
+        in.close();
         assertIterableEquals(scoreList.getScores(), newScoreList.getScores());
-
-
+        file.delete();
     }
 
 
     @Test
     void getHighestScore() throws FileNotFoundException {
 
-        Scanner file = new Scanner(new File("scoreTest.txt"));
+        Scanner file = new Scanner(getClass().getResourceAsStream("/cs221/GP01/test/resource/scoreTest.txt"));
         scoreList.loadScores(file);
-
+        file.close();
         assertEquals((Integer)120, scoreList.getHighestScore().getScore());
 
     }

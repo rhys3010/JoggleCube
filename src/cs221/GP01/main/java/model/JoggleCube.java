@@ -134,7 +134,8 @@ public class JoggleCube implements IJoggleCube {
         if(dictionary.searchDictionary(word)){
             storedWords.add(word);
             currentScore += getWordScore(word);
-            GameView.getInstance().getScoreLabel().setText(currentScore + "");
+            if(GameView.getInstance().getScoreLabel() != null)
+                GameView.getInstance().getScoreLabel().setText(currentScore + "");
             return true;
         }
         return false;
@@ -439,12 +440,16 @@ public class JoggleCube implements IJoggleCube {
     }
 
     public void resetGameState(){
-        IScore score = new Score(currentScore,name);
-        currentCubeHighScores.addScore(score);
-        overallHighScores.addScore(score);
+        if(currentScore > 0){
+            IScore score = new Score(currentScore,name);
+            currentCubeHighScores.addScore(score);
+            overallHighScores.addScore(score);
+        }
         storedWords = new ArrayList<>();
         currentScore = 0;
-        GameView.getInstance().getScoreLabel().setText(currentScore + "");
-        timer.resetTime();
+        if(GameView.getInstance().getScoreLabel() != null)
+            GameView.getInstance().getScoreLabel().setText(currentScore + "");
+        if(timer!=null)
+            timer.resetTime();
     }
 }
