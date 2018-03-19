@@ -1,4 +1,4 @@
-package cs221.GP01.test.java;
+package cs221.GP01.test.java.backend;
 
 import cs221.GP01.main.java.model.Dictionary;
 import org.junit.jupiter.api.BeforeEach;
