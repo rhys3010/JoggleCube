@@ -14,9 +14,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CubeTests {
 
-    Cube cube = new Cube();
+    Cube cube;
+
     @BeforeEach
-    public void load(){ cube.populateCube("en_letters");}
+    public void load() {
+        cube = new Cube("en_letters");
+        cube.populateCube();
+    }
 
     @Test
     public void testOccurrences(){
@@ -41,7 +45,7 @@ public class CubeTests {
 
     @Test
     public void testLoadBagOfLetters (){
-
+        cube = new Cube("en_letters");
         ArrayList<String> bagOfLetters = cube.getBagOfLetters();
         assertEquals(97, bagOfLetters.size());
     }
@@ -62,7 +66,7 @@ public class CubeTests {
         String[] letter = new String[3];
 
         for(int i=0; i<3; i++) {
-            cube.populateCube("en_letters");
+            cube.populateCube();
             letter[i] = cube.getBlock(0, 0, 0).getLetter();
             System.out.println(letter[i]);
         }
