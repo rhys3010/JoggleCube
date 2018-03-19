@@ -55,7 +55,7 @@ public class BaseScreen {
      * Handle the menu button press
      */
     @FXML
-    private void btnMenuClicked(){
+    public void btnMenuClicked(){
         Navigation.getInstance().switchScreen(ScreenType.START);
     }
 
@@ -63,7 +63,7 @@ public class BaseScreen {
      * Handle the highscore button being pressed
      */
     @FXML
-    private void btnHighScoreClicked(){
+    public void btnHighScoreClicked(){
         Navigation.getInstance().switchScreen(ScreenType.HIGH_SCORES);
     }
 
@@ -71,7 +71,7 @@ public class BaseScreen {
      * Handle the help button being pressed
      */
     @FXML
-    private void btnHelpClicked(){
+    public void btnHelpClicked(){
         Navigation.getInstance().showOverlay(ScreenType.HELP, this);
     }
 
@@ -79,7 +79,7 @@ public class BaseScreen {
      * Handle the settings button being pressed
      */
     @FXML
-    private void btnSettingsClicked(){
+    public void btnSettingsClicked(){
         Navigation.getInstance().showOverlay(ScreenType.SETTINGS, this);
     }
 
