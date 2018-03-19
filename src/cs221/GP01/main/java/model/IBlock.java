@@ -8,7 +8,7 @@ package cs221.GP01.main.java.model;
 
 public interface IBlock {
     /**
-     * Generates a letter using the weighted levels of the "Scrabble bag"
+     * Returns the letter in the block
      */
     String getLetter();
 
