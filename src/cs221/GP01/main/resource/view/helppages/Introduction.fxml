@@ -22,7 +22,7 @@
 <VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Label styleClass="title" text="What is Joggle Cube?" />
-      <Label prefHeight="25.0" prefWidth="94.0" styleClass="content" text="Jogglecube is a 3d word-finding game. The goal is to find the most, and most high scoring words on the cube, before time runs out!" wrapText="true" />
+      <Label wrapText="true" styleClass="content" text="Jogglecube is a 3d word-finding game. The goal is to find the most, and most high scoring words on the cube, before time runs out!" />
     </children>
     <stylesheets>
         <URL value="@../../css/HelpPage.css" />

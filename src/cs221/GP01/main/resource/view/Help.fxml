@@ -49,7 +49,7 @@
       </HBox>
    </bottom>
    <center>
-      <SubScene fx:id="helpPageContainer" height="350.0" styleClass="helpPageContainer" width="350.0" BorderPane.alignment="CENTER">
+      <SubScene fx:id="helpPageContainer" height="350.0" styleClass="helpPageContainer" width="370.0" BorderPane.alignment="CENTER">
         <root>
           <Region />
         </root>
