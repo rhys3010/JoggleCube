@@ -16,15 +16,16 @@ public class CubeTests {
 
     Cube cube;
 
+
     @BeforeEach
     public void load() {
         cube = new Cube("en_letters");
         cube.populateCube();
     }
 
+
     @Test
     public void testOccurrences(){
-
         ArrayList<String> cubeLetters = new ArrayList<>();
 
         for(int i = 0; i<3; i++) {
