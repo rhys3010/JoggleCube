@@ -66,15 +66,12 @@ class StartTest extends ApplicationTest {
         // FxRobot robot = new FxRobot();
         // lookup("#btnLoadGrid").query();
         //clickOn("#btnLoadGrid");
-
         rootNode = Navigation.getInstance().getMain().getRoot();
         Button button = from(rootNode).lookup("#btnLoadGrid").query();
         assertEquals("Load Grid", button.getText());
         clickOn(button);
         rootNode = Navigation.getInstance().getMain().getRoot();
         System.out.print(rootNode.getStylesheets());
-
-
     }
 
     @Test
