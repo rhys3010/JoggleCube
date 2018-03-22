@@ -18,6 +18,8 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.StageStyle;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -126,5 +128,14 @@ public class End extends BaseOverlay implements INeedPrep {
                 dialog.setHeaderText("Invalid Filename!, Please try again");
             }
         }
+    }
+
+    //agl6
+
+    @Test
+    public void testPrepView() {
+        prepView();
+        assertEquals(JoggleCube.getInstance().getScore() + "", scoreLabel.getText());
+        assertEquals(JoggleCube.getInstance().getHighestScore() + "", highScoreLabel.getText());
     }
 }
