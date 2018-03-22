@@ -66,7 +66,7 @@ public class Start extends BaseScreen implements INeedPrep, Initializable {
      *
      */
     @FXML
-    private void btnStartNewGridClicked() {
+    public void btnStartNewGridClicked() {
        JoggleCube.getInstance().generateRandomGrid();
         Navigation.getInstance().switchScreen(ScreenType.GAME);
     }
@@ -76,7 +76,7 @@ public class Start extends BaseScreen implements INeedPrep, Initializable {
      *
      */
     @FXML
-    private void btnLoadGridClicked() {
+    public void btnLoadGridClicked() {
         Navigation.getInstance().switchScreen(ScreenType.LOAD);
     }
 

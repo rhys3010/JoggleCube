@@ -28,8 +28,6 @@ public class Cube implements ICube{
         loadBagOfLetters(letterFilename);
     }
 
-    public Cube(){}
-
     public ArrayList<String> getBagOfLetters() {
         return bagOfLetters;
     }
@@ -46,8 +44,8 @@ public class Cube implements ICube{
     }
 
     @Override
-    public void populateCube(String letterFilename) {
-        loadBagOfLetters(letterFilename);
+    public void populateCube() {
+        //loadBagOfLetters(letterFilename);
         Random randomNumGen = new Random();
         for(int i = 0; i<3; i++){
             for(int j = 0; j<3; j++){

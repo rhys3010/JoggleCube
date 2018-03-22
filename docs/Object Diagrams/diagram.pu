@@ -1,0 +1,43 @@
+@startuml ComponetDiagram
+package "main" {
+    package "java" {
+        package "model" {
+            'classes with interfaces
+            [Block] -up- ()"IBlock"
+            [Cube] -up- ()"ICube"
+            [Dictionary] -up- ()"IDictionary"
+            [GameTimer] -up- ()"IGameTimer"
+            [HighScores] -up- ()"IHighScores"
+            [JoggleCube] -up- ()"IJoggleCube"
+            [Score] -up- ()"IScore" 
+            'relationships with interfaces
+            [HighScores] --( ()"IScore"
+            [JoggleCube] --( ()"IHighScores"
+            [JoggleCube] --( ()"IDictionary"
+            [JoggleCube] --( ()"IGameTimer"
+            [JoggleCube] --( ()"ICube"
+            [Cube] --( ()"IBlock"
+        }
+        package "ui"{
+            package "controllers"{
+                [BaseOverlay]
+                [BaseScreen]
+                [End]
+                [GameView]
+                [GridDisplayer]
+                [Help]
+                [HighScore]
+                [LoadGrid]
+                [Settings]
+                [Start]
+            }
+            [Navigation]
+            [ScreenType]
+            [Settings]
+            [UI] -up- ()"IUI"
+        }
+    }
+}
+[Main] --( ()"IJoggleCube"
+[Main] --( ()"IUI"
+@enduml

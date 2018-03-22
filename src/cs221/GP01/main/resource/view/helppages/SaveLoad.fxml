@@ -19,12 +19,12 @@
     * @version 0.1  DRAFT
 -->
 
-<VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <Label styleClass="title" text="Saving / Loading a Cube" />
-        <Label styleClass="content" text="Description Here" />
-    </children>
+<VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.121"
+      xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
-        <URL value="@../../css/HelpPage.css" />
+        <URL value="@../../css/HelpPage.css"/>
     </stylesheets>
+    <Label styleClass="title" text="Saving / Loading a Cube"/>
+    <Label wrapText="true" styleClass="content"
+           text="Different letters have different values: so the longest word you can find on a grid isn't always the highest scoring!"/>
 </VBox>

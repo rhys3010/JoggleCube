@@ -24,6 +24,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
 import java.net.URL;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 /**
@@ -120,7 +121,11 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
         if(overallScores != null) {
             populateTable(overallScores, "All Cubes");
         }
-        
+
+        // Set IScore sort type
+        scoreCol.setSortType(TableColumn.SortType.DESCENDING);
+        highScoreTable.getSortOrder().add(scoreCol);
+        scoreCol.setSortable(true);
         highScoreTable.sort();
     }
 
@@ -168,7 +173,7 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
      * todo if not filtering to top 10 compare the data in table: highScoreTable.getItems().equals(overallScores);
      */
     @FXML
-    private void changePage(){
+    public void changePage(){
         if(highScorePageLabel.getText().equals("Current Cube")){
             populateTable(overallScores,"All Cubes");
         }else if(highScorePageLabel.getText().equals("All Cubes")) {
@@ -207,17 +212,7 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
                 (Callback<TableColumn.CellDataFeatures<IScore, String>, ObservableValue<String>>)
                         p -> new ReadOnlyObjectWrapper(highScoreTable.getItems().indexOf(p.getValue()) + 1 + "")
         );
-
-
         // Prevent user from reordering table
         columnReorder(highScoreTable, idCol, nameCol, scoreCol, dateCol);
-
-        // Set IScore sort type
-        scoreCol.setSortType(TableColumn.SortType.DESCENDING);
-
-        // Sort by score
-        highScoreTable.getSortOrder().add(scoreCol);
-
-        scoreCol.setSortable(true);
     }
 }
