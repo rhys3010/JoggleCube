@@ -1,0 +1,78 @@
+\begin{appendices}
+\section{Dictionary Example} \label{DictionaryExample}
+    A dictionary file might look something like this:\newline
+    APRON\newline
+    BARBECUE\newline
+    CHILLI\newline
+    DANDELION\newline
+    EGG\newline
+    FRY\newline
+    GRASS
+    
+    All of these words would be loaded in and handled as a dictionary in a HashMap.
+\section{LetterBag Example} \label{LetterBagExample}
+    A LetterBag file might look something like this:\newline
+    A 9 1\newline
+    B 2 3\newline
+    C 2 3\newline
+    D 4 2\newline
+    E 12 1\newline
+    F 2 4\newline
+    G 3 2\newline
+    H 2 4\newline
+    I 9 1
+    
+    So, for example, A would be loaded into the bag 9 times and the score associated on the backend would be 1, as that is the scrabble score, and so on for the rest of the file.
+\section{Cube Example} \label{CubeExample}
+    A saved Cube/Grid might look something like this:\newline
+    en\newline
+    E R T\newline
+    L A P\newline
+    O Qu T\newline
+    M N B\newline
+    L A P\newline
+    A U I\newline
+    Z M A\newline
+    Y T R\newline
+    D F G
+    
+    This is a Cube without any current high scores, but the cube is in English and the position [0][0][0] is E whilst [2][2][2] is G, it is set up to be easy to interpret from the file.
+    \newline% The Appendix needed to go to the next page and I forgot the thing to automatically do it so I did this janky method - Sam
+    \newline
+    \newline
+    \newline
+    \newline
+    
+      However, the Cube/Grid file with scores might look something like this:\newline
+    en\newline
+    D O A\newline
+    X R C\newline
+    F E Z\newline
+    W P A\newline
+    E U I\newline
+    S I V\newline
+    E Y G\newline
+    N L G\newline
+    D J O\newline
+    2018/03/14 22:42 591 James\newline
+    2018/03/14 22:50 1744 Moses
+
+    This shows that Moses got a score of 1744 on this grid at 22:50 on 14/03/2018. These scores are then loaded and visible but the way they are parsed is discussed in Section \ref{LoadGrid}
+\section{(High) Scores Example} \label{HighScoresExample}
+    The overAll.highscores file might look something like this:
+    
+    2018/03/19 15:59 1825 Walter\newline
+    2018/03/14 22:50 1744 Moses\newline
+    2018/03/14 22:42 591 James\newline
+    2018/03/14 22:46 367 Jamie\newline
+    2018/03/18 11:54 85 Walter
+
+    You can see how there have been 5 games with a score greater than 0 that have been played on this user account of this machine at least since the last time overall scores were cleared.
+    
+    The other scores are handled exactly the same at the end of a Cube(Shown in Appendix \ref{CubeExample}) but you might see them in the file like this:
+    
+    2018/03/14 22:46 367 Jamie\newline
+    2018/03/18 11:54 85 Walter
+    
+    This is obviously after the gid information and the format of saving the high score data is the same between overAll and all the grid's individual scores. This Cube has 2 scores where Jamie got a score of 367 at 22:46 on 14/03/2018 and Walter got a score of 85 at 11:54 on 18/03/2018.
+\end{appendices}
