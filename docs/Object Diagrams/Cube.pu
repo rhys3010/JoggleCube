@@ -1,6 +1,6 @@
 @startuml Obect Diagram
 
-object app
+object main
 object ui
 object navigation
 
@@ -39,16 +39,16 @@ object score2 {
     date="03/03/18 15:00"
 }
 
-joggleCube --> gridScores
-joggleCube --> overallScores
-joggleCube --> cube
+joggleCube --> "1" gridScores
+joggleCube --> "1" overallScores
+joggleCube --> "1" cube
 
 gridScores --> "∞" score1
 overallScores --> "∞" score2
 
 cube --> "27" block
 
-app --> joggleCube
-app --> ui
-ui --> navigation
+main --> "1" joggleCube
+main --> "1" ui
+ui --> "1" navigation
 @enduml

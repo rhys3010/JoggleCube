@@ -82,7 +82,7 @@ public class JoggleCube implements IJoggleCube {
     //Start Random Game
     public void generateRandomGrid() {
         //Populate the cube randomly
-        cube.populateCube(language + "_letters");
+        cube.populateCube();
         storedWords = new ArrayList<>();
         currentCubeHighScores = new HighScores();
     }
