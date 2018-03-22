@@ -22,23 +22,34 @@
     * @version 0.1  DRAFT
 -->
 
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.shape.Box?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.paint.PhongMaterial?>
 <VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <Label styleClass="title" text="Cube Colouring" />
-      <VBox>
-         <children>
-            <Label prefHeight="13.0" prefWidth="200.0" text="      Selectable Cube                  Currently Selected Cube           Previously Selected Cube">
-               <font>
-                  <Font size="5.0" />
-               </font></Label>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/help/Cubes_1.png" />
-               </image>
-            </ImageView>
-         </children>
-      </VBox>
-    </children>
+    <Label styleClass="title" text="Cube Colouring" />
+      <GridPane alignment="CENTER" hgap="20" vgap="20">
+          <Label styleClass="content" wrapText="true" text="Selectable Cube" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+          <Box translateX="40" GridPane.columnIndex="0" GridPane.rowIndex="1" width="30" height="30" depth="30" rotate="45">
+              <rotationAxis><Point3D x="0.3" y="-1.0" /></rotationAxis>
+              <material><PhongMaterial diffuseColor="deepskyblue"/></material>
+          </Box>
+          <Label styleClass="content" wrapText="true" text="Not Selectable Cube" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+          <Box  translateX="40" GridPane.columnIndex="1" GridPane.rowIndex="1" width="30" height="30" depth="30" rotate="45">
+              <rotationAxis><Point3D x="0.3" y="-1.0" /></rotationAxis>
+              <material><PhongMaterial diffuseColor="grey"/></material>
+          </Box>
+          <Label styleClass="content" wrapText="true" text="Currently Selected Cube" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+          <Box  translateX="40" GridPane.columnIndex="0" GridPane.rowIndex="3" width="30" height="30" depth="30" rotate="45">
+              <rotationAxis><Point3D x="0.3" y="-1.0" /></rotationAxis>
+              <material><PhongMaterial diffuseColor="green"/></material>
+          </Box>
+          <Label styleClass="content" wrapText="true" text="Previously Selected Cube" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+          <Box translateX="40" GridPane.columnIndex="1" GridPane.rowIndex="3" width="30" height="30" depth="30" rotate="45">
+              <rotationAxis><Point3D x="0.3" y="-1.0" /></rotationAxis>
+              <material><PhongMaterial diffuseColor="lightgreen"/></material>
+          </Box>
+      </GridPane>
     <stylesheets>
         <URL value="@../../css/HelpPage.css" />
     </stylesheets>
