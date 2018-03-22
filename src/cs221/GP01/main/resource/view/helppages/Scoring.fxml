@@ -10,6 +10,8 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
 <!--
@@ -19,12 +21,16 @@
     * @version 0.1  DRAFT
 -->
 
-<VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <Label styleClass="title" text="Scoring System" />
-        <Label styleClass="content" text="Description Here" />
-    </children>
+<VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.121"
+      xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
-        <URL value="@../../css/HelpPage.css" />
+        <URL value="@../../css/HelpPage.css"/>
     </stylesheets>
+    <Label styleClass="title" text="Scoring System"/>
+    <VBox styleClass="content">
+        <Label styleClass="title" text="Letter Values:"/>
+        <ImageView fitWidth="370.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../img/help/PointsTable.png"/>
+        </ImageView>
+    </VBox>
 </VBox>

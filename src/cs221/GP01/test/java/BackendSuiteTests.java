@@ -7,8 +7,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(JUnitPlatform.class)
 
-@SelectPackages("cs221.GP01.test.java")
+@SelectPackages({"cs221.GP01.test.java.backend"})
 
-public class SuiteTest {
+public class BackendSuiteTests {
 
 }

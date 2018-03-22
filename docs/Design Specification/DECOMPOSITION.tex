@@ -1,0 +1,35 @@
+\section{DECOMPOSITION DESCRIPTION}
+	\subsection{Programs in system}
+    There is only one part of this program that can effectively be called a program and that is the overall JoggleCube program itself.
+    	\subsubsection{JoggleCube}
+        The only part of this project that you could effectively call a program is the JoggleCube program itself, which is an all-encompassing, all performing program that does everything that is set forth in the functional requirements of this document. The Program runs using Java 1.8 and up when compiled and will effectively be the game program, it pops up in a window where you can play JoggleCube.
+	\subsection{Significant classes in each program}
+    Since there is only one program present in the project I will be discussing the major classes of the JoggleCube program.
+		\subsubsection{Significant classes in JoggleCube}
+        There will be 6 major classes present in the JoggleCube program, namely Main, JoggleCube, Start, Game and End.
+        	\paragraph{Main}
+            Main is the class in which the program is launched and you will find that this class is used primarily as a method of loading in different resources for the program and making sure that the correct objects have been created together. In essence, this is the major backbone of the program. It creates the backbones of both frontend and backend and allows the main part of the program to be actually relatively tidy when it comes to everything working together.
+            \paragraph{JoggleCube}
+            JoggleCube is the main class that handles all backend communication with the front end. If you need access to Dictionary, Timer, HighScores or any other backend feature you will need to go via this class. This class will handle both the start and end of the game and should be making sure that this is pushed to the front end, this class should also handle how any core back-end feature interacts with other core-backend features.
+            \paragraph{Start}
+            Start is where you can navigate to create a new gird, load a grid, change the grid language, view high scores and go to help screen. This is effectively the class that allows the game to start handling the front-end generation and handles the basic menu functionality of the game.
+            \paragraph{Game}
+            Game displays everything to do with the actual game and it does all the passing to the backend of the main gameplay. It also handles the creation of the timer and when the timer should stop and start. The Game is essentially the front-end game controller which handles the generation of the cube in different ways as well as the displaying of any in-game features.
+            \paragraph{End}
+            End handles the end game screen, giving you the restart option, the display of scores as well as saving and returning to the main menu, however not as central as other classes the End is main class as without it the game wouldn't properly end and a lot of functional requirements are missing.
+	\subsection{Mapping from requirements to classes}
+    	\begin{tabular}{|l|l|}
+        	\hline
+            Requirement & Classes providing requirement \\ \hline \hline
+            FR1 &  Start\\ \hline
+            FR2 & JoggleCube, Cube\\ \hline
+            FR3 &  LoadGrid, JoggleCube, Cube\\\hline
+            FR4 & GameTimer, JoggleCube\\ \hline
+            FR5 & End\\ \hline
+            FR6 & End, JoggleCube, Block\\ \hline
+            FR7 & Game, GridDisplayer\\ \hline
+            FR8 & Game\\ \hline
+            FR9 & Game, GridDisplayer, JoggleCube\\ \hline
+            FR10 & JoggleCube\\ \hline
+            FR11 & JoggleCube\\ \hline
+        \end{tabular}

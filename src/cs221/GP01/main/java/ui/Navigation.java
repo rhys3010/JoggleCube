@@ -65,6 +65,10 @@ public class Navigation implements IViewNavigation{
      */
     private Scene main;
 
+    public Scene getMain() {
+        return main;
+    }
+
     public HashMap<ScreenType, FXMLLoader> getScreens() {
         return screens;
     }

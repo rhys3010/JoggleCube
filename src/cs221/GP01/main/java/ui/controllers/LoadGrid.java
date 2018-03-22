@@ -72,7 +72,7 @@ public class LoadGrid extends BaseScreen implements INeedPrep {
      * @see GameView
      */
     @FXML
-    void btnStartGridClicked() {
+    public void btnStartGridClicked() {
         if(JoggleCube.getInstance().loadGrid(fileName)){
             Navigation.getInstance().switchScreen(ScreenType.GAME);
         } else {
@@ -88,7 +88,7 @@ public class LoadGrid extends BaseScreen implements INeedPrep {
      * @see Start
      */
     @FXML
-    private void btnBackClicked() {
+    public void btnBackClicked() {
         Navigation.getInstance().switchScreen(ScreenType.START);
     }
 

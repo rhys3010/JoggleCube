@@ -117,7 +117,7 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
      * Handles the close button of the overlay being clicked
      */
     @FXML
-    private void closeBtnClicked(){
+    public void closeBtnClicked(){
         Navigation.getInstance().hideOverlay(ScreenType.HELP, parentController);
     }
 
@@ -127,7 +127,7 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
      * page
      */
     @FXML
-    private void btnRightNavClicked(){
+    public void btnRightNavClicked(){
         // Increment the page index
         currentPageIndex++;
 
@@ -144,7 +144,7 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
      * page
      */
     @FXML
-    private void btnLeftNavClicked(){
+    public void btnLeftNavClicked(){
         currentPageIndex--;
 
         // Make sure the value is within the bounds of the array (if not loop around)

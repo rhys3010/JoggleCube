@@ -72,7 +72,7 @@ public class End extends BaseOverlay implements INeedPrep {
      * @throws IOException - if FXML file could not be found/opened
      */
     @FXML
-    void btnHighScoreClicked()  {
+    public void btnHighScoreClicked()  {
         Navigation.getInstance().switchScreen(ScreenType.HIGH_SCORES);
         Navigation.getInstance().hideOverlay(ScreenType.END, parentController);
     }
@@ -83,7 +83,7 @@ public class End extends BaseOverlay implements INeedPrep {
      * @see Start
      */
     @FXML
-    void btnMenuClicked(){
+    public void btnMenuClicked(){
         Navigation.getInstance().switchScreen(ScreenType.START);
         Navigation.getInstance().hideOverlay(ScreenType.END, parentController);
     }
@@ -92,7 +92,7 @@ public class End extends BaseOverlay implements INeedPrep {
      * When the 'replay' button is clicked restart a game
      */
     @FXML
-    void btnReplayClicked() {
+    public void btnReplayClicked() {
         Navigation.getInstance().switchScreen(ScreenType.GAME);
         Navigation.getInstance().hideOverlay(ScreenType.END, parentController);
     }
@@ -101,7 +101,7 @@ public class End extends BaseOverlay implements INeedPrep {
      * When the 'save' button is clicked prompt user to chose a save location
      */
     @FXML
-    void btnSaveClicked(){
+    public void btnSaveClicked(){
         TextInputDialog dialog = new TextInputDialog("untitled");
         dialog.setTitle("Text Input Dialog");
         dialog.setHeaderText("Save Cube");

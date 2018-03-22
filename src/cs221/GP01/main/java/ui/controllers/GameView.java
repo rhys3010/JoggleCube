@@ -100,14 +100,14 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     private ContextMenu hamburgerContext;
 
     @FXML
-    private void btnClearClicked() {
+    public void btnClearClicked() {
         textField.setText("");
         gridDisplayer.setAllActive();
     }
 
 
     @FXML
-    private void btnSubmitClicked() {
+    public void btnSubmitClicked() {
         if (!textField.getText().equals("") && JoggleCube.getInstance().testWordValidity(textField.getText())) {
             foundWords.add(textField.getText());
             btnSubmit.setStyle("-fx-background-color: -fx-valid-color;");
@@ -144,7 +144,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
      * Handles the hamburger menu being clicked
      */
     @FXML
-    private void btnMenuClicked() {
+    public void btnMenuClicked() {
         // Get the coordinates of the menu button
         Point2D screenPos = menuButton.localToScreen(menuButton.getLayoutX(), menuButton.getLayoutY());
 
@@ -156,7 +156,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
      * Handles the explode button being clicked
      */
     @FXML
-    private void btnExplodeClicked() {
+    public void btnExplodeClicked() {
         gridDisplayer.toggleExplode();
     }
 
@@ -165,7 +165,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
      * When the End Game option is clicked it will load the EndGui scene.
      */
     @FXML
-    private void btnEndGameClicked() {
+    public void btnEndGameClicked() {
         // Display 'are you sure' overlay
         Alert sureAlert = new Alert(Alert.AlertType.CONFIRMATION);
         sureAlert.setTitle("Quit Game");

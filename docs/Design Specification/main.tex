@@ -1,0 +1,71 @@
+\documentclass{project}
+\usepackage[toc,page]{appendix}
+\usepackage[pdfauthor={Sam - srj12, Nathan - naw21},pdftitle={Software Engineering Group Project, Design Specification},pdftex]{hyperref}
+
+\usepackage{graphicx}
+\usepackage{rotating}
+\graphicspath{{images/}}
+%use this where you need to include images after putting the image in the images folder
+%\includegraphics[width=\textwidth]{filename}
+
+%YOU SHOULDN't NEED TO EDIT THIS FILE, OTHER THAN TO ADD YOURSELF AS AUTHOR. or write intro or document history%
+
+\title{Software Engineering Group Project}
+\subtitle{Design Specification}
+\author{
+	Sam Jones - srj12, \newline
+	Nathan Williams - naw21, \newline
+    Rhys Evans - rhe24, \newline
+    Alex Thumwood - alt38, \newline
+    Aleksandra Madej - alm82, \newline
+    Lampros Petridis - lap12, \newline
+    Cameron Humphreys - cah27
+}     
+\shorttitle{Design Spec}
+\version{1.0}
+\status{Review}
+\date{2018-03-08}
+\configref{GP01-UIS-DS}
+
+\begin{document}	
+	\maketitle
+	\tableofcontents
+	\clearpage
+	\section{INTRODUCTION} % Alex - DONE
+		\subsection{Purpose of this Document}
+        The purpose of this document is to describe in detail the implementation of the software JoggleCube. JoggleCube is a single player word finding game aimed a Second-Year computer science students. 
+		\subsection{Scope}
+        	This document describes the functions of the software 'JoggleCube' and the implementation of said functions, including the classes, interfaces and controllers used both in the back end and the UI of the software, and the relationships between entities within the software. It also provides an explanation of the algorithms used in the implementation of the software's logic and examples of some of the data input/output from the class methods using these algorithms. It should be read in the context of the Jogglecube Requirements Specification [SE.QA.CSRS] in regards to required functionalities. 
+     
+		\subsection{Objectives}
+			This Document aims to:
+			\begin{itemize}
+				\item  Describe the overall structure of the JoggleCube application, in terms of classes, interfaces and controllers.
+                \item Describe how each feature of the application has been implemented, and how these features match the requirements specified in SE.QA.CSRS.
+                \item Describe exactly how the software works at runtime, with relevant diagrams. 
+                
+			\end{itemize}
+	\include{DECOMPOSITION} % Sam    - DONE
+	\include{DEPENDENCY} % Alex 
+	\include{INTERFACE} % Rhys + Lampros + Aleksandra 
+	\include{DETAILED} % Nathan - UML Sequence and Object + Sam - UML Class diagram, Algorithms and Data Persistence.
+    \include{APPENDIX} %Sam
+	\addcontentsline{toc}{section}{REFERENCES}
+	\begin{thebibliography}{5}
+		\bibitem{SE.QA.CSRS} \emph{Software Engineering Group Projects}
+JoggleCube Game Requirements Specification.
+C. J. Price SE.QA.CSRS. 1.0 Release.
+	\end{thebibliography}
+	\clearpage
+	\addcontentsline{toc}{section}{DOCUMENT HISTORY}
+	\section*{DOCUMENT HISTORY}
+	\begin{tabular}{| l | l | l | l | l |}
+		\hline
+		Version & CCF No. & Date & Changes made to Document & Changed by \\
+		\hline
+		0.1 & N/A & 2018-03-08 & Initial creation & NAW21 \\ \hline
+        0.2 & N/A & 2018-03-19 & Filled with content & All \\
+		\hline
+	\end{tabular}
+	\label{thelastpage}
+\end{document}

@@ -1,0 +1,200 @@
+\section{INTERFACE DESCRIPTION}
+	\subsection{Model}
+		\subsubsection{JoggleCube interface specification}
+        	This is the main class of the system, it is responsible for managing the logic of the game and it's behaviour. This class implements the singeton design pattern.
+         \begin{itemize}
+         	\item  public void generateRandomGrid() - A public method to generate a new random grid and initialize various game elements. 
+            \item public boolean loadGrid(String filename) - A method to load all the data needed to create a grid from a file, this also loads all the highscores associated with a given grid.
+            \item public boolean testWordValidity(String word) - A method to test if a inputted word is valid by doing a search of the Dictionary and checking if the word was already used.
+            \item public String[][][] getCubeData() - A method to return the currently loaded grid data in a 3D String array representation.
+            \item public ObservableList<IScore> getOverallHighScores() - A method that returns an unsorted ArrayList of overall high scores.
+            \item public ObservableList<IScore> getCurrentCubeHighScores() - A method that returns an unsorted ArrayList of high scores for the currently loaded cube.
+            \item pubic ObservableList<String> getAvailableGrids() - A method that returns a list of all the .grid files found in the 'saves' directory that are available for loading.
+            \item public boolean saveGrid(String filename) - A method to save the current grid data to a file
+            \item public void saveOverallScores() - A method to save the overall high scores of the game to a file.
+            \item public void loadOverallScores() - A method to load all the overall highscores from a file and store in an ArrayList.
+            \item public int getHighestScore() - A method to get the highest score value from the overall highscores ArrayList.
+            \item public void setName(String name) - A method to set the name of the current user.
+            \item public void startTimer() - A method to start the game timer to be called when the game starts.
+            \item public void interruptTimer() - A method to stop the game timer.
+            \item public void setLanguage(String lang) - A method to set the current language of the grid.
+            \item public int getWordScore(String word) - A method to get the score value of a given word.
+            \item public int getScore() - A method to return the user's current score.
+            \item public void loadNewDictionary() - A method to Load a dictionary of the currently selected language.
+            \item public void resetGameState() - A method to re-initialize the game when a new game is started.
+         \end{itemize}
+        
+        
+		\subsubsection{Dictionary interface specification} %Aleksandra    
+        This public class is responsible for handling dictionary of valid words that can be created in the game, including loading and searching it.
+        \begin{itemize}
+        \item Dictionary() - creates an empty Dictionary object
+\item  int getDictionarySize() - returns the size of dictionary HashMap
+\item  void loadDictionary(String filename) - loads the dictionary from a file with the given name into the HashMap
+\item boolean searchDictionary(String word) - takes a word as an argument and checks if it exists if the dictionary. Returns true if the HashMap contains the word and false otherwise.
+
+	\end{itemize}
+        \subsubsection{Block interface specification} % Aleksandra
+        This public class is responsible for for handling single blocks in the cube.
+        \begin{itemize}
+        \item Block(String newLetter) - creates a new block containing a given letter
+\item  void setLetter(String newLetter) - takes a new letter as an argument and sets a letter in a block to the new letter
+\item  String getLetter() - returns the letter in a block
+
+		\end{itemize}
+        \subsubsection{Cube interface specification} % Aleksandra
+        This public class is responsible for handling creation, loading and saving the cube in the game, as well as storing scores assigned to each letter in the cube.
+        \begin{itemize}
+        \item  Cube() - creates an empty Cube object
+\item  Cube ( String letterFilename ) - creates a Cube object from a file with the given name. File should contain letters that cube can be filled with as well as maximum population and score for each letter
+\item  ArrayList $\langle String\rangle$ getBagOfLetters() - returns an ArrayList containing maximum number of occurences of each letter that can be used to fill the cube
+\item  Block getBlock(int x, int y, int z) - takes coordinates for each dimension and returns a single Block object at this position.
+\item  Block[][][] getCube() - Returns a Cube as a multi-dimensional array of Block objects
+\item  ArrayList$\langle int[ ] \rangle$ getNeighbours(int x, int y, int z) - takes coordinates of a block as arguments and returns an ArrayList of arrays containing coordinates of all adjacent blocks.
+\item  HashMap $\langle String, String \rangle$ getScores() - returns a HashMap of letters and assigned to them scores
+\item  boolean loadCube(Scanner file) - takes a file as an argument and fills the cube with letters from that file.
+\item  void populateCube(String letterFilename) - takes a name of file containing letters, their population and scores and generates a random cube with those letters.
+\item  boolean saveCube(PrintWriter file) - takes a file as an argument and saves cube data into it
+\item  void setBlock(int x, int y, int z, Block block) - takes coordinates of a block and new block and sets block at given position to the new block
+\item  void setLanguage(String language) - sets the language of the cube to the given language
+
+        \end{itemize}
+        \subsubsection{HighScores interface specification} % Lampros? and Sam.
+        This public class is used to handle the high scores, loading, saving, setting and giving of the high scores is all handled by this class.
+        \begin{itemize}
+        	\item public void loadScores() - The way highscores are loaded is by calling loadScores in the HighScores class.  The specified file containing the scores is then located, the scores are read in and saved in the scores arraylist.
+            \item public void saveScores() - The highscores are saved by calling saveScores in the HighScores class which then writes each score from the score arraylist to a file in a specified location using saveScore in the Score class.
+            \item public void addScore() - An individual score can be added by calling addScore in the HighScores class. The score is then added to the score arraylist.
+            \item public void getScore(int i) - The highest score can be returned by calling getHighestScore in the HighScores class which then sorts the arraylist and returns the highest score in record.
+        \end{itemize}
+        \subsubsection{Score interface specification} % Lampros? + Sam
+        The score interface class implements the Score class. The interface class can return the date, the score, the name and as well as save the score to a file by calling methods from the score class.
+        \begin{itemize}
+        	\item getDate() - The way the date of a score is returned is by calling getDate in the Score class. The called method then returns the date of a given high score entry.
+            \item getScore() - The value of a score can be returned by calling getScore in the Score class which then returns the score value of a given high score entry.
+            \item getName() - The way the name of a score holder is returned is by calling getName in the Score clas which then returns the name of a given high score holder.
+            \item saveScore() - A score can be saved in a file by calling saveScore in the Score class. The called method then prints the date, the score and the name in a specified file which then can be read in so that the score is loaded.
+        \end{itemize}    
+        \subsubsection{GameTimer interface specification} % Cameron
+        This public class is responsible for the creation, running and termination of the in-game timer. The public methods within the class are as follows.
+        \begin{itemize}
+       		    \item public void setCurrentTime(Duration currentTime) - A public method that takes a single parameter 'currentTime'  which sets how long the timer will count down for.  currentTime is a Duration.
+      		    \item public Duration getCurrentTime() - A public method that returns the Duration currentTIme.
+     		    \item public boolean isInterrupt() - A public method returns a boolean that is used to check if the game timer has been interrupted.
+   			    \item public void resetTime() - A public method that sets currentTime to a Duration of 180 seconds.
+                \item public void startTimer() - A public method that starts and counts down the game timer. This method is run in its own seperate thread.
+  				\item public void finishTimer() - A public method that calls the end of the game.
+ 				\item public void run() - A public method that allows 'startTimer()' to be ran in a seperate thread.
+ 				\item public void interrupt() - A method that sets the boolean 'interrupt' to 'true'.
+ \end{itemize}
+    \subsection{High Level UI}
+    	\subsubsection{Navigation interface specification}
+        	Navigation is a public singleton class used to control the screens that are being displayed by the system. This class has several public methods which are outlined below.
+            \begin{itemize}
+            	\item public Navigation getInstance() - A static method that gets the instantiated instance of the Navigation singleton.
+                \item public void setMainScene(Scene main) - A public method that takes a single parameter 'main' - this is an FXML object ('Scene'), it is then assigned it as the main scene of the system.
+                \item public void add(ScreenType name, FXMLLoader loader) - A public method that adds a given scene to the system as an FXMLLoader object.
+                \item public void remove(ScreenType name) - This method removes a given scene from the system.
+                \item public void switchScreen(ScreenType newScreen) - This method changes the currently visible screen by replacing the root FXML node of the main scene with the screen specified in the parameter.
+                \item public void showOverlay(ScreenType overlay, BaseScreen parent) - This method has two parameters, one to specify the overlay to be shown and another to specify the controller of the overlay's parent screen. The method uses these parameters to show an overlay and disable the background scene.
+                \item public void hideOverlay(Screentype overlay, BaseScreen parent) - Similarly to the above method, hideOverlay() removes the overlay that was previously added to the scene.
+            \end{itemize}
+            
+        \subsubsection{UI interface specification}
+        	UI is a public singleton class to behave as a mediator between the game's logic and the game's display.
+            \begin{itemize}
+            	\item public UI getInstance() - A public method to implement the class' singleton design pattern.
+                \item public void initialize(Scene main) - A public method to initialize the system by creating the necessary JavaFX FXML scenes. The scenes are created as FXMLLoder objects which are used to load the relevant .fxml file.
+            \end{itemize}
+            
+    \subsection{FXML Controllers}
+   		The following classes are used as FXML controller classes to add behaviour to various FXML nodes (buttons, dropdowns etc.). All controller classes implement the Singleton design pattern.
+        \subsubsection{BaseOverlay interface specification}
+        	A public class that will be a parent class to all overlay controllers.
+            \begin{itemize}
+            	\item public void setParentController(BaseScreen parent) - A public method to set the parent controller of any given overlay.
+            \end{itemize}
+                
+        \subsubsection{BaseScreen interface specification}
+        	Similarly to 'BaseOverlay', this is a public parent class for all non-overlay FXML controllers.
+            \begin{itemize}
+            	\item public StackPane getRoot() - A public method to return the root node of the FXML scene.
+                \item public Node getMainNode() - A public method to return the main node of the FXML scene, the main node is specified in the FXML file.
+            \end{itemize}
+
+        \subsubsection{EndView interface specification}
+        	This is the controller class for the 'End' FXML file, it displays an overlay that is shown when the game ends. It extends the 'BaseOverlay' class.
+            \begin{itemize}
+            	\item public void prepView() - A public method that is called before the FXML scene is displayed, it initializes the scene by setting label text/colour etc.
+                \item public void btnHighScoreClicked() - A public method that is called when the 'View Highscores' button is clicked, it changes the scene of the game and closes the overlay.
+                \item public void btnMenuClicked() - A public method to switch the scene of the game to the start screen, it is called when the 'menu' button is clicked.
+                \item public void btnReplayClicked() - A public method to restart the game, it causes the overlay to be closed and the game screen to be reinitialized.
+                \item public void btnSaveClicked() - A public method to save the grid that was just played to file.
+            \end{itemize}
+
+        \subsubsection{GameView interface specification}
+        	A public singleton class for the 'GameView' FXML file, it handles the displaying of the main game screen. It extends the 'BaseScreen' class.
+            \begin{itemize}
+            	\item public void btnClearClicked() - A public method that is called when the 'clear' button is clicked, it will clear the user's current selection.
+                \item public void btnSubmitClicked() - A public method that is called when the 'submit' button is clicked, it will do some basic validation and begin the submission behaviour of the game.
+                \item public void btnMenuClicked() - A public method that is called when the hamburger menu is clicked, it will show a context menu with various game/navigation options.
+                \item public void btnExplodeClicked() - A public method that is called when the 'explode/implode' icon is clicked, it will cause the 3D cube representation to explode/implode.
+                \item public void btnEndGameClicked() - A public method that is called when the 'Quit' option is clicked in the context menu.
+                \item public void prepView() - A public method called to initialize the FXML scene by setting label content/colours etc.
+                \item public Label getScoreLabel() - A public method that returns the FXML node object of the score label
+                \item public Label getTimerLabel() - A public method that returns FXML node object of the timer label.
+                \item public TabPane getCubeContainer() - A public method that returns the FXML node object of the cube's container.
+                \item public ObservableList<String> getFoundWords() - A public method to return an Observable List of the verified found words.
+            \end{itemize}
+
+        \subsubsection{GridDisplayer interface specification}
+        	A public class to handle the displaying of the game's various grid representations.
+            \begin{itemize}
+            	\item public GridDisplayer(TextField field, GridPane[] two, GridPane[] twoFive, SubScene sub, Group group, BorderPane b, Button explode) - The constructor for the GridDisplayer class, passes the various FXML nodes that are needed to handle the display.
+                \item public void buildGrids(String[][][] letters) - A public method that does most of the heavy lifting to create the different representations for the grid.
+                \item public void toggleExplode() - A public method to explode/implode the 3D cube representation of the grid. Its behaviour varies depending on the current state of the cube.
+            \end{itemize}
+ 
+        \subsubsection{Help interface specification}
+        	This is the controller class for the 'Help' FXML scene it handles all events on the help overlay and also handles the navigation of individual help pages. It extends the 'BaseOverlay' class.
+            \begin{itemize}
+            	\item public Help() - The constructor for the class, it adds the fxml files for all individual help pages.
+                \item public void initialize() - A public method to initialize the overlay by creating the elements required for the help-page carousel.
+                \item public void prepView() - A public method that is called each time the overlay is opened to reset the carousel index.
+                \item public void closeBtnClicked() - A public method that is called when to remove the overlay when the 'close' button is clicked.
+                \item public void btnRightNavClicked() - A public method that is called when the right navigational button of the carousel is clicked.
+                \item public void btnLeftNavClicked() - A public method that is called when the left navigational button of the carousel is clicked.
+            \end{itemize}
+
+        \subsubsection{HighScore interface specification}
+        	This is the controller class for the High Score FXML scene, it handles the displaying of various high score tables and their navigation. This class extends 'BaseScreen'
+        	\begin{itemize}
+            	\item public void prepView() - A public method called whenever the high score scene is displayed, it retrieves an updated list of the overall highscores and the highscores for the current grid, it also sorts the tables by score.
+                \item public void changePage() - A public method called when the navigational buttons for the highscore table are pressed. It switches the table between Overall High Scores and Cube-Specific High Scores.
+                \item public void initialize() - A public method called when the program loads to create the table itself and prevent the columns from being re-ordered. This class extends the 'Base Screen' class.
+            \end{itemize}
+                
+        \subsubsection{LoadGrid interface specification}
+        	This is the controller class for the FXML Load scene, it is responsible for displaying the grids available for load and allowing the user to play a loaded grid.
+            \begin{itemize}
+            	\item public void prepView() - A public method that is called whenever the Load screen is displayed, it populates the list of available grids to load.
+                \item public void btnStartGridClicked() - A public method that is called when the 'Start' button is clicked, the method will start and initialize the game  screen.
+                \item public void handleMouseClicked() - A public method that is called when the user selects an item from the grid files list.
+                \item public void showError(String message) - A public method used to open an alert dialog to display a specified message passed as a parameter.
+            \end{itemize}
+            	
+        \subsubsection{Settings interface specification}
+        	This is the controller for the settings overlay, it extends the class 'BaseOVerlay' and handles all the button presses on the overlay.
+            \begin{itemize}
+            	\item public void closeBtnClicked() - A public method that is called when the close button is pressed, this method will remove the overlay.
+                \item public void clearHighScoreClicked() - A public method that is called when the 'Clear High Scores' button is pressed, it will clear the currently saved highscores 
+            \end{itemize}
+
+        \subsubsection{Start interface specification}
+        	This is the controller class for the Start Menu FXML scene, it handles various navigation and some configuration. It extends the 'BaseScreen' class.
+            \begin{itemize}
+            	\item public void prepView() - A public method that is called every time the start scene is displayed, it sets the value of the language selector to the user's preferred language.
+                \item public void btnStartNewGridClicked() - A public method that is called when the 'start new grid' button is pressed, it initializes the game and switches screens to the game scene.
+                \item public void btnLoadGridClicked() - A public method that is called when the 'load grid' button is pressed, it switches to the 'load' scene.
+                \item public void initialize() - A public method that is called when the program is loaded to initialize the language selector.
+            \end{itemize}
