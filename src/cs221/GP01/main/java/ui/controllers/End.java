@@ -104,8 +104,7 @@ public class End extends BaseOverlay implements INeedPrep {
         dialog.setTitle("Text Input Dialog");
         dialog.setHeaderText("Save Cube");
         dialog.setContentText("Please enter a filename:");
-        // todo: make this call using proper URI to allow for those dodgy PCs
-        dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("../../../resource/img/icon/save_icon_alt.png"))));
+        dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/cs221/GP01/main/resource/img/icon/save_icon_alt.png"))));
         dialog.initStyle(StageStyle.UNDECORATED);
 
         // get result from text box
