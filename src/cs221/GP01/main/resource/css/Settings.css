@@ -65,21 +65,6 @@
     -fx-text-fill: white;
 }
 
-
-.settingsContainer .volumeContainer{
-    -fx-spacing: 5px;
-    -fx-alignment: center;
-}
-
-.settingsContainer .volumeContainer Label{
-    -fx-text-fill: white;
-    -fx-font-size: 14px;
-}
-
-.settingsContainer .volumeContainer .slider .thumb{
-    -fx-background-color: -fx-secondary-color;
-}
-
 .settingsContainer .highScoreButtonContainer{
     -fx-alignment: center;
     -fx-spacing: 30px;
