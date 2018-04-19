@@ -56,7 +56,7 @@ public class BlockFx {
         d3.setMaterial(mats.get(state));
         d25.setMaterial(mats.get(state));
         d2.setStyle("-fx-background-color:" + availableColor+ ";");
-        
+
 
 
 
