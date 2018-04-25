@@ -65,7 +65,7 @@
                         <Image url="@../img/icon/joggle_icon.png" />
                      </image>
                   </ImageView>
-                     <Label fx:id="pageType" styleClass="title" text="JoggleCube" />
+                     <Label fx:id="title" styleClass="title" text="JoggleCube" />
                </children>
             </HBox>
          </top>
