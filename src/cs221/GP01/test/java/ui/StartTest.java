@@ -15,8 +15,9 @@ import javafx.stage.Stage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationTest;
+//import org.testfx.api.FxRobot;
+//import org.testfx.framework.junit5.ApplicationTest;
 
 import java.io.IOException;
 import java.util.Enumeration;

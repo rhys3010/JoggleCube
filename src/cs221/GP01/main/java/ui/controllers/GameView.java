@@ -31,9 +31,6 @@ import javafx.stage.StageStyle;
 
 import java.util.Optional;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
 
 /**
  * GameView - A class that controls the Game scene that is defined in Game.fxml
@@ -261,7 +258,6 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         return foundWords;
     }
 
-
     //agl6
 
     public void setText(String text) {
@@ -272,25 +268,15 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         return textField.getText();
     }
 
-    @Test
-    private void testBtnClearClicked() {
-
-        setText("text");
-        assertNotEquals("", getText());
-        btnClearClicked();
-        assertEquals("", getText());
-
+    public GridDisplayer getGridDisplayer() {
+        return gridDisplayer;
     }
 
-    @Test
-    private void testBtnSubmitClicked() {
+    public ContextMenu getHamburgerContext() {
+        return hamburgerContext;
+    }
 
-        setText("");
-        assertTrue(foundWords.isEmpty());
-        btnSubmitClicked();
-        assertTrue(foundWords.isEmpty());
-        setText("text");
-        btnSubmitClicked();
-        assertFalse(foundWords.isEmpty());
+    public Button getMenuButton() {
+        return menuButton;
     }
 }
