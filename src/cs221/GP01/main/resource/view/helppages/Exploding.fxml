@@ -19,17 +19,21 @@
     *
     * @author Rhys Evans (rhe24)
     * @author Alex Thumwood (alt38)
-    * @version 0.1  DRAFT
+    * @version 0.2  DRAFT
 -->
 
 <VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
         <URL value="@../../css/HelpPage.css" />
     </stylesheets>
-    <Label styleClass="subtitle" text="Scoring System" />
-    <VBox styleClass="secondarycontent">
-        <ImageView fitHeight="370.0" fitWidth="370.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../../img/help/PointsTable.png" />
-        </ImageView>
+    <Label styleClass="title" text="To EXPLODE the cube, click the small cube symbol in the bottom right of the game window." textAlignment="CENTER" wrapText="true" />
+    <VBox alignment="CENTER" styleClass="content">
+      <children>
+         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../img/help/explodecube.gif" />
+            </image>
+         </ImageView>
+      </children>
     </VBox>
 </VBox>

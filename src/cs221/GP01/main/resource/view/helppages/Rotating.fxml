@@ -15,21 +15,21 @@
 <?import javafx.scene.layout.VBox?>
 
 <!--
-    * Scoring - The help page that contains the game's scoring guide
+    * Rotation - The help page that explains how to rotate the cube
     *
-    * @author Rhys Evans (rhe24)
-    * @author Alex Thumwood (alt38)
-    * @version 0.1  DRAFT
+    * @author Rhys Evans (rhe24@aber.ac.uk)
+    * @author Alex Thumwood (alt38@aber.ac.uk)
+    * @version 0.2  DRAFT
 -->
 
 <VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
         <URL value="@../../css/HelpPage.css" />
     </stylesheets>
-    <Label styleClass="subtitle" text="Scoring System" />
-    <VBox styleClass="secondarycontent">
-        <ImageView fitHeight="370.0" fitWidth="370.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../../img/help/PointsTable.png" />
+    <Label styleClass="title" text="To ROTATE the cube, right-click on it, and move the mouse." textAlignment="CENTER" wrapText="true" />
+    <VBox alignment="CENTER" styleClass="content">
+        <ImageView fitHeight="290.0" fitWidth="309.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../img/help/rotatecube.gif" />
         </ImageView>
     </VBox>
 </VBox>
