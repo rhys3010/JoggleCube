@@ -8,6 +8,7 @@
 
 package cs221.GP01.main.java.ui;
 
+import cs221.GP01.main.java.model.JoggleCube;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
@@ -38,7 +39,6 @@ public class Dialog implements IDialog {
         textInputDialog.setGraphic(graphic);
         textInputDialog.initStyle(StageStyle.UNDECORATED);
         textInputDialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(allowCancel);
-
 
         return textInputDialog.showAndWait();
     }

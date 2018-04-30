@@ -200,7 +200,6 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
             if (result.matches("(\\w*)")) {
                 JoggleCube.getInstance().setName(result);
             } else {
-
             }
         }
 
