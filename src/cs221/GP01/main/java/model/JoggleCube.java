@@ -452,9 +452,6 @@ public class JoggleCube implements IJoggleCube {
     }
 
     public void resetGameState(){
-        if(gamesStateNew != true){
-            saveGrid(currentFilename);
-        }
         if(currentScore > 0){
             IScore score = new Score(currentScore,name);
             currentCubeHighScores.addScore(score);
@@ -463,6 +460,9 @@ public class JoggleCube implements IJoggleCube {
             }catch(NullPointerException e){
                 //todo add dialogue to make sure they load game from a non-network mounted drive aka not M:/ Drive
                 System.out.println(e.toString());
+            }
+            if(gamesStateNew != true){
+                saveGrid(currentFilename);
             }
         }
         storedWords = new ArrayList<>();
