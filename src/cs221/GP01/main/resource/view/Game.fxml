@@ -87,7 +87,11 @@
                   <top>
                      <HBox styleClass="explodeIconContainer">
                         <children>
-                           <Button styleClass="rotateIcon"/>
+                           <Button styleClass="rotateIcon">
+                               <tooltip>
+                                   <Tooltip opacity="0.8" text="Hold Down Right Click to Rotate Cube"/>
+                               </tooltip>
+                           </Button>
                         </children>
                      </HBox>
                   </top>

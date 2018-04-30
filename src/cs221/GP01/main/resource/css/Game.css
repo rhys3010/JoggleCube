@@ -161,7 +161,8 @@
 }
 
 .gameElementsContainer .cubeContainer .gridTab .explodeIconContainer .rotateIcon{
-    -fx-background-image: url("../img/icon/explode_icon.png");
+    -fx-background-image: url("../img/icon/rotate_icon.png");
+    -fx-cursor: default;
 }
 
 .gameElementsContainer .cubeContainer .gridTab .explodeIconContainer .explode{
