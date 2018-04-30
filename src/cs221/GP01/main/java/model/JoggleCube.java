@@ -474,4 +474,8 @@ public class JoggleCube implements IJoggleCube {
     public boolean getGamesStateNew(){
         return gamesStateNew;
     }
+
+    public HashMap<String, Dictionary> getLoadedDictionaries() {
+        return loadedDictionaries;
+    }
 }
