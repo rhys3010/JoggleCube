@@ -215,4 +215,9 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
         // Prevent user from reordering table
         columnReorder(highScoreTable, idCol, nameCol, scoreCol, dateCol);
     }
+
+    //agl6
+    Public array highScoreTable();
+
+
 }

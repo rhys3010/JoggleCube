@@ -14,8 +14,6 @@ public class GameViewTest {
 
     GameView view = GameView.getInstance();
 
-
-
     @BeforeEach
     public void reset() {
         view.prepView();
