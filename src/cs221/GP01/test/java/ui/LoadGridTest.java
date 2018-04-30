@@ -1,10 +1,19 @@
+/*
+   * @(#) LoadGridTest.java 1.1 2018/02/12
+   *
+   * Copyright (c) 2012 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
 package cs221.GP01.test.java.ui;
 
 import cs221.GP01.Main;
 import cs221.GP01.main.java.model.JoggleCube;
 import cs221.GP01.main.java.ui.Navigation;
+import cs221.GP01.main.java.ui.controllers.GameView;
 import cs221.GP01.main.java.ui.controllers.LoadGrid;
 import cs221.GP01.main.java.ui.controllers.Start;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
@@ -68,17 +77,21 @@ class LoadGridTest extends ApplicationTest {
         ListView<String> list = from(rootNode).lookup("#listViewRecents").query();
         list.getSelectionModel().selectFirst();
         load.handleMouseClick();
-        load.btnStartGridClicked();
-// deal with dialog thing
+        Platform.runLater(()->load.btnStartGridClicked());
+        clickOn(400,400);
+        Platform.runLater(()->GameView.getInstance().dialog.close());
+        clickOn(400,400); // everytime after run later -> wait?
+
         setRootNode();
         HBox box = from(rootNode).lookup("#gameBox").query();
-        assertEquals("gameElementsContainer",box.getStyle() );
+        assertEquals("gameElementsContainer",box.getStyleClass().toString() );
     }
 
     @Test
     void btnBackClicked() {
 
-        LoadGrid.getInstance().btnBackClicked();  // why doesn't work with load instead LoadGrid.getInstance()?
+        Platform.runLater(()->LoadGrid.getInstance().btnBackClicked());  // why doesn't work with load instead LoadGrid.getInstance()?
+clickOn(400,400);
 
         setRootNode();
         Label pageType = from(rootNode).lookup("#title").query();

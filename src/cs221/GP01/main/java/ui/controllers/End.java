@@ -76,6 +76,7 @@ public class End extends BaseOverlay implements INeedPrep {
 
     /**
      * When the High Score button is pressed, change scene to high score screen
+     *
      * @see HighScore
      * @throws IOException - if FXML file could not be found/opened
      */
@@ -88,6 +89,7 @@ public class End extends BaseOverlay implements INeedPrep {
 
     /**
      * When the 'return to menu' button is clicked change scene to menu scene
+     *
      * @see Start
      */
     @FXML
@@ -144,7 +146,12 @@ public class End extends BaseOverlay implements INeedPrep {
         alert.showAndWait();
     }
 
-
+    @Test
+    public void testPrepView() {
+        prepView();
+        assertEquals(JoggleCube.getInstance().getScore() + "", scoreLabel.getText());
+        assertEquals(JoggleCube.getInstance().getHighestScore() + "", highScoreLabel.getText());
+    }
     //agl6
 
     public String getScore() {

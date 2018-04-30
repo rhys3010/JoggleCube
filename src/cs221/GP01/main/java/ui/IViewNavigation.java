@@ -19,7 +19,7 @@ import javafx.scene.Scene;
  * This class is used to hide/show overlays and switch screens.
  * @author Nathan Williams (naw21)
  * @author Rhys Evans (rhe24)
- * @version 0.2
+ * @version 1.1
  * @see ScreenType
  */
 public interface IViewNavigation {
