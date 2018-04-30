@@ -27,7 +27,7 @@
     * @version 0.2
 -->
 
-<VBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="settingsOverlay" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="settingsOverlay" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="settingsOverlay" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox styleClass="topMenu">
          <children>
@@ -38,14 +38,6 @@
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="settingsContainer">
          <children>
             <CheckBox fx:id="colorBlindToggle" mnemonicParsing="false" onAction="#colorBlindToggleClicked" selected="true" styleClass="colorBlindToggle" text="Enable Colour Blind Mode" />
-            <CheckBox fx:id="musicToggle" mnemonicParsing="false" onAction="#musicToggleClicked" selected="true" text="Enable Music" />
-            <CheckBox fx:id="soundEffectsToggle" mnemonicParsing="false" onAction="#soundEffectsToggleClicked" selected="true" text="Enable Sound Effects" />
-            <VBox styleClass="volumeContainer">
-               <children>
-                  <Label text="Master Volume" />
-                  <Slider fx:id="volumeSlider" />
-               </children>
-            </VBox>
             <HBox styleClass="highScoreButtonContainer">
                <children>
                   <Button mnemonicParsing="false" onAction="#clearHighScoreClicked" text="Clear High Scores" />

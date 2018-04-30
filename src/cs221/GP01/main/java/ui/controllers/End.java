@@ -13,11 +13,12 @@ import cs221.GP01.main.java.ui.Navigation;
 import cs221.GP01.main.java.ui.UI;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.StageStyle;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -25,8 +26,6 @@ import java.util.Optional;
 /**
  * End - A class that controls the Pause subscene that is defined in End.fxml
  * <p>
- * todo fix dodgy model overlaying
- * todo add prompt for exiting
  * Used with End.fxml
  *
  * @author Rhys Evans (rhe24@aber.ac.uk)
@@ -53,6 +52,9 @@ public class End extends BaseOverlay implements INeedPrep {
     @FXML
     Label scoreLabel,highScoreLabel;
 
+    @FXML
+    Button saveButton;
+
 
 
 
@@ -60,6 +62,14 @@ public class End extends BaseOverlay implements INeedPrep {
     public void prepView() {
         scoreLabel.setText(JoggleCube.getInstance().getScore() + "");
         highScoreLabel.setText(JoggleCube.getInstance().getHighestScore() + "");
+
+        // Disable save button if grid was loaded
+        if(!JoggleCube.getInstance().getGamesStateNew()){
+            saveButton.setDisable(true);
+        }else{
+            saveButton.setDisable(false);
+        }
+
         JoggleCube.getInstance().resetGameState();
     }
 
@@ -104,27 +114,44 @@ public class End extends BaseOverlay implements INeedPrep {
         dialog.setTitle("Text Input Dialog");
         dialog.setHeaderText("Save Cube");
         dialog.setContentText("Please enter a filename:");
-        // todo: make this call using proper URI to allow for those dodgy PCs
-        dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("../../../resource/img/icon/save_icon_alt.png"))));
+        dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/cs221/GP01/main/resource/img/icon/save_icon_alt.png"))));
         dialog.initStyle(StageStyle.UNDECORATED);
 
         // get result from text box
         Optional<String> input = dialog.showAndWait();
 
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        
         if(input.isPresent()){
             // Normalize input and save to regular java String
             String result = input.get().replace(" ", "");
 
-            // todo: better validation
+            // todo: better validation actually handle the error filenames
             if(result.matches("(\\w*)")){
                 if(JoggleCube.getInstance().saveGrid(result)){
-
+                    alert.setContentText("Saved Successfully");
                 }else{
-                    dialog.setHeaderText("Error Saving File, Please try again");
+                    alert.setContentText("Error Saving File, Please try again");
                 }
             }else{
-                dialog.setHeaderText("Invalid Filename!, Please try again");
+                alert.setContentText("Invalid Filename!, Please try again");
             }
+        } else {
+            alert.setContentText("no filename!, please try again!");
         }
+        alert.showAndWait();
+    }
+
+
+    //agl6
+
+    public String getScore() {
+        return scoreLabel.getText();
+    }
+
+    public String getHighScore() {
+        return highScoreLabel.getText();
     }
 }

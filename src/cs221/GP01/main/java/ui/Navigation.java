@@ -9,9 +9,13 @@ package cs221.GP01.main.java.ui;
 
 import cs221.GP01.main.java.ui.controllers.*;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 
 import java.util.HashMap;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Navigation - Control the screens being displayed
@@ -118,6 +122,10 @@ public class Navigation implements IViewNavigation{
      * @param parent - The parent scene of the overlay
      */
     public void showOverlay(ScreenType overlay, BaseScreen parent){
+        // Hide all overlays before showing any more
+        hideAllOverlays(parent);
+
+
         // Verify that the overlay is of type BaseOverlay
         if(screens.get(overlay).getController() instanceof BaseOverlay){
             // Disable the background of the parent screen
@@ -162,4 +170,21 @@ public class Navigation implements IViewNavigation{
             }
         }
     }
+
+
+    /**
+     * Utility method to hide all overlays to prevent overlay overlapping
+     */
+    private void hideAllOverlays(BaseScreen parent) {
+
+        // Remove all overlays from the parent
+        parent.getRoot().getChildren().remove(parent.getRoot().lookup(".helpOverlay"));
+        parent.getRoot().getChildren().remove(parent.getRoot().lookup(".endOverlay"));
+        parent.getRoot().getChildren().remove(parent.getRoot().lookup(".settingsOverlay"));
+
+
+        // Re-enable background
+        parent.getMainNode().setDisable(false);
+    }
+
 }

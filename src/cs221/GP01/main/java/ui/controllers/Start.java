@@ -51,6 +51,9 @@ public class Start extends BaseScreen implements INeedPrep, Initializable {
     @FXML
     private ComboBox<String> languageSelector;
 
+    public ComboBox<String> getLanguageSelector() {
+        return languageSelector;
+    }
 
     /**
      *

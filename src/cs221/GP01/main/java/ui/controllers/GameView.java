@@ -46,12 +46,13 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
 
     private static GameView gameController;
 
-    private GameView(){}
+    private GameView() {
+    }
 
-    public static GameView getInstance(){
-        if(gameController == null){
-            synchronized (UI.class){
-                if(gameController == null){
+    public static GameView getInstance() {
+        if (gameController == null) {
+            synchronized (UI.class) {
+                if (gameController == null) {
                     gameController = new GameView();
                 }
             }
@@ -60,6 +61,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     }
 
     private GridDisplayer gridDisplayer;
+    public TextInputDialog dialog;
 
     @FXML
     private TabPane cubeContainer;
@@ -78,7 +80,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     private TextField textField;
 
     @FXML
-    private GridPane top2d,middle2d,bottom2d,top25d,middle25d,bottom25d;
+    private GridPane top2d, middle2d, bottom2d, top25d, middle25d, bottom25d;
     @FXML
     private SubScene subScene;
     @FXML
@@ -114,7 +116,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
                         public void run() {
                             btnSubmit.setStyle("-fx-background-color:-fx-tertiary-color;");
                             textField.setStyle("-fx-background-color: white; -fx-text-fill: -fx-tertiary-color;");
-                            Platform.runLater(()->gridDisplayer.setAllActive());
+                            Platform.runLater(() -> gridDisplayer.setAllActive());
                             textField.setText(""); //todo hmmmmmmmmmm
                         }
                     },
@@ -145,7 +147,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         Point2D screenPos = menuButton.localToScreen(menuButton.getLayoutX(), menuButton.getLayoutY());
 
         // Show the context menu at the X, Y co-ordinates with an offset
-        hamburgerContext.show(menuButton, screenPos.getX()-100, screenPos.getY()+20);
+        hamburgerContext.show(menuButton, screenPos.getX() - 100, screenPos.getY() + 20);
     }
 
     /**
@@ -171,8 +173,8 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
 
 
         if (result.get() == ButtonType.OK) {
-        JoggleCube.getInstance().interruptTimer();
-        Navigation.getInstance().showOverlay(ScreenType.END, this);
+            JoggleCube.getInstance().interruptTimer();
+            Navigation.getInstance().showOverlay(ScreenType.END, this);
         } else {
             sureAlert.close();
         }
@@ -182,14 +184,15 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
      * Initialize game screen
      */
     @Override
-    public void prepView(){
+    public void prepView() {
         scoreLabel.setText("0");
         timerLabel.setText("3:00");
         textField.setText("");
         timerLabel.setStyle("-fx-text-fill: white;");
 
         // Pop-up dialog to get user's name
-        TextInputDialog dialog = new TextInputDialog("Walter");
+        //TextInputDialog
+        dialog = new TextInputDialog("Walter");
         dialog.setTitle("Enter Name");
         dialog.setHeaderText("Name Input");
         dialog.setContentText("Please enter your name:");
@@ -201,14 +204,14 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         // Get result from text box
         Optional<String> input = dialog.showAndWait();
 
-        if(input.isPresent()){
+        if (input.isPresent()) {
             // Normalize input and save to regular string
             String result = input.get().replace(" ", "");
 
             // todo: better validation
-            if(result.matches("(\\w*)")){
-               JoggleCube.getInstance().setName(result);
-            }else{
+            if (result.matches("(\\w*)")) {
+                JoggleCube.getInstance().setName(result);
+            } else {
                 dialog.setHeaderText("Invalid Name Entry, Please try again");
             }
         }
@@ -222,7 +225,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
 
         GridPane[] twoDGrid = {top2d, middle2d, bottom2d};
         GridPane[] twoFiveDGrid = {top25d, middle25d, bottom25d};
-        gridDisplayer = new GridDisplayer(textField,twoDGrid,twoFiveDGrid,subScene,groupy,back, explodeIcon);
+        gridDisplayer = new GridDisplayer(textField, twoDGrid, twoFiveDGrid, subScene, groupy, back, explodeIcon);
         gridDisplayer.buildGrids(JoggleCube.getInstance().getCubeData());
         foundWordsList.setItems(foundWords);
 
@@ -248,11 +251,34 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
 
     /**
      * Returns the list of found words so it can be used in the backend as it is currently only stored in the frontend
-     * @author Samuel Jones - srj12
+     *
      * @return returns an observableList of strings of all currently found words
+     * @author Samuel Jones - srj12
      */
     @Override
     public ObservableList<String> getFoundWords() {
         return foundWords;
+    }
+
+    //agl6
+
+    public void setText(String text) {
+        textField.setText(text);
+    }
+
+    public String getText() {
+        return textField.getText();
+    }
+
+    public GridDisplayer getGridDisplayer() {
+        return gridDisplayer;
+    }
+
+    public ContextMenu getHamburgerContext() {
+        return hamburgerContext;
+    }
+
+    public Button getMenuButton() {
+        return menuButton;
     }
 }
