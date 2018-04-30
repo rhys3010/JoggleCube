@@ -57,7 +57,13 @@ public class JoggleCube implements IJoggleCube {
 
     private int currentScore = 0;
 
-    public HashMap<String, Dictionary> getLoadedDictionaries() {
+    //To handle whether or not the gamestate is new or not
+    private boolean gamesStateNew = true;
+
+    //To check what the current loaded file is
+    private String currentFilename = "";
+
+    private HashMap<String, Dictionary> getLoadedDictionaries() {
         return loadedDictionaries;
     }
 
@@ -81,6 +87,8 @@ public class JoggleCube implements IJoggleCube {
 
     //Start Random Game
     public void generateRandomGrid() {
+        //make sure game state is a new one
+        gamesStateNew = true;
         //Populate the cube randomly
         cube.populateCube();
         storedWords = new ArrayList<>();
@@ -91,6 +99,7 @@ public class JoggleCube implements IJoggleCube {
     public boolean loadGrid(String filename) {
         //load this file into grid and high scores
         //Load save game from the file stream given
+        currentFilename = filename;
         try{
             try {
                 //todo fix the handleMouseClick() in the LoadGrid.java as it's calling using null.grid
@@ -122,6 +131,8 @@ public class JoggleCube implements IJoggleCube {
 
             return false;
         }
+        //Set the local variable to false for it being a new grid
+        gamesStateNew = false;
         //At this point the cube has been loaded in
         storedWords = new ArrayList<>();
         return true;
@@ -226,7 +237,7 @@ public class JoggleCube implements IJoggleCube {
                 currentCubeHighScores.saveScores(out);
                 out.close();
             }catch(URISyntaxException e){
-                    System.out.println();
+                    System.out.println(e.toString());
             }
         } catch (FileNotFoundException e){
             System.out.println(e.toString());
@@ -440,6 +451,9 @@ public class JoggleCube implements IJoggleCube {
     }
 
     public void resetGameState(){
+        if(gamesStateNew != true){
+            saveGrid(currentFilename);
+        }
         if(currentScore > 0){
             IScore score = new Score(currentScore,name);
             currentCubeHighScores.addScore(score);
@@ -451,5 +465,13 @@ public class JoggleCube implements IJoggleCube {
             GameView.getInstance().getScoreLabel().setText(currentScore + "");
         if(timer!=null)
             timer.resetTime();
+    }
+
+    /**
+     *
+     * @return True if is a new game, false if it is a loaded game
+     */
+    public boolean getGamesStateNew(){
+        return gamesStateNew;
     }
 }
