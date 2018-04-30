@@ -66,11 +66,12 @@ public class JoggleCube implements IJoggleCube {
 
     private int currentScore = 0;
 
-    public HashMap<String, Dictionary> getLoadedDictionaries() {
-        return loadedDictionaries;
-    }
+    //To handle whether or not the gamestate is new or not
+    private boolean gamesStateNew = true;
 
-
+    //To check what the current loaded file is
+    private String currentFilename = "";
+    
     private JoggleCube(){
         findDocumentFolder();
         loadOverallScores();
@@ -90,6 +91,8 @@ public class JoggleCube implements IJoggleCube {
 
     //Start Random Game
     public void generateRandomGrid() {
+        //make sure game state is a new one
+        gamesStateNew = true;
         //Populate the cube randomly
         cube.populateCube();
         storedWords = new ArrayList<>();
@@ -100,6 +103,7 @@ public class JoggleCube implements IJoggleCube {
     public boolean loadGrid(String filename) {
         //load this file into grid and high scores
         //Load save game from the file stream given
+        currentFilename = filename;
         try{
             try {
                 //todo fix the handleMouseClick() in the LoadGrid.java as it's calling using null.grid
@@ -131,6 +135,8 @@ public class JoggleCube implements IJoggleCube {
 
             return false;
         }
+        //Set the local variable to false for it being a new grid
+        gamesStateNew = false;
         //At this point the cube has been loaded in
         storedWords = new ArrayList<>();
         return true;
@@ -305,7 +311,13 @@ public class JoggleCube implements IJoggleCube {
      * @return the top high score.
      */
     public int getHighestScore() {
-        return overallHighScores.getHighestScore().getScore();
+        try {
+            return overallHighScores.getHighestScore().getScore();
+        }catch(NullPointerException e){
+            System.out.println("High scores are not loaded!!!");
+            //todo add dialogue to make sure they load game from a non-network mounted drive aka not M:/ Drive
+            return 0;
+        }
     }
 
     @Override
@@ -452,7 +464,15 @@ public class JoggleCube implements IJoggleCube {
         if(currentScore > 0){
             IScore score = new Score(currentScore,name);
             currentCubeHighScores.addScore(score);
-            overallHighScores.addScore(score);
+            try {
+                overallHighScores.addScore(score);
+            }catch(NullPointerException e){
+                //todo add dialogue to make sure they load game from a non-network mounted drive aka not M:/ Drive
+                System.out.println(e.toString());
+            }
+            if(gamesStateNew != true){
+                saveGrid(currentFilename);
+            }
         }
         storedWords = new ArrayList<>();
         currentScore = 0;
@@ -460,5 +480,17 @@ public class JoggleCube implements IJoggleCube {
             GameView.getInstance().getScoreLabel().setText(currentScore + "");
         if(timer!=null)
             timer.resetTime();
+    }
+
+    /**
+     *
+     * @return True if is a new game, false if it is a loaded game
+     */
+    public boolean getGamesStateNew(){
+        return gamesStateNew;
+    }
+
+    public HashMap<String, Dictionary> getLoadedDictionaries() {
+        return loadedDictionaries;
     }
 }

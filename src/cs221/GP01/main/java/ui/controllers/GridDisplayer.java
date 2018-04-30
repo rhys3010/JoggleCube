@@ -54,11 +54,10 @@ public class GridDisplayer {
     private String unavailableColor = "#595959";
 
 
-
     private double oldMouseX, oldMouseY;
 
-    private Rotate rotateAboutX = new Rotate(-20,40,40,40, Rotate.X_AXIS);
-    private Rotate rotateAboutY = new Rotate(-45,40,40,40, Rotate.Y_AXIS);
+    private Rotate rotateAboutX = new Rotate(-20, 40, 40, 40, Rotate.X_AXIS);
+    private Rotate rotateAboutY = new Rotate(-45, 40, 40, 40, Rotate.Y_AXIS);
 
     private TextField textField;
 
@@ -67,13 +66,13 @@ public class GridDisplayer {
     private SubScene subScene;
     private Group groupy;
     private BorderPane back;
-    private GridPane[] twoDGrid,twoFiveDGrid;
+    private GridPane[] twoDGrid, twoFiveDGrid;
     private Button btnExplode;
 
 
     //storage for the labels and boxes with letters in them.
     private Label[][][] labelCube;
-    private Box[][][] boxCube,boxCube3;
+    private Box[][][] boxCube, boxCube3;
 
     public GridDisplayer(TextField field, GridPane[] two, GridPane[] twoFive, SubScene sub, Group group, BorderPane b, Button explode) {
         textField = field;
@@ -92,16 +91,15 @@ public class GridDisplayer {
      */
     public void buildGrids(String[][][] letters) {
         groupy.getChildren().clear();
-        for(int i = 0; i < 3; i++){
+        for (int i = 0; i < 3; i++) {
             twoDGrid[i].getChildren().clear();
             twoFiveDGrid[i].getChildren().clear();
         }
 
 
-
         //sets up the 3D enviroment
         Camera camera = new ParallelCamera();
-        camera.getTransforms().addAll (
+        camera.getTransforms().addAll(
                 rotateAboutX,
                 rotateAboutY,
                 new Translate(-150, -100, 0)
@@ -110,13 +108,13 @@ public class GridDisplayer {
         subScene.setCamera(camera);
 
         //sets up the right mouse button for rotating the cube
-        back.setOnMouseDragged( e ->{
-            if(e.getButton().equals(MouseButton.SECONDARY)){
+        back.setOnMouseDragged(e -> {
+            if (e.getButton().equals(MouseButton.SECONDARY)) {
                 double mouseX = e.getY();
                 double mouseY = e.getX();
-                if(oldMouseY != 0 && oldMouseX != 0){
-                    rotateAboutX.setAngle((rotateAboutX.getAngle() + oldMouseX-mouseX) % 360);
-                    rotateAboutY.setAngle((rotateAboutY.getAngle() + mouseY-oldMouseY) % 360);
+                if (oldMouseY != 0 && oldMouseX != 0) {
+                    rotateAboutX.setAngle((rotateAboutX.getAngle() + oldMouseX - mouseX) % 360);
+                    rotateAboutY.setAngle((rotateAboutY.getAngle() + mouseY - oldMouseY) % 360);
                 }
                 oldMouseX = mouseX;
                 oldMouseY = mouseY;
@@ -125,12 +123,12 @@ public class GridDisplayer {
 
         //when the drg is released reset the variables
         back.setOnMouseReleased(
-            e -> {
-                if(e.getButton().equals(MouseButton.SECONDARY)) {
-                    oldMouseX = 0;
-                    oldMouseY = 0;
+                e -> {
+                    if (e.getButton().equals(MouseButton.SECONDARY)) {
+                        oldMouseX = 0;
+                        oldMouseY = 0;
+                    }
                 }
-            }
         );
 
         //creates space ready for the boxes and labels
@@ -139,7 +137,7 @@ public class GridDisplayer {
         boxCube3 = new Box[3][3][3];
 
         //checks the letters actually exist before making a fool of ones self and trying to display them.
-        if(letters != null) {
+        if (letters != null) {
             //Create the labels and boxes ready for display
             for (int k = 0; k < 3; k++) {
                 for (int i = 0; i < 3; i++) {
@@ -150,7 +148,7 @@ public class GridDisplayer {
 
                         //2.5D
                         Box box1 = new Box(30, 30, 30);
-                        box1.setRotationAxis(new Point3D(0,0,0));
+                        box1.setRotationAxis(new Point3D(0, 0, 0));
                         box1.setRotate(0);
                         boxCube[k][i][j] = box1;
 
@@ -158,7 +156,7 @@ public class GridDisplayer {
                         Label label = new Label(letters[k][i][j]);
                         labelCube[k][i][j] = label;
 
-                        setActive(k,i,j,true);
+                        setActive(k, i, j, true);
                     }
                 }
             }
@@ -168,7 +166,7 @@ public class GridDisplayer {
                 for (int i = 0; i < 3; i++) {
                     for (int j = 2; j > -1; j--) { //revered to render the block overlap correctly
                         twoDGrid[k].add(labelCube[k][j][i], i, j);
-                        twoFiveDGrid[k].add(boxCube[k][i][j],j,i);
+                        twoFiveDGrid[k].add(boxCube[k][i][j], j, i);
 
                     }
                 }
@@ -179,9 +177,9 @@ public class GridDisplayer {
                 for (int i = 0; i < 3; i++) {
                     for (int j = 0; j < 3; j++) {
                         groupy.getChildren().add(boxCube3[k][i][j]);
-                        boxCube3[k][i][j].setTranslateX(k*40);
-                        boxCube3[k][i][j].setTranslateY(i*40);
-                        boxCube3[k][i][j].setTranslateZ(j*40);
+                        boxCube3[k][i][j].setTranslateX(k * 40);
+                        boxCube3[k][i][j].setTranslateY(i * 40);
+                        boxCube3[k][i][j].setTranslateZ(j * 40);
                     }
                 }
             }
@@ -195,8 +193,8 @@ public class GridDisplayer {
      * @param i the position of the block that called the method
      * @param j the position of the block that called the method
      */
-    private void blockClicked(int k, int i, int j, MouseEvent e){
-        if(e.getButton().equals(MouseButton.PRIMARY)) {
+    private void blockClicked(int k, int i, int j, MouseEvent e) {
+        if (e.getButton().equals(MouseButton.PRIMARY)) {
             for (int x = 0; x < 3; x++) {
                 for (int y = 0; y < 3; y++) {
                     for (int z = 0; z < 3; z++) {
@@ -221,7 +219,7 @@ public class GridDisplayer {
         for (int x = 0; x < 3; x++) {
             for (int y = 0; y < 3; y++) {
                 for (int z = 0; z < 3; z++) {
-                    setActive(x,y,z,true);
+                    setActive(x, y, z, true);
                 }
             }
         }
@@ -241,7 +239,7 @@ public class GridDisplayer {
         labelCube[x][y][z].setStyle("-fx-background-color:" + currentlySelectedColor + ";");
         labelCube[x][y][z].setOnMouseClicked(null);
 
-        PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),currentlySelectedColor);
+        PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(), currentlySelectedColor);
 
         //2.5d
         boxCube[x][y][z].setMaterial(mat);
@@ -262,7 +260,7 @@ public class GridDisplayer {
      */
 
     private void setInActive(int x, int y, int z) {
-        if(!labelCube[x][y][z].getStyle().contains("-fx-background-color:" + alreadySelectedColor + ";")){
+        if (!labelCube[x][y][z].getStyle().contains("-fx-background-color:" + alreadySelectedColor + ";")) {
             //2d
             labelCube[x][y][z].setStyle("-fx-background-color:" + unavailableColor + ";");
             labelCube[x][y][z].setOnMouseClicked(null);
@@ -283,17 +281,17 @@ public class GridDisplayer {
     /**
      * sets the state of the block to Active allowing the user to click on it
      *
-     * @param x position of the block in question
-     * @param y position of the block in question
-     * @param z position of the block in question
+     * @param x        position of the block in question
+     * @param y        position of the block in question
+     * @param z        position of the block in question
      * @param override overides any other states ready to begin selecting again
      */
 
     private void setActive(int x, int y, int z, boolean override) {
-        if(labelCube[x][y][z].getStyle().contains("-fx-background-color:" + currentlySelectedColor + ";") && !override){
+        if (labelCube[x][y][z].getStyle().contains("-fx-background-color:" + currentlySelectedColor + ";") && !override) {
 
             //2d
-            labelCube[x][y][z].setStyle("-fx-background-color:" + alreadySelectedColor +";");
+            labelCube[x][y][z].setStyle("-fx-background-color:" + alreadySelectedColor + ";");
 
             PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(), alreadySelectedColor);
             //2.5d
@@ -301,18 +299,18 @@ public class GridDisplayer {
             //3d
             boxCube3[x][y][z].setMaterial(mat);
 
-        } else if(!labelCube[x][y][z].getStyle().contains("-fx-background-color:" + alreadySelectedColor + ";") || override) {
+        } else if (!labelCube[x][y][z].getStyle().contains("-fx-background-color:" + alreadySelectedColor + ";") || override) {
             //2d
             labelCube[x][y][z].setStyle("-fx-background-color:" + availableColor + ";");
-            labelCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z,e));
+            labelCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z, e));
             //2.5d
-            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(),availableColor);
+            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(), availableColor);
 
             boxCube[x][y][z].setMaterial(mat);
-            boxCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z,e));
+            boxCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z, e));
             //3d
             boxCube3[x][y][z].setMaterial(mat);
-            boxCube3[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z,e));
+            boxCube3[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z, e));
         }
     }
 
@@ -321,7 +319,7 @@ public class GridDisplayer {
      * generates a material with a letter on it to display a block
      *
      * @param letter the letter to display
-     * @param color the background color
+     * @param color  the background color
      * @return a material with a letter on it ready to display
      */
     private PhongMaterial generateMaterial(String letter, String color) {
@@ -351,7 +349,7 @@ public class GridDisplayer {
         //set height and width of the grid
         grid.setPrefSize(30, 30);
         //give the grid a background colour
-        grid.setStyle("-fx-background-color: "+ color + ";");
+        grid.setStyle("-fx-background-color: " + color + ";");
         //create a scene to render the grid.
         Scene tmpScene = new Scene(grid);
 
@@ -377,8 +375,8 @@ public class GridDisplayer {
      * @return whether the two blocks are neighbors or not
      */
     private boolean isNeighbour(int selectedX, int selectedY, int selectedZ, int possibleX, int possibleY, int possibleZ) {
-        int neighborsX,neighborsY,neighborsZ;
-        for(int i = -1; i<2; i++) {
+        int neighborsX, neighborsY, neighborsZ;
+        for (int i = -1; i < 2; i++) {
             neighborsX = selectedX;
             neighborsX += i;
             for (int j = -1; j < 2; j++) {
@@ -387,7 +385,7 @@ public class GridDisplayer {
                 for (int k = -1; k < 2; k++) {
                     neighborsZ = selectedZ;
                     neighborsZ += k;
-                    if(possibleX == neighborsX && possibleY == neighborsY && possibleZ == neighborsZ)
+                    if (possibleX == neighborsX && possibleY == neighborsY && possibleZ == neighborsZ)
                         return true;
                 }
             }
@@ -403,12 +401,12 @@ public class GridDisplayer {
         btnExplode.getStyleClass().clear();
 
         // Switch buttons between explode/implode
-        if(toggle) {
+        if (toggle) {
             btnExplode.getStyleClass().add("explode");
-        }else{
+        } else {
             btnExplode.getStyleClass().add("implode");
         }
-        
+
         btnExplode.setDisable(true);
 
         new java.util.Timer().schedule(
@@ -423,10 +421,10 @@ public class GridDisplayer {
 
 
         Timeline timeline = new Timeline();
-        for(int i = 0; i<3; i++) {
+        for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                addAnimation(timeline,boxCube3[0][i][j],toggle,0,i,j);
-                addAnimation(timeline,boxCube3[2][i][j],!toggle,2,i,j);
+                addAnimation(timeline, boxCube3[0][i][j], toggle, 0, i, j);
+                addAnimation(timeline, boxCube3[2][i][j], !toggle, 2, i, j);
             }
         }
         timeline.play();
@@ -434,13 +432,13 @@ public class GridDisplayer {
 
     }
 
-    private void addAnimation(Timeline timeline, Box box,boolean left,int x,int y,int z) {
+    private void addAnimation(Timeline timeline, Box box, boolean left, int x, int y, int z) {
 
         int displacment = 60;
-        if(left){
+        if (left) {
             timeline.getKeyFrames().addAll(
-                    new KeyFrame(Duration.ZERO,new KeyValue(box.translateXProperty(), box.getTranslateX())),
-                    new KeyFrame(new Duration(400),new KeyValue(box.translateXProperty(), box.getTranslateX() + displacment))
+                    new KeyFrame(Duration.ZERO, new KeyValue(box.translateXProperty(), box.getTranslateX())),
+                    new KeyFrame(new Duration(400), new KeyValue(box.translateXProperty(), box.getTranslateX() + displacment))
             );
         } else {
             timeline.getKeyFrames().addAll(
@@ -449,4 +447,19 @@ public class GridDisplayer {
             );
         }
     }
+
+
+//agl6
+
+    public boolean isActive(int x, int y, int z) {
+        if (labelCube[x][y][z].getStyle().contains("-fx-background-color:" + availableColor + ";"))
+            return true;
+        else
+            return false;
+    }
+
+    public void setInActiveP(int x, int y, int z) {
+        setInActive(x,y,z);
+    }
+
 }

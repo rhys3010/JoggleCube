@@ -36,29 +36,10 @@ public class Settings implements ISettings{
      */
     private boolean colorBlind = false;
 
-    /**
-     * Boolean to store whether or not the music option is enabled
-     * Enabled as default
-     */
-    private boolean music = true;
-
-    /**
-     * Boolean to store whether the sound effects option is enabled
-     * Enabled as default
-     */
-    private boolean soundEffects = true;
-
-
     private static String languages[] = {"English","Cymraeg"};
     private static String currLang = "English";
     private static int timerLength = 180;
 
-
-    /**
-     * Store the current volume of the game (0-100)
-     * 75% as default
-     */
-    private double volume = 75;
 
     /**
      * Constructor for settings class
@@ -99,30 +80,6 @@ public class Settings implements ISettings{
     }
 
     /**
-     * Check if the music option is enabled
-     * @return true/false depending on state of the option
-     */
-    public boolean isMusicEnabled(){
-        return music;
-    }
-
-    /**
-     * Check if the sound effects option is enabled
-     * @return true/false depending on state of the option
-     */
-    public boolean isSoundEffectsEnabled(){
-        return soundEffects;
-    }
-
-    /**
-     * Get the volume value of the game
-     * @return - 0-100 value
-     */
-    public double getVolume(){
-        return volume;
-    }
-
-    /**
      * Set the colour blind option to true/false
      * @param colorBlind
      */
@@ -130,36 +87,6 @@ public class Settings implements ISettings{
         this.colorBlind = colorBlind;
     }
 
-    /**
-     * Set the music option to true/false
-     * @param music
-     */
-    public void setMusicEnabled(boolean music){
-        this.music = music;
-    }
-
-    /**
-     * Set the sound effects option to true/false
-     * @param soundEffects
-     */
-    public void setSoundEffectsEnabled(boolean soundEffects){
-        this.soundEffects = soundEffects;
-    }
-
-    /**
-     * Set the volume value to a value between 0-100
-     * @param volume
-     */
-    public void setVolume(double volume){
-        // Verify that volume is between 0-100
-        if(volume >= 0 && volume <= 100){
-            this.volume = volume;
-
-        }else{
-            // Throw out of bounds exception
-            throw new IndexOutOfBoundsException("Volume " + volume + " is out of bounds! (Must be between 0-100)");
-        }
-    }
 
     /**
      * Clear the highscores and prompt user

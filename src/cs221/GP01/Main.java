@@ -43,7 +43,11 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
 
         //As a fix for the inability to load custom fonts on some computers (apparently a common bug in JavaFX8+)
+        // Load Digital Font and FontAwesome Icon Font
+        // https://fontawesome.com/
         Font.loadFont(getClass().getResourceAsStream("/cs221/GP01/main/resource/font/DS-DIGI.TTF"), 16);
+        Font.loadFont(getClass().getResourceAsStream("/cs221/GP01/main/resource/font/fa-regular.ttf"), 16);
+        Font.loadFont(getClass().getResourceAsStream("/cs221/GP01/main/resource/font/fa-solid.ttf"), 16);
 
         //start the backend
         JoggleCube.getInstance();
