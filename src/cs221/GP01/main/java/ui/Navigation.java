@@ -13,6 +13,9 @@ import javafx.scene.Scene;
 
 import java.util.HashMap;
 
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 /**
  * Navigation - Control the screens being displayed
  * <p>
@@ -161,5 +164,23 @@ public class Navigation implements IViewNavigation{
                 ((IGame) parent).getCubeContainer().setVisible(true);
             }
         }
+    }
+
+    //agl6
+
+    @Test
+    public void testScreens() {
+        screens.clear();
+        add(ScreenType.START, null);
+        assertFalse(screens.isEmpty());
+        remove(ScreenType.GAME);
+        assertFalse(screens.isEmpty());
+        remove(ScreenType.START);
+        assertTrue(screens.isEmpty());
+    }
+
+    @Test
+    public void testScreens2() {
+
     }
 }

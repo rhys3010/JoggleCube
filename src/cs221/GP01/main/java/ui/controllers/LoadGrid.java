@@ -56,6 +56,9 @@ public class LoadGrid extends BaseScreen implements INeedPrep {
      */
     private String fileName = null;
 
+    public String getFileName() {
+        return fileName;
+    }
 
     /**
      * Get recently played cubes from backend
