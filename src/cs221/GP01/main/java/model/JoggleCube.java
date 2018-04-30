@@ -302,7 +302,12 @@ public class JoggleCube implements IJoggleCube {
      * @return the top high score.
      */
     public int getHighestScore() {
-        return overallHighScores.getHighestScore().getScore();
+        try {
+            return overallHighScores.getHighestScore().getScore();
+        }catch(NullPointerException e){
+            System.out.println("High scores are not loaded!!!");
+            return 0;
+        }
     }
 
     @Override
@@ -452,7 +457,11 @@ public class JoggleCube implements IJoggleCube {
         if(currentScore > 0){
             IScore score = new Score(currentScore,name);
             currentCubeHighScores.addScore(score);
-            overallHighScores.addScore(score);
+            try {
+                overallHighScores.addScore(score);
+            }catch(NullPointerException e){
+                System.out.println(e.toString());
+            }
         }
         storedWords = new ArrayList<>();
         currentScore = 0;
