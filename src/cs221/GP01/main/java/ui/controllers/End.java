@@ -123,10 +123,9 @@ public class End extends BaseOverlay implements INeedPrep {
                 informationDialog.showInformationDialog("Success", "File saved successfully!");
             }else{
                 informationDialog.showInformationDialog("Error", "Error Saving File, Please try again");
+                // Re-prompt user recursively until file is saved
+                btnSaveClicked();
             }
-        }else {
-            // todo: prevent this from showing after cancel pressed
-            informationDialog.showInformationDialog("Error", "Invalid File Name, Please try again");
         }
 
     }

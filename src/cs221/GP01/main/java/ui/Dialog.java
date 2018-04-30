@@ -40,13 +40,24 @@ public class Dialog implements IDialog {
         textInputDialog.initStyle(StageStyle.UNDECORATED);
         textInputDialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(allowCancel);
 
+        // Store the user input as string and Optional
         Optional<String> rawInput;
         String input;
 
-        // Prompt for input until input is provided
+        // Allow things to be ran on first iteration of do-while
+        boolean firstAttempt = true;
+
+        // Prompt user for input until input is provided
         do{
+
+            if(!firstAttempt){
+                textInputDialog.setHeaderText("Invalid Entry, Please try again");
+            }
+
            rawInput = textInputDialog.showAndWait();
            input = rawInput.orElse("");
+
+           firstAttempt = false;
         }while(!rawInput.equals(Optional.empty()) && input.isEmpty());
 
         return input;
