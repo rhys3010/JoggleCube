@@ -62,12 +62,7 @@ public class JoggleCube implements IJoggleCube {
 
     //To check what the current loaded file is
     private String currentFilename = "";
-
-    public HashMap<String, Dictionary> getLoadedDictionaries() {
-        return loadedDictionaries;
-    }
-
-
+    
     private JoggleCube(){
         findDocumentFolder();
         loadOverallScores();
@@ -473,5 +468,9 @@ public class JoggleCube implements IJoggleCube {
      */
     public boolean getGamesStateNew(){
         return gamesStateNew;
+    }
+
+    public HashMap<String, Dictionary> getLoadedDictionaries() {
+        return loadedDictionaries;
     }
 }
