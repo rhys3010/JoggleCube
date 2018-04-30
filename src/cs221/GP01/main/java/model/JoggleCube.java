@@ -306,6 +306,7 @@ public class JoggleCube implements IJoggleCube {
             return overallHighScores.getHighestScore().getScore();
         }catch(NullPointerException e){
             System.out.println("High scores are not loaded!!!");
+            //todo add dialogue to make sure they load game from a non-network mounted drive aka not M:/ Drive
             return 0;
         }
     }
@@ -460,6 +461,7 @@ public class JoggleCube implements IJoggleCube {
             try {
                 overallHighScores.addScore(score);
             }catch(NullPointerException e){
+                //todo add dialogue to make sure they load game from a non-network mounted drive aka not M:/ Drive
                 System.out.println(e.toString());
             }
         }
