@@ -61,6 +61,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     }
 
     private GridDisplayer gridDisplayer;
+    public TextInputDialog dialog;
 
     @FXML
     private TabPane cubeContainer;
@@ -190,7 +191,8 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         timerLabel.setStyle("-fx-text-fill: white;");
 
         // Pop-up dialog to get user's name
-        TextInputDialog dialog = new TextInputDialog("Walter");
+        //TextInputDialog
+        dialog = new TextInputDialog("Walter");
         dialog.setTitle("Enter Name");
         dialog.setHeaderText("Name Input");
         dialog.setContentText("Please enter your name:");
