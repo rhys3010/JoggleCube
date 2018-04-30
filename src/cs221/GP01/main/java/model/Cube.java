@@ -52,7 +52,7 @@ public class Cube implements ICube{
                 for(int k = 0; k<3; k++){
                     //Generate a random index for the ArrayList, and add the letter from that point into the Cube
                     int randomNumber = randomNumGen.nextInt(bagOfLetters.size()-1);
-                    cube[i][j][k] = new Block(bagOfLetters.get(randomNumber));
+                    cube[i][j][k] = new Block(bagOfLetters.get(Math.abs(randomNumber)));
                     //Make sure that the letter is removed from the "Bag O'Letters"
                     bagOfLetters.remove(randomNumber);
                 }
