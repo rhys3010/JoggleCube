@@ -9,6 +9,7 @@
 package cs221.GP01;
 
 import cs221.GP01.main.java.model.JoggleCube;
+import cs221.GP01.main.java.ui.Dialog;
 import cs221.GP01.main.java.ui.UI;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -19,6 +20,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -68,22 +70,18 @@ public class Main extends Application {
 
         primaryStage.setOnCloseRequest(e ->{
 
+            // Display 'are you sure?' overlay for quitting
+            Dialog dialog = new Dialog();
+            Optional<ButtonType> result = dialog.showConfirmationDialog("Quit Game", "Are you sure you want to quit the game?");
 
-            // Display 'are you sure' overlay
-            Alert sureAlert = new Alert(Alert.AlertType.CONFIRMATION);
-            sureAlert.setTitle("Quit Game");
-            sureAlert.setHeaderText(null);
-            sureAlert.setContentText("Are you sure you want to quit the game?");
-            Optional<ButtonType> result = sureAlert.showAndWait();
-
-            if (!(result.get() == ButtonType.OK)) {
-                sureAlert.close();
-                // Consume the event and stop the program from closing
+            if(result.get() != ButtonType.OK){
+                // Stop the exit event
                 e.consume();
-            } else {
+            }else{
                 // Save the highscores and allow the program to quit
                 JoggleCube.getInstance().saveOverallScores();
             }
+
         });
         primaryStage.show();
 

@@ -17,6 +17,10 @@ import java.util.Optional;
 
 public class Dialog implements IDialog {
 
+    private TextInputDialog textInputDialog;
+    private Alert confirmationDialog;
+    private Alert informationDialog;
+
 
     /**
      * Create a text input dialog to prompt the user for information
@@ -27,13 +31,13 @@ public class Dialog implements IDialog {
      * @param allowCancel
      * @return the text inputted by the user
      */
-    public Optional showInputDialog(String headerText, String contentText, String defaultValue, ImageView graphic, boolean allowCancel) {
-        TextInputDialog textInputDialog = new TextInputDialog(defaultValue);
+    public Optional<String> showInputDialog(String headerText, String contentText, String defaultValue, ImageView graphic, boolean allowCancel) {
+        textInputDialog = new TextInputDialog(defaultValue);
         textInputDialog.setHeaderText(headerText);
         textInputDialog.setContentText(contentText);
         textInputDialog.setGraphic(graphic);
         textInputDialog.initStyle(StageStyle.UNDECORATED);
-        textInputDialog.getDialogPane().lookupButton(ButtonType.CANCEL).setDisable(!allowCancel);
+        textInputDialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(!allowCancel);
 
 
         return textInputDialog.showAndWait();
@@ -46,7 +50,7 @@ public class Dialog implements IDialog {
      * @param contentText
      * @return the user's choice
      */
-    public Optional showConfirmationDialog(String title, String contentText) {
+    public Optional<ButtonType> showConfirmationDialog(String title, String contentText) {
         Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationDialog.setHeaderText(null);
         confirmationDialog.setTitle(title);
@@ -65,5 +69,7 @@ public class Dialog implements IDialog {
         informationDialog.setHeaderText(null);
         informationDialog.setTitle(title);
         informationDialog.setContentText(contentText);
+
+        informationDialog.showAndWait();
     }
 }
