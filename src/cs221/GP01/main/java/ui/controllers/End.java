@@ -146,19 +146,22 @@ public class End extends BaseOverlay implements INeedPrep {
         alert.showAndWait();
     }
 
-
-    //agl6
-
-    public String getScore() {
-        return scoreLabel.getText();
+<<<<<<< HEAD
     @Test
     public void testPrepView() {
         prepView();
         assertEquals(JoggleCube.getInstance().getScore() + "", scoreLabel.getText());
         assertEquals(JoggleCube.getInstance().getHighestScore() + "", highScoreLabel.getText());
+=======
+
+    //agl6
+
+    public String getScore() {
+        return scoreLabel.getText();
     }
 
     public String getHighScore() {
         return highScoreLabel.getText();
+>>>>>>> master
     }
 }
