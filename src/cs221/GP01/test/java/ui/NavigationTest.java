@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
+
 import javafx.stage.Stage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,9 +28,11 @@ import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.base.NodeMatchers.hasChildren;
 import static org.junit.jupiter.api.Assertions.*;
 
+
 public class NavigationTest  extends ApplicationTest {
 
     Parent rootNode;
+
     @Override
     public void start(Stage stage) throws IOException {
         Main m = new Main();

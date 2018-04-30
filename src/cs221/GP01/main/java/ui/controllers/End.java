@@ -14,6 +14,7 @@ import cs221.GP01.main.java.ui.UI;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
@@ -54,6 +55,9 @@ public class End extends BaseOverlay implements INeedPrep {
     @FXML
     Label scoreLabel,highScoreLabel;
 
+    @FXML
+    Button saveButton;
+
 
 
 
@@ -61,6 +65,14 @@ public class End extends BaseOverlay implements INeedPrep {
     public void prepView() {
         scoreLabel.setText(JoggleCube.getInstance().getScore() + "");
         highScoreLabel.setText(JoggleCube.getInstance().getHighestScore() + "");
+
+        // Disable save button if grid was loaded
+        if(!JoggleCube.getInstance().getGamesStateNew()){
+            saveButton.setDisable(true);
+        }else{
+            saveButton.setDisable(false);
+        }
+
         JoggleCube.getInstance().resetGameState();
     }
 
@@ -135,12 +147,14 @@ public class End extends BaseOverlay implements INeedPrep {
         alert.showAndWait();
     }
 
+
     //agl6
 
-    @Test
-    public void testPrepView() {
-        prepView();
-        assertEquals(JoggleCube.getInstance().getScore() + "", scoreLabel.getText());
-        assertEquals(JoggleCube.getInstance().getHighestScore() + "", highScoreLabel.getText());
+    public String getScore() {
+        return scoreLabel.getText();
+    }
+
+    public String getHighScore() {
+        return highScoreLabel.getText();
     }
 }

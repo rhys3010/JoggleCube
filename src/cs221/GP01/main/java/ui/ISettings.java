@@ -24,23 +24,6 @@ public interface ISettings {
      */
     boolean isColorBlindEnabled();
 
-    /**
-     * Check if the music option is enabled
-     * @return true/false depending on state of the option
-     */
-    boolean isMusicEnabled();
-
-    /**
-     * Check if the sound effects option is enabled
-     * @return true/false depending on state of the option
-     */
-    boolean isSoundEffectsEnabled();
-
-    /**
-     * Get the volume value of the game
-     * @return - 0-100 value
-     */
-    double getVolume();
 
     /**
      * Set the colour blind option to true/false
@@ -48,23 +31,6 @@ public interface ISettings {
      */
     void setColorBlindEnabled(boolean colorBlind);
 
-    /**
-     * Set the music option to true/false
-     * @param music
-     */
-    void setMusicEnabled(boolean music);
-
-    /**
-     * Set the sound effects option to true/false
-     * @param soundEffects
-     */
-    void setSoundEffectsEnabled(boolean soundEffects);
-
-    /**
-     * Set the volume value to a value between 0-100
-     * @param volume
-     */
-    void setVolume(double volume);
 
     /**
      * Clear the currently saved highscores
