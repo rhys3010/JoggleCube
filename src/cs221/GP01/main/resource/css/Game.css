@@ -160,6 +160,10 @@
     -fx-cursor: hand;
 }
 
+.gameElementsContainer .cubeContainer .gridTab .explodeIconContainer .rotateIcon{
+    -fx-background-image: url("../img/icon/explode_icon.png");
+}
+
 .gameElementsContainer .cubeContainer .gridTab .explodeIconContainer .explode{
     -fx-background-image: url("../img/icon/explode_icon.png");
 }
