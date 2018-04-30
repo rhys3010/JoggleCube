@@ -19,6 +19,8 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.StageStyle;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -117,7 +119,7 @@ public class End extends BaseOverlay implements INeedPrep {
             // Normalize input and save to regular java String
             String result = input.get().replace(" ", "");
 
-            // todo: better validation
+            // todo: better validation actually handle the error filenames
             if(result.matches("(\\w*)")){
                 if(JoggleCube.getInstance().saveGrid(result)){
                     alert.setContentText("Saved Successfully");
@@ -131,5 +133,14 @@ public class End extends BaseOverlay implements INeedPrep {
             alert.setContentText("no filename!, please try again!");
         }
         alert.showAndWait();
+    }
+
+    //agl6
+
+    @Test
+    public void testPrepView() {
+        prepView();
+        assertEquals(JoggleCube.getInstance().getScore() + "", scoreLabel.getText());
+        assertEquals(JoggleCube.getInstance().getHighestScore() + "", highScoreLabel.getText());
     }
 }

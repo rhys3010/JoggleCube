@@ -14,6 +14,9 @@ import javafx.scene.Scene;
 
 import java.util.HashMap;
 
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 /**
  * Navigation - Control the screens being displayed
  * <p>
@@ -168,6 +171,7 @@ public class Navigation implements IViewNavigation{
         }
     }
 
+
     /**
      * Utility method to hide all overlays to prevent overlay overlapping
      */
@@ -182,4 +186,5 @@ public class Navigation implements IViewNavigation{
         // Re-enable background
         parent.getMainNode().setDisable(false);
     }
+
 }
