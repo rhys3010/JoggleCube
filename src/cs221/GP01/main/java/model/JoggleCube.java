@@ -57,11 +57,6 @@ public class JoggleCube implements IJoggleCube {
 
     private int currentScore = 0;
 
-    public HashMap<String, Dictionary> getLoadedDictionaries() {
-        return loadedDictionaries;
-    }
-
-
     private JoggleCube(){
         findDocumentFolder();
         loadOverallScores();
@@ -451,5 +446,9 @@ public class JoggleCube implements IJoggleCube {
             GameView.getInstance().getScoreLabel().setText(currentScore + "");
         if(timer!=null)
             timer.resetTime();
+    }
+
+    public HashMap<String, Dictionary> getLoadedDictionaries() {
+        return loadedDictionaries;
     }
 }
