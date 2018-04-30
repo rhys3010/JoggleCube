@@ -53,7 +53,7 @@
          <top>
             <HBox styleClass="header">
                <children>
-                  <Label styleClass="headerTitle" text="High Scores" />
+                  <Label id="title" styleClass="headerTitle" text="High Scores" />
                </children>
             </HBox>
          </top>

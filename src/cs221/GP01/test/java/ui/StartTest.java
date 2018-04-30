@@ -6,6 +6,7 @@ import cs221.GP01.main.java.ui.Settings;
 import cs221.GP01.main.java.ui.UI;
 import cs221.GP01.main.java.ui.controllers.BaseScreen;
 import cs221.GP01.main.java.ui.controllers.Start;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -41,7 +42,7 @@ class StartTest extends ApplicationTest {
 
     @AfterEach
     public void afterEachTest() throws TimeoutException {
-       // FxToolkit.hideStage();
+        FxToolkit.hideStage();
         release(new KeyCode[]{});
         release(new MouseButton[]{});
     }
@@ -73,8 +74,10 @@ class StartTest extends ApplicationTest {
     void prepView() throws AWTException {
 
         assertEquals("English",start.getLanguageSelector().getValue() );
-        Settings.setCurrLang("Cymraeg");
-        Start.getInstance().prepView();
+        Platform.runLater(()->Settings.setCurrLang("Cymraeg"));
+        clickOn(400,400);
+        Platform.runLater(()->Start.getInstance().prepView());
+        clickOn(400,400);
         assertEquals("Cymraeg",start.getLanguageSelector().getValue() );
 
     }
@@ -107,7 +110,7 @@ class StartTest extends ApplicationTest {
         assertEquals("Refresh", button.getText());
         button = from(rootNode).lookup("#startButton").query();
         assertEquals("Start Game", button.getText());
-        System.out.print(rootNode.getStylesheets());   // compare regex with expected ( how? )
+
 
 
     }

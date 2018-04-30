@@ -62,7 +62,7 @@
             </children>
          </HBox>
         </HBox>
-        <HBox fx:id ="gameBox" styleClass="gameElementsContainer">
+        <HBox fx:id="gameBox" styleClass="gameElementsContainer">
             <TabPane fx:id="cubeContainer" styleClass="cubeContainer" tabClosingPolicy="UNAVAILABLE">
                 <Tab text="3D View">
                     <BorderPane fx:id="back" prefHeight="300" prefWidth="400" styleClass="gridTab">
