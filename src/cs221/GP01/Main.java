@@ -80,6 +80,8 @@ public class Main extends Application {
             }else{
                 // Save the highscores and allow the program to quit
                 JoggleCube.getInstance().saveOverallScores();
+                // Stop the timer thread
+                JoggleCube.getInstance().interruptTimer();
             }
 
         });
