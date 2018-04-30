@@ -37,7 +37,7 @@ public class Dialog implements IDialog {
         textInputDialog.setContentText(contentText);
         textInputDialog.setGraphic(graphic);
         textInputDialog.initStyle(StageStyle.UNDECORATED);
-        textInputDialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(!allowCancel);
+        textInputDialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(allowCancel);
 
 
         return textInputDialog.showAndWait();
