@@ -134,4 +134,15 @@ public class End extends BaseOverlay implements INeedPrep {
         }
         alert.showAndWait();
     }
+
+
+    //agl6
+
+    public String getScore() {
+        return scoreLabel.getText();
+    }
+
+    public String getHighScore() {
+        return highScoreLabel.getText();
+    }
 }
