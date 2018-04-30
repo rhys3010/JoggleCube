@@ -226,7 +226,7 @@ public class JoggleCube implements IJoggleCube {
                 currentCubeHighScores.saveScores(out);
                 out.close();
             }catch(URISyntaxException e){
-                    System.out.println();
+                    System.out.println(e.toString());
             }
         } catch (FileNotFoundException e){
             System.out.println(e.toString());
