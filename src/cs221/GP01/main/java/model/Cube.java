@@ -1,3 +1,10 @@
+/*
+   * @(#) Cube.java 1.1 2018/02/04
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
 package cs221.GP01.main.java.model;
 
 import java.io.File;
@@ -14,9 +21,8 @@ import java.util.Scanner;
 /**
  * The Class which handles and looks after the Cube
  * @author Samuel Jones - srj12
- * @version 0.1
+ * @version 1.1
  */
-
 public class Cube implements ICube{
     private Block cube[][][] = new Block[3][3][3];
     private ArrayList<String> bagOfLetters = new ArrayList<>();

@@ -20,7 +20,7 @@ import java.util.Optional;
  * Handle the settings of the game and adapt them depending on user input in the settings overlay
  * @author Rhys Evans
  * @author Nathan Williams (naw21)
- * @version 0.3  DRAFT
+ * @version 1.1
  * @see ISettings
  * @see cs221.GP01.main.java.ui.controllers.Settings
  */

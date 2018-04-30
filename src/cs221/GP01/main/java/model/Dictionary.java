@@ -1,3 +1,10 @@
+/*
+   * @(#) Dictionary.java 1.1 2018/02/04
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
 package cs221.GP01.main.java.model;
 
 import java.io.File;
@@ -12,10 +19,10 @@ import java.util.regex.Pattern;
 /**
  * This Interface handles the backend dictionary, as well as searching, loading and retrieving the size of the
  * dictionary
+ *
  * @author Samuel Jones - srj12
- * @version 0.1
+ * @version 1.1
  */
-
 public class Dictionary implements IDictionary{
     private HashMap<String, String> dictionary = new HashMap();
 
@@ -25,6 +32,7 @@ public class Dictionary implements IDictionary{
 
     /**
      * Loads the dictionary into the local hash map handled by the object that is dictionary using the filename given
+     *
      * @param filename Finds the file named as the String parameter
      */
     public void loadDictionary(String filename){
@@ -47,6 +55,7 @@ public class Dictionary implements IDictionary{
 
     /**
      * Searches the dictionary utilising the has map for the word and returns true if the word is present false if not
+     *
      * @param word the String that is being searched for in the dictionary
      * @return Returns true if the word is present, false if the word is not.
      */

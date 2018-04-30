@@ -1,12 +1,24 @@
+/*
+   * @(#) IHighScores.java 1.1 2018/02/04
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
 package cs221.GP01.main.java.model;
 
-import javafx.collections.ObservableList;
-
-import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * HighScores - The purpose of this Interface is to be able to store and load high scores from file
+ * <p>
+ * Used by JoggleCube
+ *
+ * @author Lampros Petridis (lap12)
+ * @version 1.1
+ */
 public interface IHighScores {
 
     /**
@@ -15,7 +27,6 @@ public interface IHighScores {
      * @param file the file to load the scores from.
      */
     void loadScores(Scanner file);
-
 
     /**
      * Saves the scores to this file.
@@ -39,7 +50,7 @@ public interface IHighScores {
     IScore getHighestScore();
 
     /**
-     *
+     * get the list of high scores
      *
      * @return a list of the scores
      */

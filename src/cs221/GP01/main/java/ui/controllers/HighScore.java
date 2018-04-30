@@ -37,7 +37,8 @@ import java.util.ResourceBundle;
  * todo improve this description
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21@aber.ac.uk)
- * @version 0.2
+ * @version 1.1
+ *
  */
 public class HighScore extends BaseScreen implements Initializable, INeedPrep {
 
@@ -102,7 +103,6 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
 
     /**
      * Populate IScore table with highscore data
-     *
      */
     public void prepView(){
 
@@ -183,14 +183,11 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
     /**
      *
      * table setup stuff
-     *
-     *
      * todo Add Rank Number to table
      *
      * @param location axc
      * @param resources axc
      */
-
     @Override
     @SuppressWarnings("unchecked")
     public void initialize(URL location, ResourceBundle resources) {

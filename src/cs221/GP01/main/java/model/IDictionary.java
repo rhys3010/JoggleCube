@@ -1,9 +1,16 @@
+/*
+   * @(#) IDictionary.java 1.1 2018/02/04
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
 package cs221.GP01.main.java.model;
 
 /**
  * The interface that handles the dictionary utilising a hashmap from the Java Standard library
  * @author Samuel Jones - srj12
- * @version 0.1
+ * @version 1.1
  */
 public interface IDictionary {
     /**

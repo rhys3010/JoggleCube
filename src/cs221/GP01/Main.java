@@ -29,7 +29,7 @@ import java.util.Optional;
  *
  * @author Nathan Williams (naw21)
  * @author Rhys Evans (rhe24@aber.ac.uk)
- * @version 0.3
+ * @version 1.1
  */
 public class Main extends Application {
 

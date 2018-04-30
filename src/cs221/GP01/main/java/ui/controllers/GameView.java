@@ -43,7 +43,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author Nathan Williams (naw21)
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Samuel Jones - srj12@aber.ac.uk
- * @version 0.2  DRAFT
+ * @version 1.1
  */
 public class GameView extends BaseScreen implements IGame, INeedPrep {
 

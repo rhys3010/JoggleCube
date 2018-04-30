@@ -1,3 +1,10 @@
+/*
+   * @(#) IJoggleCube.java 1.1 2018/02/04
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
 package cs221.GP01.main.java.model;
 
 import javafx.collections.ObservableList;
@@ -7,7 +14,7 @@ import java.io.File;
 /**
  * @author Samuel Jones - srj12
  * @author Nathan - naw21
- * @version 0.2
+ * @version 1.1
  */
 public interface IJoggleCube {
 
