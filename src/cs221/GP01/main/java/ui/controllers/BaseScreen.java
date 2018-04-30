@@ -37,6 +37,7 @@ public class BaseScreen {
 
     /**
      * Get the root node of a given screen
+     *
      * @return root
      */
     public StackPane getRoot(){
@@ -45,6 +46,7 @@ public class BaseScreen {
 
     /**
      * Get the main node of the FXML
+     *
      * @return mainNode
      */
     public Node getMainNode(){

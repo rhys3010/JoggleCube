@@ -1,3 +1,10 @@
+/*
+   * @(#) JoggleCube.java 1.1 2018/02/04
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
 package cs221.GP01.main.java.model;
 
 import cs221.GP01.main.java.ui.Settings;
@@ -22,9 +29,11 @@ import java.util.Scanner;
 
 /**
  * The backend main controller
+ *
  * @author Samuel Jones - srj12@aber.ac.uk
  * @author Nathan Williams - naw21@aber.ac.uk
- * @version 0.8
+ * @version 1.1
+ * @see cs221.GP01.main.java.model.IJoggleCube
  */
 public class JoggleCube implements IJoggleCube {
 
@@ -47,8 +56,8 @@ public class JoggleCube implements IJoggleCube {
     private String name;
 
     //en_dictionary was taken from an open source scrabble bot at
-    //Currently American English
     //URL: https://github.com/jonbcard/scrabble-bot/blob/master/src/dictionary.txt
+    //Currently American English
     //en = English (American)
     //cy = Cymraeg (Welsh)
     private String language;

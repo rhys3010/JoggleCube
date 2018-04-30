@@ -1,3 +1,10 @@
+/*
+   * @(#) AllSuieTests.java 1.1 2018/02/12
+   *
+   * Copyright (c) 2012 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
 package cs221.GP01.test.java;
 
 
