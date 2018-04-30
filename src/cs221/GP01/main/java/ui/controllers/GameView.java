@@ -189,20 +189,15 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
 
         // Pop-up dialog to get user's name
         Dialog dialog = new Dialog();
-        Optional<String> input = dialog.showInputDialog("Name Input", "Please enter your name:", "Walter", new ImageView(new Image(getClass().getResourceAsStream("/cs221/GP01/main/resource/img/icon/person_icon.png"))), false);
+        String result = dialog.showInputDialog("Name Input", "Please enter your name:", "Walter", new ImageView(new Image(getClass().getResourceAsStream("/cs221/GP01/main/resource/img/icon/person_icon.png"))), false);
 
+        // Normalize input
+        result = result.replace(" ", "");
 
-        if (input.isPresent()) {
-            // Normalize input and save to regular string
-            String result = input.get().replace(" ", "");
-
-            // todo: better validation
-            if (result.matches("(\\w*)")) {
-                JoggleCube.getInstance().setName(result);
-            } else {
-            }
+        // todo: better validation
+        if (result.matches("(\\w*)")) {
+            JoggleCube.getInstance().setName(result);
         }
-
 
         foundWords = FXCollections.observableArrayList();
 

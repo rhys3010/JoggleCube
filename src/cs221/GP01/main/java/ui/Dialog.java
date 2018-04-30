@@ -32,7 +32,7 @@ public class Dialog implements IDialog {
      * @param allowCancel
      * @return the text inputted by the user
      */
-    public Optional<String> showInputDialog(String headerText, String contentText, String defaultValue, ImageView graphic, boolean allowCancel) {
+    public String showInputDialog(String headerText, String contentText, String defaultValue, ImageView graphic, boolean allowCancel) {
         textInputDialog = new TextInputDialog(defaultValue);
         textInputDialog.setHeaderText(headerText);
         textInputDialog.setContentText(contentText);
@@ -40,7 +40,16 @@ public class Dialog implements IDialog {
         textInputDialog.initStyle(StageStyle.UNDECORATED);
         textInputDialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(allowCancel);
 
-        return textInputDialog.showAndWait();
+        Optional<String> rawInput;
+        String input;
+
+        // Prompt for input until input is provided
+        do{
+           rawInput = textInputDialog.showAndWait();
+           input = rawInput.orElse("");
+        }while(!rawInput.equals(Optional.empty()) && input.isEmpty());
+
+        return input;
     }
 
 

@@ -30,7 +30,7 @@ public interface IDialog {
      * @param allowCancel
      * @return the text inputted by the user
      */
-    Optional showInputDialog(String headerText, String contentText, String defaultValue, ImageView graphic, boolean allowCancel);
+    String showInputDialog(String headerText, String contentText, String defaultValue, ImageView graphic, boolean allowCancel);
 
     /**
      * Create a confirmation dialog to prompt the user for confirmation for a given action

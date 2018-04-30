@@ -109,29 +109,26 @@ public class End extends BaseOverlay implements INeedPrep {
     @FXML
     public void btnSaveClicked(){
         Dialog inputDialog = new Dialog();
-        Optional<String> input = inputDialog.showInputDialog("Save Cube", "Please enter a filename", "untitled", new ImageView(new Image(getClass().getResourceAsStream("/cs221/GP01/main/resource/img/icon/save_icon_alt.png"))), true);
+        String result = inputDialog.showInputDialog("Save Cube", "Please enter a filename", "untitled", new ImageView(new Image(getClass().getResourceAsStream("/cs221/GP01/main/resource/img/icon/save_icon_alt.png"))), true);
 
         Dialog informationDialog = new Dialog();
 
 
-        
-        if(input.isPresent()){
-            // Normalize input and save to regular java String
-            String result = input.get().replace(" ", "");
+        // Normalize input and save to regular java String
+        result = result.replace(" ", "");
 
-            // todo: better validation actually handle the error filenames
-            if(result.matches("(\\w*)")){
-                if(JoggleCube.getInstance().saveGrid(result)){
-                    informationDialog.showInformationDialog("Success", "File saved successfully!");
-                }else{
-                    informationDialog.showInformationDialog("Error", "Error Saving File, Please try again");
-                }
+        // todo: better validation actually handle the error filenames
+        if(result.matches("(\\w*)") && !result.isEmpty()){
+            if(JoggleCube.getInstance().saveGrid(result)){
+                informationDialog.showInformationDialog("Success", "File saved successfully!");
             }else{
-                informationDialog.showInformationDialog("Error", "Invalid File Name, Please try again");
+                informationDialog.showInformationDialog("Error", "Error Saving File, Please try again");
             }
-        } else {
+        }else {
+            // todo: prevent this from showing after cancel pressed
             informationDialog.showInformationDialog("Error", "Invalid File Name, Please try again");
         }
+
     }
 
 
