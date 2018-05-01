@@ -30,7 +30,7 @@ public class UI implements IFrontend {
     /**
      * The singleton instance of the UI class
      */
-    private static UI ui;
+    private static IFrontend ui;
 
     /**
      * Default constructor
@@ -43,7 +43,7 @@ public class UI implements IFrontend {
      *
      * @return ui
      */
-    public static UI getInstance(){
+    public static IFrontend getInstance(){
         if(ui == null){
             synchronized (UI.class){
                 if(ui == null){
