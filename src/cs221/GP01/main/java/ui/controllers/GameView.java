@@ -63,6 +63,12 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
 
     private GridDisplayer gridDisplayer;
 
+    private Dialog dialog;
+
+    public Dialog getDialog() {
+        return dialog;
+    }
+
     @FXML
     private TabPane cubeContainer;
 
@@ -169,7 +175,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     @FXML
     public void btnEndGameClicked() {
         // Display 'are you sure?' overlay for quitting
-        Dialog dialog = new Dialog();
+        dialog = new Dialog();
         Optional<ButtonType> result = dialog.showConfirmationDialog("Quit Game", "Are you sure you want to quit the game?");
 
         if(result.get() != ButtonType.OK){
@@ -192,7 +198,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         timerLabel.setStyle("-fx-text-fill: white;");
 
         // Pop-up dialog to get user's name
-        Dialog dialog = new Dialog();
+        dialog = new Dialog();
         String result = dialog.showInputDialog("Name Input", "Please enter your name:", "Walter", new ImageView(new Image(getClass().getResourceAsStream("/cs221/GP01/main/resource/img/icon/person_icon.png"))), false);
 
         // Normalize input

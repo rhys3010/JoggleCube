@@ -18,8 +18,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 import java.util.Optional;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * End - A class that controls the Pause subscene that is defined in End.fxml
