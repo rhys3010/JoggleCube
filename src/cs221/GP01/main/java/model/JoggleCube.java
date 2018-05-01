@@ -556,4 +556,30 @@ public class JoggleCube implements IJoggleCube {
     public HashMap<String, Dictionary> getLoadedDictionaries() {
         return loadedDictionaries;
     }
+
+    /**
+     * Clears all highscores in the overall highscores variables as well as the stored files!
+     */
+    public void clearHighScores(){
+        try {
+            try {
+                String highScore = System.getProperty("user.home") + "/Documents/JoggleCube/highscores/overAll.highscores";
+                URI highScores = new URI(highScore.replace("\\", "/")
+                        .trim().replaceAll("\\u0020", "%20"));
+
+                File overallHighScoresFile = new File(highScores.getPath());
+                //Empty the file
+                PrintWriter out = new PrintWriter(overallHighScoresFile);
+                out.print("");
+                out.close();
+            } catch (URISyntaxException e) {
+                System.out.println(e.toString());
+            }
+        } catch (FileNotFoundException e){
+            System.out.println(e.toString());
+        }
+
+        //Clear currently loaded highscores
+        overallHighScores = new HighScores();
+    }
 }
