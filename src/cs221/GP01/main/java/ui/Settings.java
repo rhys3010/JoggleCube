@@ -122,13 +122,6 @@ public class Settings implements ISettings{
             alreadySelectedColor = "#54ad54";
             unavailableColor = "#aeaeae";
         }
-
-        // Pass new colours to griddisplayer
-        if(GameView.getInstance().getGridDisplayer() != null) {
-        }else{
-            colorBlind = !colorBlind;
-            // TODO: Dialog to report failure
-        }
     }
 
 
