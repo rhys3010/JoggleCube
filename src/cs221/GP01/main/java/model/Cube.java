@@ -181,7 +181,7 @@ public class Cube implements ICube{
     /**
      * Load the cube using the Scanner passed to the method, into the correct parts of the current object
      * @param file Pass the file we need to load from
-     * @return 
+     * @return True if the cube loading is successful else false
      */
     @Override
     public boolean loadCube(Scanner file) {
@@ -210,6 +210,13 @@ public class Cube implements ICube{
         return true;
     }
 
+    /**
+     * Set the block at the co-ordinates to the given block
+     * @param x int x co-ord
+     * @param y int y co-ord
+     * @param z int z co-ord
+     * @param block the Block object
+     */
     public void setBlock(int x, int y, int z, Block block){
         cube[x][y][z] = block;
     }
@@ -240,6 +247,10 @@ public class Cube implements ICube{
         }
     }
 
+    /**
+     * Set the current loaded language
+     * @param language String of the language e.g. english = "en"
+     */
     public void setLanguage(String language) {
         this.cubeLanguage = language;
     }
