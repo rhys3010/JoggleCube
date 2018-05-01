@@ -64,7 +64,7 @@ public class CubeTests {
         assertEquals(1,Integer.parseInt(cube.getScores().get("A")));
         assertEquals(3,Integer.parseInt(cube.getScores().get("B")));
         assertEquals(4,Integer.parseInt(cube.getScores().get("F")));
-        assertEquals(8,Integer.parseInt(cube.getScores().get("Qu")));
+        assertEquals(8,Integer.parseInt(cube.getScores().get("QU")));
         assertEquals(4,Integer.parseInt(cube.getScores().get("Y")));
         assertEquals(10,Integer.parseInt(cube.getScores().get("Z")));
 
@@ -74,6 +74,7 @@ public class CubeTests {
         String[] letter = new String[3];
 
         for(int i=0; i<3; i++) {
+            cube = new Cube("en_letters");
             cube.populateCube();
             letter[i] = cube.getBlock(0, 0, 0).getLetter();
             System.out.println(letter[i]);

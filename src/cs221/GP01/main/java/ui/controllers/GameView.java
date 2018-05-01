@@ -70,6 +70,10 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     @FXML
     private Label scoreLabel, timerLabel;
 
+    public void setTimerLabel(Label timerLabel) {
+        this.timerLabel = timerLabel;
+    }
+
     private ObservableList<String> foundWords;
 
 
