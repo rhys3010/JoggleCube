@@ -1,3 +1,10 @@
+/*
+   * @(#) JoggleCube.java 1.1 2018/02/04
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
 package cs221.GP01.main.java.model;
 
 import cs221.GP01.main.java.ui.Settings;
@@ -22,9 +29,11 @@ import java.util.Scanner;
 
 /**
  * The backend main controller
+ *
  * @author Samuel Jones - srj12@aber.ac.uk
  * @author Nathan Williams - naw21@aber.ac.uk
- * @version 0.8
+ * @version 1.1
+ * @see cs221.GP01.main.java.model.IJoggleCube
  */
 public class JoggleCube implements IJoggleCube {
 
@@ -47,8 +56,8 @@ public class JoggleCube implements IJoggleCube {
     private String name;
 
     //en_dictionary was taken from an open source scrabble bot at
-    //Currently American English
     //URL: https://github.com/jonbcard/scrabble-bot/blob/master/src/dictionary.txt
+    //Currently American English
     //en = English (American)
     //cy = Cymraeg (Welsh)
     private String language;
@@ -302,7 +311,13 @@ public class JoggleCube implements IJoggleCube {
      * @return the top high score.
      */
     public int getHighestScore() {
-        return overallHighScores.getHighestScore().getScore();
+        try {
+            return overallHighScores.getHighestScore().getScore();
+        }catch(NullPointerException e){
+            System.out.println("High scores are not loaded!!!");
+            //todo add dialogue to make sure they load game from a non-network mounted drive aka not M:/ Drive
+            return 0;
+        }
     }
 
     @Override
@@ -319,7 +334,9 @@ public class JoggleCube implements IJoggleCube {
 
     @Override
     public void interruptTimer() {
-        timer.interrupt();
+        if(timer != null){
+            timer.interrupt();
+        }
     }
 
     /**
@@ -446,13 +463,18 @@ public class JoggleCube implements IJoggleCube {
     }
 
     public void resetGameState(){
-        if(gamesStateNew != true){
-            saveGrid(currentFilename);
-        }
         if(currentScore > 0){
             IScore score = new Score(currentScore,name);
             currentCubeHighScores.addScore(score);
-            overallHighScores.addScore(score);
+            try {
+                overallHighScores.addScore(score);
+            }catch(NullPointerException e){
+                //todo add dialogue to make sure they load game from a non-network mounted drive aka not M:/ Drive
+                System.out.println(e.toString());
+            }
+            if(gamesStateNew != true){
+                saveGrid(currentFilename);
+            }
         }
         storedWords = new ArrayList<>();
         currentScore = 0;

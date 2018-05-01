@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+        * @(#) WordSelection.fxml 1.0 2018/03/11
+        *
+        * Copyright (c) 20018 University of Wales, Aberystwyth.
+        * All rights reserved.
+        *
+-->
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+    * WordSelection - The help page for selecting words
+    *
+    * @author Rhys Evans (rhe24@aber.ac.uk)
+    * @version 0.1  DRAFT
+-->
+
+<VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label styleClass="title" text="Selecting a Word" wrapText="true" />
+      <Label contentDisplay="CENTER" graphicTextGap="1.0" layoutX="10.0" layoutY="70.0" styleClass="content" text="To ROTATE the cube, right-click on it, and move the mouse." textAlignment="CENTER" wrapText="true" />
+      <Label contentDisplay="CENTER" graphicTextGap="1.0" layoutX="10.0" layoutY="100.0" styleClass="content" text="To EXPLODE the cube, click the small cube symbol in the bottom left of the game window." textAlignment="CENTER" wrapText="true" />
+      <Label contentDisplay="CENTER" graphicTextGap="1.0" layoutX="10.0" layoutY="130.0" styleClass="content" text="To toggle between 3D, 2.5D and 2D views, use the tabs on the top-left of the game window. " textAlignment="CENTER" wrapText="true" />
+      <Label contentDisplay="CENTER" graphicTextGap="1.0" layoutX="19.0" layoutY="160.0" styleClass="content" text="To toggle in/out of the colourblind-friendly colourscheme, click the cog symbol in the bottom navigation bar." textAlignment="CENTER" wrapText="true" />
+    </children>
+    <stylesheets>
+        <URL value="@../../css/HelpPage.css" />
+    </stylesheets>
+</VBox>

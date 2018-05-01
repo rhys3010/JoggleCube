@@ -1,5 +1,5 @@
 /*
-   * @(#) Main.java 1.1 2018/02/04
+   * @(#) HighScores.java 1.1 2018/02/04
    *
    * Copyright (c) 2018 University of Wales, Aberystwyth.
    * All rights reserved.
@@ -15,11 +15,11 @@ import java.util.function.Consumer;
 
 /**
  * HighScores - The purpose of this class is to be able to store and load high scores from file
- * <p>
  * Used by JoggleCube
  *
  * @author Lampros Petridis (lap12)
- * @version 0.1
+ * @version 1.1
+ * @see cs221.GP01.main.java.model.IHighScores
  */
 public class HighScores implements IHighScores {
     private ArrayList <IScore> scores;
@@ -33,6 +33,7 @@ public class HighScores implements IHighScores {
 
     /**
      * Loads an arraylist containing the high scores
+     *
      * @param file the file to load the scores from.
      */
     @Override
@@ -40,11 +41,11 @@ public class HighScores implements IHighScores {
         while(file.hasNext()){
             scores.add(new Score(file));
         }
-
     }
 
     /**
      * Saves an arraylist containg the high scores to a file
+     *
      * @param file the file to save the scores to.
      */
     @Override
@@ -54,6 +55,7 @@ public class HighScores implements IHighScores {
 
     /**
      * Adds high scores to the arraylist
+     *
      * @param score the score to be added to this list of HighScores
      */
     @Override
@@ -63,6 +65,7 @@ public class HighScores implements IHighScores {
 
     /**
      * Sorts the arraylist and returns the high score
+     *
      * @return high score
      */
     @Override
@@ -81,11 +84,11 @@ public class HighScores implements IHighScores {
         } else {
             return new Score(0,"");
         }
-
     }
 
     /**
      * Returns all the scores in the arraylist
+     *
      * @return scores
      */
     @Override
@@ -95,6 +98,7 @@ public class HighScores implements IHighScores {
 
     /**
      * To string method used for testing
+     *
      * @return highScores in string
      */
     @Override

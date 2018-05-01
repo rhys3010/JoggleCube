@@ -1,0 +1,42 @@
+@startuml
+package "main" {
+package "java" {
+package "model" {
+()"IBlock"-[Block]
+()"ICube"-[Cube] 
+[Cube] --> [Block]
+()"IDictionary"-[Dictionary] 
+()"IGameTimer"-[GameTimer]
+()"IHighScores"-[HighScores]
+()"IScore"-[HighScores]
+[HighScores] --> [Score]
+[JoggleCube] - ()"IJoggleCube"
+()"IHighScores"-[JoggleCube]
+[Dictionary] - [JoggleCube]
+[Cube] - [JoggleCube]
+[GameTimer] - [JoggleCube]
+
+()"IScore"-[Score] 
+}
+package "ui"{
+package "controllers"{
+[BaseOverlay]
+[BaseScreen]
+[End]
+[GameView]
+[GridDisplayer]
+[Help]
+[HighScore]
+[LoadGrid]
+[Settings]
+[Start]
+}
+[Navigation]
+[ScreenType]
+[Settings]
+[UI]
+}
+}
+}
+[Main]
+@enduml
