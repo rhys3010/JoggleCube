@@ -32,6 +32,7 @@ public class Dialog implements IDialog {
      * @param allowCancel
      * @return the text inputted by the user
      */
+
     public String showInputDialog(String headerText, String contentText, String defaultValue, ImageView graphic, boolean allowCancel) {
         textInputDialog = new TextInputDialog(defaultValue);
         textInputDialog.setHeaderText(headerText);
@@ -91,5 +92,9 @@ public class Dialog implements IDialog {
         informationDialog.setContentText(contentText);
 
         informationDialog.showAndWait();
+    }
+
+    public TextInputDialog getTextInputDialog() {
+        return textInputDialog;
     }
 }

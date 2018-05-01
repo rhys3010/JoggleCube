@@ -33,7 +33,7 @@ import java.util.Scanner;
  * @author Samuel Jones - srj12@aber.ac.uk
  * @author Nathan Williams - naw21@aber.ac.uk
  * @version 1.1
- * @see cs221.GP01.main.java.model.IJoggleCube
+ * @see IJoggleCube
  */
 public class JoggleCube implements IJoggleCube {
 

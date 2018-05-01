@@ -21,10 +21,9 @@ import java.time.Duration;
 /**
  * GameTimer - A class that manages the running of the game timer
  *
- *
  *   @author Cameron Humphreys - cah27
  *   @version 1.1
- *   @see cs221.GP01.main.java.model.IGameTimer
+ *   @see IGameTimer
  */
 public class GameTimer implements IGameTimer, Runnable {
 

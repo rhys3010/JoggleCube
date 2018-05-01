@@ -18,8 +18,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 import java.util.Optional;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * End - A class that controls the Pause subscene that is defined in End.fxml
@@ -28,7 +32,7 @@ import java.util.Optional;
  *
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21)
- * @version 0.2  DRAFT
+ * @version 1.1
  */
 public class End extends BaseOverlay implements INeedPrep {
 
@@ -54,8 +58,9 @@ public class End extends BaseOverlay implements INeedPrep {
     Button saveButton;
 
 
-
-
+    /**
+     * UPDATE DESCRIPTION
+     */
     @Override
     public void prepView() {
         scoreLabel.setText(JoggleCube.getInstance().getScore() + "");
@@ -70,7 +75,6 @@ public class End extends BaseOverlay implements INeedPrep {
 
         JoggleCube.getInstance().resetGameState();
     }
-
 
     /**
      * When the High Score button is pressed, change scene to high score screen
@@ -132,12 +136,6 @@ public class End extends BaseOverlay implements INeedPrep {
 
     }
 
-    @Test
-    public void testPrepView() {
-        prepView();
-        assertEquals(JoggleCube.getInstance().getScore() + "", scoreLabel.getText());
-        assertEquals(JoggleCube.getInstance().getHighestScore() + "", highScoreLabel.getText());
-    }
     //agl6
 
     public String getScore() {

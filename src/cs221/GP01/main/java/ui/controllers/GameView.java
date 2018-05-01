@@ -35,7 +35,7 @@ import java.util.Optional;
 
 /**
  * GameView - A class that controls the Game scene that is defined in Game.fxml
- * <p>
+ *
  * Used with Game.fxml
  * todo improve this description
  * @author Nathan Williams (naw21)
@@ -62,6 +62,12 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     }
 
     private GridDisplayer gridDisplayer;
+
+    private Dialog dialog;
+
+    public Dialog getDialog() {
+        return dialog;
+    }
 
     @FXML
     private TabPane cubeContainer;
@@ -169,7 +175,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     @FXML
     public void btnEndGameClicked() {
         // Display 'are you sure?' overlay for quitting
-        Dialog dialog = new Dialog();
+        dialog = new Dialog();
         Optional<ButtonType> result = dialog.showConfirmationDialog("Quit Game", "Are you sure you want to quit the game?");
 
         if(result.get() != ButtonType.OK){
@@ -192,7 +198,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         timerLabel.setStyle("-fx-text-fill: white;");
 
         // Pop-up dialog to get user's name
-        Dialog dialog = new Dialog();
+        dialog = new Dialog();
         String result = dialog.showInputDialog("Name Input", "Please enter your name:", "Walter", new ImageView(new Image(getClass().getResourceAsStream("/cs221/GP01/main/resource/img/icon/person_icon.png"))), false);
 
         // Normalize input
@@ -220,20 +226,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     }
 
 
-    @Override
-    public Label getTimerLabel() {
-        return timerLabel;
-    }
 
-    @Override
-    public Label getScoreLabel() {
-        return scoreLabel;
-    }
-
-    @Override
-    public TabPane getCubeContainer() {
-        return cubeContainer;
-    }
 
     /**
      * Returns the list of found words so it can be used in the backend as it is currently only stored in the frontend
@@ -246,24 +239,79 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         return foundWords;
     }
 
-    //agl6
+    //setters and getters for tests
 
+    /**
+     * Sets string of text in to the textField variable
+     *
+     * @param text string to be set
+     */
     public void setText(String text) {
         textField.setText(text);
     }
 
+    /**
+     * gets timerTable
+     *
+     * @return timerLabel
+     */
+    @Override
+    public Label getTimerLabel() {
+        return timerLabel;
+    }
+
+    /**
+     * gets scoreLabel
+     *
+     * @return scoreLabel
+     */
+    @Override
+    public Label getScoreLabel() {
+        return scoreLabel;
+    }
+
+    /**
+     * gets cubeContainer
+     *
+     * @return cubeContainer
+     */
+    @Override
+    public TabPane getCubeContainer() {
+        return cubeContainer;
+    }
+
+    /**
+     * gets text within textField
+     *
+     * @return textField
+     */
     public String getText() {
         return textField.getText();
     }
 
+    /**
+     * gets gridDisplayer
+     *
+     * @return gridDisplayer
+     */
     public GridDisplayer getGridDisplayer() {
         return gridDisplayer;
     }
 
+    /**
+     * gets hamburgerContext
+     *
+     * @return hamburger Icon
+     */
     public ContextMenu getHamburgerContext() {
         return hamburgerContext;
     }
 
+    /**
+     * gets menuButton
+     *
+     * @return menuButton
+     */
     public Button getMenuButton() {
         return menuButton;
     }
