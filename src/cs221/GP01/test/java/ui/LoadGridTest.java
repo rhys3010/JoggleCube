@@ -34,7 +34,7 @@ import java.util.concurrent.TimeoutException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LoadGridTest extends ApplicationTest {
+/** class LoadGridTest extends ApplicationTest {
 
     Parent rootNode;
     LoadGrid load = LoadGrid.getInstance();
@@ -117,4 +117,4 @@ clickOn(400,400);
 
 
     }
-}
+} */

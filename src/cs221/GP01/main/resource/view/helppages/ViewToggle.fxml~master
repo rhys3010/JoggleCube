@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+        * @(#) Scoring.fxml 1.0 2018/03/11
+        *
+        * Copyright (c) 20018 University of Wales, Aberystwyth.
+        * All rights reserved.
+        *
+-->
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+    * Rotation - The help page that explains how to rotate the cube
+    *
+    * @author Rhys Evans (rhe24@aber.ac.uk)
+    * @author Alex Thumwood (alt38@aber.ac.uk)
+    * @version 0.2  DRAFT
+-->
+
+<VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@../../css/HelpPage.css" />
+    </stylesheets>
+    <Label styleClass="content" text="To toggle between 3D, 2.5D and 2D views, use the tabs on the top-left of the game window." textAlignment="CENTER" wrapText="true" />
+    <VBox alignment="CENTER" styleClass="content">
+        <ImageView fitHeight="247.0" fitWidth="278.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../img/help/toggleview.gif" />
+        </ImageView>
+    </VBox>
+</VBox>
