@@ -12,6 +12,7 @@ import cs221.GP01.main.java.model.JoggleCube;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
+import javax.swing.text.html.Option;
 import java.util.Optional;
 
 /**
@@ -92,18 +93,16 @@ public class Settings implements ISettings{
      * Clear the highscores and prompt user
      */
     public void clearHighScores(){
-        // Display 'are you sure' overlay
-        Alert sureAlert = new Alert(Alert.AlertType.CONFIRMATION);
-        sureAlert.setTitle("Quit Game");
-        sureAlert.setHeaderText(null);
-        sureAlert.setContentText("Are you sure you want to clear all High Scores?");
 
-        Optional<ButtonType> result = sureAlert.showAndWait();
+        // Create confirmation dialog and store result
+        Dialog confirmDialog = new Dialog();
+        Optional<ButtonType> result = confirmDialog.showConfirmationDialog("Clear High Scores", "Are you sure you want to clear all High Scores?");
 
-        if (result.get() == ButtonType.OK) {
-            // todo: Clear high scores here
-        } else {
-            sureAlert.close();
+        if(result.get() == ButtonType.OK){
+            // Remove overall highscores
+            JoggleCube.getInstance().clearHighScores();
+            Dialog infoDialog = new Dialog();
+            infoDialog.showInformationDialog("Success", "All High Scores have been cleared");
         }
     }
 
