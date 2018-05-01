@@ -334,7 +334,9 @@ public class JoggleCube implements IJoggleCube {
 
     @Override
     public void interruptTimer() {
-        timer.interrupt();
+        if(timer != null){
+            timer.interrupt();
+        }
     }
 
     /**

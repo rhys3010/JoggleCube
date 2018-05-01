@@ -9,6 +9,7 @@
 package cs221.GP01.main.java.ui.controllers;
 
 import cs221.GP01.main.java.model.JoggleCube;
+import cs221.GP01.main.java.ui.Dialog;
 import cs221.GP01.main.java.ui.Navigation;
 import cs221.GP01.main.java.ui.UI;
 import cs221.GP01.main.java.ui.ScreenType;
@@ -61,7 +62,6 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     }
 
     private GridDisplayer gridDisplayer;
-    public TextInputDialog dialog;
 
     @FXML
     private TabPane cubeContainer;
@@ -164,19 +164,16 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
      */
     @FXML
     public void btnEndGameClicked() {
-        // Display 'are you sure' overlay
-        Alert sureAlert = new Alert(Alert.AlertType.CONFIRMATION);
-        sureAlert.setTitle("Quit Game");
-        sureAlert.setHeaderText(null);
-        sureAlert.setContentText("Are you sure you want to quit the current game?");
-        Optional<ButtonType> result = sureAlert.showAndWait();
+        // Display 'are you sure?' overlay for quitting
+        Dialog dialog = new Dialog();
+        Optional<ButtonType> result = dialog.showConfirmationDialog("Quit Game", "Are you sure you want to quit the game?");
 
-
-        if (result.get() == ButtonType.OK) {
+        if(result.get() != ButtonType.OK){
+            // Do nothing
+        }else{
+            // End the game
             JoggleCube.getInstance().interruptTimer();
             Navigation.getInstance().showOverlay(ScreenType.END, this);
-        } else {
-            sureAlert.close();
         }
     }
 
@@ -191,31 +188,16 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         timerLabel.setStyle("-fx-text-fill: white;");
 
         // Pop-up dialog to get user's name
-        //TextInputDialog
-        dialog = new TextInputDialog("Walter");
-        dialog.setTitle("Enter Name");
-        dialog.setHeaderText("Name Input");
-        dialog.setContentText("Please enter your name:");
-        // todo: make this call using proper URI to allow for those dodgy PCs
-        dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/cs221/GP01/main/resource/img/icon/person_icon.png"))));
-        dialog.initStyle(StageStyle.UNDECORATED);
-        dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
+        Dialog dialog = new Dialog();
+        String result = dialog.showInputDialog("Name Input", "Please enter your name:", "Walter", new ImageView(new Image(getClass().getResourceAsStream("/cs221/GP01/main/resource/img/icon/person_icon.png"))), false);
 
-        // Get result from text box
-        Optional<String> input = dialog.showAndWait();
+        // Normalize input
+        result = result.replace(" ", "");
 
-        if (input.isPresent()) {
-            // Normalize input and save to regular string
-            String result = input.get().replace(" ", "");
-
-            // todo: better validation
-            if (result.matches("(\\w*)")) {
-                JoggleCube.getInstance().setName(result);
-            } else {
-                dialog.setHeaderText("Invalid Name Entry, Please try again");
-            }
+        // todo: better validation
+        if (result.matches("(\\w*)")) {
+            JoggleCube.getInstance().setName(result);
         }
-
 
         foundWords = FXCollections.observableArrayList();
 
