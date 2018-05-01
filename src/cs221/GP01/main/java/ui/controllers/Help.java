@@ -81,6 +81,10 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
     @FXML
     private SubScene helpPageContainer;
 
+    public SubScene getHelpPageContainer() {
+        return helpPageContainer;
+    }
+
     /**
      * The FXML node of the carousel indicator container
      */
