@@ -71,7 +71,7 @@ public class Settings extends BaseOverlay implements INeedPrep, Initializable {
     @FXML
     public void colorBlindToggleClicked(){
         // Switch the toggle to the opposite of what it currently is
-        cs221.GP01.main.java.ui.Settings.getInstance().setColorBlindEnabled(colorBlindToggle.isSelected());
+        cs221.GP01.main.java.ui.Settings.getInstance().toggleColourBlind();
     }
 
 

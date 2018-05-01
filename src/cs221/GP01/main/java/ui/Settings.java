@@ -9,6 +9,7 @@
 package cs221.GP01.main.java.ui;
 
 import cs221.GP01.main.java.model.JoggleCube;
+import cs221.GP01.main.java.ui.controllers.GameView;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
@@ -37,9 +38,29 @@ public class Settings implements ISettings{
      */
     private boolean colorBlind = false;
 
+    /**
+     * Available grid languages
+     */
+
     private static String languages[] = {"English","Cymraeg"};
+
+    /**
+     * Currently used grid language
+     */
     private static String currLang = "English";
+
+    /**
+     * The game length
+     */
     private static int timerLength = 180;
+
+    /**
+     * Colour Variables + Default Values
+     */
+    private String currentlySelectedColor = "#38aa38";
+    private String availableColor = "#30599b";
+    private String alreadySelectedColor = "#54ad54";
+    private String unavailableColor = "#aeaeae";
 
 
     /**
@@ -82,10 +103,32 @@ public class Settings implements ISettings{
 
     /**
      * Set the colour blind option to true/false
-     * @param colorBlind
      */
-    public void setColorBlindEnabled(boolean colorBlind){
-        this.colorBlind = colorBlind;
+    public void toggleColourBlind() {
+
+        // Enable colour blind mode
+        colorBlind = !colorBlind;
+
+        // Change the colours accordingly
+        if (colorBlind) {
+            currentlySelectedColor = "#cbc155";
+            availableColor = "#b171cb";
+            alreadySelectedColor = "#cb5758";
+            unavailableColor = "#aeaeae";
+
+        } else {
+            currentlySelectedColor = "#38aa38";
+            availableColor = "#30599b";
+            alreadySelectedColor = "#54ad54";
+            unavailableColor = "#aeaeae";
+        }
+
+        // Pass new colours to griddisplayer
+        if(GameView.getInstance().getGridDisplayer() != null) {
+        }else{
+            colorBlind = !colorBlind;
+            // TODO: Dialog to report failure
+        }
     }
 
 
@@ -134,5 +177,37 @@ public class Settings implements ISettings{
 
     public static void setTimerLength(int timerLength) {
         Settings.timerLength = timerLength;
+    }
+
+    /**
+     * Get the colour to represent currently selected cube
+     * @return
+     */
+    public String getCurrentlySelectedColor(){
+        return currentlySelectedColor;
+    }
+
+    /**
+     * Get the colour to represent available cubes
+     * @return
+     */
+    public String getAvailableColor(){
+        return availableColor;
+    }
+
+    /**
+     * Get the colour to represent already selected cubes
+     * @return
+     */
+    public String getAlreadySelectedColor(){
+        return alreadySelectedColor;
+    }
+
+    /**
+     * Get the colour to represent unavailable cubes
+     * @return
+     */
+    public String getUnavailableColor(){
+        return unavailableColor;
     }
 }

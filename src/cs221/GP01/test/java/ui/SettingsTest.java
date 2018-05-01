@@ -43,9 +43,9 @@ public class SettingsTest {
     @Test
     public void testColorBlind() {
 
-        settings.setColorBlindEnabled(true);
+        settings.toggleColourBlind();
         assertTrue(settings.isColorBlindEnabled());
-        settings.setColorBlindEnabled(false);
+        settings.toggleColourBlind();
         assertFalse(settings.isColorBlindEnabled());
 
     }
