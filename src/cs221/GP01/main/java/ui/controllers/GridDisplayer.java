@@ -107,6 +107,8 @@ public class GridDisplayer {
         groupy.getChildren().add(camera);
         subScene.setCamera(camera);
 
+        groupy.getChildren().add(new AmbientLight());
+
         //sets up the right mouse button for rotating the cube
         back.setOnMouseDragged(e -> {
             if (e.getButton().equals(MouseButton.SECONDARY)) {
