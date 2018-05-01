@@ -35,7 +35,7 @@ class GameTimerTest {
 
     }
 
-    @Test
+   /* @Test
     public void testStartTimer() throws InterruptedException {
 
 Label timerLabel = new Label();
@@ -57,7 +57,7 @@ GameView.getInstance().setTimerLabel(timerLabel);
         timer.finishTimer();
         System.out.print(GameView.getInstance().getRoot().getChildren());
         //assertTrue(GameView.getInstance().getRoot().getChildren().contains(Navigation.getInstance().getScreens().get(ScreenType.END).getRoot()));
-    }
+    }*/
 
 
     @Test

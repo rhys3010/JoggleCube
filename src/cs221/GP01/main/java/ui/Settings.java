@@ -52,15 +52,22 @@ public class Settings implements ISettings{
     }
 
     public static void setCurrLang(String currLang) {
-        if(currLang.length() == 2){
+        if((currLang.length() == 2)){
+            //converts prefix into full language name
             for(String lang : languages){
-                if (lang.substring(0,2).toLowerCase().equals(currLang)) {
+                if (lang.substring(0,2).toLowerCase().equals(currLang.toLowerCase())) {
                     Settings.currLang = lang;
                     break;
                 }
             }
         } else {
-            Settings.currLang = currLang;
+            //checks if valid language
+            for(String lang : languages){
+                if (lang.toLowerCase().equals(currLang.toLowerCase())) {
+                    Settings.currLang = lang;
+                    break;
+                }
+            }
         }
         //when language is changed set the joggleCubeLanguage
         JoggleCube.getInstance().setLanguage();

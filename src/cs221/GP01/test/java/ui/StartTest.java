@@ -126,9 +126,12 @@ class StartTest extends ApplicationTest {
 
     @Test
     void initialize() throws AWTException {
+
+       Settings.setCurrLang("English");
+        Platform.runLater(()->start.getLanguageSelector().setValue("English"));
        assertEquals ("English", Settings.getCurrLang());
-       chooseWelsh();
-     //  Start.getInstance().initialize(); what arguments
+       chooseWelsh();  // initializing on action?
+       clickOn(400,400);
         assertEquals("Cymraeg", Settings.getCurrLang() );
     }
 }
