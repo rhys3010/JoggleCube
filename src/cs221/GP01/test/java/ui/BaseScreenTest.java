@@ -1,5 +1,6 @@
 package cs221.GP01.test.java.ui;
 
+import cs221.GP01.main.java.ui.IViewNavigation;
 import cs221.GP01.main.java.ui.Navigation;
 import cs221.GP01.main.java.ui.ScreenType;
 import cs221.GP01.main.java.ui.controllers.BaseScreen;
@@ -10,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class BaseScreenTest {
 
     BaseScreen base = new BaseScreen();
-    Navigation nav = Navigation.getInstance();
+    IViewNavigation nav = Navigation.getInstance();
 
     @Test
     public void btnMenuClickedTest() {

@@ -2,6 +2,7 @@ package cs221.GP01.test.java.ui;
 
 import cs221.GP01.main.java.model.IJoggleCube;
 import cs221.GP01.main.java.model.JoggleCube;
+import cs221.GP01.main.java.ui.IViewNavigation;
 import cs221.GP01.main.java.ui.Navigation;
 import cs221.GP01.main.java.ui.ScreenType;
 import cs221.GP01.main.java.ui.controllers.End;
@@ -14,7 +15,7 @@ public class EndTest {
 
     End end = End.getInstance();
     IJoggleCube cube = JoggleCube.getInstance();
-    Navigation nav = Navigation.getInstance();
+    IViewNavigation nav = Navigation.getInstance();
 
 
     @BeforeEach
