@@ -26,7 +26,7 @@
     <stylesheets>
         <URL value="@../../css/HelpPage.css" />
     </stylesheets>
-    <Label styleClass="title" text="To ROTATE the cube, right-click on it, and move the mouse." textAlignment="CENTER" wrapText="true" />
+    <Label styleClass="content" text="To ROTATE the cube, right-click on it, and move the mouse." textAlignment="CENTER" wrapText="true" />
     <VBox alignment="CENTER" styleClass="content">
         <ImageView fitHeight="290.0" fitWidth="309.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../../img/help/rotatecube.gif" />

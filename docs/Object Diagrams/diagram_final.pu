@@ -1,0 +1,52 @@
+@startuml ComponentDiagram
+package "main" {
+    package "java" {
+        package "model" {
+            'classes with interfaces
+            [Block] -up- ()"IBlock"
+            [Cube] -up- ()"ICube"
+            [Dictionary] -up- ()"IDictionary"
+            [GameTimer] -up- ()"IGameTimer"
+            [HighScores] -up- ()"IHighScores"
+            [JoggleCube] -up- ()"IJoggleCube"
+            [Score] -up- ()"IScore" 
+            'relationships with interfaces
+            [HighScores] --( ()"IScore"
+            [JoggleCube] --( ()"IHighScores"
+            [JoggleCube] --( ()"IDictionary"
+            [JoggleCube] --( ()"IGameTimer"
+            [JoggleCube] --( ()"ICube"
+            [Cube] --( ()"IBlock"
+        }
+        package "ui"{
+            package "controllers"{
+                [BaseOverlay]
+                [BaseScreen] 
+                [End] -up- ()"INeedPrep"
+                [End] ..> [BaseOverlay]
+                [GameView] -up- ()"INeedPrep"
+                [GameView] -down- ()"IGame"
+                [GameView] ..> [BaseScreen]
+                [GridDisplayer] --( ()"IGame"
+                [Help] -up- ()"INeedPrep"
+                [Help] ..> [BaseOverlay]
+                [HighScore] -up- ()"INeedPrep"
+                [HighScore] ..> [BaseScreen]
+                [LoadGrid] -up- ()"INeedPrep"
+                [LoadGrid] ..> [BaseScreen]
+                [Settings] -up- ()"INeedPrep"
+                [Settings] ..> [BaseOverlay]
+                [Start] -up- ()"INeedPrep"
+                [Start] ..> [BaseScreen]
+            }
+            [Navigation] -up- ()"IViewNavigation"
+            [ScreenType] --( ()"INeedPrep"
+            [ScreenType] -up- [UI]
+            [:Settings] -down- ()"ISettings"
+            [UI] -up- ()"IFrontend"
+        }
+    }
+}
+[Main] --( ()"IJoggleCube"
+[Main] --( ()"IFrontend"
+@enduml
