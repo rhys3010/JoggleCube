@@ -10,6 +10,7 @@ package cs221.GP01.main.java.model;
 import javafx.collections.ObservableList;
 
 import java.io.File;
+import java.util.HashMap;
 
 /**
  * @author Samuel Jones - srj12
@@ -115,4 +116,10 @@ public interface IJoggleCube {
     void interruptTimer();
 
     void setLanguage();
+
+    void resetGameState();
+
+    boolean getGamesStateNew();
+
+    HashMap<String, Dictionary> getLoadedDictionaries();
 }

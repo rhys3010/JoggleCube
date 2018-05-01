@@ -37,7 +37,7 @@ import java.util.Scanner;
  */
 public class JoggleCube implements IJoggleCube {
 
-    private static JoggleCube joggleCube;
+    private static IJoggleCube joggleCube;
 
     private Dictionary dictionary;
 
@@ -82,7 +82,7 @@ public class JoggleCube implements IJoggleCube {
      * Returns an instance of the JoggleCube object
      * @return Returns the only object of the JoggleCube object
      */
-    public static JoggleCube getInstance(){
+    public static IJoggleCube getInstance(){
         if(joggleCube == null){
             synchronized (UI.class){
                 if(joggleCube == null){

@@ -7,6 +7,7 @@
    */
 package cs221.GP01.test.java.backend;
 
+import cs221.GP01.main.java.model.IJoggleCube;
 import cs221.GP01.main.java.model.JoggleCube;
 import cs221.GP01.main.java.ui.Settings;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class JoggleCubeTest {
 
-    JoggleCube controller = JoggleCube.getInstance();
+    IJoggleCube controller = JoggleCube.getInstance();
 
     @BeforeEach
     public void reset(){
