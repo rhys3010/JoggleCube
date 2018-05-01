@@ -146,6 +146,7 @@
 
 .gameElementsContainer .cubeContainer .gridTab .explodeIconContainer{
     -fx-alignment: bottom-right;
+    -fx-spacing: 12px;
     -fx-padding: 12px;
 }
 
@@ -162,6 +163,11 @@
 
 .gameElementsContainer .cubeContainer .gridTab .explodeIconContainer .rotateIcon{
     -fx-background-image: url("../img/icon/rotate_icon.png");
+    -fx-cursor: default;
+}
+
+.gameElementsContainer .cubeContainer .gridTab .explodeIconContainer .colorBlindIcon{
+    -fx-background-image: url("../img/icon/color_blind_icon_alt.png");
     -fx-cursor: default;
 }
 

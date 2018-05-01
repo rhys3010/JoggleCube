@@ -10,6 +10,7 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Point3D?>
+<?import javafx.scene.AmbientLight?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.SubScene?>
 <?import javafx.scene.control.Button?>
@@ -42,7 +43,6 @@
 -->
 <!-- @formatter:off -->
 
-<?import javafx.scene.AmbientLight?>
 <StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <VBox fx:id="mainNode" styleClass="mainContainer">
         <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="topMenu">
@@ -88,9 +88,14 @@
                   <top>
                      <HBox styleClass="explodeIconContainer">
                         <children>
+                           <Button fx:id="colorBlindIcon" styleClass="colorBlindIcon">
+                               <tooltip>
+                                   <Tooltip opacity="0.8" text="Color Blind Mode Enabled"></Tooltip>
+                               </tooltip>
+                           </Button>
                            <Button styleClass="rotateIcon">
                                <tooltip>
-                                   <Tooltip opacity="0.8" text="Hold Down Right Click to Rotate Cube"/>
+                                   <Tooltip opacity="0.8" text="Hold Down Right Click to Rotate Cube" />
                                </tooltip>
                            </Button>
                         </children>
@@ -100,7 +105,7 @@
                 </Tab>
                 <Tab text="2.5D View">
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250" prefWidth="250" styleClass="gridTab">
-                        <AmbientLight></AmbientLight>
+                        <AmbientLight />
                         <!-- These lines are horrendous todo fix these -->
                         <Line>
                             <startX>10</startX>

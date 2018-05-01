@@ -11,6 +11,7 @@ package cs221.GP01.main.java.ui.controllers;
 import cs221.GP01.main.java.model.JoggleCube;
 import cs221.GP01.main.java.ui.Dialog;
 import cs221.GP01.main.java.ui.Navigation;
+import cs221.GP01.main.java.ui.Settings;
 import cs221.GP01.main.java.ui.UI;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.application.Platform;
@@ -78,7 +79,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
 
 
     @FXML
-    private Button btnSubmit, menuButton, explodeIcon;
+    private Button btnSubmit, menuButton, explodeIcon, colorBlindIcon;
 
     @FXML
     private TextField textField;
@@ -209,6 +210,9 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         // Disable hamburger context on right click
         menuButton.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
 
+        // Show colorblind mode if enabled
+        colorBlindIcon.setVisible(Settings.getInstance().isColorBlindEnabled());
+
         GridPane[] twoDGrid = {top2d, middle2d, bottom2d};
         GridPane[] twoFiveDGrid = {top25d, middle25d, bottom25d};
         gridDisplayer = new GridDisplayer(textField, twoDGrid, twoFiveDGrid, subScene, groupy, back, explodeIcon);
@@ -267,4 +271,6 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     public Button getMenuButton() {
         return menuButton;
     }
+
+    public Button getColorBlindIcon(){ return colorBlindIcon; }
 }

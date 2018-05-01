@@ -122,6 +122,9 @@ public class Settings implements ISettings{
             alreadySelectedColor = "#54ad54";
             unavailableColor = "#aeaeae";
         }
+
+        // Update Icon
+        GameView.getInstance().getColorBlindIcon().setVisible(colorBlind);
     }
 
 
