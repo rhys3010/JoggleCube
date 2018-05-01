@@ -70,7 +70,7 @@ class LoadGridTest extends ApplicationTest {
 
     }
 
-    @Test
+    /*@Test
     void btnStartGridClicked() {
 
         setRootNode();
@@ -85,7 +85,7 @@ class LoadGridTest extends ApplicationTest {
         setRootNode();
         HBox box = from(rootNode).lookup("#gameBox").query();
         assertEquals("gameElementsContainer",box.getStyleClass().toString() );
-    }
+    }*/
 
     @Test
     void btnBackClicked() {
