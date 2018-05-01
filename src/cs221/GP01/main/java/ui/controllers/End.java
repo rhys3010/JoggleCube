@@ -109,7 +109,7 @@ public class End extends BaseOverlay implements INeedPrep {
      * When the 'save' button is clicked prompt user to chose a save location
      */
     @FXML
-    public void btnSaveClicked(){
+   public void btnSaveClicked(){
         Dialog inputDialog = new Dialog();
         String result = inputDialog.showInputDialog("Save Cube", "Please enter a filename", "untitled", new ImageView(new Image(getClass().getResourceAsStream("/cs221/GP01/main/resource/img/icon/save_icon_alt.png"))), true);
 
