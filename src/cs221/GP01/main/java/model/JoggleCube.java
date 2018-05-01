@@ -7,6 +7,7 @@
    */
 package cs221.GP01.main.java.model;
 
+import cs221.GP01.main.java.ui.Dialog;
 import cs221.GP01.main.java.ui.Settings;
 import cs221.GP01.main.java.ui.UI;
 import cs221.GP01.main.java.ui.controllers.GameView;
@@ -344,6 +345,9 @@ public class JoggleCube implements IJoggleCube {
                 System.out.println(e.toString());
             }
         }catch(FileNotFoundException e){
+            Dialog dialog = new Dialog();
+            dialog.showInformationDialog("Warning!", "The overall highscores were unable to launch " +
+                    "successfully!, Make sure you operate this program on a non-network mounted drive!");
             System.out.println(e.toString());
         }
     }
@@ -357,8 +361,12 @@ public class JoggleCube implements IJoggleCube {
         try {
             return overallHighScores.getHighestScore().getScore();
         }catch(NullPointerException e){
+            //Will be called if they have messed up System.home path
             System.out.println("High scores are not loaded!!!");
-            //todo add dialogue to make sure they load game from a non-network mounted drive aka not M:/ Drive
+            Dialog dialog = new Dialog();
+            dialog.showInformationDialog("Warning!", "The overall highscores were unable to launch " +
+                    "successfully!, Make sure you operate this program on a non-network mounted drive!");
+
             return 0;
         }
     }
