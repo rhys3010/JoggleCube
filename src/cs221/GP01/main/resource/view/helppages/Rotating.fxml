@@ -19,7 +19,7 @@
     *
     * @author Rhys Evans (rhe24@aber.ac.uk)
     * @author Alex Thumwood (alt38@aber.ac.uk)
-    * @version 0.2  DRAFT
+    * @version 1.0
 -->
 
 <VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
@@ -27,7 +27,7 @@
         <URL value="@../../css/HelpPage.css" />
     </stylesheets>
     <Label styleClass="content" text="To ROTATE the cube, right-click on it, and move the mouse." textAlignment="CENTER" wrapText="true" />
-    <VBox alignment="CENTER" styleClass="content">
+    <VBox alignment="BOTTOM_CENTER" styleClass="content">
         <ImageView fitHeight="290.0" fitWidth="309.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../../img/help/rotatecube.gif" />
         </ImageView>

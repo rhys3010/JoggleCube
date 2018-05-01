@@ -30,7 +30,7 @@ import java.util.ResourceBundle;
  * @author Rhys Evans (rhe24)
  * @author Nathan Williams (naw21@aber.ac.uk)
  * @author Alex Thumwood (alt38)
- * @version 1.1
+ * @version 3.0
  */
 public class Help extends BaseOverlay implements Initializable, INeedPrep {
 
@@ -45,6 +45,7 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
             helpScreens.add(createHelpPage("Selecting.fxml"));
             helpScreens.add(createHelpPage("Scoring.fxml"));
             helpScreens.add(createHelpPage("CubeColouring.fxml"));
+            helpScreens.add(createHelpPage("ColourBlindToggle.fxml"));
 
 
         } catch (IOException e) {
