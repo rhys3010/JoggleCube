@@ -29,8 +29,8 @@ import java.util.ResourceBundle;
  * Controller for the Help.fxml file to handle the displaying of various help screens
  * @author Rhys Evans (rhe24)
  * @author Nathan Williams (naw21@aber.ac.uk)
- * @author Alex Thumwood (alt38)
  * @version 3.0
+ * @author Alex Thumwood (alt38)
  */
 public class Help extends BaseOverlay implements Initializable, INeedPrep {
 
