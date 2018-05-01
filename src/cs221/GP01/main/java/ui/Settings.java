@@ -29,7 +29,7 @@ public class Settings implements ISettings{
     /**
      * The instance of the settings singleton class
      */
-    private static Settings settings;
+    private static ISettings settings;
 
     /**
      * Boolean to store whether or not colourblind is enabled
@@ -113,7 +113,7 @@ public class Settings implements ISettings{
      * Returns an instance of the singleton class settings
      * @return settings
      */
-    public static Settings getInstance(){
+    public static ISettings getInstance(){
         if(settings == null){
             synchronized (Settings.class){
                 if(settings == null){

@@ -36,4 +36,6 @@ public interface ISettings {
      * Clear the currently saved highscores
      */
     void clearHighScores();
+
+
 }
