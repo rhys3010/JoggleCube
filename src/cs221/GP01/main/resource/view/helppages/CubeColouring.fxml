@@ -9,46 +9,81 @@
 -->
 
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.paint.PhongMaterial?>
+<?import javafx.scene.shape.Box?>
 
 <!--
     * CubeColouring - The help page for cube colours guide
     *
     * @author Rhys Evans (rhe24@aber.ac.uk)
-    * @version 0.1  DRAFT
+    * @author Alex Thumwood (alt38@aber.ac.uk)
+    * @version 2.0
 -->
 
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.shape.Box?>
-<?import javafx.geometry.Point3D?>
-<?import javafx.scene.paint.PhongMaterial?>
-<VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
-    <Label styleClass="title" text="Cube Colouring" />
+<VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+    <Label styleClass="title" text="Cube Colouring">
+      <VBox.margin>
+         <Insets bottom="30.0" />
+      </VBox.margin></Label>
       <GridPane alignment="CENTER" hgap="20" vgap="20">
-          <Label styleClass="content" wrapText="true" text="Selectable Cube" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-          <Box translateX="40" GridPane.columnIndex="0" GridPane.rowIndex="1" width="30" height="30" depth="30" rotate="45">
+          <Label styleClass="content" text="Selectable Cube" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
+         <GridPane.margin>
+            <Insets left="24.0" />
+         </GridPane.margin></Label>
+          <Box depth="30" height="30" rotate="45" translateX="40" width="30" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
               <rotationAxis><Point3D x="0.3" y="-1.0" /></rotationAxis>
-              <material><PhongMaterial diffuseColor="deepskyblue"/></material>
+              <material><PhongMaterial diffuseColor="deepskyblue" /></material>
+         <GridPane.margin>
+            <Insets bottom="20.0" right="80.0" />
+         </GridPane.margin>
           </Box>
-          <Label styleClass="content" wrapText="true" text="Not Selectable Cube" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-          <Box  translateX="40" GridPane.columnIndex="1" GridPane.rowIndex="1" width="30" height="30" depth="30" rotate="45">
+          <Label styleClass="content" text="Non-Selectable Cube" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0">
+         <GridPane.margin>
+            <Insets right="12.0" />
+         </GridPane.margin></Label>
+          <Box depth="30" height="30" rotate="45" translateX="40" width="30" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
               <rotationAxis><Point3D x="0.3" y="-1.0" /></rotationAxis>
-              <material><PhongMaterial diffuseColor="grey"/></material>
+              <material><PhongMaterial diffuseColor="grey" /></material>
+         <GridPane.margin>
+            <Insets bottom="20.0" right="80.0" />
+         </GridPane.margin>
           </Box>
-          <Label styleClass="content" wrapText="true" text="Currently Selected Cube" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-          <Box  translateX="40" GridPane.columnIndex="0" GridPane.rowIndex="3" width="30" height="30" depth="30" rotate="45">
+          <Label styleClass="content" text="Currently Selected Cube" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+          <Box depth="30" height="30" rotate="45" translateX="40" width="30" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="3">
               <rotationAxis><Point3D x="0.3" y="-1.0" /></rotationAxis>
-              <material><PhongMaterial diffuseColor="green"/></material>
+              <material><PhongMaterial diffuseColor="green" /></material>
+         <GridPane.margin>
+            <Insets right="80.0" />
+         </GridPane.margin>
           </Box>
-          <Label styleClass="content" wrapText="true" text="Previously Selected Cube" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-          <Box translateX="40" GridPane.columnIndex="1" GridPane.rowIndex="3" width="30" height="30" depth="30" rotate="45">
+          <Label styleClass="content" text="Previously Selected Cube" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+          <Box depth="30" height="30" rotate="45" translateX="40" width="30" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
               <rotationAxis><Point3D x="0.3" y="-1.0" /></rotationAxis>
-              <material><PhongMaterial diffuseColor="lightgreen"/></material>
+              <material><PhongMaterial diffuseColor="lightgreen" /></material>
+         <GridPane.margin>
+            <Insets right="80.0" />
+         </GridPane.margin>
           </Box>
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
       </GridPane>
     <stylesheets>
         <URL value="@../../css/HelpPage.css" />

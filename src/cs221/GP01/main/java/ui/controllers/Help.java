@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
  * Controller for the Help.fxml file to handle the displaying of various help screens
  * @author Rhys Evans (rhe24)
  * @author Nathan Williams (naw21@aber.ac.uk)
- * @version 1.1
+ * @version 3.0
  * @author Alex Thumwood (alt38)
  */
 public class Help extends BaseOverlay implements Initializable, INeedPrep {
@@ -38,11 +38,14 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
 
     private Help(){// Create all the pages as FXML parent nodes
         try {
+            helpScreens.add(createHelpPage("Introduction.fxml"));
             helpScreens.add(createHelpPage("Rotating.fxml"));
             helpScreens.add(createHelpPage("Exploding.fxml"));
+            helpScreens.add(createHelpPage("ViewToggle.fxml"));
             helpScreens.add(createHelpPage("Selecting.fxml"));
             helpScreens.add(createHelpPage("Scoring.fxml"));
             helpScreens.add(createHelpPage("CubeColouring.fxml"));
+            helpScreens.add(createHelpPage("ColourBlindToggle.fxml"));
 
 
         } catch (IOException e) {

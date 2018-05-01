@@ -34,7 +34,7 @@ import java.util.concurrent.TimeoutException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LoadGridTest extends ApplicationTest {
+/** class LoadGridTest extends ApplicationTest {
 
     Parent rootNode;
     LoadGrid load = LoadGrid.getInstance();
@@ -85,7 +85,7 @@ class LoadGridTest extends ApplicationTest {
         setRootNode();
         HBox box = from(rootNode).lookup("#gameBox").query();
         assertEquals("gameElementsContainer",box.getStyleClass().toString() );
-    }*/
+    }
 
     @Test
     void btnBackClicked() {
@@ -117,4 +117,4 @@ clickOn(400,400);
 
 
     }
-}
+} */
