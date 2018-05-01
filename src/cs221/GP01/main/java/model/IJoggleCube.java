@@ -122,4 +122,9 @@ public interface IJoggleCube {
     boolean getGamesStateNew();
 
     HashMap<String, Dictionary> getLoadedDictionaries();
+
+    /**
+     * Clears all highscores in the overall highscores variables as well as the stored files!
+     */
+    void clearHighScores();
 }

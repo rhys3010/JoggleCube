@@ -95,12 +95,14 @@ public class Settings implements ISettings{
     public void clearHighScores(){
 
         // Create confirmation dialog and store result
-        Dialog dialog = new Dialog();
-        Optional<ButtonType> result = dialog.showConfirmationDialog("Clear High Scores", "Are you sure you want to clear all High Scores?");
+        Dialog confirmDialog = new Dialog();
+        Optional<ButtonType> result = confirmDialog.showConfirmationDialog("Clear High Scores", "Are you sure you want to clear all High Scores?");
 
         if(result.get() == ButtonType.OK){
             // Remove overall highscores
-            //JoggleCube.getInstance().clearHighScores();
+            JoggleCube.getInstance().clearHighScores();
+            Dialog infoDialog = new Dialog();
+            infoDialog.showInformationDialog("Success", "All High Scores have been cleared");
         }
     }
 
