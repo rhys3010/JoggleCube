@@ -82,10 +82,6 @@ class LoadGridTest extends ApplicationTest {
 
         Platform.runLater(()->GameView.getInstance().getDialog().getTextInputDialog().close());
 
-        Platform.runLater(()->GameView.getInstance().getDialog().getTextInputDialog().close());
-
-        Platform.runLater(()->GameView.getInstance().getDialog().getTextInputDialog().close());
-
         clickOn(400,400); // everytime after run later -> wait?
 
         setRootNode();
