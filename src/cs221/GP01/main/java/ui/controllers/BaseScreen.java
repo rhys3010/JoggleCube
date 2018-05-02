@@ -1,5 +1,5 @@
 /*
- * @(#) BaseScreenController.java 0.1 2018/02/23
+ * @(#) BaseScreenController.java 1.1 2018/02/23
  *
  * Copyright (c) 2018 University of Wales, Aberystwyth.
  * All rights reserved.
@@ -34,23 +34,6 @@ public class BaseScreen {
     @FXML
     private Node mainNode;
 
-    /**
-     * Get the root node of a given screen
-     *
-     * @return root
-     */
-    public StackPane getRoot(){
-        return root;
-    }
-
-    /**
-     * Get the main node of the FXML
-     *
-     * @return mainNode
-     */
-    public Node getMainNode(){
-        return mainNode;
-    }
 
     /**
      * Handle the menu button press
@@ -82,6 +65,24 @@ public class BaseScreen {
     @FXML
     public void btnSettingsClicked(){
         Navigation.getInstance().showOverlay(ScreenType.SETTINGS, this);
+    }
+
+    /**
+     * Get the root node of a given screen
+     *
+     * @return root
+     */
+    public StackPane getRoot(){
+        return root;
+    }
+
+    /**
+     * Get the main node of the FXML
+     *
+     * @return mainNode
+     */
+    public Node getMainNode(){
+        return mainNode;
     }
 
 }

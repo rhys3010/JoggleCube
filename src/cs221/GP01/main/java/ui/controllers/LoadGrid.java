@@ -1,5 +1,5 @@
 /*
-   * @(#) LoadGridGUIController.java 1.0 2018/02/04
+   * @(#) LoadGridGUIController.java 1.1 2018/02/04
    *
    * Copyright (c) 2018 University of Wales, Aberystwyth.
    * All rights reserved.
@@ -24,7 +24,7 @@ import javafx.scene.control.ListView;
  * todo add a recents list
  *
  * @author Nathan Williams (naw21)
- * @version 0.2  DRAFT
+ * @version 1.1
  */
 public class LoadGrid extends BaseScreen implements INeedPrep {
 

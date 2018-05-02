@@ -1,5 +1,5 @@
 /*
- * @(#) GridDisplayer.java 1.0 2018/02/24
+ * @(#) GridDisplayer.java 1.1 2018/02/24
  *
  * Copyright (c) 2018 University of Wales, Aberystwyth.
  * All rights reserved.
@@ -42,7 +42,7 @@ import java.util.Timer;
  * todo optimize
  *
  * @author Nathan Williams
- * @version 1.0
+ * @version 1.1
  */
 public class GridDisplayer {
 

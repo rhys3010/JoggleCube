@@ -1,5 +1,5 @@
 /*
- * @(#) BaseOverlayController.java 0.1 2018/02/23
+ * @(#) BaseOverlayController.java 1.1 2018/02/23
  *
  * Copyright (c) 2018 University of Wales, Aberystwyth.
  * All rights reserved.

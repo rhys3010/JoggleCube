@@ -1,5 +1,5 @@
 /*
- * @(#) HighScoreController.java 1.0 2018/02/12
+ * @(#) HighScoreController.java 1.1 2018/02/12
  *
  * Copyright (c) 2018 University of Wales, Aberystwyth.
  * All rights reserved.
@@ -36,7 +36,7 @@ import java.util.ResourceBundle;
  * todo improve this description
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21@aber.ac.uk)
- * @version 0.2
+ * @version 1.1
  */
 public class HighScore extends BaseScreen implements Initializable, INeedPrep {
 

@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
  * <p>
  * How it is used
  * @author Nathan Williams (naw21)
- * @version 0.2  DRAFT
+ * @version 1.1
  */
 public class SettingsOverlay extends BaseOverlay implements INeedPrep, Initializable {
 
