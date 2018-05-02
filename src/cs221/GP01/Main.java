@@ -82,6 +82,9 @@ public class Main extends Application {
                 JoggleCube.getInstance().saveOverallScores();
                 // Stop the timer thread
                 JoggleCube.getInstance().interruptTimer();
+
+                // Hard exit to kill ALL threads
+                System.exit(0);
             }
 
         });

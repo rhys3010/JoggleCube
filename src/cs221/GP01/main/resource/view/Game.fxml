@@ -54,7 +54,6 @@
                   <contextMenu>
                      <ContextMenu fx:id="hamburgerContext" autoFix="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="hamburgerContext">
                         <items>
-                           <MenuItem fx:id="settingsBtn" mnemonicParsing="false" onAction="#btnSettingsClicked" styleClass="contextMenuItem" text="Settings" />
                            <MenuItem fx:id="helpBtn" mnemonicParsing="false" onAction="#btnHelpClicked" styleClass="contextMenuItem" text="Help" />
                            <MenuItem fx:id="quitBtn" mnemonicParsing="false" onAction="#btnEndGameClicked" styleClass="contextMenuItem" text="Quit" />
                         </items>

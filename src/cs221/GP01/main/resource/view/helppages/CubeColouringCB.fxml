@@ -29,7 +29,7 @@
 
 <?import javafx.scene.AmbientLight?>
 <VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
-    <Label styleClass="title" text="Cube Colouring">
+    <Label styleClass="title" text="Cube Colouring: Colourblind Mode">
       <VBox.margin>
          <Insets bottom="30.0" />
       </VBox.margin></Label>
@@ -41,7 +41,7 @@
          </GridPane.margin></Label>
           <Box depth="30" height="30" rotate="45" translateX="40" width="30" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
               <rotationAxis><Point3D x="0.3" y="-1.0" /></rotationAxis>
-              <material><PhongMaterial diffuseColor="#30599b" /></material>
+              <material><PhongMaterial diffuseColor="#b171cb" /></material>
          <GridPane.margin>
             <Insets bottom="20.0" right="80.0" />
          </GridPane.margin>
@@ -60,7 +60,7 @@
           <Label styleClass="content" text="Currently Selected Cube" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="0" GridPane.rowIndex="2" />
           <Box depth="30" height="30" rotate="45" translateX="40" width="30" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="3">
               <rotationAxis><Point3D x="0.3" y="-1.0" /></rotationAxis>
-              <material><PhongMaterial diffuseColor="#38aa38" /></material>
+              <material><PhongMaterial diffuseColor="#cbc155" /></material>
          <GridPane.margin>
             <Insets right="80.0" />
          </GridPane.margin>
@@ -68,7 +68,7 @@
           <Label styleClass="content" text="Previously Selected Cube" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
           <Box depth="30" height="30" rotate="45" translateX="40" width="30" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
               <rotationAxis><Point3D x="0.3" y="-1.0" /></rotationAxis>
-              <material><PhongMaterial diffuseColor="#64846b" /></material>
+              <material><PhongMaterial diffuseColor="#cb5758" /></material>
          <GridPane.margin>
             <Insets right="80.0" />
          </GridPane.margin>

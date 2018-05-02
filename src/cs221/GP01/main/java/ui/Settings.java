@@ -58,7 +58,7 @@ public class Settings implements ISettings{
      */
     private String currentlySelectedColor = "#38aa38";
     private String availableColor = "#30599b";
-    private String alreadySelectedColor = "#54ad54";
+    private String alreadySelectedColor = "#64846b";
     private String unavailableColor = "#aeaeae";
 
 
@@ -125,7 +125,7 @@ public class Settings implements ISettings{
         } else {
             currentlySelectedColor = "#38aa38";
             availableColor = "#30599b";
-            alreadySelectedColor = "#54ad54";
+            alreadySelectedColor = "#64846b";
             unavailableColor = "#aeaeae";
         }
 
