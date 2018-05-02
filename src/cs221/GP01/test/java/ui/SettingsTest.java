@@ -49,34 +49,4 @@ public class SettingsTest {
         assertFalse(settings.isColorBlindEnabled());
 
     }
-/*
-    @Test
-    public void testMusic(){
-
-        settings.setMusicEnabled(false);
-        assertFalse(settings.isMusicEnabled());
-        settings.setMusicEnabled(true);
-        assertTrue(settings.isMusicEnabled());
-    }
-
-    @Test
-    public void testSound(){
-
-        settings.setMusicEnabled(false);
-        assertFalse(settings.isSoundEffectsEnabled());
-        settings.setMusicEnabled(true);
-        assertTrue(settings.isSoundEffectsEnabled());
-    }
-
-    @Test
-    public void testVolume() {
-
-        settings.setVolume(100);
-        assertEquals(100, settings.getVolume());
-        settings.setVolume(0);
-        assertEquals(0, settings.getVolume());
-        settings.setVolume(150);
-        assertEquals(0, settings.getVolume());
-    }
-*/
 }

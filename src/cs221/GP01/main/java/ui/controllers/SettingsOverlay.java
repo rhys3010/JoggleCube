@@ -9,8 +9,6 @@ package cs221.GP01.main.java.ui.controllers;
 
 import cs221.GP01.main.java.ui.Navigation;
 import cs221.GP01.main.java.ui.ScreenType;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -19,13 +17,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Settings - A class that does something.
+ * SettingsOverlay - A class that does something.
  * <p>
  * How it is used
  * @author Nathan Williams (naw21)
  * @version 0.2  DRAFT
  */
-public class Settings extends BaseOverlay implements INeedPrep, Initializable {
+public class SettingsOverlay extends BaseOverlay implements INeedPrep, Initializable {
 
     /**
      * All FXML nodes
@@ -33,19 +31,19 @@ public class Settings extends BaseOverlay implements INeedPrep, Initializable {
     @FXML
     private CheckBox colorBlindToggle;
 
-    private static Settings settingsView;
+    private static SettingsOverlay settingsOverlay;
 
-    private Settings(){}
+    private SettingsOverlay(){}
 
-    public static Settings getInstance(){
-        if(settingsView == null){
-            synchronized (Settings.class){
-                if(settingsView == null){
-                    settingsView = new Settings();
+    public static SettingsOverlay getInstance(){
+        if(settingsOverlay == null){
+            synchronized (SettingsOverlay.class){
+                if(settingsOverlay == null){
+                    settingsOverlay = new SettingsOverlay();
                 }
             }
         }
-        return settingsView;
+        return settingsOverlay;
     }
 
 

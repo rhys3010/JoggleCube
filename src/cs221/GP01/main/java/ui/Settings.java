@@ -10,21 +10,20 @@ package cs221.GP01.main.java.ui;
 
 import cs221.GP01.main.java.model.JoggleCube;
 import cs221.GP01.main.java.ui.controllers.GameView;
-import javafx.scene.control.Alert;
+import cs221.GP01.main.java.ui.controllers.SettingsOverlay;
 import javafx.scene.control.ButtonType;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 /**
- * Settings - Class to handle the preferred game configuration
+ * SettingsOverlay - Class to handle the preferred game configuration
  * <p>
  * Handle the settings of the game and adapt them depending on user input in the settings overlay
  * @author Rhys Evans
  * @author Nathan Williams (naw21)
  * @version 1.1
  * @see ISettings
- * @see cs221.GP01.main.java.ui.controllers.Settings
+ * @see SettingsOverlay
  */
 public class Settings implements ISettings{
 
@@ -64,8 +63,8 @@ public class Settings implements ISettings{
 
 
     /**
-     * Constructor for settings class
-     * todo: needed?
+     * Private Constructor for settings class so only oone instance of class can be created
+     *
      */
     private Settings(){}
 
