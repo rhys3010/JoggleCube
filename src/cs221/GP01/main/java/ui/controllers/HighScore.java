@@ -10,6 +10,7 @@ package cs221.GP01.main.java.ui.controllers;
 
 import cs221.GP01.main.java.model.IScore;
 import cs221.GP01.main.java.model.JoggleCube;
+import cs221.GP01.main.java.ui.ScreenType;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
@@ -128,8 +129,6 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
         highScoreTable.sort();
     }
 
-
-
     /**
      * Stop users from being able to reorder table columns (temporary fix)
      * Solution used here: https://bittlife.com/javafx-disable-column-reorder-tableview/
@@ -236,5 +235,10 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
 
     public short setItems() {
         return setItems();
+    }
+
+    public Label highScorePageLabel(){
+        return highScorePageLabel();
+
     }
 }

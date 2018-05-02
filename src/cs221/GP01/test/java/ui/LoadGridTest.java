@@ -79,7 +79,7 @@ class LoadGridTest extends ApplicationTest {
         load.handleMouseClick();
         Platform.runLater(()->load.btnStartGridClicked());
         clickOn(400,400);
-        Platform.runLater(()->GameView.getInstance().dialog.close());
+        //Platform.runLater(()->GameView.getInstance().dialog.close());
         clickOn(400,400); // everytime after run later -> wait?
 
         setRootNode();
