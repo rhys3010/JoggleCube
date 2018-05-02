@@ -18,35 +18,69 @@ package "main" {
             [JoggleCube] --( ()"ICube"
             [Cube] --( ()"IBlock"
         }
+
         package "ui"{
+
             package "controllers"{
+                note top of [Help]
+                    The View controllers all interact with
+                    the IJoggleCube Interface.
+                    The relationships are not shown to keep the Diagram readable.
+                end note
                 [BaseOverlay]
                 [BaseScreen] 
                 [End] -up- ()"INeedPrep"
                 [End] ..> [BaseOverlay]
                 [GameView] -up- ()"INeedPrep"
-                [GameView] -down- ()"IGame"
+                [GameView] -up- ()"IGame"
                 [GameView] ..> [BaseScreen]
-                [GridDisplayer] --( ()"IGame"
+                [GridDisplayer] <.. [GameView]
                 [Help] -up- ()"INeedPrep"
                 [Help] ..> [BaseOverlay]
                 [HighScore] -up- ()"INeedPrep"
                 [HighScore] ..> [BaseScreen]
                 [LoadGrid] -up- ()"INeedPrep"
                 [LoadGrid] ..> [BaseScreen]
-                [Settings] -up- ()"INeedPrep"
-                [Settings] ..> [BaseOverlay]
+                [SettingsView] -up- ()"INeedPrep"
+                [SettingsView] ..> [BaseOverlay]
                 [Start] -up- ()"INeedPrep"
                 [Start] ..> [BaseScreen]
             }
+            'UI to settings'
+            [Start] --( () "ISettings"
+            [GameView] --( () "ISettings"
+            [SettingsView] --( () "ISettings"
+
+
             [Navigation] -up- ()"IViewNavigation"
-            [ScreenType] --( ()"INeedPrep"
+            [Navigation] --( () "INeedPrep"
+            [ScreenType] --( () "INeedPrep"
             [ScreenType] -up- [UI]
-            [:Settings] -down- ()"ISettings"
+            [Settings] -- ()"ISettings"
             [UI] -up- ()"IFrontend"
+
+
         }
     }
 }
+'Backend to UI'
+[JoggleCube] --( () "IGame"
+[JoggleCube] --( () "ISettings"
+[GameTimer] --( () "IViewNavigation"
+
+'UI to backend'
+'[Start] --( () "IJoggleCube"
+'[GameView] --( () "IJoggleCube"
+'[LoadGrid] --( () "IJoggleCube"
+'[End] --( () "IJoggleCube"
+'[Start] --( () "IJoggleCube"
+'[Help] --( () "IJoggleCube"
+'[Start] --( () "IJoggleCube"
+'[HighScore] --( () "IJoggleCube"
+
+
+
+'Launch'
 [Main] --( ()"IJoggleCube"
 [Main] --( ()"IFrontend"
 @enduml
