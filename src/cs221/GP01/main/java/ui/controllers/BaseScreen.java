@@ -18,7 +18,7 @@ import javafx.scene.layout.StackPane;
  * The Parent Class of any screen controller
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21@aber.ac.uk)
- * @version 0.2
+ * @version 1.1
  */
 public class BaseScreen {
 
@@ -33,7 +33,6 @@ public class BaseScreen {
      */
     @FXML
     private Node mainNode;
-
 
     /**
      * Get the root node of a given screen

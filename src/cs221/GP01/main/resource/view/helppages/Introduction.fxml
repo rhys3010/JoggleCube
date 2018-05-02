@@ -9,6 +9,7 @@
 -->
 
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
@@ -16,13 +17,20 @@
     * Introduction - The introductory help page
     *
     * @author Rhys Evans (rhe24@aber.ac.uk)
-    * @version 0.1  DRAFT
+    * @author Alex Thumwood (alt38@aber.ac.uk) 
+    * @version 2.0
 -->
 
 <VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Label contentDisplay="CENTER" styleClass="title" text="What is Joggle Cube?" textAlignment="CENTER" />
-      <Label styleClass="content" text="Jogglecube is a 3d word-finding game. The goal is to find the most, and most high scoring words on the cube, before time runs out!" textAlignment="CENTER" wrapText="true" />
+      <Label styleClass="content" text="Jogglecube is a 3d word-finding game. The goal is to find the most, and most high scoring words on the cube, before time runs out!" textAlignment="CENTER" wrapText="true">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin></Label>
     </children>
     <stylesheets>
         <URL value="@../../css/HelpPage.css" />

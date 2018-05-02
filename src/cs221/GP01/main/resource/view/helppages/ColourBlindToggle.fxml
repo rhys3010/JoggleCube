@@ -15,21 +15,22 @@
 <?import javafx.scene.layout.VBox?>
 
 <!--
-    * Scoring - The help page that contains the game's scoring guide
+    * ColourBlindToggle - The help page that explains how to toggle between the regular and colour-blind friendly colour schemes.
     *
     * @author Rhys Evans (rhe24@aber.ac.uk)
     * @author Alex Thumwood (alt38@aber.ac.uk)
-    * @version 2.0
+    * @version 3.0
+
 -->
 
 <VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
         <URL value="@../../css/HelpPage.css" />
     </stylesheets>
-    <Label styleClass="title" text="Scoring System" />
-    <VBox styleClass="content">
-        <ImageView fitHeight="370.0" fitWidth="370.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../../img/help/PointsTable.png" />
+    <Label styleClass="title" text="Toggling Colourblind Mode: " textAlignment="CENTER" wrapText="true" />
+    <VBox alignment="BOTTOM_CENTER" styleClass="content">
+        <ImageView fitHeight="290.0" fitWidth="309.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../img/help/colourblind.gif" />
         </ImageView>
     </VBox>
 </VBox>

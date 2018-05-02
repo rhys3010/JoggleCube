@@ -18,8 +18,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 import java.util.Optional;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * End - A class that controls the Pause subscene that is defined in End.fxml
@@ -28,7 +32,7 @@ import java.util.Optional;
  *
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21)
- * @version 0.2  DRAFT
+ * @version 1.1
  */
 public class End extends BaseOverlay implements INeedPrep {
 
@@ -54,8 +58,9 @@ public class End extends BaseOverlay implements INeedPrep {
     Button saveButton;
 
 
-
-
+    /**
+     * UPDATE DESCRIPTION
+     */
     @Override
     public void prepView() {
         scoreLabel.setText(JoggleCube.getInstance().getScore() + "");
@@ -70,7 +75,6 @@ public class End extends BaseOverlay implements INeedPrep {
 
         JoggleCube.getInstance().resetGameState();
     }
-
 
     /**
      * When the High Score button is pressed, change scene to high score screen
@@ -109,7 +113,7 @@ public class End extends BaseOverlay implements INeedPrep {
      * When the 'save' button is clicked prompt user to chose a save location
      */
     @FXML
-    public void btnSaveClicked(){
+   public void btnSaveClicked(){
         Dialog inputDialog = new Dialog();
         String result = inputDialog.showInputDialog("Save Cube", "Please enter a filename", "untitled", new ImageView(new Image(getClass().getResourceAsStream("/cs221/GP01/main/resource/img/icon/save_icon_alt.png"))), true);
 

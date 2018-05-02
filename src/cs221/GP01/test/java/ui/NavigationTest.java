@@ -36,7 +36,7 @@ import static org.testfx.matcher.base.NodeMatchers.hasChildren;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class NavigationTest  extends ApplicationTest {
+public class NavigationTest extends ApplicationTest {
 
     Parent rootNode;
 

@@ -1,6 +1,8 @@
-package cs221.GP01.test.java.ui;
+package cs221.GP01.test.java.ui.controllers;
 
+import cs221.GP01.main.java.model.IJoggleCube;
 import cs221.GP01.main.java.model.JoggleCube;
+import cs221.GP01.main.java.ui.IViewNavigation;
 import cs221.GP01.main.java.ui.Navigation;
 import cs221.GP01.main.java.ui.ScreenType;
 import cs221.GP01.main.java.ui.controllers.End;
@@ -12,8 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class EndTest {
 
     End end = End.getInstance();
-    JoggleCube cube = JoggleCube.getInstance();
-    Navigation nav = Navigation.getInstance();
+    IJoggleCube cube = JoggleCube.getInstance();
+    IViewNavigation nav = Navigation.getInstance();
 
 
     @BeforeEach

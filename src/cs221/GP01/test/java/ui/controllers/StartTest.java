@@ -5,7 +5,7 @@
    * All rights reserved.
    *
    */
-package cs221.GP01.test.java.ui;
+package cs221.GP01.test.java.ui.controllers;
 
 import cs221.GP01.Main;
 import cs221.GP01.main.java.ui.Navigation;
@@ -126,9 +126,12 @@ class StartTest extends ApplicationTest {
 
     @Test
     void initialize() throws AWTException {
+
+       Settings.setCurrLang("English");
+        Platform.runLater(()->start.getLanguageSelector().setValue("English"));
        assertEquals ("English", Settings.getCurrLang());
-       chooseWelsh();
-     //  Start.getInstance().initialize(); what arguments
+       chooseWelsh();  // initializing on action?
+       clickOn(400,400);
         assertEquals("Cymraeg", Settings.getCurrLang() );
     }
 }

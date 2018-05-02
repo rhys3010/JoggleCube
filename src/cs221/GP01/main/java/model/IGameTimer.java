@@ -50,12 +50,14 @@ public interface IGameTimer {
 
     /**
      * Returns the current Duration
+     *
      * @return currentTime
      */
     public Duration getCurrentTime();
 
     /**
      * Sets the Duration of currentTime
+     *
      * @param currentTime
      */
     public void setCurrentTime(Duration currentTime);

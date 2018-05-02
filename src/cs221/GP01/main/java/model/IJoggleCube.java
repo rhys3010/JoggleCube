@@ -10,6 +10,7 @@ package cs221.GP01.main.java.model;
 import javafx.collections.ObservableList;
 
 import java.io.File;
+import java.util.HashMap;
 
 /**
  * @author Samuel Jones - srj12
@@ -22,8 +23,6 @@ public interface IJoggleCube {
 
     /**
      * create a random grid
-     *
-     *
      */
     void generateRandomGrid();
 
@@ -115,4 +114,15 @@ public interface IJoggleCube {
     void interruptTimer();
 
     void setLanguage();
+
+    void resetGameState();
+
+    boolean getGamesStateNew();
+
+    HashMap<String, Dictionary> getLoadedDictionaries();
+
+    /**
+     * Clears all highscores in the overall highscores variables as well as the stored files!
+     */
+    void clearHighScores();
 }

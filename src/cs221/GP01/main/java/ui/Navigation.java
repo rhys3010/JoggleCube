@@ -34,7 +34,7 @@ public class Navigation implements IViewNavigation{
     /**
      * The singleton instance of the Navigation class
      */
-    private static Navigation navController;
+    private static IViewNavigation navController;
 
     /**
      * Default constructor for the Navigation
@@ -46,7 +46,7 @@ public class Navigation implements IViewNavigation{
      *
      * @return navController - the Navigation object
      */
-    public static Navigation getInstance(){
+    public static IViewNavigation getInstance(){
         if(navController == null){
             synchronized (UI.class){
                 if(navController == null){

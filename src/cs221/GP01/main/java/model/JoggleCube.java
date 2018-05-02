@@ -7,6 +7,7 @@
    */
 package cs221.GP01.main.java.model;
 
+import cs221.GP01.main.java.ui.Dialog;
 import cs221.GP01.main.java.ui.Settings;
 import cs221.GP01.main.java.ui.UI;
 import cs221.GP01.main.java.ui.controllers.GameView;
@@ -33,11 +34,11 @@ import java.util.Scanner;
  * @author Samuel Jones - srj12@aber.ac.uk
  * @author Nathan Williams - naw21@aber.ac.uk
  * @version 1.1
- * @see cs221.GP01.main.java.model.IJoggleCube
+ * @see IJoggleCube
  */
 public class JoggleCube implements IJoggleCube {
 
-    private static JoggleCube joggleCube;
+    private static IJoggleCube joggleCube;
 
     private Dictionary dictionary;
 
@@ -78,7 +79,11 @@ public class JoggleCube implements IJoggleCube {
         setLanguage();
     }
 
-    public static JoggleCube getInstance(){
+    /**
+     * Returns an instance of the JoggleCube object
+     * @return Returns the only object of the JoggleCube object
+     */
+    public static IJoggleCube getInstance(){
         if(joggleCube == null){
             synchronized (UI.class){
                 if(joggleCube == null){
@@ -90,6 +95,10 @@ public class JoggleCube implements IJoggleCube {
     }
 
     //Start Random Game
+
+    /**
+     * Starts a brand new random game, when called it will reset variables and create a new random grid
+     */
     public void generateRandomGrid() {
         //make sure game state is a new one
         gamesStateNew = true;
@@ -100,6 +109,12 @@ public class JoggleCube implements IJoggleCube {
     }
 
     //Start loaded game
+
+    /**
+     * Given the filename parameter it will load the saved game and return a value depending on it's success
+     * @param filename A String of the filename without the .grid ending
+     * @return Return true if load successful else false.
+     */
     public boolean loadGrid(String filename) {
         //load this file into grid and high scores
         //Load save game from the file stream given
@@ -141,6 +156,13 @@ public class JoggleCube implements IJoggleCube {
         storedWords = new ArrayList<>();
         return true;
     }
+
+    /**
+     * Is the test for whether or not the word is a valid given the parameters in the functional requirements. Then
+     * adding the value of the score to the current score. If the word is already used, if it is in the dictionary etc.
+     * @param word the string to check the validity of
+     * @return True if the word is valid, else false.
+     */
     public boolean testWordValidity(String word) {
         //Test if already used
         if (storedWords.contains(word)){return false;}
@@ -156,6 +178,10 @@ public class JoggleCube implements IJoggleCube {
         return false;
     }
 
+    /**
+     * Formats the cube into a way that can be utilised by the front end
+     * @return Returns a String 3D array 3x3x3 of the cube
+     */
     public String[][][] getCubeData() {
         String[][][] stringCube = new String[3][3][3];
 
@@ -169,6 +195,10 @@ public class JoggleCube implements IJoggleCube {
         return stringCube;
     }
 
+    /**
+     * Returns the overall HighScores across all cubes in a format usable by JavaFX
+     * @return ObservableList of IScore Interfaces
+     */
     public ObservableList<IScore> getOverallHighScores() {
         if(overallHighScores != null){
             return FXCollections.observableArrayList(overallHighScores.getScores());
@@ -177,6 +207,10 @@ public class JoggleCube implements IJoggleCube {
         }
     }
 
+    /**
+     * Return the current cube's highscores in a format usable by JavaFX
+     * @return ObservableList of IScore Interfaces
+     */
     public ObservableList<IScore> getCurrentCubeHighScores() {
         if(currentCubeHighScores != null){
             return FXCollections.observableArrayList(currentCubeHighScores.getScores());
@@ -187,6 +221,11 @@ public class JoggleCube implements IJoggleCube {
     }
 
     //Get the grids from a saved file
+
+    /**
+     * Returns a list of all saved grids and returns them in a format expected by the front end
+     * @return an ObservableList of Strings of all the available saved grids
+     */
     public ObservableList<String> getRecentGrids() {
         ArrayList<String> results = new ArrayList<>();
         try {
@@ -228,7 +267,11 @@ public class JoggleCube implements IJoggleCube {
         return FXCollections.observableArrayList(newResults);
     }
 
-
+    /**
+     * Save the grid that is currently loaded using the given filename in the place save games are saved
+     * @param filename a String of the filename without the .grid ending
+     * @return true if the save was completed else return false.
+     */
     public boolean saveGrid(String filename) {
         try{
             //todo write an actual path, to the documents folder
@@ -241,7 +284,8 @@ public class JoggleCube implements IJoggleCube {
                 currentCubeHighScores.saveScores(out);
                 out.close();
             }catch(URISyntaxException e){
-                    System.out.println(e.toString());
+                System.out.println(e.toString());
+                return false;
             }
         } catch (FileNotFoundException e){
             System.out.println(e.toString());
@@ -251,7 +295,7 @@ public class JoggleCube implements IJoggleCube {
     }
 
     /**
-     * saves the overall scores to file
+     * Saves the overall highscores to file
      */
     @Override
     public void saveOverallScores() {
@@ -301,6 +345,9 @@ public class JoggleCube implements IJoggleCube {
                 System.out.println(e.toString());
             }
         }catch(FileNotFoundException e){
+            Dialog dialog = new Dialog();
+            dialog.showInformationDialog("Warning!", "The overall highscores were unable to launch " +
+                    "successfully!, Make sure you operate this program on a non-network mounted drive!");
             System.out.println(e.toString());
         }
     }
@@ -314,17 +361,28 @@ public class JoggleCube implements IJoggleCube {
         try {
             return overallHighScores.getHighestScore().getScore();
         }catch(NullPointerException e){
+            //Will be called if they have messed up System.home path
             System.out.println("High scores are not loaded!!!");
-            //todo add dialogue to make sure they load game from a non-network mounted drive aka not M:/ Drive
+            Dialog dialog = new Dialog();
+            dialog.showInformationDialog("Warning!", "The overall highscores were unable to launch " +
+                    "successfully!, Make sure you operate this program on a non-network mounted drive!");
+
             return 0;
         }
     }
 
+    /**
+     * Set the name of the player
+     * @param name String of name
+     */
     @Override
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Starts the in game timer in a new process thread
+     */
     @Override
     public void startTimer() {
         timer = new GameTimer();
@@ -332,6 +390,9 @@ public class JoggleCube implements IJoggleCube {
         t.start();
     }
 
+    /**
+     * Stop the timer
+     */
     @Override
     public void interruptTimer() {
         if(timer != null){
@@ -462,6 +523,10 @@ public class JoggleCube implements IJoggleCube {
         }
     }
 
+    /**
+     * Take all the variables and change it so that the game can be started again, if the grid has been saved previously
+     * then save over file.
+     */
     public void resetGameState(){
         if(currentScore > 0){
             IScore score = new Score(currentScore,name);
@@ -485,14 +550,44 @@ public class JoggleCube implements IJoggleCube {
     }
 
     /**
-     *
+     * Returns whether or not the game is a fresh not loaded game or not
      * @return True if is a new game, false if it is a loaded game
      */
     public boolean getGamesStateNew(){
         return gamesStateNew;
     }
 
+    /**
+     * Returns a HashMap with String and Dictionary as the key, value pair, of all of the currently loaded dictionaries.
+     * @return a HashMap of String-Dictionary key-value pair
+     */
     public HashMap<String, Dictionary> getLoadedDictionaries() {
         return loadedDictionaries;
+    }
+
+    /**
+     * Clears all highscores in the overall highscores variables as well as the stored files!
+     */
+    public void clearHighScores(){
+        try {
+            try {
+                String highScore = System.getProperty("user.home") + "/Documents/JoggleCube/highscores/overAll.highscores";
+                URI highScores = new URI(highScore.replace("\\", "/")
+                        .trim().replaceAll("\\u0020", "%20"));
+
+                File overallHighScoresFile = new File(highScores.getPath());
+                //Empty the file
+                PrintWriter out = new PrintWriter(overallHighScoresFile);
+                out.print("");
+                out.close();
+            } catch (URISyntaxException e) {
+                System.out.println(e.toString());
+            }
+        } catch (FileNotFoundException e){
+            System.out.println(e.toString());
+        }
+
+        //Clear currently loaded highscores
+        overallHighScores = new HighScores();
     }
 }

@@ -9,7 +9,7 @@
 package cs221.GP01.main.java.ui;
 
 import cs221.GP01.main.java.ui.controllers.*;
-import cs221.GP01.main.java.ui.controllers.Settings;
+import cs221.GP01.main.java.ui.controllers.SettingsOverlay;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
@@ -30,7 +30,7 @@ public class UI implements IFrontend {
     /**
      * The singleton instance of the UI class
      */
-    private static UI ui;
+    private static IFrontend ui;
 
     /**
      * Default constructor
@@ -43,7 +43,7 @@ public class UI implements IFrontend {
      *
      * @return ui
      */
-    public static UI getInstance(){
+    public static IFrontend getInstance(){
         if(ui == null){
             synchronized (UI.class){
                 if(ui == null){
@@ -106,8 +106,8 @@ public class UI implements IFrontend {
                 break;
 
             case SETTINGS:
-                loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Settings.fxml"));
-                loader.setController(Settings.getInstance());
+                loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "SettingsOverlay.fxml"));
+                loader.setController(SettingsOverlay.getInstance());
                 break;
             case LOAD:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Load.fxml"));

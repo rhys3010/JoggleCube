@@ -1,4 +1,5 @@
-package cs221.GP01.test.java.ui;
+package cs221.GP01.test.java.ui.controllers;
+import cs221.GP01.main.java.model.IJoggleCube;
 import cs221.GP01.main.java.model.IScore;
 import cs221.GP01.main.java.model.JoggleCube;
 import cs221.GP01.main.java.ui.ScreenType;
@@ -18,8 +19,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class HighScoreTest {
 
     HighScore score = HighScore.getInstance();
+<<<<<<< HEAD:src/cs221/GP01/test/java/ui/HighScoreTest.java
     JoggleCube cube = JoggleCube.getInstance();
     String highScorePageLabel = null;
+=======
+    ObservableList<IScore> highScorePageLabel = null;
+>>>>>>> dev-testing:src/cs221/GP01/test/java/ui/controllers/HighScoreTest.java
     ObservableList<IScore> highScoreTable = null;
 
     @BeforeEach
@@ -33,9 +38,24 @@ public class HighScoreTest {
     public void prepView() {
 
         score.prepView();
+<<<<<<< HEAD:src/cs221/GP01/test/java/ui/HighScoreTest.java
         assertEquals(cube.getOverallHighScores(), score.getOverallScores());
         assertEquals(cube.getCurrentCubeHighScores(), score.getCurrentCubeHighScores());
     }
+=======
+        assertEquals(JoggleCube.getInstance().getOverallHighScores(), score.getOverallScores());
+        assertEquals(JoggleCube.getInstance().getCurrentCubeHighScores(), score.getCurrentCubeHighScores());
+
+       // @Test
+       // private static <S, T> void columnReorder () {
+
+        }
+
+       // @Test
+       // public void onChanged(){
+
+       // }
+>>>>>>> dev-testing:src/cs221/GP01/test/java/ui/controllers/HighScoreTest.java
 
     @Test
     private void populateTable(){
@@ -49,10 +69,20 @@ public class HighScoreTest {
         
         assertEquals("All Cubes", highScorePageLabel); // checkin if current page is "All cubes"
 
+<<<<<<< HEAD:src/cs221/GP01/test/java/ui/HighScoreTest.java
         // highScorePageLabel.overallScores(true);
         //assertTrue(highScorePageLabel,"All Cubes");
         //highScorePageLabel.overallScores(false);
         //assertFalse(highScorePageLabel,"All Cubes");
+=======
+     //   score.nextPage();
+
+
+    }
+
+    @Test
+    public void previousPage(){
+>>>>>>> dev-testing:src/cs221/GP01/test/java/ui/controllers/HighScoreTest.java
 
     }
 
