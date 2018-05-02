@@ -43,7 +43,7 @@ class UITest extends ApplicationTest {
         assertTrue(nav.getScreens().containsKey(ScreenType.END));
         assertEquals("class cs221.GP01.main.java.ui.controllers.End",
                 nav.getScreens().get(ScreenType.END).getController().getClass().toString());
-        
+
 
 
     }
