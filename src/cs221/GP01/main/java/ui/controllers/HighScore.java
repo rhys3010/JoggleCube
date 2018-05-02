@@ -122,6 +122,12 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
             populateTable(overallScores, "All Cubes");
         }
 
+        Label errorLabel = new Label("No High Scores Saved - Play the game first!");
+        errorLabel.setStyle("-fx-text-fill: white;");
+
+        // Set default message for empty table
+        highScoreTable.setPlaceholder(errorLabel);
+
         // Set IScore sort type
         scoreCol.setSortType(TableColumn.SortType.DESCENDING);
         highScoreTable.getSortOrder().add(scoreCol);
@@ -130,8 +136,8 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
     }
 
     /**
-     * Stop users from being able to reorder table columns (temporary fix)
-     * Solution used here: https://bittlife.com/javafx-disable-column-reorder-tableview/
+     * Stop users from being able to reorder table columns
+     * Solution inspired by: https://bittlife.com/javafx-disable-column-reorder-tableview/
      */
     @SuppressWarnings("unchecked")
     private static <S, T> void columnReorder(TableView table, TableColumn<S, T>... columns){
