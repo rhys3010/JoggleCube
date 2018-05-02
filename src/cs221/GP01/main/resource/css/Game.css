@@ -77,10 +77,6 @@
     -fx-background-position: 125;
 }
 
-.hamburgerContext #settingsBtn{
-    -fx-background-image: url("../img/icon/settings_icon_context.png");
-}
-
 .hamburgerContext #helpBtn{
     -fx-background-image: url("../img/icon/help_icon_context.png");
 }
