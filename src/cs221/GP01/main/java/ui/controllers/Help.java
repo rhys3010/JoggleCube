@@ -88,6 +88,10 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
     @FXML
     private SubScene helpPageContainer;
 
+    public int getCurrentPageIndex() {
+        return currentPageIndex;
+    }
+
     public SubScene getHelpPageContainer() {
         return helpPageContainer;
     }
