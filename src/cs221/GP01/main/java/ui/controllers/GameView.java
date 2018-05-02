@@ -205,8 +205,8 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         // Normalize input
         result = result.replace(" ", "");
 
-        // todo: better validation
-        if (result.matches("(\\w*)")) {
+
+        if (dialog.isValidInput(result)) {
             JoggleCube.getInstance().setName(result);
         }
 

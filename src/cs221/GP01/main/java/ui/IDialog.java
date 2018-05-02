@@ -47,4 +47,10 @@ public interface IDialog {
      */
     void showInformationDialog(String title, String contentText);
 
+    /**
+     * Validate user input to ensure correctness
+     * @param input - the user's input
+     */
+    boolean isValidInput(String input);
+
 }
