@@ -32,6 +32,7 @@ public class LoadGrid extends BaseScreen implements INeedPrep {
 
 
     private static LoadGrid loadGridView;
+    private boolean fileLoaded = false;
 
     private LoadGrid(){}
 
@@ -78,13 +79,14 @@ public class LoadGrid extends BaseScreen implements INeedPrep {
      */
     @FXML
     public void btnStartGridClicked() {
-        if(JoggleCube.getInstance().loadGrid(fileName)){
+
+        if(fileLoaded){
+            // Switch the screen
             Navigation.getInstance().switchScreen(ScreenType.GAME);
-        } else {
+        }else{
             Dialog dialog = new Dialog();
             dialog.showInformationDialog("Error", "No File Selected, Please Try Again");
         }
-
 
     }
 
@@ -106,10 +108,25 @@ public class LoadGrid extends BaseScreen implements INeedPrep {
     public void handleMouseClick(MouseEvent event) {
 
         fileName = listViewRecents.getSelectionModel().getSelectedItem();
+        loadGrid();
 
         // Detect double click
         if(event.getClickCount() > 1){
             btnStartGridClicked();
         }
+    }
+
+    /**
+     * Utility function to load the grid into the game
+     */
+    private void loadGrid(){
+        if(JoggleCube.getInstance().loadGrid(fileName)){
+            fileLoaded = true;
+        }else{
+            fileLoaded = false;
+            Dialog dialog = new Dialog();
+            dialog.showInformationDialog("Error", "No File Selected, Please Try Again");
+        }
+
     }
 }
