@@ -26,7 +26,7 @@ public class BaseOverlay {
     /**
      * Set the Overlay's parent controller
      *
-     * @param parent
+     * @param parent The controller of the parents scene
      */
     public void setParentController(BaseScreen parent){
         this.parentController = parent;

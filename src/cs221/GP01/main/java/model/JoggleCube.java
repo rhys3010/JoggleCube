@@ -72,7 +72,10 @@ public class JoggleCube implements IJoggleCube {
 
     //To check what the current loaded file is
     private String currentFilename = "";
-    
+
+    /**
+     * Constructor for JoggleCube class
+     */
     private JoggleCube(){
         findDocumentFolder();
         loadOverallScores();
@@ -81,6 +84,7 @@ public class JoggleCube implements IJoggleCube {
 
     /**
      * Returns an instance of the JoggleCube object
+     *
      * @return Returns the only object of the JoggleCube object
      */
     public static IJoggleCube getInstance(){
@@ -94,8 +98,6 @@ public class JoggleCube implements IJoggleCube {
         return joggleCube;
     }
 
-    //Start Random Game
-
     /**
      * Starts a brand new random game, when called it will reset variables and create a new random grid
      */
@@ -108,10 +110,9 @@ public class JoggleCube implements IJoggleCube {
         currentCubeHighScores = new HighScores();
     }
 
-    //Start loaded game
-
     /**
      * Given the filename parameter it will load the saved game and return a value depending on it's success
+     *
      * @param filename A String of the filename without the .grid ending
      * @return Return true if load successful else false.
      */
@@ -146,8 +147,6 @@ public class JoggleCube implements IJoggleCube {
                 // Error with the file format
                 LoadGrid.getInstance().showError("Invalid or Corrupted Grid File");
             }
-
-
             return false;
         }
         //Set the local variable to false for it being a new grid
@@ -160,6 +159,7 @@ public class JoggleCube implements IJoggleCube {
     /**
      * Is the test for whether or not the word is a valid given the parameters in the functional requirements. Then
      * adding the value of the score to the current score. If the word is already used, if it is in the dictionary etc.
+     *
      * @param word the string to check the validity of
      * @return True if the word is valid, else false.
      */
@@ -179,96 +179,8 @@ public class JoggleCube implements IJoggleCube {
     }
 
     /**
-     * Formats the cube into a way that can be utilised by the front end
-     * @return Returns a String 3D array 3x3x3 of the cube
-     */
-    public String[][][] getCubeData() {
-        String[][][] stringCube = new String[3][3][3];
-
-        for(int i = 0; i<3; i++){
-            for(int j = 0; j<3; j++){
-                for(int k = 0; k<3; k++){
-                    stringCube[i][j][k] = cube.getBlock(i,j,k).getLetter();
-                }
-            }
-        }
-        return stringCube;
-    }
-
-    /**
-     * Returns the overall HighScores across all cubes in a format usable by JavaFX
-     * @return ObservableList of IScore Interfaces
-     */
-    public ObservableList<IScore> getOverallHighScores() {
-        if(overallHighScores != null){
-            return FXCollections.observableArrayList(overallHighScores.getScores());
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Return the current cube's highscores in a format usable by JavaFX
-     * @return ObservableList of IScore Interfaces
-     */
-    public ObservableList<IScore> getCurrentCubeHighScores() {
-        if(currentCubeHighScores != null){
-            return FXCollections.observableArrayList(currentCubeHighScores.getScores());
-        } else {
-            return null;
-        }
-
-    }
-
-    //Get the grids from a saved file
-
-    /**
-     * Returns a list of all saved grids and returns them in a format expected by the front end
-     * @return an ObservableList of Strings of all the available saved grids
-     */
-    public ObservableList<String> getRecentGrids() {
-        ArrayList<String> results = new ArrayList<>();
-        try {
-            //Finding the save folder
-            String savePath = System.getProperty("user.home") + "/Documents/JoggleCube/saves";
-            File saveFolder = new File(new URI(savePath.replace("\\", "/")
-                    .trim().replaceAll("\\u0020", "%20")).getPath());
-
-            //Using the folder we get all of the
-            File[] listOfFiles = saveFolder.listFiles();
-            try {
-                //The NullPointerException is fine because it is caught in a try catch.
-                for (File listOfFile : listOfFiles) {
-                    results.add(listOfFile.getName());
-                }
-            }catch(NullPointerException e){
-                System.err.println("No recent grids found!");
-            }
-        } catch(URISyntaxException e){
-            System.err.println("Issue with the Syntax of URI in getRecentGrids()");
-            System.err.println(e.toString());
-        }
-
-        //Remove the .grid from the file name
-        ArrayList<String> newResults = new ArrayList<>();
-        //Foreach loops suck and thus I didn't use one because it just broke everything when I used it
-        for (int i = 0; i<results.size(); i++){
-            String currentString = results.get(i);
-            if(currentString.contains(".grid")){
-                StringBuilder newC = new StringBuilder();
-                //Remove .grid
-                //i = 5 because .grid is 5 charecters
-                for(int j = 5; j<currentString.length(); j++){
-                    newC.append(currentString.charAt(j - 5));
-                }
-                newResults.add(newC.toString());
-            }
-        }
-        return FXCollections.observableArrayList(newResults);
-    }
-
-    /**
      * Save the grid that is currently loaded using the given filename in the place save games are saved
+     *
      * @param filename a String of the filename without the .grid ending
      * @return true if the save was completed else return false.
      */
@@ -322,7 +234,6 @@ public class JoggleCube implements IJoggleCube {
         }catch(FileNotFoundException e){
             System.out.println(e.toString());
         }
-
     }
 
     /**
@@ -353,34 +264,6 @@ public class JoggleCube implements IJoggleCube {
     }
 
     /**
-     * returns the top highscore
-     *
-     * @return the top high score.
-     */
-    public int getHighestScore() {
-        try {
-            return overallHighScores.getHighestScore().getScore();
-        }catch(NullPointerException e){
-            //Will be called if they have messed up System.home path
-            System.out.println("High scores are not loaded!!!");
-            Dialog dialog = new Dialog();
-            dialog.showInformationDialog("Warning!", "The overall highscores were unable to launch " +
-                    "successfully!, Make sure you operate this program on a non-network mounted drive!");
-
-            return 0;
-        }
-    }
-
-    /**
-     * Set the name of the player
-     * @param name String of name
-     */
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
      * Starts the in game timer in a new process thread
      */
     @Override
@@ -398,58 +281,6 @@ public class JoggleCube implements IJoggleCube {
         if(timer != null){
             timer.interrupt();
         }
-    }
-
-    /**
-     * Using the first to letters as an example set the language by using "en" for american english
-     */
-    public void setLanguage(){
-        language = Settings.getCurrLangPrefix();
-        if (loadedDictionaries.containsKey(language)) {
-            dictionary = loadedDictionaries.get(language);
-        } else {
-            loadNewDictionary();
-        }
-        cube = new Cube(language + "_letters");
-        cube.setLanguage(language);
-        scores = cube.getScores();
-    }
-
-    /**
-     * Generate the word score for this word using scrabble score * 3
-     * @param word the word to get the score for
-     * @return returns an int that is the score
-     */
-    //Scores are stored in the file next to the letter seperated by a ':' e.g. A:3
-    public int getWordScore(String word){
-        //Split the word up into the different letters including 'Qu' and then search the hashmap for each and
-        //return a sum of the scores
-        word = word.toUpperCase();
-        int sumOf = 0;
-        for(int i = 0; i<word.length(); i++){
-            if(i<word.length()-1 && scores.containsKey((word.charAt(i)+ "") + (word.charAt(i+1) + ""))){
-                //If scores contains word[i] + word[i+1] then handle the doule letters
-                sumOf += Integer.parseInt(scores.get((word.charAt(i)+ "") + (word.charAt(i+1) + "")));
-                i++;
-            } else if(scores.containsKey(String.valueOf(word.charAt(i)))){
-                //If scores the letter and it's not possible that it was originally a double letter
-                //handle the single letter addition of score.
-                sumOf += Integer.parseInt(scores.get(word.charAt(i) + ""));
-            } else{
-                System.out.println("Score is broken for this letter" + word.charAt(i));
-            }
-        }
-        //Return * 3 scores
-        return sumOf * sumOf;
-    }
-
-    /**
-     * gets the score for the current game.
-     *
-     * @return the score for the current game
-     */
-    public int getScore() {
-        return currentScore;
     }
 
     /**
@@ -477,6 +308,10 @@ public class JoggleCube implements IJoggleCube {
         }
     }
 
+    /**
+     *
+     * @param uri
+     */
     private void createDirectory(URI uri){
         //Create the folder + saves folder + 3 hard coded saved files
         //todo confirm whether or not the uri.toString() + directory name works in all circumstances
@@ -550,22 +385,6 @@ public class JoggleCube implements IJoggleCube {
     }
 
     /**
-     * Returns whether or not the game is a fresh not loaded game or not
-     * @return True if is a new game, false if it is a loaded game
-     */
-    public boolean getGamesStateNew(){
-        return gamesStateNew;
-    }
-
-    /**
-     * Returns a HashMap with String and Dictionary as the key, value pair, of all of the currently loaded dictionaries.
-     * @return a HashMap of String-Dictionary key-value pair
-     */
-    public HashMap<String, Dictionary> getLoadedDictionaries() {
-        return loadedDictionaries;
-    }
-
-    /**
      * Clears all highscores in the overall highscores variables as well as the stored files!
      */
     public void clearHighScores(){
@@ -589,5 +408,195 @@ public class JoggleCube implements IJoggleCube {
 
         //Clear currently loaded highscores
         overallHighScores = new HighScores();
+    }
+
+    /**
+     * Returns the top highscore
+     *
+     * @return the top high score.
+     */
+    public int getHighestScore() {
+        try {
+            return overallHighScores.getHighestScore().getScore();
+        }catch(NullPointerException e){
+            //Will be called if they have messed up System.home path
+            System.out.println("High scores are not loaded!!!");
+            Dialog dialog = new Dialog();
+            dialog.showInformationDialog("Warning!", "The overall highscores were unable to launch " +
+                    "successfully!, Make sure you operate this program on a non-network mounted drive!");
+
+            return 0;
+        }
+    }
+
+    /**
+     * Generate the word score for this word using scrabble score * 3
+     *
+     * @param word the word to get the score for
+     * @return returns an int that is the score
+     */
+    //Scores are stored in the file next to the letter seperated by a ':' e.g. A:3
+    public int getWordScore(String word){
+        //Split the word up into the different letters including 'Qu' and then search the hashmap for each and
+        //return a sum of the scores
+        word = word.toUpperCase();
+        int sumOf = 0;
+        for(int i = 0; i<word.length(); i++){
+            if(i<word.length()-1 && scores.containsKey((word.charAt(i)+ "") + (word.charAt(i+1) + ""))){
+                //If scores contains word[i] + word[i+1] then handle the doule letters
+                sumOf += Integer.parseInt(scores.get((word.charAt(i)+ "") + (word.charAt(i+1) + "")));
+                i++;
+            } else if(scores.containsKey(String.valueOf(word.charAt(i)))){
+                //If scores the letter and it's not possible that it was originally a double letter
+                //handle the single letter addition of score.
+                sumOf += Integer.parseInt(scores.get(word.charAt(i) + ""));
+            } else{
+                System.out.println("Score is broken for this letter" + word.charAt(i));
+            }
+        }
+        //Return * 3 scores
+        return sumOf * sumOf;
+    }
+
+    /**
+     * gets the score for the current game.
+     *
+     * @return the score for the current game
+     */
+    public int getScore() {
+        return currentScore;
+    }
+
+    /**
+     * Formats the cube into a way that can be utilised by the front end
+     *
+     * @return Returns a String 3D array 3x3x3 of the cube
+     */
+    public String[][][] getCubeData() {
+        String[][][] stringCube = new String[3][3][3];
+
+        for(int i = 0; i<3; i++){
+            for(int j = 0; j<3; j++){
+                for(int k = 0; k<3; k++){
+                    stringCube[i][j][k] = cube.getBlock(i,j,k).getLetter();
+                }
+            }
+        }
+        return stringCube;
+    }
+
+    /**
+     * Returns the overall HighScores across all cubes in a format usable by JavaFX
+     *
+     * @return ObservableList of IScore Interfaces
+     */
+    public ObservableList<IScore> getOverallHighScores() {
+        if(overallHighScores != null){
+            return FXCollections.observableArrayList(overallHighScores.getScores());
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Return the current cube's highscores in a format usable by JavaFX
+     *
+     * @return ObservableList of IScore Interfaces
+     */
+    public ObservableList<IScore> getCurrentCubeHighScores() {
+        if(currentCubeHighScores != null){
+            return FXCollections.observableArrayList(currentCubeHighScores.getScores());
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Returns a list of all saved grids and returns them in a format expected by the front end
+     *
+     * @return an ObservableList of Strings of all the available saved grids
+     */
+    public ObservableList<String> getRecentGrids() {
+        ArrayList<String> results = new ArrayList<>();
+        try {
+            //Finding the save folder
+            String savePath = System.getProperty("user.home") + "/Documents/JoggleCube/saves";
+            File saveFolder = new File(new URI(savePath.replace("\\", "/")
+                    .trim().replaceAll("\\u0020", "%20")).getPath());
+
+            //Using the folder we get all of the
+            File[] listOfFiles = saveFolder.listFiles();
+            try {
+                //The NullPointerException is fine because it is caught in a try catch.
+                for (File listOfFile : listOfFiles) {
+                    results.add(listOfFile.getName());
+                }
+            }catch(NullPointerException e){
+                System.err.println("No recent grids found!");
+            }
+        } catch(URISyntaxException e){
+            System.err.println("Issue with the Syntax of URI in getRecentGrids()");
+            System.err.println(e.toString());
+        }
+
+        //Remove the .grid from the file name
+        ArrayList<String> newResults = new ArrayList<>();
+        //Foreach loops suck and thus I didn't use one because it just broke everything when I used it
+        for (int i = 0; i<results.size(); i++){
+            String currentString = results.get(i);
+            if(currentString.contains(".grid")){
+                StringBuilder newC = new StringBuilder();
+                //Remove .grid
+                //i = 5 because .grid is 5 charecters
+                for(int j = 5; j<currentString.length(); j++){
+                    newC.append(currentString.charAt(j - 5));
+                }
+                newResults.add(newC.toString());
+            }
+        }
+        return FXCollections.observableArrayList(newResults);
+    }
+
+    /**
+     * Returns whether or not the game is a fresh not loaded game or not
+     *
+     * @return True if is a new game, false if it is a loaded game
+     */
+    public boolean getGamesStateNew(){
+        return gamesStateNew;
+    }
+
+    /**
+     * Returns a HashMap with String and Dictionary as the key, value pair, of all of the currently loaded dictionaries.
+     *
+     * @return a HashMap of String-Dictionary key-value pair
+     */
+    public HashMap<String, Dictionary> getLoadedDictionaries() {
+        return loadedDictionaries;
+    }
+
+    /**
+     * Set the name of the player
+     *
+     * @param name String of name
+     */
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Using the first to letters as an example set the language by using "en" for american english
+     */
+    public void setLanguage(){
+        language = Settings.getCurrLangPrefix();
+        if (loadedDictionaries.containsKey(language)) {
+            dictionary = loadedDictionaries.get(language);
+        } else {
+            loadNewDictionary();
+        }
+        cube = new Cube(language + "_letters");
+        cube.setLanguage(language);
+        scores = cube.getScores();
     }
 }

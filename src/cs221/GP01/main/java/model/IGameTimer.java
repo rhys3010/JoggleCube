@@ -34,6 +34,7 @@ public interface IGameTimer {
 
     /**
      * Returns the boolean interrupt
+     *
      * @return interrupt
      */
     public boolean isInterrupt();

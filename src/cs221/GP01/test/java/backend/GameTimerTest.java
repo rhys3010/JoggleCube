@@ -62,8 +62,6 @@ class GameTimerTest {
         Thread.sleep(1000);
         assertEquals(Duration.ofSeconds(179), timer.getCurrentTime());
         assertEquals("2:59", GameView.getInstance().getTimerLabel().getText());
-
-
     }
 
     /**
@@ -76,7 +74,6 @@ class GameTimerTest {
         System.out.print(GameView.getInstance().getRoot().getChildren());
         //assertTrue(GameView.getInstance().getRoot().getChildren().contains(Navigation.getInstance().getScreens().get(ScreenType.END).getRoot()));
     }
-
 
     /**
      * Test if gameTimer interrupts

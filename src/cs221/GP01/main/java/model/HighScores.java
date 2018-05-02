@@ -22,7 +22,7 @@ import java.util.function.Consumer;
  * @see IHighScores
  */
 public class HighScores implements IHighScores {
-    private ArrayList <IScore> scores;
+    private ArrayList<IScore> scores;
 
     /**
      * Creates a arraylist in order to store the high scores
@@ -38,7 +38,7 @@ public class HighScores implements IHighScores {
      */
     @Override
     public void loadScores(Scanner file) {
-        while(file.hasNext()){
+        while (file.hasNext()) {
             scores.add(new Score(file));
         }
     }
@@ -64,6 +64,16 @@ public class HighScores implements IHighScores {
     }
 
     /**
+     * To string method used for testing
+     *
+     * @return highScores in string
+     */
+    @Override
+    public String toString() {
+        return "HighScores:"  + scores ;
+    }
+
+    /**
      * Sorts the arraylist and returns the high score
      *
      * @return high score
@@ -71,18 +81,18 @@ public class HighScores implements IHighScores {
     @Override
     public IScore getHighestScore() {
         scores.sort((o1, o2) -> {
-            if(o1.getScore() > o2.getScore()){
+            if (o1.getScore() > o2.getScore()) {
                 return -1;
-            }else if(o1.getScore() < o2.getScore()){
-                return  1;
+            } else if (o1.getScore() < o2.getScore()) {
+                return 1;
             } else {
                 return 0;
             }
         });
-        if(!scores.isEmpty()){
+        if (!scores.isEmpty()) {
             return scores.get(0);
         } else {
-            return new Score(0,"");
+            return new Score(0, "");
         }
     }
 
@@ -94,15 +104,5 @@ public class HighScores implements IHighScores {
     @Override
     public ArrayList<IScore> getScores() {
         return scores;
-    }
-
-    /**
-     * To string method used for testing
-     *
-     * @return highScores in string
-     */
-    @Override
-    public String toString() {
-        return "HighScores:"  + scores ;
     }
 }

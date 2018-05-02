@@ -35,24 +35,6 @@ public class BaseScreen {
     private Node mainNode;
 
     /**
-     * Get the root node of a given screen
-     *
-     * @return root
-     */
-    public StackPane getRoot(){
-        return root;
-    }
-
-    /**
-     * Get the main node of the FXML
-     *
-     * @return mainNode
-     */
-    public Node getMainNode(){
-        return mainNode;
-    }
-
-    /**
      * Handle the menu button press
      */
     @FXML
@@ -84,4 +66,21 @@ public class BaseScreen {
         Navigation.getInstance().showOverlay(ScreenType.SETTINGS, this);
     }
 
+    /**
+     * Get the root node of a given screen
+     *
+     * @return root
+     */
+    public StackPane getRoot(){
+        return root;
+    }
+
+    /**
+     * Get the main node of the FXML
+     *
+     * @return mainNode
+     */
+    public Node getMainNode(){
+        return mainNode;
+    }
 }
