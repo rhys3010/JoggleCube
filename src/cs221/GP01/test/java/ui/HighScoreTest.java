@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class HighScoreTest {
 
     HighScore score = HighScore.getInstance();
-    JoggleCube cube = JoggleCube.getInstance();
     ObservableList<IScore> highScorePageLabel = null;
     ObservableList<IScore> highScoreTable = null;
 
@@ -26,8 +25,8 @@ public class HighScoreTest {
     public void prepView() {
 
         score.prepView();
-        assertEquals(cube.getOverallHighScores(), score.getOverallScores());
-        assertEquals(cube.getCurrentCubeHighScores(), score.getCurrentCubeHighScores());
+        assertEquals(JoggleCube.getInstance().getOverallHighScores(), score.getOverallScores());
+        assertEquals(JoggleCube.getInstance().getCurrentCubeHighScores(), score.getCurrentCubeHighScores());
 
        // @Test
        // private static <S, T> void columnReorder () {

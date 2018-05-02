@@ -15,12 +15,10 @@ class UITest {
     @Test
     void initialize() throws IOException {
 
-        Navigation nav = Navigation.getInstance();
-        UI ui = UI.getInstance();
-        System.out.print(nav.getMain());
+        System.out.print(Navigation.getInstance().getMain());
         Scene scene = new Scene(new Pane(),600,600);
-        ui.initialize(scene);
-        System.out.print(nav.getMain());
+        UI.getInstance().initialize(scene);
+        System.out.print(Navigation.getInstance().getMain());
 
     }
 }
