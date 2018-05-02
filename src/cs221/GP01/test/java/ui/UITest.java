@@ -17,12 +17,13 @@ class UITest {
     @Test
     void initialize() throws IOException {
 
+        System.out.print(Navigation.getInstance().getMain());
         IViewNavigation nav = Navigation.getInstance();
         IFrontend ui = UI.getInstance();
         System.out.print(nav.getMain());
         Scene scene = new Scene(new Pane(),600,600);
-        ui.initialize(scene);
-        System.out.print(nav.getMain());
+        UI.getInstance().initialize(scene);
+        System.out.print(Navigation.getInstance().getMain());
 
     }
 }
