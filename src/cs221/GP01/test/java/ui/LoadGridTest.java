@@ -79,7 +79,11 @@ import static org.junit.jupiter.api.Assertions.*;
         load.handleMouseClick();
         Platform.runLater(()->load.btnStartGridClicked());
         clickOn(400,400);
-        Platform.runLater(()->GameView.getInstance().dialog.close());
+<<<<<<< HEAD
+       // Platform.runLater(()->GameView.getInstance().dialog.close());
+=======
+        Platform.runLater(()->GameView.getInstance().getDialog().getTextInputDialog().close());
+>>>>>>> dev-testing
         clickOn(400,400); // everytime after run later -> wait?
 
         setRootNode();

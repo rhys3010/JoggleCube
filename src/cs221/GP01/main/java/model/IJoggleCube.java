@@ -23,8 +23,6 @@ public interface IJoggleCube {
 
     /**
      * create a random grid
-     *
-     *
      */
     void generateRandomGrid();
 

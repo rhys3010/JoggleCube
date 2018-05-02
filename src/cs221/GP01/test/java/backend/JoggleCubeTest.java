@@ -19,10 +19,20 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for JoggleCube class
+ *
+ * @author Aleksandra Madej (alm82)
+ * @version 1.1
+ * @see JoggleCube
+ */
 class JoggleCubeTest {
 
     IJoggleCube controller = JoggleCube.getInstance();
 
+    /**
+     * Reset GoggleCube before each test
+     */
     @BeforeEach
     public void reset(){
        // controller.resetGameState();
@@ -30,6 +40,9 @@ class JoggleCubeTest {
         controller.generateRandomGrid();
     }
 
+    /**
+     * Test the loading of a new dictionary
+     */
     @Test
     public void testLoadNewDictionary(){
         assertFalse(controller.getLoadedDictionaries().isEmpty());
@@ -37,6 +50,9 @@ class JoggleCubeTest {
         assertTrue(controller.getLoadedDictionaries().containsKey("cy"));
     }
 
+    /**
+     * Test for valid words
+     */
     @Test
     public void testWordValidityTest(){
 
@@ -44,15 +60,23 @@ class JoggleCubeTest {
         assertFalse(controller.testWordValidity("sjfsdkjfnkjsd"));
     }
 
+    /**
+     * Test word score of given word
+     *
+     * @param word word to test
+     * @param score score of word
+     */
     @ParameterizedTest
     @CsvSource({"egg, 25", "i, 1"})
     public void testGetWordScore(String word, int score){
         assertEquals(score, controller.getWordScore(word));
     }
 
+    /**
+     * Test saving to file
+     */
    @Test
     public void testSaveToFile(){
-
         controller.generateRandomGrid();
         String[][][] generatedCube = controller.getCubeData();
 
@@ -76,6 +100,9 @@ class JoggleCubeTest {
         //todo maybe not load the file each time....
     }*/
 
+    /**
+     * Test the setting of dictionaries
+     */
     @Test
     public void setLanguageTest(){
         Settings.setCurrLang("en");

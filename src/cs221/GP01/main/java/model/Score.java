@@ -17,10 +17,11 @@ import java.util.Scanner;
 /**
  *  Score - Encapsulate and represent a given High Score entry
  *  Represent a Given High Score Entry  Date/time of Score, Score
+ *
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Lampros Petridis (lap12)
  * @version 1.1
- * @see cs221.GP01.main.java.model.IScore
+ * @see IScore
  */
 public class Score implements IScore {
 
@@ -83,6 +84,11 @@ public class Score implements IScore {
         file.print(name + "\n");
     }
 
+    /**
+     * prints information about score
+     *
+     * @return toString information for score, date and name
+     */
     @Override
     public String toString() {
         return "score =" + score +
@@ -90,6 +96,12 @@ public class Score implements IScore {
                 ", name ='" + name + '\'' ;
     }
 
+    /**
+     * Checks whether score is equal
+     *
+     * @param o score
+     * @return True or false
+     */
     @Override
     public boolean equals(Object o){
         Score otherScore = (Score)o;

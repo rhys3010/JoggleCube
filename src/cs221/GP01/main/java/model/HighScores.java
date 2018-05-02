@@ -19,7 +19,7 @@ import java.util.function.Consumer;
  *
  * @author Lampros Petridis (lap12)
  * @version 1.1
- * @see cs221.GP01.main.java.model.IHighScores
+ * @see IHighScores
  */
 public class HighScores implements IHighScores {
     private ArrayList <IScore> scores;

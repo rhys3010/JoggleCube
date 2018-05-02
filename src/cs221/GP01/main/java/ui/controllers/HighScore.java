@@ -24,7 +24,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
 import java.net.URL;
-import java.util.Comparator;
 import java.util.ResourceBundle;
 
 /**
@@ -37,8 +36,7 @@ import java.util.ResourceBundle;
  * todo improve this description
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21@aber.ac.uk)
- * @version 1.1
- *
+ * @version 0.2
  */
 public class HighScore extends BaseScreen implements Initializable, INeedPrep {
 
@@ -103,6 +101,7 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
 
     /**
      * Populate IScore table with highscore data
+     *
      */
     public void prepView(){
 
@@ -183,11 +182,14 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
     /**
      *
      * table setup stuff
+     *
+     *
      * todo Add Rank Number to table
      *
      * @param location axc
      * @param resources axc
      */
+
     @Override
     @SuppressWarnings("unchecked")
     public void initialize(URL location, ResourceBundle resources) {
@@ -211,5 +213,28 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
         );
         // Prevent user from reordering table
         columnReorder(highScoreTable, idCol, nameCol, scoreCol, dateCol);
+    }
+
+
+    //agl6
+
+    public ObservableList<IScore> getOverallScores() {
+        return overallScores;
+    }
+
+    public ObservableList<IScore> getCurrentCubeHighScores(){
+        return currentCubeScores;
+    }
+
+    public String getText() {
+        return getText();
+    }
+
+    public short setText() {
+        return setText();
+    }
+
+    public short setItems() {
+        return setItems();
     }
 }
