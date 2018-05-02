@@ -75,7 +75,7 @@ class GameTimerTest {
         timer.finishTimer();
         System.out.print(GameView.getInstance().getRoot().getChildren());
         //assertTrue(GameView.getInstance().getRoot().getChildren().contains(Navigation.getInstance().getScreens().get(ScreenType.END).getRoot()));
-    }*/
+    }
 
 
     /**

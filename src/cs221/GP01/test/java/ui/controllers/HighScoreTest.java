@@ -1,4 +1,5 @@
 package cs221.GP01.test.java.ui;
+import cs221.GP01.main.java.model.IJoggleCube;
 import cs221.GP01.main.java.model.IScore;
 import cs221.GP01.main.java.model.JoggleCube;
 import cs221.GP01.main.java.ui.controllers.HighScore;
@@ -12,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class HighScoreTest {
 
     HighScore score = HighScore.getInstance();
-    JoggleCube cube = JoggleCube.getInstance();
+    IJoggleCube cube = JoggleCube.getInstance();
     ObservableList<IScore> highScorePageLabel = null;
     ObservableList<IScore> highScoreTable = null;
 

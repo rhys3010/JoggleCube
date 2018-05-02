@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-        * @(#) Settings.fxml 1.0 2018/03/12
+        * @SettingsOverlayings.fxml 1.0 2018/03/12
         *
         * Copyright (c) 2018 University of Wales, Aberystwyth.
         * All rights reserved.
@@ -18,7 +18,7 @@
 
 
 <!--
-    * Settings - Overlay to display various settings option
+  SettingsOverlayings - Overlay to display various settings option
     * <p>
     * The FXML layout for an overlay to display the various configuration options to the user
     *
