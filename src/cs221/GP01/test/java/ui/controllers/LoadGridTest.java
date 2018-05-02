@@ -5,7 +5,7 @@
    * All rights reserved.
    *
    */
-package cs221.GP01.test.java.ui;
+package cs221.GP01.test.java.ui.controllers;
 
 import cs221.GP01.Main;
 import cs221.GP01.main.java.model.JoggleCube;
@@ -35,7 +35,7 @@ import java.util.concurrent.TimeoutException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LoadGridTest extends ApplicationTest {
-
+/*
     Parent rootNode;
     LoadGrid load = LoadGrid.getInstance();
     @BeforeEach
@@ -70,7 +70,7 @@ class LoadGridTest extends ApplicationTest {
 
     }
 
-    @Test
+    /*@Test
     void btnStartGridClicked() {
 
         setRootNode();
@@ -79,7 +79,15 @@ class LoadGridTest extends ApplicationTest {
         load.handleMouseClick();
         Platform.runLater(()->load.btnStartGridClicked());
         clickOn(400,400);
+<<<<<<< HEAD:src/cs221/GP01/test/java/ui/LoadGridTest.java
+        //Platform.runLater(()->GameView.getInstance().dialog.close());
+=======
+<<<<<<< HEAD
+       // Platform.runLater(()->GameView.getInstance().dialog.close());
+=======
         Platform.runLater(()->GameView.getInstance().getDialog().getTextInputDialog().close());
+>>>>>>> dev-testing
+>>>>>>> dev-testing:src/cs221/GP01/test/java/ui/controllers/LoadGridTest.java
         clickOn(400,400); // everytime after run later -> wait?
 
         setRootNode();
@@ -117,4 +125,5 @@ clickOn(400,400);
 
 
     }
+    */
 }

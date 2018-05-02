@@ -21,45 +21,66 @@ import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for GameTimer class
+ *
+ * @author Aleksandra Madej (alm82)
+ * @version 1.1
+ * @see GameTimer
+ */
 class GameTimerTest {
 
     GameTimer timer = new GameTimer();
 
+    /**
+     * Test if gameTimer resets
+     */
     @Test
-    public void testResetTime(){
+    public void testResetTime() {
         timer = new GameTimer();
         Thread t = new Thread(timer);
         t.start();
         timer.resetTime();
-        assertEquals(Duration.ofSeconds(180),timer.getCurrentTime());
+        assertEquals(Duration.ofSeconds(180), timer.getCurrentTime());
 
     }
 
-   /* @Test
+    /**
+     * Test if gameTimer starts
+     *
+     * @throws InterruptedException
+     */
+    @Test
     public void testStartTimer() throws InterruptedException {
 
-Label timerLabel = new Label();
-GameView.getInstance().setTimerLabel(timerLabel);
+        Label timerLabel = new Label();
+        GameView.getInstance().setTimerLabel(timerLabel);
         timer.startTimer();
-      assertEquals(Duration.ZERO, timer.getCurrentTime());
+        assertEquals(Duration.ZERO, timer.getCurrentTime());
 
-      timer.startTimer();
-      Thread.sleep(1000);
-      assertEquals(Duration.ofSeconds(179),timer.getCurrentTime());
-      assertEquals("2:59", GameView.getInstance().getTimerLabel().getText());
+        timer.startTimer();
+        Thread.sleep(1000);
+        assertEquals(Duration.ofSeconds(179), timer.getCurrentTime());
+        assertEquals("2:59", GameView.getInstance().getTimerLabel().getText());
 
 
     }
 
+    /**
+     * Test if gameTimer stops
+     */
     @Test
-    public void testFinishTimer(){
+    public void testFinishTimer() {
 
         timer.finishTimer();
         System.out.print(GameView.getInstance().getRoot().getChildren());
         //assertTrue(GameView.getInstance().getRoot().getChildren().contains(Navigation.getInstance().getScreens().get(ScreenType.END).getRoot()));
-    }*/
+    }
 
 
+    /**
+     * Test if gameTimer interrupts
+     */
     @Test
     public void testInterrupt() {
 

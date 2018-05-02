@@ -13,6 +13,7 @@ import java.io.PrintWriter;
 /**
  *  Score - Encapsulate and represent a given High Score entry
  *  Represent a Given High Score Entry  Date/time of Score, Score
+ *
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Lampros Petridis (lap12)
  * @version 1.1

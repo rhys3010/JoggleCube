@@ -10,12 +10,12 @@ package cs221.GP01.main.java.ui.controllers;
 
 /**
  * The Parent Class of any overlay controller
+ *
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21@aber.ac.uk)
- * @version 0.2
+ * @version 1.1
  */
 public class BaseOverlay {
-
 
     /**
      * An instance of the overlay's parent controller
@@ -25,6 +25,7 @@ public class BaseOverlay {
 
     /**
      * Set the Overlay's parent controller
+     *
      * @param parent
      */
     public void setParentController(BaseScreen parent){

@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
  *
  * @author Samuel Jones - srj12
  * @version 1.1
+ * @see IDictionary
  */
 public class Dictionary implements IDictionary{
     private HashMap<String, String> dictionary = new HashMap();
@@ -36,11 +37,6 @@ public class Dictionary implements IDictionary{
      * @param filename Finds the file named as the String parameter
      */
     public void loadDictionary(String filename){
-        //Load
-        //Finding the absolute path
-        //System.out.println(file.getAbsolutePath());
-
-        //Variable to take load time of the dictionary
         long currentTime = System.currentTimeMillis();
         String input;
         InputStream file = getClass().getResourceAsStream("/cs221/GP01/main/resource/dictionary/" + filename);
@@ -66,6 +62,7 @@ public class Dictionary implements IDictionary{
 
     /**
      * Returns the size of the local hash map
+     *
      * @return An int equal to the size of the dictionary
      */
     public int getDictionarySize(){

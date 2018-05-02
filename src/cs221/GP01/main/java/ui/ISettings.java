@@ -27,13 +27,36 @@ public interface ISettings {
 
     /**
      * Set the colour blind option to true/false
-     * @param colorBlind
      */
-    void setColorBlindEnabled(boolean colorBlind);
+    void toggleColourBlind();
 
 
     /**
      * Clear the currently saved highscores
      */
     void clearHighScores();
+
+    /**
+     * Get the colour to represent currently selected cube
+     * @return
+     */
+    String getCurrentlySelectedColor();
+
+    /**
+     * Get the colour to represent available cubes
+     * @return
+     */
+    String getAvailableColor();
+    /**
+     * Get the colour to represent already selected cubes
+     * @return
+     */
+    String getAlreadySelectedColor();
+    /**
+     * Get the colour to represent unavailable cubes
+     * @return
+     */
+    String getUnavailableColor();
+
+
 }

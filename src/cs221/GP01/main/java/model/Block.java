@@ -13,7 +13,7 @@ package cs221.GP01.main.java.model;
  *
  * @author Samuel Jones - srj12
  * @version 1.1
- * @see cs221.GP01.main.java.model.IBlock
+ * @see IBlock
  */
 
 public class Block implements IBlock {

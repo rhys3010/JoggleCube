@@ -1,6 +1,11 @@
 package cs221.GP01.test.java.ui;
 
+
 import cs221.GP01.Main;
+
+import cs221.GP01.main.java.ui.IFrontend;
+import cs221.GP01.main.java.ui.IViewNavigation;
+
 import cs221.GP01.main.java.ui.Navigation;
 import cs221.GP01.main.java.ui.ScreenType;
 import cs221.GP01.main.java.ui.UI;
@@ -22,8 +27,9 @@ class UITest extends ApplicationTest {
     @Test
     void initialize() throws IOException {
 
-        Navigation nav = Navigation.getInstance();
-        UI ui = UI.getInstance();
+
+        IViewNavigation nav = Navigation.getInstance();
+        IFrontend ui = UI.getInstance();
 
         assertTrue(nav.getScreens().isEmpty());
 
@@ -37,6 +43,7 @@ class UITest extends ApplicationTest {
         assertTrue(nav.getScreens().containsKey(ScreenType.END));
         assertEquals("class cs221.GP01.main.java.ui.controllers.End",
                 nav.getScreens().get(ScreenType.END).getController().getClass().toString());
+        
 
 
     }

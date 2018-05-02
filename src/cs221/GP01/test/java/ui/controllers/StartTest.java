@@ -5,7 +5,7 @@
    * All rights reserved.
    *
    */
-package cs221.GP01.test.java.ui;
+package cs221.GP01.test.java.ui.controllers;
 
 import cs221.GP01.Main;
 import cs221.GP01.main.java.ui.Navigation;

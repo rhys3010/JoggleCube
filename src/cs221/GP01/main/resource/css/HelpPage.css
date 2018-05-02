@@ -11,9 +11,9 @@
   *
   * This stylesheet is used by all help pages to provide a common layout (title, content, description, etc)
   *
-  * @author Rhys Evans (rhe24)
-  * @author Alex Thumwood (alt38)
-  * @version 0.2
+  * @author Rhys Evans (rhe24@aber.ac.uk)
+  * @author Alex Thumwood (alt38@aber.ac.uk)
+  * @version 3.0
  */
 
 
@@ -24,7 +24,7 @@
 }
 
 .title{
-    -fx-font-size: 16px;
+    -fx-font-size: 22px;
     -fx-alignment: center;
     -fx-text-fill: white;
 }

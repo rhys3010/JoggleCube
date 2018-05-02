@@ -12,6 +12,8 @@ import cs221.GP01.main.java.ui.controllers.BaseScreen;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
+import java.util.HashMap;
+
 /**
  * INavigation - Interface for the View Navigation classs
  * <p>
@@ -62,4 +64,8 @@ public interface IViewNavigation {
      * @param main - The main scene
      */
     void setMainScene(Scene main);
+
+    Scene getMain();
+
+    HashMap<ScreenType, FXMLLoader> getScreens();
 }

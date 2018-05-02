@@ -36,21 +36,21 @@ public interface IHighScores {
     void saveScores(PrintWriter file);
 
     /**
-     * add an individual score
+     * Add an individual score
      *
      * @param score the score to be added to this list of HighScores
      */
     void addScore(IScore score);
 
     /**
-     * get the Highest score.
+     * Get the Highest score.
      *
      * @return the highest score
      */
     IScore getHighestScore();
 
     /**
-     * get the list of high scores
+     * Get the list of high scores
      *
      * @return a list of the scores
      */
