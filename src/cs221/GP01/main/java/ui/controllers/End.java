@@ -123,8 +123,7 @@ public class End extends BaseOverlay implements INeedPrep {
         // Normalize input and save to regular java String
         result = result.replace(" ", "");
 
-        // todo: better validation actually handle the error filenames
-        if(result.matches("(\\w*)") && !result.isEmpty()){
+        if(inputDialog.isValidInput(result) && !result.isEmpty()){
             if(JoggleCube.getInstance().saveGrid(result)){
                 informationDialog.showInformationDialog("Success", "File saved successfully!");
             }else{

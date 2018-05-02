@@ -59,7 +59,7 @@ public class Dialog implements IDialog {
            input = rawInput.orElse("");
 
            firstAttempt = false;
-        }while(!rawInput.equals(Optional.empty()) && input.isEmpty());
+        }while(!rawInput.equals(Optional.empty()) && !isValidInput(input));
 
         return input;
     }
@@ -96,5 +96,14 @@ public class Dialog implements IDialog {
 
     public TextInputDialog getTextInputDialog() {
         return textInputDialog;
+    }
+
+    /**
+     * Verify that user input is correct
+     * @param input
+     * @return
+     */
+    public boolean isValidInput(String input){
+        return input.matches("^[a-zA-Z0-9_]*$") && !input.isEmpty() && (input.length() < 70);
     }
 }
