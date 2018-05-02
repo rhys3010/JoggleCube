@@ -51,6 +51,6 @@ public interface IDialog {
      * Validate user input to ensure correctness
      * @param input - the user's input
      */
-    boolean validate(String input);
+    boolean isValidInput(String input);
 
 }
