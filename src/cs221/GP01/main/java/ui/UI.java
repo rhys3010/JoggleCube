@@ -71,7 +71,7 @@ public class UI implements IFrontend {
      */
     public void initialize(Scene main) throws IOException{
         // Initialize the screen controller
-        IViewNavigation navigationController = Navigation.getInstance();
+        INavigation navigationController = Navigation.getInstance();
         navigationController.setMainScene(main);
         // Iteratively create screens and add to navigationController
         for(int i = 0; i < SCREENS.length; i++){

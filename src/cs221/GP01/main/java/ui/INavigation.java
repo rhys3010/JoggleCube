@@ -24,7 +24,7 @@ import java.util.HashMap;
  * @version 1.1
  * @see ScreenType
  */
-public interface IViewNavigation {
+public interface INavigation {
 
     /**
      * Add an FXML screen to the hashmap of screens

@@ -1,19 +1,14 @@
 package cs221.GP01.test.java.ui;
 
 
-import cs221.GP01.Main;
-
 import cs221.GP01.main.java.ui.IFrontend;
-import cs221.GP01.main.java.ui.IViewNavigation;
+import cs221.GP01.main.java.ui.INavigation;
 
 import cs221.GP01.main.java.ui.Navigation;
 import cs221.GP01.main.java.ui.ScreenType;
 import cs221.GP01.main.java.ui.UI;
-import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
@@ -28,7 +23,7 @@ class UITest extends ApplicationTest {
     void initialize() throws IOException {
 
 
-        IViewNavigation nav = Navigation.getInstance();
+        INavigation nav = Navigation.getInstance();
         IFrontend ui = UI.getInstance();
 
         assertTrue(nav.getScreens().isEmpty());

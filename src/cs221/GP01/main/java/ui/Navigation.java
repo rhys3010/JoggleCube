@@ -9,13 +9,9 @@ package cs221.GP01.main.java.ui;
 
 import cs221.GP01.main.java.ui.controllers.*;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 
 import java.util.HashMap;
-
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Navigation - Control the screens being displayed
@@ -26,15 +22,15 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21)
  * @version 1.1
- * @see IViewNavigation
+ * @see INavigation
  */
 
-public class Navigation implements IViewNavigation{
+public class Navigation implements INavigation {
 
     /**
      * The singleton instance of the Navigation class
      */
-    private static IViewNavigation navController;
+    private static INavigation navController;
 
     /**
      * Default constructor for the Navigation
@@ -160,7 +156,7 @@ public class Navigation implements IViewNavigation{
      *
      * @return navController - the Navigation object
      */
-    public static IViewNavigation getInstance(){
+    public static INavigation getInstance(){
         if(navController == null){
             synchronized (UI.class){
                 if(navController == null){
