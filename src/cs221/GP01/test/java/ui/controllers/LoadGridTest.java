@@ -77,7 +77,9 @@ class LoadGridTest extends ApplicationTest {
         setRootNode();
         ListView<String> list = from(rootNode).lookup("#listViewRecents").query();
         list.getSelectionModel().selectFirst();
-        load.handleMouseClick();
+        load.handleMouseClick(new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY,
+                1, true, true, true, true, true,
+                true,true, true, true, true, null));
         Platform.runLater(()->load.btnStartGridClicked());
         clickOn(400,400);
 
@@ -108,13 +110,17 @@ clickOn(400,400);
         setRootNode();
         ListView<String> list = from(rootNode).lookup("#listViewRecents").query();
         list.getSelectionModel().selectFirst();
-        load.handleMouseClick();
+        load.handleMouseClick(new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY,
+                1, true, true, true, true, true,
+                true,true, true, true, true, null));
 
         assertNotNull(load.getFileName());
         assertEquals("grid_1",load.getFileName());
 
         list.getSelectionModel().select(2);
-        load.handleMouseClick();
+        load.handleMouseClick(new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY,
+                1, true, true, true, true, true,
+                true,true, true, true, true, null));
 
         assertEquals("grid_3", load.getFileName() );
 
