@@ -43,7 +43,7 @@ class HelpTest extends ApplicationTest {
     void tearDown() throws TimeoutException {
         FxToolkit.hideStage();
     }
-    
+
 
     @Test
     void prepView() {
@@ -69,9 +69,9 @@ class HelpTest extends ApplicationTest {
     }
 
     @Test
-    void btnLeftNavClicked() {
+    void btnLeftNavClicked() throws Exception {
 
-        Platform.runLater(()->help.btnLeftNavClicked());
+        Platform.runLater(()->Help.getInstance().btnLeftNavClicked());
         clickOn(400,400);
         root = help.getHelpPageContainer().getRoot();
         label = from(root).lookup("#title").query();
