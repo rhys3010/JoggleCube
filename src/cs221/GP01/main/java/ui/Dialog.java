@@ -101,11 +101,6 @@ public class Dialog implements IDialog {
         informationDialog.showAndWait();
     }
 
-
-    public TextInputDialog getTextInputDialog() {
-        return textInputDialog;
-    }
-
     public Alert getConfirmationDialog() {
         return confirmationDialog;
     }

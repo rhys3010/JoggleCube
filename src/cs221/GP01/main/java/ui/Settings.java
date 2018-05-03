@@ -208,4 +208,45 @@ public class Settings implements ISettings {
     public String getUnavailableColor() {
         return unavailableColor;
     }
+
+    @Override
+    public Dialog getInfoDialog() {
+        return infoDialog;
+    }
+
+    /**
+     * Sets length of game timer
+     *
+     * @param timerLength length to be set
+     */
+    public static void setTimerLength(int timerLength) {
+        Settings.timerLength = timerLength;
+    }
+
+    /**
+     * Sets the language of the dictionary
+     *
+     * @param currLang lanuage to be set
+     */
+    public static void setCurrLang(String currLang) {
+        if ((currLang.length() == 2)) {
+            //converts prefix into full language name
+            for (String lang : languages) {
+                if (lang.substring(0, 2).toLowerCase().equals(currLang.toLowerCase())) {
+                    Settings.currLang = lang;
+                    break;
+                }
+            }
+        } else {
+            //checks if valid language
+            for (String lang : languages) {
+                if (lang.toLowerCase().equals(currLang.toLowerCase())) {
+                    Settings.currLang = lang;
+                    break;
+                }
+            }
+        }
+        //when language is changed set the joggleCubeLanguage
+        JoggleCube.getInstance().setLanguage();
+    }
 }
