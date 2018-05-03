@@ -5,15 +5,12 @@ import cs221.GP01.main.java.ui.IViewNavigation;
 import cs221.GP01.main.java.ui.Navigation;
 import cs221.GP01.main.java.ui.ScreenType;
 import cs221.GP01.main.java.ui.controllers.BaseScreen;
-<<<<<<< HEAD
-=======
 import cs221.GP01.main.java.ui.controllers.HighScore;
 import cs221.GP01.main.java.ui.controllers.Start;
 import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
->>>>>>> dev-testing
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
