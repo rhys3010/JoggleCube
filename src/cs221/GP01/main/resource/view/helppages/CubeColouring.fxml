@@ -68,7 +68,7 @@
           <Label styleClass="content" text="Previously Selected Cube" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
           <Box depth="30" height="30" rotate="45" translateX="40" width="30" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
               <rotationAxis><Point3D x="0.3" y="-1.0" /></rotationAxis>
-              <material><PhongMaterial diffuseColor="#54ad54" /></material>
+              <material><PhongMaterial diffuseColor="#64846b" /></material>
          <GridPane.margin>
             <Insets right="80.0" />
          </GridPane.margin>

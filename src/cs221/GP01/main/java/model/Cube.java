@@ -48,8 +48,13 @@ public class Cube implements ICube{
         for(int i = 0; i<3; i++){
             for(int j = 0; j<3; j++){
                 for(int k = 0; k<3; k++){
+                    //Added this all in to stop .nextInt() causing an out of bounds expression
+                    int randomIntSize = bagOfLetters.size()-1;
+                    if(randomIntSize < 1){
+                        randomIntSize = 1;
+                    }
                     //Generate a random index for the ArrayList, and add the letter from that point into the Cube
-                    int randomNumber = randomNumGen.nextInt(bagOfLetters.size()-1);
+                    int randomNumber = randomNumGen.nextInt(randomIntSize);
                     cube[i][j][k] = new Block(bagOfLetters.get(Math.abs(randomNumber)));
                     //Make sure that the letter is removed from the "Bag O'Letters"
                     bagOfLetters.remove(randomNumber);

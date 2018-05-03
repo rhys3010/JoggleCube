@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -35,7 +36,7 @@ import java.util.concurrent.TimeoutException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LoadGridTest extends ApplicationTest {
-/*
+
     Parent rootNode;
     LoadGrid load = LoadGrid.getInstance();
     @BeforeEach
@@ -70,20 +71,20 @@ class LoadGridTest extends ApplicationTest {
 
     }
 
-    /*@Test
+    @Test
     void btnStartGridClicked() {
 
         setRootNode();
         ListView<String> list = from(rootNode).lookup("#listViewRecents").query();
         list.getSelectionModel().selectFirst();
-        load.handleMouseClick();
+        load.handleMouseClick(new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY,
+                1, true, true, true, true, true,
+                true,true, true, true, true, null));
         Platform.runLater(()->load.btnStartGridClicked());
         clickOn(400,400);
-<<<<<<< HEAD
-       // Platform.runLater(()->GameView.getInstance().dialog.close());
-=======
+
         Platform.runLater(()->GameView.getInstance().getDialog().getTextInputDialog().close());
->>>>>>> dev-testing
+
         clickOn(400,400); // everytime after run later -> wait?
 
         setRootNode();
@@ -109,17 +110,21 @@ clickOn(400,400);
         setRootNode();
         ListView<String> list = from(rootNode).lookup("#listViewRecents").query();
         list.getSelectionModel().selectFirst();
-        load.handleMouseClick();
+        load.handleMouseClick(new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY,
+                1, true, true, true, true, true,
+                true,true, true, true, true, null));
 
         assertNotNull(load.getFileName());
         assertEquals("grid_1",load.getFileName());
 
         list.getSelectionModel().select(2);
-        load.handleMouseClick();
+        load.handleMouseClick(new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY,
+                1, true, true, true, true, true,
+                true,true, true, true, true, null));
 
         assertEquals("grid_3", load.getFileName() );
 
 
     }
-    */
+
 }

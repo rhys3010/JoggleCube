@@ -48,6 +48,7 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
             helpScreens.add(createHelpPage("Selecting.fxml"));
             helpScreens.add(createHelpPage("Scoring.fxml"));
             helpScreens.add(createHelpPage("CubeColouring.fxml"));
+            helpScreens.add(createHelpPage("CubeColouringCB.fxml"));
             helpScreens.add(createHelpPage("ColourBlindToggle.fxml"));
 
         } catch (IOException e) {
@@ -88,6 +89,10 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
      */
     @FXML
     private SubScene helpPageContainer;
+
+    public int getCurrentPageIndex() {
+        return currentPageIndex;
+    }
 
     public SubScene getHelpPageContainer() {
         return helpPageContainer;

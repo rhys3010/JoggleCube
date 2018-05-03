@@ -1,0 +1,31 @@
+@startuml
+|Main|
+start
+:main();
+:start;
+:load fonts;
+:start backend;
+|JoggleCube|
+:findDocumentFolder;
+:loadOverallScores;
+:setLanguage;
+
+|Main|
+:set stage and
+start frontend;
+|UI|
+:initialize;
+repeat
+:Create screen;
+repeat while(More screens to load?)
+detach
+|Start|
+start
+:test;
+:anod;
+:dsfsd;
+:dgnfk;
+|Main|
+:poop;
+:pascasc;
+@enduml

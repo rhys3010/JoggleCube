@@ -139,14 +139,7 @@ public class JoggleCube implements IJoggleCube {
                 System.err.println(e.toString());
             }
         } catch(FileNotFoundException | NoSuchElementException e){
-            // Print error depending on caught exception
-            if(e instanceof FileNotFoundException){
-                // An error in file name
-                LoadGrid.getInstance().showError("No Grid Selected");
-            }else{
-                // Error with the file format
-                LoadGrid.getInstance().showError("Invalid or Corrupted Grid File");
-            }
+
             return false;
         }
         //Set the local variable to false for it being a new grid

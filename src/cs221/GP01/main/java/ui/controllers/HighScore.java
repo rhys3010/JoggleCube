@@ -1,5 +1,5 @@
 /*
- * @(#) HighScoreController.java 1.0 2018/02/12
+ * @(#) HighScoreController.java 1.1 2018/02/12
  *
  * Copyright (c) 2018 University of Wales, Aberystwyth.
  * All rights reserved.
@@ -116,6 +116,12 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
             populateTable(overallScores, "All Cubes");
         }
 
+        Label errorLabel = new Label("No High Scores Saved - Play the game first!");
+        errorLabel.setStyle("-fx-text-fill: white;");
+
+        // Set default message for empty table
+        highScoreTable.setPlaceholder(errorLabel);
+
         // Set IScore sort type
         scoreCol.setSortType(TableColumn.SortType.DESCENDING);
         highScoreTable.getSortOrder().add(scoreCol);
@@ -123,11 +129,9 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
         highScoreTable.sort();
     }
 
-
-
     /**
-     * Stop users from being able to reorder table columns (temporary fix)
-     * Solution used here: https://bittlife.com/javafx-disable-column-reorder-tableview/
+     * Stop users from being able to reorder table columns
+     * Solution inspired by: https://bittlife.com/javafx-disable-column-reorder-tableview/
      */
     @SuppressWarnings("unchecked")
     private static <S, T> void columnReorder(TableView table, TableColumn<S, T>... columns){
@@ -220,20 +224,23 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
         return currentCubeScores;
     }
 
-    public String getText() {
-        return getText();
+    public Button getLeftPageNav() {
+        return  leftPageNav;
     }
 
-    public short setText() {
-        return setText();
+    public Button getRightPageNav() {
+        return rightPageNav;
     }
 
-    public short setItems() {
-        return setItems();
+    public String getLabel() {
+        return highScorePageLabel.getText();
     }
 
-    public Label highScorePageLabel(){
-        return highScorePageLabel();
+    public TableView<IScore> getTable() {
+        return highScoreTable;
+    }
 
+    public void populateTableTest(ObservableList<IScore> list, String title) {
+        populateTable(list,title);
     }
 }

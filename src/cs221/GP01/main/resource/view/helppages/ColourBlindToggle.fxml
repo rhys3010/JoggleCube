@@ -27,7 +27,7 @@
     <stylesheets>
         <URL value="@../../css/HelpPage.css" />
     </stylesheets>
-    <Label styleClass="title" text="Toggling Colourblind Mode: " textAlignment="CENTER" wrapText="true" />
+    <Label fx:id="title" styleClass="title" text="Toggling Colourblind Mode: " textAlignment="CENTER" wrapText="true" />
     <VBox alignment="BOTTOM_CENTER" styleClass="content">
         <ImageView fitHeight="290.0" fitWidth="309.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../../img/help/colourblind.gif" />

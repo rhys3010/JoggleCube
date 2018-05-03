@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
  * <p>
  * How it is used
  * @author Nathan Williams (naw21)
- * @version 0.2  DRAFT
+ * @version 1.1
  */
 
 public class Start extends BaseScreen implements INeedPrep, Initializable {
@@ -56,7 +56,7 @@ public class Start extends BaseScreen implements INeedPrep, Initializable {
     }
 
     /**
-     *
+     * Prepares the View to start
      */
     @Override
     public void prepView(){

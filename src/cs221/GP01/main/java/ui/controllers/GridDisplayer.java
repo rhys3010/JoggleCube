@@ -1,5 +1,5 @@
 /*
- * @(#) GridDisplayer.java 1.0 2018/02/24
+ * @(#) GridDisplayer.java 1.1 2018/02/24
  *
  * Copyright (c) 2018 University of Wales, Aberystwyth.
  * All rights reserved.
@@ -32,46 +32,64 @@ import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 
-import java.util.Timer;
-
-
 /**
  *
  * A class to help GameView display the grids.
  *
- * todo optimize
+ * The grids are displayed in three forms which are all handled in this class.
+ * The Blocks change colour and functionality based on a state machine, and get added to the textField when clicked on.
+ *
  *
  * @author Nathan Williams
- * @version 1.0
+ * @version 1.1
  */
 public class GridDisplayer {
 
+    // Holds the previous x and y coords of the mouse to check the change in x and y.
     private double oldMouseX, oldMouseY;
 
+    // Pre defined rotations for the 3D view.
     private Rotate rotateAboutX = new Rotate(-20, 40, 40, 40, Rotate.X_AXIS);
     private Rotate rotateAboutY = new Rotate(-45, 40, 40, 40, Rotate.Y_AXIS);
 
+
+    //text field to build the word in.
     private TextField textField;
 
 
-    //FXML stuff
+    //FXML Object to display the grids in
     private SubScene subScene;
-    private Group groupy;
+    private Group threeDGridGroup;
     private BorderPane back;
     private GridPane[] twoDGrid, twoFiveDGrid;
     private Button btnExplode;
 
 
-    //storage for the labels and boxes with letters in them.
+    //storage for the labels and boxes(Bblocks) with letters in them.
     private Label[][][] labelCube;
     private Box[][][] boxCube, boxCube3;
 
+    //a boolean to keep track of the current exploded state.
+    private boolean toggle;
+
+
+    /**
+     * constructor for gird displayer with all the UI elements used to display the grid
+     *
+     * @param field the text field to build the word in
+     * @param two the 2D grid elements
+     * @param twoFive the 2.5D view elements
+     * @param sub the sub scene for the 3D view
+     * @param group The group to hold the 3D view JavaFx objects
+     * @param b the container of the subscene for the 3D view
+     * @param explode the explode button so Icon can be changed based on if the cube is exploded or not.
+     */
     public GridDisplayer(TextField field, GridPane[] two, GridPane[] twoFive, SubScene sub, Group group, BorderPane b, Button explode) {
         textField = field;
         twoDGrid = two;
         twoFiveDGrid = twoFive;
         subScene = sub;
-        groupy = group;
+        threeDGridGroup = group;
         back = b;
         btnExplode = explode;
     }
@@ -79,10 +97,10 @@ public class GridDisplayer {
     /**
      * sets up 3d enviroment, loads letters into labels and boxes, adds them to the display.
      *
-     * @param letters
+     * @param letters a 3x3x3 array of letters to populate the grid views.
      */
     public void buildGrids(String[][][] letters) {
-        groupy.getChildren().clear();
+        threeDGridGroup.getChildren().clear();
         for (int i = 0; i < 3; i++) {
             twoDGrid[i].getChildren().clear();
             twoFiveDGrid[i].getChildren().clear();
@@ -96,10 +114,10 @@ public class GridDisplayer {
                 rotateAboutY,
                 new Translate(-150, -100, 0)
         );
-        groupy.getChildren().add(camera);
+        threeDGridGroup.getChildren().add(camera);
         subScene.setCamera(camera);
 
-        groupy.getChildren().add(new AmbientLight());
+        threeDGridGroup.getChildren().add(new AmbientLight());
 
         //sets up the right mouse button for rotating the cube
         back.setOnMouseDragged(e -> {
@@ -115,7 +133,7 @@ public class GridDisplayer {
             }
         });
 
-        //when the drg is released reset the variables
+        //when the drag is released reset the variables
         back.setOnMouseReleased(
                 e -> {
                     if (e.getButton().equals(MouseButton.SECONDARY)) {
@@ -170,7 +188,7 @@ public class GridDisplayer {
             for (int k = 0; k < 3; k++) {
                 for (int i = 0; i < 3; i++) {
                     for (int j = 0; j < 3; j++) {
-                        groupy.getChildren().add(boxCube3[k][i][j]);
+                        threeDGridGroup.getChildren().add(boxCube3[k][i][j]);
                         boxCube3[k][i][j].setTranslateX(k * 40);
                         boxCube3[k][i][j].setTranslateY(i * 40);
                         boxCube3[k][i][j].setTranslateZ(j * 40);
@@ -181,21 +199,31 @@ public class GridDisplayer {
     }
 
     /**
-     * When a block is clicked this method is called.
+     * When a block is clicked this method is called to update
+     * the states of all the blocks in the views based on if it
+     * was the blocked clicked, a neighbour of the block or it isn't.
      *
-     * @param k the position of the block that called the method
-     * @param i the position of the block that called the method
-     * @param j the position of the block that called the method
+     * Adds the letter of the clicked block to the text field.
+     *
+     * @param k the position of the block that was clicked
+     * @param i the position of the block that was clicked
+     * @param j the position of the block that was clicked
      */
     private void blockClicked(int k, int i, int j, MouseEvent e) {
         if (e.getButton().equals(MouseButton.PRIMARY)) {
             for (int x = 0; x < 3; x++) {
                 for (int y = 0; y < 3; y++) {
                     for (int z = 0; z < 3; z++) {
+
+                        //the block that was clicked
                         if (x == k && y == i && z == j) {
                             setSelected(x, y, z);
+
+                            //is a neighbour of the block that was clicked
                         } else if (isNeighbour(k, i, j, x, y, z)) {
                             setActive(x, y, z, false);
+
+                            //not a neighbour of the block that was clicked
                         } else {
                             setInActive(x, y, z);
                         }
@@ -360,6 +388,8 @@ public class GridDisplayer {
     /**
      * Works out if the selected blocks are neighbors.
      *
+     * @author Sam Jones
+     *
      * @param selectedX position of the selected block
      * @param selectedY position of the selected block
      * @param selectedZ position of the selected block
@@ -387,11 +417,15 @@ public class GridDisplayer {
         return false;
     }
 
-    private boolean toggle;
-
+    /**
+     * Toggles the explode of the 3D view of the cube.
+     */
     public void toggleExplode() {
+       //disables the button while the animation is happening.
+        btnExplode.setDisable(true);
 
-        // Clear explode button class
+
+        // Clear explode button styles
         btnExplode.getStyleClass().clear();
 
         // Switch buttons between explode/implode
@@ -401,8 +435,7 @@ public class GridDisplayer {
             btnExplode.getStyleClass().add("implode");
         }
 
-        btnExplode.setDisable(true);
-
+        //re enables the button at the end of the animation.
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
                     @Override
@@ -413,7 +446,7 @@ public class GridDisplayer {
                 400
         );
 
-
+        //creates an animation timeline.
         Timeline timeline = new Timeline();
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -421,20 +454,35 @@ public class GridDisplayer {
                 addAnimation(timeline, boxCube3[2][i][j], !toggle, 2, i, j);
             }
         }
+        //runs the timeline
         timeline.play();
-        toggle = !toggle;
 
+        //updates the saved state variable.
+        toggle = !toggle;
     }
 
+    /**
+     * adds an animation to the timeline for the specified cube.
+     *
+     * @param timeline the timeline to add the animation to
+     * @param box the box to be moved.
+     * @param left the direction to move, true if left, false if right
+     * @param x the position of the block
+     * @param y the position of the block
+     * @param z the position of the block
+     */
     private void addAnimation(Timeline timeline, Box box, boolean left, int x, int y, int z) {
-
+        //The distance the BLock should move.
         int displacment = 60;
+
         if (left) {
+            //move the block left
             timeline.getKeyFrames().addAll(
                     new KeyFrame(Duration.ZERO, new KeyValue(box.translateXProperty(), box.getTranslateX())),
                     new KeyFrame(new Duration(400), new KeyValue(box.translateXProperty(), box.getTranslateX() + displacment))
             );
         } else {
+            //move the block right
             timeline.getKeyFrames().addAll(
                     new KeyFrame(Duration.ZERO, new KeyValue(box.translateXProperty(), box.getTranslateX())),
                     new KeyFrame(new Duration(400), new KeyValue(box.translateXProperty(), box.getTranslateX() - displacment))
@@ -442,15 +490,26 @@ public class GridDisplayer {
         }
     }
 
-    
 
+    /**
+     * Checks if the block is active or not for testing purposes.
+     *
+     * @param x position of the block
+     * @param y position of the block
+     * @param z position of the block
+     * @return whether the block is active or not
+     */
     public boolean isActive(int x, int y, int z) {
-        if (labelCube[x][y][z].getStyle().contains("-fx-background-color:" + Settings.getInstance().getAvailableColor() + ";"))
-            return true;
-        else
-            return false;
+        return labelCube[x][y][z].getStyle().contains("-fx-background-color:" + Settings.getInstance().getAvailableColor() + ";");
     }
 
+    /**
+     * Changes the block to active state for testing
+     *
+     * @param x position of the block
+     * @param y position of the block
+     * @param z position of the block
+     */
     public void setInActiveP(int x, int y, int z) {
         setInActive(x,y,z);
     }

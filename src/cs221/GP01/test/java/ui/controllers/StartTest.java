@@ -12,6 +12,7 @@ import cs221.GP01.main.java.ui.Navigation;
 import cs221.GP01.main.java.ui.Settings;
 import cs221.GP01.main.java.ui.UI;
 import cs221.GP01.main.java.ui.controllers.BaseScreen;
+import cs221.GP01.main.java.ui.controllers.GameView;
 import cs221.GP01.main.java.ui.controllers.Start;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -22,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.AfterEach;
@@ -99,9 +101,13 @@ class StartTest extends ApplicationTest {
         Button button = from(rootNode).lookup("#btnStartNewGrid").query();
         assertEquals("Start New Grid", button.getText());
         clickOn(button);
-        // deal with dialog
 
-        //verifyThat();
+        Platform.runLater(()-> GameView.getInstance().getDialog().getTextInputDialog().close());
+        clickOn(400,400);
+
+        setRootNode();
+        HBox box = from(rootNode).lookup("#gameBox").query();
+        assertEquals("gameElementsContainer",box.getStyleClass().toString() );
 
 
     }
