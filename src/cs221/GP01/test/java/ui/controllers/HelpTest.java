@@ -10,7 +10,9 @@ import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.SubScene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,16 +47,6 @@ class HelpTest extends ApplicationTest {
     }
 
 
-    @Test
-    void prepView() {
-
-        help.prepView();
-        root = help.getHelpPageContainer().getRoot();
-        label = from(root).lookup("#title").query();
-        assertEquals("What is Joggle Cube?", label.getText());
-
-    }
-
 
     @Test
     void btnRightNavClicked() {
@@ -64,6 +56,7 @@ class HelpTest extends ApplicationTest {
         root = help.getHelpPageContainer().getRoot();
         label = from(root).lookup("#content").query();
         assertEquals("To ROTATE ", label.getText().substring(0,10));
+
 
 
     }
@@ -77,5 +70,16 @@ class HelpTest extends ApplicationTest {
         label = from(root).lookup("#title").query();
         System.out.print(help.getCurrentPageIndex());
        assertEquals("Toggling Colourblind Mode: ", label.getText());
+
+    }
+
+    @Test
+    void prepView() {
+
+        help.prepView();
+        root = help.getHelpPageContainer().getRoot();
+        label = from(root).lookup("#title").query();
+        assertEquals("What is Joggle Cube?", label.getText());
+
     }
 }

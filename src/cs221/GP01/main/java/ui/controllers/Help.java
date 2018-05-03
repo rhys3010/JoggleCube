@@ -77,6 +77,7 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
      */
     private ArrayList<Parent> helpScreens = new ArrayList<>();
 
+
     /**
      * The currently indexed help page (used to display correct page etc)
      */
@@ -90,6 +91,10 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
 
     public int getCurrentPageIndex() {
         return currentPageIndex;
+    }
+
+    public void setHelpPageContainer(SubScene helpPageContainer) {
+        this.helpPageContainer = helpPageContainer;
     }
 
     public SubScene getHelpPageContainer() {
