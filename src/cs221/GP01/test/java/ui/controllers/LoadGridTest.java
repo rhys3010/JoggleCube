@@ -35,6 +35,12 @@ import java.util.concurrent.TimeoutException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for the LoadGrid class
+ *
+ * @author Agata Lefek agl6
+ * @author Aleksandra Madej alm82
+ */
 class LoadGridTest extends ApplicationTest {
 
     Parent rootNode;

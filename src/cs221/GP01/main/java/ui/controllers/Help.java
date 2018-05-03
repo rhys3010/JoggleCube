@@ -1,5 +1,5 @@
 /*
- * @(#) HelpController.java 1.0 2018/02/24
+ * @(#) HelpController.java 1.3 2018/02/24
  *
  * Copyright (c) 2018 University of Wales, Aberystwyth.
  * All rights reserved.
@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
  * Controller for the Help.fxml file to handle the displaying of various help screens
  * @author Rhys Evans (rhe24)
  * @author Nathan Williams (naw21@aber.ac.uk)
- * @version 3.0
+ * @version 1.3
  * @author Alex Thumwood (alt38)
  */
 public class Help extends BaseOverlay implements Initializable, INeedPrep {
@@ -37,8 +37,24 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
     private static Help helpView;
 
     /**
+     * The file path prefix to the helppages
+     */
+    private static final String PAGES_PATH_PREFIX = "/cs221/GP01/main/resource/view/helppages/";
+
+    /**
+     * List to store all the help screens available as FXML parent nodes
+     * so they can be injected / removed from the help screen with ease
+     */
+    private ArrayList<Parent> helpScreens = new ArrayList<>();
+
+    /**
+     * The currently indexed help page (used to display correct page etc)
+     */
+    private int currentPageIndex;
+    /**
      * Create all the pages as FXML parent nodes
      */
+
     private Help(){
         try {
             helpScreens.add(createHelpPage("Introduction.fxml"));
@@ -57,58 +73,17 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
         }
     }
 
-    public static Help getInstance(){
-        if(helpView == null){
-            synchronized (Help.class){
-                if(helpView == null){
-                    helpView = new Help();
-                }
-            }
-        }
-        return helpView;
-    }
-
-    /**
-     * The file path prefix to the helppages
-     */
-    private static final String PAGES_PATH_PREFIX = "/cs221/GP01/main/resource/view/helppages/";
-
-    /**
-     * List to store all the help screens available as FXML parent nodes
-     * so they can be injected / removed from the help screen with ease
-     */
-    private ArrayList<Parent> helpScreens = new ArrayList<>();
-
-
-    /**
-     * The currently indexed help page (used to display correct page etc)
-     */
-    private int currentPageIndex;
-
     /**
      * The FXML node of the subscene that will act as a container for the help page
      */
     @FXML
     private SubScene helpPageContainer;
 
-    public int getCurrentPageIndex() {
-        return currentPageIndex;
-    }
-
-    public void setHelpPageContainer(SubScene helpPageContainer) {
-        this.helpPageContainer = helpPageContainer;
-    }
-
-    public SubScene getHelpPageContainer() {
-        return helpPageContainer;
-    }
-
     /**
      * The FXML node of the carousel indicator container
      */
     @FXML
     HBox carouselIndicatorContainer;
-
 
     /**
      * Initialize the help overlay for first time use
@@ -119,7 +94,6 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
     public void initialize(URL location, ResourceBundle resources){
         // Create the indicators at the bottom of the screen
         createCarouselIndicators();
-
     }
 
     /**
@@ -232,5 +206,46 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
 
         // Update the carousel indicator
         carouselIndicatorContainer.getChildren().get(currentPageIndex).getStyleClass().add("carouselIndicator-selected");
+    }
+
+    /**
+     * Getting instance of helpView
+     *
+     * @return returns the instance of this class object.
+     */
+    public static Help getInstance(){
+        if(helpView == null){
+            synchronized (Help.class){
+                if(helpView == null){
+                    helpView = new Help();
+                }
+            }
+        }
+        return helpView;
+    }
+
+    /**
+     * Keeps track of current help page number
+     *
+     * @return currentPageIndex
+     */
+    public int getCurrentPageIndex() {
+        return currentPageIndex;
+    }
+
+    /**
+     * Calls help window
+     *
+     * @return helpPageContainer
+     */
+    public SubScene getHelpPageContainer() {
+        return helpPageContainer;
+    }
+
+    /**
+     * MAY NEED DELETING
+     */
+    public void setHelpPageContainer(SubScene helpPageContainer) {
+        this.helpPageContainer = helpPageContainer;
     }
 }

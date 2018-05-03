@@ -47,6 +47,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.control.LabeledMatchers.hasText;
 
+/**
+ * Tests for the Start class
+ *
+ * @author Agata Lefek agl6
+ * @author Aleksandra Madej alm82
+ */
 class StartTest extends ApplicationTest {
     Start start = Start.getInstance();
     Parent rootNode;

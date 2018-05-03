@@ -16,6 +16,12 @@ import org.junit.runner.RunWith;
 
 @SelectPackages({"cs221.GP01.test.java.backend","cs221.GP01.test.java.ui"})
 
+/**
+ * Tests for all classes
+ *
+ * @author Agata Lefek agl6
+ * @author Aleksandra Madej alm82
+ */
 public class AllSuiteTests {
 
 }

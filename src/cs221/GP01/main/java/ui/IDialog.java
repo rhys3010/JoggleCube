@@ -1,5 +1,5 @@
 /*
- * @(#) IDialog.java 0.1 2018/04/30
+ * @(#) IDialog.java 1.1 2018/04/30
  *
  * Copyright (c) 2012 University of Wales, Aberystwyth.
  * All rights reserved.
@@ -8,16 +8,14 @@
 
 package cs221.GP01.main.java.ui;
 
-
 import javafx.scene.image.ImageView;
-
 import java.util.Optional;
 
 /**
  * IDialog - A central class to create and control and dialog popups used in the system
  * <p>
  * @author Rhys Evans (rhe24)
- * @version 0.1
+ * @version 1.1
  */
 public interface IDialog {
 

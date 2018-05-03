@@ -1,3 +1,10 @@
+/*
+   * @(#) StartController.java 1.0 2018/03/05
+   *
+   * Copyright (c) 2012 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
 package cs221.GP01.test.java.ui.controllers;
 
 import cs221.GP01.Main;
@@ -19,6 +26,12 @@ import java.util.concurrent.TimeoutException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for the Help class
+ *
+ * @author Agata Lefek agl6
+ * @author Aleksandra Madej alm82
+ */
 class HelpTest extends ApplicationTest {
 
     @Override

@@ -35,7 +35,12 @@ import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.base.NodeMatchers.hasChildren;
 import static org.junit.jupiter.api.Assertions.*;
 
-
+/**
+ * Tests for the Navigation class
+ *
+ * @author Agata Lefek agl6
+ * @author Aleksandra Madej alm82
+ */
 public class NavigationTest extends ApplicationTest {
 
     Parent rootNode;

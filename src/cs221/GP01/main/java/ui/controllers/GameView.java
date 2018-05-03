@@ -33,7 +33,6 @@ import javafx.stage.StageStyle;
 
 import java.util.Optional;
 
-
 /**
  * GameView - A class that controls the Game scene that is defined in Game.fxml
  * Used with Game.fxml
@@ -54,22 +53,6 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
      *  a private constructor so the class can't be instantiated by any other class.
      */
     private GameView() {
-    }
-
-    /**
-     * Getting instance of gameController
-     *
-     * @return returns the instance of this class object.
-     */
-    public static GameView getInstance() {
-        if (gameController == null) {
-            synchronized (UI.class) {
-                if (gameController == null) {
-                    gameController = new GameView();
-                }
-            }
-        }
-        return gameController;
     }
 
     // holds the grid displayer currently in use to help display the grids
@@ -94,10 +77,13 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
 
     @FXML
     private GridPane top2d, middle2d, bottom2d, top25d, middle25d, bottom25d;
+
     @FXML
     private SubScene subScene;
+
     @FXML
     private Group groupy;
+
     @FXML
     private BorderPane back;
 
@@ -110,20 +96,11 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     @FXML
     private ContextMenu hamburgerContext;
 
-    public void setTimerLabel(Label timerLabel) {
-        this.timerLabel = timerLabel;
-    }
-
-    public Dialog getDialog() {
-        return dialog;
-    }
-
     @FXML
     public void btnClearClicked() {
         textField.setText("");
         gridDisplayer.setAllActive();
     }
-
 
     /**
      * handles the submit button begin clicked
@@ -182,7 +159,6 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         gridDisplayer.toggleExplode();
     }
 
-
     /**
      * When the End Game option is clicked it will load the EndGui overlay.
      */
@@ -218,13 +194,11 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         // Normalize input
         result = result.replace(" ", "");
 
-
         if (dialog.isValidInput(result)) {
             JoggleCube.getInstance().setName(result);
         }
 
         foundWords = FXCollections.observableArrayList();
-
 
         // Disable hamburger context on right click
         menuButton.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
@@ -238,12 +212,24 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         gridDisplayer.buildGrids(JoggleCube.getInstance().getCubeData());
         foundWordsList.setItems(foundWords);
 
-
         JoggleCube.getInstance().startTimer();
     }
 
-
-
+    /**
+     * Getting instance of gameController
+     *
+     * @return returns the instance of this class object.
+     */
+    public static GameView getInstance() {
+        if (gameController == null) {
+            synchronized (UI.class) {
+                if (gameController == null) {
+                    gameController = new GameView();
+                }
+            }
+        }
+        return gameController;
+    }
 
     /**
      * Returns the list of found words so it can be used in the backend as it is currently only stored in the frontend
@@ -256,17 +242,6 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         return foundWords;
     }
 
-    //setters and getters for tests
-
-    /**
-     * Sets string of text in to the textField variable
-     *
-     * @param text string to be set
-     */
-    public void setText(String text) {
-        textField.setText(text);
-    }
-
     /**
      * gets timerTable
      *
@@ -275,6 +250,15 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     @Override
     public Label getTimerLabel() {
         return timerLabel;
+    }
+
+    /**
+     *
+     *
+     * @return dialog
+     */
+    public Dialog getDialog() {
+        return dialog;
     }
 
     /**
@@ -333,6 +317,28 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         return menuButton;
     }
 
-    
+    /**
+     * Gets color blind icon
+     *
+     * @return coloBlindIcon
+     */
     public Button getColorBlindIcon(){ return colorBlindIcon; }
+
+    /**
+     * Sets string of text in to the textField variable
+     *
+     * @param text string to be set
+     */
+    public void setText(String text) {
+        textField.setText(text);
+    }
+
+    /**
+     * Displays time left in game
+     *
+     * @param timerLabel
+     */
+    public void setTimerLabel(Label timerLabel) {
+        this.timerLabel = timerLabel;
+    }
 }

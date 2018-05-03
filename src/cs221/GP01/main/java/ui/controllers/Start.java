@@ -22,8 +22,8 @@ import java.util.ResourceBundle;
 
 /**
  * Start - A class that does something.
- * <p>
  * How it is used
+ *
  * @author Nathan Williams (naw21)
  * @version 1.1
  */
@@ -34,23 +34,17 @@ public class Start extends BaseScreen implements INeedPrep, Initializable {
 
     private Start(){}
 
-    public static Start getInstance(){
-        if(startView == null){
-            synchronized (UI.class){
-                if(startView == null){
-                    startView = new Start();
-                }
-            }
-        }
-        return startView;
-    }
-
     /**
      * The FXML node of the language dropdown selector
      */
     @FXML
     private ComboBox<String> languageSelector;
 
+    /**
+     * Controls languages available on grid language dropdown menu
+     *
+     * @return languageSelector - available languages
+     */
     public ComboBox<String> getLanguageSelector() {
         return languageSelector;
     }
@@ -63,10 +57,8 @@ public class Start extends BaseScreen implements INeedPrep, Initializable {
         languageSelector.setValue(Settings.getCurrLang());
     }
 
-
     /**
      * When the Start New Grid button is clicked it will load the Game scene with a new grid.
-     *
      */
     @FXML
     public void btnStartNewGridClicked() {
@@ -76,7 +68,6 @@ public class Start extends BaseScreen implements INeedPrep, Initializable {
 
     /**
      * When the Load Grid button is clicked it will load the LoadGrid scene.
-     *
      */
     @FXML
     public void btnLoadGridClicked() {
@@ -95,5 +86,20 @@ public class Start extends BaseScreen implements INeedPrep, Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         languageSelector.setOnAction(e -> Settings.setCurrLang(languageSelector.getValue()));
         languageSelector.getItems().setAll(Settings.getLanguages());
+    }
+    /**
+     * Getting instance of startView
+     *
+     * @return returns the instance of this class object.
+     */
+    public static Start getInstance(){
+        if(startView == null){
+            synchronized (UI.class){
+                if(startView == null){
+                    startView = new Start();
+                }
+            }
+        }
+        return startView;
     }
 }

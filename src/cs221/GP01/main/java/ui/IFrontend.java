@@ -14,8 +14,8 @@ import java.io.IOException;
 
 /**
  * IFrontend - An interface for the main controller of the game's frontend
- * <p>
  * Class used to handle the mediation between the game logic and game display, passing values, changing state etc.
+ *
  * @author Rhys Evans (rhe24)
  * @version 1.1
  */
@@ -23,6 +23,7 @@ public interface IFrontend {
 
     /**
      * Initialize the game's display
+     *
      * @param main - The main scene of the game
      * @throws IOException If the FXML file for the screens cannot be found
      */

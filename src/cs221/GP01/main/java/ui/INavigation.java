@@ -21,7 +21,7 @@ import java.util.HashMap;
  *
  * @author Nathan Williams (naw21)
  * @author Rhys Evans (rhe24)
- * @version 1.1
+ * @version 1.0
  * @see ScreenType
  */
 public interface INavigation {

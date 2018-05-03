@@ -19,7 +19,7 @@ import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Test for the Cube class
+ * Tests for the Cube class
  *
  * @author Aleksandra Madej (alm82)
  * @version 1.1

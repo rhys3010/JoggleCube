@@ -1,5 +1,5 @@
 /*
- * @(#) Dialog.java 0.1 2018/04/30
+ * @(#) Dialog.java 1.1 2018/04/30
  *
  * Copyright (c) 2018 University of Wales, Aberystwyth.
  * All rights reserved.
@@ -16,15 +16,22 @@ import javafx.scene.image.ImageView;
 import javafx.stage.StageStyle;
 import java.util.Optional;
 
+/**
+ * IDialog - A central class to create and control and dialog popups used in the system
+ *
+ * @author Rhys Evans (rhe24)
+ * @version 1.1
+ * @see IDialog
+ */
 public class Dialog implements IDialog {
 
     private TextInputDialog textInputDialog;
     private Alert confirmationDialog;
     private Alert informationDialog;
 
-
     /**
      * Create a text input dialog to prompt the user for information
+     *
      * @param headerText
      * @param contentText
      * @param defaultValue
@@ -32,7 +39,6 @@ public class Dialog implements IDialog {
      * @param allowCancel
      * @return the text inputted by the user
      */
-
     public String showInputDialog(String headerText, String contentText, String defaultValue, ImageView graphic, boolean allowCancel) {
         textInputDialog = new TextInputDialog(defaultValue);
         textInputDialog.setHeaderText(headerText);
@@ -49,24 +55,24 @@ public class Dialog implements IDialog {
         boolean firstAttempt = true;
 
         // Prompt user for input until input is provided
-        do{
+        do {
 
-            if(!firstAttempt){
+            if (!firstAttempt) {
                 textInputDialog.setHeaderText("Invalid Entry, Please try again");
             }
 
-           rawInput = textInputDialog.showAndWait();
-           input = rawInput.orElse("");
+            rawInput = textInputDialog.showAndWait();
+            input = rawInput.orElse("");
 
-           firstAttempt = false;
-        }while(!rawInput.equals(Optional.empty()) && !isValidInput(input));
+            firstAttempt = false;
+        } while (!rawInput.equals(Optional.empty()) && !isValidInput(input));
 
         return input;
     }
 
-
     /**
      * Create a confirmation dialog to prompt the user for confirmation for a given action
+     *
      * @param title
      * @param contentText
      * @return the user's choice
@@ -82,6 +88,7 @@ public class Dialog implements IDialog {
 
     /**
      * Create a information dialog to notify the user
+     *
      * @param title
      * @param contentText
      */
@@ -94,16 +101,22 @@ public class Dialog implements IDialog {
         informationDialog.showAndWait();
     }
 
-    public TextInputDialog getTextInputDialog() {
-        return textInputDialog;
+    /**
+     * Verify that user input is correct
+     *
+     * @param input string to be validated
+     * @return true if string is valid, else false
+     */
+    public boolean isValidInput(String input) {
+        return input.matches("^[a-zA-Z0-9_]*$") && !input.isEmpty();
     }
 
     /**
-     * Verify that user input is correct
-     * @param input
-     * @return
+     * Gets text imput dialog
+     *
+     * @return textImputDialog
      */
-    public boolean isValidInput(String input){
-        return input.matches("^[a-zA-Z0-9_]*$") && !input.isEmpty();
+    public TextInputDialog getTextInputDialog() {
+        return textInputDialog;
     }
 }

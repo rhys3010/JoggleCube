@@ -1,3 +1,10 @@
+/*
+   * @(#) StartController.java 1.0 2018/03/05
+   *
+   * Copyright (c) 2012 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
 package cs221.GP01.test.java.ui;
 
 import cs221.GP01.main.java.ui.ISettings;
@@ -7,6 +14,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for the Settings class
+ *
+ * @author Agata Lefek agl6
+ * @author Aleksandra Madej alm82
+ */
 public class SettingsTest {
 
     ISettings settings = Settings.getInstance();
