@@ -62,4 +62,8 @@ public interface ISettings {
      * @return UnavailableColor
      */
     String getUnavailableColor();
+
+    Dialog getInfoDialog();
+
+
 }

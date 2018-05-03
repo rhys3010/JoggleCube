@@ -43,6 +43,9 @@ public class Settings implements ISettings {
 
     private static String languages[] = {"English", "Cymraeg"};
 
+
+    private Dialog infoDialog;
+
     /**
      * Currently used grid language
      */
@@ -60,6 +63,7 @@ public class Settings implements ISettings {
     private String availableColor = "#30599b";
     private String alreadySelectedColor = "#64846b";
     private String unavailableColor = "#aeaeae";
+
 
     /**
      * Private Constructor for settings class so only oone instance of class can be created
@@ -112,7 +116,7 @@ public class Settings implements ISettings {
         if (result.get() == ButtonType.OK) {
             // Remove overall highscores
             JoggleCube.getInstance().clearHighScores();
-            Dialog infoDialog = new Dialog();
+            infoDialog = new Dialog();
             infoDialog.showInformationDialog("Success", "All High Scores have been cleared");
         }
     }
@@ -203,41 +207,5 @@ public class Settings implements ISettings {
      */
     public String getUnavailableColor() {
         return unavailableColor;
-    }
-
-    /**
-     * Sets length of game timer
-     *
-     * @param timerLength length to be set
-     */
-    public static void setTimerLength(int timerLength) {
-        Settings.timerLength = timerLength;
-    }
-
-    /**
-     * Sets the language of the dictionary
-     *
-     * @param currLang lanuage to be set
-     */
-    public static void setCurrLang(String currLang) {
-        if ((currLang.length() == 2)) {
-            //converts prefix into full language name
-            for (String lang : languages) {
-                if (lang.substring(0, 2).toLowerCase().equals(currLang.toLowerCase())) {
-                    Settings.currLang = lang;
-                    break;
-                }
-            }
-        } else {
-            //checks if valid language
-            for (String lang : languages) {
-                if (lang.toLowerCase().equals(currLang.toLowerCase())) {
-                    Settings.currLang = lang;
-                    break;
-                }
-            }
-        }
-        //when language is changed set the joggleCubeLanguage
-        JoggleCube.getInstance().setLanguage();
     }
 }
