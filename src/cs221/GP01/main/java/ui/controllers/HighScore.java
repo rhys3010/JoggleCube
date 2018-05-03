@@ -29,20 +29,17 @@ import java.util.ResourceBundle;
 /**
  * HighScore - A class that controls the IScore scene that is defined in IScore.fxml
  * Load and display highscores from another class
- * todo delete temp highscore class and establish a new one
- *
- * <p>
  * Used with IScore.fxml
- * todo improve this description
+ *
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21@aber.ac.uk)
- * @version 0.2
+ * @version 1.1
+ * @see INeedPrep
+ * @see Initializable
  */
 public class HighScore extends BaseScreen implements Initializable, INeedPrep {
 
-
     private static HighScore highScoreView;
-
     private HighScore(){}
 
     public static HighScore getInstance(){
@@ -98,10 +95,8 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
     @FXML
     private Button leftPageNav, rightPageNav;
 
-
     /**
      * Populate IScore table with highscore data
-     *
      */
     public void prepView(){
 
@@ -153,7 +148,6 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
         });
     }
 
-
     /**
      * Helper function to populate the highscore table
      *
@@ -168,8 +162,6 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
 
     /**
      * Utility function to change the page of the high score table
-     *
-     * todo if not filtering to top 10 compare the data in table: highScoreTable.getItems().equals(overallScores);
      */
     @FXML
     public void changePage(){
@@ -179,17 +171,13 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
             populateTable(currentCubeScores, "Current Cube");
         }
     }
+
     /**
-     *
-     * table setup stuff
-     *
-     *
-     * todo Add Rank Number to table
+     * Sets up table
      *
      * @param location axc
      * @param resources axc
      */
-
     @Override
     @SuppressWarnings("unchecked")
     public void initialize(URL location, ResourceBundle resources) {
@@ -201,7 +189,6 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
         scoreCol.setCellValueFactory(
                 new PropertyValueFactory<IScore, Integer>("Score")
         );
-
 
         nameCol.setCellValueFactory(
                 new PropertyValueFactory<>("Name")
@@ -215,13 +202,20 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
         columnReorder(highScoreTable, idCol, nameCol, scoreCol, dateCol);
     }
 
-
-    //agl6
-
+    /**
+     * Gets overall scores
+     *
+     * @return overallHighscores
+     */
     public ObservableList<IScore> getOverallScores() {
         return overallScores;
     }
 
+    /**
+     * Gets high scores of current cube
+     *
+     * @return curreCubeHighscores
+     */
     public ObservableList<IScore> getCurrentCubeHighScores(){
         return currentCubeScores;
     }
@@ -236,5 +230,10 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
 
     public short setItems() {
         return setItems();
+    }
+
+    public Label highScorePageLabel(){
+        return highScorePageLabel();
+
     }
 }

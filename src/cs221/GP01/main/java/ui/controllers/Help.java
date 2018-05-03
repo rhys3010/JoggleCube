@@ -36,7 +36,10 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
 
     private static Help helpView;
 
-    private Help(){// Create all the pages as FXML parent nodes
+    /**
+     * Create all the pages as FXML parent nodes
+     */
+    private Help(){
         try {
             helpScreens.add(createHelpPage("Introduction.fxml"));
             helpScreens.add(createHelpPage("Rotating.fxml"));
@@ -46,7 +49,6 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
             helpScreens.add(createHelpPage("Scoring.fxml"));
             helpScreens.add(createHelpPage("CubeColouring.fxml"));
             helpScreens.add(createHelpPage("ColourBlindToggle.fxml"));
-
 
         } catch (IOException e) {
             //todo do something here
