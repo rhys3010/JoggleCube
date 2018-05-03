@@ -33,14 +33,28 @@ public interface ICube {
     void populateCube();
 
     /**
+     * Saves cube to specified file
      *
-     * @param x
-     * @param y
-     * @param z
+     * @param file filename
      * @return
+     */
+    boolean saveCube(PrintWriter file);
+
+    /**
+     * Loads cube from specified file
+     *
+     * @param file filename
+     * @return true if successful
+     */
+    boolean loadCube(Scanner file);
+    /**
+     *
+     * @param x Coordinate x
+     * @param y Coordinate y
+     * @param z Coorinnate z
+     * @return true if successful
      */
     ArrayList<int[]> getNeighbours(int x, int y, int z);
 
-    boolean saveCube(PrintWriter file);
-    boolean loadCube(Scanner file);
+
 }

@@ -10,7 +10,9 @@ import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.SubScene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -43,17 +45,7 @@ class HelpTest extends ApplicationTest {
     void tearDown() throws TimeoutException {
         FxToolkit.hideStage();
     }
-    
 
-    @Test
-    void prepView() {
-
-        help.prepView();
-        root = help.getHelpPageContainer().getRoot();
-        label = from(root).lookup("#title").query();
-        assertEquals("What is Joggle Cube?", label.getText());
-
-    }
 
 
     @Test
@@ -66,16 +58,28 @@ class HelpTest extends ApplicationTest {
         assertEquals("To ROTATE ", label.getText().substring(0,10));
 
 
+
     }
 
     @Test
-    void btnLeftNavClicked() {
+    void btnLeftNavClicked() throws Exception {
 
-        Platform.runLater(()->help.btnLeftNavClicked());
+        Platform.runLater(()->Help.getInstance().btnLeftNavClicked());
         clickOn(400,400);
         root = help.getHelpPageContainer().getRoot();
         label = from(root).lookup("#title").query();
         System.out.print(help.getCurrentPageIndex());
        assertEquals("Toggling Colourblind Mode: ", label.getText());
+
+    }
+
+    @Test
+    void prepView() {
+
+        help.prepView();
+        root = help.getHelpPageContainer().getRoot();
+        label = from(root).lookup("#title").query();
+        assertEquals("What is Joggle Cube?", label.getText());
+
     }
 }

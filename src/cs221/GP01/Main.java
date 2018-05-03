@@ -11,6 +11,7 @@ package cs221.GP01;
 import cs221.GP01.main.java.model.JoggleCube;
 import cs221.GP01.main.java.ui.Dialog;
 import cs221.GP01.main.java.ui.UI;
+import cs221.GP01.main.java.ui.controllers.Help;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;

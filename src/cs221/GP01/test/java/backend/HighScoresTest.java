@@ -57,8 +57,6 @@ class HighScoresTest {
         assertEquals("HighScores:[score =54, date ='2018/05/20 12:02', name ='player1', " +
                         "score =2, date ='2019/02/01 11:45', name ='player2', " +
                         "score =120, date ='2018/07/05 23:56', name ='player3']", scoreList.toString());
-
-
     }
 
     /**
@@ -103,6 +101,5 @@ class HighScoresTest {
         scoreList.loadScores(file);
         file.close();
         assertEquals((Integer)120, scoreList.getHighestScore().getScore());
-
     }
 }

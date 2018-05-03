@@ -36,7 +36,10 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
 
     private static Help helpView;
 
-    private Help(){// Create all the pages as FXML parent nodes
+    /**
+     * Create all the pages as FXML parent nodes
+     */
+    private Help(){
         try {
             helpScreens.add(createHelpPage("Introduction.fxml"));
             helpScreens.add(createHelpPage("Rotating.fxml"));
@@ -47,7 +50,6 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
             helpScreens.add(createHelpPage("CubeColouring.fxml"));
             helpScreens.add(createHelpPage("CubeColouringCB.fxml"));
             helpScreens.add(createHelpPage("ColourBlindToggle.fxml"));
-
 
         } catch (IOException e) {
             //todo do something here
@@ -77,6 +79,7 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
      */
     private ArrayList<Parent> helpScreens = new ArrayList<>();
 
+
     /**
      * The currently indexed help page (used to display correct page etc)
      */
@@ -90,6 +93,10 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
 
     public int getCurrentPageIndex() {
         return currentPageIndex;
+    }
+
+    public void setHelpPageContainer(SubScene helpPageContainer) {
+        this.helpPageContainer = helpPageContainer;
     }
 
     public SubScene getHelpPageContainer() {

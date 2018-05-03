@@ -29,7 +29,6 @@ public class CubeTests {
 
     Cube cube;
 
-
     /**
      * Loads and populates cube before every test
      */
@@ -99,7 +98,6 @@ public class CubeTests {
             letter[i] = cube.getBlock(0, 0, 0).getLetter();
             System.out.println(letter[i]);
         }
-
     assertFalse(letter[0].equals(letter[1]) && letter[1].equals(letter[2]));
     }
 
@@ -144,5 +142,4 @@ public class CubeTests {
             assertTrue(Math.abs(i[2] - z) <= 1);
         }
     }
-
 }
