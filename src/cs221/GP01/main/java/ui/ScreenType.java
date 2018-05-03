@@ -12,7 +12,8 @@ package cs221.GP01.main.java.ui;
  * ScreenType - An Enumerated type for the screens available to the Navigation controllers
  * <p>
  * @author Rhys Evans (rhe24)
- * @version 0.2
+ * @version 1.1
+ * @see
  */
 public enum ScreenType {
 

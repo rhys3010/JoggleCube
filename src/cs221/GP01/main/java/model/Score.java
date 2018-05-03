@@ -1,5 +1,5 @@
 /*
-   * @(#) HighScore.java 1.0 2018/02/12
+   * @(#) Score.java 1.0 2018/02/12
    *
    * Copyright (c) 2018 University of Wales, Aberystwyth.
    * All rights reserved.
@@ -17,9 +17,11 @@ import java.util.Scanner;
 /**
  *  Score - Encapsulate and represent a given High Score entry
  *  Represent a Given High Score Entry  Date/time of Score, Score
+ *
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Lampros Petridis (lap12)
- * @version 0.2  DRAFT
+ * @version 1.1
+ * @see IScore
  */
 public class Score implements IScore {
 
@@ -41,6 +43,7 @@ public class Score implements IScore {
     /**
      * Constructor for a high score
      * Convert score and date value to string
+     *
      * @param score as an int
      */
     public Score(Integer score, String name){
@@ -58,9 +61,9 @@ public class Score implements IScore {
         this.date = dateFormat.format(currDate);
     }
 
-
     /**
      * Construct Score from the next entry in the file.
+     *
      * @param file to load the scores from
      */
     public Score(Scanner file){
@@ -68,32 +71,6 @@ public class Score implements IScore {
         score = new Integer(file.next());
         name = file.next();
     }
-
-
-    /**
-     * Get the date of a given high score entry
-     * @return Date of the score
-     */
-    public String getDate(){
-        return date;
-    }
-
-    /**
-     * Get the score value of a given high score entry
-     * @return The score
-     */
-    public Integer getScore(){
-        return score;
-    }
-
-    /**
-     * Get the name of a given high score holder
-     * @return The highscore holder's name
-     */
-    public String getName(){
-        return name;
-    }
-
 
     /**
      * Save this score to the file
@@ -107,6 +84,11 @@ public class Score implements IScore {
         file.print(name + "\n");
     }
 
+    /**
+     * prints information about score
+     *
+     * @return toString information for score, date and name
+     */
     @Override
     public String toString() {
         return "score =" + score +
@@ -114,6 +96,12 @@ public class Score implements IScore {
                 ", name ='" + name + '\'' ;
     }
 
+    /**
+     * Checks whether score is equal
+     *
+     * @param o score
+     * @return True or false
+     */
     @Override
     public boolean equals(Object o){
         Score otherScore = (Score)o;
@@ -123,5 +111,32 @@ public class Score implements IScore {
         else{
             return false;
         }
+    }
+
+    /**
+     * Get the date of a given high score entry
+     *
+     * @return Date of the score
+     */
+    public String getDate(){
+        return date;
+    }
+
+    /**
+     * Get the score value of a given high score entry
+     *
+     * @return The score
+     */
+    public Integer getScore(){
+        return score;
+    }
+
+    /**
+     * Get the name of a given high score holder
+     *
+     * @return The highscore holder's name
+     */
+    public String getName(){
+        return name;
     }
 }

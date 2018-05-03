@@ -18,19 +18,18 @@
     * Scoring - The help page that contains the game's scoring guide
     *
     * @author Rhys Evans (rhe24@aber.ac.uk)
-    * @version 0.1  DRAFT
+    * @author Alex Thumwood (alt38@aber.ac.uk)
+    * @version 2.0
 -->
 
-<VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.121"
-      xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
-        <URL value="@../../css/HelpPage.css"/>
+        <URL value="@../../css/HelpPage.css" />
     </stylesheets>
-    <Label styleClass="title" text="Scoring System"/>
+    <Label styleClass="title" text="Scoring System" />
     <VBox styleClass="content">
-        <Label styleClass="title" text="Letter Values:"/>
-        <ImageView fitWidth="370.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../../img/help/PointsTable.png"/>
+        <ImageView fitHeight="370.0" fitWidth="370.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../img/help/PointsTable.png" />
         </ImageView>
     </VBox>
 </VBox>

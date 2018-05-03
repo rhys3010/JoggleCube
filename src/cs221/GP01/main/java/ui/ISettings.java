@@ -13,7 +13,7 @@ package cs221.GP01.main.java.ui;
  * <p>
  * Handle the preferred behaviour of several aspects of the game's behaviour / state
  * @author Rhys Evans (rhe24)
- * @version 0.1
+ * @version 1.1
  * @see Settings
  */
 public interface ISettings {
@@ -27,13 +27,36 @@ public interface ISettings {
 
     /**
      * Set the colour blind option to true/false
-     * @param colorBlind
      */
-    void setColorBlindEnabled(boolean colorBlind);
+    void toggleColourBlind();
 
 
     /**
      * Clear the currently saved highscores
      */
     void clearHighScores();
+
+    /**
+     * Get the colour to represent currently selected cube
+     * @return
+     */
+    String getCurrentlySelectedColor();
+
+    /**
+     * Get the colour to represent available cubes
+     * @return
+     */
+    String getAvailableColor();
+    /**
+     * Get the colour to represent already selected cubes
+     * @return
+     */
+    String getAlreadySelectedColor();
+    /**
+     * Get the colour to represent unavailable cubes
+     * @return
+     */
+    String getUnavailableColor();
+
+
 }

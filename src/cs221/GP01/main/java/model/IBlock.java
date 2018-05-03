@@ -1,12 +1,20 @@
+/*
+   * @(#) IBlock.java 1.1 2018/02/04
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
 package cs221.GP01.main.java.model;
 
 /**
- * The Interface which holds all the details for the Block, it is argueable that this class is unnessercary and
+ * The Interface which holds all the details for the Block
  * @author Samuel Jones - srj12
- * @version 0.1
+ * @version 1.1
  */
 
 public interface IBlock {
+
     /**
      * Returns the letter in the block
      */

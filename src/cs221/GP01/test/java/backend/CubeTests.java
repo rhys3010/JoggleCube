@@ -1,3 +1,10 @@
+/*
+   * @(#) CubeTests.java 1.1 2018/02/12
+   *
+   * Copyright (c) 2012 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
 package cs221.GP01.test.java.backend;
 
 import cs221.GP01.main.java.model.Block;
@@ -11,19 +18,30 @@ import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+/**
+ * Test for the Cube class
+ *
+ * @author Aleksandra Madej (alm82)
+ * @version 1.1
+ * @see Cube
+ */
 public class CubeTests {
 
     Cube cube;
 
 
+    /**
+     * Loads and populates cube before every test
+     */
     @BeforeEach
     public void load() {
         cube = new Cube("en_letters");
         cube.populateCube();
     }
 
-
+    /**
+     * Test frequency of letter occurences
+     */
     @Test
     public void testOccurrences(){
         ArrayList<String> cubeLetters = new ArrayList<>();
@@ -41,9 +59,11 @@ public class CubeTests {
         assertTrue(Collections.frequency(cubeLetters, "Qu") <= 1);
         assertTrue(Collections.frequency(cubeLetters, "Y") <= 2);
         assertTrue(Collections.frequency(cubeLetters, "Z") <= 1);
-
     }
 
+    /**
+     * Test size of bagOfLetters
+     */
     @Test
     public void testLoadBagOfLetters (){
         cube = new Cube("en_letters");
@@ -51,22 +71,30 @@ public class CubeTests {
         assertEquals(97, bagOfLetters.size());
     }
 
+    /**
+     * Test the score of letters
+     */
     @Test
     public void testLetterScores (){
 
         assertEquals(1,Integer.parseInt(cube.getScores().get("A")));
         assertEquals(3,Integer.parseInt(cube.getScores().get("B")));
         assertEquals(4,Integer.parseInt(cube.getScores().get("F")));
-        assertEquals(8,Integer.parseInt(cube.getScores().get("Qu")));
+        assertEquals(8,Integer.parseInt(cube.getScores().get("QU")));
         assertEquals(4,Integer.parseInt(cube.getScores().get("Y")));
         assertEquals(10,Integer.parseInt(cube.getScores().get("Z")));
 
     }
+
+    /**
+     * Test randomness of generated cube
+     */
     @Test
     public void testIsPopulateCubeRandom(){
         String[] letter = new String[3];
 
         for(int i=0; i<3; i++) {
+            cube = new Cube("en_letters");
             cube.populateCube();
             letter[i] = cube.getBlock(0, 0, 0).getLetter();
             System.out.println(letter[i]);
@@ -75,6 +103,9 @@ public class CubeTests {
     assertFalse(letter[0].equals(letter[1]) && letter[1].equals(letter[2]));
     }
 
+    /**
+     * Test number of neighbouring blocks
+     */
     @Test
     public void testNeighboursNum(){
 
@@ -94,6 +125,9 @@ public class CubeTests {
 
     }
 
+    /**
+     * Test positions of neighbouring blocks
+     */
     @Test
     public void testNeighbourPos (){
 

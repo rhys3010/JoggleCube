@@ -1,5 +1,5 @@
 /*
- * @(#) HighScoreController.java 1.0 2018/02/12
+ * @(#) HighScoreController.java 1.1 2018/02/12
  *
  * Copyright (c) 2018 University of Wales, Aberystwyth.
  * All rights reserved.
@@ -10,6 +10,7 @@ package cs221.GP01.main.java.ui.controllers;
 
 import cs221.GP01.main.java.model.IScore;
 import cs221.GP01.main.java.model.JoggleCube;
+import cs221.GP01.main.java.ui.ScreenType;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
@@ -24,7 +25,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
 import java.net.URL;
-import java.util.Comparator;
 import java.util.ResourceBundle;
 
 /**
@@ -37,7 +37,7 @@ import java.util.ResourceBundle;
  * todo improve this description
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21@aber.ac.uk)
- * @version 0.2
+ * @version 1.1
  */
 public class HighScore extends BaseScreen implements Initializable, INeedPrep {
 
@@ -122,6 +122,12 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
             populateTable(overallScores, "All Cubes");
         }
 
+        Label errorLabel = new Label("No High Scores Saved - Play the game first!");
+        errorLabel.setStyle("-fx-text-fill: white;");
+
+        // Set default message for empty table
+        highScoreTable.setPlaceholder(errorLabel);
+
         // Set IScore sort type
         scoreCol.setSortType(TableColumn.SortType.DESCENDING);
         highScoreTable.getSortOrder().add(scoreCol);
@@ -129,11 +135,9 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
         highScoreTable.sort();
     }
 
-
-
     /**
-     * Stop users from being able to reorder table columns (temporary fix)
-     * Solution used here: https://bittlife.com/javafx-disable-column-reorder-tableview/
+     * Stop users from being able to reorder table columns
+     * Solution inspired by: https://bittlife.com/javafx-disable-column-reorder-tableview/
      */
     @SuppressWarnings("unchecked")
     private static <S, T> void columnReorder(TableView table, TableColumn<S, T>... columns){
@@ -214,5 +218,33 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
         );
         // Prevent user from reordering table
         columnReorder(highScoreTable, idCol, nameCol, scoreCol, dateCol);
+    }
+
+
+    //agl6
+
+    public ObservableList<IScore> getOverallScores() {
+        return overallScores;
+    }
+
+    public ObservableList<IScore> getCurrentCubeHighScores(){
+        return currentCubeScores;
+    }
+
+    public String getText() {
+        return getText();
+    }
+
+    public short setText() {
+        return setText();
+    }
+
+    public short setItems() {
+        return setItems();
+    }
+
+    public Label highScorePageLabel(){
+        return highScorePageLabel();
+
     }
 }

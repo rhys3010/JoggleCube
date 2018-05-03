@@ -17,7 +17,7 @@ import java.io.IOException;
  * <p>
  * Class used to handle the mediation between the game logic and game display, passing values, changing state etc.
  * @author Rhys Evans (rhe24)
- * @version 0.1
+ * @version 1.1
  */
 public interface IFrontend {
 

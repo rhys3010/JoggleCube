@@ -1,3 +1,10 @@
+/*
+   * @(#) ScoreTest.java 1.1 2018/02/12
+   *
+   * Copyright (c) 2012 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
 package cs221.GP01.test.java.backend;
 
 import cs221.GP01.main.java.model.Score;
@@ -11,31 +18,46 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for score class
+ *
+ * @author Aleksandra Madej (alm82)
+ * @version 1.1
+ * @see Score
+ */
 class ScoreTest {
 
+    /**
+     * Test creation of score
+     */
     @Test
     public void createScore(){
-
         Score score = new Score(5, "egg");
         assertTrue(score.getDate().matches("^20\\d{2}/\\d{2}/\\d{2} \\d{2}:\\d{2}"));
-
     }
 
+    /**
+     * Test creation of score from file
+     *
+     * @throws FileNotFoundException
+     */
     @Test
     public void createScoreFromFile() throws FileNotFoundException {
-
         Scanner in = new Scanner(getClass().getResourceAsStream("/cs221/GP01/test/resource/scoreTest.txt"));
         Score score = new Score(in);
         in.close();
         assertEquals("2018/05/20 12:02", score.getDate());
         assertEquals("player1", score.getName());
         assertEquals((Integer)54, score.getScore());
-
     }
 
+    /**
+     * Test saving of scores
+     *
+     * @throws FileNotFoundException
+     */
     @Test
     public void saveScore() throws FileNotFoundException {
-
         Random rand = new Random();
         int randScore = rand.nextInt(100);
 
@@ -51,5 +73,4 @@ class ScoreTest {
         assertEquals(score, newScore);
         file.delete();
     }
-
 }

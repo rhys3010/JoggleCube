@@ -1,8 +1,13 @@
-/**
- * @author Cameron Humphreys - cah27
- */
+/*
+   * @(#) GameTimer.java 1.1 2018/02/04
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
 
 package cs221.GP01.main.java.model;
+
 import cs221.GP01.main.java.ui.Navigation;
 import cs221.GP01.main.java.ui.ScreenType;
 import cs221.GP01.main.java.ui.Settings;
@@ -13,39 +18,31 @@ import javafx.scene.control.Label;
 
 import java.time.Duration;
 
+/**
+ * GameTimer - A class that manages the running of the game timer
+ *
+ *   @author Cameron Humphreys - cah27
+ *   @version 1.1
+ *   @see IGameTimer
+ */
 public class GameTimer implements IGameTimer, Runnable {
-
-    /**
-     * create instance of timer in joggle cube - private Timer timer
-     * in the constructor
-     * add start timer in joggle cube controller
-     *
-     * make sure timer is launched in seperate thread
-     *
-     *timer hits 0 called gamendclicked
-     */
 
     private Duration currentTime;
     private boolean interrupt = false;
 
-
     public GameTimer(){}
 
-    public void setCurrentTime(Duration currentTime) {
-        this.currentTime = currentTime;
-    }
-
-    public Duration getCurrentTime() {
-        return currentTime;
-    }
-
-    public boolean isInterrupt() { return interrupt; }
-
+    /**
+     * resets currentTime back to default duration
+     */
     @Override
     public void resetTime() {
         currentTime = Duration.ofSeconds(180);
     }
 
+    /**
+     * Launches and controls the game timer in a separate thread
+     */
     @Override
     public void startTimer() {
         Label timerLabel = GameView.getInstance().getTimerLabel();
@@ -82,29 +79,54 @@ public class GameTimer implements IGameTimer, Runnable {
         }
     }
 
+    /**
+     * Ends the game
+     */
     @Override
     public void finishTimer() {
-        //ends the game
         Platform.runLater(() -> Navigation.getInstance().showOverlay(ScreenType.END, (BaseScreen) GameView.getInstance()));
     }
 
     /**
-     * When an object implementing interface <code>Runnable</code> is used
-     * to create a thread, starting the thread causes the object's
-     * <code>run</code> method to be called in that separately executing
-     * thread.
-     * <p>
-     * The general contract of the method <code>run</code> is that it may
-     * take any action whatsoever.
+     * Returns the boolean interrupt
      *
-     * @see Thread#run()
+     * @return interrupt
+     */
+    public boolean isInterrupt() { return interrupt; }
+
+    /**
+     * Sets interrupt variable to true
+     */
+    public void interrupt() {
+        interrupt = true;
+    }
+
+    /**
+     * Launches startTimer in a seperate thread
      */
     @Override
     public void run() {
         startTimer();
     }
 
-    public void interrupt() {
-        interrupt = true;
+    /**
+     * Returns the current Duration
+     *
+     * @return currentTime
+     */
+    public Duration getCurrentTime() {
+        return currentTime;
     }
+
+    /**
+     * Sets the Duration of currentTime
+     *
+     * @param currentTime Duration in seconds
+     */
+    public void setCurrentTime(Duration currentTime) {
+        this.currentTime = currentTime;
+    }
+
+
 }
+

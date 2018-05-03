@@ -12,6 +12,8 @@ import cs221.GP01.main.java.ui.controllers.BaseScreen;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
+import java.util.HashMap;
+
 /**
  * INavigation - Interface for the View Navigation classs
  * <p>
@@ -19,7 +21,7 @@ import javafx.scene.Scene;
  * This class is used to hide/show overlays and switch screens.
  * @author Nathan Williams (naw21)
  * @author Rhys Evans (rhe24)
- * @version 0.2
+ * @version 1.1
  * @see ScreenType
  */
 public interface IViewNavigation {
@@ -62,4 +64,8 @@ public interface IViewNavigation {
      * @param main - The main scene
      */
     void setMainScene(Scene main);
+
+    Scene getMain();
+
+    HashMap<ScreenType, FXMLLoader> getScreens();
 }

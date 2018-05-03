@@ -9,22 +9,21 @@
 package cs221.GP01.main.java.ui.controllers;
 
 import cs221.GP01.main.java.model.JoggleCube;
+import cs221.GP01.main.java.ui.Dialog;
 import cs221.GP01.main.java.ui.Navigation;
 import cs221.GP01.main.java.ui.UI;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.StageStyle;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 import java.util.Optional;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * End - A class that controls the Pause subscene that is defined in End.fxml
@@ -33,7 +32,7 @@ import java.util.Optional;
  *
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21)
- * @version 0.2  DRAFT
+ * @version 1.1
  */
 public class End extends BaseOverlay implements INeedPrep {
 
@@ -59,8 +58,9 @@ public class End extends BaseOverlay implements INeedPrep {
     Button saveButton;
 
 
-
-
+    /**
+     * UPDATE DESCRIPTION
+     */
     @Override
     public void prepView() {
         scoreLabel.setText(JoggleCube.getInstance().getScore() + "");
@@ -76,9 +76,9 @@ public class End extends BaseOverlay implements INeedPrep {
         JoggleCube.getInstance().resetGameState();
     }
 
-
     /**
      * When the High Score button is pressed, change scene to high score screen
+     *
      * @see HighScore
      * @throws IOException - if FXML file could not be found/opened
      */
@@ -91,6 +91,7 @@ public class End extends BaseOverlay implements INeedPrep {
 
     /**
      * When the 'return to menu' button is clicked change scene to menu scene
+     *
      * @see Start
      */
     @FXML
@@ -112,41 +113,27 @@ public class End extends BaseOverlay implements INeedPrep {
      * When the 'save' button is clicked prompt user to chose a save location
      */
     @FXML
-    public void btnSaveClicked(){
-        TextInputDialog dialog = new TextInputDialog("untitled");
-        dialog.setTitle("Text Input Dialog");
-        dialog.setHeaderText("Save Cube");
-        dialog.setContentText("Please enter a filename:");
-        dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/cs221/GP01/main/resource/img/icon/save_icon_alt.png"))));
-        dialog.initStyle(StageStyle.UNDECORATED);
+   public void btnSaveClicked(){
+        Dialog inputDialog = new Dialog();
+        String result = inputDialog.showInputDialog("Save Cube", "Please enter a filename", "untitled", new ImageView(new Image(getClass().getResourceAsStream("/cs221/GP01/main/resource/img/icon/save_icon_alt.png"))), true);
 
-        // get result from text box
-        Optional<String> input = dialog.showAndWait();
+        Dialog informationDialog = new Dialog();
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        
-        if(input.isPresent()){
-            // Normalize input and save to regular java String
-            String result = input.get().replace(" ", "");
 
-            // todo: better validation actually handle the error filenames
-            if(result.matches("(\\w*)")){
-                if(JoggleCube.getInstance().saveGrid(result)){
-                    alert.setContentText("Saved Successfully");
-                }else{
-                    alert.setContentText("Error Saving File, Please try again");
-                }
+        // Normalize input and save to regular java String
+        result = result.replace(" ", "");
+
+        if(inputDialog.isValidInput(result) && !result.isEmpty()){
+            if(JoggleCube.getInstance().saveGrid(result)){
+                informationDialog.showInformationDialog("Success", "File saved successfully!");
             }else{
-                alert.setContentText("Invalid Filename!, Please try again");
+                informationDialog.showInformationDialog("Error", "Error Saving File, Please try again");
+                // Re-prompt user recursively until file is saved
+                btnSaveClicked();
             }
-        } else {
-            alert.setContentText("no filename!, please try again!");
         }
-        alert.showAndWait();
-    }
 
+    }
 
     //agl6
 

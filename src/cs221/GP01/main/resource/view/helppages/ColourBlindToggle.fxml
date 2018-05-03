@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+        * @(#) Scoring.fxml 1.0 2018/03/11
+        *
+        * Copyright (c) 20018 University of Wales, Aberystwyth.
+        * All rights reserved.
+        *
+-->
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+    * ColourBlindToggle - The help page that explains how to toggle between the regular and colour-blind friendly colour schemes.
+    *
+    * @author Rhys Evans (rhe24@aber.ac.uk)
+    * @author Alex Thumwood (alt38@aber.ac.uk)
+    * @version 3.0
+
+-->
+
+<VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@../../css/HelpPage.css" />
+    </stylesheets>
+    <Label fx:id="title" styleClass="title" text="Toggling Colourblind Mode: " textAlignment="CENTER" wrapText="true" />
+    <VBox alignment="BOTTOM_CENTER" styleClass="content">
+        <ImageView fitHeight="290.0" fitWidth="309.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../img/help/colourblind.gif" />
+        </ImageView>
+    </VBox>
+</VBox>

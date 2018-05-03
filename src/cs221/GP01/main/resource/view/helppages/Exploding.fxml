@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+        * @(#) Scoring.fxml 1.0 2018/03/11
+        *
+        * Copyright (c) 20018 University of Wales, Aberystwyth.
+        * All rights reserved.
+        *
+-->
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+    * Scoring - The help page that explains the game's explode cube function
+    *
+    * @author Rhys Evans (rhe24@aber.ac.uk)
+    * @author Alex Thumwood (alt38@aber.ac.uk)
+    * @version 1.0
+-->
+
+<VBox fx:id="root" styleClass="mainContainer" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@../../css/HelpPage.css" />
+    </stylesheets>
+    <Label styleClass="content" text="To EXPLODE the cube, click the small cube symbol in the bottom right of the game window." textAlignment="CENTER" wrapText="true" />
+    <VBox alignment="BOTTOM_CENTER" styleClass="content">
+      <children>
+         <ImageView fitHeight="290.0" fitWidth="309.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../img/help/explodecube2.gif" />
+            </image>
+         </ImageView>
+      </children>
+    </VBox>
+</VBox>

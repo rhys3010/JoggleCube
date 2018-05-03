@@ -1,5 +1,5 @@
 /*
-   * @(#) ScreenController.java 1.1 2018/02/12
+   * @(#) Navigation.java 1.1 2018/02/12
    *
    * Copyright (c) 2012 University of Wales, Aberystwyth.
    * All rights reserved.
@@ -22,9 +22,10 @@ import static org.junit.jupiter.api.Assertions.*;
  * <p>
  * All screens are stored in a HashMap and can be activated, added or removed. The screen are stored as an FXML Loader with
  * an FXML file and root pane 'pre-loaded'. Overlays and Scenes are displayed differently and are both handled in this class
+ *
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21)
- * @version 0.2  DRAFT
+ * @version 1.1
  * @see IViewNavigation
  */
 
@@ -33,19 +34,19 @@ public class Navigation implements IViewNavigation{
     /**
      * The singleton instance of the Navigation class
      */
-    private static Navigation navController;
+    private static IViewNavigation navController;
 
     /**
      * Default constructor for the Navigation
-     * todo needed?
      */
     private Navigation(){}
 
     /**
      * Get the instantiated instance of the Navigation singleton
+     *
      * @return navController - the Navigation object
      */
-    public static Navigation getInstance(){
+    public static IViewNavigation getInstance(){
         if(navController == null){
             synchronized (UI.class){
                 if(navController == null){
@@ -76,6 +77,7 @@ public class Navigation implements IViewNavigation{
 
     /**
      * Set the main screen of the game
+     *
      * @param main - the JavaFX scene object
      */
     public void setMainScene(Scene main){
@@ -85,6 +87,7 @@ public class Navigation implements IViewNavigation{
 
     /**
      * Add screen to the hashmap
+     *
      * @param name - The name of the screen to be added
      * @param loader = the FXML loader of the screen to be added
      */
@@ -94,6 +97,7 @@ public class Navigation implements IViewNavigation{
 
     /**
      * Remove  a Screen from the HashMap
+     *
      * @param name - The screen to be removed
      */
     public void remove(ScreenType name){
@@ -103,6 +107,7 @@ public class Navigation implements IViewNavigation{
 
     /**
      * Switch to a given screen
+     *
      * @param newScreen - The screen to switch to
      */
     public void switchScreen(ScreenType newScreen){
@@ -118,6 +123,7 @@ public class Navigation implements IViewNavigation{
 
     /**
      * Show a given overlay
+     *
      * @param overlay - The overlay to be shown
      * @param parent - The parent scene of the overlay
      */
@@ -151,6 +157,7 @@ public class Navigation implements IViewNavigation{
 
     /**
      * Hide a given overlay
+     *
      * @param overlay - The overlay to be hidden
      */
     public void hideOverlay(ScreenType overlay, BaseScreen parent){

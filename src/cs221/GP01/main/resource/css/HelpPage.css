@@ -11,19 +11,20 @@
   *
   * This stylesheet is used by all help pages to provide a common layout (title, content, description, etc)
   *
-  * @author Rhys Evans (rhe24)
-  * @version 0.1
+  * @author Rhys Evans (rhe24@aber.ac.uk)
+  * @author Alex Thumwood (alt38@aber.ac.uk)
+  * @version 3.0
  */
 
 
 .mainContainer{
     -fx-alignment: top-center;
     -fx-background-color: transparent;
-    -fx-spacing: 30px;
+    -fx-spacing: 2px;
 }
 
 .title{
-    -fx-font-size: 20px;
+    -fx-font-size: 22px;
     -fx-alignment: center;
     -fx-text-fill: white;
 }
@@ -31,4 +32,5 @@
 .content{
     -fx-font-size: 16px;
     -fx-text-fill: white;
+    -fx-padding: 5px;
 }

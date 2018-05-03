@@ -10,6 +10,7 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Point3D?>
+<?import javafx.scene.AmbientLight?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.SubScene?>
 <?import javafx.scene.control.Button?>
@@ -53,7 +54,6 @@
                   <contextMenu>
                      <ContextMenu fx:id="hamburgerContext" autoFix="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="hamburgerContext">
                         <items>
-                           <MenuItem fx:id="settingsBtn" mnemonicParsing="false" onAction="#btnSettingsClicked" styleClass="contextMenuItem" text="Settings" />
                            <MenuItem fx:id="helpBtn" mnemonicParsing="false" onAction="#btnHelpClicked" styleClass="contextMenuItem" text="Help" />
                            <MenuItem fx:id="quitBtn" mnemonicParsing="false" onAction="#btnEndGameClicked" styleClass="contextMenuItem" text="Quit" />
                         </items>
@@ -62,7 +62,7 @@
             </children>
          </HBox>
         </HBox>
-        <HBox fx:id ="gameBox" styleClass="gameElementsContainer">
+        <HBox fx:id="gameBox" styleClass="gameElementsContainer">
             <TabPane fx:id="cubeContainer" styleClass="cubeContainer" tabClosingPolicy="UNAVAILABLE">
                 <Tab text="3D View">
                     <BorderPane fx:id="back" prefHeight="300" prefWidth="400" styleClass="gridTab">
@@ -84,10 +84,27 @@
                         </children>
                      </HBox>
                   </bottom>
+                  <top>
+                     <HBox styleClass="explodeIconContainer">
+                        <children>
+                           <Button fx:id="colorBlindIcon" styleClass="colorBlindIcon">
+                               <tooltip>
+                                   <Tooltip opacity="0.8" text="Color Blind Mode Enabled"></Tooltip>
+                               </tooltip>
+                           </Button>
+                           <Button styleClass="rotateIcon">
+                               <tooltip>
+                                   <Tooltip opacity="0.8" text="Hold Down Right Click to Rotate Cube" />
+                               </tooltip>
+                           </Button>
+                        </children>
+                     </HBox>
+                  </top>
                     </BorderPane>
                 </Tab>
                 <Tab text="2.5D View">
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250" prefWidth="250" styleClass="gridTab">
+                        <AmbientLight />
                         <!-- These lines are horrendous todo fix these -->
                         <Line>
                             <startX>10</startX>

@@ -1,13 +1,21 @@
+/*
+   * @(#) IJoggleCube.java 1.1 2018/02/04
+   *
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
 package cs221.GP01.main.java.model;
 
 import javafx.collections.ObservableList;
 
 import java.io.File;
+import java.util.HashMap;
 
 /**
  * @author Samuel Jones - srj12
  * @author Nathan - naw21
- * @version 0.2
+ * @version 1.1
  */
 public interface IJoggleCube {
 
@@ -15,8 +23,6 @@ public interface IJoggleCube {
 
     /**
      * create a random grid
-     *
-     *
      */
     void generateRandomGrid();
 
@@ -108,4 +114,15 @@ public interface IJoggleCube {
     void interruptTimer();
 
     void setLanguage();
+
+    void resetGameState();
+
+    boolean getGamesStateNew();
+
+    HashMap<String, Dictionary> getLoadedDictionaries();
+
+    /**
+     * Clears all highscores in the overall highscores variables as well as the stored files!
+     */
+    void clearHighScores();
 }

@@ -1,3 +1,10 @@
+/*
+   * @(#) HighScoresTest.java 1.1 2018/02/12
+   *
+   * Copyright (c) 2012 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
 package cs221.GP01.test.java.backend;
 
 import cs221.GP01.main.java.model.HighScores;
@@ -15,15 +22,30 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for HighScores class
+ *
+ * @author Aleksandra Madej (alm82)
+ * @version 1.1
+ * @see HighScores
+ */
 class HighScoresTest {
 
     HighScores scoreList;
 
+    /**
+     * Create scoreList before each test
+     */
     @BeforeEach
     public void setUp(){
         scoreList = new HighScores();
     }
 
+    /**
+     * Test the loading of HighScores
+     *
+     * @throws FileNotFoundException
+     */
     @Test
     void loadScores() throws FileNotFoundException {
 
@@ -39,6 +61,11 @@ class HighScoresTest {
 
     }
 
+    /**
+     * Test the saving of HighScores
+     *
+     * @throws FileNotFoundException
+     */
     @Test
     void saveScores() throws FileNotFoundException{
 
@@ -64,7 +91,11 @@ class HighScoresTest {
         file.delete();
     }
 
-
+    /**
+     * Test the getting of HighScores
+     *
+     * @throws FileNotFoundException
+     */
     @Test
     void getHighestScore() throws FileNotFoundException {
 
@@ -74,6 +105,4 @@ class HighScoresTest {
         assertEquals((Integer)120, scoreList.getHighestScore().getScore());
 
     }
-
-
 }

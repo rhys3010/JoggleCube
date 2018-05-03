@@ -9,7 +9,9 @@
 package cs221.GP01.main.java.ui.controllers;
 
 import cs221.GP01.main.java.model.JoggleCube;
+import cs221.GP01.main.java.ui.Dialog;
 import cs221.GP01.main.java.ui.Navigation;
+import cs221.GP01.main.java.ui.Settings;
 import cs221.GP01.main.java.ui.UI;
 import cs221.GP01.main.java.ui.ScreenType;
 import javafx.application.Platform;
@@ -34,13 +36,13 @@ import java.util.Optional;
 
 /**
  * GameView - A class that controls the Game scene that is defined in Game.fxml
- * <p>
+ *
  * Used with Game.fxml
  * todo improve this description
  * @author Nathan Williams (naw21)
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Samuel Jones - srj12@aber.ac.uk
- * @version 0.2  DRAFT
+ * @version 1.1
  */
 public class GameView extends BaseScreen implements IGame, INeedPrep {
 
@@ -61,7 +63,12 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     }
 
     private GridDisplayer gridDisplayer;
-    public TextInputDialog dialog;
+
+    private Dialog dialog;
+
+    public Dialog getDialog() {
+        return dialog;
+    }
 
     @FXML
     private TabPane cubeContainer;
@@ -70,11 +77,15 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     @FXML
     private Label scoreLabel, timerLabel;
 
+    public void setTimerLabel(Label timerLabel) {
+        this.timerLabel = timerLabel;
+    }
+
     private ObservableList<String> foundWords;
 
 
     @FXML
-    private Button btnSubmit, menuButton, explodeIcon;
+    private Button btnSubmit, menuButton, explodeIcon, colorBlindIcon;
 
     @FXML
     private TextField textField;
@@ -164,19 +175,16 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
      */
     @FXML
     public void btnEndGameClicked() {
-        // Display 'are you sure' overlay
-        Alert sureAlert = new Alert(Alert.AlertType.CONFIRMATION);
-        sureAlert.setTitle("Quit Game");
-        sureAlert.setHeaderText(null);
-        sureAlert.setContentText("Are you sure you want to quit the current game?");
-        Optional<ButtonType> result = sureAlert.showAndWait();
+        // Display 'are you sure?' overlay for quitting
+        dialog = new Dialog();
+        Optional<ButtonType> result = dialog.showConfirmationDialog("Quit Game", "Are you sure you want to quit the game?");
 
-
-        if (result.get() == ButtonType.OK) {
+        if(result.get() != ButtonType.OK){
+            // Do nothing
+        }else{
+            // End the game
             JoggleCube.getInstance().interruptTimer();
             Navigation.getInstance().showOverlay(ScreenType.END, this);
-        } else {
-            sureAlert.close();
         }
     }
 
@@ -191,37 +199,25 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         timerLabel.setStyle("-fx-text-fill: white;");
 
         // Pop-up dialog to get user's name
-        //TextInputDialog
-        dialog = new TextInputDialog("Walter");
-        dialog.setTitle("Enter Name");
-        dialog.setHeaderText("Name Input");
-        dialog.setContentText("Please enter your name:");
-        // todo: make this call using proper URI to allow for those dodgy PCs
-        dialog.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/cs221/GP01/main/resource/img/icon/person_icon.png"))));
-        dialog.initStyle(StageStyle.UNDECORATED);
-        dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
+        dialog = new Dialog();
+        String result = dialog.showInputDialog("Name Input", "Please enter your name:", "Walter", new ImageView(new Image(getClass().getResourceAsStream("/cs221/GP01/main/resource/img/icon/person_icon.png"))), false);
 
-        // Get result from text box
-        Optional<String> input = dialog.showAndWait();
+        // Normalize input
+        result = result.replace(" ", "");
 
-        if (input.isPresent()) {
-            // Normalize input and save to regular string
-            String result = input.get().replace(" ", "");
 
-            // todo: better validation
-            if (result.matches("(\\w*)")) {
-                JoggleCube.getInstance().setName(result);
-            } else {
-                dialog.setHeaderText("Invalid Name Entry, Please try again");
-            }
+        if (dialog.isValidInput(result)) {
+            JoggleCube.getInstance().setName(result);
         }
-
 
         foundWords = FXCollections.observableArrayList();
 
 
         // Disable hamburger context on right click
         menuButton.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
+
+        // Show colorblind mode if enabled
+        colorBlindIcon.setVisible(Settings.getInstance().isColorBlindEnabled());
 
         GridPane[] twoDGrid = {top2d, middle2d, bottom2d};
         GridPane[] twoFiveDGrid = {top25d, middle25d, bottom25d};
@@ -234,20 +230,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     }
 
 
-    @Override
-    public Label getTimerLabel() {
-        return timerLabel;
-    }
 
-    @Override
-    public Label getScoreLabel() {
-        return scoreLabel;
-    }
-
-    @Override
-    public TabPane getCubeContainer() {
-        return cubeContainer;
-    }
 
     /**
      * Returns the list of found words so it can be used in the backend as it is currently only stored in the frontend
@@ -260,25 +243,82 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         return foundWords;
     }
 
-    //agl6
+    //setters and getters for tests
 
+    /**
+     * Sets string of text in to the textField variable
+     *
+     * @param text string to be set
+     */
     public void setText(String text) {
         textField.setText(text);
     }
 
+    /**
+     * gets timerTable
+     *
+     * @return timerLabel
+     */
+    @Override
+    public Label getTimerLabel() {
+        return timerLabel;
+    }
+
+    /**
+     * gets scoreLabel
+     *
+     * @return scoreLabel
+     */
+    @Override
+    public Label getScoreLabel() {
+        return scoreLabel;
+    }
+
+    /**
+     * gets cubeContainer
+     *
+     * @return cubeContainer
+     */
+    @Override
+    public TabPane getCubeContainer() {
+        return cubeContainer;
+    }
+
+    /**
+     * gets text within textField
+     *
+     * @return textField
+     */
     public String getText() {
         return textField.getText();
     }
 
+    /**
+     * gets gridDisplayer
+     *
+     * @return gridDisplayer
+     */
     public GridDisplayer getGridDisplayer() {
         return gridDisplayer;
     }
 
+    /**
+     * gets hamburgerContext
+     *
+     * @return hamburger Icon
+     */
     public ContextMenu getHamburgerContext() {
         return hamburgerContext;
     }
 
+    /**
+     * gets menuButton
+     *
+     * @return menuButton
+     */
     public Button getMenuButton() {
         return menuButton;
     }
+
+    public Button getColorBlindIcon(){ return colorBlindIcon; }
 }

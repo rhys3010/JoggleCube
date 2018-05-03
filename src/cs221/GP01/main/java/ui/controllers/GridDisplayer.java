@@ -1,5 +1,5 @@
 /*
- * @(#) GridDisplayer.java 1.0 2018/02/24
+ * @(#) GridDisplayer.java 1.1 2018/02/24
  *
  * Copyright (c) 2018 University of Wales, Aberystwyth.
  * All rights reserved.
@@ -8,6 +8,7 @@
 
 package cs221.GP01.main.java.ui.controllers;
 
+import cs221.GP01.main.java.ui.Settings;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -41,18 +42,9 @@ import java.util.Timer;
  * todo optimize
  *
  * @author Nathan Williams
- * @version 1.0
+ * @version 1.1
  */
 public class GridDisplayer {
-
-    /**
-     * COLOR VARIABLES
-     */
-    private String currentlySelectedColor = "#38aa38";
-    private String availableColor = "#30599b";
-    private String alreadySelectedColor = "#54ad54";
-    private String unavailableColor = "#595959";
-
 
     private double oldMouseX, oldMouseY;
 
@@ -106,6 +98,8 @@ public class GridDisplayer {
         );
         groupy.getChildren().add(camera);
         subScene.setCamera(camera);
+
+        groupy.getChildren().add(new AmbientLight());
 
         //sets up the right mouse button for rotating the cube
         back.setOnMouseDragged(e -> {
@@ -236,10 +230,10 @@ public class GridDisplayer {
     private void setSelected(int x, int y, int z) {
 
         //2d
-        labelCube[x][y][z].setStyle("-fx-background-color:" + currentlySelectedColor + ";");
+        labelCube[x][y][z].setStyle("-fx-background-color:" + Settings.getInstance().getCurrentlySelectedColor() + ";");
         labelCube[x][y][z].setOnMouseClicked(null);
 
-        PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(), currentlySelectedColor);
+        PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(), Settings.getInstance().getCurrentlySelectedColor());
 
         //2.5d
         boxCube[x][y][z].setMaterial(mat);
@@ -260,13 +254,13 @@ public class GridDisplayer {
      */
 
     private void setInActive(int x, int y, int z) {
-        if (!labelCube[x][y][z].getStyle().contains("-fx-background-color:" + alreadySelectedColor + ";")) {
+        if (!labelCube[x][y][z].getStyle().contains("-fx-background-color:" + Settings.getInstance().getAlreadySelectedColor() + ";")) {
             //2d
-            labelCube[x][y][z].setStyle("-fx-background-color:" + unavailableColor + ";");
+            labelCube[x][y][z].setStyle("-fx-background-color:" + Settings.getInstance().getUnavailableColor() + ";");
             labelCube[x][y][z].setOnMouseClicked(null);
 
 
-            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(), unavailableColor);
+            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(), Settings.getInstance().getUnavailableColor());
             //2.5d
             boxCube[x][y][z].setMaterial(mat);
             boxCube[x][y][z].setOnMouseClicked(null);
@@ -288,23 +282,23 @@ public class GridDisplayer {
      */
 
     private void setActive(int x, int y, int z, boolean override) {
-        if (labelCube[x][y][z].getStyle().contains("-fx-background-color:" + currentlySelectedColor + ";") && !override) {
+        if (labelCube[x][y][z].getStyle().contains("-fx-background-color:" + Settings.getInstance().getCurrentlySelectedColor() + ";") && !override) {
 
             //2d
-            labelCube[x][y][z].setStyle("-fx-background-color:" + alreadySelectedColor + ";");
+            labelCube[x][y][z].setStyle("-fx-background-color:" + Settings.getInstance().getAlreadySelectedColor() + ";");
 
-            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(), alreadySelectedColor);
+            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(), Settings.getInstance().getAlreadySelectedColor());
             //2.5d
             boxCube[x][y][z].setMaterial(mat);
             //3d
             boxCube3[x][y][z].setMaterial(mat);
 
-        } else if (!labelCube[x][y][z].getStyle().contains("-fx-background-color:" + alreadySelectedColor + ";") || override) {
+        } else if (!labelCube[x][y][z].getStyle().contains("-fx-background-color:" + Settings.getInstance().getAlreadySelectedColor() + ";") || override) {
             //2d
-            labelCube[x][y][z].setStyle("-fx-background-color:" + availableColor + ";");
+            labelCube[x][y][z].setStyle("-fx-background-color:" + Settings.getInstance().getAvailableColor() + ";");
             labelCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z, e));
             //2.5d
-            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(), availableColor);
+            PhongMaterial mat = generateMaterial(labelCube[x][y][z].getText(), Settings.getInstance().getAvailableColor());
 
             boxCube[x][y][z].setMaterial(mat);
             boxCube[x][y][z].setOnMouseClicked(e -> blockClicked(x, y, z, e));
@@ -448,11 +442,10 @@ public class GridDisplayer {
         }
     }
 
-
-//agl6
+    
 
     public boolean isActive(int x, int y, int z) {
-        if (labelCube[x][y][z].getStyle().contains("-fx-background-color:" + availableColor + ";"))
+        if (labelCube[x][y][z].getStyle().contains("-fx-background-color:" + Settings.getInstance().getAvailableColor() + ";"))
             return true;
         else
             return false;
@@ -461,5 +454,4 @@ public class GridDisplayer {
     public void setInActiveP(int x, int y, int z) {
         setInActive(x,y,z);
     }
-
 }

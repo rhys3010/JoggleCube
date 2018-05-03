@@ -1,0 +1,86 @@
+@startuml ComponentDiagram
+package "main" {
+    package "java" {
+        package "model" {
+            'classes with interfaces
+            [Block] -up- ()"IBlock"
+            [Cube] -up- ()"ICube"
+            [Dictionary] -up- ()"IDictionary"
+            [GameTimer] -up- ()"IGameTimer"
+            [HighScores] -up- ()"IHighScores"
+            [JoggleCube] -up- ()"IJoggleCube"
+            [Score] -up- ()"IScore" 
+            'relationships with interfaces
+            [HighScores] --( ()"IScore"
+            [JoggleCube] --( ()"IHighScores"
+            [JoggleCube] --( ()"IDictionary"
+            [JoggleCube] --( ()"IGameTimer"
+            [JoggleCube] --( ()"ICube"
+            [Cube] --( ()"IBlock"
+        }
+
+        package "ui"{
+
+            package "controllers"{
+                note top of [Help]
+                    The View controllers all interact with
+                    the IJoggleCube Interface.
+                    The relationships are not shown to keep the Diagram readable.
+                end note
+                [BaseOverlay]
+                [BaseScreen] 
+                [End] -up- ()"INeedPrep"
+                [End] ..> [BaseOverlay]
+                [GameView] -up- ()"INeedPrep"
+                [GameView] -up- ()"IGame"
+                [GameView] ..> [BaseScreen]
+                [GridDisplayer] <.. [GameView]
+                [Help] -up- ()"INeedPrep"
+                [Help] ..> [BaseOverlay]
+                [HighScore] -up- ()"INeedPrep"
+                [HighScore] ..> [BaseScreen]
+                [LoadGrid] -up- ()"INeedPrep"
+                [LoadGrid] ..> [BaseScreen]
+                [SettingsView] -up- ()"INeedPrep"
+                [SettingsView] ..> [BaseOverlay]
+                [Start] -up- ()"INeedPrep"
+                [Start] ..> [BaseScreen]
+            }
+            'UI to settings'
+            [Start] --( () "ISettings"
+            [GameView] --( () "ISettings"
+            [SettingsView] --( () "ISettings"
+
+
+            [Navigation] -up- ()"IViewNavigation"
+            [Navigation] --( () "INeedPrep"
+            [ScreenType] --( () "INeedPrep"
+            [ScreenType] -up- [UI]
+            [Settings] -- ()"ISettings"
+            [UI] -up- ()"IFrontend"
+
+
+        }
+    }
+}
+'Backend to UI'
+[JoggleCube] --( () "IGame"
+[JoggleCube] --( () "ISettings"
+[GameTimer] --( () "IViewNavigation"
+
+'UI to backend'
+'[Start] --( () "IJoggleCube"
+'[GameView] --( () "IJoggleCube"
+'[LoadGrid] --( () "IJoggleCube"
+'[End] --( () "IJoggleCube"
+'[Start] --( () "IJoggleCube"
+'[Help] --( () "IJoggleCube"
+'[Start] --( () "IJoggleCube"
+'[HighScore] --( () "IJoggleCube"
+
+
+
+'Launch'
+[Main] --( ()"IJoggleCube"
+[Main] --( ()"IFrontend"
+@enduml

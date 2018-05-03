@@ -22,7 +22,7 @@ box "User Interface Control" #LightBlue
 participant Navigation
 participant CubeFx
 participant BlockFx
-
+participant GridDisplayer
 
 end box
 
@@ -91,6 +91,22 @@ activate Game
         end
         CubeFx --> Game
     deactivate CubeFx
+deactivate Game
+
+== User Clicked on Letter ==
+
+User -> GridDisplayer : blockClicked()
+activate GridDisplayer
+deactivate GridDisplayer
+
+== Rotate the Display ==
+
+User -> Game : btnExplodeClicked()
+activate Game
+    Game -> GridDisplayer : toggleExplode()
+    activate GridDisplayer
+        GridDisplayer --> Game
+    deactivate GridDisplayer
 deactivate Game
 
 == End game button clicked ==

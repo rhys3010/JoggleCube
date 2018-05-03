@@ -29,7 +29,8 @@ import java.util.ResourceBundle;
  * Controller for the Help.fxml file to handle the displaying of various help screens
  * @author Rhys Evans (rhe24)
  * @author Nathan Williams (naw21@aber.ac.uk)
- * @version 0.2
+ * @version 3.0
+ * @author Alex Thumwood (alt38)
  */
 public class Help extends BaseOverlay implements Initializable, INeedPrep {
 
@@ -38,10 +39,16 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
     private Help(){// Create all the pages as FXML parent nodes
         try {
             helpScreens.add(createHelpPage("Introduction.fxml"));
-            helpScreens.add(createHelpPage("WordSelection.fxml"));
+            helpScreens.add(createHelpPage("Rotating.fxml"));
+            helpScreens.add(createHelpPage("Exploding.fxml"));
+            helpScreens.add(createHelpPage("ViewToggle.fxml"));
+            helpScreens.add(createHelpPage("Selecting.fxml"));
             helpScreens.add(createHelpPage("Scoring.fxml"));
             helpScreens.add(createHelpPage("CubeColouring.fxml"));
-            helpScreens.add(createHelpPage("SaveLoad.fxml"));
+            helpScreens.add(createHelpPage("CubeColouringCB.fxml"));
+            helpScreens.add(createHelpPage("ColourBlindToggle.fxml"));
+
+
         } catch (IOException e) {
             //todo do something here
             e.printStackTrace();
@@ -81,6 +88,14 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
     @FXML
     private SubScene helpPageContainer;
 
+    public int getCurrentPageIndex() {
+        return currentPageIndex;
+    }
+
+    public SubScene getHelpPageContainer() {
+        return helpPageContainer;
+    }
+
     /**
      * The FXML node of the carousel indicator container
      */
@@ -112,7 +127,6 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
         changePage();
     }
 
-    
     /**
      * Handles the close button of the overlay being clicked
      */

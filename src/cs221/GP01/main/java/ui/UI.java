@@ -1,5 +1,5 @@
 /*
-   * @(#) JoggleCube.java 1.1 2018/03/12
+   * @(#) UI.java 1.1 2018/03/12
    *
    * Copyright (c) 2012 University of Wales, Aberystwyth.
    * All rights reserved.
@@ -9,7 +9,7 @@
 package cs221.GP01.main.java.ui;
 
 import cs221.GP01.main.java.ui.controllers.*;
-import cs221.GP01.main.java.ui.controllers.Settings;
+import cs221.GP01.main.java.ui.controllers.SettingsOverlay;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
@@ -17,12 +17,12 @@ import java.io.IOException;
 
 /**
  * UI - A class to implement IFrontend
- * <p>
- * This class will behave as a mediator between the game's logic and the game's display, it will handle state changes,
- * screen changes and various aspects of user input
+ * This class will behave as a mediator between the game's logic and the game's display,
+ * it will handle state changes, screen changes and various aspects of user input
+ *
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21)
- * @version 0.2  DRAFT
+ * @version 1.1  DRAFT
  * @see IFrontend
  */
 public class UI implements IFrontend {
@@ -30,7 +30,7 @@ public class UI implements IFrontend {
     /**
      * The singleton instance of the UI class
      */
-    private static UI ui;
+    private static IFrontend ui;
 
     /**
      * Default constructor
@@ -40,9 +40,10 @@ public class UI implements IFrontend {
 
     /**
      * Get the singleton instance of the UI object
+     *
      * @return ui
      */
-    public static UI getInstance(){
+    public static IFrontend getInstance(){
         if(ui == null){
             synchronized (UI.class){
                 if(ui == null){
@@ -67,6 +68,7 @@ public class UI implements IFrontend {
 
     /**
      * Initialize the game by creating the necessary scenes and starting the JavaFx
+     *
      * @throws IOException If the fxml file can't be found or opened
      */
     public void initialize(Scene main) throws IOException{
@@ -85,6 +87,7 @@ public class UI implements IFrontend {
     }
     /**
      * Utility function to create a scene and store in a loader
+     *
      * @param screenType - The type of screen to create
      * @return loader - the created loader
      * @throws IOException - if FXML file can't be found
@@ -103,8 +106,8 @@ public class UI implements IFrontend {
                 break;
 
             case SETTINGS:
-                loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Settings.fxml"));
-                loader.setController(Settings.getInstance());
+                loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "SettingsOverlay.fxml"));
+                loader.setController(SettingsOverlay.getInstance());
                 break;
             case LOAD:
                 loader = new FXMLLoader(getClass().getResource(VIEWS_PATH_PREFIX + "Load.fxml"));
