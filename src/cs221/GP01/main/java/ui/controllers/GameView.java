@@ -36,9 +36,7 @@ import java.util.Optional;
 
 /**
  * GameView - A class that controls the Game scene that is defined in Game.fxml
- *
  * Used with Game.fxml
- *
  * This controller controller the game view it contains the timer update methods, score update methods and runs the front end logic changing the colours of the grid with the help of GridDisplayer
  *
  * @see GridDisplayer
@@ -59,6 +57,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     }
 
     /**
+     * Getting instance of gameController
      *
      * @return returns the instance of this class object.
      */

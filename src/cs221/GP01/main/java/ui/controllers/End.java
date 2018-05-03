@@ -120,7 +120,7 @@ public class End extends BaseOverlay implements INeedPrep {
     }
 
     /**
-     * ****update this****
+     * Getting instance of end overlay
      *
      * @return endView
      */
