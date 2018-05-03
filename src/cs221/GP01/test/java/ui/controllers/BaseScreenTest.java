@@ -33,6 +33,7 @@ public class BaseScreenTest extends ApplicationTest {
         rootNode = Navigation.getInstance().getMain().getRoot();
     }
 
+
     @Test
     public void btnMenuClickedTest() {
         Platform.runLater(()->base.btnMenuClicked());

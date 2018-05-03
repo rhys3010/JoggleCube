@@ -1,6 +1,10 @@
 package cs221.GP01.test.java.ui;
 
 import cs221.GP01.Main;
+<<<<<<< HEAD
+import cs221.GP01.main.java.ui.ISettings;
+import cs221.GP01.main.java.ui.Settings;
+=======
 import cs221.GP01.main.java.ui.*;
 import cs221.GP01.main.java.ui.controllers.GameView;
 import cs221.GP01.main.java.ui.controllers.HighScore;
@@ -9,6 +13,7 @@ import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ButtonType;
+>>>>>>> dev-testing
 import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -40,7 +45,10 @@ public class SettingsTest extends ApplicationTest {
         assertFalse(settings.isColorBlindEnabled());
         assertEquals("English", Settings.getCurrLang());
         assertEquals(180, Settings.getTimerLength());
+<<<<<<< HEAD
+=======
 
+>>>>>>> dev-testing
     }
 
     @Test
@@ -55,6 +63,8 @@ public class SettingsTest extends ApplicationTest {
 
     }
 
+<<<<<<< HEAD
+=======
     @Test
     public void testColorBlind() {
 
@@ -75,4 +85,5 @@ public class SettingsTest extends ApplicationTest {
     }
 
 
+>>>>>>> dev-testing
 }
