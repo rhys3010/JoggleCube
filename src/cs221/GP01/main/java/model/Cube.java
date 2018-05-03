@@ -39,42 +39,6 @@ public class Cube implements ICube{
     }
 
     /**
-     * Return the bag of letters
-     * @return a ArrayList of strings
-     */
-    public ArrayList<String> getBagOfLetters() {
-        return bagOfLetters;
-    }
-
-    /**
-     * Returns the HashMap of the scores using key-value pairs
-     * @return a HashMap of String-String key-value pairs
-     */
-    public HashMap<String, String> getScores(){
-        return scores;
-    }
-
-    /**
-     * Returns the Block[][][] 3D array that is the cube
-     * @return 3D array of Block[][][]
-     */
-    public Block[][][] getCube() {
-        return cube;
-    }
-
-    /**
-     * Returns the given block using the parameters
-     * @param x int co-ord of x
-     * @param y int co-ord of y
-     * @param z int co-ord of z
-     * @return returns the block object
-     */
-    @Override
-    public Block getBlock(int x, int y, int z) {
-        return cube[x][y][z];
-    }
-
-    /**
      * Create the random cube given the bag of letters and the the cube given
      */
     @Override
@@ -84,8 +48,13 @@ public class Cube implements ICube{
         for(int i = 0; i<3; i++){
             for(int j = 0; j<3; j++){
                 for(int k = 0; k<3; k++){
+                    //Added this all in to stop .nextInt() causing an out of bounds expression
+                    int randomIntSize = bagOfLetters.size()-1;
+                    if(randomIntSize < 1){
+                        randomIntSize = 1;
+                    }
                     //Generate a random index for the ArrayList, and add the letter from that point into the Cube
-                    int randomNumber = randomNumGen.nextInt(bagOfLetters.size()-1);
+                    int randomNumber = randomNumGen.nextInt(randomIntSize);
                     cube[i][j][k] = new Block(bagOfLetters.get(Math.abs(randomNumber)));
                     //Make sure that the letter is removed from the "Bag O'Letters"
                     bagOfLetters.remove(randomNumber);
@@ -209,6 +178,43 @@ public class Cube implements ICube{
         }
         return true;
     }
+
+    /**
+     * Return the bag of letters
+     * @return a ArrayList of strings
+     */
+    public ArrayList<String> getBagOfLetters() {
+        return bagOfLetters;
+    }
+
+    /**
+     * Returns the HashMap of the scores using key-value pairs
+     * @return a HashMap of String-String key-value pairs
+     */
+    public HashMap<String, String> getScores(){
+        return scores;
+    }
+
+    /**
+     * Returns the Block[][][] 3D array that is the cube
+     * @return 3D array of Block[][][]
+     */
+    public Block[][][] getCube() {
+        return cube;
+    }
+
+    /**
+     * Returns the given block using the parameters
+     * @param x int co-ord of x
+     * @param y int co-ord of y
+     * @param z int co-ord of z
+     * @return returns the block object
+     */
+    @Override
+    public Block getBlock(int x, int y, int z) {
+        return cube[x][y][z];
+    }
+
 
     /**
      * Set the block at the co-ordinates to the given block

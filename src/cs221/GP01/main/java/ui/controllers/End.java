@@ -27,12 +27,12 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * End - A class that controls the Pause subscene that is defined in End.fxml
- * <p>
  * Used with End.fxml
  *
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21)
  * @version 1.1
+ * @see INeedPrep
  */
 public class End extends BaseOverlay implements INeedPrep {
 
@@ -40,26 +40,14 @@ public class End extends BaseOverlay implements INeedPrep {
 
     private End(){}
 
-    public static End getInstance(){
-        if(endView == null){
-            synchronized (UI.class){
-                if(endView == null){
-                    endView = new End();
-                }
-            }
-        }
-        return endView;
-    }
-
     @FXML
     Label scoreLabel,highScoreLabel;
 
     @FXML
     Button saveButton;
 
-
     /**
-     * UPDATE DESCRIPTION
+     * Sets text for score and highscore, also enables and disables save button
      */
     @Override
     public void prepView() {
@@ -72,7 +60,6 @@ public class End extends BaseOverlay implements INeedPrep {
         }else{
             saveButton.setDisable(false);
         }
-
         JoggleCube.getInstance().resetGameState();
     }
 
@@ -87,7 +74,6 @@ public class End extends BaseOverlay implements INeedPrep {
         Navigation.getInstance().switchScreen(ScreenType.HIGH_SCORES);
         Navigation.getInstance().hideOverlay(ScreenType.END, parentController);
     }
-
 
     /**
      * When the 'return to menu' button is clicked change scene to menu scene
@@ -119,7 +105,6 @@ public class End extends BaseOverlay implements INeedPrep {
 
         Dialog informationDialog = new Dialog();
 
-
         // Normalize input and save to regular java String
         result = result.replace(" ", "");
 
@@ -132,15 +117,38 @@ public class End extends BaseOverlay implements INeedPrep {
                 btnSaveClicked();
             }
         }
-
     }
 
-    //agl6
+    /**
+     * ****update this****
+     *
+     * @return endView
+     */
+    public static End getInstance(){
+        if(endView == null){
+            synchronized (UI.class){
+                if(endView == null){
+                    endView = new End();
+                }
+            }
+        }
+        return endView;
+    }
 
+    /**
+     * Gets score
+     *
+     * @return scoreLabel as string
+     */
     public String getScore() {
         return scoreLabel.getText();
     }
 
+    /**
+     * Gets highscore
+     *
+     * @return highScoreLabel as string
+     */
     public String getHighScore() {
         return highScoreLabel.getText();
     }

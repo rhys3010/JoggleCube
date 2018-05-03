@@ -31,7 +31,7 @@ class JoggleCubeTest {
     IJoggleCube controller = JoggleCube.getInstance();
 
     /**
-     * Reset GoggleCube before each test
+     * Reset JoggleCube before each test
      */
     @BeforeEach
     public void reset(){
