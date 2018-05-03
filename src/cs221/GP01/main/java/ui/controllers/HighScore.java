@@ -221,7 +221,6 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
     }
 
 
-    //agl6
 
     public ObservableList<IScore> getOverallScores() {
         return overallScores;
@@ -229,22 +228,5 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
 
     public ObservableList<IScore> getCurrentCubeHighScores(){
         return currentCubeScores;
-    }
-
-    public String getText() {
-        return getText();
-    }
-
-    public short setText() {
-        return setText();
-    }
-
-    public short setItems() {
-        return setItems();
-    }
-
-    public Label highScorePageLabel(){
-        return highScorePageLabel();
-
     }
 }
