@@ -38,7 +38,10 @@ import java.util.Optional;
  * GameView - A class that controls the Game scene that is defined in Game.fxml
  *
  * Used with Game.fxml
- * todo improve this description
+ *
+ * This controller controller the game view it contains the timer update methods, score update methods and runs the front end logic changing the colours of the grid with the help of GridDisplayer
+ *
+ * @see GridDisplayer
  * @author Nathan Williams (naw21)
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Samuel Jones - srj12@aber.ac.uk
@@ -46,11 +49,19 @@ import java.util.Optional;
  */
 public class GameView extends BaseScreen implements IGame, INeedPrep {
 
+    // an Instance of this controller
     private static GameView gameController;
 
+    /**
+     *  a private constructor so the class can't be instantiated by any other class.
+     */
     private GameView() {
     }
 
+    /**
+     *
+     * @return returns the instance of this class object.
+     */
     public static GameView getInstance() {
         if (gameController == null) {
             synchronized (UI.class) {
@@ -62,27 +73,19 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         return gameController;
     }
 
+    // holds the grid displayer currently in use to help display the grids
     private GridDisplayer gridDisplayer;
 
+    // holds an instance of the custom dialog class that handles the dialogs for us.
     private Dialog dialog;
-
-    public Dialog getDialog() {
-        return dialog;
-    }
 
     @FXML
     private TabPane cubeContainer;
 
-
     @FXML
     private Label scoreLabel, timerLabel;
 
-    public void setTimerLabel(Label timerLabel) {
-        this.timerLabel = timerLabel;
-    }
-
     private ObservableList<String> foundWords;
-
 
     @FXML
     private Button btnSubmit, menuButton, explodeIcon, colorBlindIcon;
@@ -108,6 +111,14 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     @FXML
     private ContextMenu hamburgerContext;
 
+    public void setTimerLabel(Label timerLabel) {
+        this.timerLabel = timerLabel;
+    }
+
+    public Dialog getDialog() {
+        return dialog;
+    }
+
     @FXML
     public void btnClearClicked() {
         textField.setText("");
@@ -115,6 +126,9 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     }
 
 
+    /**
+     * handles the submit button begin clicked
+     */
     @FXML
     public void btnSubmitClicked() {
         if (!textField.getText().equals("") && JoggleCube.getInstance().testWordValidity(textField.getText())) {
@@ -171,7 +185,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
 
 
     /**
-     * When the End Game option is clicked it will load the EndGui scene.
+     * When the End Game option is clicked it will load the EndGui overlay.
      */
     @FXML
     public void btnEndGameClicked() {
@@ -320,5 +334,6 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
         return menuButton;
     }
 
+    
     public Button getColorBlindIcon(){ return colorBlindIcon; }
 }
