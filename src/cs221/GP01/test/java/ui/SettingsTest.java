@@ -1,30 +1,45 @@
 package cs221.GP01.test.java.ui;
 
-import cs221.GP01.main.java.ui.ISettings;
-import cs221.GP01.main.java.ui.Settings;
+import cs221.GP01.Main;
+import cs221.GP01.main.java.ui.*;
+import cs221.GP01.main.java.ui.controllers.GameView;
+import cs221.GP01.main.java.ui.controllers.HighScore;
+import cs221.GP01.main.java.ui.controllers.Start;
+import javafx.application.Platform;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.ButtonType;
+import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.testfx.framework.junit5.ApplicationTest;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.lang.invoke.SerializedLambda;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SettingsTest {
+public class SettingsTest extends ApplicationTest {
 
     ISettings settings = Settings.getInstance();
+    Parent root;
 
-    @BeforeEach
-    public void reset() {
+    @Override
+    public void start (Stage stage) throws Exception {
+        Main m = new Main();
+        m.start(stage);
 
     }
+
 
     @Test
     public void testPrep() {
 
         assertFalse(settings.isColorBlindEnabled());
-        //assertTrue(settings.isMusicEnabled());
-        //assertTrue(settings.isSoundEffectsEnabled());
         assertEquals("English", Settings.getCurrLang());
         assertEquals(180, Settings.getTimerLength());
-        //assertEquals(75, settings.getVolume());
 
     }
 
@@ -36,17 +51,28 @@ public class SettingsTest {
         Settings.setCurrLang("English");
         assertEquals("English", Settings.getCurrLang());
         Settings.setCurrLang("Polish");
-        assertEquals("Polish", Settings.getCurrLang());
+        assertEquals("English", Settings.getCurrLang());
 
     }
 
     @Test
     public void testColorBlind() {
 
-        settings.toggleColourBlind();
-        assertTrue(settings.isColorBlindEnabled());
-        settings.toggleColourBlind();
-        assertFalse(settings.isColorBlindEnabled());
+        ISettings settings = Settings.getInstance();
+        assertEquals("#38aa38", settings.getCurrentlySelectedColor());
+        assertEquals("#30599b", settings.getAvailableColor());
+        assertEquals("#64846b", settings.getAlreadySelectedColor());
+
+        Platform.runLater(()->settings.toggleColourBlind());
+        clickOn(400,400);
+
+        assertEquals("#cbc155", settings.getCurrentlySelectedColor());
+        assertEquals("#b171cb", settings.getAvailableColor());
+        assertEquals("#cb5758", settings.getAlreadySelectedColor());
+        assertTrue(GameView.getInstance().getColorBlindIcon().isVisible());
+
 
     }
+
+
 }

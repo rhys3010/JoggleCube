@@ -58,5 +58,7 @@ public interface ISettings {
      */
     String getUnavailableColor();
 
+    Dialog getInfoDialog();
+
 
 }
