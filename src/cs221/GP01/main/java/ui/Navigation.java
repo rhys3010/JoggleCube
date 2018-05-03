@@ -40,23 +40,7 @@ public class Navigation implements IViewNavigation{
      * Default constructor for the Navigation
      */
     private Navigation(){}
-
-    /**
-     * Get the instantiated instance of the Navigation singleton
-     *
-     * @return navController - the Navigation object
-     */
-    public static IViewNavigation getInstance(){
-        if(navController == null){
-            synchronized (UI.class){
-                if(navController == null){
-                    navController = new Navigation();
-                }
-            }
-        }
-        return navController;
-    }
-
+    
     /**
      * All screens to be stored, store Type as Key and an FXML loader as value
      */
@@ -66,24 +50,6 @@ public class Navigation implements IViewNavigation{
      * The main scene of the program
      */
     private Scene main;
-
-    public Scene getMain() {
-        return main;
-    }
-
-    public HashMap<ScreenType, FXMLLoader> getScreens() {
-        return screens;
-    }
-
-    /**
-     * Set the main screen of the game
-     *
-     * @param main - the JavaFX scene object
-     */
-    public void setMainScene(Scene main){
-        this.main = main;
-    }
-
 
     /**
      * Add screen to the hashmap
@@ -103,7 +69,6 @@ public class Navigation implements IViewNavigation{
     public void remove(ScreenType name){
         screens.remove(name);
     }
-
 
     /**
      * Switch to a given screen
@@ -130,7 +95,6 @@ public class Navigation implements IViewNavigation{
     public void showOverlay(ScreenType overlay, BaseScreen parent){
         // Hide all overlays before showing any more
         hideAllOverlays(parent);
-
 
         // Verify that the overlay is of type BaseOverlay
         if(screens.get(overlay).getController() instanceof BaseOverlay){
@@ -178,20 +142,59 @@ public class Navigation implements IViewNavigation{
         }
     }
 
-
     /**
      * Utility method to hide all overlays to prevent overlay overlapping
      */
     private void hideAllOverlays(BaseScreen parent) {
-
         // Remove all overlays from the parent
         parent.getRoot().getChildren().remove(parent.getRoot().lookup(".helpOverlay"));
         parent.getRoot().getChildren().remove(parent.getRoot().lookup(".endOverlay"));
         parent.getRoot().getChildren().remove(parent.getRoot().lookup(".settingsOverlay"));
 
-
         // Re-enable background
         parent.getMainNode().setDisable(false);
     }
 
+    /**
+     * Get the instantiated instance of the Navigation singleton
+     *
+     * @return navController - the Navigation object
+     */
+    public static IViewNavigation getInstance(){
+        if(navController == null){
+            synchronized (UI.class){
+                if(navController == null){
+                    navController = new Navigation();
+                }
+            }
+        }
+        return navController;
+    }
+
+    /**
+     * Get main scene
+     *
+     * @return main
+     */
+    public Scene getMain() {
+        return main;
+    }
+
+    /**
+     * Get screens
+     *
+     * @return screens
+     */
+    public HashMap<ScreenType, FXMLLoader> getScreens() {
+        return screens;
+    }
+
+    /**
+     * Set the main screen of the game
+     *
+     * @param main - the JavaFX scene object
+     */
+    public void setMainScene(Scene main){
+        this.main = main;
+    }
 }

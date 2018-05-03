@@ -59,12 +59,10 @@ public class UI implements IFrontend {
      */
     private static final String VIEWS_PATH_PREFIX = "/cs221/GP01/main/resource/view/";
 
-
     /**
      * All screen names (used to create and add to navigationController)
      */
     private static final ScreenType SCREENS[] = {ScreenType.START, ScreenType.SETTINGS, ScreenType.LOAD, ScreenType.GAME, ScreenType.END, ScreenType.HIGH_SCORES, ScreenType.HELP};
-
 
     /**
      * Initialize the game by creating the necessary scenes and starting the JavaFx
@@ -72,7 +70,6 @@ public class UI implements IFrontend {
      * @throws IOException If the fxml file can't be found or opened
      */
     public void initialize(Scene main) throws IOException{
-
         // Initialize the screen controller
         IViewNavigation navigationController = Navigation.getInstance();
         navigationController.setMainScene(main);
@@ -81,10 +78,10 @@ public class UI implements IFrontend {
             // Create FXML loader and populate with root and controller
             navigationController.add(SCREENS[i], createScreen(SCREENS[i]));
         }
-
         // Show the Start Screen
         navigationController.switchScreen(ScreenType.START);
     }
+
     /**
      * Utility function to create a scene and store in a loader
      *
@@ -93,7 +90,6 @@ public class UI implements IFrontend {
      * @throws IOException - if FXML file can't be found
      */
     private FXMLLoader createScreen(ScreenType screenType) throws IOException{
-
         // The loader to be returned
         FXMLLoader loader;
 
@@ -137,9 +133,8 @@ public class UI implements IFrontend {
             default:
                 loader = null;
         }
-
         loader.setRoot(loader.load());
-
+        
         return loader;
     }
 }

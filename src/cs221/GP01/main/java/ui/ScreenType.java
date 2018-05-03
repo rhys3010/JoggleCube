@@ -13,7 +13,6 @@ package cs221.GP01.main.java.ui;
  * <p>
  * @author Rhys Evans (rhe24)
  * @version 1.1
- * @see
  */
 public enum ScreenType {
 
