@@ -220,7 +220,6 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
     }
 
 
-    //agl6
 
     public ObservableList<IScore> getOverallScores() {
         return overallScores;
