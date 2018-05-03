@@ -10,7 +10,6 @@ package cs221.GP01.main.java.ui.controllers;
 
 import cs221.GP01.main.java.model.IScore;
 import cs221.GP01.main.java.model.JoggleCube;
-import cs221.GP01.main.java.ui.ScreenType;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
@@ -231,20 +230,23 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
         return currentCubeScores;
     }
 
-    public String getText() {
-        return getText();
+    public Button getLeftPageNav() {
+        return  leftPageNav;
     }
 
-    public short setText() {
-        return setText();
+    public Button getRightPageNav() {
+        return rightPageNav;
     }
 
-    public short setItems() {
-        return setItems();
+    public String getLabel() {
+        return highScorePageLabel.getText();
     }
 
-    public Label highScorePageLabel(){
-        return highScorePageLabel();
+    public TableView<IScore> getTable() {
+        return highScoreTable;
+    }
 
+    public void populateTableTest(ObservableList<IScore> list, String title) {
+        populateTable(list,title);
     }
 }
