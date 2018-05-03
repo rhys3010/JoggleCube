@@ -36,14 +36,14 @@ public class BaseScreenTest extends ApplicationTest {
     @Test
     public void btnMenuClickedTest() {
         Platform.runLater(()->base.btnMenuClicked());
-        assertEquals(nav.getMain().getRoot(), Start.getInstance().getRoot());
+        assertEquals(Start.getInstance().getRoot(), nav.getMain().getRoot());
     }
 
     @Test
     public void btnHighScoreClickedTest() {
         Platform.runLater(()->base.btnHighScoreClicked());
         clickOn(400,400);
-        assertEquals(nav.getMain().getRoot(), HighScore.getInstance().getRoot());
+        assertEquals( HighScore.getInstance().getRoot(), nav.getMain().getRoot());
 
     }
 

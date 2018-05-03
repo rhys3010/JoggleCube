@@ -80,6 +80,7 @@ public class JoggleCube implements IJoggleCube {
         findDocumentFolder();
         loadOverallScores();
         setLanguage();
+        cube.populateCube();
     }
 
     /**

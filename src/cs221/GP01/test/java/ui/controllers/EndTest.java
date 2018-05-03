@@ -1,26 +1,47 @@
 package cs221.GP01.test.java.ui.controllers;
 
+import cs221.GP01.Main;
 import cs221.GP01.main.java.model.IJoggleCube;
 import cs221.GP01.main.java.model.JoggleCube;
 import cs221.GP01.main.java.ui.IViewNavigation;
 import cs221.GP01.main.java.ui.Navigation;
 import cs221.GP01.main.java.ui.ScreenType;
 import cs221.GP01.main.java.ui.controllers.End;
+import cs221.GP01.main.java.ui.controllers.GameView;
+import cs221.GP01.main.java.ui.controllers.HighScore;
+import cs221.GP01.main.java.ui.controllers.Start;
+import javafx.application.Platform;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.testfx.framework.junit5.ApplicationTest;
+
+import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class EndTest {
+public class EndTest extends ApplicationTest{
 
     End end = End.getInstance();
     IJoggleCube cube = JoggleCube.getInstance();
     IViewNavigation nav = Navigation.getInstance();
 
+    @Override
+    public void start (Stage stage) throws Exception {
+        Main m = new Main();
+        m.start(stage);
+
+    }
+
 
     @BeforeEach
     public void reset() {
         end.prepView();
+        end.setParentController(GameView.getInstance());
     }
 
     @Test
@@ -32,19 +53,33 @@ public class EndTest {
 
     @Test
     public void btnHighScoreClickedTest() {
-        end.btnHighScoreClicked();
-        assertEquals(nav.getMain().getRoot(), nav.getScreens().get(ScreenType.HIGH_SCORES));
+        Platform.runLater(()->end.btnHighScoreClicked());
+        clickOn(400,400);
+        assertEquals( HighScore.getInstance().getRoot(), nav.getMain().getRoot());
+
     }
 
     @Test
     public void btnMenuClickedTest() {
-        end.btnMenuClicked();
-        assertEquals(nav.getMain().getRoot(), nav.getScreens().get(ScreenType.START));
+        Platform.runLater(()->end.btnMenuClicked());
+        assertEquals( Start.getInstance().getRoot(),nav.getMain().getRoot());
+
     }
 
     @Test
-    public void btnReplayClickedTest() {
-        end.btnReplayClicked();
-        assertEquals(nav.getMain().getRoot(), nav.getScreens().get(ScreenType.GAME));
+    public void btnSaveClicked() throws InterruptedException {
+
+        JoggleCube.getInstance().generateRandomGrid();
+        Platform.runLater(()->end.btnSaveClicked());
+        Platform.runLater(()->end.getInputDialog().getTextInputDialog().setContentText(""));
+        clickOn(500,500);
+        Button button = (Button) end.getInputDialog().getTextInputDialog().getDialogPane().lookupButton(ButtonType.OK);
+        clickOn(button);
+
+        Platform.runLater(()->end.getInformationDialog().getInformationDialog().close());
+        
+
     }
+
+
 }

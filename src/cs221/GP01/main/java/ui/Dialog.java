@@ -86,7 +86,7 @@ public class Dialog implements IDialog {
      * @param contentText
      */
     public void showInformationDialog(String title, String contentText) {
-        Alert informationDialog = new Alert(Alert.AlertType.INFORMATION);
+        informationDialog = new Alert(Alert.AlertType.INFORMATION);
         informationDialog.setHeaderText(null);
         informationDialog.setTitle(title);
         informationDialog.setContentText(contentText);
@@ -94,8 +94,17 @@ public class Dialog implements IDialog {
         informationDialog.showAndWait();
     }
 
+
     public TextInputDialog getTextInputDialog() {
         return textInputDialog;
+    }
+
+    public Alert getConfirmationDialog() {
+        return confirmationDialog;
+    }
+
+    public Alert getInformationDialog() {
+        return informationDialog;
     }
 
     /**
