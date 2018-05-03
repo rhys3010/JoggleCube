@@ -104,6 +104,6 @@ public class Dialog implements IDialog {
      * @return
      */
     public boolean isValidInput(String input){
-        return input.matches("^[a-zA-Z0-9_]*$") && !input.isEmpty() && (input.length() < 70);
+        return input.matches("^[a-zA-Z0-9_]*$") && !input.isEmpty();
     }
 }
