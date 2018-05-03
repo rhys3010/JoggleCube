@@ -19,17 +19,12 @@ import javafx.scene.input.MouseEvent;
 
 /**
  * LoadGrid - A class that controls the LoadGrid scene that is defined in Load.fxml
- * <p>
- * Used with Load.fxml
- *
- *
- * todo add a recents list
+ * Used with Load.fxm
  *
  * @author Nathan Williams (naw21)
  * @version 1.1
  */
 public class LoadGrid extends BaseScreen implements INeedPrep {
-
 
     private static LoadGrid loadGridView;
     private boolean fileLoaded = false;
@@ -59,18 +54,12 @@ public class LoadGrid extends BaseScreen implements INeedPrep {
      */
     private String fileName = null;
 
-    public String getFileName() {
-        return fileName;
-    }
-
     /**
      * Get recently played cubes from backend
      */
     public void prepView(){
         listViewRecents.setItems(JoggleCube.getInstance().getRecentGrids());
     }
-
-
 
     /**
      * When the Start Grid button is clicked it will load the Game scene.
@@ -87,7 +76,6 @@ public class LoadGrid extends BaseScreen implements INeedPrep {
             Dialog dialog = new Dialog();
             dialog.showInformationDialog("Error", "No File Selected, Please Try Again");
         }
-
     }
 
     /**
@@ -99,7 +87,6 @@ public class LoadGrid extends BaseScreen implements INeedPrep {
     public void btnBackClicked() {
         Navigation.getInstance().switchScreen(ScreenType.START);
     }
-
 
     /**
      * Handle when a user clicks an option from the selection
@@ -127,6 +114,14 @@ public class LoadGrid extends BaseScreen implements INeedPrep {
             Dialog dialog = new Dialog();
             dialog.showInformationDialog("Error", "No File Selected, Please Try Again");
         }
+    }
 
+    /**
+     * Get fileName
+     *
+     * @return fileName
+     */
+    public String getFileName() {
+        return fileName;
     }
 }
