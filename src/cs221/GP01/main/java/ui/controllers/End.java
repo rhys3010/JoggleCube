@@ -46,6 +46,10 @@ public class End extends BaseOverlay implements INeedPrep {
     @FXML
     Button saveButton;
 
+    Dialog inputDialog;
+
+    Dialog informationDialog;
+
     /**
      * Sets text for score and highscore, also enables and disables save button
      */
@@ -100,10 +104,10 @@ public class End extends BaseOverlay implements INeedPrep {
      */
     @FXML
    public void btnSaveClicked(){
-        Dialog inputDialog = new Dialog();
+        inputDialog = new Dialog();
         String result = inputDialog.showInputDialog("Save Cube", "Please enter a filename", "untitled", new ImageView(new Image(getClass().getResourceAsStream("/cs221/GP01/main/resource/img/icon/save_icon_alt.png"))), true);
 
-        Dialog informationDialog = new Dialog();
+        informationDialog = new Dialog();
 
         // Normalize input and save to regular java String
         result = result.replace(" ", "");
@@ -151,5 +155,13 @@ public class End extends BaseOverlay implements INeedPrep {
      */
     public String getHighScore() {
         return highScoreLabel.getText();
+    }
+
+    public Dialog getInputDialog() {
+        return inputDialog;
+    }
+
+    public Dialog getInformationDialog() {
+        return informationDialog;
     }
 }
