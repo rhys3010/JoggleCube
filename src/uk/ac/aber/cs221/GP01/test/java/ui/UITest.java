@@ -18,7 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
-import uk.ac.aber.cs221.gp01.main.java.ui.*;
+
 
 import java.io.IOException;
 

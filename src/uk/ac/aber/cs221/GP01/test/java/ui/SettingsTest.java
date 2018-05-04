@@ -19,10 +19,6 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
-import uk.ac.aber.cs221.gp01.Main;
-import uk.ac.aber.cs221.gp01.main.java.ui.ISettings;
-import uk.ac.aber.cs221.gp01.main.java.ui.Settings;
-import uk.ac.aber.cs221.gp01.main.java.ui.controllers.GameView;
 
 import static org.junit.jupiter.api.Assertions.*;
 

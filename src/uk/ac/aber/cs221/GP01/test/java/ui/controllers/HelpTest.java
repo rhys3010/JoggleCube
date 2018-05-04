@@ -18,8 +18,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationTest;
-import uk.ac.aber.cs221.gp01.Main;
-import uk.ac.aber.cs221.gp01.main.java.ui.controllers.Help;
+
 
 import java.util.concurrent.TimeoutException;
 
