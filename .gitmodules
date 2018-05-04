@@ -13,3 +13,6 @@
 [submodule "docs/endprojreport"]
 	path = docs/endprojreport
 	url = https://git.overleaf.com/15890593spztrvxnsfqh
+[submodule "docs/maintman"]
+	path = docs/maintman
+	url = https://git.overleaf.com/15890664kpcfmfmyntbg
