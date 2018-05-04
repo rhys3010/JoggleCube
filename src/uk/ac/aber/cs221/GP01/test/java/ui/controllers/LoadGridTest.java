@@ -110,6 +110,9 @@ clickOn(400,400);
 
     }
 
+    /**
+     * Needs fresh install to test properly...
+     */
     @Test
     void handleMouseClick() {
 
