@@ -58,7 +58,7 @@ public class EndTest extends ApplicationTest {
     }
 
     /**
-     * Tests all text for score and highscore, also tests enabling and disabling save button
+     * Tests score and highscore
      */
     @Test
     public void testPrepView() {
@@ -75,7 +75,6 @@ public class EndTest extends ApplicationTest {
         Platform.runLater(() -> end.btnHighScoreClicked());
         clickOn(400, 400);
         assertEquals(HighScore.getInstance().getRoot(), nav.getMain().getRoot());
-
     }
 
     /**

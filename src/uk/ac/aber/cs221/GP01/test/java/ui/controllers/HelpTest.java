@@ -34,6 +34,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class HelpTest extends ApplicationTest {
 
+    /**
+     * Creates instance of game for testing
+     */
     @Override
     public void start (Stage stage) throws Exception {
         Main m = new Main();
@@ -44,6 +47,9 @@ class HelpTest extends ApplicationTest {
     Parent root;
     Label label;
 
+    /**
+     * 
+     */
     @BeforeEach
     void setUp()  {
         help = Help.getInstance();

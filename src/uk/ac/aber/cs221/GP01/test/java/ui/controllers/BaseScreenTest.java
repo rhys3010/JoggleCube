@@ -34,6 +34,9 @@ public class BaseScreenTest extends ApplicationTest {
     BaseScreen base = new BaseScreen();
     INavigation nav = Navigation.getInstance();
 
+    /**
+     * Creates instance of game for testing
+     */
     @Override
     public void start(Stage stage) throws Exception {
         Main m = new Main();
