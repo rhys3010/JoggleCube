@@ -2,6 +2,8 @@ package uk.ac.aber.cs221.GP01.test.java.ui.controllers;
 
 
 import javafx.application.Platform;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,8 +35,8 @@ public class GameViewTest  extends ApplicationTest {
         JoggleCube.getInstance().resetGameState();
         JoggleCube.getInstance().generateRandomGrid();
         Platform.runLater(()-> Navigation.getInstance().switchScreen(ScreenType.GAME));
-        Dialog d = GameView.getInstance().getDialog();
-        clickOn(700,320);
+        //Dialog d = GameView.getInstance().getDialog();
+        Platform.runLater(()-> GameView.getInstance().getDialog().getTextInputDialog().close());
     }
 
 
@@ -106,7 +108,16 @@ public class GameViewTest  extends ApplicationTest {
     @Test
     public void btnEndGameClicked(){
         Platform.runLater(()->{
+            Parent root = GameView.getInstance().getRoot();
+            assertFalse(view.getHamburgerContext().isShowing());
 
+            view.btnMenuClicked();
+
+            assertTrue(view.getHamburgerContext().isShowing());
+
+            Button button = from(root).lookup("#quitBtn").query();
+            System.out.println(button.getText());
+            clickOn(button);
 
         });
     }
