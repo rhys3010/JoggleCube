@@ -8,17 +8,11 @@
 package uk.ac.aber.cs221.GP01.test.java.ui;
 
 
-import uk.ac.aber.cs221.GP01.main.java.ui.IFrontend;
-import uk.ac.aber.cs221.GP01.main.java.ui.INavigation;
-
-import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
-import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
-import uk.ac.aber.cs221.GP01.main.java.ui.UI;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
-
+import uk.ac.aber.cs221.GP01.main.java.ui.*;
 
 import java.io.IOException;
 
@@ -36,6 +30,7 @@ class UITest extends ApplicationTest {
 
     /**
      * Tests screen dimensions and class path
+     *
      * @throws IOException
      */
     @Test

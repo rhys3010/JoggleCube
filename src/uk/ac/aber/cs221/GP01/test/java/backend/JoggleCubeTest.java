@@ -7,15 +7,13 @@
    */
 package uk.ac.aber.cs221.GP01.test.java.backend;
 
-import uk.ac.aber.cs221.GP01.main.java.model.IJoggleCube;
-import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
-import uk.ac.aber.cs221.GP01.main.java.ui.Settings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import java.util.Set;
+import uk.ac.aber.cs221.GP01.main.java.model.IJoggleCube;
+import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
+import uk.ac.aber.cs221.GP01.main.java.ui.Settings;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,8 +32,8 @@ class JoggleCubeTest {
      * Reset JoggleCube before each test
      */
     @BeforeEach
-    public void reset(){
-       // controller.resetGameState();
+    public void reset() {
+        // controller.resetGameState();
         Settings.setCurrLang("en");
         controller.generateRandomGrid();
     }
@@ -44,7 +42,7 @@ class JoggleCubeTest {
      * Test the loading of a new dictionary
      */
     @Test
-    public void testLoadNewDictionary(){
+    public void testLoadNewDictionary() {
         assertFalse(controller.getLoadedDictionaries().isEmpty());
         Settings.setCurrLang("cy");
         assertTrue(controller.getLoadedDictionaries().containsKey("cy"));
@@ -54,7 +52,7 @@ class JoggleCubeTest {
      * Test for valid words
      */
     @Test
-    public void testWordValidityTest(){
+    public void testWordValidityTest() {
 
         assertTrue(controller.testWordValidity("egg"));
         assertFalse(controller.testWordValidity("sjfsdkjfnkjsd"));
@@ -63,20 +61,20 @@ class JoggleCubeTest {
     /**
      * Test word score of given word
      *
-     * @param word word to test
+     * @param word  word to test
      * @param score score of word
      */
     @ParameterizedTest
     @CsvSource({"egg, 25", "i, 1"})
-    public void testGetWordScore(String word, int score){
+    public void testGetWordScore(String word, int score) {
         assertEquals(score, controller.getWordScore(word));
     }
 
     /**
      * Test saving to file
      */
-   @Test
-    public void testSaveToFile(){
+    @Test
+    public void testSaveToFile() {
         controller.generateRandomGrid();
         String[][][] generatedCube = controller.getCubeData();
 
@@ -104,7 +102,7 @@ class JoggleCubeTest {
      * Test the setting of dictionaries
      */
     @Test
-    public void setLanguageTest(){
+    public void setLanguageTest() {
         Settings.setCurrLang("en");
         assertTrue(controller.testWordValidity("egg"));
         assertFalse(controller.testWordValidity("Prifysgol"));

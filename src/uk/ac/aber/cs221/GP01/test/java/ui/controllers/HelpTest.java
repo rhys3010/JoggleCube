@@ -7,8 +7,6 @@
    */
 package uk.ac.aber.cs221.GP01.test.java.ui.controllers;
 
-import uk.ac.aber.cs221.GP01.Main;
-import uk.ac.aber.cs221.GP01.main.java.ui.controllers.Help;
 import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
@@ -18,7 +16,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationTest;
-
+import uk.ac.aber.cs221.GP01.Main;
+import uk.ac.aber.cs221.GP01.main.java.ui.controllers.Help;
 
 import java.util.concurrent.TimeoutException;
 

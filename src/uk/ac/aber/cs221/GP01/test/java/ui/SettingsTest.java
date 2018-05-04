@@ -7,18 +7,15 @@
    */
 package uk.ac.aber.cs221.GP01.test.java.ui;
 
-import uk.ac.aber.cs221.GP01.Main;
-import uk.ac.aber.cs221.GP01.main.java.ui.ISettings;
-import uk.ac.aber.cs221.GP01.main.java.ui.Settings;
-import uk.ac.aber.cs221.GP01.main.java.ui.*;
-import uk.ac.aber.cs221.GP01.main.java.ui.controllers.GameView;
-import uk.ac.aber.cs221.GP01.main.java.ui.controllers.HighScore;
-import uk.ac.aber.cs221.GP01.main.java.ui.controllers.Start;
 import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
+import uk.ac.aber.cs221.GP01.Main;
+import uk.ac.aber.cs221.GP01.main.java.ui.ISettings;
+import uk.ac.aber.cs221.GP01.main.java.ui.Settings;
+import uk.ac.aber.cs221.GP01.main.java.ui.controllers.GameView;
 
 import static org.junit.jupiter.api.Assertions.*;
 

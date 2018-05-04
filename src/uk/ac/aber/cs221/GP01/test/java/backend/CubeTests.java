@@ -7,13 +7,11 @@
    */
 package uk.ac.aber.cs221.GP01.test.java.backend;
 
-import uk.ac.aber.cs221.GP01.main.java.model.Block;
-import uk.ac.aber.cs221.GP01.main.java.model.Cube;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import uk.ac.aber.cs221.GP01.main.java.model.Cube;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -42,13 +40,13 @@ public class CubeTests {
      * Test frequency of letter occurences
      */
     @Test
-    public void testOccurrences(){
+    public void testOccurrences() {
         ArrayList<String> cubeLetters = new ArrayList<>();
 
-        for(int i = 0; i<3; i++) {
+        for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 for (int k = 0; k < 3; k++) {
-                    cubeLetters.add(cube.getBlock(i,j,k).getLetter());
+                    cubeLetters.add(cube.getBlock(i, j, k).getLetter());
                 }
             }
         }
@@ -64,7 +62,7 @@ public class CubeTests {
      * Test size of bagOfLetters
      */
     @Test
-    public void testLoadBagOfLetters (){
+    public void testLoadBagOfLetters() {
         cube = new Cube("en_letters");
         ArrayList<String> bagOfLetters = cube.getBagOfLetters();
         assertEquals(97, bagOfLetters.size());
@@ -74,14 +72,14 @@ public class CubeTests {
      * Test the score of letters
      */
     @Test
-    public void testLetterScores (){
+    public void testLetterScores() {
 
-        assertEquals(1,Integer.parseInt(cube.getScores().get("A")));
-        assertEquals(3,Integer.parseInt(cube.getScores().get("B")));
-        assertEquals(4,Integer.parseInt(cube.getScores().get("F")));
-        assertEquals(8,Integer.parseInt(cube.getScores().get("QU")));
-        assertEquals(4,Integer.parseInt(cube.getScores().get("Y")));
-        assertEquals(10,Integer.parseInt(cube.getScores().get("Z")));
+        assertEquals(1, Integer.parseInt(cube.getScores().get("A")));
+        assertEquals(3, Integer.parseInt(cube.getScores().get("B")));
+        assertEquals(4, Integer.parseInt(cube.getScores().get("F")));
+        assertEquals(8, Integer.parseInt(cube.getScores().get("QU")));
+        assertEquals(4, Integer.parseInt(cube.getScores().get("Y")));
+        assertEquals(10, Integer.parseInt(cube.getScores().get("Z")));
 
     }
 
@@ -89,36 +87,36 @@ public class CubeTests {
      * Test randomness of generated cube
      */
     @Test
-    public void testIsPopulateCubeRandom(){
+    public void testIsPopulateCubeRandom() {
         String[] letter = new String[3];
 
-        for(int i=0; i<3; i++) {
+        for (int i = 0; i < 3; i++) {
             cube = new Cube("en_letters");
             cube.populateCube();
             letter[i] = cube.getBlock(0, 0, 0).getLetter();
             System.out.println(letter[i]);
         }
-    assertFalse(letter[0].equals(letter[1]) && letter[1].equals(letter[2]));
+        assertFalse(letter[0].equals(letter[1]) && letter[1].equals(letter[2]));
     }
 
     /**
      * Test number of neighbouring blocks
      */
     @Test
-    public void testNeighboursNum(){
+    public void testNeighboursNum() {
 
         ArrayList<int[]> neighbours;
 
-        neighbours = cube.getNeighbours(0,0,0);
+        neighbours = cube.getNeighbours(0, 0, 0);
         assertEquals(7, neighbours.size());
 
-        neighbours = cube.getNeighbours(1,1,1);
+        neighbours = cube.getNeighbours(1, 1, 1);
         assertEquals(26, neighbours.size());
 
-        neighbours = cube.getNeighbours(0,1,0);
+        neighbours = cube.getNeighbours(0, 1, 0);
         assertEquals(11, neighbours.size());
 
-        neighbours = cube.getNeighbours(0,1,1);
+        neighbours = cube.getNeighbours(0, 1, 1);
         assertEquals(17, neighbours.size());
 
     }
@@ -127,16 +125,18 @@ public class CubeTests {
      * Test positions of neighbouring blocks
      */
     @Test
-    public void testNeighbourPos (){
+    public void testNeighbourPos() {
 
         ArrayList<int[]> neighbours;
 
-        int x; int z; int y;
+        int x;
+        int z;
+        int y;
         x = y = z = 0;
 
-        neighbours = cube.getNeighbours(x,y,z);
+        neighbours = cube.getNeighbours(x, y, z);
 
-        for (int[] i: neighbours){
+        for (int[] i : neighbours) {
             assertTrue(Math.abs(i[0] - x) <= 1);
             assertTrue(Math.abs(i[1] - y) <= 1);
             assertTrue(Math.abs(i[2] - z) <= 1);

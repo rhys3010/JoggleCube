@@ -8,20 +8,17 @@
 
 package uk.ac.aber.cs221.GP01;
 
-import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
-import uk.ac.aber.cs221.GP01.main.java.ui.Dialog;
-import uk.ac.aber.cs221.GP01.main.java.ui.UI;
-import uk.ac.aber.cs221.GP01.main.java.ui.controllers.Help;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
+import uk.ac.aber.cs221.GP01.main.java.ui.Dialog;
+import uk.ac.aber.cs221.GP01.main.java.ui.UI;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -40,7 +37,7 @@ public class Main extends Application {
      * Start the JavaFX
      *
      * @param primaryStage The main Stage(window) of the application upon creation)
-     * @throws IOException  if the Start.fxml is not found.
+     * @throws IOException if the Start.fxml is not found.
      */
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -65,20 +62,20 @@ public class Main extends Application {
         primaryStage.setResizable(false);
 
         // Add all icon sizes to stage
-        for(int i = 0; i < 4; i++){
-            primaryStage.getIcons().add(new Image("/uk/ac/aber/cs221/GP01/main/resource/img/icon/icon" + (int)Math.pow(2,(i+4)) + ".png"));
+        for (int i = 0; i < 4; i++) {
+            primaryStage.getIcons().add(new Image("/uk/ac/aber/cs221/GP01/main/resource/img/icon/icon" + (int) Math.pow(2, (i + 4)) + ".png"));
         }
 
-        primaryStage.setOnCloseRequest(e ->{
+        primaryStage.setOnCloseRequest(e -> {
 
             // Display 'are you sure?' overlay for quitting
             Dialog dialog = new Dialog();
             Optional<ButtonType> result = dialog.showConfirmationDialog("Quit Game", "Are you sure you want to quit the game?");
 
-            if(result.get() != ButtonType.OK){
+            if (result.get() != ButtonType.OK) {
                 // Stop the exit event
                 e.consume();
-            }else{
+            } else {
                 // Save the highscores and allow the program to quit
                 JoggleCube.getInstance().saveOverallScores();
                 // Stop the timer thread

@@ -7,9 +7,9 @@
    */
 package uk.ac.aber.cs221.GP01.test.java.backend;
 
-import uk.ac.aber.cs221.GP01.main.java.model.Dictionary;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import uk.ac.aber.cs221.GP01.main.java.model.Dictionary;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,7 +28,7 @@ class DictionaryTests {
      * Load dictionary before each test
      */
     @BeforeEach
-    public  void setUp(){
+    public void setUp() {
         dic.loadDictionary("test_dictionary");
     }
 
@@ -37,7 +37,7 @@ class DictionaryTests {
      * Test to see if dictionary loads
      */
     @Test
-    public void testDictionaryLoad(){
+    public void testDictionaryLoad() {
         assertEquals(7, dic.getDictionarySize());
 
     }
@@ -46,7 +46,7 @@ class DictionaryTests {
      * Test to check if real words are contained within dictionary
      */
     @Test
-    public void testSearchDictionary(){
+    public void testSearchDictionary() {
         assertTrue(dic.searchDictionary("apron"));
         assertFalse(dic.searchDictionary("wordThatIsNotInDictionary"));
     }

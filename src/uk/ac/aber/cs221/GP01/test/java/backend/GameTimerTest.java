@@ -7,24 +7,10 @@
    */
 package uk.ac.aber.cs221.GP01.test.java.backend;
 
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import org.junit.jupiter.api.BeforeEach;
-import org.testfx.framework.junit5.ApplicationTest;
-import uk.ac.aber.cs221.GP01.Main;
-import uk.ac.aber.cs221.GP01.main.java.model.GameTimer;
-import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
-import uk.ac.aber.cs221.GP01.main.java.ui.IFrontend;
-import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
-import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
-import uk.ac.aber.cs221.GP01.main.java.ui.UI;
-import uk.ac.aber.cs221.GP01.main.java.ui.controllers.GameView;
-import javafx.application.Platform;
-import javafx.scene.control.Label;
 import org.junit.jupiter.api.Test;
+import org.testfx.framework.junit5.ApplicationTest;
+import uk.ac.aber.cs221.GP01.main.java.model.GameTimer;
 
-import java.io.IOException;
 import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -59,30 +45,28 @@ class GameTimerTest extends ApplicationTest {
      *
      * @throws InterruptedException
 
-    @Test
-    public void testStartTimer() throws InterruptedException {
+     @Test public void testStartTimer() throws InterruptedException {
 
-        Label timerLabel = new Label()
-      GameView.getInstance().setTimerLabel(timerLabel);
+     Label timerLabel = new Label()
+     GameView.getInstance().setTimerLabel(timerLabel);
 
-        Platform.runLater(()->timer.startTimer());
-        assertEquals(Duration.ZERO, timer.getCurrentTime());
+     Platform.runLater(()->timer.startTimer());
+     assertEquals(Duration.ZERO, timer.getCurrentTime());
 
-        Thread.sleep(1000);
-        assertEquals(Duration.ofSeconds(179), timer.getCurrentTime());
-        assertEquals("2:59", GameView.getInstance().getTimerLabel().getText());
-    }*/
+     Thread.sleep(1000);
+     assertEquals(Duration.ofSeconds(179), timer.getCurrentTime());
+     assertEquals("2:59", GameView.getInstance().getTimerLabel().getText());
+     }*/
 
     /**
      * Test if gameTimer stops
 
-    @Test
-    public void testFinishTimer() {
+     @Test public void testFinishTimer() {
 
-        timer.finishTimer();
-        System.out.print(GameView.getInstance().getRoot().getChildren());
-        //assertTrue(GameView.getInstance().getRoot().getChildren().contains(Navigation.getInstance().getScreens().get(ScreenType.END).getRoot()));
-    }*/
+     timer.finishTimer();
+     System.out.print(GameView.getInstance().getRoot().getChildren());
+     //assertTrue(GameView.getInstance().getRoot().getChildren().contains(Navigation.getInstance().getScreens().get(ScreenType.END).getRoot()));
+     }*/
 
     /**
      * Test if gameTimer interrupts

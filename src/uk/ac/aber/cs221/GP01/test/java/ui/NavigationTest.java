@@ -7,12 +7,6 @@
    */
 package uk.ac.aber.cs221.GP01.test.java.ui;
 
-import uk.ac.aber.cs221.GP01.Main;
-import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
-import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
-
-import uk.ac.aber.cs221.GP01.main.java.ui.controllers.Help;
-import uk.ac.aber.cs221.GP01.main.java.ui.controllers.Start;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
@@ -26,8 +20,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationTest;
+import uk.ac.aber.cs221.GP01.Main;
+import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
+import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
+import uk.ac.aber.cs221.GP01.main.java.ui.controllers.Start;
+
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -67,14 +67,14 @@ public class NavigationTest extends ApplicationTest {
      * Open menu before each test
      */
     @BeforeEach
-    public  void setup(){
+    public void setup() {
         Navigation.getInstance().switchScreen(ScreenType.START);
     }
 
     /**
      * Set home menu as root
      */
-    public void setRootNode(){
+    public void setRootNode() {
         rootNode = Navigation.getInstance().getMain().getRoot();
     }
 
@@ -99,26 +99,26 @@ public class NavigationTest extends ApplicationTest {
      * Tests overlays
      */
     @Test
-    public void showAndHideOverlay(){
+    public void showAndHideOverlay() {
         ObservableList<Node> children;
 
-        Platform.runLater(()-> Navigation.getInstance().showOverlay(ScreenType.HELP, Start.getInstance()));
-        clickOn(400,400);  //why
+        Platform.runLater(() -> Navigation.getInstance().showOverlay(ScreenType.HELP, Start.getInstance()));
+        clickOn(400, 400);  //why
 
         assertTrue(Start.getInstance().getMainNode().isDisabled());
 
         children = Start.getInstance().getRoot().getChildren();
-        assertEquals(2,children.size());
+        assertEquals(2, children.size());
 
         Node expected = Navigation.getInstance().getScreens().get(ScreenType.HELP).getRoot();
-        Node actual =  Start.getInstance().getRoot().getChildren().get(1);
+        Node actual = Start.getInstance().getRoot().getChildren().get(1);
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
-        Platform.runLater(()-> Navigation.getInstance().hideOverlay(ScreenType.HELP, Start.getInstance()));
-        clickOn(400,400);   //why ( random position )
+        Platform.runLater(() -> Navigation.getInstance().hideOverlay(ScreenType.HELP, Start.getInstance()));
+        clickOn(400, 400);   //why ( random position )
 
         children = Start.getInstance().getRoot().getChildren();
-        assertEquals(1,children.size());
+        assertEquals(1, children.size());
     }
 }
