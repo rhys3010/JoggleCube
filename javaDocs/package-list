@@ -2,4 +2,6 @@ uk.ac.aber.cs221.GP01
 uk.ac.aber.cs221.GP01.main.java.model
 uk.ac.aber.cs221.GP01.main.java.ui
 uk.ac.aber.cs221.GP01.main.java.ui.controllers
-uk.ac.aber.cs221.GP01.test.java
+uk.ac.aber.cs221.GP01.test.java.backend
+uk.ac.aber.cs221.GP01.test.java.ui
+uk.ac.aber.cs221.GP01.test.java.ui.controllers
