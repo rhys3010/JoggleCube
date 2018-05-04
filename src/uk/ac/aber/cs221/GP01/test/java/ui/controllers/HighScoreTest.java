@@ -1,7 +1,7 @@
 /*
    * @(#) HighScoreTest.java 1.0 2018/03/05
    *
-   * Copyright (c) 2012 University of Wales, Aberystwyth.
+   * Copyright (c) 2018 University of Wales, Aberystwyth.
    * All rights reserved.
    *
    */
