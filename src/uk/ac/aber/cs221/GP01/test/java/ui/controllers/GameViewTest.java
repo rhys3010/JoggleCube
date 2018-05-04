@@ -8,11 +8,9 @@
 package uk.ac.aber.cs221.GP01.test.java.ui.controllers;
 
 import javafx.application.Platform;
+import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -26,6 +24,7 @@ import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
 import uk.ac.aber.cs221.GP01.main.java.ui.Dialog;
 import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
 import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
+import uk.ac.aber.cs221.GP01.main.java.ui.controllers.End;
 import uk.ac.aber.cs221.GP01.main.java.ui.controllers.GameView;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -139,17 +138,18 @@ public class GameViewTest  extends ApplicationTest {
     @Test
     public void btnEndGameClicked(){
         Platform.runLater(()->{
-            Parent root = GameView.getInstance().getRoot();
-            assertFalse(view.getHamburgerContext().isShowing());
 
-            view.btnMenuClicked();
+            view.btnEndGameClicked();
+            clickOn(End.getInstance().getInformationDialog().getInformationDialog().getDialogPane().lookupButton(ButtonType.OK));
 
-            assertTrue(view.getHamburgerContext().isShowing());
-
-            Button button = from(root).lookup("#quitBtn").query();
-            System.out.println(button.getText());
-            clickOn(button);
 
         });
+        clickOn(400,400);
+        Parent root = Navigation.getInstance().getMain().getRoot();
+        System.out.print(GameView.getInstance().getRoot().getChildren());
+
+       // Node expected = Navigation.getInstance().getScreens().get(ScreenType.END).getRoot();
+       // Node actual =  Start.getInstance().getRoot().getChildren().get(1);
+
     }
 }
