@@ -8,20 +8,20 @@
 
 package uk.ac.aber.cs221.GP01.main.java.ui.controllers;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
 import uk.ac.aber.cs221.GP01.main.java.ui.Dialog;
 import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
 import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
-import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
 
 /**
  * LoadGrid - A class that controls the LoadGrid scene that is defined in Load.fxml
  * Used with Load.fxm
  *
  * @author Nathan Williams (naw21)
+ * @author Rhys Evans (rhe24)
  * @version 1.1
  */
 public class LoadGrid extends BaseScreen implements INeedPrep {

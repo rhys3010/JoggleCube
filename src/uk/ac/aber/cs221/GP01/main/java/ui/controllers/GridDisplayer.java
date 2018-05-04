@@ -8,7 +8,6 @@
 
 package uk.ac.aber.cs221.GP01.main.java.ui.controllers;
 
-import uk.ac.aber.cs221.GP01.main.java.ui.Settings;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -31,6 +30,7 @@ import javafx.scene.shape.Box;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.util.Duration;
+import uk.ac.aber.cs221.GP01.main.java.ui.Settings;
 
 /**
  *

@@ -9,9 +9,10 @@
 package uk.ac.aber.cs221.GP01.main.java.ui.controllers;
 
 /**
- * Interface that preps overlays
+ * Interface that prepares overlays for display
  *
  * @author Nathan Williams naw21
+ * @version 1.1
  */
 public interface INeedPrep {
     void prepView();

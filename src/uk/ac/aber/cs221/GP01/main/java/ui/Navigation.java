@@ -7,9 +7,9 @@
    */
 package uk.ac.aber.cs221.GP01.main.java.ui;
 
-import uk.ac.aber.cs221.GP01.main.java.ui.controllers.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import uk.ac.aber.cs221.GP01.main.java.ui.controllers.*;
 
 import java.util.HashMap;
 
