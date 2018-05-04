@@ -7,7 +7,6 @@
    */
 package uk.ac.aber.cs221.GP01.test.java.ui.controllers;
 
-
 import javafx.application.Platform;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,6 +29,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class GameViewTest  extends ApplicationTest {
 
+    /**
+     * Creates instance of game for testing
+     */
     @Override
     public void start (Stage stage) throws Exception {
         Main m = new Main();
@@ -39,7 +41,9 @@ public class GameViewTest  extends ApplicationTest {
 
     private GameView view = GameView.getInstance();
 
-
+    /**
+     * Resets game before each test
+     */
     @BeforeEach
     public void reset() {
         JoggleCube.getInstance().resetGameState();
@@ -49,9 +53,10 @@ public class GameViewTest  extends ApplicationTest {
         clickOn(700,320);
     }
 
-
-
-        @Test
+    /**
+     * Tests scoreLabel and timerLabel
+     */
+    @Test
         public void prepViewTest(){
             assertEquals("0", view.getScoreLabel().getText());
             assertEquals("3:00", view.getTimerLabel().getText());
@@ -59,7 +64,10 @@ public class GameViewTest  extends ApplicationTest {
             assertEquals("-fx-text-fill: white;", view.getTimerLabel().getStyle());
         }
 
-        @Test
+    /**
+     * Test clear button
+     */
+    @Test
         public void testBtnClearClicked() {
             Platform.runLater(()->{
                 assertEquals("", view.getText());
@@ -67,7 +75,6 @@ public class GameViewTest  extends ApplicationTest {
                     for (int y = 0; y < 3; y++)
                         for (int z = 0; z < 3; z++)
                             assertTrue(view.getGridDisplayer().isActive(x, y, z));
-
 
                 view.setText("text");
                 view.getGridDisplayer().setInActiveP(1,1,1);
@@ -85,6 +92,9 @@ public class GameViewTest  extends ApplicationTest {
             });
         }
 
+    /**
+     * Tests submit button
+     */
     @Test
     public void testBtnSubmitClicked() {
         Platform.runLater(()-> {
@@ -100,6 +110,9 @@ public class GameViewTest  extends ApplicationTest {
         });
     }
 
+    /**
+     * Test hamburger button
+     */
     @Test
     public void testBtnMenuClicked() {
         Platform.runLater(()-> {
@@ -108,18 +121,15 @@ public class GameViewTest  extends ApplicationTest {
             view.btnMenuClicked();
 
             assertTrue(view.getHamburgerContext().isShowing());
-
-            //Point2D screenPos = view.getMenuButton().localToScreen(view.getMenuButton().getLayoutX(), view.getMenuButton().getLayoutY());
-            //assertTrue(view.getHamburgerContext().getX() == screenPos.getX() - 100);
-            //assertTrue(view.getHamburgerContext().getY() == screenPos.getY() + 20);
         });
     }
 
+    /**
+     * Test when end game button clicked
+     */
     @Test
     public void btnEndGameClicked(){
         Platform.runLater(()->{
-
-    
         });
     }
 }
