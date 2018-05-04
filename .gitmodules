@@ -10,3 +10,6 @@
 [submodule "docs/testreport"]
 	path = docs/testreport
 	url = https://git.overleaf.com/15890117htwnyfzfbtxf
+[submodule "docs/endprojreport"]
+	path = docs/endprojreport
+	url = https://git.overleaf.com/15890593spztrvxnsfqh
