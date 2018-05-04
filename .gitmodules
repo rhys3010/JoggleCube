@@ -7,3 +7,6 @@
 [submodule "docs/testspec"]
 	path = docs/testspec
 	url = https://git.overleaf.com/14423457gtchkhnhyjgk
+[submodule "docs/testreport"]
+	path = docs/testreport
+	url = https://git.overleaf.com/15890117htwnyfzfbtxf
