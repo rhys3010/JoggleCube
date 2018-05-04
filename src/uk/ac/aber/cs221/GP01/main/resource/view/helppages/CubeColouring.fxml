@@ -22,9 +22,8 @@
 <!--
     * CubeColouring - The help page for cube colours guide
     *
-    * @author Rhys Evans (rhe24@aber.ac.uk)
     * @author Alex Thumwood (alt38@aber.ac.uk)
-    * @version 2.0
+    * @version 1.0
 -->
 
 <?import javafx.scene.AmbientLight?>

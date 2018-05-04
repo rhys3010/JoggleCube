@@ -27,7 +27,7 @@
     *
     * @author Nathan Williams (naw21)
     * @author Rhys Evans (rhe24)
-    * @version 0.1  DRAFT
+    * @version 1.1
 -->
 
 <StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">

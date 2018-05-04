@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-        * @(#) CubeColouring.fxml 1.0 2018/03/11
+        * @(#) CubeColouringCB.fxml 1.0 2018/03/11
         *
         * Copyright (c) 20018 University of Wales, Aberystwyth.
         * All rights reserved.
@@ -22,9 +22,8 @@
 <!--
     * CubeColouring - The help page for cube colours guide
     *
-    * @author Rhys Evans (rhe24@aber.ac.uk)
     * @author Alex Thumwood (alt38@aber.ac.uk)
-    * @version 2.0
+    * @version 1.0
 -->
 
 <?import javafx.scene.AmbientLight?>
