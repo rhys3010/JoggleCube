@@ -7,14 +7,13 @@
    */
 package uk.ac.aber.cs221.GP01.main.java.model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import org.apache.commons.io.FileUtils;
 import uk.ac.aber.cs221.GP01.main.java.ui.Dialog;
 import uk.ac.aber.cs221.GP01.main.java.ui.Settings;
 import uk.ac.aber.cs221.GP01.main.java.ui.UI;
 import uk.ac.aber.cs221.GP01.main.java.ui.controllers.GameView;
-import uk.ac.aber.cs221.GP01.main.java.ui.controllers.LoadGrid;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -38,14 +37,17 @@ import java.util.Scanner;
  */
 public class JoggleCube implements IJoggleCube {
 
+    // Singleton instance of the class
     private static IJoggleCube joggleCube;
 
+    // Dictionary object
     private Dictionary dictionary;
 
+    // Hashmap to store all loaded dictionaries from external file
     private HashMap<String, Dictionary> loadedDictionaries = new HashMap<>();
 
     private Cube cube;
-    
+
     private GameTimer timer;
 
     private ArrayList<String> storedWords;

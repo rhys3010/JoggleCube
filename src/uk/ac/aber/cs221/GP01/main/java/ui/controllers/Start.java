@@ -8,14 +8,14 @@
 
 package uk.ac.aber.cs221.GP01.main.java.ui.controllers;
 
-import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
-import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
-import uk.ac.aber.cs221.GP01.main.java.ui.Settings;
-import uk.ac.aber.cs221.GP01.main.java.ui.UI;
-import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
+import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
+import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
+import uk.ac.aber.cs221.GP01.main.java.ui.Settings;
+import uk.ac.aber.cs221.GP01.main.java.ui.UI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,6 +25,7 @@ import java.util.ResourceBundle;
  * How it is used
  *
  * @author Nathan Williams (naw21)
+ * @author Rhys Evans (rhe24)
  * @version 1.1
  */
 

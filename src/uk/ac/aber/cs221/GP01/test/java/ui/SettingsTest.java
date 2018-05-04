@@ -1,5 +1,5 @@
 /*
-   * @(#) StartController.java 1.0 2018/03/05
+   * @(#) SettingsTest.java 1.0 2018/03/05
    *
    * Copyright (c) 2012 University of Wales, Aberystwyth.
    * All rights reserved.

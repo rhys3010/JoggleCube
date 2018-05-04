@@ -3,7 +3,7 @@
 <!--
         * @(#) End.fxml 1.1 2018/02/04
         *
-        * Copyright (c) 20018 University of Wales, Aberystwyth.
+        * Copyright (c) 2018 University of Wales, Aberystwyth.
         * All rights reserved.
         *
 -->
@@ -21,7 +21,7 @@
     * replay or return to menu
     *
     * @author Rhys Evans (rhe24@aber.ac.uk)
-    * @version 0.1  DRAFT
+    * @version 1.1
 -->
 
 <VBox fx:id="endOverlay" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="endOverlay" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">

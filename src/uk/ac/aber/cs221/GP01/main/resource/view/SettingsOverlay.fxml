@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-        * @SettingsOverlayings.fxml 1.0 2018/03/12
+        * @SettingsOverlay.fxml 1.0 2018/03/12
         *
         * Copyright (c) 2018 University of Wales, Aberystwyth.
         * All rights reserved.
@@ -12,7 +12,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
@@ -24,7 +23,7 @@
     *
     * @author Nathan Williams (naw21)
     * @author Rhys Evans (rhe24)
-    * @version 0.2
+    * @version 1.0
 -->
 
 <VBox fx:id="settingsOverlay" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="settingsOverlay" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">

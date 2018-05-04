@@ -1,9 +1,8 @@
 /*
-   * @(#) BaseStyle.css 1.1 2018/02/16
+   * @(#) BaseStyle.css 1.3 2018/02/16
    *
    * Copyright (c) 2018 University of Wales, Aberystwyth.
    * All rights reserved.
-   *
    */
 
 
@@ -18,7 +17,7 @@
   * This sheet handles styling of the recurring footer and the icons within it
   *
   * @author Rhys Evans (rhe24)
-  * @version 0.3
+  * @version 1.3
  */
 
 
@@ -100,6 +99,9 @@ Button {
     -fx-spacing: 30px;
 }
 
+/**
+  * The style applied to all the icons in the footer
+ */
 .footerIcon{
     -fx-background-color: transparent;
     -fx-background-radius: 0;
@@ -111,6 +113,10 @@ Button {
     -fx-background-size: 48 48;
     -fx-background-insets: 0 0 0 0, 0, 0, 0;
 }
+
+/**
+  * Specific images for each icon appearing in the footer
+ */
 
 #btnSettings{
     -fx-background-image: url("../img/icon/settings_icon_inactive.png");
@@ -127,6 +133,10 @@ Button {
 #btnMenu{
    -fx-background-image: url("../img/icon/menu_icon_inactive.png");
 }
+
+/**
+  * Hover behaviour to change the image to a lighter shade
+ */
 
 #btnSettings:hover{
     -fx-background-image: url("../img/icon/settings_icon.png");

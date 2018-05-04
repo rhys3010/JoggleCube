@@ -8,12 +8,12 @@
 
 package uk.ac.aber.cs221.GP01.main.java.ui;
 
-import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import javafx.stage.StageStyle;
+
 import java.util.Optional;
 
 /**
@@ -101,14 +101,6 @@ public class Dialog implements IDialog {
         informationDialog.showAndWait();
     }
 
-    public Alert getConfirmationDialog() {
-        return confirmationDialog;
-    }
-
-    public Alert getInformationDialog() {
-        return informationDialog;
-    }
-
     /**
      * Verify that user input is correct
      *
@@ -116,15 +108,31 @@ public class Dialog implements IDialog {
      * @return true if string is valid, else false
      */
     public boolean isValidInput(String input) {
-        return input.matches("^[a-zA-Z0-9_]*$") && !input.isEmpty();
+        return input.matches("^[a-zA-Z0-9_]*$") && (input.length() > 1) && (input.length() < 20);
     }
 
     /**
-     * Gets text imput dialog
+     * Gets text iiput dialog
      *
      * @return textImputDialog
      */
     public TextInputDialog getTextInputDialog() {
         return textInputDialog;
+    }
+
+    /**
+     * Get the confirmation dialog object
+     * @return confirmationDialog
+     */
+    public Alert getConfirmationDialog() {
+        return confirmationDialog;
+    }
+
+    /**
+     * Get the information dialog object
+     * @return informationDialog
+     */
+    public Alert getInformationDialog() {
+        return informationDialog;
     }
 }

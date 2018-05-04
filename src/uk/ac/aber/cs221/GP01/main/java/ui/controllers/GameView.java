@@ -8,28 +8,23 @@
 
 package uk.ac.aber.cs221.GP01.main.java.ui.controllers;
 
-import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
-import uk.ac.aber.cs221.GP01.main.java.ui.Dialog;
-import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
-import uk.ac.aber.cs221.GP01.main.java.ui.Settings;
-import uk.ac.aber.cs221.GP01.main.java.ui.UI;
-import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
-import javafx.scene.*;
+import javafx.scene.Group;
+import javafx.scene.SubScene;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ContextMenuEvent;
-import javafx.scene.layout.*;
-import javafx.stage.StageStyle;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
+import uk.ac.aber.cs221.GP01.main.java.ui.Dialog;
+import uk.ac.aber.cs221.GP01.main.java.ui.*;
 
 import java.util.Optional;
 
@@ -52,9 +47,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     /**
      *  a private constructor so the class can't be instantiated by any other class.
      */
-    private GameView() {
-    }
-
+    private GameView() {}
     // holds the grid displayer currently in use to help display the grids
     private GridDisplayer gridDisplayer;
 
@@ -243,7 +236,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     }
 
     /**
-     * gets timerTable
+     * Gets timer label FXML node
      *
      * @return timerLabel
      */
@@ -253,7 +246,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     }
 
     /**
-     *
+     * Gets the dialog object to prompt user for name
      *
      * @return dialog
      */
@@ -262,7 +255,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     }
 
     /**
-     * gets scoreLabel
+     * Gets the score label FXML node
      *
      * @return scoreLabel
      */
@@ -272,7 +265,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     }
 
     /**
-     * gets cubeContainer
+     * Gets cubeContainer FXML node
      *
      * @return cubeContainer
      */
@@ -282,7 +275,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     }
 
     /**
-     * gets text within textField
+     * Gets text within textField
      *
      * @return textField
      */
@@ -291,7 +284,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     }
 
     /**
-     * gets gridDisplayer
+     * Gets gridDisplayer object to draw grid
      *
      * @return gridDisplayer
      */
@@ -300,7 +293,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     }
 
     /**
-     * gets hamburgerContext
+     * Gets hamburger context menu FXML node
      *
      * @return hamburger Icon
      */
@@ -309,7 +302,7 @@ public class GameView extends BaseScreen implements IGame, INeedPrep {
     }
 
     /**
-     * gets menuButton
+     * Gets menuButton FXML node
      *
      * @return menuButton
      */

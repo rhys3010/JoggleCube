@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-        * @(#) Scoring.fxml 1.0 2018/03/11
+        * @(#) Selecting.fxml 1.0 2018/03/11
         *
         * Copyright (c) 20018 University of Wales, Aberystwyth.
         * All rights reserved.
@@ -17,7 +17,7 @@
 <!--
     * Selecting - The help page that contains an explanation of how to select and submit words
     *
-    * @author Rhys Evans (rhe24@aber.ac.uk)
+
     * @author Alex Thumwood (alt38@aber.ac.uk)
     * @version 1.0
 -->

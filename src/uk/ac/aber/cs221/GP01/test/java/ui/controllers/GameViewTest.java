@@ -1,3 +1,10 @@
+/*
+   * @(#) GameViewTest.java 1.0 2018/03/05
+   *
+   * Copyright (c) 2012 University of Wales, Aberystwyth.
+   * All rights reserved.
+   *
+   */
 package uk.ac.aber.cs221.GP01.test.java.ui.controllers;
 
 
@@ -22,7 +29,12 @@ import uk.ac.aber.cs221.GP01.main.java.ui.controllers.GameView;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+/**
+ * Tests for the GameView class
+ *
+ * @author Agata Lefek agl6
+ * @author Aleksandra Madej alm82
+ */
 public class GameViewTest  extends ApplicationTest {
 
     @Override
@@ -112,16 +124,7 @@ public class GameViewTest  extends ApplicationTest {
     public void btnEndGameClicked(){
        /* Platform.runLater(()->{
 
-            assertFalse(view.getHamburgerContext().isShowing());
-            view.btnMenuClicked();
-            assertTrue(view.getHamburgerContext().isShowing());
+    
         });
-
-        Parent root = GameView.getInstance().getRoot();
-        clickOn((Button)from(root).lookup("#menuButton").query());*/
-
-       // System.out.print(from(root).lookup("#quitBtn"));
-       // clickOn((Button)from(root).lookup("#quitBtn"));
-
     }
 }

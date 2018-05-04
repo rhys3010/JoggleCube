@@ -8,10 +8,9 @@
 
 package uk.ac.aber.cs221.GP01.main.java.ui;
 
-import uk.ac.aber.cs221.GP01.main.java.ui.controllers.*;
-import uk.ac.aber.cs221.GP01.main.java.ui.controllers.SettingsOverlay;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import uk.ac.aber.cs221.GP01.main.java.ui.controllers.*;
 
 import java.io.IOException;
 
@@ -22,7 +21,7 @@ import java.io.IOException;
  *
  * @author Rhys Evans (rhe24@aber.ac.uk)
  * @author Nathan Williams (naw21)
- * @version 1.1  DRAFT
+ * @version 1.1
  * @see IFrontend
  */
 public class UI implements IFrontend {
@@ -32,10 +31,6 @@ public class UI implements IFrontend {
      */
     private static IFrontend ui;
 
-    /**
-     * Default constructor
-     * todo: needed?
-     */
     private UI(){}
 
     /**

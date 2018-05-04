@@ -8,8 +8,6 @@
 
 package uk.ac.aber.cs221.GP01.main.java.ui.controllers;
 
-import uk.ac.aber.cs221.GP01.main.java.model.IScore;
-import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
@@ -22,6 +20,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
+import uk.ac.aber.cs221.GP01.main.java.model.IScore;
+import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,18 +40,8 @@ import java.util.ResourceBundle;
 public class HighScore extends BaseScreen implements Initializable, INeedPrep {
 
     private static HighScore highScoreView;
-    private HighScore(){}
 
-    public static HighScore getInstance(){
-        if(highScoreView == null){
-            synchronized (HighScore.class){
-                if(highScoreView == null){
-                    highScoreView = new HighScore();
-                }
-            }
-        }
-        return highScoreView;
-    }
+    private HighScore(){}
 
     /**
      * High IScore Table
@@ -207,6 +197,21 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
     }
 
     /**
+     * Gets the instance of the HighScore class
+     * @return highScoreView
+     */
+    public static HighScore getInstance(){
+        if(highScoreView == null){
+            synchronized (HighScore.class){
+                if(highScoreView == null){
+                    highScoreView = new HighScore();
+                }
+            }
+        }
+        return highScoreView;
+    }
+
+    /**
      * Gets overall scores
      *
      * @return overallHighscores
@@ -224,22 +229,43 @@ public class HighScore extends BaseScreen implements Initializable, INeedPrep {
         return currentCubeScores;
     }
 
+    /**
+     * Gets the FXML node for the left page nav button
+     * @return leftPageNav
+     */
     public Button getLeftPageNav() {
         return  leftPageNav;
     }
 
+    /**
+     * Gets the FXML node for the right page nav
+     * @return rightPageNav
+     */
     public Button getRightPageNav() {
         return rightPageNav;
     }
 
+    /**
+     * Gets the text of the the highscore table page label
+     * @return
+     */
     public String getLabel() {
         return highScorePageLabel.getText();
     }
 
+    /**
+     * Gets the high score TableView object.
+     * @return highScoreTable
+     */
     public TableView<IScore> getTable() {
         return highScoreTable;
     }
 
+    /**
+     * Tests the population of the highsore table
+     * @param list
+     * @param title
+     */
     public void populateTableTest(ObservableList<IScore> list, String title) {
         populateTable(list,title);
     }

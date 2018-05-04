@@ -8,11 +8,11 @@
 
 package uk.ac.aber.cs221.GP01.main.java.ui.controllers;
 
-import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
-import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
+import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
+import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
 
 /**
  * The Parent Class of any screen controller

@@ -8,6 +8,8 @@
 
 package uk.ac.aber.cs221.GP01.main.java.ui;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import java.util.Optional;
 
@@ -50,5 +52,24 @@ public interface IDialog {
      * @param input - the user's input
      */
     boolean isValidInput(String input);
+
+    /**
+     * Gets text iiput dialog
+     *
+     * @return textImputDialog
+     */
+    TextInputDialog getTextInputDialog();
+
+    /**
+     * Get the confirmation dialog object
+     * @return confirmationDialog
+     */
+    Alert getConfirmationDialog();
+
+    /**
+     * Get the information dialog object
+     * @return informationDialog
+     */
+    Alert getInformationDialog();
 
 }

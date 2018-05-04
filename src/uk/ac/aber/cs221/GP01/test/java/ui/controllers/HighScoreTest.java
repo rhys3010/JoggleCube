@@ -1,5 +1,5 @@
 /*
-   * @(#) StartController.java 1.0 2018/03/05
+   * @(#) HighScoreTest.java 1.0 2018/03/05
    *
    * Copyright (c) 2012 University of Wales, Aberystwyth.
    * All rights reserved.
@@ -7,17 +7,17 @@
    */
 package uk.ac.aber.cs221.GP01.test.java.ui.controllers;
 
-import uk.ac.aber.cs221.GP01.Main;
-import uk.ac.aber.cs221.GP01.main.java.model.IJoggleCube;
-import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
-import uk.ac.aber.cs221.GP01.main.java.ui.controllers.HighScore;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
+import uk.ac.aber.cs221.GP01.Main;
+import uk.ac.aber.cs221.GP01.main.java.model.IJoggleCube;
+import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
+import uk.ac.aber.cs221.GP01.main.java.ui.controllers.HighScore;
 
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 /**
  * Tests for the HighScore class
@@ -25,23 +25,20 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author Agata Lefek agl6
  * @author Aleksandra Madej alm82
  */
-public class HighScoreTest extends ApplicationTest{
+public class HighScoreTest extends ApplicationTest {
 
     HighScore score = HighScore.getInstance();
     IJoggleCube cube = JoggleCube.getInstance();
 
     @BeforeEach
     public void reset() {
-
         score.prepView();
-
     }
 
     @Override
-    public void start (Stage stage) throws Exception {
+    public void start(Stage stage) throws Exception {
         Main m = new Main();
         m.start(stage);
-
     }
 
     @Test
