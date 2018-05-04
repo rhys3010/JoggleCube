@@ -1,3 +1,6 @@
 [submodule "docs/usecase"]
 	path = docs/usecase
 	url = https://git.overleaf.com/14423395dhpzyjhytjcs
+[submodule "docs/designdoc"]
+	path = docs/designdoc
+	url = https://git.overleaf.com/14422811ssxtzsfsnxdd
