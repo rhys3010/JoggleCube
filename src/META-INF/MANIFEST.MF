@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: cs221.GP01.Main
+Main-Class: uk.ac.aber.cs221.GP01.Main
 
