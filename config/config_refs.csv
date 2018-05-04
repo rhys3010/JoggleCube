@@ -1,5 +1,12 @@
 CONFIG_REF,Item,Name,Location,Status,Version
-GP01-UIS-UCD,User Interface Specification: Use Case Document,GP01-UIS-UCD.pdf,/docs/UserInterfaceSpecifications,RELEASE,1.2
-GP01-UIS-OP,User Interface Specification: Online Presentation,GP01-UIS-OP.pdf,/docs/UserInterfaceSpecifications,RELEASE,1.1
-GP01-TS-TS,Test Specification,GP01-TS-TS.pdf,/docs/TestSpecifications,RELEASE,1.1
-GP01-UIS-DS,Design Specification,GP01-UIS-DS.pdf,/docs/Design Specification,RELEASE,1.1
+GP01-UIS-UCD,User Interface Specification: Use Case Document,UIS.pdf,/docs/usecase/,RELEASE,1.2
+GP01-UIS-OP,User Interface Specification: Online Presentation,GP01-UIS-OP.pdf,/docs/,RELEASE,1.1
+GP01-TS-TS,Test Specification,testspec.pdf,/docs/testspec/,RELEASE,1.1
+GP01-UIS-DS,Design Specification,design-doc.pdf,/docs/designdoc/,RELEASE,1.1
+GP01-FS-PTR,Test Report,test-report.pdf,/docs/testreport/,Draft,0.1
+GP01-FS-EOP,End Of Project Report,end-project-report.pdf,/docs/endprojreport/,Draft,0.6
+GP01-FS-PMM,The Project Maintenance Manual,maintain-manual.pdf,/docs/maintman/,Review,0.4
+,,,,,
+,,,,,
+GP01-B-1.9,Usable Jar for java 1.9,GP01_1.9_v2.jar,/docs/release/,RELEASE,2
+GP01-B-1.8,Usable Jar for java 1.8,GP01_1.8_v2.jar,/docs/release/,RELEASE,2

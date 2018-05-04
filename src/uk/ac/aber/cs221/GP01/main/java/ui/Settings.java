@@ -8,10 +8,10 @@
 
 package uk.ac.aber.cs221.GP01.main.java.ui;
 
+import javafx.scene.control.ButtonType;
 import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
 import uk.ac.aber.cs221.GP01.main.java.ui.controllers.GameView;
 import uk.ac.aber.cs221.GP01.main.java.ui.controllers.SettingsOverlay;
-import javafx.scene.control.ButtonType;
 
 import java.util.Optional;
 
@@ -19,7 +19,7 @@ import java.util.Optional;
  * SettingsOverlay - Class to handle the preferred game configuration
  * Handle the settings of the game and adapt them depending on user input in the settings overlay
  *
- * @author Rhys Evans
+ * @author Rhys Evans (rhe24)
  * @author Nathan Williams (naw21)
  * @version 1.1
  * @see ISettings

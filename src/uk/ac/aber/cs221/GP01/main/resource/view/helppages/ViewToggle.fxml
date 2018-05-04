@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-        * @(#) Scoring.fxml 1.0 2018/03/11
+        * @(#) ViewToggle.fxml 1.0 2018/03/11
         *
         * Copyright (c) 20018 University of Wales, Aberystwyth.
         * All rights reserved.
@@ -17,7 +17,6 @@
 <!--
     * ViewToggle - The help page that explains how to change between 3D, 2.5D and 2D views
     *
-    * @author Rhys Evans (rhe24@aber.ac.uk)
     * @author Alex Thumwood (alt38@aber.ac.uk)
     * @version 1.0
 -->

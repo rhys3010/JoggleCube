@@ -8,13 +8,13 @@
 
 package uk.ac.aber.cs221.GP01.main.java.model;
 
+import javafx.application.Platform;
+import javafx.scene.control.Label;
 import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
 import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
 import uk.ac.aber.cs221.GP01.main.java.ui.Settings;
 import uk.ac.aber.cs221.GP01.main.java.ui.controllers.BaseScreen;
 import uk.ac.aber.cs221.GP01.main.java.ui.controllers.GameView;
-import javafx.application.Platform;
-import javafx.scene.control.Label;
 
 import java.time.Duration;
 
@@ -33,7 +33,7 @@ public class GameTimer implements IGameTimer, Runnable {
     public GameTimer(){}
 
     /**
-     * resets currentTime back to default duration
+     * Resets currentTime back to default duration
      */
     @Override
     public void resetTime() {

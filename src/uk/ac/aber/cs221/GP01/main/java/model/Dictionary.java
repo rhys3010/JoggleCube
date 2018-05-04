@@ -7,14 +7,9 @@
    */
 package uk.ac.aber.cs221.GP01.main.java.model;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 /**
  * This Interface handles the backend dictionary, as well as searching, loading and retrieving the size of the

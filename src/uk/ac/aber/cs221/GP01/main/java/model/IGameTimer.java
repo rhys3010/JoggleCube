@@ -37,31 +37,31 @@ public interface IGameTimer {
      *
      * @return interrupt
      */
-    public boolean isInterrupt();
+    boolean isInterrupt();
 
     /**
      * Sets interrupt variable to true
      */
-    public void interrupt();
+    void interrupt();
 
     /**
      * Launches startTimer in a seperate thread
      */
-    public void run();
+    void run();
 
     /**
      * Returns the current Duration
      *
      * @return currentTime
      */
-    public Duration getCurrentTime();
+    Duration getCurrentTime();
 
     /**
      * Sets the Duration of currentTime
      *
      * @param currentTime
      */
-    public void setCurrentTime(Duration currentTime);
+    void setCurrentTime(Duration currentTime);
 
 
 

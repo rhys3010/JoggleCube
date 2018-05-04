@@ -1,5 +1,5 @@
 /*
- * @(#) IFrontendController.java 1.1 2018/03/12
+ * @(#) IFrontend.java 1.1 2018/03/12
  *
  * Copyright (c) 2012 University of Wales, Aberystwyth.
  * All rights reserved.

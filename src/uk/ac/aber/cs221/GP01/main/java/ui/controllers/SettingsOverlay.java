@@ -7,11 +7,11 @@
  */
 package uk.ac.aber.cs221.GP01.main.java.ui.controllers;
 
-import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
-import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.CheckBox;
+import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
+import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
  * <p>
  * How it is used
  * @author Nathan Williams (naw21)
+ * @author Rhys Evans (rhe24)
  * @version 1.1
  */
 public class SettingsOverlay extends BaseOverlay implements INeedPrep, Initializable {
@@ -35,6 +36,10 @@ public class SettingsOverlay extends BaseOverlay implements INeedPrep, Initializ
 
     private SettingsOverlay(){}
 
+    /**
+     * Gets the singleton instance of the SettingsOverlay class
+     * @return
+     */
     public static SettingsOverlay getInstance(){
         if(settingsOverlay == null){
             synchronized (SettingsOverlay.class){
@@ -73,6 +78,9 @@ public class SettingsOverlay extends BaseOverlay implements INeedPrep, Initializ
     }
 
 
+    /**
+     * Prepare the overlay for display by running  initialization operations
+     */
     @Override
     public void prepView() {
         // Set the toggles and sliders to their default value from settings class
