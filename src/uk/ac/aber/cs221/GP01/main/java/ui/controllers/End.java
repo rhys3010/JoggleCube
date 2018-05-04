@@ -8,22 +8,18 @@
 
 package uk.ac.aber.cs221.GP01.main.java.ui.controllers;
 
-import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
-import uk.ac.aber.cs221.GP01.main.java.ui.Dialog;
-import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
-import uk.ac.aber.cs221.GP01.main.java.ui.UI;
-import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import org.junit.jupiter.api.Test;
+import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
+import uk.ac.aber.cs221.GP01.main.java.ui.Dialog;
+import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
+import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
+import uk.ac.aber.cs221.GP01.main.java.ui.UI;
 
 import java.io.IOException;
-import java.util.Optional;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * End - A class that controls the Pause subscene that is defined in End.fxml
@@ -41,14 +37,13 @@ public class End extends BaseOverlay implements INeedPrep {
     private End(){}
 
     @FXML
-    Label scoreLabel,highScoreLabel;
+    private Label scoreLabel,highScoreLabel;
 
     @FXML
-    Button saveButton;
+    private Button saveButton;
 
-    Dialog inputDialog;
-
-    Dialog informationDialog;
+    @FXML
+    private Dialog inputDialog, informationDialog;
 
     /**
      * Sets text for score and highscore, also enables and disables save button
@@ -157,10 +152,18 @@ public class End extends BaseOverlay implements INeedPrep {
         return highScoreLabel.getText();
     }
 
+    /**
+     * Gets the input dialog FXML node
+     * @return inputDialog
+     */
     public Dialog getInputDialog() {
         return inputDialog;
     }
 
+    /**
+     * Gets the information dialog FXML node
+     * @return informationDialog
+     */
     public Dialog getInformationDialog() {
         return informationDialog;
     }

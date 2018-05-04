@@ -1,5 +1,5 @@
 /*
-   * @(#) Score.java 1.0 2018/02/12
+   * @(#) Score.java 1.1 2018/02/12
    *
    * Copyright (c) 2018 University of Wales, Aberystwyth.
    * All rights reserved.

@@ -9,9 +9,7 @@ package uk.ac.aber.cs221.GP01.main.java.model;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Scanner;
-import java.util.function.Consumer;
 
 /**
  * HighScores - The purpose of this class is to be able to store and load high scores from file

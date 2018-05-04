@@ -8,15 +8,17 @@
 
 
 /**
-  * End - The stylesheet for the end overlay
+  * End.css - The stylesheet for the end overlay
   *
   * Most styling is self-explanatory
   *
   * @author Rhys Evans (rhe24)
-  * @version 0.1
+  * @version 1.1
  */
 
-
+/**
+  * The FXML parent node - style for opacity and specific size.
+ */
 .endOverlay{
     -fx-background-color: rgba(64, 64, 64, 0.95);
     -fx-pref-width: 250;

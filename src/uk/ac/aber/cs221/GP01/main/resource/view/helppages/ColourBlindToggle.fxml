@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-        * @(#) Scoring.fxml 1.0 2018/03/11
+        * @(#) ColourBlindToggle.fxml 1.0 2018/03/11
         *
         * Copyright (c) 20018 University of Wales, Aberystwyth.
         * All rights reserved.
@@ -17,9 +17,8 @@
 <!--
     * ColourBlindToggle - The help page that explains how to toggle between the regular and colour-blind friendly colour schemes.
     *
-    * @author Rhys Evans (rhe24@aber.ac.uk)
     * @author Alex Thumwood (alt38@aber.ac.uk)
-    * @version 3.0
+    * @version 1.0
 
 -->
 

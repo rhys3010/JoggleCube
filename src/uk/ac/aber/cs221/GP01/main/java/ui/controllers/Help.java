@@ -8,8 +8,6 @@
 
 package uk.ac.aber.cs221.GP01.main.java.ui.controllers;
 
-import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
-import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -19,6 +17,8 @@ import javafx.scene.Parent;
 import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
+import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,8 +29,9 @@ import java.util.ResourceBundle;
  * Controller for the Help.fxml file to handle the displaying of various help screens
  * @author Rhys Evans (rhe24)
  * @author Nathan Williams (naw21@aber.ac.uk)
- * @version 1.3
  * @author Alex Thumwood (alt38)
+ * @version 1.3
+ *
  */
 public class Help extends BaseOverlay implements Initializable, INeedPrep {
 
@@ -51,10 +52,22 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
      * The currently indexed help page (used to display correct page etc)
      */
     private int currentPageIndex;
+
+    /**
+     * The FXML node of the subscene that will act as a container for the help page
+     */
+    @FXML
+    private SubScene helpPageContainer;
+
+    /**
+     * The FXML node of the carousel indicator container
+     */
+    @FXML
+    private HBox carouselIndicatorContainer;
+
     /**
      * Create all the pages as FXML parent nodes
      */
-
     private Help(){
         try {
             helpScreens.add(createHelpPage("Introduction.fxml"));
@@ -68,22 +81,11 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
             helpScreens.add(createHelpPage("ColourBlindToggle.fxml"));
 
         } catch (IOException e) {
-            //todo do something here
+            // Print error to console to inform of missing source files
+            System.err.println("Error! Missing help page");
             e.printStackTrace();
         }
     }
-
-    /**
-     * The FXML node of the subscene that will act as a container for the help page
-     */
-    @FXML
-    private SubScene helpPageContainer;
-
-    /**
-     * The FXML node of the carousel indicator container
-     */
-    @FXML
-    HBox carouselIndicatorContainer;
 
     /**
      * Initialize the help overlay for first time use
@@ -240,12 +242,5 @@ public class Help extends BaseOverlay implements Initializable, INeedPrep {
      */
     public SubScene getHelpPageContainer() {
         return helpPageContainer;
-    }
-
-    /**
-     * MAY NEED DELETING
-     */
-    public void setHelpPageContainer(SubScene helpPageContainer) {
-        this.helpPageContainer = helpPageContainer;
     }
 }
