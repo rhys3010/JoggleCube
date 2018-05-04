@@ -45,11 +45,19 @@ class LoadGridTest extends ApplicationTest {
     Parent rootNode;
     LoadGrid load = LoadGrid.getInstance();
 
+    /**
+     * Open menu before each test
+     */
     @BeforeEach
     void setUp() {
         Start.getInstance().btnLoadGridClicked();
     }
 
+    /**
+     * Hides sage after each test
+     *
+     * @throws TimeoutException
+     */
     @AfterEach
     public void afterEachTest() throws TimeoutException {
         FxToolkit.hideStage();
@@ -66,6 +74,9 @@ class LoadGridTest extends ApplicationTest {
         m.start(stage);
     }
 
+    /**
+     * Sets home page as root
+     */
     public void setRootNode() {
         rootNode = Navigation.getInstance().getMain().getRoot();
     }
@@ -80,6 +91,9 @@ class LoadGridTest extends ApplicationTest {
         assertEquals(JoggleCube.getInstance().getRecentGrids(), items.getItems());
     }
 
+    /**
+     * Load grid and test it stars when start button is pressed
+     */
     @Test
     void btnStartGridClicked() {
         setRootNode();

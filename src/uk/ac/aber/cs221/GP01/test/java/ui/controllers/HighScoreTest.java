@@ -62,7 +62,6 @@ public class HighScoreTest extends ApplicationTest {
 
         assertEquals("All Cubes", score.getLabel());
         assertEquals(JoggleCube.getInstance().getOverallHighScores(), score.getTable().getItems());
-
     }
 
     /**
@@ -85,7 +84,6 @@ public class HighScoreTest extends ApplicationTest {
      */
     @Test
     public void changePageTest() {
-
         assertEquals("All Cubes", score.getLabel());
 
         score.changePage();
@@ -93,6 +91,5 @@ public class HighScoreTest extends ApplicationTest {
 
         score.changePage();
         assertEquals("All Cubes", score.getLabel());
-
     }
 }

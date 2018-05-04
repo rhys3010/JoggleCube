@@ -59,7 +59,6 @@ class StartTest extends ApplicationTest {
     public void start(Stage stage) throws Exception {
         Main m = new Main();
         m.start(stage);
-
     }
 
     public void setRootNode() {
@@ -80,20 +79,16 @@ class StartTest extends ApplicationTest {
 
     @Test
     void prepView() throws AWTException {
-
         assertEquals("English", start.getLanguageSelector().getValue());
         Platform.runLater(() -> Settings.setCurrLang("Cymraeg"));
         clickOn(400, 400);
         Platform.runLater(() -> Start.getInstance().prepView());
         clickOn(400, 400);
         assertEquals("Cymraeg", start.getLanguageSelector().getValue());
-
     }
-
 
     @Test
     void btnStartNewGridClicked() {
-
         setRootNode();
         Button button = from(rootNode).lookup("#btnStartNewGrid").query();
         assertEquals("Start New Grid", button.getText());
@@ -105,8 +100,6 @@ class StartTest extends ApplicationTest {
         setRootNode();
         HBox box = from(rootNode).lookup("#gameBox").query();
         assertEquals("gameElementsContainer", box.getStyleClass().toString());
-
-
     }
 
     @Test
@@ -122,13 +115,10 @@ class StartTest extends ApplicationTest {
         assertEquals("Refresh", button.getText());
         button = from(rootNode).lookup("#startButton").query();
         assertEquals("Start Game", button.getText());
-
-
     }
 
     @Test
     void initialize() throws AWTException {
-
         Settings.setCurrLang("English");
         Platform.runLater(() -> start.getLanguageSelector().setValue("English"));
         assertEquals("English", Settings.getCurrLang());

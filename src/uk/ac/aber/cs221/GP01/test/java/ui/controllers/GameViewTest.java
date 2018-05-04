@@ -32,6 +32,8 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class GameViewTest extends ApplicationTest {
 
+    private GameView view = GameView.getInstance();
+
     /**
      * Creates instance of game for testing
      */
@@ -40,9 +42,6 @@ public class GameViewTest extends ApplicationTest {
         Main m = new Main();
         m.start(stage);
     }
-
-
-    private GameView view = GameView.getInstance();
 
     /**
      * Resets game before each test
@@ -133,18 +132,11 @@ public class GameViewTest extends ApplicationTest {
     @Test
     public void btnEndGameClicked() {
         Platform.runLater(() -> {
-
             view.btnEndGameClicked();
             clickOn(End.getInstance().getInformationDialog().getInformationDialog().getDialogPane().lookupButton(ButtonType.OK));
-
-
         });
         clickOn(400, 400);
         Parent root = Navigation.getInstance().getMain().getRoot();
         System.out.print(GameView.getInstance().getRoot().getChildren());
-
-        // Node expected = Navigation.getInstance().getScreens().get(ScreenType.END).getRoot();
-        // Node actual =  Start.getInstance().getRoot().getChildren().get(1);
-
     }
 }

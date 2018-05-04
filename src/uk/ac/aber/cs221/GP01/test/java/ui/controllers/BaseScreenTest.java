@@ -60,7 +60,6 @@ public class BaseScreenTest extends ApplicationTest {
         Platform.runLater(() -> base.btnHighScoreClicked());
         clickOn(400, 400);
         assertEquals(nav.getMain().getRoot(), HighScore.getInstance().getRoot());
-
     }
 
     /**
@@ -76,7 +75,6 @@ public class BaseScreenTest extends ApplicationTest {
         Node actual = Start.getInstance().getRoot().getChildren().get(1);
 
         assertEquals(expected, actual);
-
     }
 
     /**

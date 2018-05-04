@@ -7,10 +7,24 @@
    */
 package uk.ac.aber.cs221.GP01.test.java.backend;
 
-import org.junit.jupiter.api.Test;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import org.junit.jupiter.api.BeforeEach;
 import org.testfx.framework.junit5.ApplicationTest;
+import uk.ac.aber.cs221.GP01.Main;
 import uk.ac.aber.cs221.GP01.main.java.model.GameTimer;
+import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
+import uk.ac.aber.cs221.GP01.main.java.ui.IFrontend;
+import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
+import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
+import uk.ac.aber.cs221.GP01.main.java.ui.UI;
+import uk.ac.aber.cs221.GP01.main.java.ui.controllers.GameView;
+import javafx.application.Platform;
+import javafx.scene.control.Label;
+import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
