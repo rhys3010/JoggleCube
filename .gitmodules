@@ -4,3 +4,6 @@
 [submodule "docs/designdoc"]
 	path = docs/designdoc
 	url = https://git.overleaf.com/14422811ssxtzsfsnxdd
+[submodule "docs/testspec"]
+	path = docs/testspec
+	url = https://git.overleaf.com/14423457gtchkhnhyjgk
