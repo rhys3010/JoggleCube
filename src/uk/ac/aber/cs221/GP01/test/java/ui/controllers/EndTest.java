@@ -89,6 +89,7 @@ public class EndTest extends ApplicationTest {
 
     /**
      * Tests save menu button
+     *
      * @throws InterruptedException
      */
     @Test

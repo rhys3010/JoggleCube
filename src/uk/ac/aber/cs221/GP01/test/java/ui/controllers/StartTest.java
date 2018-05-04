@@ -52,6 +52,7 @@ import static org.testfx.matcher.control.LabeledMatchers.hasText;
  *
  * @author Agata Lefek agl6
  * @author Aleksandra Madej alm82
+ * @version 1.0
  */
 class StartTest extends ApplicationTest {
     Start start = Start.getInstance();
@@ -64,6 +65,9 @@ class StartTest extends ApplicationTest {
         release(new MouseButton[]{});
     }
 
+    /**
+     * Creates instance of game for testing
+     */
     @Override
     public void start (Stage stage) throws Exception {
         Main m = new Main();

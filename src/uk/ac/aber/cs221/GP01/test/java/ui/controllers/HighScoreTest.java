@@ -24,28 +24,36 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
  *
  * @author Agata Lefek agl6
  * @author Aleksandra Madej alm82
+ * @version 1.0
  */
 public class HighScoreTest extends ApplicationTest {
 
     HighScore score = HighScore.getInstance();
     IJoggleCube cube = JoggleCube.getInstance();
 
+    /**
+     * Reset before each test
+     */
     @BeforeEach
     public void reset() {
         score.prepView();
     }
 
+    /**
+     * Creates instance of game for testing
+     */
     @Override
     public void start(Stage stage) throws Exception {
         Main m = new Main();
         m.start(stage);
     }
 
+    /**
+     * Tests page layout
+     */
     @Test
     public void prepViewTest() {
-
         score.prepView();
-
         assertEquals(cube.getOverallHighScores(), score.getOverallScores());
         assertEquals(cube.getCurrentCubeHighScores(), score.getCurrentCubeHighScores());
 
@@ -53,11 +61,13 @@ public class HighScoreTest extends ApplicationTest {
         assertFalse(score.getRightPageNav().isVisible());
 
         assertEquals("All Cubes", score.getLabel());
-
         assertEquals(JoggleCube.getInstance().getOverallHighScores(), score.getTable().getItems());
 
     }
 
+    /**
+     * Tests highscore tabel
+     */
     @Test
     public void populateTest() {
 
@@ -68,10 +78,11 @@ public class HighScoreTest extends ApplicationTest {
 
         assertEquals("zero", score.getLabel());
         assertEquals(null, score.getTable().getItems());
-
     }
 
-
+    /**
+     * Tests transition between highscore pages
+     */
     @Test
     public void changePageTest() {
 
