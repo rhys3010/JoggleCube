@@ -29,6 +29,7 @@ public class GameTimer implements IGameTimer, Runnable {
 
     private Duration currentTime;
     private boolean interrupt = false;
+    Label timerLabel;
 
     public GameTimer(){}
 
@@ -45,7 +46,7 @@ public class GameTimer implements IGameTimer, Runnable {
      */
     @Override
     public void startTimer() {
-        Label timerLabel = GameView.getInstance().getTimerLabel();
+        timerLabel = GameView.getInstance().getTimerLabel();
         int timerLength = Settings.getTimerLength();
         int timeLeft = timerLength;
         currentTime = Duration.ofSeconds(timerLength);

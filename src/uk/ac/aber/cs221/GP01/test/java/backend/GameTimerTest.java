@@ -7,8 +7,15 @@
    */
 package uk.ac.aber.cs221.GP01.test.java.backend;
 
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import org.junit.jupiter.api.BeforeEach;
+import org.testfx.framework.junit5.ApplicationTest;
+import uk.ac.aber.cs221.GP01.Main;
 import uk.ac.aber.cs221.GP01.main.java.model.GameTimer;
 import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
+import uk.ac.aber.cs221.GP01.main.java.ui.IFrontend;
 import uk.ac.aber.cs221.GP01.main.java.ui.Navigation;
 import uk.ac.aber.cs221.GP01.main.java.ui.ScreenType;
 import uk.ac.aber.cs221.GP01.main.java.ui.UI;
@@ -17,6 +24,7 @@ import javafx.application.Platform;
 import javafx.scene.control.Label;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,9 +36,10 @@ import static org.junit.jupiter.api.Assertions.*;
  * @version 1.1
  * @see GameTimer
  */
-class GameTimerTest {
+class GameTimerTest extends ApplicationTest {
 
     GameTimer timer = new GameTimer();
+
 
     /**
      * Test if gameTimer resets
@@ -53,12 +62,12 @@ class GameTimerTest {
     @Test
     public void testStartTimer() throws InterruptedException {
 
-        Label timerLabel = new Label();
-        GameView.getInstance().setTimerLabel(timerLabel);
-        timer.startTimer();
+        Label timerLabel = new Label()
+      GameView.getInstance().setTimerLabel(timerLabel);
+
+        Platform.runLater(()->timer.startTimer());
         assertEquals(Duration.ZERO, timer.getCurrentTime());
 
-        timer.startTimer();
         Thread.sleep(1000);
         assertEquals(Duration.ofSeconds(179), timer.getCurrentTime());
         assertEquals("2:59", GameView.getInstance().getTimerLabel().getText());

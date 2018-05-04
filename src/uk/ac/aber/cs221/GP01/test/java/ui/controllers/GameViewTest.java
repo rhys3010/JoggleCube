@@ -2,9 +2,16 @@ package uk.ac.aber.cs221.GP01.test.java.ui.controllers;
 
 
 import javafx.application.Platform;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationTest;
 import uk.ac.aber.cs221.GP01.Main;
 import uk.ac.aber.cs221.GP01.main.java.model.JoggleCube;
@@ -34,7 +41,8 @@ public class GameViewTest  extends ApplicationTest {
         JoggleCube.getInstance().generateRandomGrid();
         Platform.runLater(()-> Navigation.getInstance().switchScreen(ScreenType.GAME));
         Dialog d = GameView.getInstance().getDialog();
-        clickOn(700,320);
+       // clickOn(700,320);
+        Platform.runLater(()->GameView.getInstance().getDialog().getTextInputDialog().close());
     }
 
 
@@ -97,17 +105,23 @@ public class GameViewTest  extends ApplicationTest {
 
             assertTrue(view.getHamburgerContext().isShowing());
 
-            //Point2D screenPos = view.getMenuButton().localToScreen(view.getMenuButton().getLayoutX(), view.getMenuButton().getLayoutY());
-            //assertTrue(view.getHamburgerContext().getX() == screenPos.getX() - 100);
-            //assertTrue(view.getHamburgerContext().getY() == screenPos.getY() + 20);
         });
     }
 
     @Test
     public void btnEndGameClicked(){
-        Platform.runLater(()->{
+       /* Platform.runLater(()->{
 
-
+            assertFalse(view.getHamburgerContext().isShowing());
+            view.btnMenuClicked();
+            assertTrue(view.getHamburgerContext().isShowing());
         });
+
+        Parent root = GameView.getInstance().getRoot();
+        clickOn((Button)from(root).lookup("#menuButton").query());*/
+
+       // System.out.print(from(root).lookup("#quitBtn"));
+       // clickOn((Button)from(root).lookup("#quitBtn"));
+
     }
 }
