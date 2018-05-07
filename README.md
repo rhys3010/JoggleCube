@@ -66,9 +66,10 @@ Test Report
 
 ## Test Commits
 ### Can everyone put a message here to show that you have been able to make changes to the repo.
+### Must make sure that people do this!!!
 
 * Nathan was here.
 * Rhys was here (i cheated sorry)
 * Alex was here :D 
 * Sam was 'ere! (I come up as unknown on my commits(trying to fix that!))
-*Agata was here! 
+* Agata was here! 
