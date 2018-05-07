@@ -1,2 +1,2 @@
-# To view the documents online please see the links in the main readme, the git.overleaf links do not work in browser, 
-# if you clone the repository the document repositories will be visable to you as normal files.
+# To view the documents online please see the links in the main readme, the git.overleaf links do not work in browser. 
+# If you clone the repository the document repositories will be visable to you as normal files.
